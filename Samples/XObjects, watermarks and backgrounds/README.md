@@ -1,0 +1,2 @@
+# XObjects, watermarks and backgrounds
+This group contains samples that show how to create and use XObjects. Such objects are usually used for watermarks, backgrounds and other repeatable items like logos.

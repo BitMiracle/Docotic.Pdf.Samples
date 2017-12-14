@@ -1,0 +1,2 @@
+# Graphics
+This group contains samples that show how to use Docotic.Pdf library to draw various shapes using colors, patterns and color profiles. There are also samples for graphics path construction and clipping, transparency and blending, and also for watermarks usage.

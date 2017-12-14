@@ -1,0 +1,2 @@
+# Text
+This group contains samples that show how to use Docotic.Pdf library to extract text from a whole document or some of its pages, how to draw text in any language on a page's canvas using different fonts and different output options like word or character spacing.
