@@ -1,4 +1,7 @@
 # Actions
+[GoTo Action](/Samples/Actions/GoToAction)
+This sample shows how to use Go-To actions.
+
 # Attachments
 # Compression
 # Display options
