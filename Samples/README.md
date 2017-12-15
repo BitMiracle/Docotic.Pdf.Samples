@@ -3,6 +3,8 @@
 
 [Hide Action](/Samples/Actions/HideAction)
 
+[JavaScript Action](/Samples/Actions/JavaScriptAction)
+
 # Attachments
 # Compression
 # Display options

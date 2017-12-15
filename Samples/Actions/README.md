@@ -8,3 +8,7 @@ This sample shows how to use Go-To actions.
 [Hide Action](/Samples/Actions/HideAction)
 
 This sample shows how to use Hide actions.
+
+[JavaScript Action](/Samples/Actions/JavaScriptAction)
+
+This sample shows how to use JavaScript actions.
