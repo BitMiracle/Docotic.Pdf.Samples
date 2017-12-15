@@ -5,6 +5,11 @@
 
 [JavaScript Action](/Samples/Actions/JavaScriptAction)
 
+[Submit and Reset Form Actions](/Samples/Actions/SubmitResetFormActions)
+
+This sample shows how to use Submit-Form and Reset-Form actions.
+
+
 # Attachments
 # Compression
 # Display options

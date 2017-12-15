@@ -12,3 +12,7 @@ This sample shows how to use Hide actions.
 [JavaScript Action](/Samples/Actions/JavaScriptAction)
 
 This sample shows how to use JavaScript actions.
+
+[Submit and Reset Form Actions](/Samples/Actions/SubmitResetFormActions)
+
+This sample shows how to use Submit-Form and Reset-Form actions.
