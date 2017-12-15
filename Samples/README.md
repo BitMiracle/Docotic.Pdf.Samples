@@ -1,6 +1,8 @@
 # Actions
 [GoTo Action](/Samples/Actions/GoToAction)
 
+[Hide Action](/Samples/Actions/HideAction)
+
 # Attachments
 # Compression
 # Display options
