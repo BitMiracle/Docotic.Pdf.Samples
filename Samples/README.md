@@ -7,8 +7,7 @@
 
 [Submit and Reset Form Actions](/Samples/Actions/SubmitResetFormActions)
 
-This sample shows how to use Submit-Form and Reset-Form actions.
-
+[Uri Action](/Samples/Actions/UriAction)
 
 # Attachments
 # Compression
