@@ -21,6 +21,8 @@
 
 [Compress PDF document using save options](/Samples/Compression/CompressWithSaveOptions)
 
+[Optimize images in PDF document](/Samples/Compression/OptimizeImages)
+
 # Display options
 # Draw and print PDF
 # Forms and Annotations

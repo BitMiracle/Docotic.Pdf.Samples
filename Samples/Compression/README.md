@@ -6,3 +6,9 @@ This group contains samples showing how to optimize PDF documents. You can use m
 This sample shows how to optimize size of an existing PDF document using Docotic.Pdf.
 
 [Compress PDF document using save options](/Samples/Compression/CompressWithSaveOptions)
+
+This sample shows how to optimize size of an existing PDF document using PdfDocument.SaveOptions property.
+
+[Optimize images in PDF document](/Samples/Compression/OptimizeImages)
+
+This sample shows how to optimize existing images in PDF document.
