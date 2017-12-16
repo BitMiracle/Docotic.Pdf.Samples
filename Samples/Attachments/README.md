@@ -4,3 +4,7 @@ This group contains samples that show how to use attachments and file annotation
 [Add attachments and file annotations to PDF](/Samples/Attachments/AddAttachments)
 
 This samples shows how to attach a file or add a file annotation to your PDF document.
+
+[List attachments and file annotations names](/Samples/Attachments/GetAllAttachments)
+
+This sample shows how to list names of all files attached to a PdfDocument.

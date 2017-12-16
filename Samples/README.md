@@ -12,6 +12,8 @@
 # Attachments
 [Add attachments and file annotations to PDF](/Samples/Attachments/AddAttachments)
 
+[List attachments and file annotations names](/Samples/Attachments/GetAllAttachments)
+
 # Compression
 # Display options
 # Draw and print PDF
