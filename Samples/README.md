@@ -19,6 +19,8 @@
 # Compression
 [Compress PDF document in .NET](/Samples/Compression/CompressAllTechniques)
 
+[Compress PDF document using save options](/Samples/Compression/CompressWithSaveOptions)
+
 # Display options
 # Draw and print PDF
 # Forms and Annotations

@@ -4,3 +4,5 @@ This group contains samples showing how to optimize PDF documents. You can use m
 [Compress PDF document in .NET](/Samples/Compression/CompressAllTechniques)
 
 This sample shows how to optimize size of an existing PDF document using Docotic.Pdf.
+
+[Compress PDF document using save options](/Samples/Compression/CompressWithSaveOptions)
