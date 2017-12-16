@@ -14,6 +14,8 @@
 
 [List attachments and file annotations names](/Samples/Attachments/GetAllAttachments)
 
+[Save (extract) attachment](/Samples/Attachments/SaveAttachment)
+
 # Compression
 # Display options
 # Draw and print PDF
