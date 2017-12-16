@@ -10,6 +10,8 @@
 [Uri Action](/Samples/Actions/UriAction)
 
 # Attachments
+[Add attachments and file annotations to PDF](/Samples/Attachments/AddAttachments)
+
 # Compression
 # Display options
 # Draw and print PDF
