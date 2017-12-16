@@ -17,6 +17,8 @@
 [Save (extract) attachment](/Samples/Attachments/SaveAttachment)
 
 # Compression
+[Compress PDF document in .NET](/Samples/Compression/CompressAllTechniques)
+
 # Display options
 # Draw and print PDF
 # Forms and Annotations
