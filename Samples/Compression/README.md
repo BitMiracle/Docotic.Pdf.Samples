@@ -12,3 +12,7 @@ This sample shows how to optimize size of an existing PDF document using PdfDocu
 [Optimize images in PDF document](/Samples/Compression/OptimizeImages)
 
 This sample shows how to optimize existing images in PDF document.
+
+[Remove structure information from PDF document](/Samples/Compression/RemoveStructureInformation)
+
+This sample shows how to reduce size of a PDF document by removing structure information from it.

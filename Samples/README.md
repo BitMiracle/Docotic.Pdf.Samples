@@ -23,6 +23,8 @@
 
 [Optimize images in PDF document](/Samples/Compression/OptimizeImages)
 
+[Remove structure information from PDF document](/Samples/Compression/RemoveStructureInformation)
+
 # Display options
 # Draw and print PDF
 # Forms and Annotations
