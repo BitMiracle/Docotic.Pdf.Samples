@@ -30,6 +30,8 @@
 
 [Page layout](/Samples/Display%20options/PageLayout)
 
+[Page mode](/Samples/Display%20options/PageMode)
+
 # Draw and print PDF
 # Forms and Annotations
 # General operations

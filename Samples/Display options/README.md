@@ -8,3 +8,7 @@ This sample shows how to create and use PdfDocument.InitialView property.
 [Page layout](/Samples/Display%20options/PageLayout)
 
 This sample shows how to instruct a PDF viewer to display the pages in two columns, with odd-numbered pages on the left.
+
+[Page mode](/Samples/Display%20options/PageMode)
+
+This sample shows how to instruct a PDF viewer to display the document in certain mode.
