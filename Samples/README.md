@@ -32,6 +32,8 @@
 
 [Page mode](/Samples/Display%20options/PageMode)
 
+[Viewer preferences](/Samples/Display%20options/ViewerPreferences)
+
 # Draw and print PDF
 # Forms and Annotations
 # General operations
