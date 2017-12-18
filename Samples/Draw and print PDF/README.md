@@ -4,3 +4,7 @@ This group contains samples that show how to use Docotic.Pdf library to rasteriz
 [Draw page on Graphics](/Samples/Draw%20and%20print%20PDF/DrawPageOnGraphics)
 
 This sample shows how to draw a PDF page on the drawing surface of a System.Drawing.Graphics.
+
+[Draw zoomed PDF page](/Samples/Draw%20and%20print%20PDF/DrawZoomedPage)
+
+This sample shows how to save image of a PDF page with specified zoom level.

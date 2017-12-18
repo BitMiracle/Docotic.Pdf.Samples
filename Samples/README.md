@@ -37,6 +37,8 @@
 # Draw and print PDF
 [Draw page on Graphics](/Samples/Draw%20and%20print%20PDF/DrawPageOnGraphics)
 
+[Draw zoomed PDF page](/Samples/Draw%20and%20print%20PDF/DrawZoomedPage)
+
 # Forms and Annotations
 # General operations
 # Graphics
