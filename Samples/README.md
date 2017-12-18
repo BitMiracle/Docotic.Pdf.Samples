@@ -35,6 +35,8 @@
 [Viewer preferences](/Samples/Display%20options/ViewerPreferences)
 
 # Draw and print PDF
+[Draw page on Graphics](/Samples/Draw%20and%20print%20PDF/DrawPageOnGraphics)
+
 # Forms and Annotations
 # General operations
 # Graphics
