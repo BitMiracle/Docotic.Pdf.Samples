@@ -12,3 +12,7 @@ This sample shows how to save image of a PDF page with specified zoom level.
 [Make page thumbnail](/Samples/Draw%20and%20print%20PDF/MakePageThumbnail)
 
 This sample shows how to make thumbnail of a PDF page.
+
+[Save PDF as multipage TIFF](/Samples/Draw%20and%20print%20PDF/SaveAsTiff)
+
+This sample shows how to save a PDF document as multipage TIFF image.

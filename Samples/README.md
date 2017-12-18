@@ -41,6 +41,8 @@
 
 [Make page thumbnail](/Samples/Draw%20and%20print%20PDF/MakePageThumbnail)
 
+[Save PDF as multipage TIFF](/Samples/Draw%20and%20print%20PDF/SaveAsTiff)
+
 # Forms and Annotations
 # General operations
 # Graphics
