@@ -26,7 +26,7 @@
 [Remove structure information from PDF document](/Samples/Compression/RemoveStructureInformation)
 
 # Display options
-[Initial view](/Samples/Display options/InitialView)
+[Initial view](/Samples/Display%20options/InitialView)
 
 # Draw and print PDF
 # Forms and Annotations
