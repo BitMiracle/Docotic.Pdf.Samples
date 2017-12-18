@@ -28,6 +28,8 @@
 # Display options
 [Initial view](/Samples/Display%20options/InitialView)
 
+[Page layout](/Samples/Display%20options/PageLayout)
+
 # Draw and print PDF
 # Forms and Annotations
 # General operations

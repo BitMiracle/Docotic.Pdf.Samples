@@ -4,3 +4,7 @@ This group contains samples that show how you can affect a display of your PDF d
 [Initial view](/Samples/Display%20options/InitialView)
 
 This sample shows how to create and use PdfDocument.InitialView property.
+
+[Page layout](/Samples/Display%20options/PageLayout)
+
+This sample shows how to instruct a PDF viewer to display the pages in two columns, with odd-numbered pages on the left.
