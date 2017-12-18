@@ -39,6 +39,8 @@
 
 [Draw zoomed PDF page](/Samples/Draw%20and%20print%20PDF/DrawZoomedPage)
 
+[Make page thumbnail](/Samples/Draw%20and%20print%20PDF/MakePageThumbnail)
+
 # Forms and Annotations
 # General operations
 # Graphics

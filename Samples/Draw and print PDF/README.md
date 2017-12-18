@@ -8,3 +8,7 @@ This sample shows how to draw a PDF page on the drawing surface of a System.Draw
 [Draw zoomed PDF page](/Samples/Draw%20and%20print%20PDF/DrawZoomedPage)
 
 This sample shows how to save image of a PDF page with specified zoom level.
+
+[Make page thumbnail](/Samples/Draw%20and%20print%20PDF/MakePageThumbnail)
+
+This sample shows how to make thumbnail of a PDF page.
