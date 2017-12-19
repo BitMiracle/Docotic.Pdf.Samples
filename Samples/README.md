@@ -48,6 +48,42 @@
 [Save PDF page as image with specified resolution](/Samples/Draw%20and%20print%20PDF/SavePageCustomResolution)
 
 # Forms and Annotations
+[Text annotations](/Samples/Forms%20and%20Annotations/Annotations)
+
+[Button with image](/Samples/Forms%20and%20Annotations/ButtonImage)
+
+[Buttons](/Samples/Forms%20and%20Annotations/Buttons)
+
+[Checkboxes](/Samples/Forms%20and%20Annotations/Checkboxes)
+
+[Comboboxes](/Samples/Forms%20and%20Annotations/Comboboxes)
+
+[Export FDF data](/Samples/Forms%20and%20Annotations/ExportFdfData)
+
+[Fill existing form](/Samples/Forms%20and%20Annotations/FillForm)
+
+[Find control by name](/Samples/Forms%20and%20Annotations/FindControlByName)
+
+[Flatten form fields](/Samples/Forms%20and%20Annotations/FlattenFormFields)
+
+[Import FDF data](/Samples/Forms%20and%20Annotations/ImportFdfData)
+
+[Listboxes](/Samples/Forms%20and%20Annotations/Listboxes)
+
+[Numeric text fields](/Samples/Forms%20and%20Annotations/NumericTextField)
+
+[Radio buttons](/Samples/Forms%20and%20Annotations/RadioButtons)
+
+[Read combo box items](/Samples/Forms%20and%20Annotations/ReadComboBoxItems)
+
+[Remove widgets](/Samples/Forms%20and%20Annotations/RemoveWidgets)
+
+[Alignment in text fields](/Samples/Forms%20and%20Annotations/TextFieldAlignment)
+
+[Text fields](/Samples/Forms%20and%20Annotations/TextFields)
+
+[Text markup annotations](/Samples/Forms%20and%20Annotations/TextMarkupAnnotations)
+
 # General operations
 # Graphics
 # Images
