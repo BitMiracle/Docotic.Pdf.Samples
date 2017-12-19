@@ -45,6 +45,8 @@
 
 [Save PDF page as image](/Samples/Draw%20and%20print%20PDF/SavePageAsImage)
 
+[Save PDF page as image with specified resolution](/Samples/Draw%20and%20print%20PDF/SavePageCustomResolution)
+
 # Forms and Annotations
 # General operations
 # Graphics

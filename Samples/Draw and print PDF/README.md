@@ -20,3 +20,7 @@ This sample shows how to save a PDF document as multipage TIFF image.
 [Save PDF page as image](/Samples/Draw%20and%20print%20PDF/SavePageAsImage)
 
 This sample shows how to save a PDF page as image (i.e. how to convert a PDF page to raster format image).
+
+[Save PDF page as image with specified resolution](/Samples/Draw%20and%20print%20PDF/SavePageCustomResolution)
+
+This sample shows how to save a PDF page as image with specified resolution.
