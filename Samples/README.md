@@ -43,6 +43,8 @@
 
 [Save PDF as multipage TIFF](/Samples/Draw%20and%20print%20PDF/SaveAsTiff)
 
+[Save PDF page as image](/Samples/Draw%20and%20print%20PDF/SavePageAsImage)
+
 # Forms and Annotations
 # General operations
 # Graphics

@@ -16,3 +16,7 @@ This sample shows how to make thumbnail of a PDF page.
 [Save PDF as multipage TIFF](/Samples/Draw%20and%20print%20PDF/SaveAsTiff)
 
 This sample shows how to save a PDF document as multipage TIFF image.
+
+[Save PDF page as image](/Samples/Draw%20and%20print%20PDF/SavePageAsImage)
+
+This sample shows how to save a PDF page as image (i.e. how to convert a PDF page to raster format image).
