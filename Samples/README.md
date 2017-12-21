@@ -85,6 +85,24 @@
 [Text markup annotations](/Samples/Forms%20and%20Annotations/TextMarkupAnnotations)
 
 # General operations
+[Check if PDF document is a PDF/A compliant one](/Samples/General%20operations/CheckConformanceToPdfA)
+
+[Check if PDF document is password protected](/Samples/General%20operations/CheckIfPasswordProtected)
+
+[Check that two PDF documents are equal](/Samples/General%20operations/CompareDocuments)
+
+[Create and save PDF document](/Samples/General%20operations/CreateAndSaveDocument)
+
+[Error handling](/Samples/General%20operations/ErrorHandling)
+
+[Linearize PDF document](/Samples/General%20operations/LinearizeDocument)
+
+[Merge two PDF documents](/Samples/General%20operations/MergeDocuments)
+
+[Load an existing PDF document](/Samples/General%20operations/OpenDocument)
+
+[Create PDF/A compatible document](/Samples/General%20operations/PDFA)
+
 # Graphics
 # Images
 # Layers
