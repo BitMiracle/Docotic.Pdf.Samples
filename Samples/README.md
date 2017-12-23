@@ -104,6 +104,28 @@
 [Create PDF/A compatible document](/Samples/General%20operations/PDFA)
 
 # Graphics
+[Blend modes](/Samples/Graphics/BlendModes)
+
+[Clipping](/Samples/Graphics/Clipping)
+
+[Color profiles](/Samples/Graphics/ColorProfiles)
+
+[Colors](/Samples/Graphics/Colors)
+
+[Extract paths](/Samples/Graphics/ExtractPaths)
+
+[Graphics state](/Samples/Graphics/GraphicsState)
+
+[Lines and Curves](/Samples/Graphics/LinesAndCurves)
+
+[Paths](/Samples/Graphics/Paths)
+
+[Patterns](/Samples/Graphics/Patterns)
+
+[Shapes](/Samples/Graphics/Shapes)
+
+[Transparency](/Samples/Graphics/Transparency)
+
 # Images
 # Layers
 # Metadata
