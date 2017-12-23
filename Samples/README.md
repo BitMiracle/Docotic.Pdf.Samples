@@ -153,6 +153,12 @@
 [Enumerate layers](/Samples/Layers/EnumerateLayers)
 
 # Metadata
+[Document metadata](/Samples/Metadata/Metadata)
+
+[Set custom XMP metadata properties](/Samples/Metadata/SetCustomXmpProperties)
+
+[Set XMP metadata properties](/Samples/Metadata/SetXmpProperties)
+
 # Pages and Navigation
 # Security
 # Text
