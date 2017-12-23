@@ -1,0 +1,30 @@
+using System.Diagnostics;
+
+namespace BitMiracle.Docotic.Pdf.Samples
+{
+    public static class RemoveXObjectsWatermarks
+    {
+        public static void Main()
+        {
+            // NOTE: 
+            // When used in trial mode, the library imposes some restrictions.
+            // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
+            // for more information.
+            
+            string pathToFile = "RemoveXObjectsWatermarks.pdf";
+
+            using (PdfDocument pdf = new PdfDocument(@"Sample Data\DocumentWithWatermark.pdf"))
+            {
+                foreach (PdfPage page in pdf.Pages)
+                {
+                    // remove first XObject (in this case it's a watermark)
+                    page.XObjects.RemoveAt(0);
+                }
+                
+                pdf.Save(pathToFile);
+            }
+
+            Process.Start(pathToFile);
+        }
+    }
+}
