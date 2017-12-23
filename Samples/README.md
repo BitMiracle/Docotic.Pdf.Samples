@@ -144,6 +144,14 @@
 [Image masks](/Samples/Images/ImageMasks)
 
 # Layers
+[Add annotations and controls to layers](/Samples/Layers/AddAnnotationsAndControlsToLayers)
+
+[Add XObjects to layers](/Samples/Layers/AddXObjectsToLayers)
+
+[Add layers to PDF](/Samples/Layers/CreateLayers)
+
+[Enumerate layers](/Samples/Layers/EnumerateLayers)
+
 # Metadata
 # Pages and Navigation
 # Security
