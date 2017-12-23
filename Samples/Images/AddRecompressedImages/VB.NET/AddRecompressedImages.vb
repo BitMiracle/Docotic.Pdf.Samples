@@ -1,0 +1,37 @@
+Imports System.Diagnostics
+
+Imports BitMiracle.Docotic.Pdf
+
+Namespace BitMiracle.Docotic.Pdf.Samples
+    Public NotInheritable Class AddRecompressedImages
+        Public Shared Sub Main()
+            ' NOTE: 
+            ' When used in trial mode, the library imposes some restrictions.
+            ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
+            ' for more information.
+
+            Dim pathToFile As String = "AddRecompressedImages.pdf"
+
+            Using pdf As New PdfDocument()
+                Dim canvas As PdfCanvas = pdf.Pages(0).Canvas
+
+                Dim imageFrames As PdfImageFrames = pdf.OpenImage("Sample Data\pink.png")
+                Dim originalImage As PdfImage = pdf.AddImage(imageFrames(0))
+                canvas.DrawImage(originalImage, 10, 10, 0)
+
+                Dim imageFrames2 As PdfImageFrames = pdf.OpenImage("Sample Data\pink.png")
+                Dim frame As PdfImageFrame = imageFrames2(0)
+                frame.OutputCompression = PdfImageCompression.Jpeg
+                frame.JpegQuality = 50
+                frame.RecompressAlways = True
+
+                Dim compressedImage As PdfImage = pdf.AddImage(frame)
+                canvas.DrawImage(compressedImage, 210, 10, 0)
+
+                pdf.Save(pathToFile)
+            End Using
+
+            Process.Start(pathToFile)
+        End Sub
+    End Class
+End Namespace
