@@ -198,4 +198,28 @@
 [Set password](/Samples/Security/SetPassword)
 
 # Text
+[Character spacing](/Samples/Text/CharacterSpacing)
+
+[Draw text](/Samples/Text/DrawText)
+
+[Draw text from baseline](/Samples/Text/DrawTextFromBaseline)
+
+[Extract text](/Samples/Text/ExtractText)
+
+[Extract text by words](/Samples/Text/ExtractTextByWords)
+
+[Fonts](/Samples/Text/Fonts)
+
+[Internationalization](/Samples/Text/Internationalization)
+
+[Tables](/Samples/Text/Tables)
+
+[Horizontal scaling](/Samples/Text/TextHorizontalScaling)
+
+[Text rendering mode](/Samples/Text/TextRenderingMode)
+
+[Text rise](/Samples/Text/TextRise)
+
+[Word spacing](/Samples/Text/WordSpacing)
+
 # XObjects, watermarks and backgrounds
