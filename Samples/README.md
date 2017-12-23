@@ -191,5 +191,11 @@
 [Extract text from link target](/Samples/Pages%20and%20Navigation/TextFromLink)
 
 # Security
+[Permissions](/Samples/Security/Permissions)
+
+[Protect PDF document with AES](/Samples/Security/ProtectDocumentWithAes)
+
+[Set password](/Samples/Security/SetPassword)
+
 # Text
 # XObjects, watermarks and backgrounds
