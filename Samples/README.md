@@ -160,6 +160,36 @@
 [Set XMP metadata properties](/Samples/Metadata/SetXmpProperties)
 
 # Pages and Navigation
+[Add new pages](/Samples/Pages%20and%20Navigation/AddPages)
+
+[Copy text, paths and images](/Samples/Pages%20and%20Navigation/CopyPageObjects)
+
+[Copy pages](/Samples/Pages%20and%20Navigation/CopyPages)
+
+[Extract text, paths and images](/Samples/Pages%20and%20Navigation/ExtractPageObjects)
+
+[Extract pages](/Samples/Pages%20and%20Navigation/ExtractPages)
+
+[Create hyperlink](/Samples/Pages%20and%20Navigation/Hyperlink)
+
+[Create link to page](/Samples/Pages%20and%20Navigation/LinkToPage)
+
+[Move pages](/Samples/Pages%20and%20Navigation/MovePages)
+
+[Outline (bookmarks)](/Samples/Pages%20and%20Navigation/Outline)
+
+[Outline (bookmarks) with styles](/Samples/Pages%20and%20Navigation/OutlineWithStyles)
+
+[Page Labels](/Samples/Pages%20and%20Navigation/PageLabels)
+
+[Page parameters](/Samples/Pages%20and%20Navigation/PageParameters)
+
+[Remove pages](/Samples/Pages%20and%20Navigation/RemovePages)
+
+[Swap pages](/Samples/Pages%20and%20Navigation/SwapPages)
+
+[Extract text from link target](/Samples/Pages%20and%20Navigation/TextFromLink)
+
 # Security
 # Text
 # XObjects, watermarks and backgrounds
