@@ -16,9 +16,9 @@ https://bitmiracle.com/pdf-library/help/welcome.aspx
 
 # Adding library to GAC
 To add the library to the Global Assembly Cache please run gac-install.ps1. Make sure you run
-this script with administrator privileges. The script expect to find BitMiracle.Docotic.Pdf.dll
+this script with administrator privileges. The script expects to find BitMiracle.Docotic.Pdf.dll
 in the same folder.
 
 To remove the library from the Global Assembly Cache please run gac-remove.ps1. As with the 
 previous script, please make sure you run this script with administrator privileges. 
-The script also expect to find BitMiracle.Docotic.Pdf.dll in the same folder.
+The script also expects to find BitMiracle.Docotic.Pdf.dll in the same folder.
