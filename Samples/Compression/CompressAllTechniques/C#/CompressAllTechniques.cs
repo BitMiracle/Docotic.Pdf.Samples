@@ -18,7 +18,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             const string originalFile = @"Sample Data\jpeg.pdf";
             const string compressedFile = "CompressAllTechniques.pdf";
 
-            using (PdfDocument pdf = new PdfDocument(originalFile))
+            using (var pdf = new PdfDocument(originalFile))
             {
                 // 1. Recompress images
                 foreach (PdfPage page in pdf.Pages)
@@ -26,28 +26,49 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     foreach (PdfPaintedImage painted in page.GetPaintedImages())
                     {
                         PdfImage image = painted.Image;
-
-                        // image that is used as mask or image with attached mask are
-                        // not good candidates for recompression
+                        // image that is used as mask or image with attached mask are 
+                        // not good candidates for recompression 
                         if (image.IsMask || image.Mask != null || image.Width < 8 || image.Height < 8)
                             continue;
 
                         // get size of the painted image
                         int width = Math.Max(1, (int)painted.Bounds.Width);
                         int height = Math.Max(1, (int)painted.Bounds.Height);
-
-                        if (image.ComponentCount == 1 && image.BitsPerComponent == 1 &&
-                            image.Compression != PdfImageCompression.Group4Fax)
+                        if (width >= image.Width || height >= image.Height)
                         {
-                            image.RecompressWithGroup4Fax();
+                            if (image.ComponentCount == 1 && image.BitsPerComponent == 1 &&
+                                image.Compression != PdfImageCompression.Group4Fax)
+                            {
+                                image.RecompressWithGroup4Fax();
+                            }
+                            else if (image.BitsPerComponent == 8 &&
+                                image.ComponentCount >= 3 &&
+                                image.Compression != PdfImageCompression.Jpeg &&
+                                image.Compression != PdfImageCompression.Jpeg2000)
+                            {
+                                image.RecompressWithJpeg2000(10);
+                                // or image.RecompressWithJpeg();
+                            }
                         }
-                        else if (width < image.Width || height < image.Height)
+                        else
                         {
-                            // NOTE: PdfImage.ResizeTo() method is not supported in version for .NET Standard
-                            if (image.ComponentCount >= 3)
+                            // NOTE: PdfImage.ResizeTo() method is not supported in version for .NET Standard 
+                            if (image.Compression == PdfImageCompression.Group4Fax ||
+                                image.Compression == PdfImageCompression.Group3Fax)
+                            {
+                                // Fax documents usually looks better if integer-ratio scaling is used
+                                // Fractional-ratio scaling introduces more artifacts
+                                int ratio = Math.Min(image.Width / width, image.Height / height);
+                                image.ResizeTo(image.Width / ratio, image.Height / ratio, PdfImageCompression.Group4Fax);
+                            }
+                            else if (image.ComponentCount >= 3 && image.BitsPerComponent == 8)
+                            {
                                 image.ResizeTo(width, height, PdfImageCompression.Jpeg, 90);
+                            }
                             else
+                            {
                                 image.ResizeTo(width, height, PdfImageCompression.Flate, 9);
+                            }
                         }
                     }
                 }
@@ -62,7 +83,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 // 3. Remove structure information
                 pdf.RemoveStructureInformation();
 
-                // 4. Flatten form fields
+                // 4. Flatten form fields 
                 // Controls become uneditable after that
                 pdf.FlattenControls();
 
@@ -72,7 +93,6 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Metadata.MediaManagement.Clear();
                 pdf.Metadata.Pdf.Clear();
                 pdf.Metadata.RightsManagement.Clear();
-
                 pdf.Metadata.Custom.Properties.Clear();
 
                 foreach (XmpSchema schema in pdf.Metadata.Schemas)
@@ -80,11 +100,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                 pdf.Info.Clear(false);
 
-                // 6. Unembed fonts
+                // 6. Remove font duplicates
+                pdf.ReplaceDuplicateFonts();
+
+                // 7. Unembed fonts
                 foreach (PdfFont font in pdf.GetFonts())
                 {
-                    // Only unembed popular fonts installed in the typical OS. You can extend
-                    // the list of such fonts in the "if" statement below.
+                    // Only unembed popular fonts installed in the typical OS. You can extend 
+                    // the list of such fonts in the "if" statement below. 
                     if (font.Name == "Arial" || font.Name == "Verdana")
                         font.Unembed();
                 }

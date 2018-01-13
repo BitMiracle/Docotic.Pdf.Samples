@@ -34,11 +34,21 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         Dim width As Integer = Math.Max(1, CInt(painted.Bounds.Width))
                         Dim height As Integer = Math.Max(1, CInt(painted.Bounds.Height))
 
-                        If image.ComponentCount = 1 AndAlso image.BitsPerComponent = 1 AndAlso image.Compression <> PdfImageCompression.Group4Fax Then
-                            image.RecompressWithGroup4Fax()
-                        ElseIf width < image.Width OrElse height < image.Height Then
-                            ' NOTE: PdfImage.ResizeTo() method is not supported in version for .NET Standard
-                            If image.ComponentCount = 3 Then
+                        If width >= image.Width OrElse height >= image.Height Then
+                            If image.ComponentCount = 1 AndAlso image.BitsPerComponent = 1 AndAlso image.Compression <> PdfImageCompression.Group4Fax Then
+                                image.RecompressWithGroup4Fax()
+                            ElseIf image.BitsPerComponent = 8 AndAlso image.ComponentCount >= 3 AndAlso image.Compression <> PdfImageCompression.Jpeg AndAlso image.Compression <> PdfImageCompression.Jpeg2000 Then
+                                image.RecompressWithJpeg2000(10)
+                                ' or image.RecompressWithJpeg();
+                            End If
+                        Else
+                            ' NOTE: PdfImage.ResizeTo() method is not supported in version for .NET Standard 
+                            If image.Compression = PdfImageCompression.Group4Fax OrElse image.Compression = PdfImageCompression.Group3Fax Then
+                                ' Fax documents usually looks better if integer-ratio scaling is used
+                                ' Fractional-ratio scaling introduces more artifacts
+                                Dim ratio As Integer = Math.Min(image.Width / width, image.Height / height)
+                                image.ResizeTo(image.Width / ratio, image.Height / ratio, PdfImageCompression.Group4Fax)
+                            ElseIf image.ComponentCount >= 3 AndAlso image.BitsPerComponent = 8 Then
                                 image.ResizeTo(width, height, PdfImageCompression.Jpeg, 90)
                             Else
                                 image.ResizeTo(width, height, PdfImageCompression.Flate, 9)
@@ -46,7 +56,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         End If
                     Next
                 Next
-
+                
                 ' 2 Setup save options
                 pdf.SaveOptions.Compression = PdfCompression.Flate
                 pdf.SaveOptions.UseObjectStreams = True
@@ -76,7 +86,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 pdf.Info.Clear(False)
 
-                ' 6. Unembed fonts
+                ' 6. Remove font duplicates
+                pdf.ReplaceDuplicateFonts()
+                
+                ' 7. Unembed fonts
                 For Each font As PdfFont In pdf.GetFonts()
                     ' Only unembed popular fonts installed in the typical OS. You can extend
                     ' the list of such fonts in the "if" statement below.
