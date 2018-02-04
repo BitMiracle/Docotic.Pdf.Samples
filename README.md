@@ -1,6 +1,38 @@
 # Docotic.Pdf.Samples
 Contains Docotic.Pdf sample code and the latest stable version of the library
 
+[All Samples](/Samples)
+
+[Actions](/Samples/Actions)
+
+[Attachments](/Samples/Attachments)
+
+[Compression](/Samples/Compression)
+
+[Display options](/Samples/Display%20options)
+
+[Draw and print PDF](/Samples/Draw%20and%20print%20PDF)
+
+[Forms and Annotations](/Samples/Forms%20and%20Annotations)
+
+[General operations](/Samples/General%20operations)
+
+[Graphics](/Samples/Graphics)
+
+[Images](/Samples/Images)
+
+[Layers](/Samples/Layers)
+
+[Metadata](/Samples/Metadata)
+
+[Pages and Navigation](/Samples/Pages%20and%20Navigation)
+
+[Security](/Samples/Security)
+
+[Text](/Samples/Text)
+
+[XObjects, watermarks and backgrounds](/Samples/XObjects%2C%20watermarks%20and%20backgrounds)
+
 # Docotic.Pdf library
 Docotic.Pdf library is the PDF library for .NET (including .NET Core / .NET Standard).
 
