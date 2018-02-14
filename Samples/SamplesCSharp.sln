@@ -59,7 +59,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SavePageCustomResolution", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Forms and Annotations", "Forms and Annotations", "{A0631674-E845-41C0-8386-D9305DA577E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Annotations", "Forms and Annotations\Annotations\C#\Annotations.csproj", "{3BA07B17-D46E-4808-AB89-18A0B14B3934}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextAnnotations", "Forms and Annotations\TextAnnotations\C#\TextAnnotations.csproj", "{3BA07B17-D46E-4808-AB89-18A0B14B3934}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ButtonImage", "Forms and Annotations\ButtonImage\C#\ButtonImage.csproj", "{D6DF33B5-CE3B-4EFA-8E15-38C47AB5F1C0}"
 EndProject

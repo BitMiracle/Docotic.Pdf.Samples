@@ -2,7 +2,7 @@
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
-    public static class Annotations
+    public static class TextAnnotations
     {
         public static void Main()
         {
@@ -11,7 +11,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
             
-            string pathToFile = "Annotations.pdf";
+            string pathToFile = "TextAnnotations.pdf";
             
             using (PdfDocument pdf = new PdfDocument())
             {

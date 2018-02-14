@@ -4,14 +4,14 @@ Imports System.IO
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
-    Public NotInheritable Class Annotations
+    Public NotInheritable Class TextAnnotations
         Public Shared Sub Main()
             ' NOTE: 
             ' When used in trial mode, the library imposes some restrictions.
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
-            Dim pathToFile As String = "Annotations.pdf"
+            Dim pathToFile As String = "TextAnnotations.pdf"
 
             Using pdf As New PdfDocument()
                 Dim page As PdfPage = pdf.Pages(0)

@@ -59,7 +59,7 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SavePageCustomResolution", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Forms and Annotations", "Forms and Annotations", "{9025591C-FF6E-452F-BFDA-26E93CC1D358}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Annotations", "Forms and Annotations\Annotations\VB.NET\Annotations.vbproj", "{3FC85FA8-5BD0-47EF-B54F-2EFD07C31B8C}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TextAnnotations", "Forms and Annotations\TextAnnotations\VB.NET\TextAnnotations.vbproj", "{3FC85FA8-5BD0-47EF-B54F-2EFD07C31B8C}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ButtonImage", "Forms and Annotations\ButtonImage\VB.NET\ButtonImage.vbproj", "{18DCD5C8-8970-4201-A246-825BC1F8F86E}"
 EndProject
