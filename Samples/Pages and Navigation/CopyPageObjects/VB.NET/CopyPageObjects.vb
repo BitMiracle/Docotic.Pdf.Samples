@@ -81,21 +81,36 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
         Private Shared Sub setBrushAndPen(target As PdfCanvas, path As PdfPath)
             If path.PaintMode = PdfDrawMode.Fill OrElse path.PaintMode = PdfDrawMode.FillAndStroke Then
-                target.Brush.Opacity = path.Brush.Opacity
-
                 Dim color As PdfColor = path.Brush.Color
                 If color IsNot Nothing Then
-                    target.Brush.Color = path.Brush.Color
+                    target.Brush.Color = color
+                End If
+
+                target.Brush.Opacity = path.Brush.Opacity
+
+                Dim pattern As PdfPattern = path.Brush.Pattern
+                If pattern IsNot Nothing Then
+                    target.Brush.Pattern = pattern
                 End If
             End If
 
             If path.PaintMode = PdfDrawMode.Stroke OrElse path.PaintMode = PdfDrawMode.FillAndStroke Then
-                target.Pen.Opacity = path.Pen.Opacity
-
                 Dim color As PdfColor = path.Pen.Color
                 If color IsNot Nothing Then
-                    target.Pen.Color = path.Pen.Color
+                    target.Pen.Color = color
                 End If
+
+                Dim pattern As PdfPattern = path.Pen.Pattern
+                If color IsNot Nothing Then
+                    target.Pen.Pattern = pattern
+                End If
+
+                target.Pen.DashPattern = path.Pen.DashPattern
+                target.Pen.EndCap = path.Pen.EndCap
+                target.Pen.LineJoin = path.Pen.LineJoin
+                target.Pen.MiterLimit = path.Pen.MiterLimit
+                target.Pen.Opacity = path.Pen.Opacity
+                target.Pen.Width = path.Pen.Width
             End If
         End Sub
 

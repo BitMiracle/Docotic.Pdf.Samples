@@ -97,20 +97,33 @@ namespace BitMiracle.Docotic.Pdf.Samples
         {
             if (path.PaintMode == PdfDrawMode.Fill || path.PaintMode == PdfDrawMode.FillAndStroke)
             {
-                target.Brush.Opacity = path.Brush.Opacity;
-
                 PdfColor color = path.Brush.Color;
                 if (color != null)
-                    target.Brush.Color = path.Brush.Color;
+                    target.Brush.Color = color;
+
+                target.Brush.Opacity = path.Brush.Opacity;
+
+                var pattern = path.Brush.Pattern;
+                if (pattern != null)
+                    target.Brush.Pattern = pattern;
             }
 
             if (path.PaintMode == PdfDrawMode.Stroke || path.PaintMode == PdfDrawMode.FillAndStroke)
             {
-                target.Pen.Opacity = path.Pen.Opacity;
-
                 PdfColor color = path.Pen.Color;
                 if (color != null)
-                    target.Pen.Color = path.Pen.Color;
+                    target.Pen.Color = color;
+
+                var pattern = path.Pen.Pattern;
+                if (pattern != null)
+                    target.Pen.Pattern = pattern;
+
+                target.Pen.DashPattern = path.Pen.DashPattern;
+                target.Pen.EndCap = path.Pen.EndCap;
+                target.Pen.LineJoin = path.Pen.LineJoin;
+                target.Pen.MiterLimit = path.Pen.MiterLimit;
+                target.Pen.Opacity = path.Pen.Opacity;
+                target.Pen.Width = path.Pen.Width;
             }
         }
 
