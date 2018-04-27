@@ -50,7 +50,7 @@
 [Save PDF page as image with specified resolution](/Samples/Draw%20and%20print%20PDF/SavePageCustomResolution)
 
 # Forms and Annotations
-[Text annotations](/Samples/Forms%20and%20Annotations/Annotations)
+[Text annotations](/Samples/Forms%20and%20Annotations/TextAnnotations)
 
 [Button with image](/Samples/Forms%20and%20Annotations/ButtonImage)
 
