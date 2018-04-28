@@ -16,8 +16,6 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf As New PdfDocument()
                 Dim canvas As PdfCanvas = pdf.Pages(0).Canvas
 
-                ' NOTE: PdfDocument.AddFont() overloads, which load font from the collection of system fonts,
-                ' are not supported in version for .NET Standard
                 Dim systemFont As PdfFont = pdf.AddFont("Arial", FontStyle.Italic Or FontStyle.Strikeout)
                 canvas.Font = systemFont
                 canvas.DrawString(10, 50, "Hello, world!")

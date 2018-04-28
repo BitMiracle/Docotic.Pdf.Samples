@@ -260,7 +260,6 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Return Color.Empty
             End If
 
-            ' NOTE: PdfColor.ToColor() method is not supported in version for .NET Standard
             Dim gdiColor As Color = pdfColor.ToColor()
 
             Dim alpha As Integer = 255

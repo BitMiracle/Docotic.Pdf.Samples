@@ -41,7 +41,6 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                                 ' or image.RecompressWithJpeg();
                             End If
                         Else
-                            ' NOTE: PdfImage.ResizeTo() method is not supported in version for .NET Standard 
                             If image.Compression = PdfImageCompression.Group4Fax OrElse image.Compression = PdfImageCompression.Group3Fax Then
                                 ' Fax documents usually looks better if integer-ratio scaling is used
                                 ' Fractional-ratio scaling introduces more artifacts

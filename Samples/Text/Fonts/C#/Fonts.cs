@@ -18,8 +18,6 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 PdfCanvas canvas = pdf.Pages[0].Canvas;
 
-                // NOTE: PdfDocument.AddFont() overloads, which load font from the collection of system fonts,
-                // are not supported in version for .NET Standard
                 PdfFont systemFont = pdf.AddFont("Arial", FontStyle.Italic | FontStyle.Strikeout);
                 canvas.Font = systemFont;
                 canvas.DrawString(10, 50, "Hello, world!");
