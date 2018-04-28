@@ -19,7 +19,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 PdfDrawOptions options = PdfDrawOptions.Create();
                 options.BackgroundColor = new PdfRgbColor(255, 255, 255);
-                options.Format = PdfDrawFormat.Jpeg;
+                options.Compression = ImageCompressionOptions.CreateJpeg();
 
                 pdf.Pages[1].Save(pathToImage, options);
             }

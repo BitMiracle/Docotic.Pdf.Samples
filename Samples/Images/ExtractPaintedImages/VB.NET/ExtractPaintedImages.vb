@@ -21,7 +21,6 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Process.Start(fullPath)
 
                 ' save image as painted
-                ' NOTE: PdfPaintedImage.SaveAsPainted() method is not supported in version for .NET Standard
                 Dim imageAsPainted As String = "PdfPaintedImage.SaveAsPainted.tiff"
                 image.SaveAsPainted(imageAsPainted, PdfExtractedImageFormat.Tiff)
                 Process.Start(imageAsPainted)

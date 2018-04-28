@@ -3532,6 +3532,133 @@
             The base class for PDF function classes.
             </summary>
     </member>
+    <member name="T:BitMiracle.Docotic.Pdf.ImageCompressionOptions">
+      <summary>
+            The compression options for images produced during PDF to image conversion.
+            </summary>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.ImageCompressionOptions.Format">
+      <summary>
+            Gets the image format to use while saving an image of a <see cref="T:BitMiracle.Docotic.Pdf.PdfPage" />.
+            </summary>
+      <value>The image format to use while saving an image of a page.</value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.ImageCompressionOptions.BitsPerPixel">
+      <summary>
+            Get the number of bits per pixel of the image.
+            </summary>
+      <value>The number of bits per pixel of the image.</value>
+      <remarks>
+        <para>The lower the value, the less bytes will be used by the image.</para>
+        <para>Valid values for this property depend on the <see cref="P:BitMiracle.Docotic.Pdf.ImageCompressionOptions.Format" />.</para>
+      </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.ImageCompressionOptions.TileWidth">
+      <summary>
+            Gets the width of the tile to use while drawing.
+            </summary>
+      <value>
+            The width of the tile to use while drawing.
+            </value>
+      <remarks>
+        <para>
+            This value is useful when you want to reduce amount of memory used while drawing.
+            </para>
+        <para>
+            The lower the value, the less memory is used but the overall drawing process will take more time.
+            </para>
+        <para>
+            The value of this property is ignored when output format is not TIFF.
+            </para>
+        <para>
+            The library uses the value of this property as a recommendation only and can use slightly
+            bigger or smaller tiles if needed.
+            </para>
+      </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.ImageCompressionOptions.TileHeight">
+      <summary>
+            Gets the height of the tile to use while drawing.
+            </summary>
+      <value>
+            The height of the tile to use while drawing.
+            </value>
+      <remarks>
+        <para>
+            This value is useful when you want to reduce amount of memory used while drawing.
+            </para>
+        <para>
+            The lower the value, the less memory is used but the overall drawing process will take more time.
+            </para>
+        <para>
+            The value of this property is ignored when output format is not TIFF.
+            </para>
+        <para>
+            The library uses the value of this property as a recommendation only and can use slightly
+            bigger or smaller tiles if needed.
+            </para>
+      </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.ImageCompressionOptions.BitonalConversionThreshold">
+      <summary>
+            Gets the threshold level to use when producing bitonal images.
+            </summary>
+      <value>The threshold level to use when producing bitonal images.</value>
+      <remarks>
+        <para>The threshold level is used to decide which pixels are white and
+            which are black when converting image data to black-and-white format.</para>
+        <para>The threshold level value should be between 0 and 255 inclusive. A
+            threshold value 0 means that library should use midpoint between most
+            light and dark pixels as a threshold value.
+            </para>
+        <para>
+            If the image contains some scanned document or other data with mostly white
+            background pixels and mostly black foreground pixels then threshold level
+            of 189 or higher is recommended to preserve most of the data.
+            </para>
+      </remarks>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.ImageCompressionOptions.CreatePng">
+      <summary>
+            Creates options for PNG images.
+            </summary>
+      <returns>The newly created options for PNG images.</returns>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.ImageCompressionOptions.CreateJpeg">
+      <summary>
+            Creates options for JPEG images.
+            </summary>
+      <returns>The newly created options for JPEG images.</returns>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.ImageCompressionOptions.CreateTiff">
+      <summary>
+            Creates options for TIFF images.
+            </summary>
+      <returns>The newly created options for TIFF images.</returns>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.ImageCompressionOptions.CreateTiledTiff(System.Int32,System.Int32)">
+      <summary>
+            Creates options for tiled TIFF images.
+            </summary>
+      <param name="tileWidth">Width of the tiles in the TIFF.</param>
+      <param name="tileHeight">Height of the tiles in the TIFF.</param>
+      <returns>The newly created options for tiled TIFF images.</returns>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.ImageCompressionOptions.CreateBitonalTiff">
+      <summary>
+            Creates options for bitonal (black and white) TIFF images.
+            </summary>
+      <returns>The newly created options for TIFF images.</returns>
+      <overloads>Creates options for bitonal (black and white) TIFF images.</overloads>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.ImageCompressionOptions.CreateBitonalTiff(System.Int32)">
+      <summary>
+            Creates options for TIFF images with specified number of bits per pixel and specified
+            threshold level to use when producing bitonal images.
+            </summary>
+      <param name="threshold">The threshold level to use.</param>
+      <returns>The newly created options for TIFF images.</returns>
+    </member>
     <member name="T:BitMiracle.Docotic.Pdf.IPdfStreamProvider">
       <summary>
             Exposes method used to acquire streams.
@@ -3620,13 +3747,17 @@
             The options for PDF page drawings.
             </summary>
     </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfDrawOptions.Compression">
+      <summary>
+            Gets or sets the image compression options.
+            </summary>
+      <value>The image compression options to use while saving an image of a page.</value>
+    </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfDrawOptions.Format">
       <summary>
-            Gets or sets the image format to use while saving an image.
-            of a <see cref="T:BitMiracle.Docotic.Pdf.PdfPage" />.
+            Gets or sets the image format to use while saving an image of a <see cref="T:BitMiracle.Docotic.Pdf.PdfPage" />.
             </summary>
-      <value>The image format to use while saving an image of
-            a <see cref="T:BitMiracle.Docotic.Pdf.PdfPage" />.</value>
+      <value>The image format to use while saving an image of a page.</value>
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfDrawOptions.BackgroundColor">
       <summary>

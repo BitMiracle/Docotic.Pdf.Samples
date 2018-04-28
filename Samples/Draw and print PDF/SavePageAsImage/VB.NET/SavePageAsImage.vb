@@ -15,7 +15,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf As New PdfDocument("Sample Data\jfif3.pdf")
                 Dim options As PdfDrawOptions = PdfDrawOptions.Create()
                 options.BackgroundColor = New PdfRgbColor(255, 255, 255)
-                options.Format = PdfDrawFormat.Jpeg
+                options.Compression = ImageCompressionOptions.CreateJpeg()
 
                 pdf.Pages(1).Save(pathToImage, options)
             End Using

@@ -313,7 +313,6 @@ namespace BitMiracle.Docotic.Pdf.Samples
             if (pdfColor == null)
                 return Color.Empty;
 
-            // NOTE: PdfColor.ToColor() method is not supported in version for .NET Standard
             Color color = pdfColor.ToColor();
 
             int alpha = 255;

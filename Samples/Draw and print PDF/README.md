@@ -1,5 +1,5 @@
 # Draw and print PDF
-This group contains samples that show how to use Docotic.Pdf library to rasterize PDF documents. Here are samples that show how to convert PDF to image, create image of a PDF page with specified zoom level and make thumbnail of a PDF page. These samples are not supported in version for .NET Standard.
+This group contains samples that show how to use Docotic.Pdf library to rasterize PDF documents. Here are samples that show how to convert PDF to image, create image of a PDF page with specified zoom level and make thumbnail of a PDF page.
 
 [Draw page on Graphics](/Samples/Draw%20and%20print%20PDF/DrawPageOnGraphics)
 
@@ -12,6 +12,10 @@ This sample shows how to save image of a PDF page with specified zoom level.
 [Make page thumbnail](/Samples/Draw%20and%20print%20PDF/MakePageThumbnail)
 
 This sample shows how to make thumbnail of a PDF page.
+
+[Save PDF or its page as bitonal TIFF](/Samples/Draw%20and%20print%20PDF/SaveAsBitonalTiff)
+
+This sample shows how to save PDF page or the whole PDF document as bitonal (black and white) TIFF image.
 
 [Save PDF as multipage TIFF](/Samples/Draw%20and%20print%20PDF/SaveAsTiff)
 

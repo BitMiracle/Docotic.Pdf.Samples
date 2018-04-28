@@ -8,5 +8,3 @@ For PdfPage the resolution is usually equal to 72 DPI. The resolution of a Graph
 It means that if you create Graphics based on a System.Drawing.Bitmap the size of the bitmap should be scaled. The scale factor is the quotient of bitmap resolution and PDFPage resolution. 
 
 This example shows how to create Graphics based on the bitmap with resolution equal to 300 DPI and draw a PdfPage on the drawing surface of that Graphics.
-
-Drawing of PDF on a System.Drawing.Graphics is not supported in version for .NET Standard.

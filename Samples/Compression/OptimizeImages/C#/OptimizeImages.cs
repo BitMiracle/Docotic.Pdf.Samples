@@ -50,7 +50,6 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         }
                         else
                         {
-                            // NOTE: PdfImage.ResizeTo() method is not supported in version for .NET Standard 
                             if (image.Compression == PdfImageCompression.Group4Fax ||
                                 image.Compression == PdfImageCompression.Group3Fax)
                             {

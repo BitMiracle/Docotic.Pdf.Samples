@@ -41,6 +41,8 @@
 
 [Make page thumbnail](/Samples/Draw%20and%20print%20PDF/MakePageThumbnail)
 
+[Save PDF or its page as bitonal TIFF](/Samples/Draw%20and%20print%20PDF/SaveAsBitonalTiff)
+
 [Save PDF as multipage TIFF](/Samples/Draw%20and%20print%20PDF/SaveAsTiff)
 
 [Save PDF page as image](/Samples/Draw%20and%20print%20PDF/SavePageAsImage)
