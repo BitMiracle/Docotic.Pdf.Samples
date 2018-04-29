@@ -21,8 +21,6 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.DrawString(10, 70, "Russian: ");
                 canvas.DrawString(10, 90, "Portugal: ");
 
-                // NOTE: PdfDocument.AddFont() overloads, which load font from the collection of system fonts,
-                // are not supported in version for .NET Standard
                 canvas.Font = pdf.AddFont("NSimSun");
                 canvas.DrawString(180, 50, "世界您好");
                 canvas.Font.RemoveUnusedGlyphs();
