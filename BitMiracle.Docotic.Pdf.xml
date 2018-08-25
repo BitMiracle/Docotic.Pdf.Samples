@@ -49,6 +49,15 @@
             and <see cref="T:BitMiracle.Docotic.Pdf.PdfUriAction" /> classes.
             </summary>
     </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfAction.NextActions">
+      <summary>
+            Gets the collection of actions to be performed after this action.
+            </summary>
+      <value>The collection of actions to be performed after this action.</value>
+      <remarks>
+            The collection can contain <c>null</c> items for unsupported or broken actions.
+            </remarks>
+    </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfAction.op_Equality(BitMiracle.Docotic.Pdf.PdfAction,BitMiracle.Docotic.Pdf.PdfAction)">
       <summary>
             Determines whether the two specified objects are equal to each other.
@@ -209,6 +218,16 @@
               <c>false</c> if the destination document should replace the current document
               in the same window.
             </value>
+    </member>
+    <member name="T:BitMiracle.Docotic.Pdf.PdfNamedAction">
+      <summary>
+            A named action that viewer application should perform.
+            </summary>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfNamedAction.Name">
+      <summary>
+            The name of the action to be performed.
+            </summary>
     </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfRemoteGoToAction">
       <summary>
@@ -2521,11 +2540,6 @@
             </summary>
       <remarks>Icon appearances are viewer application-specific.</remarks>
     </member>
-    <member name="F:BitMiracle.Docotic.Pdf.PdfTextAnnotationIcon.Undefined">
-      <summary>
-            Icon is undefined.
-            </summary>
-    </member>
     <member name="F:BitMiracle.Docotic.Pdf.PdfTextAnnotationIcon.Comment">
       <summary>
             Predefined "Comment" icon to be used.
@@ -3720,9 +3734,46 @@
             The delegate to invoke when error event occurs.
             </value>
     </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfConfigurationOptions.XObjectCache">
+      <summary>
+            Gets cache for form XObjects.
+            </summary>
+      <value>The cache for form XObjects.</value>
+      <remarks>
+        <para>
+            This cache is disabled by default.
+            </para>
+        <para>
+            Enabling this cache can improve speed of processing for documents with a lot of
+            form XObjects reused on different pages. Note that enabling the cache can either
+            increase or decrease memory consumption based on the contents of the PDF.
+            </para>
+      </remarks>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfConfigurationOptions.Create">
+      <summary>
+            Creates configuration options initialized with default stream provider.
+            </summary>
+      <returns>
+            The newly created configuration options initialized with default stream provider.
+            </returns>
+      <remarks>
+        <para>
+            By default the library uses instances of <see cref="T:BitMiracle.Docotic.Pdf.PdfMixedStorageStreamProvider" />
+            for document stream providers.
+            </para>
+        <para>In cases when speed is most important and you are not concerned about memory
+            footprint you might want to use instances of <see cref="T:BitMiracle.Docotic.Pdf.PdfMemoryStreamProvider" />
+            instead.
+            </para>
+        <para>
+            You are free to create and use any other stream provider.
+            </para>
+      </remarks>
+    </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfConfigurationOptions.CreateWithStreamProvider(BitMiracle.Docotic.Pdf.IPdfStreamProvider)">
       <summary>
-            Create configuration options initialized with specified stream provider.
+            Creates configuration options initialized with specified stream provider.
             </summary>
       <param name="provider">The stream provider to use in this options.</param>
       <returns>
@@ -4562,6 +4613,11 @@
             Gets a sequence of connected segments of this <see cref="T:BitMiracle.Docotic.Pdf.PdfSubpath" />.
             </summary>
     </member>
+    <member name="T:BitMiracle.Docotic.Pdf.PdfActionCollection">
+      <summary>
+            Collection of actions.
+            </summary>
+    </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfBrush">
       <summary>
             Class that encapsulates properties of a <see cref="T:BitMiracle.Docotic.Pdf.PdfCanvas" /> related
@@ -4665,6 +4721,23 @@
       <returns>
             A <see cref="T:System.String" /> that represents this instance.
             </returns>
+    </member>
+    <member name="T:BitMiracle.Docotic.Pdf.PdfCache">
+      <summary>
+            Cache of PDF objects.
+            </summary>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfCache.Enabled">
+      <summary>
+            Gets or sets a value indicating whether this <see cref="T:BitMiracle.Docotic.Pdf.PdfCache" /> is enabled.
+            </summary>
+      <value>
+        <c>true</c> if this cache is enabled; otherwise, <c>false</c>.</value>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfCache.Clear">
+      <summary>
+            Clears this <see cref="T:BitMiracle.Docotic.Pdf.PdfCache" />.
+            </summary>
     </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfCanvas">
       <summary>
@@ -7072,6 +7145,13 @@
             </summary>
       <param name="stream">The stream from which the PDF document to be read.</param>
     </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.#ctor(System.String,BitMiracle.Docotic.Pdf.PdfConfigurationOptions)">
+      <summary>
+            Opens an existing PDF document using specified configuration options.
+            </summary>
+      <param name="fileName">The name of the existing PDF file.</param>
+      <param name="options">The configuration options.</param>
+    </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.#ctor(System.IO.Stream,BitMiracle.Docotic.Pdf.PdfConfigurationOptions)">
       <summary>
             Opens an existing PDF document using specified configuration options.
@@ -7102,6 +7182,15 @@
       <param name="stream">The stream from which the PDF document to be read.</param>
       <param name="password">The user or owner password that unlocks
             existing PDF data.</param>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.#ctor(System.String,System.String,BitMiracle.Docotic.Pdf.PdfConfigurationOptions)">
+      <summary>
+            Opens an existing password-protected PDF document using specified configuration options.
+            </summary>
+      <param name="fileName">The name of the existing PDF file.</param>
+      <param name="password">The user or owner password that unlocks
+            existing PDF data.</param>
+      <param name="options">The configuration options.</param>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.#ctor(System.IO.Stream,System.String,BitMiracle.Docotic.Pdf.PdfConfigurationOptions)">
       <summary>
@@ -7248,46 +7337,6 @@
             </summary>
       <value>The number of pages in this document.</value>
     </member>
-    <member name="P:BitMiracle.Docotic.Pdf.PdfDocument.Fonts">
-      <summary>
-            Gets the collection of fonts added to this document.
-            </summary>
-      <value>The collection of fonts added to this document.</value>
-      <remarks>
-        <para>This property prepares its value using the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetFonts" /> method.</para>
-        <para>For performance reasons it's better to use the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetFonts" /> method instead.</para>
-      </remarks>
-    </member>
-    <member name="P:BitMiracle.Docotic.Pdf.PdfDocument.FontCount">
-      <summary>
-            Gets the number of fonts added to this document.
-            </summary>
-      <value>The number of fonts added to this document.</value>
-      <remarks>
-        <para>This property prepares its value using the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetFonts" /> method.</para>
-        <para>For performance reasons it's better to use the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetFonts" /> method instead.</para>
-      </remarks>
-    </member>
-    <member name="P:BitMiracle.Docotic.Pdf.PdfDocument.Actions">
-      <summary>
-            Gets the collection of actions added to this document.
-            </summary>
-      <value>The collection of actions added to this document.</value>
-      <remarks>
-        <para>This property prepares its value using the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetActions" /> method.</para>
-        <para>For performance reasons it's better to use the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetActions" /> method instead.</para>
-      </remarks>
-    </member>
-    <member name="P:BitMiracle.Docotic.Pdf.PdfDocument.ActionCount">
-      <summary>
-            Gets the number of actions added to this document.
-            </summary>
-      <value>The number of actions added to this document.</value>
-      <remarks>
-        <para>This property prepares its value using the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetActions" /> method.</para>
-        <para>For performance reasons it's better to use the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetActions" /> method instead.</para>
-      </remarks>
-    </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfDocument.OnOpenDocument">
       <summary>
             Gets or sets the action to be performed when the document is opened.
@@ -7304,130 +7353,6 @@
             scripts in the document.
             </remarks>
       <value>The collection of shared JavaScript actions in this document.</value>
-    </member>
-    <member name="P:BitMiracle.Docotic.Pdf.PdfDocument.Widgets">
-      <summary>
-            Gets the collection of widgets (annotations and controls) added
-            to this document.
-            </summary>
-      <value>The collection of widgets added to this document.</value>
-      <remarks>
-        <para>This property prepares its value using the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetWidgets" /> method.</para>
-        <para>For performance reasons it's better to use the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetWidgets" /> method instead.</para>
-      </remarks>
-    </member>
-    <member name="P:BitMiracle.Docotic.Pdf.PdfDocument.WidgetCount">
-      <summary>
-            Gets the number of widgets (annotations and controls) added to
-            this document.
-            </summary>
-      <value>The number of widgets added to this document.</value>
-      <remarks>
-        <para>This property prepares its value using the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetWidgets" /> method.</para>
-        <para>For performance reasons it's better to use the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetWidgets" /> method instead.</para>
-      </remarks>
-    </member>
-    <member name="P:BitMiracle.Docotic.Pdf.PdfDocument.Controls">
-      <summary>
-            Gets the collection of controls in this document.
-            </summary>
-      <value>The collection of controls in this document.</value>
-      <remarks>
-        <para>This property prepares its value using the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetControls" /> method.</para>
-        <para>For performance reasons it's better to use the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetControls" /> method instead.</para>
-      </remarks>
-    </member>
-    <member name="P:BitMiracle.Docotic.Pdf.PdfDocument.ControlCount">
-      <summary>
-            Gets the number of controls in this document.
-            </summary>
-      <value>The number of controls in this document.</value>
-      <remarks>
-        <para>This property prepares its value using the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetControls" /> method.</para>
-        <para>For performance reasons it's better to use the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetControls" /> method instead.</para>
-      </remarks>
-    </member>
-    <member name="P:BitMiracle.Docotic.Pdf.PdfDocument.Images">
-      <summary>
-            Gets the collection of images on this document.
-            </summary>
-      <value>The collection of images on this document.</value>
-      <remarks>
-        <para>This property prepares its value using the
-            <see cref="Overload:BitMiracle.Docotic.Pdf.PdfDocument.GetImages" /> method.</para>
-        <para>For performance reasons it's better to use the <see cref="Overload:BitMiracle.Docotic.Pdf.PdfDocument.GetImages" /> method instead.</para>
-      </remarks>
-    </member>
-    <member name="P:BitMiracle.Docotic.Pdf.PdfDocument.ImageCount">
-      <summary>
-            Gets the number of images on this document.
-            </summary>
-      <value>The number of images on this document.</value>
-      <remarks>
-        <para>This property prepares its value using the
-            <see cref="Overload:BitMiracle.Docotic.Pdf.PdfDocument.GetImages" /> method.</para>
-        <para>For performance reasons it's better to use the <see cref="Overload:BitMiracle.Docotic.Pdf.PdfDocument.GetImages" /> method instead.</para>
-      </remarks>
-    </member>
-    <member name="P:BitMiracle.Docotic.Pdf.PdfDocument.ColorProfiles">
-      <summary>
-            Gets the collection of ICC color profiles added to this document.
-            </summary>
-      <value>The collection of ICC color profiles added to this document.</value>
-      <remarks>
-        <para>This property prepares its value using the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetColorProfiles" /> method.</para>
-        <para>For performance reasons it's better to use the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetColorProfiles" /> method instead.</para>
-      </remarks>
-    </member>
-    <member name="P:BitMiracle.Docotic.Pdf.PdfDocument.ColorProfileCount">
-      <summary>
-            Gets the number of ICC color profiles added to this document.
-            </summary>
-      <value>The number of ICC color profiles added to this document.</value>
-      <remarks>
-        <para>This property prepares its value using the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetColorProfiles" /> method.</para>
-        <para>For performance reasons it's better to use the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetColorProfiles" /> method instead.</para>
-      </remarks>
-    </member>
-    <member name="P:BitMiracle.Docotic.Pdf.PdfDocument.Patterns">
-      <summary>
-            Gets the collection of patterns added to this document.
-            </summary>
-      <value>The collection of patterns added to this document.</value>
-      <remarks>
-        <para>This property prepares its value using the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetPatterns" /> method.</para>
-        <para>For performance reasons it's better to use the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetPatterns" /> method instead.</para>
-      </remarks>
-    </member>
-    <member name="P:BitMiracle.Docotic.Pdf.PdfDocument.PatternCount">
-      <summary>
-            Gets the number of patterns added to this document.
-            </summary>
-      <value>The number of patterns added to this document.</value>
-      <remarks>
-        <para>This property prepares its value using the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetPatterns" /> method.</para>
-        <para>For performance reasons it's better to use the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetPatterns" /> method instead.</para>
-      </remarks>
-    </member>
-    <member name="P:BitMiracle.Docotic.Pdf.PdfDocument.Views">
-      <summary>
-            Gets the collection of document views added to this document.
-            </summary>
-      <value>The collection of document views added to this document.</value>
-      <remarks>
-        <para>This property prepares its value using the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetViews" /> method.</para>
-        <para>For performance reasons it's better to use the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetViews" /> method instead.</para>
-      </remarks>
-    </member>
-    <member name="P:BitMiracle.Docotic.Pdf.PdfDocument.ViewCount">
-      <summary>
-            Gets the number of document views added to this document.
-            </summary>
-      <value>The number of document views added to this document.</value>
-      <remarks>
-        <para>This property prepares its value using the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetViews" /> method.</para>
-        <para>For performance reasons it's better to use the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetViews" /> method instead.</para>
-      </remarks>
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfDocument.OutlineRoot">
       <summary>
@@ -8180,18 +8105,6 @@
       <returns>All text drawn on all pages of the document formatted as seen 
             in a PDF viewer.</returns>
     </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.GetFont(System.Int32)">
-      <summary>
-            Gets the font with the specified index.
-            </summary>
-      <param name="index">The zero-based index of the font to get.</param>
-      <returns>The <see cref="T:BitMiracle.Docotic.Pdf.PdfFont" /> with specified index.</returns>
-      <remarks>
-        <para>This method uses the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetFonts" /> method internally.</para>
-        <para>For performance reasons it's better to access document fonts in a sequential
-            manner using the enumerator provided by the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetFonts" /> method.</para>
-      </remarks>
-    </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.GetFonts">
       <summary>
             Returns the enumerator that iterates through the collection of document fonts.
@@ -8428,18 +8341,6 @@
       <returns>The newly added <see cref="T:BitMiracle.Docotic.Pdf.PdfFont" />.</returns>
       <remarks>Only TrueType and Type1 font files are supported by this method.</remarks>
     </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.GetAction(System.Int32)">
-      <summary>
-            Gets the action with the specified index.
-            </summary>
-      <param name="index">The zero-based index of the action to get.</param>
-      <returns>The <see cref="T:BitMiracle.Docotic.Pdf.PdfAction" /> with specified index.</returns>
-      <remarks>
-        <para>This method uses the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetActions" /> method internally.</para>
-        <para>For performance reasons it's better to access document actions in a sequential
-            manner using the enumerator provided by the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetActions" /> method.</para>
-      </remarks>
-    </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.GetActions">
       <summary>
             Returns the enumerator that iterates through the collection of actions in this document.
@@ -8608,18 +8509,6 @@
             The newly created <see cref="T:BitMiracle.Docotic.Pdf.PdfSubmitFormAction" />.
             </returns>
     </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.GetWidget(System.Int32)">
-      <summary>
-            Gets the widget with the specified index.
-            </summary>
-      <param name="index">The zero-based index of the widget to get.</param>
-      <returns>The <see cref="T:BitMiracle.Docotic.Pdf.PdfWidget" /> with specified index.</returns>
-      <remarks>
-        <para>This method uses the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetWidgets" /> method internally.</para>
-        <para>For performance reasons it's better to access document widgets in a sequential
-            manner using the enumerator provided by the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetWidgets" /> method.</para>
-      </remarks>
-    </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.GetWidgets">
       <summary>
             Returns the enumerator that iterates through the collection of document widgets
@@ -8633,18 +8522,6 @@
             Removes the specified widget from the document.
             </summary>
       <param name="widget">The widget to remove from the document.</param>
-    </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.GetControl(System.Int32)">
-      <summary>
-            Gets the control with the specified index.
-            </summary>
-      <param name="index">The zero-based index of the control to get.</param>
-      <returns>The <see cref="T:BitMiracle.Docotic.Pdf.PdfControl" /> with specified index.</returns>
-      <remarks>
-        <para>This method uses the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetControls" /> method internally.</para>
-        <para>For performance reasons it's better to access document controls in a sequential
-            manner using the enumerator provided by the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetControls" /> method.</para>
-      </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.GetControl(System.String)">
       <summary>
@@ -8675,8 +8552,7 @@
             <ol><li>
             Draws control on its parent page using text and vector graphics operators.
             </li><li>
-            Removes control from the PdfDocument.<see cref="P:BitMiracle.Docotic.Pdf.PdfDocument.Controls" />
-            collection and the PdfPage.<see cref="P:BitMiracle.Docotic.Pdf.PdfPage.Controls" />
+            Removes control from the PdfPage.<see cref="P:BitMiracle.Docotic.Pdf.PdfPage.Controls" />
             collection of its parent page.
             </li></ol></para>
         <para>
@@ -8866,19 +8742,6 @@
       <param name="stream">The stream to save form data to.</param>
       <overloads>Takes the values from the controls in this
             <see cref="T:BitMiracle.Docotic.Pdf.PdfDocument" /> and exports them into FDF document.</overloads>
-    </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.GetImage(System.Int32)">
-      <summary>
-            Gets the image with the specified index.
-            </summary>
-      <param name="index">The zero-based index of the image to get.</param>
-      <returns>The <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" /> with specified index.</returns>
-      <remarks>
-        <para>This method uses the <see cref="Overload:BitMiracle.Docotic.Pdf.PdfDocument.GetImages" />
-            method internally.</para>
-        <para>For performance reasons it's better to access document images in a sequential
-            manner using the enumerator provided by the <see cref="Overload:BitMiracle.Docotic.Pdf.PdfDocument.GetImages" /> method.</para>
-      </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.GetImages">
       <summary>
@@ -9175,20 +9038,6 @@
             from collection of frames to the collection of document images.</para>
       </remarks>
     </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.GetColorProfile(System.Int32)">
-      <summary>
-            Gets the ICC color profile with the specified index.
-            </summary>
-      <param name="index">The zero-based index of the ICC color profile to get.</param>
-      <returns>
-            The <see cref="T:BitMiracle.Docotic.Pdf.PdfColorProfile" /> with specified index.
-            </returns>
-      <remarks>
-        <para>This method uses the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetColorProfiles" /> method internally.</para>
-        <para>For performance reasons it's better to access document color profiles in a sequential
-            manner using the enumerator provided by the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetColorProfiles" /> method.</para>
-      </remarks>
-    </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.GetColorProfiles">
       <summary>
             Returns the enumerator that iterates through the collection of color profiles in this document.
@@ -9269,16 +9118,6 @@
       <remarks>A page pointed to by <paramref name="page" /> can belong to any document (not
             only this one).</remarks>
     </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.GetPattern(System.Int32)">
-      <summary>
-            Gets the pattern with the specified index.
-            </summary>
-      <param name="index">The zero-based index of the pattern
-            to get.</param>
-      <returns>
-            The <see cref="T:BitMiracle.Docotic.Pdf.PdfPattern" /> with specified index.
-            </returns>
-    </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.GetPatterns">
       <summary>
             Returns the enumerator that iterates through the collection of patterns in this document.
@@ -9309,21 +9148,6 @@
       <returns>
             The newly added uncolored <see cref="T:BitMiracle.Docotic.Pdf.PdfTilingPattern" />.
             </returns>
-    </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.GetView(System.Int32)">
-      <summary>
-            Gets the document view with the specified index.
-            </summary>
-      <param name="index">The zero-based index of the document view
-            to get.</param>
-      <returns>
-            The <see cref="T:BitMiracle.Docotic.Pdf.PdfDocumentView" /> with specified index.
-            </returns>
-      <remarks>
-        <para>This method uses the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetViews" /> method internally.</para>
-        <para>For performance reasons it's better to access document views in a sequential
-            manner using the enumerator provided by the <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.GetViews" /> method.</para>
-      </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.GetViews">
       <summary>
@@ -9582,6 +9406,16 @@
             (<see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Zoom" />) and magnification level
             (<see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.ZoomPercent" />) instead.</remarks>
     </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Name">
+      <summary>
+            Gets the name of the view.
+            </summary>
+      <value>The name of the view.</value>
+      <remarks>
+            Not all views has a name. For views explicitly specified using page and zoom the
+            value of this property is <c>null</c>.
+            </remarks>
+    </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocumentView.op_Equality(BitMiracle.Docotic.Pdf.PdfDocumentView,BitMiracle.Docotic.Pdf.PdfDocumentView)">
       <summary>
             Determines whether the two specified objects are equal to each other.
@@ -9769,53 +9603,6 @@
             </para>
       </param>
     </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfDocumentView.SetFitRect(BitMiracle.Docotic.Pdf.PdfRectangle)">
-      <summary>
-            Sets the zoom type to use when displaying the page in the view
-            to <see cref="F:BitMiracle.Docotic.Pdf.PdfZoom.FitRect" /> and the <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Left" />,
-            <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Top" />, <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Width" /> and <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Height" />
-            properties to the corresponding properties of the specified
-            rectangle.
-            </summary>
-      <param name="rect">
-        <para>
-            The <see cref="T:BitMiracle.Docotic.Pdf.PdfRectangle" /> structure that specifies the new values for
-            <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Left" />, <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Top" />, <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Width" /> and <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Height" /> properties.
-            </para>
-        <para>
-            The vertical coordinates of the rectangle are relative to the bottom edge of the page.
-            </para>
-        <para>
-            Use the following formula to calculate vertical offset relative to the top edge of the page:
-            <c>(<see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Page" />.Height - <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Top" />)</c></para>
-      </param>
-      <overloads>Sets the zoom type to use when displaying the page in the view
-            to <see cref="F:BitMiracle.Docotic.Pdf.PdfZoom.FitRect" /> and the <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Left" />,
-            <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Top" />, <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Width" /> and <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Height" />
-            properties to the corresponding properties of the specified
-            rectangle.</overloads>
-    </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfDocumentView.SetFitRect(System.Drawing.RectangleF)">
-      <summary>
-            Sets the zoom type to use when displaying the page in the view
-            to <see cref="F:BitMiracle.Docotic.Pdf.PdfZoom.FitRect" /> and the <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Left" />,
-            <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Top" />, <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Width" /> and <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Height" />
-            properties to the corresponding properties of the specified
-            rectangle.
-            </summary>
-      <param name="rect">
-        <para>
-            The <see cref="T:System.Drawing.RectangleF" /> structure that specifies the new values for
-            <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Left" />, <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Top" />, <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Width" /> and <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Height" /> properties.
-            </para>
-        <para>
-            The vertical coordinates of the rectangle are relative to the bottom edge of the page.
-            </para>
-        <para>
-            Use the following formula to calculate vertical offset relative to the top edge of the page:
-            <c>(<see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Page" />.Height - <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Top" />)</c></para>
-      </param>
-    </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocumentView.SetFitBBox">
       <summary>
             Sets the zoom type to use when displaying the page in the view
@@ -9897,7 +9684,7 @@
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfEmbeddedFile.MimeType">
       <summary>
-            Gets the MIME media type of the embedded file.
+            Gets or sets the MIME media type of the embedded file.
             </summary>
       <value>
             The MIME media type of the embedded file or <c>null</c> if
@@ -9906,27 +9693,37 @@
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfEmbeddedFile.CreationDate">
       <summary>
-            Gets the date and time when the embedded file was created.
+            Gets or sets the date and time when the embedded file was created.
             </summary>
       <value>
             The date and time when the embedded file was created or <c>null</c> if
             there is no value set for this property.
             </value>
       <remarks>
-            Returned date and time expressed in UTC (Coordinated Universal Time).
+            Returned date and time (what you get) expressed in UTC (Coordinated Universal Time).
+            Provided date and time (what you set) is expected to be in local time zone.
             </remarks>
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfEmbeddedFile.ModifiedDate">
       <summary>
-            Gets the date and time when the embedded file was last modified.
+            Gets or sets the date and time when the embedded file was last modified.
             </summary>
       <value>
             The date and time when the embedded file was last modified or <c>null</c> if
             there is no value set for this property.
             </value>
       <remarks>
-            Returned date and time expressed in UTC (Coordinated Universal Time).
+            Returned date and time (what you get) expressed in UTC (Coordinated Universal Time).
+            Provided date and time (what you set) is expected to be in local time zone.
             </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfEmbeddedFile.WriteWithoutCompression">
+      <summary>
+            Gets or sets the value indicating whether this file should be embedded as is, without
+            being compressed.
+            </summary>
+      <value>The value indicating whether this file should be embedded as is, without
+            being compressed.</value>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfEmbeddedFile.GetChecksum">
       <summary>
@@ -10019,6 +9816,29 @@
             The embedded file associated with the file specification or 
             <c>null</c> if embedded file is not present.
             </value>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfFileSpecification.SetCustomName(System.String,System.String)">
+      <summary>
+            Adds custom key-name pair to this file specification.
+            </summary>
+      <param name="key">The key part of the pair.</param>
+      <param name="name">The value (name) part of the pair.</param>
+      <remarks>
+        <para>
+            This method throws <see cref="T:System.ArgumentException" /> if <paramref name="key" />
+            is one of the keys defined in PDF Reference for File Specification Dictionaries.
+            </para>
+        <para>
+            The <paramref name="key" /> must not be <c>null</c>.
+            </para>
+        <para>
+            Providing <c>null</c> for the <paramref name="name" /> removes existing value for
+            the specified <paramref name="key" /> (if any).
+            </para>
+        <para>
+            The pair will be stored as <c>/key /name</c> in this file specification dictionary.
+            </para>
+      </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfFileSpecification.Equals(System.Object)">
       <summary>
@@ -10269,6 +10089,12 @@
       <value>
         <c>true</c> if this <see cref="T:BitMiracle.Docotic.Pdf.PdfFont" /> embedded into the
             document; otherwise, <c>false</c>.</value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfFont.EncodingName">
+      <summary>
+            Gets the name of this font's encoding. 
+            </summary>
+      <value>The name of this font's encoding.</value>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfFont.op_Equality(BitMiracle.Docotic.Pdf.PdfFont,BitMiracle.Docotic.Pdf.PdfFont)">
       <summary>
@@ -11643,7 +11469,8 @@
             <see cref="T:BitMiracle.Docotic.Pdf.PdfUriAction" />s for each found URI;
             otherwise, <c>false</c>.
             </value>
-      <remarks>Default value: <c>false</c>.</remarks>
+      <remarks>Default value: equal to value of 
+            <see cref="P:BitMiracle.Docotic.Pdf.PdfDocument.AutoCreateUriActions" />.</remarks>
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfPage.Width">
       <summary>
@@ -11825,27 +11652,6 @@
             the rotation of the page.</value>
       <remarks>Default value: <see cref="F:BitMiracle.Docotic.Pdf.PdfRotation.None" />.</remarks>
     </member>
-    <member name="P:BitMiracle.Docotic.Pdf.PdfPage.Images">
-      <summary>
-            Gets the collection of images on this page.
-            </summary>
-      <value>The collection of images on this page.</value>
-      <remarks>
-        <para>This property prepares its value using the
-            <see cref="Overload:BitMiracle.Docotic.Pdf.PdfPage.GetImages" /> method.</para>
-        <para>For performance reasons it's better to use the <see cref="Overload:BitMiracle.Docotic.Pdf.PdfPage.GetImages" /> method instead.</para>
-      </remarks>
-    </member>
-    <member name="P:BitMiracle.Docotic.Pdf.PdfPage.ImageCount">
-      <summary>
-            Gets the number of images on this page.
-            </summary>
-      <value>The number of images on this page.</value>
-      <remarks>
-        <para>This property prepares its value using the <see cref="Overload:BitMiracle.Docotic.Pdf.PdfPage.GetImages" /> method.</para>
-        <para>For performance reasons it's better to use the <see cref="Overload:BitMiracle.Docotic.Pdf.PdfPage.GetImages" /> method instead.</para>
-      </remarks>
-    </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfPage.XObjects">
       <summary>
             Gets the collection of form XObjects associated with this page.
@@ -11905,18 +11711,6 @@
             </summary>
       <param name="index">The zero-based index of the XObject to get.</param>
       <returns>The <see cref="T:BitMiracle.Docotic.Pdf.PdfXObject" /> with specified index.</returns>
-    </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfPage.GetImage(System.Int32)">
-      <summary>
-            Gets the image with the specified index.
-            </summary>
-      <param name="index">The zero-based index of the image to get.</param>
-      <returns>The <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" /> with specified index.</returns>
-      <remarks>
-        <para>This method uses the <see cref="Overload:BitMiracle.Docotic.Pdf.PdfPage.GetImages" /> method internally.</para>
-        <para>For performance reasons it's better to access page images in a sequential
-            manner using the enumerator provided by the <see cref="Overload:BitMiracle.Docotic.Pdf.PdfPage.GetImages" /> method.</para>
-      </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfPage.GetImages">
       <summary>
@@ -16764,6 +16558,16 @@
             Gets or sets the annotation border dash pattern.
             </summary>
       <value>The annotation border dash pattern.</value>
+      <remarks>
+        <para>
+            The dash pattern is a normal dash pattern (an array of on/off stroke lengths used
+            cyclically) except that zero is always used as the offset (phase) and the number of
+            array entries is limited to 10.
+            </para>
+        <para>In effect, all dash patterns returned by this property have
+            <see cref="P:BitMiracle.Docotic.Pdf.PdfDashPattern.Offset" /> equal to zero. And the offset value is ignored for
+            any dash pattern you set to this property </para>
+      </remarks>
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfActionArea.BorderColor">
       <summary>
