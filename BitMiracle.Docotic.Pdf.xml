@@ -2922,6 +2922,11 @@
             List box. See <see cref="T:BitMiracle.Docotic.Pdf.PdfListBox" /> class.
             </summary>
     </member>
+    <member name="F:BitMiracle.Docotic.Pdf.PdfWidgetType.RichMedia">
+      <summary>
+            Rich media annotation. See <see cref="T:BitMiracle.Docotic.Pdf.PdfRichMediaAnnotation" /> class.
+            </summary>
+    </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfZoom">
       <summary>
             Specifies <see cref="T:BitMiracle.Docotic.Pdf.PdfPage" /> zoom type.
@@ -3817,6 +3822,13 @@
       <value>The background color of produced images.</value>
       <remarks>The <c>null</c> value means transparent background.</remarks>
     </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfDrawOptions.SimulateOverprint">
+      <summary>
+            Gets or sets the value indicating whether to simulate the effects of overprinting spot and
+            process colors in the same way they would occur when printing.
+            </summary>
+      <value>The value indicating whether to simulate the effects of overprinting spot.</value>
+    </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfDrawOptions.ScalingMode">
       <summary>
             Gets the value indicating how PDF pages are resized before being drawn and
@@ -4091,6 +4103,26 @@
             instead.
             </para>
       </remarks>
+    </member>
+    <member name="T:BitMiracle.Docotic.Pdf.PdfObjectExtractionOptions">
+      <summary>
+            The PDF page object extraction options.
+            </summary>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfObjectExtractionOptions.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:BitMiracle.Docotic.Pdf.PdfObjectExtractionOptions" /> class.
+            </summary>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfObjectExtractionOptions.ExtractTextAsPath">
+      <summary>
+            Gets or sets a value indicating whether to extract text as vector path.
+            </summary>
+      <remarks>Default value: <c>false</c>.</remarks>
+      <value>
+        <c>true</c> to extract <see cref="T:BitMiracle.Docotic.Pdf.PdfPath" /> objects instead of <see cref="T:BitMiracle.Docotic.Pdf.PdfTextData" />;
+            <c>false</c> otherwise.
+            </value>
     </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfSaveOptions">
       <summary>
@@ -7496,6 +7528,21 @@
             The collection layers (also known as optional content groups) in this document.
             </value>
     </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfDocument.NeedAppearances">
+      <summary>
+            Gets or sets a value indicating whether the viewing application should construct 
+            appearances of all controls and widgets in this document.
+            </summary>
+      <value>
+        <c>true</c>if the viewing application should construct appearances of all
+            controls and widgets in this document; <c>false</c> otherwise.</value>
+      <remarks>
+        <para>Default value: false</para>
+        <para>
+            Settings this value does nothing if document does not contain widgets and controls.
+            </para>
+      </remarks>
+    </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.DocumentsAreEqual(System.String,System.String,System.String)">
       <summary>
             Compares the data and structure of two PDF documents.
@@ -8146,7 +8193,8 @@
             with added font will be underlined.</param>
       <param name="strikeout">if set to <c>true</c> then text drawn
             with added font will be stroked out.</param>
-      <returns>The newly added <see cref="T:BitMiracle.Docotic.Pdf.PdfFont" />.</returns>
+      <returns>The newly added <see cref="T:BitMiracle.Docotic.Pdf.PdfFont" /> or <c>null</c> if there is no font
+            with specified face installed.</returns>
       <remarks>If requested font does not have bold or italic
             version then bold or italic version will be synthesized when
             needed.</remarks>
@@ -8159,7 +8207,8 @@
       <param name="fontFace">The name of the font face.</param>
       <param name="fontStyle">The <see cref="T:System.Drawing.FontStyle" /> of the new
             font.</param>
-      <returns>The newly added <see cref="T:BitMiracle.Docotic.Pdf.PdfFont" />.</returns>
+      <returns>The newly added <see cref="T:BitMiracle.Docotic.Pdf.PdfFont" /> or <c>null</c> if there is no font
+            with specified face installed.</returns>
       <remarks>If requested font does not have bold or italic
             version then bold or italic version will be synthesized
             when needed.</remarks>
@@ -8179,7 +8228,8 @@
             collection of document fonts.
             </summary>
       <param name="fontFace">The name of the font face.</param>
-      <returns>The newly added <see cref="T:BitMiracle.Docotic.Pdf.PdfFont" />.</returns>
+      <returns>The newly added <see cref="T:BitMiracle.Docotic.Pdf.PdfFont" /> or <c>null</c> if there is no font
+            with specified face installed.</returns>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.AddFont(BitMiracle.Docotic.Pdf.PdfBuiltInFont,System.Boolean,System.Boolean)">
       <summary>
@@ -8529,6 +8579,8 @@
             </summary>
       <param name="name">The name of the control to get.</param>
       <returns>The <see cref="T:BitMiracle.Docotic.Pdf.PdfControl" /> with specified name.</returns>
+      <remarks>This method performs search by values of <see cref="P:BitMiracle.Docotic.Pdf.PdfControl.FullName" /> 
+            and <see cref="P:BitMiracle.Docotic.Pdf.PdfControl.Name" /> properties</remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.GetControls">
       <summary>
@@ -8556,8 +8608,8 @@
             collection of its parent page.
             </li></ol></para>
         <para>
-            This method can change graphics state of the pages. Call it right before saving of the
-            document to avoid side effects.
+            This method can change graphics state of the page. To avoid possible side effects,
+            call the method right before saving of the document.
             </para>
         <para>
             Flattening of signature fields without appearance stream is not supported yet.
@@ -13665,8 +13717,20 @@
       <remarks>
         <para>The collection is ordered. Each subsequent object in the collection is
             drawn after the previous one.</para>
-        <para>This method is useful if you want to analyze contents of 
-            the page.</para>
+        <para>This method is useful if you want to analyze contents of the page.</para>
+      </remarks>
+      <overloads>Retrieves collection of all objects drawn on the page.</overloads>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfPage.GetObjects(BitMiracle.Docotic.Pdf.PdfObjectExtractionOptions)">
+      <summary>
+            Retrieves collection of all objects drawn on the page.
+            </summary>
+      <param name="options">The object extraction options.</param>
+      <returns>Collection of all objects drawn on the page.</returns>
+      <remarks>
+        <para>The collection is ordered. Each subsequent object in the collection is
+            drawn after the previous one.</para>
+        <para>This method is useful if you want to analyze contents of the page.</para>
       </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfPage.Save(System.String,BitMiracle.Docotic.Pdf.PdfDrawOptions)">
@@ -13891,7 +13955,7 @@
             Class for an object painted on a <see cref="T:BitMiracle.Docotic.Pdf.PdfPage" />.
             </summary>
       <remarks>
-            You can get the collection of all page objects using <see cref="M:BitMiracle.Docotic.Pdf.PdfPage.GetObjects" /> method.
+            You can get the collection of all page objects using <see cref="Overload:BitMiracle.Docotic.Pdf.PdfPage.GetObjects" /> method.
             </remarks>
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfPageObject.Type">
@@ -17031,6 +17095,44 @@
       <seealso cref="P:BitMiracle.Docotic.Pdf.PdfControl.Rotation" />
       <seealso cref="P:BitMiracle.Docotic.Pdf.PdfPage.Rotation" />
     </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfControl.Flatten">
+      <summary>
+            Flattens this control to its parent page. In effect, replaces the control with its
+            appearance.
+            </summary>
+      <remarks>
+        <para>
+            Flattening locks control from editing. Flattening can significantly reduce file
+            size if <see cref="P:BitMiracle.Docotic.Pdf.PdfSaveOptions.RemoveUnusedObjects" /> property is set to <c>true</c>.
+            </para>
+        <para>
+            This method flattens the control in 2 steps:
+            <ol><li>
+            Draws control on its parent page using text and vector graphics operators.
+            </li><li>
+            Removes control from the document and from the PdfPage.<see cref="P:BitMiracle.Docotic.Pdf.PdfPage.Controls" />
+            collection of its parent page.
+            </li></ol></para>
+        <para>
+            NOTES:
+            <ul><li>Do not use this control after successful flattening. The flattened control is
+            detached from its document.</li><li>
+            This method modifies PdfPage.<see cref="P:BitMiracle.Docotic.Pdf.PdfPage.Controls" /> collection so do not use
+            <see cref="M:BitMiracle.Docotic.Pdf.PdfControl.Flatten" /> method within <c>foreach (var control in page.Controls)</c> loop.
+            </li><li>This method can change graphics state of the page. To avoid possible side effects,
+            call the method right before saving of the document.</li></ul></para>
+      </remarks>
+      <exception cref="T:System.InvalidOperationException">
+        <para>
+            Control does not have a parent page (<see cref="P:BitMiracle.Docotic.Pdf.PdfWidget.Owner" /> is <c>null</c>) or
+            control is hidden (<see cref="P:BitMiracle.Docotic.Pdf.PdfWidget.Hidden" /> is <c>true</c>)
+            </para>
+      </exception>
+      <exception cref="T:System.NotSupportedException">
+            Control has a signature type (<see cref="P:BitMiracle.Docotic.Pdf.PdfWidget.Type" /> equals to
+            <see cref="F:BitMiracle.Docotic.Pdf.PdfWidgetType.Signature" />)
+            </exception>
+    </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfControl.ToString">
       <summary>
             Returns a <see cref="T:System.String" /> that represents this instance.
@@ -17466,6 +17568,22 @@
             Rectangle annotation displays a rectangle on the page. When opened, 
             it displays a pop-up window containing the text of the associated note.
             </remarks>
+    </member>
+    <member name="T:BitMiracle.Docotic.Pdf.PdfRichMediaAnnotation">
+      <summary>
+            Class for a rich media annotation.
+            </summary>
+      <remarks>
+            Rich media annotations allow to attach Flash applications, video, audio,
+            and other multimedia to a PDF with expanded functionality.
+            </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfRichMediaAnnotation.Assets">
+      <summary>
+            Gets the collection of embedded file specifications associated with this
+            <see cref="T:BitMiracle.Docotic.Pdf.PdfRichMediaAnnotation" />.
+            </summary>
+      <value>The collection of file specifications associated with this annotation.</value>
     </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfScreenAnnotation">
       <summary>
@@ -18680,6 +18798,67 @@
             This is a well-known schema.
             </para>
       </remarks>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.XmpMetadata.Extract(System.String,System.String)">
+      <summary>
+            Extracts XMP metadata from PDF document to the file.
+            </summary>
+      <param name="documentPath">Path to the PDF document.</param>
+      <param name="outputPath">Path to the file to save XMP metadata to.</param>
+      <overloads>Extracts XMP metadata from PDF document to a file or a stream.</overloads>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.XmpMetadata.Extract(System.String,System.String,System.String)">
+      <summary>
+            Extracts XMP metadata from PDF document to the file.
+            </summary>
+      <param name="documentPath">Path to the PDF document.</param>
+      <param name="password">The user or owner password that unlocks PDF data.</param>
+      <param name="outputPath">Path to the file to save XMP metadata to.</param>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.XmpMetadata.Extract(System.String,System.IO.Stream)">
+      <summary>
+            Extracts XMP metadata from PDF document to the stream.
+            </summary>
+      <param name="documentPath">Path to the PDF document.</param>
+      <param name="outputStream">The stream to save XMP metadata.</param>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.XmpMetadata.Extract(System.String,System.String,System.IO.Stream)">
+      <summary>
+            Extracts XMP metadata from PDF document to the stream.
+            </summary>
+      <param name="documentPath">Path to the PDF document.</param>
+      <param name="password">The user or owner password that unlocks PDF data.</param>
+      <param name="outputStream">The stream to save XMP metadata.</param>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.XmpMetadata.Extract(System.IO.Stream,System.String)">
+      <summary>
+            Extracts XMP metadata from PDF document to the file.
+            </summary>
+      <param name="documentStream">Stream with the PDF document.</param>
+      <param name="outputPath">Path to the file to save XMP metadata to.</param>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.XmpMetadata.Extract(System.IO.Stream,System.String,System.String)">
+      <summary>
+            Extracts XMP metadata from PDF document to the file.
+            </summary>
+      <param name="documentStream">Stream with the PDF document.</param>
+      <param name="password">The user or owner password that unlocks PDF data.</param>
+      <param name="outputPath">Path to the file to save XMP metadata to.</param>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.XmpMetadata.Extract(System.IO.Stream,System.IO.Stream)">
+      <summary>
+            Extracts XMP metadata from PDF document to the stream.
+            </summary>
+      <param name="documentStream">Stream with the PDF document.</param>
+      <param name="outputStream">The stream to save XMP metadata.</param>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.XmpMetadata.Extract(System.IO.Stream,System.String,System.IO.Stream)">
+      <summary>
+            Extracts XMP metadata from PDF document to the stream.
+            </summary>
+      <param name="documentStream">Stream with the PDF document.</param>
+      <param name="password">The user or owner password that unlocks PDF data.</param>
+      <param name="outputStream">The stream to save XMP metadata.</param>
     </member>
     <member name="T:BitMiracle.Docotic.Pdf.XmpPdfSchema">
       <summary>
