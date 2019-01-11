@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A57988CB-82F6-4A45-A107-8B20AB01716A}</ProjectGuid>
+    <ProjectGuid>{B310724E-65CC-4862-8F02-D53C1A1726C9}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>BitMiracle.Docotic.Pdf.Samples</RootNamespace>
     <AssemblyName>SaveAsBitonalTiff</AssemblyName>

@@ -27,7 +27,7 @@ This sample shows how to extract images from PdfDocument.
 
 [Extract painted images](/Samples/Images/ExtractPaintedImages)
 
-This sample shows how to use mask images.
+This sample shows how to extract images painted on page in a PDF document using two different methods.
 
 [Image masks](/Samples/Images/ImageMasks)
 
