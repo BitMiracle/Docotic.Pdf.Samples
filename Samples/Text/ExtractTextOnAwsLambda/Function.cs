@@ -8,14 +8,17 @@ namespace ExtractTextOnAwsLambda
 {
     public class Function
     {
-        public string FunctionHandler(string input, ILambdaContext context)
+        public string FunctionHandler(ILambdaContext context)
         {
             // NOTE: 
             // When used in trial mode, the library imposes some restrictions.
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            using (var pdf = new PdfDocument("Attachments.pdf"))
+            PdfConfigurationOptions config = PdfConfigurationOptions.Create();
+            config.FontLoader = new DirectoryFontLoader(new[] { "/usr/share/fonts" }, true);
+
+            using (var pdf = new PdfDocument("Attachments.pdf", config))
             {
                 return pdf.GetTextWithFormatting();
             }
