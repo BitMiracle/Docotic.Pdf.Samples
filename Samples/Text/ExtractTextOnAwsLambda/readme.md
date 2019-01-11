@@ -33,14 +33,8 @@ If already installed check if new version is available.
     dotnet tool update -g Amazon.Lambda.Tools
 ```
 
-Execute unit tests
-```
-    cd "ExtractTextOnAwsLambda/test/ExtractTextOnAwsLambda.Tests"
-    dotnet test
-```
-
 Deploy function to AWS Lambda
 ```
-    cd "ExtractTextOnAwsLambda/src/ExtractTextOnAwsLambda"
+    cd "ExtractTextOnAwsLambda"
     dotnet lambda deploy-function
 ```
