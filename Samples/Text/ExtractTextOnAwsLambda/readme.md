@@ -7,6 +7,8 @@ You need to use custom loader for non-embedded fonts. This sample shows how to u
 
 ## Some steps to follow from Visual Studio:
 
+Download and install AWS Toolkit here: [https://aws.amazon.com/ru/visualstudio/](https://aws.amazon.com/ru/visualstudio/)
+
 To deploy your function to AWS Lambda, right click the project in Solution Explorer and select *Publish to AWS Lambda*.
 
 To view your deployed function open its Function View window by double-clicking the function name shown beneath the AWS Lambda node in the AWS Explorer tree.
