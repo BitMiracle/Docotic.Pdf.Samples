@@ -1,14 +1,11 @@
-# AWS Lambda Empty Function Project
+# Extract text on AWS Lambda
+This sample shows how to extract text from a PDF document with non-embedded fonts in serverless environments.
 
-This starter project consists of:
-* Function.cs - class file containing a class with a single function handler method
-* aws-lambda-tools-defaults.json - default argument settings for use with Visual Studio and command line deployment tools for AWS
+By default, Docotic.Pdf uses GDI+ and System.Drawing.Font class to load system fonts. However, you cannot install GDI+ packages (libc6-dev and libgdiplus) on AWS Lambda. That's why extraction of text from PDF documents with non-embedded fonts does not work on AWS Lambda by default.
 
-You may also have a test project depending on the options selected.
+You need to use custom loader for non-embedded fonts. This sample shows how to use built-in DirectoryFontLoader class to load non-embedded fonts on AWS Lambda without GDI+.
 
-The generated function handler is a simple method accepting a string argument that returns the uppercase equivalent of the input string. Replace the body of this method, and parameters, to suit your needs. 
-
-## Here are some steps to follow from Visual Studio:
+## Some steps to follow from Visual Studio:
 
 To deploy your function to AWS Lambda, right click the project in Solution Explorer and select *Publish to AWS Lambda*.
 
@@ -22,7 +19,7 @@ To update the runtime configuration of your deployed function use the Configurat
 
 To view execution logs of invocations of your function use the Logs tab in the opened Function View window.
 
-## Here are some steps to follow to get started from the command line:
+## Some steps to follow to get started from the command line:
 
 Once you have edited your template and code you can deploy your application using the [Amazon.Lambda.Tools Global Tool](https://github.com/aws/aws-extensions-for-dotnet-cli#aws-lambda-amazonlambdatools) from the command line.
 
