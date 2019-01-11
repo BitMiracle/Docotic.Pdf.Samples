@@ -3551,6 +3551,78 @@
             The base class for PDF function classes.
             </summary>
     </member>
+    <member name="T:BitMiracle.Docotic.Pdf.DirectoryFontLoader">
+      <summary>
+            An implementation of the <see cref="T:BitMiracle.Docotic.Pdf.IFontLoader" /> interface that loads
+            font bytes from the specified directories.
+            </summary>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.DirectoryFontLoader.#ctor(System.String[],System.Boolean)">
+      <summary>
+            Initializes a new instance of the <see cref="T:BitMiracle.Docotic.Pdf.DirectoryFontLoader" /> class.
+            </summary>
+      <param name="directories">
+            The array of directory names to use when looking for the font.
+            </param>
+      <param name="recursive">
+            Set to <c>true</c> to perform the search in subdirectories too.
+            </param>
+      <remarks>
+        <para>
+            The <paramref name="directories" /> array must include at least one entry. Each entry 
+            must be the name of an existing directory.
+            </para>
+      </remarks>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.DirectoryFontLoader.Load(System.String,System.Boolean,System.Boolean)">
+      <summary>
+            Loads font bytes.
+            </summary>
+      <param name="familyName">Family name of the font</param>
+      <param name="bold">Set to <c>true</c> for the bold font weight</param>
+      <param name="italic">Set to <c>true</c> for the italic font style</param>
+      <returns>
+            The bytes of an eligible font or <c>null</c> if an eligible font was not found.
+            </returns>
+    </member>
+    <member name="T:BitMiracle.Docotic.Pdf.GdiFontLoader">
+      <summary>
+            An implementation of the <see cref="T:BitMiracle.Docotic.Pdf.IFontLoader" /> interface that loads
+            font bytes from the operating system using GDI+ and the 
+            <see cref="T:System.Drawing.Font" /> class.
+            </summary>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.GdiFontLoader.Load(System.String,System.Boolean,System.Boolean)">
+      <summary>
+            Loads font bytes.
+            </summary>
+      <param name="familyName">Family name of the font</param>
+      <param name="bold">Set to <c>true</c> for the bold font weight</param>
+      <param name="italic">Set to <c>true</c> for the italic font style</param>
+      <returns>
+            The bytes of an eligible font or <c>null</c> if an eligible font was not found.
+            </returns>
+    </member>
+    <member name="T:BitMiracle.Docotic.Pdf.IFontLoader">
+      <summary>
+            Exposes method used to load font bytes from a generic source (operating system,
+            directory, etc.)
+            </summary>
+      <remarks>
+            This interface is used to load font bytes when:
+            <ul><li>the font is not embedded in PDF document, or</li><li>the font is added to PDF document by using family name and style only</li></ul></remarks>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.IFontLoader.Load(System.String,System.Boolean,System.Boolean)">
+      <summary>
+            Loads font bytes.
+            </summary>
+      <param name="familyName">Family name of the font</param>
+      <param name="bold">Set to <c>true</c> for the bold font weight</param>
+      <param name="italic">Set to <c>true</c> for the italic font style</param>
+      <returns>
+            The bytes of an eligible font or <c>null</c> if an eligible font was not found.
+            </returns>
+    </member>
     <member name="T:BitMiracle.Docotic.Pdf.ImageCompressionOptions">
       <summary>
             The compression options for images produced during PDF to image conversion.
@@ -3729,6 +3801,21 @@
         <para>Streams can be used for a short period of time or for the lifetime of the PDF
             document.</para>
         <para>The library disposes all streams acquired through the stream provider.</para>
+      </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfConfigurationOptions.FontLoader">
+      <summary>
+            Gets or sets the font loader.
+            </summary>
+      <value>The font loader to use.</value>
+      <remarks>
+        <para>
+            The font loader can not be <c>null</c>. By default the library uses instances of
+            <see cref="T:BitMiracle.Docotic.Pdf.GdiFontLoader" /> for font loaders.
+            </para>
+        <para>
+            The library uses font loader to get font bytes when:
+            <ul><li>the font is not embedded in PDF document, or</li><li>the font is added to PDF document by using family name and style only</li></ul></para>
       </remarks>
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfConfigurationOptions.Error">
