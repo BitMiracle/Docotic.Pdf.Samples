@@ -1,7 +1,7 @@
 # Extract text on AWS Lambda
 This sample shows how to extract text from a PDF document with non-embedded fonts in serverless environments.
 
-By default, Docotic.Pdf uses GDI+ and System.Drawing.Font class to load system fonts. However, you cannot install GDI+ packages (libc6-dev and libgdiplus) on AWS Lambda. That's why extraction of text from PDF documents with non-embedded fonts does not work on AWS Lambda by default.
+By default, Docotic.Pdf uses GDI+ and System.Drawing.Font class to load system fonts. However, you cannot install GDI+ packages (libc6-dev and libgdiplus) on AWS Lambda. That's why extraction of text from PDF documents with non-embedded fonts might produce incorrect results on AWS Lambda by default.
 
 You need to use custom loader for non-embedded fonts. This sample shows how to use built-in DirectoryFontLoader class to load non-embedded fonts on AWS Lambda without GDI+.
 
