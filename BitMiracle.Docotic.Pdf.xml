@@ -7977,6 +7977,11 @@
             Use <see cref="Overload:BitMiracle.Docotic.Pdf.PdfDocument.ExtractPages" /> if you want to
             extract pages from this <see cref="T:BitMiracle.Docotic.Pdf.PdfDocument" />.
             </para>
+        <para>
+            Try <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.RemoveUnusedResources" />
+            method on the new document. This method can reduce document size in cases when the
+            copied pages reference unused resources such as fonts, images, patterns.
+            </para>
       </remarks>
       <overloads>
             Copy pages into new <see cref="T:BitMiracle.Docotic.Pdf.PdfDocument" />.
@@ -7999,6 +8004,11 @@
             Use <see cref="Overload:BitMiracle.Docotic.Pdf.PdfDocument.ExtractPages" /> if you want to
             extract pages from this <see cref="T:BitMiracle.Docotic.Pdf.PdfDocument" />.
             </para>
+        <para>
+            Try <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.RemoveUnusedResources" />
+            method on the new document. This method can reduce document size in cases when the
+            copied pages reference unused resources such as fonts, images, patterns.
+            </para>
       </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.CopyPages(System.Int32,System.Int32)">
@@ -8019,6 +8029,11 @@
         <para>
             Use <see cref="Overload:BitMiracle.Docotic.Pdf.PdfDocument.ExtractPages" /> if you want to
             extract pages from this <see cref="T:BitMiracle.Docotic.Pdf.PdfDocument" />.
+            </para>
+        <para>
+            Try <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.RemoveUnusedResources" />
+            method on the new document. This method can reduce document size in cases when the
+            copied pages reference unused resources such as fonts, images, patterns.
             </para>
       </remarks>
     </member>
@@ -8045,6 +8060,11 @@
             Use <see cref="Overload:BitMiracle.Docotic.Pdf.PdfDocument.ExtractPages" /> if you want to
             extract pages from this <see cref="T:BitMiracle.Docotic.Pdf.PdfDocument" />.
             </para>
+        <para>
+            Try <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.RemoveUnusedResources" />
+            method on the new document. This method can reduce document size in cases when the
+            copied pages reference unused resources such as fonts, images, patterns.
+            </para>
       </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.ExtractPages(System.Int32[])">
@@ -8067,6 +8087,11 @@
         <para>
             Use <see cref="Overload:BitMiracle.Docotic.Pdf.PdfDocument.CopyPages" /> if you want to just
             copy pages from this <see cref="T:BitMiracle.Docotic.Pdf.PdfDocument" />.
+            </para>
+        <para>
+            Try <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.RemoveUnusedResources" />
+            method on the new document. This method can reduce document size in cases when the
+            extracted pages reference unused resources such as fonts, images, patterns.
             </para>
       </remarks>
       <overloads>
@@ -8093,6 +8118,11 @@
             Use <see cref="Overload:BitMiracle.Docotic.Pdf.PdfDocument.CopyPages" /> if you want to just
             copy pages from this <see cref="T:BitMiracle.Docotic.Pdf.PdfDocument" />.
             </para>
+        <para>
+            Try <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.RemoveUnusedResources" />
+            method on the new document. This method can reduce document size in cases when the
+            extracted pages reference unused resources such as fonts, images, patterns.
+            </para>
       </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.ExtractPages(System.Int32,System.Int32)">
@@ -8117,6 +8147,11 @@
             Use <see cref="Overload:BitMiracle.Docotic.Pdf.PdfDocument.CopyPages" /> if you want to just
             copy pages from this <see cref="T:BitMiracle.Docotic.Pdf.PdfDocument" />.
             </para>
+        <para>
+            Try <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.RemoveUnusedResources" />
+            method on the new document. This method can reduce document size in cases when the
+            extracted pages reference unused resources such as fonts, images, patterns.
+            </para>
       </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.ExtractPages(System.Int32,System.Int32,BitMiracle.Docotic.Pdf.PdfConfigurationOptions)">
@@ -8139,6 +8174,10 @@
             </para><para>
             Use <see cref="Overload:BitMiracle.Docotic.Pdf.PdfDocument.CopyPages" /> if you want to just
             copy pages from this <see cref="T:BitMiracle.Docotic.Pdf.PdfDocument" />.
+            </para><para>
+            Try <see cref="M:BitMiracle.Docotic.Pdf.PdfDocument.RemoveUnusedResources" />
+            method on the new document. This method can reduce document size in cases when the
+            extracted pages reference unused resources such as fonts, images, patterns.
             </para></remarks></member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.MovePage(System.Int32,System.Int32)">
       <summary>
@@ -8213,6 +8252,17 @@
             </summary>
       <param name="firstIndex">The index of the first page.</param>
       <param name="secondIndex">The index of the second page.</param>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.RemoveUnusedResources">
+      <summary>
+            Removes references to resources such as fonts, xobjects, images, patterns.
+            </summary>
+      <remarks>
+        <para>
+            This method helps to reduce file size in cases when document contains pages or XObjects
+            with unused resources.
+            </para>
+      </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.GetText">
       <summary>
