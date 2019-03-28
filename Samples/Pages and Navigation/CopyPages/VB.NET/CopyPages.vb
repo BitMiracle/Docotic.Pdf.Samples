@@ -14,6 +14,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 ' copy third and first pages to a new PDF document (page indexes are zero-based)
                 Using copy As PdfDocument = pdf.CopyPages(New Integer() {2, 0})
+                    ' Helps to reduce file size in cases when the copied pages reference
+                    ' unused resources such as fonts, images, patterns.
+                    copy.RemoveUnusedResources()
+
                     copy.Save("CopyPages.pdf")
                 End Using
 

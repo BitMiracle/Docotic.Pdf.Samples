@@ -11,7 +11,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            using (PdfDocument original = new PdfDocument())
+            using (var original = new PdfDocument())
             {
                 for (int i = 0; i < 5; ++i)
                 {
@@ -24,7 +24,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                 // extract first 3 pages. These pages will be removed from original PDF document.
                 using (PdfDocument extracted = original.ExtractPages(0, 3))
+                {
+                    // Helps to reduce file size in cases when the extracted pages reference
+                    // unused resources such as fonts, images, patterns.
+                    extracted.RemoveUnusedResources();
+
                     extracted.Save("ExtractPages.pdf");
+                }
 
                 Process.Start("ExtractPages.pdf");
 

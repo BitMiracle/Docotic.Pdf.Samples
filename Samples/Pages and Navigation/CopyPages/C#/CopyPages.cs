@@ -11,11 +11,17 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            using (PdfDocument pdf = new PdfDocument(@"Sample Data\jfif3.pdf"))
+            using (var pdf = new PdfDocument(@"Sample Data\jfif3.pdf"))
             {
                 // copy third and first pages to a new PDF document (page indexes are zero-based)
                 using (PdfDocument copy = pdf.CopyPages(new int[] { 2, 0 }))
+                {
+                    // Helps to reduce file size in cases when the copied pages reference
+                    // unused resources such as fonts, images, patterns.
+                    copy.RemoveUnusedResources();
+
                     copy.Save("CopyPages.pdf");
+                }
             }
 
             Process.Start("CopyPages.pdf");

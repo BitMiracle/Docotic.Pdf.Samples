@@ -22,6 +22,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 ' extract first 3 pages. These pages will be removed from original PDF document.
                 Using extracted As PdfDocument = original.ExtractPages(0, 3)
+                    ' Helps to reduce file size in cases when the extracted pages reference
+                    ' unused resources such as fonts, images, patterns.
+                    extracted.RemoveUnusedResources()
+
                     extracted.Save("ExtractPages.pdf")
                 End Using
 
