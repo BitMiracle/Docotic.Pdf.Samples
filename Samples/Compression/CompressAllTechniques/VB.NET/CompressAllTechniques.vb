@@ -87,7 +87,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 ' 6. Remove font duplicates
                 pdf.ReplaceDuplicateFonts()
-                
+
                 ' 7. Unembed fonts
                 For Each font As PdfFont In pdf.GetFonts()
                     ' Only unembed popular fonts installed in the typical OS. You can extend
@@ -96,6 +96,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         font.Unembed()
                     End If
                 Next
+
+                ' 8. Remove unused resources
+                pdf.RemoveUnusedResources()
 
                 pdf.Save(compressedFile)
             End Using

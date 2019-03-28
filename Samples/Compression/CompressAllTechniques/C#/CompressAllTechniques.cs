@@ -111,6 +111,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         font.Unembed();
                 }
 
+                // 8. Remove unused resources
+                pdf.RemoveUnusedResources();
+
                 pdf.Save(compressedFile);
             }
 
