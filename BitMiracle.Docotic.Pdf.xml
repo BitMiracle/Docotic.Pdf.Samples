@@ -194,6 +194,7 @@
             </summary>
       <value>The text string containing the JavaScript script to
             be executed.</value>
+      <remarks>The value can not be <c>null</c>.</remarks>
     </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfLaunchAction">
       <summary>
@@ -202,7 +203,7 @@
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfLaunchAction.Path">
       <summary>
-            Gets the path to the application to be launched or to the document to be opened.
+            Gets or sets the path to the application to be launched or to the document to be opened.
             </summary>
       <value>
             The path to the application to be launched or to the document to be opened.
@@ -210,7 +211,7 @@
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfLaunchAction.OpenInNewWindow">
       <summary>
-            Gets a value indicating whether to open the destination document in
+            Gets or sets a value indicating whether to open the destination document in
             a new window.
             </summary>
       <value>
@@ -259,6 +260,33 @@
               <c>false</c> if the destination document should replace the current document
               in the same window.
             </value>
+    </member>
+    <member name="T:BitMiracle.Docotic.Pdf.PdfRenditionAction">
+      <summary>
+            Class for a rendition action.
+            A rendition action (PDF 1.5) controls the playing of multimedia content.
+            </summary>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfRenditionAction.ScreenAnnotation">
+      <summary>
+            Screen annotation for the rendition.
+            </summary>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfRenditionAction.Operation">
+      <summary>
+            The operation to perform when the action is triggered.
+            </summary>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfRenditionAction.Script">
+      <summary>
+            Gets or sets the text string containing the JavaScript script to
+            be executed when the action is triggered.
+            </summary>
+      <value>The text string containing the JavaScript script to
+            be executed when the action is triggered.</value>
+      <remarks>The value can be <c>null</c> if there is an operation associated with this
+            action. Use <c>null</c> for the value, when you want the script to be removed from
+            the action. </remarks>
     </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfResetFormAction">
       <summary>
@@ -2440,6 +2468,49 @@
     <member name="F:BitMiracle.Docotic.Pdf.PdfPermissionFlags.Everything">
       <summary>
             Permit everything.
+            </summary>
+    </member>
+    <member name="T:BitMiracle.Docotic.Pdf.PdfRenditionOperation">
+      <summary>
+            Enumeration for all known rendition operations.
+            </summary>
+    </member>
+    <member name="F:BitMiracle.Docotic.Pdf.PdfRenditionOperation.Unspecified">
+      <summary>
+            Operation is not specified.
+            </summary>
+    </member>
+    <member name="F:BitMiracle.Docotic.Pdf.PdfRenditionOperation.PlayNew">
+      <summary>
+            If no rendition is associated with the annotation, play the specified rendition,
+            associating it with the annotation. If a rendition is already associated with the
+            annotation, it shall be stopped, and the new rendition shall be associated with
+            the annotation.
+            </summary>
+    </member>
+    <member name="F:BitMiracle.Docotic.Pdf.PdfRenditionOperation.Stop">
+      <summary>
+            Stop any rendition being played in association with the annotation, and remove
+            the association. If no rendition is being played, there is no effect.
+            </summary>
+    </member>
+    <member name="F:BitMiracle.Docotic.Pdf.PdfRenditionOperation.Pause">
+      <summary>
+            Pause any rendition being played in association with the annotation. If no rendition
+            is being played, there is no effect.
+            </summary>
+    </member>
+    <member name="F:BitMiracle.Docotic.Pdf.PdfRenditionOperation.Resume">
+      <summary>
+            Resume any rendition being played in association with the annotation. If no rendition
+            is being played or the rendition is not paused, there is no effect.
+            </summary>
+    </member>
+    <member name="F:BitMiracle.Docotic.Pdf.PdfRenditionOperation.Play">
+      <summary>
+            Play the specified rendition, associating it with the annotation. If a rendition is
+            already associated with the annotation, resume the rendition if it is paused;
+            otherwise, do nothing.
             </summary>
     </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfRotation">
@@ -7041,6 +7112,56 @@
             </para>
       </remarks>
     </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfCanvas.MoveInlineImagesToResources">
+      <summary>
+            Moves all inline images to resources.
+            </summary>
+      <remarks>
+        <para>
+            This method replaces each inline image with a regular one. This does not affect visual
+            representation of the canvas.
+            </para>
+        <para>
+            Moving inline images to resources can increase file size because regular images do not
+            use abbreviated image property names.
+            </para>
+        <para>
+            You might want to move inline images to resources if you are going to scale, resize,
+            recompress the inline images or replace their contents.
+            </para>
+        <para>
+            Moving inline images to resources can decrease length of the collection of the owning
+            page images. This is because the library deduplicates images when moving them to resources.
+            </para>
+      </remarks>
+      <overloads>Moves inline images to resources.</overloads>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfCanvas.MoveInlineImagesToResources(System.Predicate{BitMiracle.Docotic.Pdf.PdfImage})">
+      <summary>
+            Moves some of the inline images to resources.
+            </summary>
+      <param name="shouldMove">The delegate that defines the conditions of inline images
+            that should be moved to resources.</param>
+      <remarks>
+        <para>
+            This method replaces inline images that match the conditions of the
+            <paramref name="shouldMove" /> delegate with regular ones. This does not affect visual
+            representation of the canvas.
+            </para>
+        <para>
+            Moving inline images to resources can increase file size because regular images do not
+            use abbreviated image property names.
+            </para>
+        <para>
+            You might want to move inline images to resources if you are going to scale, resize,
+            recompress the inline images or replace their contents.
+            </para>
+        <para>
+            Moving inline images to resources can decrease length of the collection of the owning
+            page images. This is because the library deduplicates images when moving them to resources.
+            </para>
+      </remarks>
+    </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfCollection`1">
       <summary>
             Represents a strongly typed read-only collection of PDF objects that can be accessed by index.
@@ -9867,6 +9988,40 @@
             </para>
       </remarks>
     </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfEmbeddedFile.Id">
+      <summary>
+            Gets the identifier of this embedded file in this <see cref="T:BitMiracle.Docotic.Pdf.PdfDocument" />.
+            </summary>
+      <value>The identifier of this embedded file in this <see cref="T:BitMiracle.Docotic.Pdf.PdfDocument" />.</value>
+      <remarks>
+        <para>
+            The identifier has the following properties:
+            </para>
+        <list type="bullet">
+          <item>
+            Different embedded files from the same <see cref="T:BitMiracle.Docotic.Pdf.PdfDocument" /> object will have
+            different identifiers.
+            </item>
+          <item>
+            Same embedded files from multiple <see cref="T:BitMiracle.Docotic.Pdf.PdfDocument" /> objects will have same
+            identifiers. Two embedded files are said to be the same when they are based on internal
+            PDF structures with the same number.
+            </item>
+          <item>
+            Embedded files from different documents have same identifiers if those embedded files
+            are based on internal PDF structures with the same number.
+            </item>
+          <item>
+            Any change to a <see cref="T:BitMiracle.Docotic.Pdf.PdfDocument" /> object which does not renumber its internal
+            structures does not change the identifier.
+            </item>
+          <item>
+            When library saves a document it might renumber its internal structures. Therefore, the
+            identifier might change after invocation of any of the <see cref="Overload:BitMiracle.Docotic.Pdf.PdfDocument.Save" />
+            methods.</item>
+        </list>
+      </remarks>
+    </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfEmbeddedFile.Size">
       <summary>Gets the size of the embedded file, in bytes.</summary>
       <value>The size of the embedded file, in bytes.</value>
@@ -9934,6 +10089,52 @@
             Saves the embedded file to the file with specified name.
             </summary>
       <param name="fileName">The name of the file to save document to.</param>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfEmbeddedFile.ReplaceWith(System.Byte[])">
+      <summary>
+            Replaces embedded file contents with the provided bytes.
+            </summary>
+      <param name="bytes">The array of bytes.</param>
+      <remarks>
+        <para>This method replaces contents of the embedded file, updates
+            <see cref="P:BitMiracle.Docotic.Pdf.PdfEmbeddedFile.ModifiedDate" />, <see cref="P:BitMiracle.Docotic.Pdf.PdfEmbeddedFile.Size" /> and the checksum (if specified).</para>
+        <para>This method respects the <see cref="P:BitMiracle.Docotic.Pdf.PdfEmbeddedFile.WriteWithoutCompression" /> setting.</para>
+        <para>This method does not update <see cref="P:BitMiracle.Docotic.Pdf.PdfEmbeddedFile.MimeType" /> property. You should update
+            the property yourselves if the new content has different MIME type.</para>
+        <para>Replacing contents of an embedded file can cause unexpected results if the new
+            contents has different structure or broken in any way.</para>
+      </remarks>
+      <overloads>Replaces file contents with the new one.</overloads>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfEmbeddedFile.ReplaceWith(System.String)">
+      <summary>
+            Replaces embedded file contents with contents of the specified file.
+            </summary>
+      <param name="fileName">The name of the file with the new contents.</param>
+      <remarks>
+        <para>This method replaces contents of the embedded file, updates
+            <see cref="P:BitMiracle.Docotic.Pdf.PdfEmbeddedFile.ModifiedDate" />, <see cref="P:BitMiracle.Docotic.Pdf.PdfEmbeddedFile.Size" /> and the checksum (if specified).</para>
+        <para>This method respects the <see cref="P:BitMiracle.Docotic.Pdf.PdfEmbeddedFile.WriteWithoutCompression" /> setting.</para>
+        <para>This method does not update <see cref="P:BitMiracle.Docotic.Pdf.PdfEmbeddedFile.MimeType" /> property. You should update
+            the property yourselves if the new content has different MIME type.</para>
+        <para>Replacing contents of an embedded file can cause unexpected results if the new
+            contents has different structure or broken in any way.</para>
+      </remarks>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfEmbeddedFile.ReplaceWith(System.IO.Stream)">
+      <summary>
+            Replaces embedded file contents with contents of the specified stream.
+            </summary>
+      <param name="stream">The stream with the new contents.</param>
+      <remarks>
+        <para>This method replaces contents of the embedded file, updates
+            <see cref="P:BitMiracle.Docotic.Pdf.PdfEmbeddedFile.ModifiedDate" />, <see cref="P:BitMiracle.Docotic.Pdf.PdfEmbeddedFile.Size" /> and the checksum (if specified).</para>
+        <para>This method respects the <see cref="P:BitMiracle.Docotic.Pdf.PdfEmbeddedFile.WriteWithoutCompression" /> setting.</para>
+        <para>This method does not update <see cref="P:BitMiracle.Docotic.Pdf.PdfEmbeddedFile.MimeType" /> property. You should update
+            the property yourselves if the new content has different MIME type.</para>
+        <para>Replacing contents of an embedded file can cause unexpected results if the new
+            contents has different structure or broken in any way.</para>
+      </remarks>
     </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfErrorEventArgs">
       <summary>
@@ -10456,6 +10657,43 @@
             Class for an image that is suitable for use with PDF document.
             </summary>
     </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfImage.Id">
+      <summary>
+            Gets the identifier of this image in this <see cref="T:BitMiracle.Docotic.Pdf.PdfDocument" />.
+            </summary>
+      <value>The identifier of the image in this <see cref="T:BitMiracle.Docotic.Pdf.PdfDocument" />.</value>
+      <remarks>
+        <para>
+        </para>
+        <para>
+            The identifier has the following properties:
+            </para>
+        <list type="bullet">
+          <item>For all inline images the identifier is equal to <c>null</c>.</item>
+          <item>
+            Different non-inline images from the same <see cref="T:BitMiracle.Docotic.Pdf.PdfDocument" /> object have
+            different identifiers. None of these identifiers is equal to <c>null</c>.
+            </item>
+          <item>
+            Same images from multiple <see cref="T:BitMiracle.Docotic.Pdf.PdfDocument" /> objects have same identifiers. Two
+            images are said to be the same when they are based on internal PDF structures with
+            the same number.
+            </item>
+          <item>
+            Images from different documents have same identifiers if those images are based on
+            internal PDF structures with the same number.
+            </item>
+          <item>
+            Any change to a <see cref="T:BitMiracle.Docotic.Pdf.PdfDocument" /> object which does not renumber its internal
+            structures does not change the identifier.
+            </item>
+          <item>
+            When library saves a document it might renumber its internal structures. Therefore, the
+            identifier might change after invocation of any of the <see cref="Overload:BitMiracle.Docotic.Pdf.PdfDocument.Save" />
+            methods.</item>
+        </list>
+      </remarks>
+    </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfImage.DpiX">
       <summary>
             Gets the horizontal resolution, in pixels per inch, of
@@ -10463,6 +10701,9 @@
             </summary>
       <value>The the horizontal resolution, in pixels per inch, of
             this <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" />.</value>
+      <remarks>
+            The value is equal to <c>0</c> if horizontal resolution is not specified for the image.
+            </remarks>
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfImage.DpiY">
       <summary>
@@ -10471,6 +10712,9 @@
             </summary>
       <value>The the vertical resolution, in pixels per inch, of
             this <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" />.</value>
+      <remarks>
+            The value is equal to <c>0</c> if vertical resolution is not specified for the image.
+            </remarks>
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfImage.Height">
       <summary>
@@ -10572,6 +10816,26 @@
         <c>true</c> if an image interpolation algorithm should be applied
             during rendering of this image.; otherwise, <c>false</c>.
             </value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfImage.IsInline">
+      <summary>
+            Gets a value indicating whether this <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" /> is an inline image.
+            </summary>
+      <value>
+        <c>true</c> if this <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" /> is an inline image;
+            otherwise, <c>false</c>.</value>
+      <remarks>
+        <para>
+            Inline images are completely contained inside the contents of their owner pages. Such 
+            images typically has small width and height. One inline images can not be used on
+            more than one page.
+            </para>
+        <para>
+            Regular images are stored independently of any page contents. Pages that use a regular
+            image contain a reference to the image. Any number of pages can reference the same
+            regular image.
+            </para>
+      </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfImage.op_Equality(BitMiracle.Docotic.Pdf.PdfImage,BitMiracle.Docotic.Pdf.PdfImage)">
       <summary>
@@ -10698,6 +10962,10 @@
             be bigger in size, so this method probably should be used only if required
             for compatibility reasons.
             </para>
+        <para>
+            This method throws <see cref="T:BitMiracle.Docotic.Pdf.UnsupportedImageException" /> when used on an inline 
+            image. You can check <see cref="P:BitMiracle.Docotic.Pdf.PdfImage.IsInline" /> property before invoking this method.
+            </para>
       </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfImage.RecompressWithFlate">
@@ -10706,6 +10974,10 @@
             </summary>
       <remarks>
         <para>Image data is recompressed using maximum (9) compression quality.</para>
+        <para>
+            This method throws <see cref="T:BitMiracle.Docotic.Pdf.UnsupportedImageException" /> when used on an inline 
+            image. You can check <see cref="P:BitMiracle.Docotic.Pdf.PdfImage.IsInline" /> property before invoking this method.
+            </para>
       </remarks>
       <overloads>Recompresses image data using zlib/deflate compression method.</overloads>
     </member>
@@ -10718,6 +10990,10 @@
       <remarks>
         <para>The Deflate quality value should be between 0 and 9 inclusive.</para>
         <para>The quality value of 9 gives best compression.</para>
+        <para>
+            This method throws <see cref="T:BitMiracle.Docotic.Pdf.UnsupportedImageException" /> when used on an inline 
+            image. You can check <see cref="P:BitMiracle.Docotic.Pdf.PdfImage.IsInline" /> property before invoking this method.
+            </para>
       </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfImage.RecompressWithGroup3Fax">
@@ -10730,6 +11006,10 @@
             </para>
         <para>
             The threshold level is set to default value (189) during recompression.
+            </para>
+        <para>
+            This method throws <see cref="T:BitMiracle.Docotic.Pdf.UnsupportedImageException" /> when used on an inline 
+            image. You can check <see cref="P:BitMiracle.Docotic.Pdf.PdfImage.IsInline" /> property before invoking this method.
             </para>
       </remarks>
       <overloads>Recompresses image data using Group 3 CCITT facsimile (fax)
@@ -10756,6 +11036,10 @@
             background pixels and mostly black foreground pixels then threshold level
             of 189 or higher is recommended to preserve most of the data.
             </para>
+        <para>
+            This method throws <see cref="T:BitMiracle.Docotic.Pdf.UnsupportedImageException" /> when used on an inline 
+            image. You can check <see cref="P:BitMiracle.Docotic.Pdf.PdfImage.IsInline" /> property before invoking this method.
+            </para>
       </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfImage.RecompressWithGroup4Fax">
@@ -10768,6 +11052,10 @@
             </para>
         <para>
             The threshold level is set to default value (189) during recompression.
+            </para>
+        <para>
+            This method throws <see cref="T:BitMiracle.Docotic.Pdf.UnsupportedImageException" /> when used on an inline 
+            image. You can check <see cref="P:BitMiracle.Docotic.Pdf.PdfImage.IsInline" /> property before invoking this method.
             </para>
       </remarks>
       <overloads>Recompresses image data using Group 4 CCITT facsimile (fax)
@@ -10794,6 +11082,10 @@
             background pixels and mostly black foreground pixels then threshold level
             of 189 or higher is recommended to preserve most of the data.
             </para>
+        <para>
+            This method throws <see cref="T:BitMiracle.Docotic.Pdf.UnsupportedImageException" /> when used on an inline 
+            image. You can check <see cref="P:BitMiracle.Docotic.Pdf.PdfImage.IsInline" /> property before invoking this method.
+            </para>
       </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfImage.RecompressWithJpeg">
@@ -10803,6 +11095,10 @@
       <remarks>
         <para>
             The JPEG quality is set to 100 during recompression.
+            </para>
+        <para>
+            This method throws <see cref="T:BitMiracle.Docotic.Pdf.UnsupportedImageException" /> when used on an inline 
+            image. You can check <see cref="P:BitMiracle.Docotic.Pdf.PdfImage.IsInline" /> property before invoking this method.
             </para>
       </remarks>
       <overloads>Recompresses image data using JPEG baseline format.</overloads>
@@ -10820,6 +11116,10 @@
         <para>
             The quality value of 100 preserves most details but produces biggest output.
             </para>
+        <para>
+            This method throws <see cref="T:BitMiracle.Docotic.Pdf.UnsupportedImageException" /> when used on an inline 
+            image. You can check <see cref="P:BitMiracle.Docotic.Pdf.PdfImage.IsInline" /> property before invoking this method.
+            </para>
       </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfImage.RecompressWithJpeg2000">
@@ -10829,6 +11129,10 @@
       <remarks>
         <para>
             This method performs lossless recompression.
+            </para>
+        <para>
+            This method throws <see cref="T:BitMiracle.Docotic.Pdf.UnsupportedImageException" /> when used on an inline 
+            image. You can check <see cref="P:BitMiracle.Docotic.Pdf.PdfImage.IsInline" /> property before invoking this method.
             </para>
       </remarks>
       <overloads>Recompresses image data using JPEG 2000 format.</overloads>
@@ -10850,6 +11154,10 @@
             </para>
         <para>
             The compression ratio of N means "compress N times".
+            </para>
+        <para>
+            This method throws <see cref="T:BitMiracle.Docotic.Pdf.UnsupportedImageException" /> when used on an inline 
+            image. You can check <see cref="P:BitMiracle.Docotic.Pdf.PdfImage.IsInline" /> property before invoking this method.
             </para>
       </remarks>
     </member>
@@ -10873,6 +11181,10 @@
         <para>
             Please use <see cref="M:BitMiracle.Docotic.Pdf.PdfImage.ResizeTo(System.Int32,System.Int32,BitMiracle.Docotic.Pdf.PdfImageCompression,System.Int32)" />
             overload if you want to tune up compression scheme.
+            </para>
+        <para>
+            This method throws <see cref="T:BitMiracle.Docotic.Pdf.UnsupportedImageException" /> when used on an inline 
+            image. You can check <see cref="P:BitMiracle.Docotic.Pdf.PdfImage.IsInline" /> property before invoking this method.
             </para>
       </remarks>
     </member>
@@ -10903,6 +11215,10 @@
             If <paramref name="compression" /> is <see cref="F:BitMiracle.Docotic.Pdf.PdfImageCompression.Group4Fax" />
             then <paramref name="option" /> parameter is ignored.
             </para>
+        <para>
+            This method throws <see cref="T:BitMiracle.Docotic.Pdf.UnsupportedImageException" /> when used on an inline 
+            image. You can check <see cref="P:BitMiracle.Docotic.Pdf.PdfImage.IsInline" /> property before invoking this method.
+            </para>
       </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfImage.Scale(System.Double,BitMiracle.Docotic.Pdf.PdfImageCompression)">
@@ -10925,6 +11241,10 @@
         <para>
             Please use <see cref="M:BitMiracle.Docotic.Pdf.PdfImage.Scale(System.Double,BitMiracle.Docotic.Pdf.PdfImageCompression,System.Int32)" />
             overload if you want to tune up compression scheme.
+            </para>
+        <para>
+            This method throws <see cref="T:BitMiracle.Docotic.Pdf.UnsupportedImageException" /> when used on an inline 
+            image. You can check <see cref="P:BitMiracle.Docotic.Pdf.PdfImage.IsInline" /> property before invoking this method.
             </para>
       </remarks>
     </member>
@@ -10954,6 +11274,77 @@
             If <paramref name="compression" /> is <see cref="F:BitMiracle.Docotic.Pdf.PdfImageCompression.Group4Fax" />
             then <paramref name="option" /> parameter is ignored.
             </para>
+        <para>
+            This method throws <see cref="T:BitMiracle.Docotic.Pdf.UnsupportedImageException" /> when used on an inline 
+            image. You can check <see cref="P:BitMiracle.Docotic.Pdf.PdfImage.IsInline" /> property before invoking this method.
+            </para>
+      </remarks>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfImage.ReplaceWith(System.IO.Stream)">
+      <summary>
+            Replaces image with the image in the stream.
+            </summary>
+      <param name="imageStream">The stream with an image.</param>
+      <remarks>
+        <para>This method replaces all occurrences of the image within the document. If the 
+            original image was used on several pages, then the new image will be used in the same
+            places of the same pages.</para>
+        <para>The stream should contain a complete image encoded with one of the supported
+            image compression schemes. This method won't work with only raster bytes or any other
+            partial contents.</para>
+        <para>
+            This method throws <see cref="T:BitMiracle.Docotic.Pdf.UnsupportedImageException" /> when used on an inline 
+            image. You can check <see cref="P:BitMiracle.Docotic.Pdf.PdfImage.IsInline" /> property before invoking this method.
+            </para>
+        <para>Replacing an image can cause unexpected and/or unpleasant visual results. For
+            example, image masking effects can be broken if you replace a mask image or an image
+            that has a mask. Usually, it is undesirable to replace an image with a new image that
+            has very different size and/or proportions.</para>
+      </remarks>
+      <overloads>Replaces image with the new one.</overloads>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfImage.ReplaceWith(System.String)">
+      <summary>
+            Replaces image with the image in the file.
+            </summary>
+      <param name="imageFile">The name of the image file.</param>
+      <remarks>
+        <para>This method replaces all occurrences of the image within the document. If the 
+            original image was used on several pages, then the new image will be used in the same
+            places of the same pages.</para>
+        <para>The file should contain a complete image encoded with one of the supported
+            image compression schemes. This method won't work with only raster bytes or any other
+            partial contents.</para>
+        <para>
+            This method throws <see cref="T:BitMiracle.Docotic.Pdf.UnsupportedImageException" /> when used on an inline 
+            image. You can check <see cref="P:BitMiracle.Docotic.Pdf.PdfImage.IsInline" /> property before invoking this method.
+            </para>
+        <para>Replacing an image can cause unexpected and/or unpleasant visual results. For
+            example, image masking effects can be broken if you replace a mask image or an image
+            that has a mask. Usually, it is undesirable to replace an image with a new image that
+            has very different size and/or proportions.</para>
+      </remarks>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfImage.ReplaceWith(System.Byte[])">
+      <summary>
+            Replaces image with the image bytes.
+            </summary>
+      <param name="imageBytes">The array of image bytes.</param>
+      <remarks>
+        <para>This method replaces all occurrences of the image within the document. If the 
+            original image was used on several pages, then the new image will be used in the same
+            places of the same pages.</para>
+        <para>The array should contain a complete image encoded with one of the supported
+            image compression schemes. This method won't work with only raster bytes or any other
+            partial contents.</para>
+        <para>
+            This method throws <see cref="T:BitMiracle.Docotic.Pdf.UnsupportedImageException" /> when used on an inline 
+            image. You can check <see cref="P:BitMiracle.Docotic.Pdf.PdfImage.IsInline" /> property before invoking this method.
+            </para>
+        <para>Replacing an image can cause unexpected and/or unpleasant visual results. For
+            example, image masking effects can be broken if you replace a mask image or an image
+            that has a mask. Usually, it is undesirable to replace an image with a new image that
+            has very different size and/or proportions.</para>
       </remarks>
     </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfImageFrame">

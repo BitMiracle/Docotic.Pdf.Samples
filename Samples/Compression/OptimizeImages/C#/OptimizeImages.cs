@@ -24,6 +24,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     foreach (PdfPaintedImage painted in page.GetPaintedImages())
                     {
                         PdfImage image = painted.Image;
+
+                        // inline images can not be recompressed unless you move them to resources
+                        // using PdfCanvas.MoveInlineImagesToResources 
+                        if (image.IsInline)
+                            continue;
+
                         // image that is used as mask or image with attached mask are 
                         // not good candidates for recompression 
                         if (image.IsMask || image.Mask != null || image.Width < 8 || image.Height < 8)

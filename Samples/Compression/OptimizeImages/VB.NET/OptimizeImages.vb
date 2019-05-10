@@ -23,6 +23,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     For Each painted As PdfPaintedImage In page.GetPaintedImages()
                         Dim image As PdfImage = painted.Image
 
+                        ' inline images can Not be recompressed unless you move them to resources
+                        ' using PdfCanvas.MoveInlineImagesToResources 
+                        If image.IsInline Then
+                            Continue For
+                        End If
+
                         ' image that is used as mask or image with attached mask are
                         ' not good candidates for recompression
                         If image.IsMask OrElse image.Mask IsNot Nothing OrElse image.Width < 8 OrElse image.Height < 8 Then
