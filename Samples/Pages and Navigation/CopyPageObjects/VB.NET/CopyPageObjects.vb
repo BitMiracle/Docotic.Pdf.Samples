@@ -32,7 +32,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         If obj.Type = PdfPageObjectType.Path Then
                             Dim path As PdfPath = DirectCast(obj, PdfPath)
                             target.Transform(path.TransformationMatrix)
-                            setBrushAndPen(target, path)
+                            If path.PaintMode = PdfDrawMode.Fill OrElse path.PaintMode = PdfDrawMode.FillAndStroke Then setBrush(target.Brush, path.Brush)
+                            If path.PaintMode = PdfDrawMode.Stroke OrElse path.PaintMode = PdfDrawMode.FillAndStroke Then setPen(target.Pen, path.Pen)
 
                             appendPath(target, path)
                             drawPath(target, path)
@@ -41,7 +42,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                             target.TranslateTransform(image.Position.X, image.Position.Y)
                             target.Transform(image.TransformationMatrix)
 
-                            target.Brush.Color = New PdfRgbColor(255, 255, 255)
+                            setBrush(target.Brush, image.Brush)
                             target.DrawImage(image.Image, 0, 0, 0)
                         ElseIf obj.Type = PdfPageObjectType.Text Then
                             Dim text As PdfTextData = DirectCast(obj, PdfTextData)
@@ -79,39 +80,29 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End Try
         End Sub
 
-        Private Shared Sub setBrushAndPen(target As PdfCanvas, path As PdfPath)
-            If path.PaintMode = PdfDrawMode.Fill OrElse path.PaintMode = PdfDrawMode.FillAndStroke Then
-                Dim color As PdfColor = path.Brush.Color
-                If color IsNot Nothing Then
-                    target.Brush.Color = color
-                End If
+        Private Shared Sub setBrush(ByVal dst As PdfBrush, ByVal src As PdfBrushInfo)
+            Dim color As PdfColor = src.Color
+            If color IsNot Nothing Then dst.Color = color
 
-                target.Brush.Opacity = path.Brush.Opacity
+            dst.Opacity = src.Opacity
 
-                Dim pattern As PdfPattern = path.Brush.Pattern
-                If pattern IsNot Nothing Then
-                    target.Brush.Pattern = pattern
-                End If
-            End If
+            Dim pattern = src.Pattern
+            If pattern IsNot Nothing Then dst.Pattern = pattern
+        End Sub
 
-            If path.PaintMode = PdfDrawMode.Stroke OrElse path.PaintMode = PdfDrawMode.FillAndStroke Then
-                Dim color As PdfColor = path.Pen.Color
-                If color IsNot Nothing Then
-                    target.Pen.Color = color
-                End If
+        Private Shared Sub setPen(ByVal dst As PdfPen, ByVal src As PdfPenInfo)
+            Dim color As PdfColor = src.Color
+            If color IsNot Nothing Then dst.Color = color
 
-                Dim pattern As PdfPattern = path.Pen.Pattern
-                If color IsNot Nothing Then
-                    target.Pen.Pattern = pattern
-                End If
+            Dim pattern = src.Pattern
+            If pattern IsNot Nothing Then dst.Pattern = pattern
 
-                target.Pen.DashPattern = path.Pen.DashPattern
-                target.Pen.EndCap = path.Pen.EndCap
-                target.Pen.LineJoin = path.Pen.LineJoin
-                target.Pen.MiterLimit = path.Pen.MiterLimit
-                target.Pen.Opacity = path.Pen.Opacity
-                target.Pen.Width = path.Pen.Width
-            End If
+            dst.DashPattern = src.DashPattern
+            dst.EndCap = src.EndCap
+            dst.LineJoin = src.LineJoin
+            dst.MiterLimit = src.MiterLimit
+            dst.Opacity = src.Opacity
+            dst.Width = src.Width
         End Sub
 
         Private Shared Sub appendPath(target As PdfCanvas, path As PdfPath)
@@ -168,12 +159,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
         Private Shared Sub drawText(target As PdfCanvas, td As PdfTextData, pdf As PdfDocument)
             target.TextRenderingMode = td.RenderingMode
-            target.Brush.Color = td.Brush.Color
-            target.Brush.Opacity = td.Brush.Opacity
-
-            target.Pen.Color = td.Pen.Color
-            target.Pen.Opacity = td.Pen.Opacity
-            target.Pen.Width = td.Pen.Width
+            setBrush(target.Brush, td.Brush)
+            setPen(target.Pen, td.Pen)
 
             target.TextPosition = PdfPoint.Empty
             target.FontSize = td.FontSize

@@ -1,7 +1,4 @@
-using System;
 using System.Diagnostics;
-
-using BitMiracle.Docotic.Pdf;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -38,7 +35,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         {
                             PdfPath path = (PdfPath)obj;
                             target.Transform(path.TransformationMatrix);
-                            setBrushAndPen(target, path);
+
+                            if (path.PaintMode == PdfDrawMode.Fill || path.PaintMode == PdfDrawMode.FillAndStroke)
+                                setBrush(target.Brush, path.Brush);
+
+                            if (path.PaintMode == PdfDrawMode.Stroke || path.PaintMode == PdfDrawMode.FillAndStroke)
+                                setPen(target.Pen, path.Pen);
 
                             appendPath(target, path);
                             drawPath(target, path);
@@ -49,7 +51,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                             target.TranslateTransform(image.Position.X, image.Position.Y);
                             target.Transform(image.TransformationMatrix);
 
-                            target.Brush.Color = new PdfRgbColor(255, 255, 255);
+                            setBrush(target.Brush, image.Brush);
                             target.DrawImage(image.Image, 0, 0, 0);
                         }
                         else if (obj.Type == PdfPageObjectType.Text)
@@ -93,38 +95,35 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
         }
 
-        private static void setBrushAndPen(PdfCanvas target, PdfPath path)
+        private static void setBrush(PdfBrush dst, PdfBrushInfo src)
         {
-            if (path.PaintMode == PdfDrawMode.Fill || path.PaintMode == PdfDrawMode.FillAndStroke)
-            {
-                PdfColor color = path.Brush.Color;
-                if (color != null)
-                    target.Brush.Color = color;
+            PdfColor color = src.Color;
+            if (color != null)
+                dst.Color = color;
 
-                target.Brush.Opacity = path.Brush.Opacity;
+            dst.Opacity = src.Opacity;
 
-                var pattern = path.Brush.Pattern;
-                if (pattern != null)
-                    target.Brush.Pattern = pattern;
-            }
+            var pattern = src.Pattern;
+            if (pattern != null)
+                dst.Pattern = pattern;
+        }
 
-            if (path.PaintMode == PdfDrawMode.Stroke || path.PaintMode == PdfDrawMode.FillAndStroke)
-            {
-                PdfColor color = path.Pen.Color;
-                if (color != null)
-                    target.Pen.Color = color;
+        private static void setPen(PdfPen dst, PdfPenInfo src)
+        {
+            PdfColor color = src.Color;
+            if (color != null)
+                dst.Color = color;
 
-                var pattern = path.Pen.Pattern;
-                if (pattern != null)
-                    target.Pen.Pattern = pattern;
+            var pattern = src.Pattern;
+            if (pattern != null)
+                dst.Pattern = pattern;
 
-                target.Pen.DashPattern = path.Pen.DashPattern;
-                target.Pen.EndCap = path.Pen.EndCap;
-                target.Pen.LineJoin = path.Pen.LineJoin;
-                target.Pen.MiterLimit = path.Pen.MiterLimit;
-                target.Pen.Opacity = path.Pen.Opacity;
-                target.Pen.Width = path.Pen.Width;
-            }
+            dst.DashPattern = src.DashPattern;
+            dst.EndCap = src.EndCap;
+            dst.LineJoin = src.LineJoin;
+            dst.MiterLimit = src.MiterLimit;
+            dst.Opacity = src.Opacity;
+            dst.Width = src.Width;
         }
 
         private static void appendPath(PdfCanvas target, PdfPath path)
@@ -188,12 +187,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
         private static void drawText(PdfCanvas target, PdfTextData td, PdfDocument pdf)
         {
             target.TextRenderingMode = td.RenderingMode;
-            target.Brush.Color = td.Brush.Color;
-            target.Brush.Opacity = td.Brush.Opacity;
-
-            target.Pen.Color = td.Pen.Color;
-            target.Pen.Opacity = td.Pen.Opacity;
-            target.Pen.Width = td.Pen.Width;
+            setBrush(target.Brush, td.Brush);
+            setPen(target.Pen, td.Pen);
 
             target.TextPosition = PdfPoint.Empty;
             target.FontSize = td.FontSize;
