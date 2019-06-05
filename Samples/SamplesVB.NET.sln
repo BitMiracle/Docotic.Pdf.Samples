@@ -253,6 +253,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SaveAsBitonalTiff", "Draw a
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ReplaceImage", "Images\ReplaceImage\VB.NET\ReplaceImage.vbproj", "{EBCF09CA-22BD-4C83-ABBF-FF4329FD5E6B}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "HeaderAndFooter", "Pages and Navigation\HeaderAndFooter\VB.NET\HeaderAndFooter.vbproj", "{50D3BC5A-A2F7-497C-B9C5-4539927484A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -699,6 +701,10 @@ Global
 		{EBCF09CA-22BD-4C83-ABBF-FF4329FD5E6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBCF09CA-22BD-4C83-ABBF-FF4329FD5E6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBCF09CA-22BD-4C83-ABBF-FF4329FD5E6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50D3BC5A-A2F7-497C-B9C5-4539927484A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50D3BC5A-A2F7-497C-B9C5-4539927484A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50D3BC5A-A2F7-497C-B9C5-4539927484A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50D3BC5A-A2F7-497C-B9C5-4539927484A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -814,6 +820,7 @@ Global
 		{574DF59C-78CF-4933-B415-BB24DCA8910F} = {54CF5EBF-5111-4560-8418-63280CB6976E}
 		{D94DE0AC-27FC-48D4-9EBA-E20076F5E257} = {5F899968-F0A4-4E85-BF25-6C45222AAD08}
 		{EBCF09CA-22BD-4C83-ABBF-FF4329FD5E6B} = {E0428E1E-3748-44F9-A06E-66D4E757F8D0}
+		{50D3BC5A-A2F7-497C-B9C5-4539927484A4} = {95D099C2-F75E-42E9-A456-AA49450CF922}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {50A18C19-4AC0-4BF0-9AA5-7C45E6C1E9A6}
