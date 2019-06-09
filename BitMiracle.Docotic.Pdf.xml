@@ -345,6 +345,32 @@
             </summary>
       <value>The uniform resource identifier (URI) to resolve.</value>
     </member>
+    <member name="T:BitMiracle.Docotic.Pdf.PdfCalGrayColorSpace">
+      <summary>
+            Represents a CIE-based A color space with one transformation stage instead of two.
+            </summary>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfCalGrayColorSpace.ToString">
+      <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+      <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+    </member>
+    <member name="T:BitMiracle.Docotic.Pdf.PdfCalRgbColorSpace">
+      <summary>
+            Represents a CIE-based ABC color space with one transformation stage instead of two.
+            </summary>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfCalRgbColorSpace.ToString">
+      <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+      <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+    </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfCmykColor">
       <summary>
             Represents a color in a CMYK color space.
@@ -553,6 +579,19 @@
             </summary>
       <value>The default color for this color space.</value>
     </member>
+    <member name="T:BitMiracle.Docotic.Pdf.PdfDeviceNColorSpace">
+      <summary>
+            Represents a DeviceN color space.
+            </summary>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfDeviceNColorSpace.ToString">
+      <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+      <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+    </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfGrayColor">
       <summary>
             Represents a color in a Gray color space.
@@ -610,6 +649,38 @@
             </summary>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfGrayColorSpace.ToString">
+      <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+      <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+    </member>
+    <member name="T:BitMiracle.Docotic.Pdf.PdfIndexedColor">
+      <summary>
+            Represents a color in an indexed color space.
+            </summary>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfIndexedColor.ToColor">
+      <summary>
+            Converts this <see cref="T:BitMiracle.Docotic.Pdf.PdfIndexedColor" /> to the equivalent <see cref="T:System.Drawing.Color" /> structure.
+            </summary>
+      <returns>The <see cref="T:System.Drawing.Color" /> structure that is the equivalent to this <see cref="T:BitMiracle.Docotic.Pdf.PdfIndexedColor" />.</returns>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfIndexedColor.ToString">
+      <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+      <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+    </member>
+    <member name="T:BitMiracle.Docotic.Pdf.PdfIndexedColorSpace">
+      <summary>
+            Represents an indexed color space.
+            </summary>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfIndexedColorSpace.ToString">
       <summary>
             Returns a <see cref="T:System.String" /> that represents this instance.
             </summary>
@@ -773,6 +844,19 @@
       </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfLabColorSpace.ToString">
+      <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+      <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+    </member>
+    <member name="T:BitMiracle.Docotic.Pdf.PdfPatternColorSpace">
+      <summary>
+            Represents a pattern color space.
+            </summary>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfPatternColorSpace.ToString">
       <summary>
             Returns a <see cref="T:System.String" /> that represents this instance.
             </summary>
@@ -3511,7 +3595,7 @@
         <para>
             Each input value <c>x</c> will return <c>n</c> values, given by
             y<sub>j</sub> = C0<sub>j</sub> + x<sup>N</sup> * (C1<sub>j</sub> в€’ C0<sub>j</sub>),
-            for 0 ≤ j &lt; n. Where N is the interpolation exponent specified by
+            for 0 в‰¤ j &lt; n. Where N is the interpolation exponent specified by
             <paramref name="exponent" /> parameter.
             </para>
         <para>
@@ -3537,7 +3621,7 @@
         <para>
             Each input value <c>x</c> will return <c>n</c> values, given by
             y<sub>j</sub> = C0<sub>j</sub> + x<sup>N</sup> * (C1<sub>j</sub> в€’ C0<sub>j</sub>),
-            for 0 ≤ j &lt; n. Where N is the interpolation exponent specified by
+            for 0 в‰¤ j &lt; n. Where N is the interpolation exponent specified by
             <paramref name="exponent" /> parameter.
             </para>
         <para>Since the range of the function is not set, output values won't be clipped.</para>
@@ -3561,7 +3645,7 @@
         <para>
             Each input value <c>x</c> will return <c>n</c> values, given by
             y<sub>j</sub> = C0<sub>j</sub> + x<sup>N</sup> * (C1<sub>j</sub> в€’ C0<sub>j</sub>),
-            for 0 ≤ j &lt; n. Where N is the interpolation exponent specified by
+            for 0 в‰¤ j &lt; n. Where N is the interpolation exponent specified by
             <paramref name="exponent" /> parameter.
             </para>
         <para>Output values will be clipped to the range of the function specified by
@@ -7131,7 +7215,7 @@
             </para>
         <para>
             Moving inline images to resources can decrease length of the collection of the owning
-            page images. This is because the library deduplicates images when moving them to resources.
+            page images. This is because the library de-duplicates images when moving them to resources.
             </para>
       </remarks>
       <overloads>Moves inline images to resources.</overloads>
@@ -7158,7 +7242,7 @@
             </para>
         <para>
             Moving inline images to resources can decrease length of the collection of the owning
-            page images. This is because the library deduplicates images when moving them to resources.
+            page images. This is because the library de-duplicates images when moving them to resources.
             </para>
       </remarks>
     </member>
@@ -10834,6 +10918,10 @@
             Regular images are stored independently of any page contents. Pages that use a regular
             image contain a reference to the image. Any number of pages can reference the same
             regular image.
+            </para>
+        <para>
+            Inline images can not be recompressed and you can not replace their contents unless
+            you move them to resources using <see cref="Overload:BitMiracle.Docotic.Pdf.PdfCanvas.MoveInlineImagesToResources" />.
             </para>
       </remarks>
     </member>
