@@ -14941,6 +14941,33 @@
             Class for a user permissions of PDF document.
             </summary>
     </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfPermissions.IsOwner">
+      <summary>
+            Gets a value indicating whether full (owner) access to the document is allowed.
+            </summary>
+      <value>
+        <c>true</c> if full (owner) access to the document is allowed;
+            otherwise, <c>false</c>.</value>
+      <remarks>
+        <para>
+            Full (owner) access is allowed when:
+            </para>
+        <list type="bullet">
+          <item>An encrypted document is opened with its owner password</item>
+          <item>An unencrypted document is opened</item>
+          <item>A document is created from scratch</item>
+          <item>
+          </item>
+        </list>
+        <para>
+            Owner access allows changing of document's passwords and access permissions.
+            </para>
+        <para>
+            Full access is not allowed when an encrypted document is opened with its user password.
+            In such a case all allowed operations are specified by this <see cref="T:BitMiracle.Docotic.Pdf.PdfPermissions" />.
+            </para>
+      </remarks>
+    </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfPermissions.Flags">
       <summary>
             Gets or sets the permissions as bit flags
