@@ -52,42 +52,6 @@
       <Link>Sample Data\Freedman Scora.pdf</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="..\..\..\Sample Data\Tesseract Language Data\eng.cube.bigrams">
-      <Link>tessdata\eng.cube.bigrams</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\..\..\Sample Data\Tesseract Language Data\eng.cube.fold">
-      <Link>tessdata\eng.cube.fold</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\..\..\Sample Data\Tesseract Language Data\eng.cube.lm">
-      <Link>tessdata\eng.cube.lm</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\..\..\Sample Data\Tesseract Language Data\eng.cube.nn">
-      <Link>tessdata\eng.cube.nn</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\..\..\Sample Data\Tesseract Language Data\eng.cube.params">
-      <Link>tessdata\eng.cube.params</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\..\..\Sample Data\Tesseract Language Data\eng.cube.size">
-      <Link>tessdata\eng.cube.size</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\..\..\Sample Data\Tesseract Language Data\eng.cube.word-freq">
-      <Link>tessdata\eng.cube.word-freq</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\..\..\Sample Data\Tesseract Language Data\eng.tesseract_cube.nn">
-      <Link>tessdata\eng.tesseract_cube.nn</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\..\..\Sample Data\Tesseract Language Data\eng.traineddata">
-      <Link>tessdata\eng.traineddata</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -98,7 +62,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\..\..\packages\Tesseract.3.3.0\build\Tesseract.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Tesseract.3.3.0\build\Tesseract.targets'))" />
+    <Error Condition="!Exists('..\..\..\packages\Tesseract.Data.English.3.4.0\build\Tesseract.Data.English.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Tesseract.Data.English.3.4.0\build\Tesseract.Data.English.targets'))" />
   </Target>
+  <Import Project="..\..\..\packages\Tesseract.Data.English.3.4.0\build\Tesseract.Data.English.targets" Condition="Exists('..\..\..\packages\Tesseract.Data.English.3.4.0\build\Tesseract.Data.English.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
