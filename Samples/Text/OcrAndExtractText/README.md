@@ -8,4 +8,4 @@ Follow these steps to do OCR when PDF page does not contain searchable text:
 
 If your documents contain text in language(s) other than English, then make sure to provide [Language Data Files for Tesseract 3.04/3.05](https://github.com/tesseract-ocr/tessdata/tree/3.04.00) for the language(s) of your document.
 
-Also ensure that you have [Visual Studio 2015 x86 & x64 runtimes](https://www.microsoft.com/en-us/download/details.aspx?id=48145) installed
+Also ensure that you have [Visual Studio 2015 x86 & x64 runtimes](https://www.microsoft.com/en-us/download/details.aspx?id=48145) installed.
