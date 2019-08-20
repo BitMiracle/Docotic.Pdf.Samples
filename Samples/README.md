@@ -145,6 +145,8 @@
 
 [Image masks](/Samples/Images/ImageMasks)
 
+[Replace image](/Samples/Images/ReplaceImage)
+
 # Layers
 [Add annotations and controls to layers](/Samples/Layers/AddAnnotationsAndControlsToLayers)
 
