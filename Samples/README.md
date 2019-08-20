@@ -210,9 +210,15 @@
 
 [Extract text by words](/Samples/Text/ExtractTextByWords)
 
+[Extract text on AWS Lambda](/Samples/Text/ExtractTextOnAwsLambda)
+
+[Find and highlight text](/Samples/Text/FindAndHighlightText)
+
 [Fonts](/Samples/Text/Fonts)
 
 [Internationalization](/Samples/Text/Internationalization)
+
+[OCR PDF and extract plain text](/Samples/Text/OcrAndExtractText)
 
 [Tables](/Samples/Text/Tables)
 
