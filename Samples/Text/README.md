@@ -21,6 +21,14 @@ This sample shows how to extract text from a page or from entire PDF document.
 
 This sample shows how to extract text by words from a PDF page.
 
+[Extract text on AWS Lambda](/Samples/Text/ExtractTextOnAwsLambda)
+
+This sample shows how to extract text from a PDF document with non-embedded fonts in serverless environments.
+
+[Find and highlight text](/Samples/Text/FindAndHighlightText)
+
+This sample shows how to find and highlight phrase in a PDF document.
+
 [Fonts](/Samples/Text/Fonts)
 
 This sample shows how to use fonts in Docotic.Pdf library.
@@ -28,6 +36,10 @@ This sample shows how to use fonts in Docotic.Pdf library.
 [Internationalization](/Samples/Text/Internationalization)
 
 This sample shows how to draw text in different languages.
+
+[OCR PDF and extract plain text](/Samples/Text/OcrAndExtractText)
+
+This sample shows how to recognize and extract text from non-searchable PDF documents using Docotic.Pdf library and Tesseract OCR Engine.
 
 [Tables](/Samples/Text/Tables)
 
