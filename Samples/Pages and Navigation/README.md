@@ -21,6 +21,10 @@ This sample shows how to extract page objects (text, paths and images) from PdfD
 
 This sample shows how to extract pages from one PDF document to another.
 
+[Header and Footer](/Samples/Pages%20and%20Navigation/HeaderAndFooter)
+
+This sample shows how to add common header and footer to PDF document.
+
 [Create hyperlink](/Samples/Pages%20and%20Navigation/Hyperlink)
 
 This sample shows how to add hyperlink on a page of your PDF document using PdfPage.AddHyperlink() method.
