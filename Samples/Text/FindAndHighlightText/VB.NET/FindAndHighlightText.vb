@@ -53,25 +53,150 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         Private Shared Iterator Function findPhrases(
             ByVal page As PdfPage,
             ByVal wordsToFind As String(),
-            ByVal comparison As StringComparison) As IEnumerable(Of PdfRectangle()
-            )
+            ByVal comparison As StringComparison
+            ) As IEnumerable(Of PdfRectangle())
+
             If wordsToFind.Length = 0 Then Return
 
-            Dim i As Integer = 0
-            Dim foundPhrase = New PdfRectangle(wordsToFind.Length - 1) {}
-            For Each data As PdfTextData In page.GetWords()
-                If matchWord(data.Text, wordsToFind, i, comparison) Then
-                    foundPhrase(i) = getIntersectionBounds(data, wordsToFind, i)
-                    i += 1
-                    If i < wordsToFind.Length Then
-                        Continue For
+            ' We use the following algorithm:
+            ' 1. Group words by transformation matrix. We do that to properly detect neighbours for rotated text.
+            ' 2. For each group:
+            '   a. Sort words taking into account the group's transformation matrix.
+            '   b. Search phrase in the collection of sorted words.
+            Dim wordGroups As Dictionary(Of PdfMatrix, List(Of PdfTextData)) = groupWordsByTransformations(page)
+            For Each kvp In wordGroups
+                Dim transformation As PdfMatrix = kvp.Key
+                Dim words As List(Of PdfTextData) = kvp.Value
+
+                sortWords(words, transformation)
+
+                Dim i As Integer = 0
+                Dim foundPhrase = New PdfRectangle(wordsToFind.Length - 1) {}
+                For Each w As PdfTextData In words
+
+                    If matchWord(w.Text, wordsToFind, i, comparison) Then
+                        foundPhrase(i) = getIntersectionBounds(w, wordsToFind, i)
+                        i += 1
+                        If i < wordsToFind.Length Then Continue For
+
+                        Yield foundPhrase
                     End If
 
-                    Yield foundPhrase
-                End If
-
-                i = 0
+                    i = 0
+                Next
             Next
+        End Function
+
+        Private Shared Function groupWordsByTransformations(
+            ByVal page As PdfPage
+            ) As Dictionary(Of PdfMatrix, List(Of PdfTextData))
+
+            Dim result = New Dictionary(Of PdfMatrix, List(Of PdfTextData))()
+
+            For Each word As PdfTextData In page.GetWords()
+                Dim matrix As PdfMatrix = normalizeScaleFactors(word.TransformationMatrix)
+                matrix.OffsetX = 0
+                matrix.OffsetY = 0
+
+                Dim matrixChunks As List(Of PdfTextData) = Nothing
+                If result.TryGetValue(matrix, matrixChunks) Then
+                    matrixChunks.Add(word)
+                Else
+                    result(matrix) = New List(Of PdfTextData) From { word }
+                End If
+            Next
+
+            Return result
+        End Function
+
+        Private Shared Sub sortWords(
+            ByVal words As List(Of PdfTextData),
+            ByVal transformation As PdfMatrix
+            )
+
+            ' For some transformations we should invert X coordinates during sorting.
+            Dim xAxis As PdfPoint = transformVector(transformation, 1, 0)
+            Dim yAxis As PdfPoint = transformVector(transformation, 0, 1)
+            Dim xDirection As Integer = 1
+
+            ' Happens when space is rotated on 90 or 270 degrees
+            If Math.Abs(xAxis.X) < 0.0001 Then
+                ' Happens when transformed coordinates fall to 2nd Or 4th quarter.
+                '          y
+                '          ^
+                '   2nd    |   1st
+                '          |
+                ' ------------------> x
+                '          |
+                '   3rd    |   4th
+                '          |
+                '
+                If Math.Sign(xAxis.Y) <> Math.Sign(yAxis.X) Then xDirection = -1
+            End If
+
+            words.Sort(
+                Function(x, y)
+                    Dim yDiff As Double = measureVerticalDistance(x.Position, y.Position, transformation)
+                    If Math.Abs(yDiff) > 0.0001 Then Return yDiff.CompareTo(0)
+
+                    Dim xDiff As Double = measureHorizontalDistance(x.Position, y.Position, transformation)
+                    Return (xDiff * xDirection).CompareTo(0)
+                End Function
+            )
+        End Sub
+
+        Private Shared Function normalizeScaleFactors(ByVal m As PdfMatrix) As PdfMatrix
+            Dim scale As Double = getScaleFactor(m.M11, m.M12, m.M21, m.M22)
+
+            ' Round to 1 fractional digit to avoid separation of similar matrices
+            ' Like { 1, 0, 0, 1.12, 0, 0 } And { 1, 0, 0, 1.14, 0, 0 }
+            m.M11 = Math.Round(m.M11 / scale, 1)
+            m.M12 = Math.Round(m.M12 / scale, 1)
+            m.M21 = Math.Round(m.M21 / scale, 1)
+            m.M22 = Math.Round(m.M22 / scale, 1)
+            Return m
+        End Function
+
+        Private Shared Function getScaleFactor(ParamArray values As Double()) As Double
+            Dim result As Double = Double.MaxValue
+
+            For Each val As Double In values
+                Dim abs As Double = Math.Abs(val)
+                If abs > 0.001 AndAlso abs < result Then result = abs
+            Next
+
+            Return result
+        End Function
+
+        Private Shared Function measureHorizontalDistance(
+            ByVal first As PdfPoint,
+            ByVal second As PdfPoint,
+            ByVal m As PdfMatrix
+            ) As Double
+
+            Return m.M11 * (first.X - second.X) + m.M21 * (first.Y - second.Y)
+        End Function
+
+        Private Shared Function measureVerticalDistance(
+            ByVal first As PdfPoint,
+            ByVal second As PdfPoint,
+            ByVal m As PdfMatrix
+            ) As Double
+
+            Return m.M12 * (first.X - second.X) + m.M22 * (first.Y - second.Y)
+        End Function
+
+        Private Shared Function transformVector(
+            ByVal m As PdfMatrix,
+            ByVal x As Double,
+            ByVal y As Double
+            ) As PdfPoint
+
+            ' Multiply
+            '           | m11     m12      0 |
+            ' |x y 1| * | m21     m22      0 | = | (m11 * x + m21 * y + offsetX) (m12 * x + m22 * y + offsetY) |
+            '           | offsetX offsetY  1 |
+            Return New PdfPoint(m.M11 * x + m.M21 * y + m.OffsetX, m.M12 * x + m.M22 * y + m.OffsetY)
         End Function
 
         Private Shared Function getIntersectionBounds(ByVal data As PdfTextData, ByVal wordsToFind As String(), ByVal i As Integer) As PdfRectangle
