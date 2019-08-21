@@ -56,28 +56,147 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 }
             }
         }
+
         private static IEnumerable<PdfRectangle[]> findPhrases(PdfPage page, string[] wordsToFind,
             StringComparison comparison)
         {
             if (wordsToFind.Length == 0)
                 yield break;
 
-            int i = 0;
-            var foundPhrase = new PdfRectangle[wordsToFind.Length];
-            foreach (PdfTextData data in page.GetWords())
+            // We use the following algorithm:
+            // 1. Group words by transformation matrix. We do that to properly detect neighbours for rotated text.
+            // 2. For each group:
+            //   a. Sort words taking into account the group's transformation matrix.
+            //   b. Search phrase in the collection of sorted words.
+            Dictionary<PdfMatrix, List<PdfTextData>> wordGroups = groupWordsByTransformations(page);
+            foreach (var kvp in wordGroups)
             {
-                if (matchWord(data.Text, wordsToFind, i, comparison))
+                PdfMatrix transformation = kvp.Key;
+                List<PdfTextData> words = kvp.Value;
+
+                sortWords(words, transformation);
+
+                int i = 0;
+                var foundPhrase = new PdfRectangle[wordsToFind.Length];
+                foreach (PdfTextData w in words)
                 {
-                    foundPhrase[i] = getIntersectionBounds(data, wordsToFind, i);
-                    ++i;
-                    if (i < wordsToFind.Length)
-                        continue;
+                    if (matchWord(w.Text, wordsToFind, i, comparison))
+                    {
+                        foundPhrase[i] = getIntersectionBounds(w, wordsToFind, i);
+                        ++i;
+                        if (i < wordsToFind.Length)
+                            continue;
 
-                    yield return foundPhrase;
+                        yield return foundPhrase;
+                    }
+
+                    i = 0;
                 }
-
-                i = 0;
             }
+        }
+
+        private static Dictionary<PdfMatrix, List<PdfTextData>> groupWordsByTransformations(PdfPage page)
+        {
+            var result = new Dictionary<PdfMatrix, List<PdfTextData>>();
+            foreach (PdfTextData word in page.GetWords())
+            {
+                PdfMatrix matrix = normalizeScaleFactors(word.TransformationMatrix);
+                matrix.OffsetX = 0;
+                matrix.OffsetY = 0;
+
+                if (result.TryGetValue(matrix, out List<PdfTextData> matrixChunks))
+                    matrixChunks.Add(word);
+                else
+                    result[matrix] = new List<PdfTextData> { word };
+            }
+
+            return result;
+        }
+
+        private static void sortWords(List<PdfTextData> words, PdfMatrix transformation)
+        {
+            // For some transformations we should invert X coordinates during sorting.
+            PdfPoint xAxis = transformVector(transformation, 1, 0);
+            PdfPoint yAxis = transformVector(transformation, 0, 1);
+
+            int xDirection = 1;
+
+            // Happens when space is rotated on 90 or 270 degrees
+            if (Math.Abs(xAxis.X) < 0.0001)
+            {
+                // Happens when transformed coordinates fall to 2nd or 4th quarter.
+                //          y
+                //          ^
+                //   2nd    |   1st
+                //          |
+                // ------------------> x
+                //          |
+                //   3rd    |   4th
+                //          |
+                //
+                if (Math.Sign(xAxis.Y) != Math.Sign(yAxis.X))
+                    xDirection = -1;
+            }
+
+            words.Sort((x, y) =>
+            {
+                double yDiff = measureVerticalDistance(x.Position, y.Position, transformation);
+                if (Math.Abs(yDiff) > 0.0001)
+                    return yDiff.CompareTo(0);
+
+                double xDiff = measureHorizontalDistance(x.Position, y.Position, transformation);
+                return (xDiff * xDirection).CompareTo(0);
+            });
+        }
+
+        private static PdfMatrix normalizeScaleFactors(PdfMatrix m)
+        {
+            double scale = getScaleFactor(m.M11, m.M12, m.M21, m.M22);
+
+            // Round to 1 fractional digit to avoid separation of similar matrices
+            // like { 1, 0, 0, 1.12, 0, 0 } and { 1, 0, 0, 1.14, 0, 0 }
+            m.M11 = Math.Round(m.M11 / scale, 1);
+            m.M12 = Math.Round(m.M12 / scale, 1);
+            m.M21 = Math.Round(m.M21 / scale, 1);
+            m.M22 = Math.Round(m.M22 / scale, 1);
+
+            return m;
+        }
+
+        public static double getScaleFactor(params double[] values)
+        {
+            double result = double.MaxValue;
+            foreach (double val in values)
+            {
+                double abs = Math.Abs(val);
+                if (abs > 0.001 && abs < result)
+                    result = abs;
+            }
+
+            return result;
+        }
+
+        private static double measureHorizontalDistance(PdfPoint first, PdfPoint second, PdfMatrix m)
+        {
+            return m.M11 * (first.X - second.X) + m.M21 * (first.Y - second.Y);
+        }
+
+        private static double measureVerticalDistance(PdfPoint first, PdfPoint second, PdfMatrix m)
+        {
+            return m.M12 * (first.X - second.X) + m.M22 * (first.Y - second.Y);
+        }
+
+        private static PdfPoint transformVector(PdfMatrix m, double x, double y)
+        {
+            // Multiply:
+            //           | m11     m12      0 |
+            // |x y 1| * | m21     m22      0 | = | (m11 * x + m21 * y + offsetX) (m12 * x + m22 * y + offsetY) |
+            //           | offsetX offsetY  1 |
+
+            return new PdfPoint(
+                m.M11 * x + m.M21 * y + m.OffsetX,
+                m.M12 * x + m.M22 * y + m.OffsetY
+            );
         }
 
         private static PdfRectangle getIntersectionBounds(PdfTextData data, string[] wordsToFind, int i)
