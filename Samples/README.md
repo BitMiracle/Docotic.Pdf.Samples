@@ -174,6 +174,8 @@
 
 [Extract pages](/Samples/Pages%20and%20Navigation/ExtractPages)
 
+[Header and Footer](/Samples/Pages%20and%20Navigation/HeaderAndFooter)
+
 [Create hyperlink](/Samples/Pages%20and%20Navigation/Hyperlink)
 
 [Create link to page](/Samples/Pages%20and%20Navigation/LinkToPage)
