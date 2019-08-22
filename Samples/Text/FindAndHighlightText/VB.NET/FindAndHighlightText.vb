@@ -58,6 +58,24 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             If wordsToFind.Length = 0 Then Return
 
+            If wordsToFind.Length = 1 Then
+                Dim word As String = wordsToFind(0)
+
+                For Each w As PdfTextData In page.GetWords()
+                    Dim index As Integer = -1
+
+                    While True
+                        index = w.Text.IndexOf(word, index + 1, comparison)
+                        If index < 0 Then Exit While
+
+                        Dim intersection As PdfRectangle = getIntersectionBounds(w, index, word.Length)
+                        Yield {intersection}
+                    End While
+                Next
+
+                Return
+            End If
+
             ' We use the following algorithm:
             ' 1. Group words by transformation matrix. We do that to properly detect neighbours for rotated text.
             ' 2. For each group:
@@ -75,7 +93,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 For Each w As PdfTextData In words
 
                     If matchWord(w.Text, wordsToFind, i, comparison) Then
-                        foundPhrase(i) = getIntersectionBounds(w, wordsToFind, i)
+                        Dim wordLength As Integer = wordsToFind(i).Length
+                        Dim startIndex As Integer = If((i = 0), (w.Text.Length - wordLength), 0)
+                        foundPhrase(i) = getIntersectionBounds(w, startIndex, wordLength)
                         i += 1
                         If i < wordsToFind.Length Then Continue For
 
@@ -199,18 +219,21 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Return New PdfPoint(m.M11 * x + m.M21 * y + m.OffsetX, m.M12 * x + m.M22 * y + m.OffsetY)
         End Function
 
-        Private Shared Function getIntersectionBounds(ByVal data As PdfTextData, ByVal wordsToFind As String(), ByVal i As Integer) As PdfRectangle
+        Private Shared Function getIntersectionBounds(
+            ByVal data As PdfTextData,
+            ByVal startIndex As Integer,
+            ByVal length As Integer
+            ) As PdfRectangle
+
             Dim text As String = data.Text
-            Dim wordLength As Integer = wordsToFind(i).Length
-            If text.Length = wordLength Then
+            If startIndex = 0 AndAlso text.Length = length Then
                 Return data.Bounds
             End If
 
-            Dim startIndex As Integer = If((i = 0), (text.Length - wordLength), 0)
             Dim charBounds As IEnumerable(Of PdfRectangle) = data _
                 .GetCharacters() _
                 .Skip(startIndex) _
-                .Take(wordLength) _
+                .Take(length) _
                 .[Select](Function(c) c.Bounds)
 
             Dim union As PdfRectangle = charBounds.First()
@@ -227,6 +250,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ByVal wordIndex As Integer,
             ByVal comparison As StringComparison
             ) As Boolean
+
+            Debug.Assert(wordsToFind.Length > 1)
+
             Dim word As String = wordsToFind(wordIndex)
             If wordIndex = 0 Then
                 Return text.EndsWith(word, comparison)

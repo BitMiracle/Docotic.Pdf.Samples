@@ -63,6 +63,26 @@ namespace BitMiracle.Docotic.Pdf.Samples
             if (wordsToFind.Length == 0)
                 yield break;
 
+            if (wordsToFind.Length == 1)
+            {
+                string word = wordsToFind[0];
+                foreach (PdfTextData w in page.GetWords())
+                {
+                    int index = -1;
+                    for (;;)
+                    {
+                        index = w.Text.IndexOf(word, index + 1, comparison);
+                        if (index < 0)
+                            break;
+
+                        PdfRectangle intersection = getIntersectionBounds(w, index, word.Length);
+                        yield return new[] { intersection };
+                    }
+                }
+
+                yield break;
+            }
+
             // We use the following algorithm:
             // 1. Group words by transformation matrix. We do that to properly detect neighbours for rotated text.
             // 2. For each group:
@@ -82,7 +102,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 {
                     if (matchWord(w.Text, wordsToFind, i, comparison))
                     {
-                        foundPhrase[i] = getIntersectionBounds(w, wordsToFind, i);
+                        int wordLength = wordsToFind[i].Length;
+                        int startIndex = (i == 0) ? (w.Text.Length - wordLength) : 0;
+                        foundPhrase[i] = getIntersectionBounds(w, startIndex, wordLength);
                         ++i;
                         if (i < wordsToFind.Length)
                             continue;
@@ -199,17 +221,15 @@ namespace BitMiracle.Docotic.Pdf.Samples
             );
         }
 
-        private static PdfRectangle getIntersectionBounds(PdfTextData data, string[] wordsToFind, int i)
+        private static PdfRectangle getIntersectionBounds(PdfTextData data, int startIndex, int length)
         {
             string text = data.Text;
-            int wordLength = wordsToFind[i].Length;
-            if (text.Length == wordLength)
+            if (startIndex == 0 && text.Length == length)
                 return data.Bounds;
 
-            int startIndex = (i == 0) ? (text.Length - wordLength) : 0;
             IEnumerable<PdfRectangle> charBounds = data.GetCharacters()
                 .Skip(startIndex)
-                .Take(wordLength)
+                .Take(length)
                 .Select(c => c.Bounds);
 
             PdfRectangle union = charBounds.First();
@@ -221,6 +241,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static bool matchWord(string text, string[] wordsToFind, int wordIndex, StringComparison comparison)
         {
+            Debug.Assert(wordsToFind.Length > 1);
+
             string word = wordsToFind[wordIndex];
             if (wordIndex == 0)
                 return text.EndsWith(word, comparison);
