@@ -34,7 +34,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         var canvas = page.Canvas;
                         canvas.Font = universalFont;
 
-                        // produce invisible, but searchable text
+                        // Produce invisible, but searchable text
                         canvas.TextRenderingMode = PdfTextRenderingMode.NeitherFillNorStroke;
 
                         const int Dpi = 600;
