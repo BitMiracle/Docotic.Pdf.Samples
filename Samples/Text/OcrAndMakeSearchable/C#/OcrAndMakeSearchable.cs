@@ -52,7 +52,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                                 bounds.Height * ImageToPdfScaleFactor
                             );
 
-                            tuneFontSize(word.Text, pdfBounds.Width, canvas);
+                            tuneFontSize(canvas, pdfBounds.Width, word.Text);
 
                             double distanceToBaseLine = getDistanceToBaseline(canvas.Font, canvas.FontSize);
                             canvas.DrawString(pdfBounds.Left, pdfBounds.Bottom - distanceToBaseLine, word.Text);
@@ -102,28 +102,30 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
         }
 
-        private static void tuneFontSize(string text, double targetTextWidth, PdfCanvas canvas)
+        private static void tuneFontSize(PdfCanvas canvas, double targetTextWidth, string text)
         {
             const double Step = 0.1;
 
+            double bestFontSize = canvas.FontSize;
+            double bestDiff = targetTextWidth - canvas.GetTextWidth(text);
             while (true)
             {
-                double bestFontSize = canvas.FontSize;
-
-                double diff = targetTextWidth - canvas.GetTextWidth(text);
-                int diffSign = Math.Sign(diff);
+                int diffSign = Math.Sign(bestDiff);
                 if (diffSign == 0)
-                    return;
+                    break;
 
                 // try neigbour font size
                 canvas.FontSize += diffSign * Step;
 
                 double newDiff = targetTextWidth - canvas.GetTextWidth(text);
-                if (Math.Abs(newDiff) > Math.Abs(diff))
+                if (Math.Abs(newDiff) > Math.Abs(bestDiff))
                 {
                     canvas.FontSize = bestFontSize;
-                    return;
+                    break;
                 }
+
+                bestDiff = newDiff;
+                bestFontSize = canvas.FontSize;
             }
         }
 
