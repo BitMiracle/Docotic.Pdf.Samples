@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{AB247740-0ED8-40BF-9532-455B0FEFE917}"
 EndProject
@@ -260,6 +260,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindAndHighlightText", "Text\FindAndHighlightText\C#\FindAndHighlightText.csproj", "{857BF02A-F025-40AF-93FA-376228679CB9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcrAndExtractText", "Text\OcrAndExtractText\C#\OcrAndExtractText.csproj", "{94AA32E3-7AD6-4AB8-8E8D-2CE31C2FA46E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcrAndMakeSearchable", "Text\OcrAndMakeSearchable\C#\OcrAndMakeSearchable.csproj", "{3831AC8C-2D49-40B3-9DB6-7B5ADFE9C268}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -723,6 +725,10 @@ Global
 		{94AA32E3-7AD6-4AB8-8E8D-2CE31C2FA46E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94AA32E3-7AD6-4AB8-8E8D-2CE31C2FA46E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94AA32E3-7AD6-4AB8-8E8D-2CE31C2FA46E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3831AC8C-2D49-40B3-9DB6-7B5ADFE9C268}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3831AC8C-2D49-40B3-9DB6-7B5ADFE9C268}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3831AC8C-2D49-40B3-9DB6-7B5ADFE9C268}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3831AC8C-2D49-40B3-9DB6-7B5ADFE9C268}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -842,6 +848,7 @@ Global
 		{889C70B7-92C6-47A1-B3C3-4BE34599BFE0} = {62D813CD-8D4D-4784-92AE-2FDF3F314E51}
 		{857BF02A-F025-40AF-93FA-376228679CB9} = {FECDFAB2-56E3-4382-AD93-7B1A4BAC00E0}
 		{94AA32E3-7AD6-4AB8-8E8D-2CE31C2FA46E} = {FECDFAB2-56E3-4382-AD93-7B1A4BAC00E0}
+		{3831AC8C-2D49-40B3-9DB6-7B5ADFE9C268} = {FECDFAB2-56E3-4382-AD93-7B1A4BAC00E0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61DC7F3F-A5C8-48BD-845F-83DE6BD2527B}
