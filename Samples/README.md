@@ -224,6 +224,8 @@
 
 [OCR PDF and extract plain text](/Samples/Text/OcrAndExtractText)
 
+[OCR PDF and convert to searchable document](/Samples/Text/OcrAndMakeSearchable)
+
 [Tables](/Samples/Text/Tables)
 
 [Horizontal scaling](/Samples/Text/TextHorizontalScaling)

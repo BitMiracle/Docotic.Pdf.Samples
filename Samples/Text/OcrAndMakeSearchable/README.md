@@ -1,4 +1,4 @@
-# OCR non-searchable PDF and convert to searchable document
+# OCR PDF and convert to searchable document
 This sample shows how to create searchable PDF document from a non-searchable (image-based) document using Docotic.Pdf library and [Tesseract OCR Engine](https://github.com/charlesw/tesseract).
 
 Follow these steps to do OCR when PDF page does not contain searchable text:

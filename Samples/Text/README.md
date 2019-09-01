@@ -41,6 +41,10 @@ This sample shows how to draw text in different languages.
 
 This sample shows how to recognize and extract text from non-searchable PDF documents using Docotic.Pdf library and Tesseract OCR Engine.
 
+[OCR PDF and convert to searchable document](/Samples/Text/OcrAndMakeSearchable)
+
+This sample shows how to create searchable PDF document from a non-searchable (image-based) document using Docotic.Pdf library and Tesseract OCR Engine.
+
 [Tables](/Samples/Text/Tables)
 
 This sample shows how to draw tables using methods for drawing text and lines.
