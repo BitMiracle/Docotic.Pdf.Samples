@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Tesseract;
 
@@ -32,19 +33,29 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                         var canvas = page.Canvas;
                         canvas.Font = universalFont;
+
+                        // produce invisible, but searchable text
                         canvas.TextRenderingMode = PdfTextRenderingMode.NeitherFillNorStroke;
 
                         const int Dpi = 600;
                         const double ImageToPdfScaleFactor = 72.0 / Dpi;
                         foreach (RecognizedTextChunk word in recognizeWords(page, engine, Dpi, $"page_{i}.png"))
                         {
+                            if (word.Confidence < 80)
+                                Console.WriteLine($"Possible recognition error: low confidence {word.Confidence} for word '{word.Text}'");
+
                             Rect bounds = word.Bounds;
-                            var position = new PdfPoint(
+                            PdfRectangle pdfBounds = new PdfRectangle(
                                 bounds.X1 * ImageToPdfScaleFactor,
-                                bounds.Y1 * ImageToPdfScaleFactor
+                                bounds.Y1 * ImageToPdfScaleFactor,
+                                bounds.Width * ImageToPdfScaleFactor,
+                                bounds.Height * ImageToPdfScaleFactor
                             );
-                            canvas.FontSize = bounds.Height * ImageToPdfScaleFactor;
-                            canvas.DrawString(position, word.Text);
+
+                            tuneFontSize(word.Text, pdfBounds.Width, canvas);
+
+                            double distanceToBaseLine = getDistanceToBaseline(canvas.Font, canvas.FontSize);
+                            canvas.DrawString(pdfBounds.Left, pdfBounds.Bottom - distanceToBaseLine, word.Text);
                         }
                     }
                 }
@@ -74,30 +85,65 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 {
                     using (ResultIterator iter = recognizedPage.GetIterator())
                     {
+                        const PageIteratorLevel Level = PageIteratorLevel.Word;
                         iter.Begin();
                         do
                         {
-                            if (iter.TryGetBoundingBox(PageIteratorLevel.Word, out Rect bounds))
+                            if (iter.TryGetBoundingBox(Level, out Rect bounds))
                             {
-                                string text = iter.GetText(PageIteratorLevel.Word);
-                                yield return new RecognizedTextChunk(text, bounds);
+                                string text = iter.GetText(Level);
+                                float confidence = iter.GetConfidence(Level);
+
+                                yield return new RecognizedTextChunk(text, bounds, confidence);
                             }
-                        } while (iter.Next(PageIteratorLevel.Word));
+                        } while (iter.Next(Level));
                     }
                 }
             }
         }
 
+        private static void tuneFontSize(string text, double targetTextWidth, PdfCanvas canvas)
+        {
+            const double Step = 0.1;
+
+            while (true)
+            {
+                double bestFontSize = canvas.FontSize;
+
+                double diff = targetTextWidth - canvas.GetTextWidth(text);
+                int diffSign = Math.Sign(diff);
+                if (diffSign == 0)
+                    return;
+
+                // try neigbour font size
+                canvas.FontSize += diffSign * Step;
+
+                double newDiff = targetTextWidth - canvas.GetTextWidth(text);
+                if (Math.Abs(newDiff) > Math.Abs(diff))
+                {
+                    canvas.FontSize = bestFontSize;
+                    return;
+                }
+            }
+        }
+
+        private static double getDistanceToBaseline(PdfFont font, double fontSize)
+        {
+            return font.TopSideBearing * font.TransformationMatrix.M22 * fontSize;
+        }
+
         private class RecognizedTextChunk
         {
-            public RecognizedTextChunk(string text, Rect bounds)
+            public RecognizedTextChunk(string text, Rect bounds, float confidence)
             {
                 Text = text;
                 Bounds = bounds;
+                Confidence = confidence;
             }
 
             public string Text { get; }
             public Rect Bounds { get; }
+            public float Confidence { get; }
         }
     }
 }
