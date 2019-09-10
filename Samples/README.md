@@ -147,6 +147,8 @@
 
 [Replace image](/Samples/Images/ReplaceImage)
 
+[TIFF to PDF](/Samples/Images/TiffToPdf)
+
 # Layers
 [Add annotations and controls to layers](/Samples/Layers/AddAnnotationsAndControlsToLayers)
 

@@ -263,6 +263,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcrAndExtractText", "Text\O
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcrAndMakeSearchable", "Text\OcrAndMakeSearchable\C#\OcrAndMakeSearchable.csproj", "{3831AC8C-2D49-40B3-9DB6-7B5ADFE9C268}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiffToPdf", "Images\TiffToPdf\C#\TiffToPdf.csproj", "{29D69574-A321-4B27-A368-CA5A750F6D3C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -729,6 +731,10 @@ Global
 		{3831AC8C-2D49-40B3-9DB6-7B5ADFE9C268}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3831AC8C-2D49-40B3-9DB6-7B5ADFE9C268}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3831AC8C-2D49-40B3-9DB6-7B5ADFE9C268}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29D69574-A321-4B27-A368-CA5A750F6D3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29D69574-A321-4B27-A368-CA5A750F6D3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29D69574-A321-4B27-A368-CA5A750F6D3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29D69574-A321-4B27-A368-CA5A750F6D3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -849,6 +855,7 @@ Global
 		{857BF02A-F025-40AF-93FA-376228679CB9} = {FECDFAB2-56E3-4382-AD93-7B1A4BAC00E0}
 		{94AA32E3-7AD6-4AB8-8E8D-2CE31C2FA46E} = {FECDFAB2-56E3-4382-AD93-7B1A4BAC00E0}
 		{3831AC8C-2D49-40B3-9DB6-7B5ADFE9C268} = {FECDFAB2-56E3-4382-AD93-7B1A4BAC00E0}
+		{29D69574-A321-4B27-A368-CA5A750F6D3C} = {4F5146E7-A769-4D0B-94F0-8106CC5C883B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61DC7F3F-A5C8-48BD-845F-83DE6BD2527B}
