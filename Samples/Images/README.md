@@ -37,8 +37,6 @@ This sample shows how to use mask images.
 
 This sample shows how to replace existing images in PdfDocument.
 
-This sample shows how to use mask images.
-
 [TIFF to PDF](/Samples/Images/TiffToPdf)
 
 This sample shows how to create PDF from single- and multipage TIFF images.
