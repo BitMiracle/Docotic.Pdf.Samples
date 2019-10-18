@@ -17349,6 +17349,50 @@
             A caret annotation is a visual symbol that indicates the presence of text edits.
             </remarks>
     </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfCaretAnnotation.CreationDate">
+      <summary>
+            Gets the date and time when the annotation was created.
+            </summary>
+      <value>
+            The date and time when the annotation was created or <c>null</c> if
+            there is no value set for this property.
+            </value>
+      <remarks>
+            Returned date and time are expressed in UTC (Coordinated Universal Time).
+            </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfCaretAnnotation.Color">
+      <summary>
+            Gets the color of this annotation.
+            </summary>
+      <remarks>Specified color is used for the following purposes:
+            <list type="bullet"><item><description>The color of the caret.</description></item><item><description>The title bar of the annotation's pop-up window.</description></item></list></remarks>
+      <value>The color of this annotation.</value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfCaretAnnotation.Contents">
+      <summary>
+            Gets or sets the annotation contents.
+            </summary>
+      <value>The text that is displayed when the annotation's pop-up window is open.</value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfCaretAnnotation.Subject">
+      <summary>
+            Gets or sets the annotation subject.
+            </summary>
+      <value>
+            The text representing a short description of the subject being addressed by the annotation.
+            </value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfCaretAnnotation.Author">
+      <summary>
+            Gets or sets the annotation author.
+            </summary>
+      <value>The identifier of the person who created the annotation.</value>
+      <remarks>
+            The author is displayed in the title bar of the annotation's pop-up window when the
+            window is open and active.
+            </remarks>
+    </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfCheckBox">
       <summary>
             Class for a check box control.
@@ -17793,6 +17837,50 @@
             it displays a pop-up window containing the text of the associated note.
             </remarks>
     </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfEllipseAnnotation.CreationDate">
+      <summary>
+            Gets the date and time when the annotation was created.
+            </summary>
+      <value>
+            The date and time when the annotation was created or <c>null</c> if
+            there is no value set for this property.
+            </value>
+      <remarks>
+            Returned date and time are expressed in UTC (Coordinated Universal Time).
+            </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfEllipseAnnotation.Color">
+      <summary>
+            Gets the color of this annotation.
+            </summary>
+      <remarks>Specified color is used for the following purposes:
+            <list type="bullet"><item><description>The stroke color of the ellipse.</description></item><item><description>The title bar of the annotation's pop-up window.</description></item></list></remarks>
+      <value>The color of this annotation.</value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfEllipseAnnotation.Contents">
+      <summary>
+            Gets or sets the annotation contents.
+            </summary>
+      <value>The text that is displayed when the annotation's pop-up window is open.</value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfEllipseAnnotation.Subject">
+      <summary>
+            Gets or sets the annotation subject.
+            </summary>
+      <value>
+            The text representing a short description of the subject being addressed by the annotation.
+            </value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfEllipseAnnotation.Author">
+      <summary>
+            Gets or sets the annotation author.
+            </summary>
+      <value>The identifier of the person who created the annotation.</value>
+      <remarks>
+            The author is displayed in the title bar of the annotation's pop-up window when the 
+            window is open and active.
+            </remarks>
+    </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfFileAttachmentAnnotation">
       <summary>
             Class for a file attachment annotation.
@@ -17810,6 +17898,18 @@
             </para>
       </remarks>
       <seealso cref="M:BitMiracle.Docotic.Pdf.PdfPage.AddFileAnnotation(BitMiracle.Docotic.Pdf.PdfRectangle,BitMiracle.Docotic.Pdf.PdfFileSpecification)" />
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfFileAttachmentAnnotation.CreationDate">
+      <summary>
+            Gets the date and time when the annotation was created.
+            </summary>
+      <value>
+            The date and time when the annotation was created or <c>null</c> if
+            there is no value set for this property.
+            </value>
+      <remarks>
+            Returned date and time are expressed in UTC (Coordinated Universal Time).
+            </remarks>
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfFileAttachmentAnnotation.File">
       <summary>
@@ -17833,6 +17933,14 @@
             PdfFileSpecification.<see cref="P:BitMiracle.Docotic.Pdf.PdfFileSpecification.Description" />
             property.
             </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfFileAttachmentAnnotation.Subject">
+      <summary>
+            Gets or sets the annotation subject.
+            </summary>
+      <value>
+            The text representing a short description of the subject being addressed by the annotation.
+            </value>
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfFileAttachmentAnnotation.Icon">
       <summary>
@@ -17860,6 +17968,46 @@
             text is always visible.
             </remarks>
     </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfFreeTextAnnotation.CreationDate">
+      <summary>
+            Gets the date and time when the annotation was created.
+            </summary>
+      <value>
+            The date and time when the annotation was created or <c>null</c> if
+            there is no value set for this property.
+            </value>
+      <remarks>
+            Returned date and time are expressed in UTC (Coordinated Universal Time).
+            </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfFreeTextAnnotation.BackgroundColor">
+      <summary>
+            Gets the color of the annotation background.
+            </summary>
+      <value>The color of the annotation background.</value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfFreeTextAnnotation.Text">
+      <summary>
+            Gets the text content of this annotation.
+            </summary>
+      <value>The text content of this annotation.</value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfFreeTextAnnotation.Subject">
+      <summary>
+            Gets or sets the annotation subject.
+            </summary>
+      <value>
+            The text representing a short description of the subject being addressed by the annotation.
+            </value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfFreeTextAnnotation.Author">
+      <summary>
+            Gets or sets the identifier of the person who added the annotation.
+            </summary>
+      <value>
+            The identifier of the person who added the annotation.
+            </value>
+    </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfHighlightAnnotation">
       <summary>
             Class for a highlight annotation.
@@ -17879,6 +18027,50 @@
             text of the associated note.
             </remarks>
     </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfInkAnnotation.CreationDate">
+      <summary>
+            Gets the date and time when the annotation was created.
+            </summary>
+      <value>
+            The date and time when the annotation was created or <c>null</c> if
+            there is no value set for this property.
+            </value>
+      <remarks>
+            Returned date and time are expressed in UTC (Coordinated Universal Time).
+            </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfInkAnnotation.Color">
+      <summary>
+            Gets the color of this annotation.
+            </summary>
+      <remarks>Specified color is used for the following purposes:
+            <list type="bullet"><item><description>The color of the lines.</description></item><item><description>The title bar of the annotation's pop-up window.</description></item></list></remarks>
+      <value>The color of this annotation.</value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfInkAnnotation.Contents">
+      <summary>
+            Gets or sets the annotation contents.
+            </summary>
+      <value>The text that is displayed when the annotation's pop-up window is open.</value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfInkAnnotation.Subject">
+      <summary>
+            Gets or sets the annotation subject.
+            </summary>
+      <value>
+            The text representing a short description of the subject being addressed by the annotation.
+            </value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfInkAnnotation.Author">
+      <summary>
+            Gets or sets the annotation author.
+            </summary>
+      <value>The identifier of the person who created the annotation.</value>
+      <remarks>
+            The author is displayed in the title bar of the annotation's pop-up window when the
+            window is open and active.
+            </remarks>
+    </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfJaggedUnderlineAnnotation">
       <summary>
             Class for a jagged-underline annotation.
@@ -17896,6 +18088,50 @@
       <remarks>
             A line annotation displays a single straight line on the page. When opened, 
             it displays a pop-up window containing the text of the associated note.
+            </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfLineAnnotation.CreationDate">
+      <summary>
+            Gets the date and time when the annotation was created.
+            </summary>
+      <value>
+            The date and time when the annotation was created or <c>null</c> if
+            there is no value set for this property.
+            </value>
+      <remarks>
+            Returned date and time are expressed in UTC (Coordinated Universal Time).
+            </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfLineAnnotation.Color">
+      <summary>
+            Gets the color of this annotation.
+            </summary>
+      <remarks>Specified color is used for the following purposes:
+            <list type="bullet"><item><description>The color of the line.</description></item><item><description>The title bar of the annotation's pop-up window.</description></item></list></remarks>
+      <value>The color of this annotation.</value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfLineAnnotation.Contents">
+      <summary>
+            Gets or sets the annotation contents.
+            </summary>
+      <value>The text that is displayed when the annotation's pop-up window is open.</value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfLineAnnotation.Subject">
+      <summary>
+            Gets or sets the annotation subject.
+            </summary>
+      <value>
+            The text representing a short description of the subject being addressed by the annotation.
+            </value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfLineAnnotation.Author">
+      <summary>
+            Gets or sets the annotation author.
+            </summary>
+      <value>The identifier of the person who created the annotation.</value>
+      <remarks>
+            The author is displayed in the title bar of the annotation's pop-up window when the 
+            window is open and active.
             </remarks>
     </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfListBox">
@@ -18121,6 +18357,50 @@
             may have any number of vertices connected by straight lines.
             </remarks>
     </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfPolygonAnnotation.CreationDate">
+      <summary>
+            Gets the date and time when the annotation was created.
+            </summary>
+      <value>
+            The date and time when the annotation was created or <c>null</c> if
+            there is no value set for this property.
+            </value>
+      <remarks>
+            Returned date and time are expressed in UTC (Coordinated Universal Time).
+            </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfPolygonAnnotation.Color">
+      <summary>
+            Gets the color of this annotation.
+            </summary>
+      <remarks>Specified color is used for the following purposes:
+            <list type="bullet"><item><description>The stroke color of the polygon.</description></item><item><description>The title bar of the annotation's pop-up window.</description></item></list></remarks>
+      <value>The color of this annotation.</value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfPolygonAnnotation.Contents">
+      <summary>
+            Gets or sets the annotation contents.
+            </summary>
+      <value>The text that is displayed when the annotation's pop-up window is open.</value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfPolygonAnnotation.Subject">
+      <summary>
+            Gets or sets the annotation subject.
+            </summary>
+      <value>
+            The text representing a short description of the subject being addressed by the annotation.
+            </value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfPolygonAnnotation.Author">
+      <summary>
+            Gets or sets the annotation author.
+            </summary>
+      <value>The identifier of the person who created the annotation.</value>
+      <remarks>
+            The author is displayed in the title bar of the annotation's pop-up window when the
+            window is open and active.
+            </remarks>
+    </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfPolylineAnnotation">
       <summary>
             Class for a polyline annotation.
@@ -18128,6 +18408,50 @@
       <remarks>
             Polyline annotations are similar to polygons (<see cref="T:BitMiracle.Docotic.Pdf.PdfPolygonAnnotation" />), 
             except that the first and last vertex are not implicitly connected.
+            </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfPolylineAnnotation.CreationDate">
+      <summary>
+            Gets the date and time when the annotation was created.
+            </summary>
+      <value>
+            The date and time when the annotation was created or <c>null</c> if
+            there is no value set for this property.
+            </value>
+      <remarks>
+            Returned date and time are expressed in UTC (Coordinated Universal Time).
+            </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfPolylineAnnotation.Color">
+      <summary>
+            Gets the color of this annotation.
+            </summary>
+      <remarks>Specified color is used for the following purposes:
+            <list type="bullet"><item><description>The color of the polyline.</description></item><item><description>The title bar of the annotation's pop-up window.</description></item></list></remarks>
+      <value>The color of this annotation.</value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfPolylineAnnotation.Contents">
+      <summary>
+            Gets or sets the annotation contents.
+            </summary>
+      <value>The text that is displayed when the annotation's pop-up window is open.</value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfPolylineAnnotation.Subject">
+      <summary>
+            Gets or sets the annotation subject.
+            </summary>
+      <value>
+            The text representing a short description of the subject being addressed by the annotation.
+            </value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfPolylineAnnotation.Author">
+      <summary>
+            Gets or sets the annotation author.
+            </summary>
+      <value>The identifier of the person who created the annotation.</value>
+      <remarks>
+            The author is displayed in the title bar of the annotation's pop-up window when the
+            window is open and active.
             </remarks>
     </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfPopupAnnotation">
@@ -18139,6 +18463,12 @@
             editing. It typically does not appear alone but is associated with a markup
             annotation, its parent annotation, and is used for editing the parentвЂ™s text.
             </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfPopupAnnotation.Parent">
+      <summary>
+            Gets the parent annotation for this pop-up annotation.
+            </summary>
+      <value>The parent annotation for this pop-up annotation.</value>
     </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfPrinterMarkAnnotation">
       <summary>
@@ -18212,6 +18542,50 @@
             it displays a pop-up window containing the text of the associated note.
             </remarks>
     </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfRectangleAnnotation.CreationDate">
+      <summary>
+            Gets the date and time when the annotation was created.
+            </summary>
+      <value>
+            The date and time when the annotation was created or <c>null</c> if
+            there is no value set for this property.
+            </value>
+      <remarks>
+            Returned date and time are expressed in UTC (Coordinated Universal Time).
+            </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfRectangleAnnotation.Color">
+      <summary>
+            Gets the color of this annotation.
+            </summary>
+      <remarks>Specified color is used for the following purposes:
+            <list type="bullet"><item><description>The stroke color of the rectangle.</description></item><item><description>The title bar of the annotation's pop-up window.</description></item></list></remarks>
+      <value>The color of this annotation.</value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfRectangleAnnotation.Contents">
+      <summary>
+            Gets or sets the annotation contents.
+            </summary>
+      <value>The text that is displayed when the annotation's pop-up window is open.</value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfRectangleAnnotation.Subject">
+      <summary>
+            Gets or sets the annotation subject.
+            </summary>
+      <value>
+            The text representing a short description of the subject being addressed by the annotation.
+            </value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfRectangleAnnotation.Author">
+      <summary>
+            Gets or sets the annotation author.
+            </summary>
+      <value>The identifier of the person who created the annotation.</value>
+      <remarks>
+            The author is displayed in the title bar of the annotation's pop-up window when the
+            window is open and active.
+            </remarks>
+    </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfRichMediaAnnotation">
       <summary>
             Class for a rich media annotation.
@@ -18258,6 +18632,48 @@
             indicate that it represents a sound.
             </remarks>
     </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfSoundAnnotation.CreationDate">
+      <summary>
+            Gets the date and time when the annotation was created.
+            </summary>
+      <value>
+            The date and time when the annotation was created or <c>null</c> if
+            there is no value set for this property.
+            </value>
+      <remarks>
+            Returned date and time are expressed in UTC (Coordinated Universal Time).
+            </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfSoundAnnotation.Color">
+      <summary>
+            Gets or sets the color of this annotation.
+            </summary>
+      <value>The color of the sound annotation icon.</value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfSoundAnnotation.Description">
+      <summary>
+            Gets or sets the description of this annotation.
+            </summary>
+      <value>The description of this annotation.</value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfSoundAnnotation.Subject">
+      <summary>
+            Gets or sets the annotation subject.
+            </summary>
+      <value>
+            The text representing a short description of the subject being addressed by the annotation.
+            </value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfSoundAnnotation.Author">
+      <summary>
+            Gets or sets the annotation author.
+            </summary>
+      <value>The identifier of the person who created the annotation.</value>
+      <remarks>
+            The author is displayed in the title bar of the annotation's pop-up window when the 
+            window is open and active.
+            </remarks>
+    </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfStampAnnotation">
       <summary>
             Class for a rubber stamp annotation.
@@ -18266,6 +18682,51 @@
             A rubber stamp annotation displays text or graphics intended to look as
             if they were stamped on the page with a rubber stamp. When opened, it displays a
             pop-up window containing the text of the associated note.
+            </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfStampAnnotation.CreationDate">
+      <summary>
+            Gets the date and time when the annotation was created.
+            </summary>
+      <value>
+            The date and time when the annotation was created or <c>null</c> if
+            there is no value set for this property.
+            </value>
+      <remarks>
+            Returned date and time are expressed in UTC (Coordinated Universal Time).
+            </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfStampAnnotation.Color">
+      <summary>
+            Gets or sets the color of this annotation.
+            </summary>
+      <remarks>
+            Specified color is used in the title bar of the annotation's pop-up window.
+            </remarks>
+      <value>The color of this annotation.</value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfStampAnnotation.Contents">
+      <summary>
+            Gets or sets the annotation contents.
+            </summary>
+      <value>The text that is displayed when the annotation's pop-up window is open.</value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfStampAnnotation.Subject">
+      <summary>
+            Gets or sets the annotation subject.
+            </summary>
+      <value>
+            The text representing a short description of the subject being addressed by the annotation.
+            </value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfStampAnnotation.Author">
+      <summary>
+            Gets or sets the annotation author.
+            </summary>
+      <value>The identifier of the person who created the annotation.</value>
+      <remarks>
+            The author is displayed in the title bar of the annotation's pop-up window when the
+            window is open and active.
             </remarks>
     </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfStrikeoutAnnotation">
@@ -18289,17 +18750,41 @@
             the <see cref="P:BitMiracle.Docotic.Pdf.PdfWidget.NoZoom" /> and <see cref="P:BitMiracle.Docotic.Pdf.PdfWidget.NoRotate" />
             properties were always set.</remarks>
     </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfTextAnnotation.CreationDate">
+      <summary>
+            Gets the date and time when the annotation was created.
+            </summary>
+      <value>
+            The date and time when the annotation was created or <c>null</c> if
+            there is no value set for this property.
+            </value>
+      <remarks>
+            Returned date and time are expressed in UTC (Coordinated Universal Time).
+            </remarks>
+    </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfTextAnnotation.Title">
       <summary>
             Gets or sets the annotation title.
             </summary>
-      <value>The annotation title.</value>
+      <value>
+            The text label that is displayed in the title bar of
+            the annotation's pop-up window when open and active.
+            The title shall identify the user who added the annotation.
+            </value>
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfTextAnnotation.Contents">
       <summary>
             Gets or sets the annotation contents.
             </summary>
       <value>The annotation contents.</value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfTextAnnotation.Subject">
+      <summary>
+            Gets or sets the annotation subject.
+            </summary>
+      <value>
+            The text representing a short description of the subject being addressed by the annotation.
+            </value>
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfTextAnnotation.Icon">
       <summary>
@@ -18321,9 +18806,7 @@
             Gets or sets the color of this <see cref="T:BitMiracle.Docotic.Pdf.PdfTextAnnotation" />.
             </summary>
       <remarks>Specified color is used for the following purposes:
-            <list type="bullet"><item><description>The background of the annotation's icon when 
-            closed.</description></item><item><description>The title bar of the annotation's pop-up
-            window.</description></item></list></remarks>
+            <list type="bullet"><item><description>The background of the annotation's icon when closed.</description></item><item><description>The title bar of the annotation's pop-up window.</description></item></list></remarks>
       <value>The color of this <see cref="T:BitMiracle.Docotic.Pdf.PdfTextAnnotation" />.</value>
     </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfTextBox">
@@ -18492,19 +18975,49 @@
             When opened, they display a pop-up window containing the text of the associated note.
             </remarks>
     </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfTextMarkupAnnotation.CreationDate">
+      <summary>
+            Gets the date and time when the annotation was created.
+            </summary>
+      <value>
+            The date and time when the annotation was created or <c>null</c> if
+            there is no value set for this property.
+            </value>
+      <remarks>
+            Returned date and time are expressed in UTC (Coordinated Universal Time).
+            </remarks>
+    </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfTextMarkupAnnotation.Color">
       <summary>
             Gets or sets the color of this annotation.
             </summary>
       <remarks>Specified color is used for the following purposes:
-            <list type="bullet"><item><description>The color of the effect applied to the text in a document.</description></item><item><description>The title bar of the annotation's pop-up window.</description></item></list></remarks>
+            <list type="bullet"><item><description>The color of the effect applied to the text.</description></item><item><description>The title bar of the annotation's pop-up window.</description></item></list></remarks>
       <value>The color of this annotation.</value>
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfTextMarkupAnnotation.Contents">
       <summary>
             Gets or sets the annotation contents.
             </summary>
-      <value>The annotation contents.</value>
+      <value>The text that is displayed when the pop-up window is opened.</value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfTextMarkupAnnotation.Subject">
+      <summary>
+            Gets or sets the annotation subject.
+            </summary>
+      <value>
+            The text representing a short description of the subject being addressed by the annotation.
+            </value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfTextMarkupAnnotation.Author">
+      <summary>
+            Gets or sets the annotation author.
+            </summary>
+      <value>The identifier of the person who created the annotation.</value>
+      <remarks>
+            The author is displayed in the title bar of the annotation's pop-up window when the 
+            window is open and active.
+            </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfTextMarkupAnnotation.GetTextBounds">
       <summary>
@@ -18648,6 +19161,19 @@
             (rectangle that defines the location of the widget on the page).
             </summary>
       <value>The height of the bounding box in pixels.</value>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfWidget.ModifiedDate">
+      <summary>
+            Gets or sets the date and time when the widget was last modified.
+            </summary>
+      <value>
+            The date and time when the widget was last modified or <c>null</c> if
+            there is no value set for this property.
+            </value>
+      <remarks>
+            Returned date and time (what you get) expressed in UTC (Coordinated Universal Time).
+            Provided date and time (what you set) is expected to be in local time zone.
+            </remarks>
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfWidget.Flags">
       <summary>
