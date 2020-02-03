@@ -13,6 +13,10 @@ This sample shows how to save image of a PDF page with specified zoom level.
 
 This sample shows how to make thumbnail of a PDF page.
 
+[Print PDF](/Samples/Draw%20and%20print%20PDF/PrintPdf)
+
+This sample shows how to print PDF documents to a printer.
+
 [Save PDF or its page as bitonal TIFF](/Samples/Draw%20and%20print%20PDF/SaveAsBitonalTiff)
 
 This sample shows how to save PDF page or the whole PDF document as bitonal (black and white) TIFF image.
