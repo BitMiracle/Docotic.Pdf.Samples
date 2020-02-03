@@ -263,6 +263,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "OcrAndMakeSearchable", "Tex
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TiffToPdf", "Images\TiffToPdf\VB.NET\TiffToPdf.vbproj", "{EFF294FD-EDDA-43BB-9E8C-83F4D7E7C36A}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PrintPdf", "Draw and print PDF\PrintPdf\VB.NET\PrintPdf.vbproj", "{0919AB1D-D56A-0FCB-1083-ADC764748B13}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -729,6 +731,10 @@ Global
 		{EFF294FD-EDDA-43BB-9E8C-83F4D7E7C36A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFF294FD-EDDA-43BB-9E8C-83F4D7E7C36A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFF294FD-EDDA-43BB-9E8C-83F4D7E7C36A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0919AB1D-D56A-0FCB-1083-ADC764748B13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0919AB1D-D56A-0FCB-1083-ADC764748B13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0919AB1D-D56A-0FCB-1083-ADC764748B13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0919AB1D-D56A-0FCB-1083-ADC764748B13}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -849,6 +855,7 @@ Global
 		{EFBE2B00-E3A1-436B-ACBB-FA9CB504A198} = {DD2E9236-D5CB-42EE-83E5-5062D627CD80}
 		{8D02EBF0-7D6C-47A4-8873-5F3348B23D57} = {DD2E9236-D5CB-42EE-83E5-5062D627CD80}
 		{EFF294FD-EDDA-43BB-9E8C-83F4D7E7C36A} = {E0428E1E-3748-44F9-A06E-66D4E757F8D0}
+		{0919AB1D-D56A-0FCB-1083-ADC764748B13} = {5F899968-F0A4-4E85-BF25-6C45222AAD08}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {50A18C19-4AC0-4BF0-9AA5-7C45E6C1E9A6}
