@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Drawing.Printing;
 using BitMiracle.Docotic.Pdf;
 
@@ -6,18 +7,24 @@ namespace BitMiracle.Docotic.Samples.PrintPdf
 {
     class PdfPrintDocument : IDisposable
     {
-        private PrintDocument m_printDocument;
+        private readonly PrintDocument m_printDocument;
+        private readonly PrintSize m_printSize;
+
         private PdfDocument m_pdf;
 
+        private PrintAction m_printAction;
         private int m_pageIndex;
         private int m_lastPageIndex;
+        private RectangleF m_printableAreaInPoints;
 
-        public PdfPrintDocument(PdfDocument pdf)
+
+        public PdfPrintDocument(PdfDocument pdf, PrintSize printSize)
         {
             if (pdf == null)
                 throw new ArgumentNullException("pdf");
 
             m_pdf = pdf;
+            m_printSize = printSize;
 
             m_printDocument = new PrintDocument();
             m_printDocument.BeginPrint += printDocument_BeginPrint;
@@ -48,6 +55,10 @@ namespace BitMiracle.Docotic.Samples.PrintPdf
         private void printDocument_BeginPrint(object sender, PrintEventArgs e)
         {
             PrintDocument printDocument = (PrintDocument)sender;
+            printDocument.OriginAtMargins = false;
+
+            m_printAction = e.PrintAction;
+
             switch (printDocument.PrinterSettings.PrintRange)
             {
                 case PrintRange.Selection:
@@ -79,18 +90,49 @@ namespace BitMiracle.Docotic.Samples.PrintPdf
         {
             PdfPage page = m_pdf.Pages[m_pageIndex];
 
-            // PaperSize constructor accepts arguments in hundredth of inch
-            double scale = (double)(100 / page.Canvas.Resolution);
-            PaperSize paperSize = new PaperSize("Custom", (int)(page.Width * scale), (int)(page.Height * scale));
-            e.PageSettings.PaperSize = paperSize;
+            // Auto-detect portrait/landscape orientation.
+            // Printer settings for orientation are ignored in this sample.
+            PdfSize pageSize = getPageSizeInPoints(page);
+            e.PageSettings.Landscape = pageSize.Width > pageSize.Height;
 
-            bool rotated = (page.Rotation == PdfRotation.Rotate270 || page.Rotation == PdfRotation.Rotate90);
-            e.PageSettings.Landscape = rotated;
+            m_printableAreaInPoints = getPrintableAreaInPoints(e.PageSettings);
         }
 
         private void printDocument_PrintPage(object sender, PrintPageEventArgs e)
         {
-            m_pdf.Pages[m_pageIndex].Draw(e.Graphics);
+            Graphics gr = e.Graphics;
+
+            // Work in points to have consistent units for all contexts:
+            // 1. Printer
+            // 2. Print preview
+            // 3. PDF
+            gr.PageUnit = GraphicsUnit.Point;
+
+            if (m_printAction == PrintAction.PrintToPreview)
+            {
+                gr.Clear(Color.LightGray);
+                gr.FillRectangle(Brushes.White, m_printableAreaInPoints);
+            }
+
+            PdfPage page = m_pdf.Pages[m_pageIndex];
+            if (m_printSize == PrintSize.FitPage)
+            {
+                if (m_printAction == PrintAction.PrintToPreview)
+                    gr.TranslateTransform(m_printableAreaInPoints.X, m_printableAreaInPoints.Y);
+
+                PdfSize pageSizeInPoints = getPageSizeInPoints(page);
+
+                float sx = (float)(m_printableAreaInPoints.Width / pageSizeInPoints.Width);
+                float sy = (float)(m_printableAreaInPoints.Height / pageSizeInPoints.Height);
+                float scaleFactor = Math.Min(sx, sy);
+                gr.ScaleTransform(scaleFactor, scaleFactor);
+            }
+            else if (m_printSize == PrintSize.ActualSize)
+            {
+                gr.TranslateTransform(-m_printableAreaInPoints.X, -m_printableAreaInPoints.Y);
+            }
+
+            page.Draw(gr);
 
             ++m_pageIndex;
             e.HasMorePages = (m_pageIndex <= m_lastPageIndex);
@@ -98,6 +140,35 @@ namespace BitMiracle.Docotic.Samples.PrintPdf
 
         private void printDocument_EndPrint(object sender, PrintEventArgs e)
         {
+        }
+
+        private static PdfSize getPageSizeInPoints(PdfPage page)
+        {
+            PdfRotation rotation = page.Rotation;
+            if (rotation == PdfRotation.Rotate90 || rotation == PdfRotation.Rotate270)
+                return new PdfSize(page.Height, page.Width);
+
+            return new PdfSize(page.Width, page.Height);
+        }
+
+        private static RectangleF getPrintableAreaInPoints(PageSettings pageSettings)
+        {
+            RectangleF printableArea = pageSettings.PrintableArea;
+            if (pageSettings.Landscape)
+            {
+                float tmp = printableArea.Width;
+                printableArea.Width = printableArea.Height;
+                printableArea.Height = tmp;
+            }
+
+            // PrintableArea is expressed in hundredths of an inch
+            const float PrinterSpaceToPoint = 72.0f / 100.0f;
+            return new RectangleF(
+                printableArea.X * PrinterSpaceToPoint,
+                printableArea.Y * PrinterSpaceToPoint,
+                printableArea.Width * PrinterSpaceToPoint,
+                printableArea.Height * PrinterSpaceToPoint
+            );
         }
     }
 }

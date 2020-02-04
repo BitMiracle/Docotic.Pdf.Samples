@@ -6,9 +6,16 @@ namespace BitMiracle.Docotic.Samples.PrintPdf
 {
     public partial class MainForm : Form
     {
+        private const int FitPageIndex = 0;
+
         public MainForm()
         {
             InitializeComponent();
+        }
+
+        private PrintSize getPrintSize()
+        {
+            return (printSize.SelectedIndex == FitPageIndex) ? PrintSize.FitPage : PrintSize.ActualSize;
         }
 
         private void printButton_Click(object sender, EventArgs e)
@@ -21,7 +28,7 @@ namespace BitMiracle.Docotic.Samples.PrintPdf
             processExistingPdfDocument(PdfPrintHelper.ShowPrintPreview);
         }
 
-        private void processExistingPdfDocument(Action<PdfDocument> action)
+        private void processExistingPdfDocument(Action<PdfDocument, PrintSize> action)
         {
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
@@ -35,7 +42,7 @@ namespace BitMiracle.Docotic.Samples.PrintPdf
                     // for more information.
 
                     using (PdfDocument pdf = new PdfDocument(dlg.FileName))
-                        action(pdf);
+                        action(pdf, getPrintSize());
                 }
             }
         }

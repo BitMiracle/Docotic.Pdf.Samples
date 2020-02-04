@@ -5,9 +5,9 @@ namespace BitMiracle.Docotic.Samples.PrintPdf
 {
     static class PdfPrintHelper
     {
-        public static void ShowPrintDialog(PdfDocument pdf)
+        public static void ShowPrintDialog(PdfDocument pdf, PrintSize printSize)
         {
-            using (PrintDialog printDialog = new PrintDialog())
+            using (var printDialog = new PrintDialog())
             {
                 printDialog.AllowSomePages = true;
                 printDialog.AllowCurrentPage = true;
@@ -20,17 +20,17 @@ namespace BitMiracle.Docotic.Samples.PrintPdf
 
                 if (printDialog.ShowDialog() == DialogResult.OK)
                 {
-                    using (PdfPrintDocument printDocument = new PdfPrintDocument(pdf))
+                    using (var printDocument = new PdfPrintDocument(pdf, printSize))
                         printDocument.Print(printDialog.PrinterSettings);
                 }
             }
         }
 
-        public static void ShowPrintPreview(PdfDocument pdf)
+        public static void ShowPrintPreview(PdfDocument pdf, PrintSize printSize)
         {
-            using (PrintPreviewDialog previewDialog = new PrintPreviewDialog())
+            using (var previewDialog = new PrintPreviewDialog())
             {
-                using (PdfPrintDocument printDocument = new PdfPrintDocument(pdf))
+                using (var printDocument = new PdfPrintDocument(pdf, printSize))
                 {
                     previewDialog.Document = printDocument.PrintDocument;
                     previewDialog.ShowDialog();
