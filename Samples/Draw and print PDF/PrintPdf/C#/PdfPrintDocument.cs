@@ -113,16 +113,15 @@ namespace BitMiracle.Docotic.Samples.PrintPdf
                 gr.Clear(Color.LightGray);
                 gr.FillRectangle(Brushes.White, m_printableAreaInPoints);
                 gr.IntersectClip(m_printableAreaInPoints);
+
+                gr.TranslateTransform(m_printableAreaInPoints.X, m_printableAreaInPoints.Y);
             }
 
             PdfPage page = m_pdf.Pages[m_pageIndex];
+            PdfSize pageSizeInPoints = getPageSizeInPoints(page);
+
             if (m_printSize == PrintSize.FitPage)
             {
-                if (m_printAction == PrintAction.PrintToPreview)
-                    gr.TranslateTransform(m_printableAreaInPoints.X, m_printableAreaInPoints.Y);
-
-                PdfSize pageSizeInPoints = getPageSizeInPoints(page);
-
                 float sx = (float)(m_printableAreaInPoints.Width / pageSizeInPoints.Width);
                 float sy = (float)(m_printableAreaInPoints.Height / pageSizeInPoints.Height);
                 float scaleFactor = Math.Min(sx, sy);
@@ -135,15 +134,14 @@ namespace BitMiracle.Docotic.Samples.PrintPdf
 
                 // Scale PDF page to fit into printable area
                 gr.ScaleTransform(scaleFactor, scaleFactor);
-
-                if (m_printAction == PrintAction.PrintToPreview)
-                {
-                    gr.DrawRectangle(Pens.Red, 0, 0, (float)pageSizeInPoints.Width, (float)pageSizeInPoints.Height);
-                }
             }
             else if (m_printSize == PrintSize.ActualSize)
             {
-                gr.TranslateTransform(-m_printableAreaInPoints.X, -m_printableAreaInPoints.Y);
+                // Center content
+                float xDiff = (float)(m_printableAreaInPoints.Width - pageSizeInPoints.Width);
+                float yDiff = (float)(m_printableAreaInPoints.Height - pageSizeInPoints.Height);
+                if (Math.Abs(xDiff) > 0 || Math.Abs(yDiff) > 0)
+                    gr.TranslateTransform(xDiff / 2, yDiff / 2);
             }
 
             page.Draw(gr);
