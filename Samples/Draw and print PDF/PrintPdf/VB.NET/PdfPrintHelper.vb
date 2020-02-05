@@ -3,8 +3,8 @@ Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Samples.PrintPdf
     Friend Module PdfPrintHelper
-        Sub ShowPrintDialog(ByVal pdf As PdfDocument)
-            Using printDialog As PrintDialog = New PrintDialog()
+        Sub ShowPrintDialog(ByVal pdf As PdfDocument, ByVal printSize As PrintSize)
+            Using printDialog = New PrintDialog()
                 printDialog.AllowSomePages = True
                 printDialog.AllowCurrentPage = True
                 printDialog.AllowSelection = True
@@ -15,17 +15,17 @@ Namespace BitMiracle.Docotic.Samples.PrintPdf
 
                 If printDialog.ShowDialog() = DialogResult.OK Then
 
-                    Using printDocument As PdfPrintDocument = New PdfPrintDocument(pdf)
+                    Using printDocument = New PdfPrintDocument(pdf, printSize)
                         printDocument.Print(printDialog.PrinterSettings)
                     End Using
                 End If
             End Using
         End Sub
 
-        Sub ShowPrintPreview(ByVal pdf As PdfDocument)
-            Using previewDialog As PrintPreviewDialog = New PrintPreviewDialog()
+        Sub ShowPrintPreview(ByVal pdf As PdfDocument, ByVal printSize As PrintSize)
+            Using previewDialog = New PrintPreviewDialog()
 
-                Using printDocument As PdfPrintDocument = New PdfPrintDocument(pdf)
+                Using printDocument = New PdfPrintDocument(pdf, printSize)
                     previewDialog.Document = printDocument.PrintDocument
                     previewDialog.ShowDialog()
                 End Using

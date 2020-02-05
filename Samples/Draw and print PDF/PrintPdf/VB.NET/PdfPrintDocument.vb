@@ -1,4 +1,5 @@
 ﻿Imports System
+Imports System.Drawing
 Imports System.Drawing.Printing
 Imports BitMiracle.Docotic.Pdf
 
@@ -6,14 +7,19 @@ Namespace BitMiracle.Docotic.Samples.PrintPdf
     Friend Class PdfPrintDocument
         Implements IDisposable
 
-        Private m_printDocument As PrintDocument
+        Private ReadOnly m_printDocument As PrintDocument
+        Private ReadOnly m_printSize As PrintSize
+
         Private m_pdf As PdfDocument
+        Private m_printAction As PrintAction
         Private m_pageIndex As Integer
         Private m_lastPageIndex As Integer
+        Private m_printableAreaInPoints As RectangleF
 
-        Public Sub New(ByVal pdf As PdfDocument)
+        Public Sub New(ByVal pdf As PdfDocument, ByVal printSize As PrintSize)
             If pdf Is Nothing Then Throw New ArgumentNullException("pdf")
             m_pdf = pdf
+            m_printSize = printSize
             m_printDocument = New PrintDocument()
             AddHandler m_printDocument.BeginPrint, AddressOf Me.printDocument_BeginPrint
             AddHandler m_printDocument.QueryPageSettings, AddressOf Me.printDocument_QueryPageSettings
@@ -39,6 +45,9 @@ Namespace BitMiracle.Docotic.Samples.PrintPdf
 
         Private Sub printDocument_BeginPrint(ByVal sender As Object, ByVal e As PrintEventArgs)
             Dim printDocument = CType(sender, PrintDocument)
+            printDocument.OriginAtMargins = False
+
+            m_printAction = e.PrintAction
 
             Select Case printDocument.PrinterSettings.PrintRange
                 Case PrintRange.Selection, PrintRange.CurrentPage
@@ -58,20 +67,94 @@ Namespace BitMiracle.Docotic.Samples.PrintPdf
 
         Private Sub printDocument_QueryPageSettings(ByVal sender As Object, ByVal e As QueryPageSettingsEventArgs)
             Dim page = m_pdf.Pages(m_pageIndex)
-            Dim scale As Double = (100 / page.Canvas.Resolution)
-            Dim paperSize As PaperSize = New PaperSize("Custom", CInt((page.Width * scale)), CInt((page.Height * scale)))
-            e.PageSettings.PaperSize = paperSize
-            Dim rotated = page.Rotation = PdfRotation.Rotate270 OrElse page.Rotation = PdfRotation.Rotate90
-            e.PageSettings.Landscape = rotated
+            Dim pageSize = getPageSizeInPoints(page)
+            e.PageSettings.Landscape = pageSize.Width > pageSize.Height
+
+            m_printableAreaInPoints = getPrintableAreaInPoints(e.PageSettings)
         End Sub
 
         Private Sub printDocument_PrintPage(ByVal sender As Object, ByVal e As PrintPageEventArgs)
-            m_pdf.Pages(m_pageIndex).Draw(e.Graphics)
+            Dim gr = e.Graphics
+            gr.PageUnit = GraphicsUnit.Point
+
+            If m_printAction = PrintAction.PrintToPreview Then
+                gr.Clear(Color.LightGray)
+                gr.FillRectangle(Brushes.White, m_printableAreaInPoints)
+                gr.IntersectClip(m_printableAreaInPoints)
+
+                gr.TranslateTransform(m_printableAreaInPoints.X, m_printableAreaInPoints.Y)
+            End If
+
+            Dim page = m_pdf.Pages(m_pageIndex)
+            Dim pageSizeInPoints = getPageSizeInPoints(page)
+
+            If m_printSize = PrintSize.FitPage Then
+                Dim sx As Single = CSng(m_printableAreaInPoints.Width / pageSizeInPoints.Width)
+                Dim sy As Single = CSng(m_printableAreaInPoints.Height / pageSizeInPoints.Height)
+                Dim scaleFactor = Math.Min(sx, sy)
+                centerContentInPrintableArea(gr, pageSizeInPoints, scaleFactor)
+                gr.ScaleTransform(scaleFactor, scaleFactor)
+            ElseIf m_printSize = PrintSize.ActualSize Then
+                centerContentInPrintableArea(gr, pageSizeInPoints, 1)
+            End If
+
+            page.Draw(gr)
             m_pageIndex += 1
             e.HasMorePages = m_pageIndex <= m_lastPageIndex
         End Sub
 
         Private Sub printDocument_EndPrint(ByVal sender As Object, ByVal e As PrintEventArgs)
         End Sub
+
+        Private Sub centerContentInPrintableArea(ByVal gr As Graphics, ByVal contentSizeInPoints As PdfSize, ByVal scaleFactor As Single)
+            Dim xDiff As Single = CSng(m_printableAreaInPoints.Width - contentSizeInPoints.Width * scaleFactor)
+            Dim yDiff As Single = CSng(m_printableAreaInPoints.Height - contentSizeInPoints.Height * scaleFactor)
+            If Math.Abs(xDiff) > 0 OrElse Math.Abs(yDiff) > 0 Then gr.TranslateTransform(xDiff / 2, yDiff / 2)
+        End Sub
+
+        Private Shared Function getPageBox(ByVal page As PdfPage) As PdfBox
+            Dim mediaBox = page.MediaBox
+            Dim cropBox = page.CropBox
+
+            Dim left = cropBox.Left
+            Dim bottom = cropBox.Bottom
+            Dim right = cropBox.Right
+            Dim top = cropBox.Top
+            If left < mediaBox.Left OrElse left > mediaBox.Right Then left = mediaBox.Left
+
+            If bottom < mediaBox.Bottom OrElse bottom > mediaBox.Top Then bottom = mediaBox.Bottom
+
+            If right > mediaBox.Right OrElse right < mediaBox.Left Then right = mediaBox.Right
+
+            If top > mediaBox.Top OrElse top < mediaBox.Bottom Then top = mediaBox.Top
+
+            Return New PdfBox(left, bottom, right, top)
+        End Function
+
+        Private Shared Function getPageSizeInPoints(ByVal page As PdfPage) As PdfSize
+            Dim pageArea = getPageBox(page)
+            If page.Rotation = PdfRotation.Rotate90 OrElse page.Rotation = PdfRotation.Rotate270 Then
+                Return New PdfSize(pageArea.Height, pageArea.Width)
+            End If
+
+            Return pageArea.Size
+        End Function
+
+        Private Shared Function getPrintableAreaInPoints(ByVal pageSettings As PageSettings) As RectangleF
+            Dim printableArea = pageSettings.PrintableArea
+
+            If pageSettings.Landscape Then
+                Dim tmp = printableArea.Width
+                printableArea.Width = printableArea.Height
+                printableArea.Height = tmp
+            End If
+
+            Const PrinterSpaceToPoint = 72.0F / 100.0F
+            Return New RectangleF(
+                printableArea.X * PrinterSpaceToPoint,
+                printableArea.Y * PrinterSpaceToPoint,
+                printableArea.Width * PrinterSpaceToPoint,
+                printableArea.Height * PrinterSpaceToPoint)
+        End Function
     End Class
 End Namespace

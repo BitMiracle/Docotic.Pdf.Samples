@@ -58,6 +58,7 @@
     </Compile>
     <Compile Include="PdfPrintDocument.vb" />
     <Compile Include="PdfPrintHelper.vb" />
+    <Compile Include="PrintSize.vb" />
     <Compile Include="Program.vb" />
     <Compile Include="Properties\AssemblyInfo.vb" />
     <EmbeddedResource Include="MainForm.resx">
