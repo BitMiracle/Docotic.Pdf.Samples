@@ -3,7 +3,7 @@ Imports System.Windows.Forms
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Samples.PrintPdf
-    Public Partial Class MainForm
+    Partial Public Class MainForm
         Inherits Form
 
         Private Const FitPageIndex = 0
@@ -16,11 +16,11 @@ Namespace BitMiracle.Docotic.Samples.PrintPdf
             Return If(printSize.SelectedIndex = FitPageIndex, PrintPdf.PrintSize.FitPage, PrintPdf.PrintSize.ActualSize)
         End Function
 
-        Private Sub printButton_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub printButton_Click(sender As Object, e As EventArgs) Handles printButton.Click
             processExistingPdfDocument(New Action(Of PdfDocument, PrintSize)(AddressOf ShowPrintDialog))
         End Sub
 
-        Private Sub previewButton_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub previewButton_Click(ByVal sender As Object, ByVal e As EventArgs) Handles previewButton.Click
             processExistingPdfDocument(New Action(Of PdfDocument, PrintSize)(AddressOf ShowPrintPreview))
         End Sub
 
