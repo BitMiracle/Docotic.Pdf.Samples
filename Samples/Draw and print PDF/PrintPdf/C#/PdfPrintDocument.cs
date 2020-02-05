@@ -144,11 +144,38 @@ namespace BitMiracle.Docotic.Samples.PrintPdf
 
         private static PdfSize getPageSizeInPoints(PdfPage page)
         {
-            PdfRotation rotation = page.Rotation;
-            if (rotation == PdfRotation.Rotate90 || rotation == PdfRotation.Rotate270)
-                return new PdfSize(page.Height, page.Width);
+            PdfBox pageArea = getPageAreaInPoints(page);
+            if (page.Rotation == PdfRotation.Rotate90 || page.Rotation == PdfRotation.Rotate270)
+                return new PdfSize(pageArea.Height, pageArea.Width);
 
-            return new PdfSize(page.Width, page.Height);
+            return pageArea.Size;
+        }
+
+        private static PdfBox getPageAreaInPoints(PdfPage page)
+        {
+            // Emit Adobe Reader behavior - prefer CropBox, but use MediaBox bounds when
+            // some CropBox bound is out of MediaBox area.
+
+            PdfBox mediaBox = page.MediaBox;
+            PdfBox cropBox = page.CropBox;
+            double left = cropBox.Left;
+            double bottom = cropBox.Bottom;
+            double right = cropBox.Right;
+            double top = cropBox.Top;
+
+            if (left < mediaBox.Left || left > mediaBox.Right)
+                left = mediaBox.Left;
+
+            if (bottom < mediaBox.Bottom || bottom > mediaBox.Top)
+                bottom = mediaBox.Bottom;
+
+            if (right > mediaBox.Right || right < mediaBox.Left)
+                right = mediaBox.Right;
+
+            if (top > mediaBox.Top || top < mediaBox.Bottom)
+                top = mediaBox.Top;
+
+            return new PdfBox(left, bottom, right, top);
         }
 
         private static RectangleF getPrintableAreaInPoints(PageSettings pageSettings)
