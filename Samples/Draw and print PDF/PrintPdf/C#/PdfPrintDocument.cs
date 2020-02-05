@@ -126,22 +126,12 @@ namespace BitMiracle.Docotic.Samples.PrintPdf
                 float sy = (float)(m_printableAreaInPoints.Height / pageSizeInPoints.Height);
                 float scaleFactor = Math.Min(sx, sy);
 
-                // Center content
-                float xDiff = (float)(m_printableAreaInPoints.Width - pageSizeInPoints.Width * scaleFactor);
-                float yDiff = (float)(m_printableAreaInPoints.Height - pageSizeInPoints.Height * scaleFactor);
-                if (Math.Abs(xDiff) > 0 || Math.Abs(yDiff) > 0)
-                    gr.TranslateTransform(xDiff / 2, yDiff / 2);
-
-                // Scale PDF page to fit into printable area
+                centerContentInPrintableArea(gr, pageSizeInPoints, scaleFactor);
                 gr.ScaleTransform(scaleFactor, scaleFactor);
             }
             else if (m_printSize == PrintSize.ActualSize)
             {
-                // Center content
-                float xDiff = (float)(m_printableAreaInPoints.Width - pageSizeInPoints.Width);
-                float yDiff = (float)(m_printableAreaInPoints.Height - pageSizeInPoints.Height);
-                if (Math.Abs(xDiff) > 0 || Math.Abs(yDiff) > 0)
-                    gr.TranslateTransform(xDiff / 2, yDiff / 2);
+                centerContentInPrintableArea(gr, pageSizeInPoints, 1);
             }
 
             page.Draw(gr);
@@ -152,6 +142,14 @@ namespace BitMiracle.Docotic.Samples.PrintPdf
 
         private void printDocument_EndPrint(object sender, PrintEventArgs e)
         {
+        }
+
+        private void centerContentInPrintableArea(Graphics gr, PdfSize contentSizeInPoints, float scaleFactor)
+        {
+            float xDiff = (float)(m_printableAreaInPoints.Width - contentSizeInPoints.Width * scaleFactor);
+            float yDiff = (float)(m_printableAreaInPoints.Height - contentSizeInPoints.Height * scaleFactor);
+            if (Math.Abs(xDiff) > 0 || Math.Abs(yDiff) > 0)
+                gr.TranslateTransform(xDiff / 2, yDiff / 2);
         }
 
         private static PdfBox getPageBox(PdfPage page)
