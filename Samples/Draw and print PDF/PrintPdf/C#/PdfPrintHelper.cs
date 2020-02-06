@@ -1,11 +1,12 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using BitMiracle.Docotic.Pdf;
 
 namespace BitMiracle.Docotic.Samples.PrintPdf
 {
     static class PdfPrintHelper
     {
-        public static void ShowPrintDialog(PdfDocument pdf, PrintSize printSize)
+        public static DialogResult ShowPrintDialog(PdfDocument pdf, PrintSize printSize)
         {
             using (var printDialog = new PrintDialog())
             {
@@ -18,24 +19,55 @@ namespace BitMiracle.Docotic.Samples.PrintPdf
                 printDialog.PrinterSettings.FromPage = printDialog.PrinterSettings.MinimumPage;
                 printDialog.PrinterSettings.ToPage = printDialog.PrinterSettings.MaximumPage;
 
-                if (printDialog.ShowDialog() == DialogResult.OK)
+                var result = printDialog.ShowDialog();
+                if (result == DialogResult.OK)
                 {
                     using (var printDocument = new PdfPrintDocument(pdf, printSize))
                         printDocument.Print(printDialog.PrinterSettings);
                 }
+
+                return result;
             }
         }
 
-        public static void ShowPrintPreview(PdfDocument pdf, PrintSize printSize)
+        public static DialogResult ShowPrintPreview(PdfDocument pdf, PrintSize printSize)
         {
             using (var previewDialog = new PrintPreviewDialog())
             {
                 using (var printDocument = new PdfPrintDocument(pdf, printSize))
                 {
                     previewDialog.Document = printDocument.PrintDocument;
-                    previewDialog.ShowDialog();
+
+                    // By default the print button sends the preview to the default printer
+                    // The following method replaces the default button with the custom button.
+                    // The custom button opens print dialog.
+                    setupPrintButton(previewDialog, pdf, printSize);
+
+                    // Remove the following line if you do not want preview maximized
+                    previewDialog.WindowState = FormWindowState.Maximized;
+
+                    return previewDialog.ShowDialog();
                 }
             }
+        }
+
+        private static void setupPrintButton(PrintPreviewDialog previewDialog, PdfDocument pdf, PrintSize printSize)
+        {
+            ToolStripButton openPrintDialog = new ToolStripButton
+            {
+                // reuse the image of the default print button
+                Image = ((ToolStrip)previewDialog.Controls[1]).ImageList.Images[0],
+                DisplayStyle = ToolStripItemDisplayStyle.Image
+            };
+
+            openPrintDialog.Click += new EventHandler(delegate (object sender, EventArgs e)
+            {
+                if (ShowPrintDialog(pdf, printSize) == DialogResult.OK)
+                    previewDialog.Close();
+            });
+
+            ((ToolStrip)previewDialog.Controls[1]).Items.RemoveAt(0);
+            ((ToolStrip)previewDialog.Controls[1]).Items.Insert(0, openPrintDialog);
         }
     }
 }

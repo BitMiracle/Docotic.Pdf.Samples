@@ -17,14 +17,14 @@ Namespace BitMiracle.Docotic.Samples.PrintPdf
         End Function
 
         Private Sub printButton_Click(sender As Object, e As EventArgs) Handles printButton.Click
-            processExistingPdfDocument(New Action(Of PdfDocument, PrintSize)(AddressOf ShowPrintDialog))
+            processExistingPdfDocument(New Func(Of PdfDocument, PrintSize, DialogResult)(AddressOf ShowPrintDialog))
         End Sub
 
         Private Sub previewButton_Click(ByVal sender As Object, ByVal e As EventArgs) Handles previewButton.Click
-            processExistingPdfDocument(New Action(Of PdfDocument, PrintSize)(AddressOf ShowPrintPreview))
+            processExistingPdfDocument(New Func(Of PdfDocument, PrintSize, DialogResult)(AddressOf ShowPrintPreview))
         End Sub
 
-        Private Sub processExistingPdfDocument(ByVal action As Action(Of PdfDocument, PrintSize))
+        Private Sub processExistingPdfDocument(ByVal action As Func(Of PdfDocument, PrintSize, DialogResult))
             Using dlg As OpenFileDialog = New OpenFileDialog()
                 dlg.Filter = "PDF files (*.pdf)|*.pdf"
 

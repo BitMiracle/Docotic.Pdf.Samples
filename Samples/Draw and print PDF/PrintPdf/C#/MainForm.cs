@@ -28,7 +28,7 @@ namespace BitMiracle.Docotic.Samples.PrintPdf
             processExistingPdfDocument(PdfPrintHelper.ShowPrintPreview);
         }
 
-        private void processExistingPdfDocument(Action<PdfDocument, PrintSize> action)
+        private void processExistingPdfDocument(Func<PdfDocument, PrintSize, DialogResult> action)
         {
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
