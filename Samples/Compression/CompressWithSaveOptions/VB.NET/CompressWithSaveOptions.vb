@@ -28,6 +28,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Save(compressedFile)
             End Using
 
+            ' NOTE:
+            ' This sample shows only one approach to reduce size of a PDF.
+            ' Please check CompressAllTechniques sample code to see more approaches.
+            ' https://github.com/BitMiracle/Docotic.Pdf.Samples/tree/master/Samples/Compression/CompressAllTechniques
+
             Dim message As String = String.Format(
                 "Original file size: {0} bytes;" & vbCr & vbLf & "Compressed file size: {1} bytes",
                 New FileInfo(originalFile).Length,
