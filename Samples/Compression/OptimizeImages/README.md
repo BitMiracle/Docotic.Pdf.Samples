@@ -6,3 +6,5 @@ Use one of PdfImage.RecompressWith* methods to optimize images in PDF document. 
 You can also resize images in a PDF document. To do so please use one of the PdfImage.ResizeTo or PdfImage.Scale methods.
 
 You can recompress images using Flate, Jpeg and CCITT compression schemes. Please note that recompression is often a lossy process.
+
+This sample shows only one approach to reduce size of a PDF. Please check [CompressAllTechniques](https://github.com/BitMiracle/Docotic.Pdf.Samples/tree/master/Samples/Compression/CompressAllTechniques) sample code to see more approaches.
