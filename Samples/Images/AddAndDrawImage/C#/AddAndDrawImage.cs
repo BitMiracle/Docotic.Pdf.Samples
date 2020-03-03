@@ -21,7 +21,6 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 PdfImage image = pdf.AddImage("Sample data/ammerland.jpg");
                 canvas.DrawImage(image, 10, 50);
 
-                // NOTE: PdfDocument.AddImage(System.Drawing.Image) method is not supported in version for .NET Standard
                 using (Bitmap bitmap = new Bitmap("Sample data/pink.png"))
                 {
                     PdfImage image2 = pdf.AddImage(bitmap);
