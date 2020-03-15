@@ -31,10 +31,20 @@
             </summary>
       <param name="licenseKey">License key</param>
       <remarks>
-            You can use this method multiple times if you have several licenses
-            which you use in one code base (usually, it's the case for a
-            server application running on multiple servers).
-            </remarks>
+        <para>
+            You can use this method multiple times if you have several licenses which you use in
+            one code base (usually, it's the case for a server application running on multiple
+            servers).
+            </para>
+        <para>
+            We recommend to add all license data at the start of your application. It is not
+            recommended to call this method each time before you create a
+            <see cref="T:BitMiracle.Docotic.Pdf.PdfDocument" /> instance.
+            </para>
+        <para>
+            In classic ASP.NET apps we recommended to add license data in Global.asax.cs. In
+            ASP.NET Core apps we recommend to use Startup.cs for the same.</para>
+      </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.LicenseManager.Reset">
       <summary>
@@ -4051,12 +4061,6 @@
             </summary>
       <value>The image compression options to use while saving an image of a page.</value>
     </member>
-    <member name="P:BitMiracle.Docotic.Pdf.PdfDrawOptions.Format">
-      <summary>
-            Gets or sets the image format to use while saving an image of a <see cref="T:BitMiracle.Docotic.Pdf.PdfPage" />.
-            </summary>
-      <value>The image format to use while saving an image of a page.</value>
-    </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfDrawOptions.BackgroundColor">
       <summary>
             Gets or sets the background color of produced images.
@@ -4132,52 +4136,6 @@
             See remarks for <see cref="M:BitMiracle.Docotic.Pdf.PdfDrawOptions.CreateFitSize(BitMiracle.Docotic.Pdf.PdfSize,System.Boolean)" /> method for more details.
             </remarks>
     </member>
-    <member name="P:BitMiracle.Docotic.Pdf.PdfDrawOptions.TileWidth">
-      <summary>
-            Gets or sets the width of the tile to use while drawing.
-            </summary>
-      <value>
-            The width of the tile to use while drawing.
-            </value>
-      <remarks>
-        <para>
-            This value is useful when you want to reduce amount of memory used while drawing.
-            </para>
-        <para>
-            The lower the value, the less memory is used but the overall drawing process will take more time.
-            </para>
-        <para>
-            The value of this property is ignored when output format is not TIFF.
-            </para>
-        <para>
-            The library uses the value of this property as a recommendation only and can use slightly
-            bigger or smaller tiles if needed.
-            </para>
-      </remarks>
-    </member>
-    <member name="P:BitMiracle.Docotic.Pdf.PdfDrawOptions.TileHeight">
-      <summary>
-            Gets or sets the height of the tile to use while drawing.
-            </summary>
-      <value>
-            The height of the tile to use while drawing.
-            </value>
-      <remarks>
-        <para>
-            This value is useful when you want to reduce amount of memory used while drawing.
-            </para>
-        <para>
-            The lower the value, the less memory is used but the overall drawing process will take more time.
-            </para>
-        <para>
-            The value of this property is ignored when output format is not TIFF.
-            </para>
-        <para>
-            The library uses the value of this property as a recommendation only and can use slightly
-            bigger or smaller tiles if needed.
-            </para>
-      </remarks>
-    </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDrawOptions.Create">
       <summary>
             Creates default draw options.
@@ -4249,7 +4207,7 @@
         <para>If <paramref name="cutUnusedSpace" /> is <c>false</c> then images will
             have the size specified by <paramref name="sizePixels" />, PDF pages will be drawn
             at the center of the image preserving aspect ratio and unused space will be
-            filled with background color.</para>
+            filled with transparent color.</para>
       </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDrawOptions.ToString">
@@ -4618,8 +4576,7 @@
                     PdfTextRenderingMode.<see cref="F:BitMiracle.Docotic.Pdf.PdfTextRenderingMode.NeitherFillNorStroke" />).
                 </li>
           <li>
-                    Text is drawn outside of active clip region. This feature is not supported in the version for
-                    .NET Standard Library.
+                    Text is drawn outside of active clip region.
                 </li>
         </ul>
         <para>
@@ -4631,6 +4588,34 @@
           <see cref="P:BitMiracle.Docotic.Pdf.PdfTextExtractionOptions.SkipInvisibleText" /> property does not allow to skip text in such cases. Extract and handle page
             objects manually to skip text hidden with such techniques. Look at
             "Pages and Navigation -&gt; Extract text, paths and images" sample for more detail.
+            </para>
+      </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfTextExtractionOptions.Rectangle">
+      <summary>
+            Gets or sets the rectangle of interest.
+            </summary>
+      <value>
+            The rectangle to extract the text from or <c>null</c> if all the text should be extracted.
+            </value>
+      <remarks>
+        <para>
+            Default value: <c>null</c>.
+            </para>
+        <para>
+            If the value is <c>null</c> then all the text inside the page
+            <see cref="P:BitMiracle.Docotic.Pdf.PdfPage.CropBox" /> will be extracted.
+            </para>
+        <para>
+            If the value is not <c>null</c> AND the <see cref="P:BitMiracle.Docotic.Pdf.PdfTextExtractionOptions.SkipInvisibleText" /> is <c>true</c>
+            then only the text inside the specified rectangle will be extracted. Any part of a word
+            which is outside of the rectangle will be truncated. Characters that are partially
+            inside the rectangle (partially visible) will be extracted.
+            </para>
+        <para>
+            If the value is not <c>null</c> AND the <see cref="P:BitMiracle.Docotic.Pdf.PdfTextExtractionOptions.SkipInvisibleText" /> is <c>false</c>
+            then only the text that intersects the specified rectangle will be extracted. Any part
+            of a word which is outside of the rectangle will be extracted too.
             </para>
       </remarks>
     </member>
@@ -9647,12 +9632,13 @@
       <param name="options">The options to use while creating images of the document pages.</param>
       <remarks>
         <para>
-            The method ignores value of the PdfDrawOptions.<see cref="P:BitMiracle.Docotic.Pdf.PdfDrawOptions.Format" />
+            The method ignores value of the PdfDrawOptions.Compression.<see cref="P:BitMiracle.Docotic.Pdf.ImageCompressionOptions.Format" />
             property. The PdfDrawFormat.<see cref="F:BitMiracle.Docotic.Pdf.PdfDrawFormat.Tiff"></see> format is always used.
             </para>
         <para>
-            Values of PdfDrawOptions.<see cref="P:BitMiracle.Docotic.Pdf.PdfDrawOptions.TileWidth" /> and 
-            PdfDrawOptions.<see cref="P:BitMiracle.Docotic.Pdf.PdfDrawOptions.TileHeight" /> properties are also ignored. 
+            Values of PdfDrawOptions.Compression.<see cref="P:BitMiracle.Docotic.Pdf.ImageCompressionOptions.TileWidth" />
+            and PdfDrawOptions.Compression.<see cref="P:BitMiracle.Docotic.Pdf.ImageCompressionOptions.TileHeight" />
+            properties are also ignored. 
             </para>
       </remarks>
       <overloads>
@@ -9669,12 +9655,13 @@
       <param name="options">The options to use while creating images of the document pages.</param>
       <remarks>
         <para>
-            The method ignores value of the PdfDrawOptions.<see cref="P:BitMiracle.Docotic.Pdf.PdfDrawOptions.Format" />
+            The method ignores value of the PdfDrawOptions.Compression.<see cref="P:BitMiracle.Docotic.Pdf.ImageCompressionOptions.Format" />
             property. The PdfDrawFormat.<see cref="F:BitMiracle.Docotic.Pdf.PdfDrawFormat.Tiff"></see> format is always used.
             </para>
         <para>
-            Values of PdfDrawOptions.<see cref="P:BitMiracle.Docotic.Pdf.PdfDrawOptions.TileWidth" /> and 
-            PdfDrawOptions.<see cref="P:BitMiracle.Docotic.Pdf.PdfDrawOptions.TileHeight" /> properties are also ignored. 
+            Values of PdfDrawOptions.Compression.<see cref="P:BitMiracle.Docotic.Pdf.ImageCompressionOptions.TileWidth" /> and 
+            PdfDrawOptions.Compression.<see cref="P:BitMiracle.Docotic.Pdf.ImageCompressionOptions.TileHeight" /> properties
+            are also ignored. 
             </para>
       </remarks>
     </member>
@@ -12142,9 +12129,9 @@
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfPage.Width">
       <summary>
-            Gets or sets the width of the page in pixels.
+            Gets or sets the width of the page, expressed in PDF's default user space units.
             </summary>
-      <value>The width of the page in pixels.</value>
+      <value>The width of the page, expressed in PDF's default user space units.</value>
       <remarks>
         <para>Default value: 595 (the width of the A4 sheet).</para>
         <para>
@@ -12155,9 +12142,9 @@
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfPage.Height">
       <summary>
-            Gets or sets the height of the page in pixels.
+            Gets or sets the height of the page, expressed in PDF's default user space units.
             </summary>
-      <value>The height of the page in pixels.</value>
+      <value>The height of the page, expressed in PDF's default user space units.</value>
       <remarks>
         <para>Default value: 842 (the height of the A4 sheet).</para>
         <para>
@@ -12319,6 +12306,15 @@
       <value>The <see cref="T:BitMiracle.Docotic.Pdf.PdfRotation" /> value specifying 
             the rotation of the page.</value>
       <remarks>Default value: <see cref="F:BitMiracle.Docotic.Pdf.PdfRotation.None" />.</remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfPage.Resolution">
+      <summary>
+            Gets the resolution of the canvas.
+            </summary>
+      <value>The resolution of the canvas.</value>
+      <remarks>The resolution of the canvas measures the number of pixels
+            per inch of distance along the two linear dimensions. Resolution is
+            the same horizontally and vertically.</remarks>
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfPage.XObjects">
       <summary>
@@ -14956,8 +14952,6 @@
           <item>An encrypted document is opened with its owner password</item>
           <item>An unencrypted document is opened</item>
           <item>A document is created from scratch</item>
-          <item>
-          </item>
         </list>
         <para>
             Owner access allows changing of document's passwords and access permissions.
