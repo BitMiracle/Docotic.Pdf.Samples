@@ -110,7 +110,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             int height = Math.Max(1, (int)painted.Bounds.Height);
             if (width >= image.Width || height >= image.Height)
             {
-                if (image.Mask != null)
+                if (image.HasMask)
                     return false;
 
                 if (image.ComponentCount == 1 && image.BitsPerComponent == 1 &&
@@ -131,7 +131,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
 
             // try to replace large masked images
-            if (image.Mask != null)
+            if (image.HasMask)
             {
                 if (image.Width < 300 || image.Height < 300)
                     return false;

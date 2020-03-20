@@ -10829,7 +10829,7 @@
       <remarks>
         <para>
             The returned value can be a stencil mask, or a soft mask, or <c>null</c> if there is
-            no mask specified for the image. If the <see cref="P:BitMiracle.Docotic.Pdf.PdfImage.IsMask" /> property is <c>true</c>
+            no mask image associated with the image. If the <see cref="P:BitMiracle.Docotic.Pdf.PdfImage.IsMask" /> property is <c>true</c>
             for the returned image then the mask is a stencil one. Otherwise, the mask is a
             soft mask.
             </para>
@@ -10845,6 +10845,15 @@
             as a soft mask image.
             </para>
       </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfImage.HasMask">
+      <summary>
+            Gets a value indicating whether this <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" /> has associated mask color, a stencil mask image
+            or a soft mask.
+            </summary>
+      <value>
+        <c>true</c> if this <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" /> has associated mask color, a stencil mask image or a soft mask.
+            <c>false</c> if this <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" /> has no associated mask.</value>
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfImage.IsMask">
       <summary>

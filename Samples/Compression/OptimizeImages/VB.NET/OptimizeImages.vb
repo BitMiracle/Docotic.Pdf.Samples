@@ -73,7 +73,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim height As Integer = Math.Max(1, CInt(painted.Bounds.Height))
 
             If width >= image.Width OrElse height >= image.Height Then
-                If image.Mask IsNot Nothing Then
+                If image.HasMask Then
                     Return False
                 End If
 
@@ -93,7 +93,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End If
 
             ' try to replace large masked images
-            If image.Mask IsNot Nothing Then
+            If image.HasMask Then
                 If image.Width < 300 OrElse image.Height < 300 Then
                     Return False
                 End If
