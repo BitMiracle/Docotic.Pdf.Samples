@@ -9560,6 +9560,19 @@
             The newly created <see cref="T:BitMiracle.Docotic.Pdf.PdfDocumentView" />.
             </returns>
     </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.RemovePieceInfo">
+      <summary>
+            Removes all page-piece dictionaries from the document.
+            </summary>
+      <remarks>
+        <para>
+            Page-piece dictionaries are used to store private application data in PDF document.
+            Adobe Photoshop or Adobe Illustrator often use them.
+            </para>
+        <para>Removing page-piece dictionaries can significantly reduce file size if
+            <see cref="P:BitMiracle.Docotic.Pdf.PdfSaveOptions.RemoveUnusedObjects" /> property is set to <c>true</c>.</para>
+      </remarks>
+    </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.RemoveSignaturePermissions">
       <summary>
             Removes all digital signature permissions from the PDF document.
@@ -10848,12 +10861,13 @@
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfImage.HasMask">
       <summary>
-            Gets a value indicating whether this <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" /> has associated mask color, a stencil mask image
-            or a soft mask.
+            Gets a value indicating whether this <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" /> has associated mask color,
+            a stencil mask image or a soft mask.
             </summary>
       <value>
-        <c>true</c> if this <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" /> has associated mask color, a stencil mask image or a soft mask.
-            <c>false</c> if this <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" /> has no associated mask.</value>
+        <c>true</c> if this <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" /> has associated mask color, a stencil mask
+            image or a soft mask. <c>false</c> if this <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" /> has no associated mask.
+            </value>
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfImage.IsMask">
       <summary>

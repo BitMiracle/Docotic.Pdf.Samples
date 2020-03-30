@@ -13,3 +13,4 @@ Docotic.Pdf supports different compression methods. You can use all of them to g
 6. replace duplicate fonts
 7. unembed fonts
 8. remove unused resources
+9. remove page-piece dictionaries
