@@ -5,3 +5,6 @@ This group contains samples showing how to digitally sign PDF documents, prepare
 
 This sample shows how to add signature fields to a PDF document.
 
+[Sign document](/Samples/Digital%20signatures/SignDocument)
+
+This sample shows how to digitally sign an existing PDF document.

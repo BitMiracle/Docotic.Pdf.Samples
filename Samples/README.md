@@ -28,6 +28,8 @@
 # Digital signatures
 [Signature fields](/Samples/Digital%20signatures/SignatureFields)
 
+[Sign document](/Samples/Digital%20signatures/SignDocument)
+
 # Display options
 [Initial view](/Samples/Display%20options/InitialView)
 

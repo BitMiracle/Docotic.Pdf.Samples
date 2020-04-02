@@ -271,6 +271,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Digital signatures", "Digit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignatureFields", "Digital signatures\SignatureFields\C#\SignatureFields.csproj", "{D21FD328-39D8-4C8C-8920-FA1A8697EEF3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignDocument", "Digital signatures\SignDocument\C#\SignDocument.csproj", "{B308B7E3-B124-4F88-9938-A9708C721BF4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -749,6 +751,10 @@ Global
 		{D21FD328-39D8-4C8C-8920-FA1A8697EEF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D21FD328-39D8-4C8C-8920-FA1A8697EEF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D21FD328-39D8-4C8C-8920-FA1A8697EEF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B308B7E3-B124-4F88-9938-A9708C721BF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B308B7E3-B124-4F88-9938-A9708C721BF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B308B7E3-B124-4F88-9938-A9708C721BF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B308B7E3-B124-4F88-9938-A9708C721BF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -872,6 +878,7 @@ Global
 		{29D69574-A321-4B27-A368-CA5A750F6D3C} = {4F5146E7-A769-4D0B-94F0-8106CC5C883B}
 		{BB3D2A76-1932-403A-92DB-67B906E3BFB3} = {8450E751-EB23-4F7C-AB20-6E56C0CC9970}
 		{D21FD328-39D8-4C8C-8920-FA1A8697EEF3} = {80D726EA-AAE5-4744-BAEE-6F6C8A01E493}
+		{B308B7E3-B124-4F88-9938-A9708C721BF4} = {80D726EA-AAE5-4744-BAEE-6F6C8A01E493}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61DC7F3F-A5C8-48BD-845F-83DE6BD2527B}
