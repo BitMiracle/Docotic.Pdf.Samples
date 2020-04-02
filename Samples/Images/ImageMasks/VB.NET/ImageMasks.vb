@@ -1,5 +1,4 @@
 Imports System.Diagnostics
-Imports System.Drawing
 
 Imports BitMiracle.Docotic.Pdf
 
@@ -15,10 +14,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Using pdf As New PdfDocument()
                 Dim canvas As PdfCanvas = pdf.Pages(0).Canvas
-                canvas.Resolution = 150
+                Dim scale As Double = pdf.Pages(0).Resolution / 150
+                canvas.ScaleTransform(scale, scale)
 
                 canvas.Brush.Color = New PdfRgbColor(0, 255, 0)
-                canvas.DrawRectangle(New RectangleF(50, 450, 1150, 150), PdfDrawMode.Fill)
+                canvas.DrawRectangle(New PdfRectangle(50, 450, 1150, 150), PdfDrawMode.Fill)
 
                 Dim image As PdfImage = pdf.AddImage("Sample data/pink.png", "Sample data/pinkMask.tif")
                 canvas.DrawImage(image, 550, 200)

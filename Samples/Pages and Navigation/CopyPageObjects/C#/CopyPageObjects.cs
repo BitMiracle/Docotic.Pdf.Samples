@@ -57,7 +57,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         else if (obj.Type == PdfPageObjectType.Text)
                         {
                             PdfTextData text = (PdfTextData)obj;
-                            drawText(target, text, copy);
+                            drawText(target, text);
                         }
 
                         target.RestoreState();
@@ -184,7 +184,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
         }
 
-        private static void drawText(PdfCanvas target, PdfTextData td, PdfDocument pdf)
+        private static void drawText(PdfCanvas target, PdfTextData td)
         {
             target.TextRenderingMode = td.RenderingMode;
             setBrush(target.Brush, td.Brush);

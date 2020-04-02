@@ -21,7 +21,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 const float TargetResolution = 300;
                 
                 PdfPage page = pdf.Pages[0];
-                double scaleFactor = TargetResolution / page.Canvas.Resolution;
+                double scaleFactor = TargetResolution / page.Resolution;
 
                 using (Bitmap bitmap = new Bitmap((int)(page.Width * scaleFactor), (int)(page.Height * scaleFactor)))
                 {

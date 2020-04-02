@@ -20,7 +20,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim page As PdfPage = pdf.Pages(0)
 
                 Const TargetResolution As Single = 300
-                Dim scaleFactor As Double = TargetResolution / page.Canvas.Resolution
+                Dim scaleFactor As Double = TargetResolution / page.Resolution
                 Using bitmap As New Bitmap(CInt(page.Width * scaleFactor), CInt(page.Height * scaleFactor))
                     bitmap.SetResolution(TargetResolution, TargetResolution)
 
@@ -34,15 +34,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                             Select Case obj.Type
                                 Case PdfPageObjectType.Text
                                     drawText(gr, DirectCast(obj, PdfTextData))
-                                    Exit Select
 
                                 Case PdfPageObjectType.Image
                                     drawImage(gr, DirectCast(obj, PdfPaintedImage))
-                                    Exit Select
 
                                 Case PdfPageObjectType.Path
                                     drawPath(gr, DirectCast(obj, PdfPath))
-                                    Exit Select
                             End Select
                         Next
                     End Using
@@ -185,17 +182,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     Select Case segment.Type
                         Case PdfPathSegmentType.Point
                             ' A singlepoint open subpath produces no output.
-                            Exit Select
 
                         Case PdfPathSegmentType.Line
                             Dim line As PdfLineSegment = DirectCast(segment, PdfLineSegment)
                             gdiPath.AddLine(line.Start.ToPointF(), line.[End].ToPointF())
-                            Exit Select
 
                         Case PdfPathSegmentType.Bezier
                             Dim bezier As PdfBezierSegment = DirectCast(segment, PdfBezierSegment)
                             gdiPath.AddBezier(bezier.Start.ToPointF(), bezier.FirstControl.ToPointF(), bezier.SecondControl.ToPointF(), bezier.[End].ToPointF())
-                            Exit Select
 
                         Case PdfPathSegmentType.Rectangle
                             Dim rect As RectangleF = DirectCast(segment, PdfRectangleSegment).Bounds.ToRectangleF()
@@ -203,12 +197,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                             ' GDI+ does not render rectangles with negative or very small width and height. Render such
                             ' rectangles by lines, but respect direction. Otherwise non-zero winding rule for
                             ' path filling will not work.
-                            gdiPath.AddLines(New PointF() {rect.Location, New PointF(rect.X + rect.Width, rect.Y), New PointF(rect.X + rect.Width, rect.Y + rect.Height), New PointF(rect.X, rect.Y + rect.Height), rect.Location})
-                            Exit Select
+                            gdiPath.AddLines({rect.Location,
+                                             New PointF(rect.X + rect.Width, rect.Y),
+                                             New PointF(rect.X + rect.Width, rect.Y + rect.Height),
+                                             New PointF(rect.X, rect.Y + rect.Height), rect.Location})
 
                         Case PdfPathSegmentType.CloseSubpath
                             gdiPath.CloseFigure()
-                            Exit Select
                     End Select
                 Next
             Next
@@ -287,8 +282,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 Case PdfLineCap.ProjectingSquare
                     Return LineCap.Square
-                Case Else
 
+                Case Else
                     Throw New InvalidOperationException("We should never be here")
             End Select
         End Function
@@ -303,8 +298,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 Case PdfLineJoin.Bevel
                     Return LineJoin.Bevel
-                Case Else
 
+                Case Else
                     Throw New InvalidOperationException("We should never be here")
             End Select
         End Function

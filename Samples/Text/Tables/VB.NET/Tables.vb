@@ -1,5 +1,4 @@
 Imports System.Diagnostics
-Imports System.Drawing
 
 Imports BitMiracle.Docotic.Pdf
 
@@ -33,10 +32,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         Private Shared Sub drawHeader(ByVal canvas As PdfCanvas)
             canvas.SaveState()
             canvas.Brush.Color = New PdfGrayColor(75)
-            Dim headerBounds As New RectangleF(m_leftTableCorner, New SizeF(TableWidth, RowHeight))
+            Dim headerBounds As New PdfRectangle(m_leftTableCorner, New PdfSize(TableWidth, RowHeight))
             canvas.DrawRectangle(headerBounds, PdfDrawMode.FillAndStroke)
 
-            Dim cellBounds As PdfRectangle() = New PdfRectangle(2) {New PdfRectangle(m_leftTableCorner.X, m_leftTableCorner.Y, m_columnWidths(0), RowHeight), New PdfRectangle(m_leftTableCorner.X + m_columnWidths(0), m_leftTableCorner.Y, m_columnWidths(1), RowHeight), New RectangleF(m_leftTableCorner.X + m_columnWidths(0) + m_columnWidths(1), m_leftTableCorner.Y, m_columnWidths(2), RowHeight)}
+            Dim cellBounds As PdfRectangle() = New PdfRectangle(2) {
+                New PdfRectangle(m_leftTableCorner.X, m_leftTableCorner.Y, m_columnWidths(0), RowHeight),
+                New PdfRectangle(m_leftTableCorner.X + m_columnWidths(0), m_leftTableCorner.Y, m_columnWidths(1), RowHeight),
+                New PdfRectangle(m_leftTableCorner.X + m_columnWidths(0) + m_columnWidths(1), m_leftTableCorner.Y, m_columnWidths(2), RowHeight)}
 
             For i As Integer = 1 To 2
                 canvas.CurrentPosition = New PdfPoint(cellBounds(i).Left, cellBounds(i).Top)
@@ -57,7 +59,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             canvas.DrawRectangle(firstCellBounds)
             canvas.DrawString("Docotic.Pdf", firstCellBounds, PdfTextAlign.Center, PdfVerticalAlign.Center)
 
-            Dim cells As PdfRectangle(,) = New PdfRectangle(1, 1) {{New PdfRectangle(bodyLeftCorner.X + m_columnWidths(0), bodyLeftCorner.Y, m_columnWidths(1), RowHeight), New PdfRectangle(bodyLeftCorner.X + m_columnWidths(0) + m_columnWidths(1), bodyLeftCorner.Y, m_columnWidths(2), RowHeight)}, {New PdfRectangle(bodyLeftCorner.X + m_columnWidths(0), bodyLeftCorner.Y + RowHeight, m_columnWidths(1), RowHeight), New PdfRectangle(bodyLeftCorner.X + m_columnWidths(0) + m_columnWidths(1), bodyLeftCorner.Y + RowHeight, m_columnWidths(2), RowHeight)}}
+            Dim cells As PdfRectangle(,) = New PdfRectangle(1, 1) {
+                {New PdfRectangle(bodyLeftCorner.X + m_columnWidths(0), bodyLeftCorner.Y, m_columnWidths(1), RowHeight),
+                New PdfRectangle(bodyLeftCorner.X + m_columnWidths(0) + m_columnWidths(1), bodyLeftCorner.Y, m_columnWidths(2), RowHeight)},
+                {New PdfRectangle(bodyLeftCorner.X + m_columnWidths(0), bodyLeftCorner.Y + RowHeight, m_columnWidths(1), RowHeight),
+                New PdfRectangle(bodyLeftCorner.X + m_columnWidths(0) + m_columnWidths(1), bodyLeftCorner.Y + RowHeight, m_columnWidths(2), RowHeight)}}
 
             For Each rect As PdfRectangle In cells
                 canvas.DrawRectangle(rect, PdfDrawMode.Stroke)

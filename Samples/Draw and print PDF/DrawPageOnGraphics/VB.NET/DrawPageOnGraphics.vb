@@ -17,7 +17,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Const TargetResolution As Single = 300
 
                 Dim page As PdfPage = pdf.Pages(0)
-                Dim scaleFactor As Double = TargetResolution / page.Canvas.Resolution
+                Dim scaleFactor As Double = TargetResolution / page.Resolution
 
                 Using bitmap As New Bitmap(CInt(page.Width * scaleFactor), CInt(page.Height * scaleFactor))
                     bitmap.SetResolution(TargetResolution, TargetResolution)

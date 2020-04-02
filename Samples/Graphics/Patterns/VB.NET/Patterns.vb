@@ -1,6 +1,4 @@
 Imports System.Diagnostics
-Imports System.Drawing
-Imports System.Drawing.Drawing2D
 
 Imports BitMiracle.Docotic.Pdf
 
@@ -35,8 +33,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Dim canvas As PdfCanvas = pdf.GetPage(0).Canvas
             canvas.Brush.Pattern = pattern
-            canvas.DrawString(New PointF(50, 50), 0, "Pattern-filled text")
-            canvas.DrawCircle(New PointF(0, 0), 20, PdfDrawMode.FillAndStroke)
+            canvas.DrawString(New PdfPoint(50, 50), 0, "Pattern-filled text")
+            canvas.DrawCircle(New PdfPoint(0, 0), 20, PdfDrawMode.FillAndStroke)
         End Sub
 
         Private Shared Sub drawUncoloredPattern(ByVal pdf As PdfDocument)
@@ -46,7 +44,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim canvas As PdfCanvas = pdf.GetPage(0).Canvas
             canvas.Brush.Pattern = pattern
             canvas.Brush.Color = New PdfRgbColor(0, 255, 0)
-            canvas.DrawString(New PointF(50, 150), "Uncolored Pattern colored green")
+            canvas.DrawString(New PdfPoint(50, 150), "Uncolored Pattern colored green")
         End Sub
 
         Private Shared Sub fill(ByVal pattern As PdfTilingPattern)
@@ -54,7 +52,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim red As PdfColor = New PdfRgbColor(255, 0, 0)
             canvas.Brush.Color = red
             canvas.Pen.Color = red
-            canvas.AppendCircle(New PointF(2, 2), 2)
+            canvas.AppendCircle(New PdfPoint(2, 2), 2)
             canvas.FillAndStrokePath(PdfFillMode.Winding)
         End Sub
     End Class

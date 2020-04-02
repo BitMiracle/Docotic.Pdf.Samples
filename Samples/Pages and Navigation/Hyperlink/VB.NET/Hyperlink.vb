@@ -1,6 +1,5 @@
 Imports System
 Imports System.Diagnostics
-Imports System.Drawing
 
 Imports BitMiracle.Docotic.Pdf
 
@@ -20,7 +19,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim page As PdfPage = pdf.Pages(0)
                 page.Canvas.DrawString(10, 50, "Url: http://bitmiracle.com")
 
-                Dim rectWithLink As New RectangleF(10, 70, 200, 100)
+                Dim rectWithLink As New PdfRectangle(10, 70, 200, 100)
                 page.Canvas.DrawRectangle(rectWithLink, PdfDrawMode.Stroke)
                 page.Canvas.DrawString("Go to Google", rectWithLink, PdfTextAlign.Center, PdfVerticalAlign.Center)
                 page.AddHyperlink(rectWithLink, New Uri("http://google.com"))

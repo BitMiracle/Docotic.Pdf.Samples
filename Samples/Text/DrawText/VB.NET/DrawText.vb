@@ -1,5 +1,4 @@
 Imports System.Diagnostics
-Imports System.Drawing
 
 Imports BitMiracle.Docotic.Pdf
 
@@ -19,8 +18,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.DrawString(10, 50, "Hello, world!")
 
                 Const longString As String = "Lorem ipsum dolor sit amet, consectetur adipisicing elit"
-                canvas.DrawString(longString, New RectangleF(10, 70, 40, 150), PdfTextAlign.Left, PdfVerticalAlign.Top)
-                canvas.DrawText(longString, New RectangleF(70, 70, 40, 150), PdfTextAlign.Left, PdfVerticalAlign.Top)
+                canvas.DrawString(longString, New PdfRectangle(10, 70, 40, 150), PdfTextAlign.Left, PdfVerticalAlign.Top)
+                canvas.DrawText(longString, New PdfRectangle(70, 70, 40, 150), PdfTextAlign.Left, PdfVerticalAlign.Top)
 
                 pdf.Save(pathToFile)
             End Using

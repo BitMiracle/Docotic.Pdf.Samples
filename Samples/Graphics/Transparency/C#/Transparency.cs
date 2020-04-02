@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Drawing;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -18,7 +17,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 PdfCanvas canvas = pdf.Pages[0].Canvas;
 
-                RectangleF rect = new RectangleF(50, 50, 50, 50);
+                PdfRectangle rect = new PdfRectangle(50, 50, 50, 50);
 
                 canvas.Brush.Opacity = 100;
                 canvas.Pen.Opacity = 100;
@@ -27,7 +26,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                 canvas.Brush.Opacity = 40;
                 canvas.Brush.Color = new PdfRgbColor(125, 125, 255);
-                rect.Location = new PointF(rect.X + 15, rect.Y + 15);
+                rect.Location = new PdfPoint(rect.X + 15, rect.Y + 15);
                 canvas.DrawRectangle(rect, 0, PdfDrawMode.Fill);
 
                 pdf.Save(pathToFile);

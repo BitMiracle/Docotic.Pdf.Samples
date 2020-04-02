@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Drawing;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -17,10 +16,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
             using (PdfDocument pdf = new PdfDocument())
             {
                 PdfCanvas canvas = pdf.Pages[0].Canvas;
-                canvas.Resolution = 150;
+                double scale = pdf.Pages[0].Resolution / 150;
+                canvas.ScaleTransform(scale, scale);
 
                 canvas.Brush.Color = new PdfRgbColor(0, 255, 0);
-                canvas.DrawRectangle(new RectangleF(50, 450, 1150, 150), PdfDrawMode.Fill);
+                canvas.DrawRectangle(new PdfRectangle(50, 450, 1150, 150), PdfDrawMode.Fill);
 
                 PdfImage image = pdf.AddImage("Sample data/pink.png", "Sample data/pinkMask.tif");
                 canvas.DrawImage(image, 550, 200);

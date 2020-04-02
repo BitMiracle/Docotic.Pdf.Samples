@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Drawing;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -22,7 +21,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 PdfPage page = pdf.Pages[0];
                 page.Canvas.DrawString(10, 50, "Url: http://bitmiracle.com");
 
-                RectangleF rectWithLink = new RectangleF(10, 70, 200, 100);
+                PdfRectangle rectWithLink = new PdfRectangle(10, 70, 200, 100);
                 page.Canvas.DrawRectangle(rectWithLink, PdfDrawMode.Stroke);
                 page.Canvas.DrawString("Go to Google", rectWithLink, PdfTextAlign.Center, PdfVerticalAlign.Center);
                 page.AddHyperlink(rectWithLink, new Uri("http://google.com"));

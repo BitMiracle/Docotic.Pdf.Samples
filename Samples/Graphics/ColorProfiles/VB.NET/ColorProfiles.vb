@@ -1,5 +1,4 @@
 Imports System.Diagnostics
-Imports System.Drawing
 
 Imports BitMiracle.Docotic.Pdf
 
@@ -16,9 +15,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 Dim colorProfile As PdfColorProfile = Pdf.AddColorProfile("Sample data/AdobeRGB1998.icc")
                 canvas.Brush.Color = New PdfRgbColor(colorProfile, 20, 80, 240)
-                canvas.DrawRectangle(New RectangleF(10, 50, 100, 70), PdfDrawMode.Fill)
+                canvas.DrawRectangle(New PdfRectangle(10, 50, 100, 70), PdfDrawMode.Fill)
 
-                Pdf.Save("ColorProfiles.pdf")
+                pdf.Save("ColorProfiles.pdf")
             End Using
 
             Process.Start("ColorProfiles.pdf")

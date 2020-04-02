@@ -69,7 +69,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim titleFormat As String = String.Format("Page {0}", i)
 
                 Dim textWidth As Single = page.Canvas.GetTextWidth(titleFormat)
-                page.Canvas.DrawString(New PointF((pageWidth - textWidth) / 2, 100), titleFormat)
+                page.Canvas.DrawString(New PdfPoint((pageWidth - textWidth) / 2, 100), titleFormat)
 
                 Dim action As PdfGoToAction = pdf.CreateGoToPageAction(i - 1, 0)
 

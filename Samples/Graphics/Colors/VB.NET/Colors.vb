@@ -1,5 +1,4 @@
 Imports System.Diagnostics
-Imports System.Drawing
 
 Imports BitMiracle.Docotic.Pdf
 
@@ -20,7 +19,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.Pen.Color = New PdfRgbColor(0, 255, 255)
                 canvas.Pen.Width = 3
 
-                canvas.DrawEllipse(New RectangleF(10, 50, 200, 100), PdfDrawMode.FillAndStroke)
+                canvas.DrawEllipse(New PdfRectangle(10, 50, 200, 100), PdfDrawMode.FillAndStroke)
 
                 pdf.Save(pathToFile)
             End Using

@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Drawing;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -16,10 +15,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 PdfCanvas canvas = pdf.Pages[0].Canvas;
 
-                canvas.DrawCircle(new PointF(60, 100), 40);
-                canvas.DrawEllipse(new RectangleF(10, 150, 100, 50));
-                canvas.DrawRectangle(new RectangleF(160, 80, 110, 50));
-                canvas.DrawRoundedRectangle(new RectangleF(160, 150, 110, 50), new SizeF(30, 30));
+                canvas.DrawCircle(new PdfPoint(60, 100), 40);
+                canvas.DrawEllipse(new PdfRectangle(10, 150, 100, 50));
+                canvas.DrawRectangle(new PdfRectangle(160, 80, 110, 50));
+                canvas.DrawRoundedRectangle(new PdfRectangle(160, 150, 110, 50), new PdfSize(30, 30));
 
                 pdf.Save("Shapes.pdf");
             }

@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Drawing;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -21,8 +20,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.DrawString(10, 50, "Hello, world!");
 
                 const string longString = "Lorem ipsum dolor sit amet, consectetur adipisicing elit";
-                canvas.DrawString(longString, new RectangleF(10, 70, 40, 150), PdfTextAlign.Left, PdfVerticalAlign.Top);
-                canvas.DrawText(longString, new RectangleF(70, 70, 40, 150), PdfTextAlign.Left, PdfVerticalAlign.Top);
+                canvas.DrawString(longString, new PdfRectangle(10, 70, 40, 150), PdfTextAlign.Left, PdfVerticalAlign.Top);
+                canvas.DrawText(longString, new PdfRectangle(70, 70, 40, 150), PdfTextAlign.Left, PdfVerticalAlign.Top);
 
                 pdf.Save(pathToFile);
             }

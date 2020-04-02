@@ -1,6 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Drawing;
-using System.Drawing.Drawing2D;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -38,8 +36,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             PdfCanvas canvas = pdf.GetPage(0).Canvas;
             canvas.Brush.Pattern = pattern;
-            canvas.DrawString(new PointF(50, 50), 0, "Pattern-filled text");
-            canvas.DrawCircle(new PointF(0, 0), 20, PdfDrawMode.FillAndStroke);
+            canvas.DrawString(new PdfPoint(50, 50), 0, "Pattern-filled text");
+            canvas.DrawCircle(new PdfPoint(0, 0), 20, PdfDrawMode.FillAndStroke);
         }
 
         private static void drawUncoloredPattern(PdfDocument pdf)
@@ -50,7 +48,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             PdfCanvas canvas = pdf.GetPage(0).Canvas;
             canvas.Brush.Pattern = pattern;
             canvas.Brush.Color = new PdfRgbColor(0, 255, 0);
-            canvas.DrawString(new PointF(50, 150), "Uncolored Pattern colored green");
+            canvas.DrawString(new PdfPoint(50, 150), "Uncolored Pattern colored green");
         }
 
         private static void fill(PdfTilingPattern pattern)
@@ -59,7 +57,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             PdfColor red = new PdfRgbColor(255, 0, 0);
             canvas.Brush.Color = red;
             canvas.Pen.Color = red;
-            canvas.AppendCircle(new PointF(2, 2), 2);
+            canvas.AppendCircle(new PdfPoint(2, 2), 2);
             canvas.FillAndStrokePath(PdfFillMode.Winding);
         }
     }

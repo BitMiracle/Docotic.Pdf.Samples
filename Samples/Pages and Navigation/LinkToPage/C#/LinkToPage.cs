@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Drawing;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -21,12 +20,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                 PdfPage firstPage = pdf.Pages[0];
                 PdfCanvas canvas = firstPage.Canvas;
-                RectangleF rectForLinkToSecondPage = new RectangleF(10, 50, 100, 60);
+                PdfRectangle rectForLinkToSecondPage = new PdfRectangle(10, 50, 100, 60);
                 canvas.DrawRectangle(rectForLinkToSecondPage, PdfDrawMode.Stroke);
                 canvas.DrawString("Go to 2nd page", rectForLinkToSecondPage, PdfTextAlign.Center, PdfVerticalAlign.Center);
                 firstPage.AddLinkToPage(rectForLinkToSecondPage, 1);
 
-                RectangleF rectForLinkToThirdPage = new RectangleF(150, 50, 100, 60);
+                PdfRectangle rectForLinkToThirdPage = new PdfRectangle(150, 50, 100, 60);
                 canvas.DrawRectangle(rectForLinkToThirdPage, PdfDrawMode.Stroke);
                 canvas.DrawString("Go to 3rd page", rectForLinkToThirdPage, PdfTextAlign.Center, PdfVerticalAlign.Center);
                 firstPage.AddLinkToPage(rectForLinkToThirdPage, pdf.Pages[2]);

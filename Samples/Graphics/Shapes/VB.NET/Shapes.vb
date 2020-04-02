@@ -1,5 +1,4 @@
 Imports System.Diagnostics
-Imports System.Drawing
 
 Imports BitMiracle.Docotic.Pdf
 
@@ -12,13 +11,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' for more information.
 
             Using pdf As New PdfDocument()
-
                 Dim canvas As PdfCanvas = pdf.Pages(0).Canvas
 
-                canvas.DrawCircle(New PointF(60, 100), 40)
-                canvas.DrawEllipse(New RectangleF(10, 150, 100, 50))
-                canvas.DrawRectangle(New RectangleF(160, 80, 110, 50))
-                canvas.DrawRoundedRectangle(New RectangleF(160, 150, 110, 50), New SizeF(30, 30))
+                canvas.DrawCircle(New PdfPoint(60, 100), 40)
+                canvas.DrawEllipse(New PdfRectangle(10, 150, 100, 50))
+                canvas.DrawRectangle(New PdfRectangle(160, 80, 110, 50))
+                canvas.DrawRoundedRectangle(New PdfRectangle(160, 150, 110, 50), New PdfSize(30, 30))
 
                 pdf.Save("Shapes.pdf")
             End Using

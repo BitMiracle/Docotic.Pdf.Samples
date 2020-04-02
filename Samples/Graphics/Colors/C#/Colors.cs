@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Drawing;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -22,7 +21,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.Pen.Color = new PdfRgbColor(0, 255, 255);
                 canvas.Pen.Width = 3;
 
-                canvas.DrawEllipse(new RectangleF(10, 50, 200, 100), PdfDrawMode.FillAndStroke);
+                canvas.DrawEllipse(new PdfRectangle(10, 50, 200, 100), PdfDrawMode.FillAndStroke);
 
                 pdf.Save(pathToFile);
             }

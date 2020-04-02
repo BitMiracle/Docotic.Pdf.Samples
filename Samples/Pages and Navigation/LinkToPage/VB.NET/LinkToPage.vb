@@ -1,5 +1,4 @@
 Imports System.Diagnostics
-Imports System.Drawing
 
 Imports BitMiracle.Docotic.Pdf
 
@@ -19,12 +18,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 Dim firstPage As PdfPage = pdf.Pages(0)
                 Dim canvas As PdfCanvas = firstPage.Canvas
-                Dim rectForLinkToSecondPage As New RectangleF(10, 50, 100, 60)
+                Dim rectForLinkToSecondPage As New PdfRectangle(10, 50, 100, 60)
                 canvas.DrawRectangle(rectForLinkToSecondPage, PdfDrawMode.Stroke)
                 canvas.DrawString("Go to 2nd page", rectForLinkToSecondPage, PdfTextAlign.Center, PdfVerticalAlign.Center)
                 firstPage.AddLinkToPage(rectForLinkToSecondPage, 1)
 
-                Dim rectForLinkToThirdPage As New RectangleF(150, 50, 100, 60)
+                Dim rectForLinkToThirdPage As New PdfRectangle(150, 50, 100, 60)
                 canvas.DrawRectangle(rectForLinkToThirdPage, PdfDrawMode.Stroke)
                 canvas.DrawString("Go to 3rd page", rectForLinkToThirdPage, PdfTextAlign.Center, PdfVerticalAlign.Center)
                 firstPage.AddLinkToPage(rectForLinkToThirdPage, pdf.Pages(2))

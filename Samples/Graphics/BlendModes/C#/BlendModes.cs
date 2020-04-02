@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Drawing;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -18,14 +17,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 PdfCanvas canvas = pdf.Pages[0].Canvas;
 
-                PointF location = new PointF(50, 80);
-                SizeF size = new SizeF(50, 50);
+                PdfPoint location = new PdfPoint(50, 80);
+                PdfSize size = new PdfSize(50, 50);
 
                 PdfBlendMode[] modes = new PdfBlendMode[] { PdfBlendMode.Hue, PdfBlendMode.Lighten, PdfBlendMode.Darken };
                 for (int i = 0; i < modes.Length; ++i)
                 {
                     if (i != 0)
-                        location.X = location.X + size.Width * 2;
+                        location.X += size.Width * 2;
 
                     canvas.BlendMode = PdfBlendMode.Normal;
 
@@ -33,11 +32,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     canvas.DrawString(location.X, location.Y - 20, "BlendMode: " + modes[i].ToString());
 
                     canvas.Brush.Color = new PdfRgbColor(200, 140, 7);
-                    canvas.DrawRectangle(new RectangleF(location, size), 0, PdfDrawMode.Fill);
+                    canvas.DrawRectangle(new PdfRectangle(location, size), 0, PdfDrawMode.Fill);
 
                     canvas.BlendMode = modes[i];
                     canvas.Brush.Color = new PdfRgbColor(125, 125, 255);
-                    RectangleF secondRect = new RectangleF(location.X + 15, location.Y + 15, size.Width, size.Height);
+                    PdfRectangle secondRect = new PdfRectangle(location.X + 15, location.Y + 15, size.Width, size.Height);
                     canvas.DrawRectangle(secondRect, 0, PdfDrawMode.Fill);
                 }
 
