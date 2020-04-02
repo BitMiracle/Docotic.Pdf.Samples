@@ -25,6 +25,9 @@
 
 [Remove structure information from PDF document](/Samples/Compression/RemoveStructureInformation)
 
+# Digital signatures
+[Signature fields](/Samples/Digital%20signatures/SignatureFields)
+
 # Display options
 [Initial view](/Samples/Display%20options/InitialView)
 
