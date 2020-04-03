@@ -34,6 +34,8 @@
 
 [Sign signature field using custom style](/Samples/Digital%20signatures/SignSignatureFieldUsingCustomStyle)
 
+[Sign signature field with lock](/Samples/Digital%20signatures/SignSignatureFieldWithLock)
+
 # Display options
 [Initial view](/Samples/Display%20options/InitialView)
 
