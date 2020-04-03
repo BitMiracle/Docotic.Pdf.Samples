@@ -26,6 +26,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 // when the second field is signed, all fields will be locked for editing
                 second.Lock = PdfSignatureFieldLock.CreateLockAll();
 
+                // IMPORTANT:
+                // Replace "keystore.p12" and "password" with your own .p12 or .pfx path and password.
+                // Without the change the sample will not work.
                 PdfSigningOptions options = new PdfSigningOptions("keystore.p12", "password")
                 {
                     DigestAlgorithm = PdfDigestAlgorithm.Sha256,
