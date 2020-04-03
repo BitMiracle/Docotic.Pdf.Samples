@@ -30,6 +30,8 @@
 
 [Sign document](/Samples/Digital%20signatures/SignDocument)
 
+[Sign signature field](/Samples/Digital%20signatures/SignSignatureField)
+
 # Display options
 [Initial view](/Samples/Display%20options/InitialView)
 
