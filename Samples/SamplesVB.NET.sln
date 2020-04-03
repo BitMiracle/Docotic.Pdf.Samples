@@ -277,6 +277,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SignSignatureFieldUsingCust
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SignSignatureFieldWithLock", "Digital signatures\SignSignatureFieldWithLock\VB.NET\SignSignatureFieldWithLock.vbproj", "{571D3026-A67A-4D99-BE1F-7903B68FB9EC}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ReadSignatureProperties", "Digital signatures\ReadSignatureProperties\VB.NET\ReadSignatureProperties.vbproj", "{B9BC0D2B-B83F-443F-8449-5274C575DBD0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -767,6 +769,10 @@ Global
 		{571D3026-A67A-4D99-BE1F-7903B68FB9EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{571D3026-A67A-4D99-BE1F-7903B68FB9EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{571D3026-A67A-4D99-BE1F-7903B68FB9EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9BC0D2B-B83F-443F-8449-5274C575DBD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9BC0D2B-B83F-443F-8449-5274C575DBD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9BC0D2B-B83F-443F-8449-5274C575DBD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9BC0D2B-B83F-443F-8449-5274C575DBD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -893,6 +899,7 @@ Global
 		{06988B5C-15E6-4ACD-8A13-B8C707DFD86E} = {6D0505BD-B25A-4219-A5EA-0F5E30DAC7F9}
 		{79D5084D-FCB7-4A4C-87BE-C1F33CDD248D} = {6D0505BD-B25A-4219-A5EA-0F5E30DAC7F9}
 		{571D3026-A67A-4D99-BE1F-7903B68FB9EC} = {6D0505BD-B25A-4219-A5EA-0F5E30DAC7F9}
+		{B9BC0D2B-B83F-443F-8449-5274C575DBD0} = {6D0505BD-B25A-4219-A5EA-0F5E30DAC7F9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {50A18C19-4AC0-4BF0-9AA5-7C45E6C1E9A6}
