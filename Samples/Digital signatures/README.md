@@ -12,3 +12,7 @@ This sample shows how to digitally sign an existing PDF document.
 [Sign signature field](/Samples/Digital%20signatures/SignSignatureField)
 
 This sample shows how to sign a specific signature field in a PDF document.
+
+[Sign signature field using custom style](/Samples/Digital%20signatures/SignSignatureFieldUsingCustomStyle)
+
+This sample shows how to setup the way the field will look after the signing.

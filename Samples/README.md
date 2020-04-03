@@ -32,6 +32,8 @@
 
 [Sign signature field](/Samples/Digital%20signatures/SignSignatureField)
 
+[Sign signature field using custom style](/Samples/Digital%20signatures/SignSignatureFieldUsingCustomStyle)
+
 # Display options
 [Initial view](/Samples/Display%20options/InitialView)
 
