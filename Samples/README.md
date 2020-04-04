@@ -38,6 +38,8 @@
 
 [Sign signature field with lock](/Samples/Digital%20signatures/SignSignatureFieldWithLock)
 
+[Verify signature](/Samples/Digital%20signatures/VerifySignature)
+
 # Display options
 [Initial view](/Samples/Display%20options/InitialView)
 

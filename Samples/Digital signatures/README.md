@@ -24,3 +24,7 @@ This sample shows how to setup the way the field will look after the signing.
 [Sign signature field with lock](/Samples/Digital%20signatures/SignSignatureFieldWithLock)
 
 This sample shows how to create and sign a signature field with lock.
+
+[Verify signature](/Samples/Digital%20signatures/VerifySignature)
+
+This sample shows how to verify a signature and to check if its signing certificate is revoked.
