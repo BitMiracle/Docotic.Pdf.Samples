@@ -66,13 +66,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.ReplaceDuplicateFonts()
 
                 ' 7. Unembed fonts
-                For Each font As PdfFont In pdf.GetFonts()
-                    ' Only unembed popular fonts installed in the typical OS. You can extend
-                    ' the list of such fonts in the "if" statement below.
-                    If font.Name = "Arial" OrElse font.Name = "Verdana" Then
-                        font.Unembed()
-                    End If
-                Next
+                unembedFonts(pdf)
 
                 ' 8. Remove unused resources
                 pdf.RemoveUnusedResources()
@@ -174,5 +168,39 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Return True
         End Function
+
+        ''' <summary>
+        ''' This method unembeds any font that is:
+        ''' * installed in the OS
+        ''' * or has its name included in the "always unembed" list
+        ''' * and its name is not included in the "always keep" list. 
+        ''' </summary>
+        Private Shared Sub unembedFonts(ByVal pdf As PdfDocument)
+            Dim alwaysUnembedList = {"MyriadPro-Regular"}
+            Dim alwaysKeepList = {"ImportantFontName", "AnotherImportantFontName"}
+
+            For Each font In pdf.GetFonts()
+
+                If Not font.Embedded OrElse
+                    Equals(font.EncodingName, "Built-In") OrElse
+                    Array.Exists(alwaysKeepList, Function(name) Equals(font.Name, name)) Then
+                    Continue For
+                End If
+
+                If font.Format = PdfFontFormat.TrueType OrElse font.Format = PdfFontFormat.CidType2 Then
+                    Dim loader As GdiFontLoader = New GdiFontLoader()
+                    Dim fontBytes = loader.Load(font.Name, font.Bold, font.Italic)
+
+                    If fontBytes IsNot Nothing Then
+                        font.Unembed()
+                        Continue For
+                    End If
+                End If
+
+                If Array.Exists(alwaysUnembedList, Function(name) Equals(font.Name, name)) Then
+                    font.Unembed()
+                End If
+            Next
+        End Sub
     End Class
 End Namespace
