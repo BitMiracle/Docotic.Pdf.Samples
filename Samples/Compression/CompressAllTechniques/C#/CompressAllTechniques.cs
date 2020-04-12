@@ -68,13 +68,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.ReplaceDuplicateFonts();
 
                 // 7. Unembed fonts
-                foreach (PdfFont font in pdf.GetFonts())
-                {
-                    // Only unembed popular fonts installed in the typical OS. You can extend 
-                    // the list of such fonts in the "if" statement below. 
-                    if (font.Name == "Arial" || font.Name == "Verdana")
-                        font.Unembed();
-                }
+                unembedFonts(pdf);
 
                 // 8. Remove unused resources
                 pdf.RemoveUnusedResources();
@@ -184,6 +178,42 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// This method unembeds any font that is:
+        /// * installed in the OS
+        /// * or has its name included in the "always unembed" list
+        /// * and its name is not included in the "always keep" list. 
+        /// </summary>
+        private static void unembedFonts(PdfDocument pdf)
+        {
+            string[] alwaysUnembedList = new string[] { "MyriadPro-Regular" };
+            string[] alwaysKeepList = new string[] { "ImportantFontName", "AnotherImportantFontName" };
+
+            foreach (PdfFont font in pdf.GetFonts())
+            {
+                if (!font.Embedded ||
+                    font.EncodingName == "Built-In" ||
+                    Array.Exists(alwaysKeepList, name => font.Name == name))
+                {
+                    continue;
+                }
+
+                if (font.Format == PdfFontFormat.TrueType || font.Format == PdfFontFormat.CidType2)
+                {
+                    GdiFontLoader loader = new GdiFontLoader();
+                    byte[] fontBytes = loader.Load(font.Name, font.Bold, font.Italic);
+                    if (fontBytes != null)
+                    {
+                        font.Unembed();
+                        continue;
+                    }
+                }
+                
+                if (Array.Exists(alwaysUnembedList, name => font.Name == name))
+                    font.Unembed();
+            }
         }
     }
 }
