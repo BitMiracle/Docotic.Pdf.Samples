@@ -45,8 +45,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
-    <Reference Include="Tesseract, Version=3.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Tesseract.3.3.0\lib\net40\Tesseract.dll</HintPath>
+    <Reference Include="Tesseract, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Tesseract.4.1.0-beta1\lib\net40\Tesseract.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -72,15 +72,15 @@
     <Folder Include="My Project\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
-  <Import Project="..\..\..\packages\Tesseract.3.3.0\build\Tesseract.targets" Condition="Exists('..\..\..\packages\Tesseract.3.3.0\build\Tesseract.targets')" />
+  <Import Project="..\..\..\packages\Tesseract.4.1.0-beta1\build\Tesseract.targets" Condition="Exists('..\..\..\packages\Tesseract.4.1.0-beta1\build\Tesseract.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\..\packages\Tesseract.3.3.0\build\Tesseract.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Tesseract.3.3.0\build\Tesseract.targets'))" />
-    <Error Condition="!Exists('..\..\..\packages\Tesseract.Data.English.3.4.0\build\Tesseract.Data.English.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Tesseract.Data.English.3.4.0\build\Tesseract.Data.English.targets'))" />
+    <Error Condition="!Exists('..\..\..\packages\Tesseract.4.1.0-beta1\build\Tesseract.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Tesseract.4.1.0-beta1\build\Tesseract.targets'))" />
+    <Error Condition="!Exists('..\..\..\packages\Tesseract.Data.English.4.0.0\build\Tesseract.Data.English.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Tesseract.Data.English.4.0.0\build\Tesseract.Data.English.targets'))" />
   </Target>
-  <Import Project="..\..\..\packages\Tesseract.Data.English.3.4.0\build\Tesseract.Data.English.targets" Condition="Exists('..\..\..\packages\Tesseract.Data.English.3.4.0\build\Tesseract.Data.English.targets')" />
+  <Import Project="..\..\..\packages\Tesseract.Data.English.4.0.0\build\Tesseract.Data.English.targets" Condition="Exists('..\..\..\packages\Tesseract.Data.English.4.0.0\build\Tesseract.Data.English.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

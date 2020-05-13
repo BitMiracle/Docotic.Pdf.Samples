@@ -5,8 +5,12 @@ Imports Tesseract
 Namespace BitMiracle.Docotic.Pdf.Samples
     Public NotInheritable Class OcrAndExtractText
         Public Shared Sub Main()
-            Dim documentText = New StringBuilder()
+            ' NOTE 
+            ' When used in trial mode, the library imposes some restrictions.
+            ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
+            ' for more information.
 
+            Dim documentText = New StringBuilder()
             Using pdf = New PdfDocument("Sample data/Freedman Scora.pdf")
 
                 Using engine = New TesseractEngine("tessdata", "eng", EngineMode.[Default])
@@ -29,7 +33,6 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         page.Save(pageImage, options)
 
                         Using img = Pix.LoadFromFile(pageImage)
-
                             Using recognizedPage = engine.Process(img)
                                 Dim recognizedText = recognizedPage.GetText()
                                 Console.WriteLine($"Mean confidence for page #{i}: {recognizedPage.GetMeanConfidence()}")
