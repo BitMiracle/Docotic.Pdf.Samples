@@ -49,9 +49,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         {
                             using (Page recognizedPage = engine.Process(img))
                             {
-                                var recognizedText = recognizedPage.GetText();
                                 Console.WriteLine($"Mean confidence for page #{i}: {recognizedPage.GetMeanConfidence()}");
 
+                                string recognizedText = recognizedPage.GetText();
                                 documentText.Append(recognizedText);
                             }
                         }

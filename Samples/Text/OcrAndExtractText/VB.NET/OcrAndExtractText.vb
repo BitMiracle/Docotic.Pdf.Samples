@@ -32,10 +32,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         Dim pageImage As String = $"page_{i}.png"
                         page.Save(pageImage, options)
 
-                        Using img = Pix.LoadFromFile(pageImage)
-                            Using recognizedPage = engine.Process(img)
-                                Dim recognizedText = recognizedPage.GetText()
+                        Using img As Pix = Pix.LoadFromFile(pageImage)
+                            Using recognizedPage As Page = engine.Process(img)
                                 Console.WriteLine($"Mean confidence for page #{i}: {recognizedPage.GetMeanConfidence()}")
+
+                                Dim recognizedText As String = recognizedPage.GetText()
                                 documentText.Append(recognizedText)
                             End Using
                         End Using
