@@ -39,17 +39,18 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                                 documentText.Append(recognizedText)
                             End Using
                         End Using
+
+                        File.Delete(pageImage)
                     Next
                 End Using
-
-                Const Result As String = "result.txt"
-
-                Using writer = New StreamWriter(Result)
-                    writer.Write(documentText.ToString())
-                End Using
-
-                Process.Start(Result)
             End Using
+
+            Const Result As String = "result.txt"
+            Using writer = New StreamWriter(Result)
+                writer.Write(documentText.ToString())
+            End Using
+
+            Process.Start(Result)
         End Sub
     End Class
 End Namespace

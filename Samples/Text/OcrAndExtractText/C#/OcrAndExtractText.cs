@@ -45,9 +45,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         string pageImage = $"page_{i}.png";
                         page.Save(pageImage, options);
 
-                        using (var img = Pix.LoadFromFile(pageImage))
+                        using (Pix img = Pix.LoadFromFile(pageImage))
                         {
-                            using (var recognizedPage = engine.Process(img))
+                            using (Page recognizedPage = engine.Process(img))
                             {
                                 var recognizedText = recognizedPage.GetText();
                                 Console.WriteLine($"Mean confidence for page #{i}: {recognizedPage.GetMeanConfidence()}");
@@ -55,15 +55,17 @@ namespace BitMiracle.Docotic.Pdf.Samples
                                 documentText.Append(recognizedText);
                             }
                         }
+
+                        File.Delete(pageImage);
                     }
                 }
-
-                const string Result = "result.txt";
-                using (var writer = new StreamWriter(Result))
-                    writer.Write(documentText.ToString());
-
-                Process.Start(Result);
             }
+
+            const string Result = "result.txt";
+            using (var writer = new StreamWriter(Result))
+                writer.Write(documentText.ToString());
+
+            Process.Start(Result);
         }
     }
 }
