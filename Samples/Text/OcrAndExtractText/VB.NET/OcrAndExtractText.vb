@@ -13,7 +13,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim documentText = New StringBuilder()
             Using pdf = New PdfDocument("Sample data/Freedman Scora.pdf")
 
-                Using engine = New TesseractEngine("tessdata", "eng", EngineMode.[Default])
+                Using engine = New TesseractEngine("tessdata", "eng", EngineMode.LstmOnly)
 
                     For i As Integer = 0 To pdf.PageCount - 1
                         If documentText.Length > 0 Then documentText.Append(vbCrLf & vbCrLf)
@@ -27,8 +27,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                         Dim options As PdfDrawOptions = PdfDrawOptions.Create()
                         options.BackgroundColor = New PdfRgbColor(255, 255, 255)
-                        options.HorizontalResolution = 600
-                        options.VerticalResolution = 600
+                        options.HorizontalResolution = 200
+                        options.VerticalResolution = 200
                         Dim pageImage As String = $"page_{i}.png"
                         page.Save(pageImage, options)
 

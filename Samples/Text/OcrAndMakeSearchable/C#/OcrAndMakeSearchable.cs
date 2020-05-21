@@ -20,7 +20,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 // Make sure that the font defines all glyphs for the target language.
                 PdfFont universalFont = pdf.AddFont("Arial");
 
-                using (var engine = new TesseractEngine(@"tessdata", "eng", EngineMode.Default))
+                using (var engine = new TesseractEngine(@"tessdata", "eng", EngineMode.LstmOnly))
                 {
                     for (int i = 0; i < pdf.PageCount; ++i)
                     {
@@ -37,7 +37,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         // Produce invisible, but searchable text
                         canvas.TextRenderingMode = PdfTextRenderingMode.NeitherFillNorStroke;
 
-                        const int Dpi = 600;
+                        const int Dpi = 200;
                         const double ImageToPdfScaleFactor = 72.0 / Dpi;
                         foreach (RecognizedTextChunk word in recognizeWords(page, engine, Dpi, $"page_{i}.png"))
                         {

@@ -18,7 +18,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             var documentText = new StringBuilder();
             using (var pdf = new PdfDocument("Sample data/Freedman Scora.pdf"))
             {
-                using (var engine = new TesseractEngine(@"tessdata", "eng", EngineMode.Default))
+                using (var engine = new TesseractEngine(@"tessdata", "eng", EngineMode.LstmOnly))
                 {
                     for (int i = 0; i < pdf.PageCount; ++i)
                     {
@@ -39,8 +39,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         // Save PDF page as high-resolution image
                         PdfDrawOptions options = PdfDrawOptions.Create();
                         options.BackgroundColor = new PdfRgbColor(255, 255, 255);
-                        options.HorizontalResolution = 600;
-                        options.VerticalResolution = 600;
+                        options.HorizontalResolution = 200;
+                        options.VerticalResolution = 200;
 
                         string pageImage = $"page_{i}.png";
                         page.Save(pageImage, options);

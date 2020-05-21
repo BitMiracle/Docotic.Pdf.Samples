@@ -16,7 +16,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 ' Make sure that the font defines all glyphs for the target language.
                 Dim universalFont As PdfFont = pdf.AddFont("Arial")
 
-                Using engine = New TesseractEngine("tessdata", "eng", EngineMode.[Default])
+                Using engine = New TesseractEngine("tessdata", "eng", EngineMode.LstmOnly)
                     For i As Integer = 0 To pdf.PageCount - 1
                         Dim page As PdfPage = pdf.Pages(i)
 
@@ -30,7 +30,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         ' Produce invisible, but searchable text
                         canvas.TextRenderingMode = PdfTextRenderingMode.NeitherFillNorStroke
 
-                        Const Dpi As Integer = 600
+                        Const Dpi As Integer = 200
                         Const ImageToPdfScaleFactor As Double = 72.0 / Dpi
 
                         For Each word As RecognizedTextChunk In recognizeWords(page, engine, Dpi, $"page_{i}.png")
