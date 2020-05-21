@@ -5,12 +5,12 @@ NOTE: To get proper results please use this sample code with a license key. You 
 http://bitmiracle.com/pdf-library/download-pdf-library.aspx
 
 Docotic.Pdf supports different compression methods. You can use all of them to get the best compression ratio:
-1. recompress images (if any)
-2. setup save options
-3. remove structure information
-4. flatten form fields
-5. remove metadata
-6. replace duplicate fonts
+1. replace duplicate objects
+2. recompress images (if any)
+3. setup save options
+4. remove structure information
+5. flatten form fields
+6. remove metadata
 7. unembed fonts
 8. remove unused resources
 9. remove page-piece dictionaries

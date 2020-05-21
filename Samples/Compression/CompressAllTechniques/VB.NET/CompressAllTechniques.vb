@@ -17,7 +17,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Const compressedFile As String = "CompressAllTechniques.pdf"
 
             Using pdf As New PdfDocument(originalFile)
-                ' 1. Recompress images
+                ' 1. Remove duplicate PDF objects
+                pdf.ReplaceDuplicateObjects()
+
+                ' 2. Recompress images
                 Dim alreadyCompressedImageIds = New HashSet(Of String)()
                 For i As Integer = 0 To pdf.PageCount - 1
                     Dim page As PdfPage = pdf.Pages(i)
@@ -34,21 +37,21 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     Next
                 Next
 
-                ' 2. Setup save options
+                ' 3. Setup save options
                 pdf.SaveOptions.Compression = PdfCompression.Flate
                 pdf.SaveOptions.UseObjectStreams = True
                 pdf.SaveOptions.RemoveUnusedObjects = True
                 pdf.SaveOptions.OptimizeIndirectObjects = True
                 pdf.SaveOptions.WriteWithoutFormatting = True
 
-                ' 3. Remove structure information
+                ' 4. Remove structure information
                 pdf.RemoveStructureInformation()
 
-                ' 4. Flatten form fields 
+                ' 5. Flatten form fields 
                 ' Controls become uneditable after that
                 pdf.FlattenControls()
 
-                ' 5. Clear metadata
+                ' 6. Clear metadata
                 pdf.Metadata.Basic.Clear()
                 pdf.Metadata.DublinCore.Clear()
                 pdf.Metadata.MediaManagement.Clear()
@@ -61,9 +64,6 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Next
 
                 pdf.Info.Clear(False)
-
-                ' 6. Remove font duplicates
-                pdf.ReplaceDuplicateFonts()
 
                 ' 7. Unembed fonts
                 unembedFonts(pdf)

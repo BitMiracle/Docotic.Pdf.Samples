@@ -1491,6 +1491,27 @@
             Scale page to fit the specified size.
             </summary>
     </member>
+    <member name="T:BitMiracle.Docotic.Pdf.PdfDuplicateObjectKinds">
+      <summary>
+            Specifies all object kinds that can be deduplicated by the
+            <see cref="Overload:BitMiracle.Docotic.Pdf.PdfDocument.ReplaceDuplicateObjects" /> group of methods.
+            </summary>
+    </member>
+    <member name="F:BitMiracle.Docotic.Pdf.PdfDuplicateObjectKinds.Font">
+      <summary>
+            Font objects.
+            </summary>
+    </member>
+    <member name="F:BitMiracle.Docotic.Pdf.PdfDuplicateObjectKinds.Image">
+      <summary>
+            Image objects (only regular, non-inline).
+            </summary>
+    </member>
+    <member name="F:BitMiracle.Docotic.Pdf.PdfDuplicateObjectKinds.All">
+      <summary>
+            All supported object kinds.
+            </summary>
+    </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfEncryptionAlgorithm">
       <summary>
             Specifies encryption algorithm of a <see cref="T:BitMiracle.Docotic.Pdf.PdfDocument" />.
@@ -4090,6 +4111,13 @@
       <param name="tileWidth">Width of the tiles in the TIFF.</param>
       <param name="tileHeight">Height of the tiles in the TIFF.</param>
       <returns>The newly created options for tiled TIFF images.</returns>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.ImageCompressionOptions.CreateGrayscaleTiff">
+      <summary>
+            Creates options for grayscale TIFF images.
+            </summary>
+      <returns>The newly created options for TIFF images.</returns>
+      <overloads>Creates options for grayscale TIFF images.</overloads>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.ImageCompressionOptions.CreateBitonalTiff">
       <summary>
@@ -8094,6 +8122,65 @@
         <para>
             This method helps to reduce file size in cases when document contains pages or XObjects
             with unused resources.
+            </para>
+      </remarks>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.ReplaceDuplicateObjects">
+      <summary>
+            Replaces duplicate document objects with the first duplicate.
+            </summary>
+      <remarks>
+        <para>
+            This method finds all groups of object duplicates and replaces all objects from each
+            group of duplicates with the first item of the group.
+            </para>
+        <para>
+            This method replaces duplicates of all supported kinds. The kinds are mentioned in
+            <see cref="T:BitMiracle.Docotic.Pdf.PdfDuplicateObjectKinds" />.
+            </para>
+        <para>
+            This method gives good results for documents which were incrementally updated or
+            created by a merge of several documents with the same objects.
+            </para>
+        <para>
+            To actually reduce output file size, this method requires removal of unused objects
+            afterwards. Because of this, SaveOptions.<see cref="P:BitMiracle.Docotic.Pdf.PdfSaveOptions.RemoveUnusedObjects" />
+            property will be set to <c>true</c> automatically when using this method.
+            </para>
+        <para>
+            To be able to replace duplicate inline images too, use one of the
+            <see cref="Overload:BitMiracle.Docotic.Pdf.PdfCanvas.MoveInlineImagesToResources" />
+            methods before calling any of the
+            <see cref="Overload:BitMiracle.Docotic.Pdf.PdfDocument.ReplaceDuplicateObjects" /> methods.
+            </para>
+      </remarks>
+      <overloads>Replaces duplicate document objects with the first duplicate.</overloads>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.ReplaceDuplicateObjects(BitMiracle.Docotic.Pdf.PdfDuplicateObjectKinds)">
+      <summary>
+            Replaces duplicate document objects with the first duplicate.
+            </summary>
+      <param name="objectsToReplace">Kinds of objects that should be replaced</param>
+      <remarks>
+        <para>
+            This method checks objects of the specified kinds. For each specified kind it finds
+            all groups of object duplicates. Then the method replaces all objects from each group of
+            duplicates with the first item of the group.
+            </para>
+        <para>
+            This method gives good results for documents which were incrementally updated or
+            created by a merge of several documents with the same objects.
+            </para>
+        <para>
+            To actually reduce output file size, this method requires removal of unused objects
+            afterwards. Because of this, SaveOptions.<see cref="P:BitMiracle.Docotic.Pdf.PdfSaveOptions.RemoveUnusedObjects" />
+            property will be set to <c>true</c> automatically when using this method.
+            </para>
+        <para>
+            To be able to replace duplicate inline images too, use one of the
+            <see cref="Overload:BitMiracle.Docotic.Pdf.PdfCanvas.MoveInlineImagesToResources" />
+            methods before calling any of the
+            <see cref="Overload:BitMiracle.Docotic.Pdf.PdfDocument.ReplaceDuplicateObjects" /> methods.
             </para>
       </remarks>
     </member>
