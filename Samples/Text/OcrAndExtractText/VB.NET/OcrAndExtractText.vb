@@ -17,21 +17,28 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                     For i As Integer = 0 To pdf.PageCount - 1
                         If documentText.Length > 0 Then documentText.Append(vbCrLf & vbCrLf)
+
                         Dim page As PdfPage = pdf.Pages(i)
                         Dim searchableText As String = page.GetText()
 
+                        ' Simple check if the page contains searchable text.
+                        ' We do not need to perform OCR in that case.
                         If Not String.IsNullOrEmpty(searchableText.Trim()) Then
                             documentText.Append(searchableText)
                             Continue For
                         End If
 
+                        ' This page is not searchable.
+                        ' Save PDF page as a high-resolution image.
                         Dim options As PdfDrawOptions = PdfDrawOptions.Create()
                         options.BackgroundColor = New PdfRgbColor(255, 255, 255)
                         options.HorizontalResolution = 200
                         options.VerticalResolution = 200
+
                         Dim pageImage As String = $"page_{i}.png"
                         page.Save(pageImage, options)
 
+                        ' Perform OCR
                         Using img As Pix = Pix.LoadFromFile(pageImage)
                             Using recognizedPage As Page = engine.Process(img)
                                 Console.WriteLine($"Mean confidence for page #{i}: {recognizedPage.GetMeanConfidence()}")

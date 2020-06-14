@@ -29,14 +29,15 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         string searchableText = page.GetText();
 
                         // Simple check if the page contains searchable text.
-                        // We do not need to do OCR in that case.
+                        // We do not need to perform OCR in that case.
                         if (!string.IsNullOrEmpty(searchableText.Trim()))
                         {
                             documentText.Append(searchableText);
                             continue;
                         }
 
-                        // Save PDF page as high-resolution image
+                        // This page is not searchable.
+                        // Save PDF page as a high-resolution image.
                         PdfDrawOptions options = PdfDrawOptions.Create();
                         options.BackgroundColor = new PdfRgbColor(255, 255, 255);
                         options.HorizontalResolution = 200;
@@ -45,6 +46,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         string pageImage = $"page_{i}.png";
                         page.Save(pageImage, options);
 
+                        // Perform OCR
                         using (Pix img = Pix.LoadFromFile(pageImage))
                         {
                             using (Page recognizedPage = engine.Process(img))
