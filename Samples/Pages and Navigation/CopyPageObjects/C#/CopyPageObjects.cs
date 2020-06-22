@@ -193,6 +193,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
             target.TextPosition = PdfPoint.Empty;
             target.FontSize = td.FontSize;
             target.Font = td.Font;
+            target.CharacterSpacing = td.CharacterSpacing;
+            target.WordSpacing = td.WordSpacing;
+            target.TextHorizontalScaling = td.HorizontalScaling;
+
             target.TranslateTransform(td.Position.X, td.Position.Y);
             target.Transform(td.TransformationMatrix);
 

@@ -1507,6 +1507,21 @@
             Image objects (only regular, non-inline).
             </summary>
     </member>
+    <member name="F:BitMiracle.Docotic.Pdf.PdfDuplicateObjectKinds.ColorSpace">
+      <summary>
+            Color space objects.
+            </summary>
+    </member>
+    <member name="F:BitMiracle.Docotic.Pdf.PdfDuplicateObjectKinds.Pattern">
+      <summary>
+            Pattern objects.
+            </summary>
+    </member>
+    <member name="F:BitMiracle.Docotic.Pdf.PdfDuplicateObjectKinds.Shading">
+      <summary>
+            Shading objects.
+            </summary>
+    </member>
     <member name="F:BitMiracle.Docotic.Pdf.PdfDuplicateObjectKinds.All">
       <summary>
             All supported object kinds.
@@ -4092,9 +4107,21 @@
             </summary>
       <returns>The newly created options for PNG images.</returns>
     </member>
+    <member name="M:BitMiracle.Docotic.Pdf.ImageCompressionOptions.CreateGrayscalePng">
+      <summary>
+            Creates options for grayscale PNG images.
+            </summary>
+      <returns>The newly created options for PNG images.</returns>
+    </member>
     <member name="M:BitMiracle.Docotic.Pdf.ImageCompressionOptions.CreateJpeg">
       <summary>
             Creates options for JPEG images.
+            </summary>
+      <returns>The newly created options for JPEG images.</returns>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.ImageCompressionOptions.CreateGrayscaleJpeg">
+      <summary>
+            Creates options for grayscale JPEG images.
             </summary>
       <returns>The newly created options for JPEG images.</returns>
     </member>
@@ -4117,7 +4144,6 @@
             Creates options for grayscale TIFF images.
             </summary>
       <returns>The newly created options for TIFF images.</returns>
-      <overloads>Creates options for grayscale TIFF images.</overloads>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.ImageCompressionOptions.CreateBitonalTiff">
       <summary>
@@ -5058,6 +5084,9 @@
                 </li>
           <li>
                     Text is drawn outside of active clip region.
+                </li>
+          <li>
+                    Text is drawn on a hidden layer.
                 </li>
         </ul>
         <para>
@@ -14413,6 +14442,35 @@
         <img src="media\pdftextdata.png" />
       </remarks>
       <seealso cref="P:BitMiracle.Docotic.Pdf.PdfTextData.TransformationMatrix" />
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfTextData.CharacterSpacing">
+      <summary>
+            Gets the character spacing for this chunk.
+            </summary>
+      <value>The character spacing specified in unscaled text space units.</value>
+      <remarks>
+            The character spacing is added to the horizontal or vertical component of each glyphвЂ™s displacement,
+            depending on the writing mode.
+            </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfTextData.WordSpacing">
+      <summary>
+            Gets the word spacing for this chunk.
+            </summary>
+      <value>The word spacing specified in unscaled text space units.</value>
+      <remarks>
+            The word spacing is added to the horizontal or vertical component of space character's displacement,
+            depending on the writing mode.
+            </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfTextData.HorizontalScaling">
+      <summary>
+            Gets the horizontal scaling of this text chunk.
+            </summary>
+      <value>The text horizontal scaling specified as a percentage of the normal
+            width of the glyphs, with 100 being the normal width.</value>
+      <remarks>The horizontal scaling parameter adjusts the width of glyphs
+            by stretching or compressing them in the horizontal direction.</remarks>
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfTextData.RenderingMode">
       <summary>
