@@ -2786,6 +2786,21 @@
             (PDF 1.7) The ETSI.CAdES.detached signature format.
             </summary>
     </member>
+    <member name="T:BitMiracle.Docotic.Pdf.PdfSignatureTextAlignment">
+      <summary>
+            Specifies the alignment of the text in a digital signature.
+            </summary>
+    </member>
+    <member name="F:BitMiracle.Docotic.Pdf.PdfSignatureTextAlignment.Left">
+      <summary>
+            Text is left justified.
+            </summary>
+    </member>
+    <member name="F:BitMiracle.Docotic.Pdf.PdfSignatureTextAlignment.Right">
+      <summary>
+            Text is right justified.
+            </summary>
+    </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfSignatureType">
       <summary>
             Specifies digital signature type.
@@ -4794,29 +4809,42 @@
             The options for a PDF signature appearance.
             </summary>
     </member>
-    <member name="P:BitMiracle.Docotic.Pdf.PdfSignatureAppearanceOptions.IncludeDate">
+    <member name="P:BitMiracle.Docotic.Pdf.PdfSignatureAppearanceOptions.Image">
       <summary>
-            Gets or sets a value indicating whether to include the date and time of signing in the
-            text of the signature.
+            Gets or sets the image to display inside of the signature.
             </summary>
-      <value>
-        <c>true</c> if to include the date and time of signing in the text of the signature;
-            otherwise, <c>false</c>.
-            </value>
+      <value>The image to display inside of the signature.</value>
       <remarks>
-            Default value: <c>true</c></remarks>
+        <para>
+            Default value: <c>null</c>.
+            </para>
+        <para>
+            If the text of the signature is left justified, then the image will be placed on the
+            left side of the signature. With a right-justified text, the image will be placed on
+            the right side of the signature. In both cases, the image will occupy up to the half of
+            the signature field width.
+            </para>
+        <para>
+            The image will be placed in the center of the signature if there is no text to display.
+            </para>
+        <para>
+            The image can be resized to fit into available width and/or height. The aspect ratio of
+            the image is always preserved. The image vertical center is aligned with the vertical
+            center of the available area.
+            </para>
+      </remarks>
     </member>
-    <member name="P:BitMiracle.Docotic.Pdf.PdfSignatureAppearanceOptions.IncludeDistinguishedName">
+    <member name="P:BitMiracle.Docotic.Pdf.PdfSignatureAppearanceOptions.IncludeName">
       <summary>
-            Gets or sets a value indicating whether to include the certificate Distinguished Name
+            Gets or sets a value indicating whether to include the certificate name
             in the text of the signature.
             </summary>
       <value>
-        <c>true</c> if to include the certificate Distinguished Name in the text of the
+        <c>true</c> if to include the certificate name in the text of the
             signature; otherwise, <c>false</c>.
             </value>
       <remarks>
-            Default value: <c>false</c></remarks>
+            Default value: <c>true</c></remarks>
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfSignatureAppearanceOptions.NameLabel">
       <summary>
@@ -4834,6 +4862,18 @@
             Default value: "Digitally signed by"
             </para>
       </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfSignatureAppearanceOptions.IncludeDistinguishedName">
+      <summary>
+            Gets or sets a value indicating whether to include the certificate Distinguished Name
+            in the text of the signature.
+            </summary>
+      <value>
+        <c>true</c> if to include the certificate Distinguished Name in the text of the
+            signature; otherwise, <c>false</c>.
+            </value>
+      <remarks>
+            Default value: <c>false</c></remarks>
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfSignatureAppearanceOptions.DistinguishedNameLabel">
       <summary>
@@ -4853,6 +4893,18 @@
             </para>
       </remarks>
     </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfSignatureAppearanceOptions.IncludeReason">
+      <summary>
+            Gets or sets a value indicating whether to include the reason
+            in the text of the signature.
+            </summary>
+      <value>
+        <c>true</c> if to include the reason in the text of the
+            signature; otherwise, <c>false</c>.
+            </value>
+      <remarks>
+            Default value: <c>true</c></remarks>
+    </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfSignatureAppearanceOptions.ReasonLabel">
       <summary>
             Gets or sets the label to use before the reason inside the text of the signature.
@@ -4869,6 +4921,18 @@
             Default value: "Reason:"
             </para>
       </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfSignatureAppearanceOptions.IncludeLocation">
+      <summary>
+            Gets or sets a value indicating whether to include the location
+            in the text of the signature.
+            </summary>
+      <value>
+        <c>true</c> if to include the location in the text of the
+            signature; otherwise, <c>false</c>.
+            </value>
+      <remarks>
+            Default value: <c>true</c></remarks>
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfSignatureAppearanceOptions.LocationLabel">
       <summary>
@@ -4887,6 +4951,18 @@
             </para>
       </remarks>
     </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfSignatureAppearanceOptions.IncludeDate">
+      <summary>
+            Gets or sets a value indicating whether to include the date and time of signing in the
+            text of the signature.
+            </summary>
+      <value>
+        <c>true</c> if to include the date and time of signing in the text of the signature;
+            otherwise, <c>false</c>.
+            </value>
+      <remarks>
+            Default value: <c>true</c></remarks>
+    </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfSignatureAppearanceOptions.DateLabel">
       <summary>
             Gets or sets the label to use before the date inside the text of the signature.
@@ -4904,12 +4980,34 @@
             </para>
       </remarks>
     </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfSignatureAppearanceOptions.TextAlignment">
+      <summary>
+            Gets or sets the alignment of the text in the signature.
+            </summary>
+      <value>The alignment of the text in the signature.</value>
+      <remarks>
+        <para>
+            In cases when you want the text and the image in the signature, the alignment also
+            affects the placement of the text relative to the image. See remarks for the 
+            <see cref="P:BitMiracle.Docotic.Pdf.PdfSignatureAppearanceOptions.Image" /> property for more info.
+            </para>
+      </remarks>
+    </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfSignatureAppearanceOptions.ClearAllLabels">
       <summary>
             Clears all labels.
             </summary>
       <remarks>
             All values will be displayed without labels after call to this method.
+            </remarks>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfSignatureAppearanceOptions.HideAllText">
+      <summary>
+            Hides all text.
+            </summary>
+      <remarks>
+            No text or labels will be displayed in the signature. This is useful if you only
+            want to have the associated image displayed in the signature.
             </remarks>
     </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfSigningOptions">
@@ -9736,20 +9834,23 @@
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocumentView.SetFitRect(BitMiracle.Docotic.Pdf.PdfBox)">
       <summary>
-            Sets the zoom type to use when displaying the page in the view to <see cref="F:BitMiracle.Docotic.Pdf.PdfZoom.FitRect" />
-            and the <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Left" />, <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Top" />, <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Width" /> and <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Height" />
-            properties to the corresponding properties of the specified box.
+            Sets the zoom type to use when displaying the page in the view to
+            <see cref="F:BitMiracle.Docotic.Pdf.PdfZoom.FitRect" /> and the <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Left" />, <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Top" />,
+            <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Width" /> and <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Height" /> properties to the corresponding properties
+            of the specified box.
             </summary>
       <param name="box">
         <para>
             The <see cref="T:BitMiracle.Docotic.Pdf.PdfBox" /> structure that specifies the new values for
-            <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Left" />, <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Top" />, <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Width" /> and <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Height" /> properties.
+            <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Left" />, <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Top" />, <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Width" /> and <see cref="P:BitMiracle.Docotic.Pdf.PdfDocumentView.Height" />
+            properties.
             </para>
         <para>
             The vertical coordinates of the box are relative to the bottom edge of the page.
             </para>
         <para>
-            Use <see cref="M:BitMiracle.Docotic.Pdf.PdfBox.ToRectangle(System.Double)" /> method to map the box to <see cref="T:BitMiracle.Docotic.Pdf.PdfPage" /> coordinate space.
+            Use <see cref="M:BitMiracle.Docotic.Pdf.PdfBox.ToRectangle(System.Double)" /> method to map the box to
+            <see cref="T:BitMiracle.Docotic.Pdf.PdfPage" /> coordinate space.
             </para>
       </param>
     </member>
@@ -15524,6 +15625,20 @@
             identical; otherwise, <c>false</c>.
             </returns>
     </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfMatrix.op_Multiply(BitMiracle.Docotic.Pdf.PdfMatrix,BitMiracle.Docotic.Pdf.PdfMatrix)">
+      <summary>
+            Multiplies a <see cref="T:BitMiracle.Docotic.Pdf.PdfMatrix" /> structure by another <see cref="T:BitMiracle.Docotic.Pdf.PdfMatrix" />
+            structure.
+            </summary>
+      <param name="left">The left matrix to multiply.</param>
+      <param name="right">The right matrix to multiply.</param>
+      <returns>The result of multiplying <i>left</i> by <i>right</i>.</returns>
+      <remarks>
+            Matrix multiplication is not commutative. Multiplying <paramref name="left" /> by
+            <paramref name="right" /> is not the same as multiplying <paramref name="right" /> by
+            <paramref name="left" />.
+            </remarks>
+    </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfMatrix.Multiply(BitMiracle.Docotic.Pdf.PdfMatrix,BitMiracle.Docotic.Pdf.PdfMatrix)">
       <summary>
             Multiplies a <see cref="T:BitMiracle.Docotic.Pdf.PdfMatrix" /> structure by another <see cref="T:BitMiracle.Docotic.Pdf.PdfMatrix" />
@@ -15534,20 +15649,6 @@
       <returns>
             The result of multiplying <paramref name="left" /> by <paramref name="right" />.
             </returns>
-      <remarks>
-            Matrix multiplication is not commutative. Multiplying <paramref name="left" /> by
-            <paramref name="right" /> is not the same as multiplying <paramref name="right" /> by
-            <paramref name="left" />.
-            </remarks>
-    </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfMatrix.op_Multiply(BitMiracle.Docotic.Pdf.PdfMatrix,BitMiracle.Docotic.Pdf.PdfMatrix)">
-      <summary>
-            Multiplies a <see cref="T:BitMiracle.Docotic.Pdf.PdfMatrix" /> structure by another <see cref="T:BitMiracle.Docotic.Pdf.PdfMatrix" />
-            structure.
-            </summary>
-      <param name="left">The left matrix to multiply.</param>
-      <param name="right">The right matrix to multiply.</param>
-      <returns>The result of multiplying <i>left</i> by <i>right</i>.</returns>
       <remarks>
             Matrix multiplication is not commutative. Multiplying <paramref name="left" /> by
             <paramref name="right" /> is not the same as multiplying <paramref name="right" /> by
@@ -15678,6 +15779,17 @@
       <value>
             The y-coordinate of this <see cref="T:BitMiracle.Docotic.Pdf.PdfPoint" />.
             </value>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfPoint.op_Explicit(BitMiracle.Docotic.Pdf.PdfPoint)~System.Drawing.PointF">
+      <summary>
+            Performs an explicit conversion from
+            <see cref="T:BitMiracle.Docotic.Pdf.PdfPoint" /> to
+            <see cref="T:System.Drawing.PointF" />.
+            </summary>
+      <param name="pt">The <see cref="T:BitMiracle.Docotic.Pdf.PdfPoint" /> structure to be converted.</param>
+      <returns>
+            The <see cref="T:System.Drawing.PointF" /> structure to which this operator converts.
+            </returns>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfPoint.op_Addition(BitMiracle.Docotic.Pdf.PdfPoint,System.Drawing.Size)">
       <summary>
@@ -15836,17 +15948,6 @@
       <param name="sz">The <see cref="T:BitMiracle.Docotic.Pdf.PdfSize" /> that specifies the numbers to
             subtract from the coordinates of <paramref name="pt" />.</param>
       <returns>The translated <see cref="T:BitMiracle.Docotic.Pdf.PdfPoint" />.</returns>
-    </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfPoint.op_Explicit(BitMiracle.Docotic.Pdf.PdfPoint)~System.Drawing.PointF">
-      <summary>
-            Performs an explicit conversion from
-            <see cref="T:BitMiracle.Docotic.Pdf.PdfPoint" /> to
-            <see cref="T:System.Drawing.PointF" />.
-            </summary>
-      <param name="pt">The <see cref="T:BitMiracle.Docotic.Pdf.PdfPoint" /> structure to be converted.</param>
-      <returns>
-            The <see cref="T:System.Drawing.PointF" /> structure to which this operator converts.
-            </returns>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfPoint.ToPointF">
       <summary>
@@ -17141,12 +17242,18 @@
             Gets or sets the color of the control border.
             </summary>
       <value>The color of the control border.</value>
+      <remarks>
+            The value can be <c>null</c> if there is no border color specified for the control.
+            </remarks>
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfControl.BackgroundColor">
       <summary>
             Gets or sets the color of the control background.
             </summary>
       <value>The color of the control background.</value>
+      <remarks>
+            The value can be <c>null</c> if there is no background color specified for the control.
+            </remarks>
     </member>
     <member name="P:BitMiracle.Docotic.Pdf.PdfControl.Hint">
       <summary>
