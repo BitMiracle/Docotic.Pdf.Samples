@@ -29,6 +29,10 @@ This sample shows how to save linearized (or optimized for Fast Web View) PDF do
 
 This sample shows how to receive log messages from Docotic.Pdf library into a log4net logger.
 
+[Logging with NLog](/Samples/General%20operations/LoggingWithNLog)
+
+This sample shows how to receive log messages from Docotic.Pdf library into a NLog logger.
+
 [Merge two PDF documents](/Samples/General%20operations/MergeDocuments)
 
 This sample shows how to append an existing PDF document to the end of your current document using PdfDocument.Append method.

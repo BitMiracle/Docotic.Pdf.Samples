@@ -118,6 +118,8 @@
 
 [Logging with log4net](/Samples/General%20operations/LoggingWithLog4Net)
 
+[Logging with NLog](/Samples/General%20operations/LoggingWithNLog)
+
 [Merge two PDF documents](/Samples/General%20operations/MergeDocuments)
 
 [Load an existing PDF document](/Samples/General%20operations/OpenDocument)
