@@ -281,6 +281,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ReadSignatureProperties", "
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "VerifySignature", "Digital signatures\VerifySignature\VB.NET\VerifySignature.vbproj", "{F130CAB6-745F-4544-97FE-6589A063BEDC}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LoggingWithLog4Net", "General operations\LoggingWithLog4Net\VB.NET\LoggingWithLog4Net.vbproj", "{E063BB5C-9AD0-4A59-81DF-E4F5B76E0A8B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -779,6 +781,10 @@ Global
 		{F130CAB6-745F-4544-97FE-6589A063BEDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F130CAB6-745F-4544-97FE-6589A063BEDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F130CAB6-745F-4544-97FE-6589A063BEDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E063BB5C-9AD0-4A59-81DF-E4F5B76E0A8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E063BB5C-9AD0-4A59-81DF-E4F5B76E0A8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E063BB5C-9AD0-4A59-81DF-E4F5B76E0A8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E063BB5C-9AD0-4A59-81DF-E4F5B76E0A8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -907,6 +913,7 @@ Global
 		{571D3026-A67A-4D99-BE1F-7903B68FB9EC} = {6D0505BD-B25A-4219-A5EA-0F5E30DAC7F9}
 		{B9BC0D2B-B83F-443F-8449-5274C575DBD0} = {6D0505BD-B25A-4219-A5EA-0F5E30DAC7F9}
 		{F130CAB6-745F-4544-97FE-6589A063BEDC} = {6D0505BD-B25A-4219-A5EA-0F5E30DAC7F9}
+		{E063BB5C-9AD0-4A59-81DF-E4F5B76E0A8B} = {EC74EB52-2BC9-4122-B497-3ED0D51AC94B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {50A18C19-4AC0-4BF0-9AA5-7C45E6C1E9A6}

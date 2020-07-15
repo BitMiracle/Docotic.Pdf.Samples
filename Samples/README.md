@@ -116,6 +116,8 @@
 
 [Linearize PDF document](/Samples/General%20operations/LinearizeDocument)
 
+[Logging with log4net](/Samples/General%20operations/LoggingWithLog4Net)
+
 [Merge two PDF documents](/Samples/General%20operations/MergeDocuments)
 
 [Load an existing PDF document](/Samples/General%20operations/OpenDocument)
