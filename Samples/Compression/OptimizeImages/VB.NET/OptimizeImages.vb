@@ -99,13 +99,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 End If
 
                 Using stream = New MemoryStream()
-                    Const ResizeRatio As Double = 1.4
-
-                    Dim newWidth As Double = width / ResizeRatio
-                    Dim newHeight As Double = height / ResizeRatio
-
                     Dim tempPage As PdfPage = pdf.AddPage()
-                    tempPage.Canvas.DrawImage(image, 0, 0, newWidth, newHeight, 0)
+                    tempPage.Canvas.DrawImage(image, 0, 0, width, height, 0)
                     Dim tempPaintedImage As PdfPaintedImage = tempPage.GetPaintedImages()(0)
                     tempPaintedImage.SaveAsPainted(stream)
 

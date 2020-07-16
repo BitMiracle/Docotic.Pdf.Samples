@@ -135,13 +135,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                 using (var stream = new MemoryStream())
                 {
-                    const double ResizeRatio = 1.4;
-
-                    double newWidth = width / ResizeRatio;
-                    double newHeight = height / ResizeRatio;
-
                     PdfPage tempPage = pdf.AddPage();
-                    tempPage.Canvas.DrawImage(image, 0, 0, newWidth, newHeight, 0);
+                    tempPage.Canvas.DrawImage(image, 0, 0, width, height, 0);
                     PdfPaintedImage tempPaintedImage = tempPage.GetPaintedImages()[0];
 
                     tempPaintedImage.SaveAsPainted(stream);
