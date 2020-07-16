@@ -46,6 +46,23 @@
             ASP.NET Core apps we recommend to use Startup.cs for the same.</para>
       </remarks>
     </member>
+    <member name="M:BitMiracle.Docotic.LicenseManager.AddLicenseData(System.String,System.String)">
+      <summary>
+            Adds license data to the Docotic.Pdf library.
+            </summary>
+      <param name="licenseKey">License key</param>
+      <param name="owner">The license owner.</param>
+      <remarks>
+        <para>
+            We recommend to add all license data at the start of your application. It is not
+            recommended to call this method each time before you create a
+            <see cref="T:BitMiracle.Docotic.Pdf.PdfDocument" /> instance.
+            </para>
+        <para>
+            In classic ASP.NET apps we recommended to add license data in Global.asax.cs. In
+            ASP.NET Core apps we recommend to use Startup.cs for the same.</para>
+      </remarks>
+    </member>
     <member name="M:BitMiracle.Docotic.LicenseManager.Reset">
       <summary>
             Resets all previously set licenses.
@@ -529,6 +546,12 @@
       <returns>The <see cref="T:System.Drawing.Color" /> structure that is the equivalent 
             to this <see cref="T:BitMiracle.Docotic.Pdf.PdfColor" />.</returns>
     </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfColor.ToRgb">
+      <summary>
+            Converts this <see cref="T:BitMiracle.Docotic.Pdf.PdfColor" /> to RGB.
+            </summary>
+      <returns>The <see cref="T:BitMiracle.Docotic.Pdf.PdfRgbColor" /> object that corresponds to this <see cref="T:BitMiracle.Docotic.Pdf.PdfColor" />.</returns>
+    </member>
     <member name="T:BitMiracle.Docotic.Pdf.PdfColorProfile">
       <summary>
             Class for an ICC color profile.
@@ -593,6 +616,14 @@
       <summary>
             Represents a DeviceN color space.
             </summary>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfDeviceNColorSpace.Names">
+      <summary>
+            Gets the collection of names specifying this DeviceN color space colorants.
+            </summary>
+      <value>
+            The collection of names specifying this DeviceN color space colorants.
+            </value>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDeviceNColorSpace.ToString">
       <summary>
@@ -1004,6 +1035,14 @@
             </para>
       </remarks>
     </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfSeparationColorSpace.Name">
+      <summary>
+            Gets the name of the colorant that this separation color space represents.
+            </summary>
+      <value>
+            The name of the colorant that this separation color space represents.
+            </value>
+    </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfSeparationColorSpace.ToString">
       <summary>
             Returns a <see cref="T:System.String" /> that represents this instance.
@@ -1032,6 +1071,31 @@
             denotes the darkest.
             </para>
       </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfSpotColor.Components">
+      <summary>
+            Gets the collection of this spot color components (also known as colorants, or tints).
+            </summary>
+      <value>
+            The collection of this spot color components (also known as colorants, or tints).
+            </value>
+      <remarks>
+            This collection contains one element if the underlying color space is a
+            <see cref="T:BitMiracle.Docotic.Pdf.PdfSeparationColorSpace" /> or more, if the underlying color space is a
+            <see cref="T:BitMiracle.Docotic.Pdf.PdfDeviceNColorSpace" />.
+            </remarks>
+    </member>
+    <member name="P:BitMiracle.Docotic.Pdf.PdfSpotColor.ColorSpace">
+      <summary>
+            Gets the underlying color space of this spot color.
+            </summary>
+      <value>
+            The underlying color space of this spot color.
+            </value>
+      <remarks>
+            The underlying color space is either a <see cref="T:BitMiracle.Docotic.Pdf.PdfSeparationColorSpace" /> or a
+            <see cref="T:BitMiracle.Docotic.Pdf.PdfDeviceNColorSpace" />.
+            </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfSpotColor.ToColor">
       <summary>
