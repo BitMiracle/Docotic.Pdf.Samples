@@ -46,7 +46,7 @@ https://bitmiracle.com/pdf-library/download-pdf-library.aspx
 https://www.nuget.org/packages/BitMiracle.Docotic.Pdf/
 
 Documentation for the library is available here  
-https://bitmiracle.com/pdf-library/help/welcome.aspx
+https://bitmiracle.com/pdf-library/help/
 
 # Adding library to GAC
 To add the library to the Global Assembly Cache please run gac-install.ps1. Make sure you run
