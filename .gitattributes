@@ -1,0 +1,2 @@
+# Do no exclude Samples from language detection
+Samples/** linguist-documentation=false
