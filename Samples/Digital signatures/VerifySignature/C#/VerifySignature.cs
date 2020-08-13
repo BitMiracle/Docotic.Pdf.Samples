@@ -17,38 +17,43 @@ namespace BitMiracle.Docotic.Pdf.Samples
             StringBuilder sb = new StringBuilder();
             using (PdfDocument pdf = new PdfDocument("Sample data/signed.pdf"))
             {
-                PdfControl control = pdf.GetControls().FirstOrDefault(x => x is PdfSignatureField);
-                PdfSignatureField field = (PdfSignatureField)control;
-                PdfSignatureContents contents = field.Signature.Contents;
+                PdfControl field = pdf.GetControls().FirstOrDefault(c => c.Type == PdfWidgetType.Signature);
+                if (field == null)
+                {
+                    MessageBox.Show("Document does not contain signature fields", "Verification result");
+                    return;
+                }
+
+                PdfSignature signature = ((PdfSignatureField)field).Signature;
+                PdfSignatureContents contents = signature.Contents;
                 sb.AppendFormat("Signed part is intact: {0}\n", contents.VerifyDigest());
 
-                DateTime signingTime = field.Signature.SigningTime ?? DateTime.MinValue;
+                DateTime signingTime = signature.SigningTime ?? DateTime.MinValue;
                 sb.AppendFormat("Signed on: {0}\n\n", signingTime.ToShortDateString());
 
                 if (contents.CheckHasEmbeddedOcsp())
                 {
                     sb.AppendLine("Signature has OCSP embedded.");
-                    checkRevocation(field, sb, PdfCertificateRevocationCheckMode.EmbeddedOcsp);
+                    checkRevocation(signature, sb, PdfCertificateRevocationCheckMode.EmbeddedOcsp);
                 }
 
                 if (contents.CheckHasEmbeddedCrl())
                 {
                     sb.AppendLine("Signature has CRL embedded.");
-                    checkRevocation(field, sb, PdfCertificateRevocationCheckMode.EmbeddedCrl);
+                    checkRevocation(signature, sb, PdfCertificateRevocationCheckMode.EmbeddedCrl);
                 }
 
-                checkRevocation(field, sb, PdfCertificateRevocationCheckMode.OnlineOcsp);
-                checkRevocation(field, sb, PdfCertificateRevocationCheckMode.OnlineCrl);
+                checkRevocation(signature, sb, PdfCertificateRevocationCheckMode.OnlineOcsp);
+                checkRevocation(signature, sb, PdfCertificateRevocationCheckMode.OnlineCrl);
             }
 
             MessageBox.Show(sb.ToString(), "Verification result");
         }
 
-        private static void checkRevocation(
-            PdfSignatureField field, StringBuilder sb, PdfCertificateRevocationCheckMode mode)
+        private static void checkRevocation(PdfSignature signature, StringBuilder sb, PdfCertificateRevocationCheckMode mode)
         {
-            PdfSignatureContents contents = field.Signature.Contents;
-            DateTime signingTime = field.Signature.SigningTime ?? DateTime.MinValue;
+            PdfSignatureContents contents = signature.Contents;
+            DateTime signingTime = signature.SigningTime ?? DateTime.MinValue;
 
             foreach (DateTime time in new DateTime[] { signingTime, DateTime.UtcNow })
             {

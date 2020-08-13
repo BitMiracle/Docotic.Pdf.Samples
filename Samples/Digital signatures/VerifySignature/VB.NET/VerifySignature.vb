@@ -14,34 +14,39 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim sb As StringBuilder = New StringBuilder()
 
             Using pdf As PdfDocument = New PdfDocument("Sample data/signed.pdf")
-                Dim control As PdfControl = pdf.GetControls().FirstOrDefault(Function(x) TypeOf x Is PdfSignatureField)
-                Dim field = CType(control, PdfSignatureField)
-                Dim contents = field.Signature.Contents
+                Dim field As PdfControl = pdf.GetControls().FirstOrDefault(Function(c) c.Type = PdfWidgetType.Signature)
+                If field Is Nothing Then
+                    MessageBox.Show("Document does not contain signature fields", "Verification result")
+                    Return
+                End If
+
+                Dim signature = CType(field, PdfSignatureField).Signature
+                Dim contents = signature.Contents
                 sb.AppendFormat("Signed part is intact: {0}" & vbLf, contents.VerifyDigest())
 
-                Dim signingTime = If(field.Signature.SigningTime, Date.MinValue)
+                Dim signingTime = If(signature.SigningTime, Date.MinValue)
                 sb.AppendFormat("Signed on: {0}" & vbLf & vbLf, signingTime.ToShortDateString())
 
                 If contents.CheckHasEmbeddedOcsp() Then
                     sb.AppendLine("Signature has OCSP embedded.")
-                    checkRevocation(field, sb, PdfCertificateRevocationCheckMode.EmbeddedOcsp)
+                    checkRevocation(signature, sb, PdfCertificateRevocationCheckMode.EmbeddedOcsp)
                 End If
 
                 If contents.CheckHasEmbeddedCrl() Then
                     sb.AppendLine("Signature has CRL embedded.")
-                    checkRevocation(field, sb, PdfCertificateRevocationCheckMode.EmbeddedCrl)
+                    checkRevocation(signature, sb, PdfCertificateRevocationCheckMode.EmbeddedCrl)
                 End If
 
-                checkRevocation(field, sb, PdfCertificateRevocationCheckMode.OnlineOcsp)
-                checkRevocation(field, sb, PdfCertificateRevocationCheckMode.OnlineCrl)
+                checkRevocation(signature, sb, PdfCertificateRevocationCheckMode.OnlineOcsp)
+                checkRevocation(signature, sb, PdfCertificateRevocationCheckMode.OnlineCrl)
             End Using
 
             MessageBox.Show(sb.ToString(), "Verification result")
         End Sub
 
-        Private Shared Sub checkRevocation(ByVal field As PdfSignatureField, ByVal sb As StringBuilder, ByVal mode As PdfCertificateRevocationCheckMode)
-            Dim contents = field.Signature.Contents
-            Dim signingTime = If(field.Signature.SigningTime, Date.MinValue)
+        Private Shared Sub checkRevocation(ByVal signature As PdfSignature, ByVal sb As StringBuilder, ByVal mode As PdfCertificateRevocationCheckMode)
+            Dim contents = signature.Contents
+            Dim signingTime = If(signature.SigningTime, Date.MinValue)
 
             For Each time In {signingTime, Date.UtcNow}
                 Dim revoked = contents.CheckIfRevoked(mode, time)
