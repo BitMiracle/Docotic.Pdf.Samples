@@ -1,4 +1,4 @@
-# Sign signature field using custom style
-This sample shows how to setup the way the field will look after the signing.
+# Sign PDF with a customized signature field in C# and VB.NET
+This sample shows how to set up the way the signature field will look after the PDF signing.
 
-It is possible to provide custom labels for certificate fields. And you can choose if you want signing date and the certificate Distinguished Name visible in the signed field.
+It is possible to provide custom labels or images for certificate fields. And you can choose if you want signing date and the certificate Distinguished Name visible in the signed field.

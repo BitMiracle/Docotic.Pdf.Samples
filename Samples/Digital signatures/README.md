@@ -1,30 +1,30 @@
-# Digital signatures
-This group contains samples showing how to digitally sign PDF documents, prepare documents to be signed later, or verify digital signatures. 
+# Digital signatures in PDF
+This group contains samples showing how to sign PDF documents, prepare documents for signing, or verify digital signatures using Docotic.Pdf library in C# and VB.NET.
 
-[Read signature properties](/Samples/Digital%20signatures/ReadSignatureProperties)
+[Read PDF signature properties](/Samples/Digital%20signatures/ReadSignatureProperties)
 
-This sample shows how to read signature and corresponding certificates properties.
+This sample shows how to read PDF signature and corresponding certificates properties.
 
 [Signature fields](/Samples/Digital%20signatures/SignatureFields)
 
 This sample shows how to add signature fields to a PDF document.
 
-[Sign document](/Samples/Digital%20signatures/SignDocument)
+[Sign PDF document](/Samples/Digital%20signatures/SignDocument)
 
-This sample shows how to digitally sign an existing PDF document.
+This sample shows how to sign an existing PDF document.
 
 [Sign signature field](/Samples/Digital%20signatures/SignSignatureField)
 
 This sample shows how to sign a specific signature field in a PDF document.
 
-[Sign signature field using custom style](/Samples/Digital%20signatures/SignSignatureFieldUsingCustomStyle)
+[Sign PDF with a customized signature field](/Samples/Digital%20signatures/SignSignatureFieldUsingCustomStyle)
 
-This sample shows how to setup the way the field will look after the signing.
+This sample shows how to set up the way the signature field will look after the signing.
 
-[Sign signature field with lock](/Samples/Digital%20signatures/SignSignatureFieldWithLock)
+[Sign signature field and lock PDF form fields](/Samples/Digital%20signatures/SignSignatureFieldWithLock)
 
 This sample shows how to create and sign a signature field with lock.
 
-[Verify signature](/Samples/Digital%20signatures/VerifySignature)
+[Verify PDF signature](/Samples/Digital%20signatures/VerifySignature)
 
-This sample shows how to verify a signature and to check if its signing certificate is revoked.
+This sample shows how to verify a PDF signature and to check revocation of its signing certificate.
