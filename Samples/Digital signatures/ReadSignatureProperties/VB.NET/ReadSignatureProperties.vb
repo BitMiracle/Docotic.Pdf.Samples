@@ -14,7 +14,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim sb As StringBuilder = New StringBuilder()
 
             Using pdf As PdfDocument = New PdfDocument("Sample data/signed.pdf")
-                Dim control As PdfControl = pdf.GetControls().FirstOrDefault(Function(x) TypeOf x Is PdfSignatureField)
+                Dim control As PdfControl = pdf.GetControls().FirstOrDefault(Function(c) c.Type = PdfWidgetType.Signature)
+                If control Is Nothing Then
+                    MessageBox.Show("Document does not contain signature fields", "Signature Info")
+                    Return
+                End If
+
                 Dim field = CType(control, PdfSignatureField)
                 sb.AppendFormat("Signature field is invisible: {0}" & vbLf, isInvisible(field))
 
@@ -25,7 +30,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 sb.AppendFormat("Reason for signing: {0}" & vbLf, signature.Reason)
                 sb.AppendFormat("Signer's contact: {0}" & vbLf, signature.ContactInfo)
 
-                Dim contents = field.Signature.Contents
+                Dim contents = signature.Contents
                 sb.AppendFormat("Has OCSP embedded: {0}" & vbLf, contents.CheckHasEmbeddedOcsp())
                 sb.AppendFormat("Has CRL embedded: {0}" & vbLf, contents.CheckHasEmbeddedCrl())
 

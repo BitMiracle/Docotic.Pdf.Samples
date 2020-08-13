@@ -16,7 +16,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
             StringBuilder sb = new StringBuilder();
             using (PdfDocument pdf = new PdfDocument("Sample data/signed.pdf"))
             {
-                PdfControl control = pdf.GetControls().FirstOrDefault(x => x is PdfSignatureField);
+                PdfControl control = pdf.GetControls().FirstOrDefault(c => c.Type == PdfWidgetType.Signature);
+                if (control == null)
+                {
+                    MessageBox.Show("Document does not contain signature fields", "Signature Info");
+                    return;
+                }
+
                 PdfSignatureField field = (PdfSignatureField)control;
                 sb.AppendFormat("Signature field is invisible: {0}\n", isInvisible(field));
 
@@ -27,7 +33,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 sb.AppendFormat("Reason for signing: {0}\n", signature.Reason);
                 sb.AppendFormat("Signer's contact: {0}\n", signature.ContactInfo);
 
-                PdfSignatureContents contents = field.Signature.Contents;
+                PdfSignatureContents contents = signature.Contents;
                 sb.AppendFormat("Has OCSP embedded: {0}\n", contents.CheckHasEmbeddedOcsp());
                 sb.AppendFormat("Has CRL embedded: {0}\n", contents.CheckHasEmbeddedCrl());
 
