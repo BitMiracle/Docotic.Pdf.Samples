@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -20,7 +19,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 PdfControl field = pdf.GetControls().FirstOrDefault(c => c.Type == PdfWidgetType.Signature);
                 if (field == null)
                 {
-                    MessageBox.Show("Document does not contain signature fields", "Verification result");
+                    Console.WriteLine("Document does not contain signature fields");
                     return;
                 }
 
@@ -47,7 +46,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 checkRevocation(signature, sb, PdfCertificateRevocationCheckMode.OnlineCrl);
             }
 
-            MessageBox.Show(sb.ToString(), "Verification result");
+            Console.WriteLine(sb.ToString());
         }
 
         private static void checkRevocation(PdfSignature signature, StringBuilder sb, PdfCertificateRevocationCheckMode mode)

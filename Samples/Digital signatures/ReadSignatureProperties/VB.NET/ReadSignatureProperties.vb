@@ -1,6 +1,6 @@
+Imports System
 Imports System.Linq
 Imports System.Text
-Imports System.Windows.Forms
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -16,7 +16,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf As PdfDocument = New PdfDocument("Sample data/signed.pdf")
                 Dim control As PdfControl = pdf.GetControls().FirstOrDefault(Function(c) c.Type = PdfWidgetType.Signature)
                 If control Is Nothing Then
-                    MessageBox.Show("Document does not contain signature fields", "Signature Info")
+                    Console.WriteLine("Document does not contain signature fields")
                     Return
                 End If
 
@@ -52,7 +52,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 sb.AppendFormat("Serial number: {0}" & vbLf, issuer.SerialNumber)
             End Using
 
-            MessageBox.Show(sb.ToString(), "Signature Info")
+            Console.WriteLine(sb.ToString(), "Signature Info")
         End Sub
 
         Private Shared Function isInvisible(ByVal field As PdfSignatureField) As Boolean

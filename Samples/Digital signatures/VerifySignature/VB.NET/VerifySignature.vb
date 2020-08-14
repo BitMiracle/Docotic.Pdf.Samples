@@ -1,6 +1,6 @@
+Imports System
 Imports System.Linq
 Imports System.Text
-Imports System.Windows.Forms
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -16,7 +16,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf As PdfDocument = New PdfDocument("Sample data/signed.pdf")
                 Dim field As PdfControl = pdf.GetControls().FirstOrDefault(Function(c) c.Type = PdfWidgetType.Signature)
                 If field Is Nothing Then
-                    MessageBox.Show("Document does not contain signature fields", "Verification result")
+                    Console.WriteLine("Document does not contain signature fields", "Verification result")
                     Return
                 End If
 
@@ -41,7 +41,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 checkRevocation(signature, sb, PdfCertificateRevocationCheckMode.OnlineCrl)
             End Using
 
-            MessageBox.Show(sb.ToString(), "Verification result")
+            Console.WriteLine(sb.ToString(), "Verification result")
         End Sub
 
         Private Shared Sub checkRevocation(ByVal signature As PdfSignature, ByVal sb As StringBuilder, ByVal mode As PdfCertificateRevocationCheckMode)

@@ -1,6 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Text;
-using System.Windows.Forms;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -19,7 +19,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 PdfControl control = pdf.GetControls().FirstOrDefault(c => c.Type == PdfWidgetType.Signature);
                 if (control == null)
                 {
-                    MessageBox.Show("Document does not contain signature fields", "Signature Info");
+                    Console.WriteLine("Document does not contain signature fields");
                     return;
                 }
 
@@ -55,7 +55,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 sb.AppendFormat("Serial number: {0}\n", issuer.SerialNumber);
             }
 
-            MessageBox.Show(sb.ToString(), "Signature Info");
+            Console.WriteLine(sb.ToString());
         }
 
         private static bool isInvisible(PdfSignatureField field)
