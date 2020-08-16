@@ -55,7 +55,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
                             tuneFontSize(canvas, pdfBounds.Width, word.Text);
 
                             double distanceToBaseLine = getDistanceToBaseline(canvas.Font, canvas.FontSize);
-                            canvas.DrawString(pdfBounds.Left, pdfBounds.Bottom - distanceToBaseLine, word.Text);
+                            var position = new PdfPoint(pdfBounds.Left, pdfBounds.Bottom - distanceToBaseLine);
+                            showTextAtRotatedPage(word.Text, position, page, page.MediaBox);
                         }
                     }
                 }
@@ -118,7 +119,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.FontSize += diffSign * Step;
 
                 double newDiff = targetTextWidth - canvas.GetTextWidth(text);
-                if (Math.Abs(newDiff) > Math.Abs(bestDiff))
+                if (Math.Abs(newDiff) >= Math.Abs(bestDiff))
                 {
                     canvas.FontSize = bestFontSize;
                     break;
@@ -132,6 +133,37 @@ namespace BitMiracle.Docotic.Pdf.Samples
         private static double getDistanceToBaseline(PdfFont font, double fontSize)
         {
             return font.TopSideBearing * font.TransformationMatrix.M22 * fontSize;
+        }
+
+        private static void showTextAtRotatedPage(string text, PdfPoint position, PdfPage page, PdfBox pageBox)
+        {
+            PdfCanvas canvas = page.Canvas;
+            if (page.Rotation == PdfRotation.None)
+            {
+                canvas.DrawString(position.X, position.Y, text);
+                return;
+            }
+
+            canvas.SaveState();
+
+            switch (page.Rotation)
+            {
+                case PdfRotation.Rotate90:
+                    canvas.TranslateTransform(position.Y, pageBox.Height - position.X);
+                    break;
+
+                case PdfRotation.Rotate180:
+                    canvas.TranslateTransform(pageBox.Width - position.X, pageBox.Height - position.Y);
+                    break;
+
+                case PdfRotation.Rotate270:
+                    canvas.TranslateTransform(pageBox.Width - position.Y, position.X);
+                    break;
+            }
+            canvas.RotateTransform((int)page.Rotation * 90);
+            canvas.DrawString(0, 0, text);
+
+            canvas.RestoreState();
         }
 
         private class RecognizedTextChunk

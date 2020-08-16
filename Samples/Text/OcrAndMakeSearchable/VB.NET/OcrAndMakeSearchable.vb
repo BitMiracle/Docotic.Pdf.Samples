@@ -42,7 +42,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                             tuneFontSize(canvas, pdfBounds.Width, word.Text)
 
                             Dim distanceToBaseLine As Double = getDistanceToBaseline(canvas.Font, canvas.FontSize)
-                            canvas.DrawString(pdfBounds.Left, pdfBounds.Bottom - distanceToBaseLine, word.Text)
+                            Dim position = New PdfPoint(pdfBounds.Left, pdfBounds.Bottom - distanceToBaseLine)
+                            showTextAtRotatedPage(word.Text, position, page, page.MediaBox)
                         Next
                     Next
                 End Using
@@ -98,7 +99,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.FontSize += diffSign * [Step]
 
                 Dim newDiff As Double = targetTextWidth - canvas.GetTextWidth(text)
-                If Math.Abs(newDiff) > Math.Abs(bestDiff) Then
+                If Math.Abs(newDiff) >= Math.Abs(bestDiff) Then
                     canvas.FontSize = bestFontSize
                     Exit While
                 End If
@@ -111,6 +112,30 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         Private Shared Function getDistanceToBaseline(ByVal font As PdfFont, ByVal fontSize As Double) As Double
             Return font.TopSideBearing * font.TransformationMatrix.M22 * fontSize
         End Function
+
+        Private Shared Sub showTextAtRotatedPage(ByVal text As String, ByVal position As PdfPoint, ByVal page As PdfPage, ByVal pageBox As PdfBox)
+            Dim canvas As PdfCanvas = page.Canvas
+
+            If page.Rotation = PdfRotation.None Then
+                canvas.DrawString(position.X, position.Y, text)
+                Return
+            End If
+
+            canvas.SaveState()
+
+            Select Case page.Rotation
+                Case PdfRotation.Rotate90
+                    canvas.TranslateTransform(position.Y, pageBox.Height - position.X)
+                Case PdfRotation.Rotate180
+                    canvas.TranslateTransform(pageBox.Width - position.X, pageBox.Height - position.Y)
+                Case PdfRotation.Rotate270
+                    canvas.TranslateTransform(pageBox.Width - position.Y, position.X)
+            End Select
+
+            canvas.RotateTransform(CInt(page.Rotation) * 90)
+            canvas.DrawString(0, 0, text)
+            canvas.RestoreState()
+        End Sub
 
         Private Class RecognizedTextChunk
             Public Property Text As String
