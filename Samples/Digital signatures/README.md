@@ -1,5 +1,5 @@
 # Digital signatures in PDF
-This group contains samples showing how to sign PDF documents, prepare documents for signing, or verify digital signatures using Docotic.Pdf library in C# and VB.NET.
+This group contains samples showing how to sign PDF documents, prepare documents for signing, or verify digital signatures using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/) in C# and VB.NET.
 
 [Read PDF signature properties](/Samples/Digital%20signatures/ReadSignatureProperties)
 
