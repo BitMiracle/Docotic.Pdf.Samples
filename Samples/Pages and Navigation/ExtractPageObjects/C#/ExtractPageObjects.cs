@@ -313,13 +313,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
             if (pdfColor == null)
                 return Color.Empty;
 
-            Color color = pdfColor.ToColor();
+            PdfRgbColor rgbColor = pdfColor.ToRgb();
 
             int alpha = 255;
             if (opacityPercent < 100 && opacityPercent >= 0)
                 alpha = (int)(255.0 * opacityPercent / 100.0);
 
-            return Color.FromArgb(alpha, color.R, color.G, color.B);
+            return Color.FromArgb(alpha, rgbColor.R, rgbColor.G, rgbColor.B);
         }
 
         private static Font toGdiFont(PdfFont font, double fontSize)
