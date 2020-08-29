@@ -1,6 +1,8 @@
 # Pages and Navigation
 This group contains samples that show how to add or remove pages from your PDF documents, create outline (also known as "bookmarks") for a PDF document. There are also samples that show how to add a link from one page to another or a hyperlink.
 
+Don't miss [all other samples](/Samples).
+
 [Add new pages](/Samples/Pages%20and%20Navigation/AddPages)
 
 This samples shows how to add or insert pages to your PDF documents.
