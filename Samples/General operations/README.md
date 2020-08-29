@@ -1,6 +1,8 @@
 # General operations
 This group contains samples that cover most general and basic operations with PDF documents that are supported by Docotic.Pdf Library
 
+Don't miss [all other samples](/Samples).
+
 [Check if PDF document is a PDF/A compliant one](/Samples/General%20operations/CheckConformanceToPdfA)
 
 This sample shows how to check if PDF document is a PDF/A compliant one.
