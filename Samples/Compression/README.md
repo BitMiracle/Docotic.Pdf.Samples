@@ -1,7 +1,7 @@
 # Compression
 This group contains samples showing how to optimize PDF documents. You can use multiple optimization techniques to reduce size of output PDF files.
 
-Don't miss [all other samples](/Samples)
+Don't miss [all other samples](/Samples).
 
 [Compress PDF document in .NET](/Samples/Compression/CompressAllTechniques)
 
