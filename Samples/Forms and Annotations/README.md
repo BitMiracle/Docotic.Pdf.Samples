@@ -1,6 +1,8 @@
 # Forms and Annotations
 This group contains samples that show how to add interactive elements like annotations and controls to your PDF documents and how to fill forms.
 
+Don't miss [all other samples](/Samples).
+
 [Text annotations](/Samples/Forms%20and%20Annotations/TextAnnotations)
 
 This sample shows how to add text annotations (sticky notes) to your PDF document using PdfPage.AddTextAnnotation(..) method.
