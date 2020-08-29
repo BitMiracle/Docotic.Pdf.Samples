@@ -1,6 +1,8 @@
 # Layers
 This group contains samples for Layers (also known as optional content groups).
 
+Don't miss [all other samples](/Samples).
+
 [Add annotations and controls to layers](/Samples/Layers/AddAnnotationsAndControlsToLayers)
 
 This samples shows how to add annotations (widgets) and controls to layers in a PDF document.
