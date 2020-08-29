@@ -1,6 +1,8 @@
 # Graphics
 This group contains samples that show how to use Docotic.Pdf library to draw various shapes using colors, patterns and color profiles. There are also samples for graphics path construction and clipping, transparency and blending, and also for watermarks usage.
 
+Don't miss [all other samples](/Samples).
+
 [Blend modes](/Samples/Graphics/BlendModes)
 
 This sample shows how to customize a way in which semi-transparent objects will blend on a canvas.
