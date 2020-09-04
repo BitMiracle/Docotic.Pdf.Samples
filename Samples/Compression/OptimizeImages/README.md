@@ -1,10 +1,14 @@
-# Optimize images in PDF document
-This sample shows how to optimize existing images in PDF document.
+# Optimize PDF images in C# and VB.NET
+This sample shows how to optimize existing images in PDF document using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
-Use one of PdfImage.RecompressWith* methods to optimize images in PDF document. Recompression of images is an effective way to greatly decrease size of the output PDF file.
+Use one of [PdfImage.RecompressWith* methods](https://bitmiracle.com/pdf-library/help/pdfimage-methods.html) to optimize images in PDF document. Recompression of images is an effective way to greatly decrease size of the output PDF file.
 
-You can also resize images in a PDF document. To do so please use one of the PdfImage.ResizeTo or PdfImage.Scale methods.
+You can also resize images in a PDF document. To do so please use one of the [PdfImage.ResizeTo](https://bitmiracle.com/pdf-library/help/pdfimage.resizeto.html) or [PdfImage.Scale](https://bitmiracle.com/pdf-library/help/pdfimage.scale.html) methods.
 
 You can recompress images using Flate, Jpeg and CCITT compression schemes. Please note that recompression is often a lossy process.
 
-This sample shows only one approach to reduce size of a PDF. Please check [CompressAllTechniques](https://github.com/BitMiracle/Docotic.Pdf.Samples/tree/master/Samples/Compression/CompressAllTechniques) sample code to see more approaches.
+This sample shows only one approach to reduce size of a PDF. Please check [Compress PDF documents in C# and VB.NET](/Samples/Compression/CompressAllTechniques) sample code to see more approaches.
+
+## See also
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Compress PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/compress-pdf.aspx) article
