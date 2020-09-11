@@ -255,14 +255,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Return Color.Empty
             End If
 
-            Dim gdiColor As Color = pdfColor.ToColor()
+            Dim rgbColor As PdfRgbColor = pdfColor.ToRgb()
 
             Dim alpha As Integer = 255
             If opacityPercent < 100 AndAlso opacityPercent >= 0 Then
                 alpha = CInt(255.0 * opacityPercent / 100.0)
             End If
 
-            Return Color.FromArgb(alpha, gdiColor.R, gdiColor.G, gdiColor.B)
+            Return Color.FromArgb(alpha, rgbColor.R, rgbColor.G, rgbColor.B)
         End Function
 
         Private Shared Function toGdiFont(font As PdfFont, fontSize As Double) As Font
