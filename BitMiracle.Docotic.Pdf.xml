@@ -452,14 +452,6 @@
             </summary>
       <value>The key component value in percent.</value>
     </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfCmykColor.ToColor">
-      <summary>
-            Converts this <see cref="T:BitMiracle.Docotic.Pdf.PdfCmykColor" /> to the equivalent 
-            <see cref="T:System.Drawing.Color" /> structure.
-            </summary>
-      <returns>The <see cref="T:System.Drawing.Color" /> structure that is the equivalent 
-            to this <see cref="T:BitMiracle.Docotic.Pdf.PdfCmykColor" />.</returns>
-    </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfCmykColor.ToString">
       <summary>
             Returns a <see cref="T:System.String" /> that represents this instance.
@@ -538,13 +530,6 @@
             A hash code for this instance, suitable for use in hashing
             algorithms and data structures like a hash table. 
             </returns>
-    </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfColor.ToColor">
-      <summary>
-            Converts this <see cref="T:BitMiracle.Docotic.Pdf.PdfColor" /> to the equivalent <see cref="T:System.Drawing.Color" /> structure.
-            </summary>
-      <returns>The <see cref="T:System.Drawing.Color" /> structure that is the equivalent 
-            to this <see cref="T:BitMiracle.Docotic.Pdf.PdfColor" />.</returns>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfColor.ToRgb">
       <summary>
@@ -663,14 +648,6 @@
             </summary>
       <value>The gray level of color in percent.</value>
     </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfGrayColor.ToColor">
-      <summary>
-            Converts this <see cref="T:BitMiracle.Docotic.Pdf.PdfGrayColor" /> to the equivalent 
-            <see cref="T:System.Drawing.Color" /> structure.
-            </summary>
-      <returns>The <see cref="T:System.Drawing.Color" /> structure that is the equivalent 
-            to this <see cref="T:BitMiracle.Docotic.Pdf.PdfGrayColor" />.</returns>
-    </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfGrayColor.ToString">
       <summary>
             Returns a <see cref="T:System.String" /> that represents this instance.
@@ -701,12 +678,6 @@
       <summary>
             Represents a color in an indexed color space.
             </summary>
-    </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfIndexedColor.ToColor">
-      <summary>
-            Converts this <see cref="T:BitMiracle.Docotic.Pdf.PdfIndexedColor" /> to the equivalent <see cref="T:System.Drawing.Color" /> structure.
-            </summary>
-      <returns>The <see cref="T:System.Drawing.Color" /> structure that is the equivalent to this <see cref="T:BitMiracle.Docotic.Pdf.PdfIndexedColor" />.</returns>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfIndexedColor.ToString">
       <summary>
@@ -795,14 +766,6 @@
             Gets the b* component value.
             </summary>
       <value>The b* component value.</value>
-    </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfLabColor.ToColor">
-      <summary>
-            Converts this <see cref="T:BitMiracle.Docotic.Pdf.PdfLabColor" /> to the equivalent 
-            <see cref="T:System.Drawing.Color" /> structure.
-            </summary>
-      <returns>The <see cref="T:System.Drawing.Color" /> structure that is the equivalent 
-            to this <see cref="T:BitMiracle.Docotic.Pdf.PdfLabColor" />.</returns>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfLabColor.ToString">
       <summary>
@@ -979,14 +942,6 @@
             </summary>
       <value>The blue component value.</value>
     </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfRgbColor.ToColor">
-      <summary>
-            Converts this <see cref="T:BitMiracle.Docotic.Pdf.PdfRgbColor" /> to the equivalent 
-            <see cref="T:System.Drawing.Color" /> structure.
-            </summary>
-      <returns>The <see cref="T:System.Drawing.Color" /> structure that is the equivalent 
-            to this <see cref="T:BitMiracle.Docotic.Pdf.PdfRgbColor" />.</returns>
-    </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfRgbColor.ToString">
       <summary>
             Returns a <see cref="T:System.String" /> that represents this instance.
@@ -1096,14 +1051,6 @@
             The underlying color space is either a <see cref="T:BitMiracle.Docotic.Pdf.PdfSeparationColorSpace" /> or a
             <see cref="T:BitMiracle.Docotic.Pdf.PdfDeviceNColorSpace" />.
             </remarks>
-    </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfSpotColor.ToColor">
-      <summary>
-            Converts this <see cref="T:BitMiracle.Docotic.Pdf.PdfSpotColor" /> to the equivalent 
-            <see cref="T:System.Drawing.Color" /> structure.
-            </summary>
-      <returns>The <see cref="T:System.Drawing.Color" /> structure that is the equivalent 
-            to this <see cref="T:BitMiracle.Docotic.Pdf.PdfSpotColor" />.</returns>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfSpotColor.ToString">
       <summary>
@@ -4022,6 +3969,262 @@
             The base class for PDF function classes.
             </summary>
     </member>
+    <member name="T:BitMiracle.Docotic.Pdf.GdiFontLoader">
+      <summary>
+            An implementation of the <see cref="T:BitMiracle.Docotic.Pdf.IFontLoader" /> interface that loads
+            font bytes from the operating system using GDI+ and the 
+            <see cref="T:System.Drawing.Font" /> class.
+            </summary>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.GdiFontLoader.Load(System.String,System.Boolean,System.Boolean)">
+      <summary>
+            Loads font bytes.
+            </summary>
+      <param name="familyName">Family name of the font</param>
+      <param name="bold">Set to <c>true</c> for the bold font weight</param>
+      <param name="italic">Set to <c>true</c> for the italic font style</param>
+      <returns>
+            The bytes of an eligible font or <c>null</c> if an eligible font was not found.
+            </returns>
+    </member>
+    <member name="T:BitMiracle.Docotic.Pdf.PdfBoxGdiExtensions">
+      <summary>
+            Provides System.Drawing / GDI+ extension methods for the <see cref="T:BitMiracle.Docotic.Pdf.PdfBox" /> structure.
+            </summary>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfBoxGdiExtensions.ToRectangleF(BitMiracle.Docotic.Pdf.PdfBox,System.Double)">
+      <summary>
+            Maps this <see cref="T:BitMiracle.Docotic.Pdf.PdfBox" /> structure to <see cref="T:BitMiracle.Docotic.Pdf.PdfPage" /> coordinate system.
+            </summary>
+      <param name="box">The box structure.</param>
+      <param name="pageHeight">Height of <see cref="T:BitMiracle.Docotic.Pdf.PdfPage" /> that is used to map coordinates.</param>
+      <returns>
+        <see cref="T:System.Drawing.RectangleF" /> structure expressed in <see cref="T:BitMiracle.Docotic.Pdf.PdfPage" /> coordinate system.</returns>
+      <remarks>
+        <para>
+            In <see cref="T:BitMiracle.Docotic.Pdf.PdfPage" /> coordinate system origin is located at the upper-left corner of the page,
+            positive Y axis extends vertically downward.
+            </para>
+        <para>
+            In default user space the positive Y axis extends vertically upward.
+            </para>
+      </remarks>
+    </member>
+    <member name="T:BitMiracle.Docotic.Pdf.PdfDocumentGdiExtensions">
+      <summary>
+            Provides System.Drawing / GDI+ extension methods for the <see cref="T:BitMiracle.Docotic.Pdf.PdfDocument" /> class.
+            </summary>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfDocumentGdiExtensions.AddFont(BitMiracle.Docotic.Pdf.PdfDocument,System.String,System.Drawing.FontStyle)">
+      <summary>
+            Adds the new font with specified properties to the end of the
+            collection of document fonts.
+            </summary>
+      <param name="doc">The document.</param>
+      <param name="fontFace">The name of the font face.</param>
+      <param name="fontStyle">The <see cref="T:System.Drawing.FontStyle" /> of the new
+            font.</param>
+      <returns>The newly added <see cref="T:BitMiracle.Docotic.Pdf.PdfFont" /> or <c>null</c> if there is no font
+            with specified face installed.</returns>
+      <remarks>If requested font does not have bold or italic
+            version then bold or italic version will be synthesized
+            when needed.</remarks>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfDocumentGdiExtensions.AddFont(BitMiracle.Docotic.Pdf.PdfDocument,System.Drawing.Font)">
+      <summary>
+            Adds the new font with the properties of the specified
+            <see cref="T:System.Drawing.Font" /> to the end of the collection of document fonts.
+            </summary>
+      <param name="doc">The document.</param>
+      <param name="font">The existing <see cref="T:System.Drawing.Font" /> from which to
+            create the new <see cref="T:BitMiracle.Docotic.Pdf.PdfFont" />.</param>
+      <returns>The newly added <see cref="T:BitMiracle.Docotic.Pdf.PdfFont" />.</returns>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfDocumentGdiExtensions.AddImage(BitMiracle.Docotic.Pdf.PdfDocument,System.Drawing.Image)">
+      <summary>
+            Adds new image(s) with the data and properties of specified
+            <see cref="T:System.Drawing.Image" /> to the end of the collection of document images.
+            </summary>
+      <param name="doc">The document.</param>
+      <param name="image">The existing <see cref="T:System.Drawing.Image" /> from which
+            to create <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" />(s).</param>
+      <returns>The <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" /> for the first frame (page) found in
+            the existing <see cref="T:System.Drawing.Image" />.</returns>
+      <remarks>This method adds a new image for each frame (page) found
+            in the existing <see cref="T:System.Drawing.Image" />.</remarks>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfDocumentGdiExtensions.AddImage(BitMiracle.Docotic.Pdf.PdfDocument,System.Drawing.Image,BitMiracle.Docotic.Pdf.PdfColor)">
+      <summary>
+            Creates image(s) with the data and properties of specified
+            <see cref="T:System.Drawing.Image" />, applies specified mask color to them and adds resulting
+            image(s) to the end of the collection of document images.
+            </summary>
+      <param name="doc">The document.</param>
+      <param name="image">The existing <see cref="T:System.Drawing.Image" /> from which
+            to create <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" />(s).</param>
+      <param name="maskColor">The color that masks transparent
+            areas of the image(s).</param>
+      <returns>The <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" /> for the first frame (page) found in the
+            existing <see cref="T:System.Drawing.Image" />.</returns>
+      <remarks>This method adds a new image for each frame (page) found
+            in the existing <see cref="T:System.Drawing.Image" />. Mask color gets applied for
+            all added images.</remarks>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfDocumentGdiExtensions.AddImage(BitMiracle.Docotic.Pdf.PdfDocument,System.Drawing.Image,System.Drawing.Image)">
+      <summary>
+            Creates a new image with the data and properties of specified
+            <see cref="T:System.Drawing.Image" />, applies mask constructed from specified
+            <see cref="T:System.Drawing.Image" /> to it and adds resulting image to the end of the
+            collection of document images.
+            </summary>
+      <param name="doc">The document.</param>
+      <param name="image">The existing <see cref="T:System.Drawing.Image" /> from which
+            to create a <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" />.</param>
+      <param name="mask">The existing <see cref="T:System.Drawing.Image" /> from which
+            to create the mask for the <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" />.</param>
+      <returns>The created <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" />.</returns>
+      <remarks>Mask images with only one frame (page) are supported. 
+            This method creates an image for the first frame (page) of the
+            source image only.</remarks>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfDocumentGdiExtensions.OpenImage(BitMiracle.Docotic.Pdf.PdfDocument,System.Drawing.Image)">
+      <summary>
+            Opens the image and constructs a collection of its frames (pages).
+            </summary>
+      <param name="doc">The document.</param>
+      <param name="image">The image to open.</param>
+      <returns>The collection of image frames (pages) or <c>null</c> if image
+            format is unsupported.</returns>
+      <remarks>
+        <para>This method does not load image data and does not add images
+            to the collection of document images.</para>
+        <para>This method is useful if you want to add only some of the image
+            frames (pages) to document or if you want to recompress image frames
+            before adding them to document.</para>
+        <para>Please use one of the <see cref="Overload:BitMiracle.Docotic.Pdf.PdfDocument.AddImage" /> methods to add a frame
+            from collection of frames to the collection of document images.</para>
+      </remarks>
+    </member>
+    <member name="T:BitMiracle.Docotic.Pdf.PdfPageGdiExtensions">
+      <summary>
+            Provides System.Drawing / GDI+ extension methods for the <see cref="T:BitMiracle.Docotic.Pdf.PdfPage" /> class.
+            </summary>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfPageGdiExtensions.Draw(BitMiracle.Docotic.Pdf.PdfPage,System.Drawing.Graphics)">
+      <summary>
+            Draws the page on a <see cref="T:System.Drawing.Graphics" />.
+            </summary>
+      <param name="page">The page.</param>
+      <param name="g">The <see cref="T:System.Drawing.Graphics" /> to draw the page on.</param>
+    </member>
+    <member name="T:BitMiracle.Docotic.Pdf.PdfPointGdiExtensions">
+      <summary>
+            Provides System.Drawing / GDI+ extension methods for the <see cref="T:BitMiracle.Docotic.Pdf.PdfPoint" /> structure.
+            </summary>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfPointGdiExtensions.ToPointF(BitMiracle.Docotic.Pdf.PdfPoint)">
+      <summary>
+            Converts a <see cref="T:BitMiracle.Docotic.Pdf.PdfPoint" /> to a <see cref="T:System.Drawing.PointF" />.
+            </summary>
+      <param name="pt">The <see cref="T:BitMiracle.Docotic.Pdf.PdfPoint" /> to convert.</param>
+      <returns>Returns a <see cref="T:System.Drawing.PointF" /> structure.</returns>
+    </member>
+    <member name="T:BitMiracle.Docotic.Pdf.PdfRectangleGdiExtensions">
+      <summary>
+            Provides System.Drawing / GDI+ extension methods for the <see cref="T:BitMiracle.Docotic.Pdf.PdfRectangle" /> structure.
+            </summary>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfRectangleGdiExtensions.Contains(BitMiracle.Docotic.Pdf.PdfRectangle,System.Drawing.PointF)">
+      <summary>
+            Determines if the specified point is contained within this
+            <see cref="T:BitMiracle.Docotic.Pdf.PdfRectangle" /> structure.
+            </summary>
+      <param name="rect">The rectangle.</param>
+      <param name="pt">The <see cref="T:System.Drawing.PointF" /> to test.</param>
+      <returns>
+            This method returns <c>true</c> if the point represented by the
+            <paramref name="pt" /> parameter is contained within this
+            <see cref="T:BitMiracle.Docotic.Pdf.PdfRectangle" /> structure; otherwise <c>false</c>.
+            </returns>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfRectangleGdiExtensions.Contains(BitMiracle.Docotic.Pdf.PdfRectangle,System.Drawing.RectangleF)">
+      <summary>
+            Determines if the rectangular region represented by <paramref name="rect" />
+            is entirely contained within this <see cref="T:BitMiracle.Docotic.Pdf.PdfRectangle" /> structure.
+            </summary>
+      <param name="thisRect">The rectangle.</param>
+      <param name="rect">The <see cref="T:System.Drawing.RectangleF" /> to test.</param>
+      <returns>
+            This method returns <c>true</c> if the rectangular region represented by
+            <paramref name="rect" /> is entirely contained within the rectangular region
+            represented by this <see cref="T:BitMiracle.Docotic.Pdf.PdfRectangle" />; otherwise <c>false</c>.
+            </returns>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfRectangleGdiExtensions.Inflate(BitMiracle.Docotic.Pdf.PdfRectangle,System.Drawing.SizeF)">
+      <summary>
+            Inflates this <see cref="T:BitMiracle.Docotic.Pdf.PdfRectangle" /> by the specified amount.
+            </summary>
+      <param name="rect">The rectangle</param>
+      <param name="size">The amount to inflate this rectangle.</param>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfRectangleGdiExtensions.Intersect(BitMiracle.Docotic.Pdf.PdfRectangle,System.Drawing.RectangleF)">
+      <summary>
+            Replaces this <see cref="T:BitMiracle.Docotic.Pdf.PdfRectangle" /> structure with the intersection of
+            itself and the specified <see cref="T:System.Drawing.RectangleF" /> structure.
+            </summary>
+      <param name="thisRect">The rectangle.</param>
+      <param name="rect">The rectangle to intersect.</param>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfRectangleGdiExtensions.IntersectsWith(BitMiracle.Docotic.Pdf.PdfRectangle,System.Drawing.RectangleF)">
+      <summary>
+            Determines if this rectangle intersects with <paramref name="rect" />.
+            </summary>
+      <param name="thisRect">The rectangle.</param>
+      <param name="rect">The rectangle to test.</param>
+      <returns>This method returns <c>true</c> if there is any intersection.</returns>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfRectangleGdiExtensions.Offset(BitMiracle.Docotic.Pdf.PdfRectangle,System.Drawing.PointF)">
+      <summary>
+            Adjusts the location of this rectangle by the specified amount.
+            </summary>
+      <param name="rect">The rectangle.</param>
+      <param name="pos">The amount to offset the location.</param>
+      <overloads>Adjusts the location of this rectangle by the specified
+            amount.</overloads>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfRectangleGdiExtensions.ToRectangleF(BitMiracle.Docotic.Pdf.PdfRectangle)">
+      <summary>
+            Converts this <see cref="T:BitMiracle.Docotic.Pdf.PdfRectangle" /> to a <see cref="T:System.Drawing.RectangleF" />.
+            </summary>
+      <param name="rect">The <see cref="T:BitMiracle.Docotic.Pdf.PdfRectangle" /> to convert.</param>
+      <returns>Returns a <see cref="T:System.Drawing.RectangleF" /> structure.</returns>
+    </member>
+    <member name="T:BitMiracle.Docotic.Pdf.PdfSizeGdiExtensions">
+      <summary>
+            Provides System.Drawing / GDI+ extension methods for the <see cref="T:BitMiracle.Docotic.Pdf.PdfSize" /> structure.
+            </summary>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfSizeGdiExtensions.ToPointF(BitMiracle.Docotic.Pdf.PdfSize)">
+      <summary>
+            Converts a <see cref="T:BitMiracle.Docotic.Pdf.PdfSize" /> to a <see cref="T:System.Drawing.PointF" />.
+            </summary>
+      <param name="size">The <see cref="T:BitMiracle.Docotic.Pdf.PdfSize" /> to convert.</param>
+      <returns>Returns a <see cref="T:System.Drawing.PointF" /> structure.</returns>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfSizeGdiExtensions.ToSizeF(BitMiracle.Docotic.Pdf.PdfSize)">
+      <summary>
+            Converts a <see cref="T:BitMiracle.Docotic.Pdf.PdfSize" /> to a <see cref="T:System.Drawing.SizeF" />.
+            </summary>
+      <param name="size">The <see cref="T:BitMiracle.Docotic.Pdf.PdfSize" /> to convert.</param>
+      <returns>Returns a <see cref="T:System.Drawing.SizeF" /> structure.</returns>
+    </member>
+    <member name="M:BitMiracle.Docotic.Pdf.PdfSizeGdiExtensions.ToSize(BitMiracle.Docotic.Pdf.PdfSize)">
+      <summary>
+            Converts a <see cref="T:BitMiracle.Docotic.Pdf.PdfSize" /> to a <see cref="T:System.Drawing.Size" />.
+            </summary>
+      <param name="size">The <see cref="T:BitMiracle.Docotic.Pdf.PdfSize" /> to convert.</param>
+      <returns>Returns a <see cref="T:System.Drawing.Size" /> structure.</returns>
+    </member>
     <member name="T:BitMiracle.Docotic.Pdf.DirectoryFontLoader">
       <summary>
             An implementation of the <see cref="T:BitMiracle.Docotic.Pdf.IFontLoader" /> interface that loads
@@ -4046,24 +4249,6 @@
       </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.DirectoryFontLoader.Load(System.String,System.Boolean,System.Boolean)">
-      <summary>
-            Loads font bytes.
-            </summary>
-      <param name="familyName">Family name of the font</param>
-      <param name="bold">Set to <c>true</c> for the bold font weight</param>
-      <param name="italic">Set to <c>true</c> for the italic font style</param>
-      <returns>
-            The bytes of an eligible font or <c>null</c> if an eligible font was not found.
-            </returns>
-    </member>
-    <member name="T:BitMiracle.Docotic.Pdf.GdiFontLoader">
-      <summary>
-            An implementation of the <see cref="T:BitMiracle.Docotic.Pdf.IFontLoader" /> interface that loads
-            font bytes from the operating system using GDI+ and the 
-            <see cref="T:System.Drawing.Font" /> class.
-            </summary>
-    </member>
-    <member name="M:BitMiracle.Docotic.Pdf.GdiFontLoader.Load(System.String,System.Boolean,System.Boolean)">
       <summary>
             Loads font bytes.
             </summary>
@@ -7315,6 +7500,10 @@
             Opens an existing PDF document.
             </summary>
       <param name="stream">The stream from which the PDF document to be read.</param>
+      <remarks>
+            The <paramref name="stream" /> must be a stream that supports reading and seeking. 
+            Otherwise, the constructor throws an exception of <see cref="T:BitMiracle.Docotic.Pdf.PdfException" /> type.
+            </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.#ctor(System.String,BitMiracle.Docotic.Pdf.PdfConfigurationOptions)">
       <summary>
@@ -7329,6 +7518,10 @@
             </summary>
       <param name="stream">The stream from which the PDF document to be read.</param>
       <param name="options">The configuration options.</param>
+      <remarks>
+            The <paramref name="stream" /> must be a stream that supports reading and seeking. 
+            Otherwise, the constructor throws an exception of <see cref="T:BitMiracle.Docotic.Pdf.PdfException" /> type.
+            </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.#ctor(System.String,System.String)">
       <summary>
@@ -7353,6 +7546,10 @@
       <param name="stream">The stream from which the PDF document to be read.</param>
       <param name="password">The user or owner password that unlocks
             existing PDF data.</param>
+      <remarks>
+            The <paramref name="stream" /> must be a stream that supports reading and seeking.
+            Otherwise, the constructor throws an exception of <see cref="T:BitMiracle.Docotic.Pdf.PdfException" /> type.
+            </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.#ctor(System.String,System.String,BitMiracle.Docotic.Pdf.PdfConfigurationOptions)">
       <summary>
@@ -7371,6 +7568,10 @@
       <param name="password">The user or owner password that unlocks
             existing PDF data.</param>
       <param name="options">The configuration options.</param>
+      <remarks>
+            The <paramref name="stream" /> must be a stream that supports reading and seeking. 
+            Otherwise, the constructor throws an exception of <see cref="T:BitMiracle.Docotic.Pdf.PdfException" /> type.
+            </remarks>
     </member>
     <member name="E:BitMiracle.Docotic.Pdf.PdfDocument.Error">
       <summary>
@@ -7737,7 +7938,9 @@
             applied password security.</param>
       <returns>
         <c>true</c> if documents are equal; otherwise <c>false</c></returns>
-      <remarks>This method is useful for regression tests when you compare
+      <remarks>
+        <para>
+            This method is useful for regression tests when you compare
             two versions of the same document.<br /><br />
             Password specified by the <paramref name="password" /> parameter
             is used for both documents (it's assumed that both documents have the same
@@ -7747,7 +7950,13 @@
             Differences in CreationDate and ModifiedDate properties, document
             metadata and file trailer IDs of document being compared do not
             get taken into account.
-            </remarks>
+            </para>
+        <para>
+            The <paramref name="firstDocument" /> and the <paramref name="secondDocument" /> must be 
+            streams that allow reading and seeking. Otherwise, the method throws an exception
+            of <see cref="T:BitMiracle.Docotic.Pdf.PdfException" /> type.
+            </para>
+      </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.DocumentsAreEqual(System.IO.Stream,System.IO.Stream,System.String,BitMiracle.Docotic.Pdf.PdfConfigurationOptions)">
       <summary>
@@ -7760,7 +7969,9 @@
       <param name="options">The configuration options.</param>
       <returns>
         <c>true</c> if documents are equal; otherwise <c>false</c></returns>
-      <remarks>This method is useful for regression tests when you compare
+      <remarks>
+        <para>
+            This method is useful for regression tests when you compare
             two versions of the same document.<br /><br />
             Password specified by the <paramref name="password" /> parameter
             is used for both documents (it's assumed that both documents have the same
@@ -7770,7 +7981,13 @@
             Differences in CreationDate and ModifiedDate properties, document
             metadata and file trailer IDs of document being compared do not
             get taken into account.
-            </remarks>
+            </para>
+        <para>
+            The <paramref name="firstDocument" /> and the <paramref name="secondDocument" /> must be 
+            streams that allow reading and seeking. Otherwise, the method throws an exception
+            of <see cref="T:BitMiracle.Docotic.Pdf.PdfException" /> type.
+            </para>
+      </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.IsPasswordProtected(System.String)">
       <summary>
@@ -7799,6 +8016,10 @@
       <returns>
         <c>true</c> if PDF document is password protected; otherwise, <c>false</c>.
             </returns>
+      <remarks>
+            The <paramref name="documentStream" /> must be a stream that supports reading and
+            seeking. Otherwise, the method throws an exception of <see cref="T:BitMiracle.Docotic.Pdf.PdfException" /> type.
+            </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.IsPasswordProtected(System.IO.Stream,BitMiracle.Docotic.Pdf.PdfConfigurationOptions)">
       <summary>
@@ -7810,6 +8031,10 @@
       <returns>
         <c>true</c> if PDF document is password protected; otherwise, <c>false</c>.
             </returns>
+      <remarks>
+            The <paramref name="documentStream" /> must be a stream that supports reading and
+            seeking. Otherwise, the method throws an exception of <see cref="T:BitMiracle.Docotic.Pdf.PdfException" /> type.
+            </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.Dispose">
       <summary>
@@ -7841,6 +8066,10 @@
       <param name="stream">The stream to read PDF data from.</param>
       <overloads>Replaces the contents of this <see cref="T:BitMiracle.Docotic.Pdf.PdfDocument" />
             with contents of existing PDF file, stream or buffer.</overloads>
+      <remarks>
+            The <paramref name="stream" /> must be a stream that supports reading and
+            seeking. Otherwise, the method throws an exception of <see cref="T:BitMiracle.Docotic.Pdf.PdfException" /> type.
+            </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.Open(System.IO.Stream,System.String)">
       <summary>
@@ -7850,6 +8079,10 @@
       <param name="stream">The stream to read PDF data from.</param>
       <param name="password">The user or owner password that unlocks
             the PDF data read from stream.</param>
+      <remarks>
+            The <paramref name="stream" /> must be a stream that supports reading and
+            seeking. Otherwise, the method throws an exception of <see cref="T:BitMiracle.Docotic.Pdf.PdfException" /> type.
+            </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.Open(System.Byte[])">
       <summary>
@@ -7891,6 +8124,10 @@
       <param name="stream">The stream to read PDF data from.</param>
       <overloads>Appends the contents of existing PDF file, stream or
             buffer to this <see cref="T:BitMiracle.Docotic.Pdf.PdfDocument" />.</overloads>
+      <remarks>
+            The <paramref name="stream" /> must be a stream that supports reading and
+            seeking. Otherwise, the method throws an exception of <see cref="T:BitMiracle.Docotic.Pdf.PdfException" /> type.
+            </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.Append(System.IO.Stream,System.String)">
       <summary>
@@ -7900,6 +8137,10 @@
       <param name="stream">The stream to read PDF data from.</param>
       <param name="password">The user or owner password that unlocks
             the PDF data read from stream.</param>
+      <remarks>
+            The <paramref name="stream" /> must be a stream that supports reading and
+            seeking. Otherwise, the method throws an exception of <see cref="T:BitMiracle.Docotic.Pdf.PdfException" /> type.
+            </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.Append(System.Byte[])">
       <summary>
@@ -7929,12 +8170,6 @@
             Saves the document to the specified stream.
             </summary>
       <param name="stream">The stream to save document to.</param>
-    </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.Clear">
-      <summary>
-            Removes all document content and resets the document to the 
-            default state.
-            </summary>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.GetPage(System.Int32)">
       <summary>
@@ -8407,26 +8642,6 @@
       <returns>The enumerator that can be used to iterate through the collection of
             document fonts.</returns>
     </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.ReplaceDuplicateFonts">
-      <summary>
-            Replaces all duplicate fonts with the first duplicate.
-            </summary>
-      <remarks>
-        <para>
-            This method finds all groups of font duplicates and replaces all fonts from each
-            group of duplicates with the first item of the group.
-            </para>
-        <para>
-            This method gives good results for documents which were incrementally updated or
-            created by a merge of several documents with the same fonts.
-            </para>
-        <para>
-            To actually reduce output file size, this method requires removal of unused objects
-            afterwards. Because of this, SaveOptions.<see cref="P:BitMiracle.Docotic.Pdf.PdfSaveOptions.RemoveUnusedObjects" />
-            property will be set to <c>true</c> automatically when using this method.
-            </para>
-      </remarks>
-    </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.AddFont(System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
       <summary>
             Adds the new font with specified properties to the end of the
@@ -8446,29 +8661,6 @@
       <remarks>If requested font does not have bold or italic
             version then bold or italic version will be synthesized when
             needed.</remarks>
-    </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.AddFont(System.String,System.Drawing.FontStyle)">
-      <summary>
-            Adds the new font with specified properties to the end of the
-            collection of document fonts.
-            </summary>
-      <param name="fontFace">The name of the font face.</param>
-      <param name="fontStyle">The <see cref="T:System.Drawing.FontStyle" /> of the new
-            font.</param>
-      <returns>The newly added <see cref="T:BitMiracle.Docotic.Pdf.PdfFont" /> or <c>null</c> if there is no font
-            with specified face installed.</returns>
-      <remarks>If requested font does not have bold or italic
-            version then bold or italic version will be synthesized
-            when needed.</remarks>
-    </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.AddFont(System.Drawing.Font)">
-      <summary>
-            Adds the new font with the properties of the specified
-            <see cref="T:System.Drawing.Font" /> to the end of the collection of document fonts.
-            </summary>
-      <param name="font">The existing <see cref="T:System.Drawing.Font" /> from which to
-            create the new <see cref="T:BitMiracle.Docotic.Pdf.PdfFont" />.</param>
-      <returns>The newly added <see cref="T:BitMiracle.Docotic.Pdf.PdfFont" />.</returns>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.AddFont(System.String)">
       <summary>
@@ -9067,50 +9259,6 @@
             page images including or excluding the inline images. The enumerator includes images
             added to document but not yet drawn on any canvas.</returns>
     </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.AddImage(System.Drawing.Image)">
-      <summary>
-            Adds new image(s) with the data and properties of specified
-            <see cref="T:System.Drawing.Image" /> to the end of the collection of document images.
-            </summary>
-      <param name="image">The existing <see cref="T:System.Drawing.Image" /> from which
-            to create <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" />(s).</param>
-      <returns>The <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" /> for the first frame (page) found in
-            the existing <see cref="T:System.Drawing.Image" />.</returns>
-      <remarks>This method adds a new image for each frame (page) found
-            in the existing <see cref="T:System.Drawing.Image" />.</remarks>
-    </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.AddImage(System.Drawing.Image,BitMiracle.Docotic.Pdf.PdfColor)">
-      <summary>
-            Creates image(s) with the data and properties of specified
-            <see cref="T:System.Drawing.Image" />, applies specified mask color to them and adds resulting
-            image(s) to the end of the collection of document images.
-            </summary>
-      <param name="image">The existing <see cref="T:System.Drawing.Image" /> from which
-            to create <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" />(s).</param>
-      <param name="maskColor">The color that masks transparent
-            areas of the image(s).</param>
-      <returns>The <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" /> for the first frame (page) found in the
-            existing <see cref="T:System.Drawing.Image" />.</returns>
-      <remarks>This method adds a new image for each frame (page) found
-            in the existing <see cref="T:System.Drawing.Image" />. Mask color gets applied for
-            all added images.</remarks>
-    </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.AddImage(System.Drawing.Image,System.Drawing.Image)">
-      <summary>
-            Creates a new image with the data and properties of specified
-            <see cref="T:System.Drawing.Image" />, applies mask constructed from specified
-            <see cref="T:System.Drawing.Image" /> to it and adds resulting image to the end of the
-            collection of document images.
-            </summary>
-      <param name="image">The existing <see cref="T:System.Drawing.Image" /> from which
-            to create a <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" />.</param>
-      <param name="mask">The existing <see cref="T:System.Drawing.Image" /> from which
-            to create the mask for the <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" />.</param>
-      <returns>The created <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" />.</returns>
-      <remarks>Mask images with only one frame (page) are supported. 
-            This method creates an image for the first frame (page) of the
-            source image only.</remarks>
-    </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.AddImage(System.Byte[])">
       <summary>
             Adds new image(s) with the data and properties read from the 
@@ -9261,23 +9409,6 @@
             already used to create an <see cref="T:BitMiracle.Docotic.Pdf.PdfImage" /> then this method will throw
             an exception.
             </para>
-      </remarks>
-    </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.OpenImage(System.Drawing.Image)">
-      <summary>
-            Opens the image and constructs a collection of its frames (pages).
-            </summary>
-      <param name="image">The image to open.</param>
-      <returns>The collection of image frames (pages) or <c>null</c> if image
-            format is unsupported.</returns>
-      <remarks>
-        <para>This method does not load image data and does not add images
-            to the collection of document images.</para>
-        <para>This method is useful if you want to add only some of the image
-            frames (pages) to document or if you want to recompress image frames
-            before adding them to document.</para>
-        <para>Please use one of the <see cref="Overload:BitMiracle.Docotic.Pdf.PdfDocument.AddImage" /> methods to add a frame
-            from collection of frames to the collection of document images.</para>
       </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfDocument.OpenImage(System.Byte[])">
@@ -13725,12 +13856,6 @@
       <param name="stream">The stream to save an image of the page to.</param>
       <param name="options">The options to use while creating the image.</param>
     </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfPage.Draw(System.Drawing.Graphics)">
-      <summary>
-            Draws the page on a <see cref="T:System.Drawing.Graphics" />.
-            </summary>
-      <param name="g">The <see cref="T:System.Drawing.Graphics" /> to draw the page on.</param>
-    </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfPage.ToString">
       <summary>
             Returns a <see cref="T:System.String" /> that represents this instance.
@@ -15494,23 +15619,6 @@
             </para>
       </remarks>
     </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfBox.ToRectangleF(System.Double)">
-      <summary>
-            Maps this <see cref="T:BitMiracle.Docotic.Pdf.PdfBox" /> structure to <see cref="T:BitMiracle.Docotic.Pdf.PdfPage" /> coordinate system.
-            </summary>
-      <param name="pageHeight">Height of <see cref="T:BitMiracle.Docotic.Pdf.PdfPage" /> that is used to map coordinates.</param>
-      <returns>
-        <see cref="T:System.Drawing.RectangleF" /> structure expressed in <see cref="T:BitMiracle.Docotic.Pdf.PdfPage" /> coordinate system.</returns>
-      <remarks>
-        <para>
-            In <see cref="T:BitMiracle.Docotic.Pdf.PdfPage" /> coordinate system origin is located at the upper-left corner of the page,
-            positive Y axis extends vertically downward.
-            </para>
-        <para>
-            In default user space the positive Y axis extends vertically upward.
-            </para>
-      </remarks>
-    </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfBox.Equals(System.Object)">
       <summary>
             Tests whether <paramref name="obj" /> is a <see cref="T:BitMiracle.Docotic.Pdf.PdfBox" /> with
@@ -16012,12 +16120,6 @@
       <param name="sz">The <see cref="T:BitMiracle.Docotic.Pdf.PdfSize" /> that specifies the numbers to
             subtract from the coordinates of <paramref name="pt" />.</param>
       <returns>The translated <see cref="T:BitMiracle.Docotic.Pdf.PdfPoint" />.</returns>
-    </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfPoint.ToPointF">
-      <summary>
-            Converts a <see cref="T:BitMiracle.Docotic.Pdf.PdfPoint" /> to a <see cref="T:System.Drawing.PointF" />.
-            </summary>
-      <returns>Returns a <see cref="T:System.Drawing.PointF" /> structure.</returns>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfPoint.Equals(System.Object)">
       <summary>
@@ -16551,36 +16653,12 @@
             <see cref="T:BitMiracle.Docotic.Pdf.PdfRectangle" /> structure; otherwise <c>false</c>.
             </returns>
     </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfRectangle.Contains(System.Drawing.PointF)">
-      <summary>
-            Determines if the specified point is contained within this
-            <see cref="T:BitMiracle.Docotic.Pdf.PdfRectangle" /> structure.
-            </summary>
-      <param name="pt">The <see cref="T:System.Drawing.PointF" /> to test.</param>
-      <returns>
-            This method returns <c>true</c> if the point represented by the
-            <paramref name="pt" /> parameter is contained within this
-            <see cref="T:BitMiracle.Docotic.Pdf.PdfRectangle" /> structure; otherwise <c>false</c>.
-            </returns>
-    </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfRectangle.Contains(BitMiracle.Docotic.Pdf.PdfRectangle)">
       <summary>
             Determines if the rectangular region represented by <paramref name="rect" />
             is entirely contained within this <see cref="T:BitMiracle.Docotic.Pdf.PdfRectangle" /> structure.
             </summary>
       <param name="rect">The <see cref="T:BitMiracle.Docotic.Pdf.PdfRectangle" /> to test.</param>
-      <returns>
-            This method returns <c>true</c> if the rectangular region represented by
-            <paramref name="rect" /> is entirely contained within the rectangular region
-            represented by this <see cref="T:BitMiracle.Docotic.Pdf.PdfRectangle" />; otherwise <c>false</c>.
-            </returns>
-    </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfRectangle.Contains(System.Drawing.RectangleF)">
-      <summary>
-            Determines if the rectangular region represented by <paramref name="rect" />
-            is entirely contained within this <see cref="T:BitMiracle.Docotic.Pdf.PdfRectangle" /> structure.
-            </summary>
-      <param name="rect">The <see cref="T:System.Drawing.RectangleF" /> to test.</param>
       <returns>
             This method returns <c>true</c> if the rectangular region represented by
             <paramref name="rect" /> is entirely contained within the rectangular region
@@ -16621,12 +16699,6 @@
             </summary>
       <param name="size">The amount to inflate this rectangle.</param>
     </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfRectangle.Inflate(System.Drawing.SizeF)">
-      <summary>
-            Inflates this <see cref="T:BitMiracle.Docotic.Pdf.PdfRectangle" /> by the specified amount.
-            </summary>
-      <param name="size">The amount to inflate this rectangle.</param>
-    </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfRectangle.Intersect(BitMiracle.Docotic.Pdf.PdfRectangle)">
       <summary>
             Replaces this <see cref="T:BitMiracle.Docotic.Pdf.PdfRectangle" /> structure with the intersection of
@@ -16636,13 +16708,6 @@
       <overloads>Replaces this <see cref="T:BitMiracle.Docotic.Pdf.PdfRectangle" /> structure with the
             intersection of itself and the specified rectangle.</overloads>
     </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfRectangle.Intersect(System.Drawing.RectangleF)">
-      <summary>
-            Replaces this <see cref="T:BitMiracle.Docotic.Pdf.PdfRectangle" /> structure with the intersection of
-            itself and the specified <see cref="T:System.Drawing.RectangleF" /> structure.
-            </summary>
-      <param name="rect">The rectangle to intersect.</param>
-    </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfRectangle.IntersectsWith(BitMiracle.Docotic.Pdf.PdfRectangle)">
       <summary>
             Determines if this rectangle intersects with <paramref name="rect" />.
@@ -16651,21 +16716,6 @@
       <returns>This method returns <c>true</c> if there is any intersection.</returns>
       <overloads>Determines if this rectangle intersects with
             <paramref name="rect" />.</overloads>
-    </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfRectangle.IntersectsWith(System.Drawing.RectangleF)">
-      <summary>
-            Determines if this rectangle intersects with <paramref name="rect" />.
-            </summary>
-      <param name="rect">The rectangle to test.</param>
-      <returns>This method returns <c>true</c> if there is any intersection.</returns>
-    </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfRectangle.Offset(System.Drawing.PointF)">
-      <summary>
-            Adjusts the location of this rectangle by the specified amount.
-            </summary>
-      <param name="pos">The amount to offset the location.</param>
-      <overloads>Adjusts the location of this rectangle by the specified
-            amount.</overloads>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfRectangle.Offset(BitMiracle.Docotic.Pdf.PdfPoint)">
       <summary>
@@ -16686,12 +16736,6 @@
             </summary>
       <param name="x">The amount to offset the location horizontally.</param>
       <param name="y">The amount to offset the location vertically.</param>
-    </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfRectangle.ToRectangleF">
-      <summary>
-            Converts this <see cref="T:BitMiracle.Docotic.Pdf.PdfRectangle" /> to a <see cref="T:System.Drawing.RectangleF" />.
-            </summary>
-      <returns>Returns a <see cref="T:System.Drawing.RectangleF" /> structure.</returns>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfRectangle.ToString">
       <summary>
@@ -16926,29 +16970,11 @@
             structure.
             </returns>
     </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfSize.ToPointF">
-      <summary>
-            Converts a <see cref="T:BitMiracle.Docotic.Pdf.PdfSize" /> to a <see cref="T:System.Drawing.PointF" />.
-            </summary>
-      <returns>Returns a <see cref="T:System.Drawing.PointF" /> structure.</returns>
-    </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfSize.ToPdfPoint">
       <summary>
             Converts a <see cref="T:BitMiracle.Docotic.Pdf.PdfSize" /> to a <see cref="T:BitMiracle.Docotic.Pdf.PdfPoint" />.
             </summary>
       <returns>Returns a <see cref="T:BitMiracle.Docotic.Pdf.PdfPoint" /> structure.</returns>
-    </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfSize.ToSizeF">
-      <summary>
-            Converts a <see cref="T:BitMiracle.Docotic.Pdf.PdfSize" /> to a <see cref="T:System.Drawing.SizeF" />.
-            </summary>
-      <returns>Returns a <see cref="T:System.Drawing.SizeF" /> structure.</returns>
-    </member>
-    <member name="M:BitMiracle.Docotic.Pdf.PdfSize.ToSize">
-      <summary>
-            Converts a <see cref="T:BitMiracle.Docotic.Pdf.PdfSize" /> to a <see cref="T:System.Drawing.Size" />.
-            </summary>
-      <returns>Returns a <see cref="T:System.Drawing.Size" /> structure.</returns>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.PdfSize.ToString">
       <summary>
@@ -19788,6 +19814,10 @@
             </summary>
       <param name="documentPath">Path to the PDF document.</param>
       <param name="outputStream">The stream to save XMP metadata.</param>
+      <remarks>
+            The <paramref name="outputStream" /> must be a stream that supports writing.
+            Otherwise, the method throws an exception of <see cref="T:BitMiracle.Docotic.Pdf.PdfException" /> type.
+            </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.XmpMetadata.Extract(System.String,System.String,System.IO.Stream)">
       <summary>
@@ -19796,6 +19826,10 @@
       <param name="documentPath">Path to the PDF document.</param>
       <param name="password">The user or owner password that unlocks PDF data.</param>
       <param name="outputStream">The stream to save XMP metadata.</param>
+      <remarks>
+            The <paramref name="outputStream" /> must be a stream that supports writing.
+            Otherwise, the method throws an exception of <see cref="T:BitMiracle.Docotic.Pdf.PdfException" /> type.
+            </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.XmpMetadata.Extract(System.IO.Stream,System.String)">
       <summary>
@@ -19803,6 +19837,10 @@
             </summary>
       <param name="documentStream">Stream with the PDF document.</param>
       <param name="outputPath">Path to the file to save XMP metadata to.</param>
+      <remarks>
+            The <paramref name="documentStream" /> must be a stream that supports reading and seeking.
+            Otherwise, the method throws an exception of <see cref="T:BitMiracle.Docotic.Pdf.PdfException" /> type.
+            </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.XmpMetadata.Extract(System.IO.Stream,System.String,System.String)">
       <summary>
@@ -19811,6 +19849,10 @@
       <param name="documentStream">Stream with the PDF document.</param>
       <param name="password">The user or owner password that unlocks PDF data.</param>
       <param name="outputPath">Path to the file to save XMP metadata to.</param>
+      <remarks>
+            The <paramref name="documentStream" /> must be a stream that supports reading and seeking.
+            Otherwise, the method throws an exception of <see cref="T:BitMiracle.Docotic.Pdf.PdfException" /> type.
+            </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.XmpMetadata.Extract(System.IO.Stream,System.IO.Stream)">
       <summary>
@@ -19818,6 +19860,11 @@
             </summary>
       <param name="documentStream">Stream with the PDF document.</param>
       <param name="outputStream">The stream to save XMP metadata.</param>
+      <remarks>
+            The <paramref name="documentStream" /> must be a stream that supports reading and
+            seeking. Also, the <paramref name="outputStream" /> must be a stream that supports
+            writing. Otherwise, the method throws an exception of <see cref="T:BitMiracle.Docotic.Pdf.PdfException" /> type.
+            </remarks>
     </member>
     <member name="M:BitMiracle.Docotic.Pdf.XmpMetadata.Extract(System.IO.Stream,System.String,System.IO.Stream)">
       <summary>
@@ -19826,6 +19873,11 @@
       <param name="documentStream">Stream with the PDF document.</param>
       <param name="password">The user or owner password that unlocks PDF data.</param>
       <param name="outputStream">The stream to save XMP metadata.</param>
+      <remarks>
+            The <paramref name="documentStream" /> must be a stream that supports reading and
+            seeking. Also, the <paramref name="outputStream" /> must be a stream that supports
+            writing. Otherwise, the method throws an exception of <see cref="T:BitMiracle.Docotic.Pdf.PdfException" /> type.
+            </remarks>
     </member>
     <member name="T:BitMiracle.Docotic.Pdf.XmpPdfSchema">
       <summary>
