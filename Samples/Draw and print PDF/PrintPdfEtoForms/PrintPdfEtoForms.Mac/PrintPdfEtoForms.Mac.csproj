@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
+    
+    <RuntimeIdentifiers>osx-x64</RuntimeIdentifiers>
+    
+    <Authors>Bit Miracle</Authors>
+  </PropertyGroup>
+	
+  <ItemGroup>
+    <ProjectReference Include="..\PrintPdfEtoForms\PrintPdfEtoForms.csproj" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <PackageReference Include="Eto.Platform.Mac64" Version="2.5.6" />
+  </ItemGroup>
+	
+</Project>
