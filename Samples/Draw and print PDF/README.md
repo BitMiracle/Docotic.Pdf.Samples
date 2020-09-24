@@ -17,7 +17,11 @@ This sample shows how to make thumbnail of a PDF page.
 
 [Print PDF](/Samples/Draw%20and%20print%20PDF/PrintPdf)
 
-This sample shows how to print PDF documents to a printer.
+This sample shows how to print PDF documents to a printer in Windows Forms and WPF applications.
+
+[Print PDF in Eto.Forms applications](/Samples/Draw%20and%20print%20PDF/PrintPdfEtoForms)
+
+This sample shows how to print PDF documents to a printer in Eto.Forms application.
 
 [Save PDF or its page as bitonal TIFF](/Samples/Draw%20and%20print%20PDF/SaveAsBitonalTiff)
 
