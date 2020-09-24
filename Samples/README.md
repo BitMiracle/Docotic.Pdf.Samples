@@ -56,7 +56,9 @@
 
 [Make page thumbnail](/Samples/Draw%20and%20print%20PDF/MakePageThumbnail)
 
-[Print PDF](/Samples/Draw%20and%20print%20PDF/PrintPdf)
+[Print PDF in Windows Forms and WPF applications](/Samples/Draw%20and%20print%20PDF/PrintPdf)
+
+[Print PDF in Eto.Forms applications](/Samples/Draw%20and%20print%20PDF/PrintPdfEtoForms)
 
 [Save PDF or its page as bitonal TIFF](/Samples/Draw%20and%20print%20PDF/SaveAsBitonalTiff)
 
