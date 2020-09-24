@@ -1,4 +1,4 @@
-﻿Namespace BitMiracle.Docotic.Samples.PrintPdf
+﻿Namespace BitMiracle.Docotic.Pdf.Samples
     Friend Enum PrintSize
         FitPage
         ActualSize

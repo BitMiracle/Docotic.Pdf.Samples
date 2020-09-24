@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Drawing.Printing;
 using BitMiracle.Docotic.Pdf;
 
-namespace BitMiracle.Docotic.Samples.PrintPdf
+namespace BitMiracle.Docotic.Pdf.Samples
 {
     class PdfPrintDocument : IDisposable
     {

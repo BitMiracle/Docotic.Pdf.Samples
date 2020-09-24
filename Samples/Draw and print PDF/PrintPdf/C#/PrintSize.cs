@@ -1,4 +1,4 @@
-﻿namespace BitMiracle.Docotic.Samples.PrintPdf
+﻿namespace BitMiracle.Docotic.Pdf.Samples
 {
     enum PrintSize
     {

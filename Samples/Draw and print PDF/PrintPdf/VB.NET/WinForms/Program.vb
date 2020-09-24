@@ -1,7 +1,7 @@
 ﻿Imports System
 Imports System.Windows.Forms
 
-Namespace BitMiracle.Docotic.Samples.PrintPdf
+Namespace BitMiracle.Docotic.Pdf.Samples
     Friend Module Program
         <STAThread>
         Public Sub Main()

@@ -2,7 +2,7 @@
 Imports System.Windows.Forms
 Imports BitMiracle.Docotic.Pdf
 
-Namespace BitMiracle.Docotic.Samples.PrintPdf
+Namespace BitMiracle.Docotic.Pdf.Samples
     Partial Public Class MainForm
         Inherits Form
 
@@ -13,7 +13,7 @@ Namespace BitMiracle.Docotic.Samples.PrintPdf
         End Sub
 
         Private Function getPrintSize() As PrintSize
-            Return If(printSize.SelectedIndex = FitPageIndex, PrintPdf.PrintSize.FitPage, PrintPdf.PrintSize.ActualSize)
+            Return If(printSize.SelectedIndex = FitPageIndex, Samples.PrintSize.FitPage, Samples.PrintSize.ActualSize)
         End Function
 
         Private Sub printButton_Click(sender As Object, e As EventArgs) Handles printButton.Click

@@ -2,7 +2,7 @@
 Imports System.Windows.Forms
 Imports BitMiracle.Docotic.Pdf
 
-Namespace BitMiracle.Docotic.Samples.PrintPdf
+Namespace BitMiracle.Docotic.Pdf.Samples
     Friend Module PdfPrintHelper
         Function ShowPrintDialog(ByVal pdf As PdfDocument, ByVal printSize As PrintSize) As DialogResult
             Using printDialog = New PrintDialog()

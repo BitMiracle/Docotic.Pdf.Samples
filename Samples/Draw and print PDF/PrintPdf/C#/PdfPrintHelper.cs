@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using BitMiracle.Docotic.Pdf;
 
-namespace BitMiracle.Docotic.Samples.PrintPdf
+namespace BitMiracle.Docotic.Pdf.Samples
 {
     static class PdfPrintHelper
     {

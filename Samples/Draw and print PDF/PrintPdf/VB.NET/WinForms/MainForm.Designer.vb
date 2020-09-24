@@ -1,6 +1,6 @@
 ﻿Imports System
 
-Namespace BitMiracle.Docotic.Samples.PrintPdf
+Namespace BitMiracle.Docotic.Pdf.Samples
     Partial Public Class MainForm
         Private components As ComponentModel.IContainer = Nothing
 

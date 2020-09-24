@@ -3,7 +3,7 @@ Imports System.Drawing
 Imports System.Drawing.Printing
 Imports BitMiracle.Docotic.Pdf
 
-Namespace BitMiracle.Docotic.Samples.PrintPdf
+Namespace BitMiracle.Docotic.Pdf.Samples
     Friend Class PdfPrintDocument
         Implements IDisposable
 

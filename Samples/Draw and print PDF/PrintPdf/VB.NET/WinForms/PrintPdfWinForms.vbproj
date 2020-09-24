@@ -7,7 +7,7 @@
     <ProjectGuid>{0919AB1D-D56A-0FCB-1083-ADC764748B13}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>BitMiracle.Docotic.Pdf.Samples</RootNamespace>
     <AssemblyName>PrintPdfWinForms</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

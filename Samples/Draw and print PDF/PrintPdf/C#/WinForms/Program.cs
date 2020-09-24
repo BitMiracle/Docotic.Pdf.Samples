@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace BitMiracle.Docotic.Samples.PrintPdf
+namespace BitMiracle.Docotic.Pdf.Samples
 {
     static class Program
     {
