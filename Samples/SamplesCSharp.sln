@@ -265,7 +265,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcrAndMakeSearchable", "Tex
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiffToPdf", "Images\TiffToPdf\C#\TiffToPdf.csproj", "{29D69574-A321-4B27-A368-CA5A750F6D3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintPdf", "Draw and print PDF\PrintPdf\C#\PrintPdf.csproj", "{BB3D2A76-1932-403A-92DB-67B906E3BFB3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintPdfWinForms", "Draw and print PDF\PrintPdf\C#\WinForms\PrintPdfWinForms.csproj", "{BB3D2A76-1932-403A-92DB-67B906E3BFB3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Digital signatures", "Digital signatures", "{80D726EA-AAE5-4744-BAEE-6F6C8A01E493}"
 EndProject

@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PrintPdf")]
+[assembly: AssemblyTitle("PrintPdfWinForms")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("BitMiracle")]
-[assembly: AssemblyProduct("PrintPdf")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyCompany("Bit Miracle")]
+[assembly: AssemblyProduct("PrintPdfWinForms")]
+[assembly: AssemblyCopyright("Copyright © 2014 - 2020 Bit Miracle")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

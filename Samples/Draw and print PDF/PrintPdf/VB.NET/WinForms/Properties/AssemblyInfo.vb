@@ -1,12 +1,12 @@
 ﻿Imports System.Reflection
 Imports System.Runtime.InteropServices
 
-<Assembly: AssemblyTitle("PrintPdf")>
+<Assembly: AssemblyTitle("PrintPdfWinForms")>
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyConfiguration("")>
-<Assembly: AssemblyCompany("BitMiracle")>
-<Assembly: AssemblyProduct("PrintPdf")>
-<Assembly: AssemblyCopyright("Copyright ©  2014")>
+<Assembly: AssemblyCompany("Bit Miracle")>
+<Assembly: AssemblyProduct("PrintPdfWinForms")>
+<Assembly: AssemblyCopyright("Copyright © 2014 - 2020 Bit Miracle")>
 <Assembly: AssemblyTrademark("")>
 <Assembly: AssemblyCulture("")>
 <Assembly: ComVisible(False)>

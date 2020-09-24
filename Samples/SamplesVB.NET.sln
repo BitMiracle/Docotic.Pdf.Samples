@@ -263,7 +263,7 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "OcrAndMakeSearchable", "Tex
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TiffToPdf", "Images\TiffToPdf\VB.NET\TiffToPdf.vbproj", "{EFF294FD-EDDA-43BB-9E8C-83F4D7E7C36A}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PrintPdf", "Draw and print PDF\PrintPdf\VB.NET\PrintPdf.vbproj", "{0919AB1D-D56A-0FCB-1083-ADC764748B13}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PrintPdfWinForms", "Draw and print PDF\PrintPdf\VB.NET\WinForms\PrintPdfWinForms.vbproj", "{0919AB1D-D56A-0FCB-1083-ADC764748B13}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Digital signatures", "Digital signatures", "{6D0505BD-B25A-4219-A5EA-0F5E30DAC7F9}"
 EndProject

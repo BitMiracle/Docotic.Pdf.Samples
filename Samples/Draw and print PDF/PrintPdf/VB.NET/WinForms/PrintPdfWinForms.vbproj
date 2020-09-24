@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace></RootNamespace>
-    <AssemblyName>PrintPdf</AssemblyName>
+    <AssemblyName>PrintPdfWinForms</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <DefaultItemExcludes>$(DefaultItemExcludes);$(ProjectDir)**\*.cs</DefaultItemExcludes>
@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BitMiracle.Docotic.Pdf">
-      <HintPath>..\..\..\..\BitMiracle.Docotic.Pdf.dll</HintPath>
+      <HintPath>..\..\..\..\..\BitMiracle.Docotic.Pdf.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -56,9 +56,9 @@
     <Compile Include="MainForm.Designer.vb">
       <DependentUpon>MainForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="PdfPrintDocument.vb" />
-    <Compile Include="PdfPrintHelper.vb" />
-    <Compile Include="PrintSize.vb" />
+    <Compile Include="..\PdfPrintDocument.vb" />
+    <Compile Include="..\PdfPrintHelper.vb" />
+    <Compile Include="..\PrintSize.vb" />
     <Compile Include="Program.vb" />
     <Compile Include="Properties\AssemblyInfo.vb" />
     <EmbeddedResource Include="MainForm.resx">
