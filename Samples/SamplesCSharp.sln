@@ -267,6 +267,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiffToPdf", "Images\TiffToP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintPdfWinForms", "Draw and print PDF\PrintPdf\C#\WinForms\PrintPdfWinForms.csproj", "{BB3D2A76-1932-403A-92DB-67B906E3BFB3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintPdfWpf", "Draw and print PDF\PrintPdf\C#\WPF\PrintPdfWpf.csproj", "{9702970B-4833-4631-98D7-5663D39909E7}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Digital signatures", "Digital signatures", "{80D726EA-AAE5-4744-BAEE-6F6C8A01E493}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignatureFields", "Digital signatures\SignatureFields\C#\SignatureFields.csproj", "{D21FD328-39D8-4C8C-8920-FA1A8697EEF3}"
@@ -797,6 +799,10 @@ Global
 		{AB9F8A29-C188-47D7-A312-F7B63A3E3AF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB9F8A29-C188-47D7-A312-F7B63A3E3AF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB9F8A29-C188-47D7-A312-F7B63A3E3AF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9702970B-4833-4631-98D7-5663D39909E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9702970B-4833-4631-98D7-5663D39909E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9702970B-4833-4631-98D7-5663D39909E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9702970B-4833-4631-98D7-5663D39909E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -928,6 +934,7 @@ Global
 		{D1C330FC-C589-491D-A2CF-85FD74EECA8F} = {80D726EA-AAE5-4744-BAEE-6F6C8A01E493}
 		{A738574C-5045-411F-B829-E6650B165D88} = {E7C6FCE0-A244-4347-9E50-27434EDBBCFC}
 		{AB9F8A29-C188-47D7-A312-F7B63A3E3AF1} = {E7C6FCE0-A244-4347-9E50-27434EDBBCFC}
+		{9702970B-4833-4631-98D7-5663D39909E7} = {8450E751-EB23-4F7C-AB20-6E56C0CC9970}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61DC7F3F-A5C8-48BD-845F-83DE6BD2527B}
