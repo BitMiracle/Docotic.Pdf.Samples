@@ -1,5 +1,5 @@
 # Print PDF in WinForms and WPF applications
-This sample shows how to print PDF documents to a printer in Windows Forms and WPF applications.
+This sample shows how to print PDF documents to a printer in Windows Forms and WPF applications using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
 The demo app comes in C# and VB.NET versions for Windows Forms and WPF. The app shows the following features:
 1. Print Preview.
@@ -9,6 +9,6 @@ The demo app comes in C# and VB.NET versions for Windows Forms and WPF. The app 
 
 ## See also
 * [Render and print PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/draw-print-pdf.aspx) article
-* [Convert PDF to image in C# and VB.NET](https://bitmiracle.com/pdf-library/convert-pdf-to-image.aspx) article
 * [Print PDF in Eto.Forms applications](/Samples/Draw%20and%20print%20PDF/PrintPdfEtoForms)
+* [Convert PDF to image in C# and VB.NET](https://bitmiracle.com/pdf-library/convert-pdf-to-image.aspx) article
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
