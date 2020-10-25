@@ -127,6 +127,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 image.ResizeTo(image.Width / ratio, image.Height / ratio, PdfImageCompression.Group4Fax)
             ElseIf image.ComponentCount >= 3 AndAlso image.BitsPerComponent = 8 Then
                 image.ResizeTo(width, height, PdfImageCompression.Jpeg, 90)
+                ' or image.ResizeTo(width, height, PdfImageCompression.Jpeg2000, 10)
             Else
                 image.ResizeTo(width, height, PdfImageCompression.Flate, 9)
             End If

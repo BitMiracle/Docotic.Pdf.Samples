@@ -166,6 +166,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             else if (image.ComponentCount >= 3 && image.BitsPerComponent == 8)
             {
                 image.ResizeTo(width, height, PdfImageCompression.Jpeg, 90);
+                // or image.ResizeTo(width, height, PdfImageCompression.Jpeg2000, 10);
             }
             else
             {
