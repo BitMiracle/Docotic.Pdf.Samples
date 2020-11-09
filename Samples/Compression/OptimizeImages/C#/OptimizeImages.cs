@@ -135,7 +135,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static bool resizeBilevelImage(PdfImage image, double ratio)
         {
-            // Fax documents usually looks better if integer-ratio scaling is used
+            // Fax documents usually look better if integer-ratio scaling is used
             // Fractional-ratio scaling introduces more artifacts
             int intRatio = (int)ratio;
 
