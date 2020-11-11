@@ -79,6 +79,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 return recompressImage(image);
             }
 
+            if (ratio < 1.1)
+            {
+                // with ratio this small, the potential size reduction
+                // usually does not justify resizing artefacts
+                return false;
+            }
+
             if (image.Compression == PdfImageCompression.Group4Fax ||
                 image.Compression == PdfImageCompression.Group3Fax ||
                 image.Compression == PdfImageCompression.JBig2)
@@ -139,17 +146,15 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Fractional-ratio scaling introduces more artifacts
             int intRatio = (int)ratio;
 
+            // decrease the ratio when it is too high
+            if (intRatio > 3)
+                intRatio = Math.Min(intRatio - 2, 3);
+
             if (intRatio == 1 && image.Compression == PdfImageCompression.Group4Fax)
             {
                 // skipping the image, because the output size and compression are the same
                 return false;
             }
-
-            // decrease the ratio when it is too high
-            if (intRatio > 6)
-                intRatio -= 5;
-            else if (intRatio > 3)
-                intRatio -= 2;
 
             image.ResizeTo(image.Width / intRatio, image.Height / intRatio, PdfImageCompression.Group4Fax);
             return true;

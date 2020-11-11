@@ -80,6 +80,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Return recompressImage(image)
             End If
 
+            If ratio < 1.1 Then
+                ' with ratio this small, the potential size reduction
+                ' usually does not justify resizing artefacts
+                Return False
+            End If
+
             If image.Compression = PdfImageCompression.Group4Fax OrElse
                 image.Compression = PdfImageCompression.Group3Fax OrElse
                 image.Compression = PdfImageCompression.JBig2 Then
@@ -130,16 +136,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Fractional-ratio scaling introduces more artifacts
             Dim intRatio As Integer = ratio
 
+            ' decrease the ratio when it is too high
+            If intRatio > 3 Then
+                intRatio = Math.Min(intRatio - 2, 3)
+            End If
+
             If intRatio = 1 AndAlso image.Compression = PdfImageCompression.Group4Fax Then
                 ' skipping the image, because the output size and compression are the same
                 Return False
-            End If
-
-            ' decrease the ratio when it is too high
-            If intRatio > 6 Then
-                intRatio -= 5
-            ElseIf intRatio > 3 Then
-                intRatio -= 2
             End If
 
             image.ResizeTo(image.Width / intRatio, image.Height / intRatio, PdfImageCompression.Group4Fax)
