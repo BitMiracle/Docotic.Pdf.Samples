@@ -25,7 +25,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 sb.AppendFormat("Signed part is intact: {0}" & vbLf, contents.VerifyDigest())
 
                 Dim signingTime = If(signature.SigningTime, Date.MinValue)
-                sb.AppendFormat("Signed on: {0}" & vbLf & vbLf, signingTime.ToShortDateString())
+                sb.AppendFormat("Signed on: {0}" & vbLf, signingTime.ToShortDateString())
+
+                If contents.Timestamp IsNot Nothing Then
+                    sb.AppendFormat("Embedded timestamp: {0}" & vbLf, contents.Timestamp)
+                    sb.AppendFormat("Timestamp is intact: {0}" & vbLf & vbLf, contents.VerifyTimestamp())
+                Else
+                    sb.AppendLine()
+                End If
 
                 If contents.CheckHasEmbeddedOcsp() Then
                     sb.AppendLine("Signature has OCSP embedded.")

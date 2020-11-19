@@ -43,6 +43,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 sb.AppendFormat("Issuer DN: {0}" & vbLf, certificate.Issuer.Name)
                 sb.AppendFormat("Serial number: {0}" & vbLf, certificate.SerialNumber)
                 sb.AppendFormat("Valid from {0} up to {1}" & vbLf, certificate.ValidFrom, certificate.ValidUpto)
+                sb.AppendFormat("Timestamp Authority URL: {0}" & vbLf, certificate.GetTimestampAuthorityUrl())
 
                 Dim issuer = contents.GetIssuerCertificateFor(certificate)
                 sb.AppendLine()
