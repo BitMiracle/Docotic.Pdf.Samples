@@ -287,6 +287,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggingWithLog4Net", "Gener
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggingWithNLog", "General operations\LoggingWithNLog\C#\LoggingWithNLog.csproj", "{AB9F8A29-C188-47D7-A312-F7B63A3E3AF1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignDocumentEmbedTimestamp", "Digital signatures\SignDocumentEmbedTimestamp\C#\SignDocumentEmbedTimestamp.csproj", "{A803024E-F1E5-4A8E-9245-7F0E9B2D1356}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -797,6 +799,10 @@ Global
 		{AB9F8A29-C188-47D7-A312-F7B63A3E3AF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB9F8A29-C188-47D7-A312-F7B63A3E3AF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB9F8A29-C188-47D7-A312-F7B63A3E3AF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A803024E-F1E5-4A8E-9245-7F0E9B2D1356}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A803024E-F1E5-4A8E-9245-7F0E9B2D1356}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A803024E-F1E5-4A8E-9245-7F0E9B2D1356}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A803024E-F1E5-4A8E-9245-7F0E9B2D1356}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -928,6 +934,7 @@ Global
 		{D1C330FC-C589-491D-A2CF-85FD74EECA8F} = {80D726EA-AAE5-4744-BAEE-6F6C8A01E493}
 		{A738574C-5045-411F-B829-E6650B165D88} = {E7C6FCE0-A244-4347-9E50-27434EDBBCFC}
 		{AB9F8A29-C188-47D7-A312-F7B63A3E3AF1} = {E7C6FCE0-A244-4347-9E50-27434EDBBCFC}
+		{A803024E-F1E5-4A8E-9245-7F0E9B2D1356} = {80D726EA-AAE5-4744-BAEE-6F6C8A01E493}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61DC7F3F-A5C8-48BD-845F-83DE6BD2527B}
