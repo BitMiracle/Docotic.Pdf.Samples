@@ -4,7 +4,7 @@ This sample shows how to sign an existing PDF document and embed a timestamp int
 
 When signing a document, [Docotic.Pdf library](https://bitmiracle.com/pdf-library/) can embed a timestamp into the signature. The library gets timestamp from the Timestamp Authority specified as a signing option. It is also possible to specify username and password for the Timestamp Authority, if needed. 
 
-For the compatibility reasons, it is recommended to use PdfSignatureFormat.CadesDetached and one of the SHA digest algorithms for timestamped signatures.
+For the compatibility reasons, it is recommended to use [PdfSignatureFormat.CadesDetached](https://bitmiracle.com/pdf-library/help/pdfsignatureformat.html) and one of the SHA digest algorithms for timestamped signatures.
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
