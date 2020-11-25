@@ -1,5 +1,4 @@
 Imports System.Diagnostics
-Imports System.Drawing
 
 Imports BitMiracle.Docotic.Pdf
 
@@ -34,9 +33,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         Dim childOfChild As PdfOutlineItem = child.GetChild(j)
 
                         If j Mod 2 = 0 Then
-                            childOfChild.Color = New PdfRgbColor(Color.DarkGreen)
+                            childOfChild.Color = New PdfRgbColor(0, 100, 0) ' dark green
                         Else
-                            childOfChild.Color = New PdfRgbColor(Color.BlueViolet)
+                            childOfChild.Color = New PdfRgbColor(138, 43, 226) ' blue violet
                         End If
 
                         childOfChild.Bold = True

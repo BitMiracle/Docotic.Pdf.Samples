@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using System.Drawing;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -37,9 +36,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         PdfOutlineItem childOfChild = child.GetChild(j);
 
                         if (j % 2 == 0)
-                            childOfChild.Color = new PdfRgbColor(Color.DarkGreen);
+                            childOfChild.Color = new PdfRgbColor(0, 100, 0); // dark green
                         else
-                            childOfChild.Color = new PdfRgbColor(Color.BlueViolet);
+                            childOfChild.Color = new PdfRgbColor(138, 43, 226); // blue violet
 
                         childOfChild.Bold = true;
                         childOfChild.Italic = true;
