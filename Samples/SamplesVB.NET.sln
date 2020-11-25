@@ -287,6 +287,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LoggingWithLog4Net", "Gener
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LoggingWithNLog", "General operations\LoggingWithNLog\VB.NET\LoggingWithNLog.vbproj", "{B729E9D8-CAC5-4C81-83F5-A8CE081B7B97}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SignDocumentEmbedTimestamp", "Digital signatures\SignDocumentEmbedTimestamp\VB.NET\SignDocumentEmbedTimestamp.vbproj", "{51546C92-764B-4746-B6F4-CEC78882AD64}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -797,6 +799,10 @@ Global
 		{A493D8A3-E7E3-4498-8277-8839D1FC44C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A493D8A3-E7E3-4498-8277-8839D1FC44C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A493D8A3-E7E3-4498-8277-8839D1FC44C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51546C92-764B-4746-B6F4-CEC78882AD64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51546C92-764B-4746-B6F4-CEC78882AD64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51546C92-764B-4746-B6F4-CEC78882AD64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51546C92-764B-4746-B6F4-CEC78882AD64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -928,6 +934,7 @@ Global
 		{E063BB5C-9AD0-4A59-81DF-E4F5B76E0A8B} = {EC74EB52-2BC9-4122-B497-3ED0D51AC94B}
 		{B729E9D8-CAC5-4C81-83F5-A8CE081B7B97} = {EC74EB52-2BC9-4122-B497-3ED0D51AC94B}
 		{A493D8A3-E7E3-4498-8277-8839D1FC44C4} = {5F899968-F0A4-4E85-BF25-6C45222AAD08}
+		{51546C92-764B-4746-B6F4-CEC78882AD64} = {6D0505BD-B25A-4219-A5EA-0F5E30DAC7F9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {50A18C19-4AC0-4BF0-9AA5-7C45E6C1E9A6}

@@ -46,6 +46,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 sb.AppendFormat("Issuer DN: {0}\n", certificate.Issuer.Name);
                 sb.AppendFormat("Serial number: {0}\n", certificate.SerialNumber);
                 sb.AppendFormat("Valid from {0} up to {1}\n", certificate.ValidFrom, certificate.ValidUpto);
+                sb.AppendFormat("Timestamp Authority URL: {0}\n", certificate.GetTimestampAuthorityUrl());
 
                 PdfSignatureCertificate issuer = contents.GetIssuerCertificateFor(certificate);
                 sb.AppendLine();

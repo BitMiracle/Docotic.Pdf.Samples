@@ -15,6 +15,10 @@ This sample shows how to add signature fields to a PDF document.
 
 This sample shows how to sign an existing PDF document.
 
+[Sign PDF document and embed a timestamp](/Samples/Digital%20signatures/SignDocumentEmbedTimestamp)
+
+This sample shows how to sign an existing PDF document and embed a timestamp into the signature.
+
 [Sign signature field in PDF](/Samples/Digital%20signatures/SignSignatureField)
 
 This sample shows how to sign a specific signature field in a PDF document.

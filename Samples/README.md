@@ -32,6 +32,8 @@
 
 [Sign document](/Samples/Digital%20signatures/SignDocument)
 
+[Sign PDF document and embed a timestamp](/Samples/Digital%20signatures/SignDocumentEmbedTimestamp)
+
 [Sign signature field](/Samples/Digital%20signatures/SignSignatureField)
 
 [Sign signature field using custom style](/Samples/Digital%20signatures/SignSignatureFieldUsingCustomStyle)

@@ -30,7 +30,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                             Continue For
                         End If
 
-                        If optimizeImage(painted, pdf) Then
+                        If optimizeImage(painted) Then
                             alreadyCompressedImageIds.Add(image.Id)
                         End If
                     Next
@@ -54,7 +54,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(compressedFile)
         End Sub
 
-        Private Shared Function optimizeImage(ByVal painted As PdfPaintedImage, ByVal pdf As PdfDocument) As Boolean
+        Private Shared Function optimizeImage(ByVal painted As PdfPaintedImage) As Boolean
             Dim image As PdfImage = painted.Image
 
             ' inline images can Not be recompressed unless you move them to resources
@@ -72,66 +72,88 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim width As Integer = Math.Max(1, CInt(painted.Bounds.Width))
             Dim height As Integer = Math.Max(1, CInt(painted.Bounds.Height))
 
-            If width >= image.Width OrElse height >= image.Height Then
-                If image.HasMask Then
-                    Return False
-                End If
+            ' calculate resize ratio
+            Dim ratio As Double = Math.Min(image.Width / CDbl(width), image.Height / CDbl(height))
 
-                If image.ComponentCount = 1 AndAlso image.BitsPerComponent = 1 AndAlso
-                    image.Compression <> PdfImageCompression.Group4Fax Then
+            If ratio <= 1 Then
+                ' the image size is smaller then the painted size
+                Return recompressImage(image)
+            End If
 
-                    image.RecompressWithGroup4Fax()
-                ElseIf image.BitsPerComponent = 8 AndAlso image.ComponentCount >= 3 AndAlso
-                    image.Compression <> PdfImageCompression.Jpeg AndAlso
-                    image.Compression <> PdfImageCompression.Jpeg2000 Then
+            If ratio < 1.1 Then
+                ' with ratio this small, the potential size reduction
+                ' usually does not justify resizing artefacts
+                Return False
+            End If
 
+            If image.Compression = PdfImageCompression.Group4Fax OrElse
+                image.Compression = PdfImageCompression.Group3Fax OrElse
+                image.Compression = PdfImageCompression.JBig2 Then
+                Return resizeBilevelImage(image, ratio)
+            End If
+
+            Dim resizedWidth As Integer = CInt(Math.Floor(image.Width / ratio))
+            Dim resizedHeight As Integer = CInt(Math.Floor(image.Height / ratio))
+
+            If (image.ComponentCount >= 3 AndAlso image.BitsPerComponent = 8) OrElse isGrayJpeg(image) Then
+                image.ResizeTo(resizedWidth, resizedHeight, PdfImageCompression.Jpeg, 90)
+                ' or image.ResizeTo(resizedWidth, resizedHeight, PdfImageCompression.Jpeg2000, 10);
+            Else
+                image.ResizeTo(resizedWidth, resizedHeight, PdfImageCompression.Flate, 9)
+            End If
+
+            Return True
+        End Function
+
+        Private Shared Function recompressImage(ByVal image As PdfImage) As Boolean
+            If image.ComponentCount = 1 AndAlso
+                image.BitsPerComponent = 1 AndAlso
+                image.Compression = PdfImageCompression.Group3Fax Then
+                image.RecompressWithGroup4Fax()
+                Return True
+            End If
+
+            If image.BitsPerComponent = 8 AndAlso
+                image.ComponentCount >= 3 AndAlso
+                image.Compression <> PdfImageCompression.Jpeg AndAlso
+                image.Compression <> PdfImageCompression.Jpeg2000 Then
+                If image.Width < 64 AndAlso image.Height < 64 Then
+                    ' JPEG better preserves detail on smaller images 
+                    image.RecompressWithJpeg()
+                Else
+                    ' you can try larger compressio ratio for bigger images
                     image.RecompressWithJpeg2000(10)
-                    ' or image.RecompressWithJpeg();
                 End If
 
                 Return True
             End If
 
-            ' try to replace large masked images
-            If image.HasMask Then
-                If image.Width < 300 OrElse image.Height < 300 Then
-                    Return False
-                End If
+            Return False
+        End Function
 
-                Using stream = New MemoryStream()
-                    Dim tempPage As PdfPage = pdf.AddPage()
-                    tempPage.Canvas.DrawImage(image, 0, 0, width, height, 0)
-                    Dim tempPaintedImage As PdfPaintedImage = tempPage.GetPaintedImages()(0)
-                    tempPaintedImage.SaveAsPainted(stream)
+        Private Shared Function resizeBilevelImage(ByVal image As PdfImage, ByVal ratio As Double) As Boolean
+            ' Fax documents usually look better if integer-ratio scaling is used
+            ' Fractional-ratio scaling introduces more artifacts
+            Dim intRatio As Integer = ratio
 
-                    pdf.RemovePage(pdf.PageCount - 1)
-
-                    image.ReplaceWith(stream)
-                    Return True
-                End Using
+            ' decrease the ratio when it is too high
+            If intRatio > 3 Then
+                intRatio = Math.Min(intRatio - 2, 3)
             End If
 
-            If image.Compression = PdfImageCompression.Group4Fax OrElse
-                image.Compression = PdfImageCompression.Group3Fax Then
-                ' Fax documents usually looks better if integer-ratio scaling is used
-                ' Fractional-ratio scaling introduces more artifacts
-                Dim ratio As Integer = Math.Min(image.Width / width, image.Height / height)
-
-                ' decrease the ratio when it is too high
-                If ratio > 6 Then
-                    ratio -= 5
-                ElseIf ratio > 3 Then
-                    ratio -= 2
-                End If
-
-                image.ResizeTo(image.Width / ratio, image.Height / ratio, PdfImageCompression.Group4Fax)
-            ElseIf image.ComponentCount >= 3 AndAlso image.BitsPerComponent = 8 Then
-                image.ResizeTo(width, height, PdfImageCompression.Jpeg, 90)
-            Else
-                image.ResizeTo(width, height, PdfImageCompression.Flate, 9)
+            If intRatio = 1 AndAlso image.Compression = PdfImageCompression.Group4Fax Then
+                ' skipping the image, because the output size and compression are the same
+                Return False
             End If
 
+            image.ResizeTo(image.Width / intRatio, image.Height / intRatio, PdfImageCompression.Group4Fax)
             Return True
+        End Function
+
+        Private Shared Function isGrayJpeg(ByVal image As PdfImage) As Boolean
+            Dim isJpegCompressed = image.Compression = PdfImageCompression.Jpeg OrElse
+                image.Compression = PdfImageCompression.Jpeg2000
+            Return isJpegCompressed AndAlso image.ComponentCount = 1 AndAlso image.BitsPerComponent = 8
         End Function
     End Class
 End Namespace
