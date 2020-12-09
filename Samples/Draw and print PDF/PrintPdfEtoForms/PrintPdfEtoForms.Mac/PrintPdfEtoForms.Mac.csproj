@@ -7,6 +7,7 @@
     <RuntimeIdentifiers>osx-x64</RuntimeIdentifiers>
     
     <Authors>Bit Miracle</Authors>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 	
   <ItemGroup>

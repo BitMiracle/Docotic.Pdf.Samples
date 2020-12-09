@@ -5,6 +5,7 @@
     <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
     <Authors>Bit Miracle</Authors>
     <Company>Bit Miracle</Company>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
