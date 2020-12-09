@@ -69,8 +69,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End If
 
             ' get size of the painted image
-            Dim width As Integer = Math.Max(1, CInt(painted.Bounds.Width))
-            Dim height As Integer = Math.Max(1, CInt(painted.Bounds.Height))
+            Dim width As Integer = Math.Max(1, Int(painted.Bounds.Width))
+            Dim height As Integer = Math.Max(1, Int(painted.Bounds.Height))
 
             ' calculate resize ratio
             Dim ratio As Double = Math.Min(image.Width / CDbl(width), image.Height / CDbl(height))
@@ -92,8 +92,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Return resizeBilevelImage(image, ratio)
             End If
 
-            Dim resizedWidth As Integer = CInt(Math.Floor(image.Width / ratio))
-            Dim resizedHeight As Integer = CInt(Math.Floor(image.Height / ratio))
+            Dim resizedWidth As Integer = Int(Math.Floor(image.Width / ratio))
+            Dim resizedHeight As Integer = Int(Math.Floor(image.Height / ratio))
 
             If (image.ComponentCount >= 3 AndAlso image.BitsPerComponent = 8) OrElse isGrayJpeg(image) Then
                 image.ResizeTo(resizedWidth, resizedHeight, PdfImageCompression.Jpeg, 90)
