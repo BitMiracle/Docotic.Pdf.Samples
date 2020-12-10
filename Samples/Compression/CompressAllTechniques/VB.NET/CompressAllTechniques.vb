@@ -7,6 +7,7 @@ Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
     Public NotInheritable Class CompressAllTechniques
+        <STAThread>
         Public Shared Sub Main()
             ' NOTE: 
             ' When used in trial mode, the library imposes some restrictions.
