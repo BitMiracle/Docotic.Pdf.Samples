@@ -39,9 +39,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
-    <Reference Include="Tesseract, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Tesseract.4.1.0-beta1\lib\net40\Tesseract.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="OcrAndMakeSearchable.cs" />
@@ -52,18 +49,19 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="app.config" />
-    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="BitMiracle.Docotic.Pdf">
+      <Version>7.4.11263</Version>
+    </PackageReference>
+    <PackageReference Include="Tesseract">
+      <Version>4.1.0-beta1</Version>
+    </PackageReference>
+    <PackageReference Include="Tesseract.Data.English">
+      <Version>4.0.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\..\..\packages\Tesseract.4.1.0-beta1\build\Tesseract.targets" Condition="Exists('..\..\..\packages\Tesseract.4.1.0-beta1\build\Tesseract.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\..\..\packages\Tesseract.4.1.0-beta1\build\Tesseract.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Tesseract.4.1.0-beta1\build\Tesseract.targets'))" />
-    <Error Condition="!Exists('..\..\..\packages\Tesseract.Data.English.4.0.0\build\Tesseract.Data.English.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Tesseract.Data.English.4.0.0\build\Tesseract.Data.English.targets'))" />
-  </Target>
-  <Import Project="..\..\..\packages\Tesseract.Data.English.4.0.0\build\Tesseract.Data.English.targets" Condition="Exists('..\..\..\packages\Tesseract.Data.English.4.0.0\build\Tesseract.Data.English.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -42,7 +42,11 @@
   <ItemGroup>
     <Compile Include="CheckConformanceToPdfA.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <PackageReference Include="BitMiracle.Docotic.Pdf">
+      <Version>7.4.11263</Version>
+    </PackageReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\Sample Data\PDF-A.pdf">
       <Link>Sample Data\PDF-A.pdf</Link>

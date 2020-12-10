@@ -14,9 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Amazon.Lambda.Core" Version="1.0.0" />
-    <PackageReference Include="Amazon.Lambda.Serialization.Json" Version="1.4.0" />
-    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="5.7.9279-dev" />
+    <PackageReference Include="Amazon.Lambda.Core" Version="1.2.0" />
+    <PackageReference Include="Amazon.Lambda.Serialization.Json" Version="1.8.0" />
+    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="7.4.11263" />
   </ItemGroup>
 
 </Project>

@@ -41,7 +41,11 @@
   <ItemGroup>
     <Compile Include="RemoveWidgets.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <PackageReference Include="BitMiracle.Docotic.Pdf">
+      <Version>7.4.11263</Version>
+    </PackageReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\Sample Data\form.pdf">
       <Link>Sample Data\form.pdf</Link>
