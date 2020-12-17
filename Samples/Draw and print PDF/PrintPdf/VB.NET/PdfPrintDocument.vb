@@ -1,5 +1,6 @@
 ﻿Imports System
 Imports System.Drawing
+Imports System.Drawing.Drawing2D
 Imports System.Drawing.Printing
 Imports BitMiracle.Docotic.Pdf
 
@@ -78,6 +79,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             gr.PageUnit = GraphicsUnit.Point
 
             If m_printAction = PrintAction.PrintToPreview Then
+                gr.SmoothingMode = SmoothingMode.HighQuality
+
                 gr.Clear(Color.LightGray)
                 gr.FillRectangle(Brushes.White, m_printableAreaInPoints)
                 gr.IntersectClip(m_printableAreaInPoints)

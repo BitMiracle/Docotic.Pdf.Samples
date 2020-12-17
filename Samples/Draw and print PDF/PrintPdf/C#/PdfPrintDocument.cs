@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Printing;
 using BitMiracle.Docotic.Pdf;
 
@@ -110,6 +111,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             if (m_printAction == PrintAction.PrintToPreview)
             {
+                gr.SmoothingMode = SmoothingMode.HighQuality;
+
                 gr.Clear(Color.LightGray);
                 gr.FillRectangle(Brushes.White, m_printableAreaInPoints);
                 gr.IntersectClip(m_printableAreaInPoints);
