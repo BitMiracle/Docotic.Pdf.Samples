@@ -19,6 +19,10 @@ This sample shows how to check if two PDF documents are equal (i.e. have the sam
 
 This sample shows how to create and save PDF documents using Docotic.Pdf library.
 
+[Create PDF document from a Blazor WebAssembly application](/Samples/General%20operations/CreateDocumentFromBlazorWasm)
+
+This sample shows how to generate PDF documents from a Blazor WebAssembly application.
+
 [Error handling](/Samples/General%20operations/ErrorHandling)
 
 This sample shows how to handle PDF-specific exceptions thrown by Docotic.Pdf library.

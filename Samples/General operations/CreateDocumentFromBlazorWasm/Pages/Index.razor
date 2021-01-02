@@ -1,0 +1,40 @@
+﻿@page "/"
+@inject Microsoft.JSInterop.IJSRuntime JS
+@using System.IO;
+@using BitMiracle.Docotic.Pdf;
+
+<h1>Create PDF document</h1>
+
+<button class="btn btn-primary" @onclick="@GeneratePdf">Generate PDF</button>
+
+@functions {
+    void GeneratePdf()
+    {
+        // NOTE: 
+        // When used in trial mode, the library imposes some restrictions.
+        // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
+        // for more information.
+
+        string uid = Guid.NewGuid().ToString();
+
+        using (var pdf = new PdfDocument())
+        {
+            PdfCanvas canvas = pdf.Pages[0].Canvas;
+
+            PdfFont builtInFont = pdf.AddFont(PdfBuiltInFont.TimesRoman);
+            canvas.Font = builtInFont;
+            canvas.DrawString(10, 70, "Hello, world! " + uid);
+
+            using (var memoryStream = new MemoryStream())
+            {
+                pdf.Save(memoryStream);
+
+                JS.InvokeAsync<object>(
+                   "downloadFile",
+                   uid + ".pdf",
+                   Convert.ToBase64String(memoryStream.ToArray())
+                );
+            };
+        }
+    }
+}

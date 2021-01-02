@@ -116,6 +116,8 @@
 
 [Create and save PDF document](/Samples/General%20operations/CreateAndSaveDocument)
 
+[Create PDF document from a Blazor WebAssembly application](/Samples/General%20operations/CreateDocumentFromBlazorWasm)
+
 [Error handling](/Samples/General%20operations/ErrorHandling)
 
 [Linearize PDF document](/Samples/General%20operations/LinearizeDocument)
