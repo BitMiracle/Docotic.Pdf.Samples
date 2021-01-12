@@ -43,7 +43,7 @@ This sample shows how to receive log messages from Docotic.Pdf library into a NL
 
 This sample shows how to append an existing PDF document to the end of your current document using PdfDocument.Append method.
 
-[Load an existing PDF document](/Samples/General%20operations/OpenDocument)
+[Open an existing PDF document](/Samples/General%20operations/OpenDocument)
 
 This sample shows how to load an existing PDF document using PdfDocument.Open method.
 

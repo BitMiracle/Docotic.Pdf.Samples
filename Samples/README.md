@@ -128,7 +128,7 @@
 
 [Merge two PDF documents](/Samples/General%20operations/MergeDocuments)
 
-[Load an existing PDF document](/Samples/General%20operations/OpenDocument)
+[Open an existing PDF document](/Samples/General%20operations/OpenDocument)
 
 [Create PDF/A compatible document](/Samples/General%20operations/PDFA)
 

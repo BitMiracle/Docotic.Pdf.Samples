@@ -1,6 +1,6 @@
 # Set password
 This sample shows how to protect your PDF document with a password.
 
-There are two passwords types: a "user" and an "owner" password. PdfDocument.OwnerPassword property is for an "owner" password and PdfDocument.UserPassword property is for a "user" password.
+When encrypting with a password, there are two password types: "user" and "owner" passwords. Opening a PDF document with an "owner" password allows to do everything with the opened document. Opening a PDF document with a "user" password allows only operations specified by the user access permissions. 
 
-Opening a PDF document with an "owner" password allows a reader of your document to do everything with opened document. Opening a PDF document with a "user" password allows a reader of your document to only perform operation allowed by user access permissions.
+To protect the document, first create an instance of PdfStandardEncryptionHandler class with user and owner passwords. Then assign the handler to the PdfSaveOptions.EncryptionHandler proprety. 
