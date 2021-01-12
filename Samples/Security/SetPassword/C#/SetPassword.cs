@@ -15,7 +15,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (PdfDocument pdf = new PdfDocument())
             {
-                pdf.UserPassword = "test";
+                pdf.SaveOptions.EncryptionHandler = new PdfStandardEncryptionHandler(string.Empty, "test");
 
                 pdf.Save(pathToFile);
             }

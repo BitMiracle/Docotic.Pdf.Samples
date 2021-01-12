@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -9,14 +10,27 @@ namespace BitMiracle.Docotic.Pdf.Samples
         {
             StringBuilder message = new StringBuilder();
 
-            string[] documentsToCheck = { "encrypted.pdf", "jfif3.pdf" };
+            string[] documentsToCheck = { "encrypted.pdf", "jfif3.pdf", "public-key-encrypted.pdf" };
             foreach (string fileName in documentsToCheck)
             {
-                bool passwordProtected = PdfDocument.IsPasswordProtected(@"Sample Data\" + fileName);
-                if (passwordProtected)
-                    message.AppendFormat("{0} - REQUIRES PASSWORD\r\n", fileName);
-                else
-                    message.AppendFormat("{0} - DOESN'T REQUIRE PASSWORD\r\n", fileName);
+                PdfEncryptionInfo info = PdfDocument.GetEncryptionInfo(@"Sample Data\" + fileName);
+                if (info == null)
+                {
+                    message.AppendFormat("{0} - is not encrypted\r\n", fileName);
+                }
+                else if (info is PdfStandardEncryptionInfo standardInfo)
+                {
+                    if (standardInfo.RequiresPasswordToOpen)
+                        message.AppendFormat("{0} - is encrypted and requires password\r\n", fileName);
+                    else
+                        message.AppendFormat("{0} - is encrypted and doesn't require password\r\n", fileName);
+                }
+                else if (info is PdfPublicKeyEncryptionInfo publicKeyInfo)
+                {
+                    message.AppendFormat("{0} - is encrypted and requires one of the certificates: ", fileName);
+                    string[] serialNumbers = publicKeyInfo.Recipients.Select(r => r.SerialNumber).ToArray();
+                    message.Append(string.Join(", ", serialNumbers));
+                }
             }
 
             MessageBox.Show(message.ToString());

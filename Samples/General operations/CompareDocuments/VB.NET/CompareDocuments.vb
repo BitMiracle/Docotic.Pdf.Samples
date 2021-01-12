@@ -31,7 +31,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim message As New StringBuilder()
 
             message.AppendLine("first.pdf equals to second.pdf?")
-            If PdfDocument.DocumentsAreEqual("first.pdf", "second.pdf", "") Then
+            If PdfDocument.DocumentsAreEqual("first.pdf", "second.pdf") Then
                 message.AppendLine("Yes")
             Else
                 message.AppendLine("No")
@@ -40,7 +40,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             message.AppendLine()
 
             message.AppendLine("first.pdf equals to third.pdf?")
-            If PdfDocument.DocumentsAreEqual("first.pdf", "third.pdf", "") Then
+            If PdfDocument.DocumentsAreEqual("first.pdf", "third.pdf") Then
                 message.AppendLine("Yes")
             Else
                 message.AppendLine("No")

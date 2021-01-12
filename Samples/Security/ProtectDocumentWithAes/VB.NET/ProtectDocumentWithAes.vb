@@ -15,8 +15,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf As New PdfDocument()
                 pdf.Pages(0).Canvas.DrawString("Hello World!")
 
-                pdf.UserPassword = "user"
-                pdf.Encryption = PdfEncryptionAlgorithm.Aes256Bit
+                Dim handler = New PdfStandardEncryptionHandler(String.Empty, "user")
+                handler.Algorithm = PdfEncryptionAlgorithm.Aes256Bit
+                pdf.SaveOptions.EncryptionHandler = handler
 
                 pdf.Save(pathToFile)
             End Using

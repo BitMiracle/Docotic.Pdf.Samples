@@ -12,8 +12,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Dim pathToFile As String = "MergeDocuments.pdf"
 
-            Using pdf As New PdfDocument()
-                pdf.Open("Sample data/form.pdf")
+            Using pdf As New PdfDocument("Sample data/form.pdf")
                 pdf.Append("Sample data/jfif3.pdf")
 
                 pdf.Save(pathToFile)

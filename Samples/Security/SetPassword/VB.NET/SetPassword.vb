@@ -13,7 +13,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim pathToFile As String = "SetPassword.pdf"
 
             Using pdf As New PdfDocument()
-                pdf.UserPassword = "test"
+                pdf.SaveOptions.EncryptionHandler = New PdfStandardEncryptionHandler(String.Empty, "test")
 
                 pdf.Save(pathToFile)
             End Using

@@ -27,12 +27,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
 
             StringBuilder message = new StringBuilder();
-            bool equals = PdfDocument.DocumentsAreEqual("first.pdf", "second.pdf", "");
+            bool equals = PdfDocument.DocumentsAreEqual("first.pdf", "second.pdf");
             message.AppendLine("first.pdf equals to second.pdf?\r\n" + (equals ? "Yes" : "No"));
 
             message.AppendLine();
 
-            equals = PdfDocument.DocumentsAreEqual("first.pdf", "third.pdf", "");
+            equals = PdfDocument.DocumentsAreEqual("first.pdf", "third.pdf");
             message.AppendLine("first.pdf equals to third.pdf?\r\n" + (equals ? "Yes" : "No"));
 
             MessageBox.Show(message.ToString());

@@ -17,8 +17,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 pdf.Pages[0].Canvas.DrawString("Hello World!");
 
-                pdf.UserPassword = "user";
-                pdf.Encryption = PdfEncryptionAlgorithm.Aes256Bit;
+                PdfStandardEncryptionHandler handler = new PdfStandardEncryptionHandler(string.Empty, "user");
+                handler.Algorithm = PdfEncryptionAlgorithm.Aes256Bit;
+                pdf.SaveOptions.EncryptionHandler = handler;
 
                 pdf.Save(pathToFile);
             }
