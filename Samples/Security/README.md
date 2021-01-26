@@ -3,6 +3,10 @@ This group contains samples that show how to protect your PDF documents with pas
 
 Don't miss [all other samples](/Samples).
 
+[OpenCertificateProtectedDocument](/Samples/Security/OpenCertificateProtectedDocument)
+
+This sample shows how to open PDF documents protected with certificates.
+
 [Permissions](/Samples/Security/Permissions)
 
 This sample shows how to setup user acess permissions for a PDF document.

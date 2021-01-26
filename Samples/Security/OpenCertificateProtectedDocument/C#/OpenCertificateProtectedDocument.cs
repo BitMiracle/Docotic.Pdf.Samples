@@ -1,0 +1,73 @@
+using System.Windows.Forms;
+
+namespace BitMiracle.Docotic.Pdf.Samples
+{
+    public static class OpenCertificateProtectedDocument
+    {
+        public static void Main()
+        {
+            // NOTE: 
+            // When used in trial mode, the library imposes some restrictions.
+            // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
+            // for more information.
+
+            // TODO: 
+            // Change the constants, or the sample won't work.
+            string encryptedFile = "certificate-encrypted.pdf";
+            string keyStore = "key-store.p12";
+            string password = "password";
+
+            openWithAutoSelectedCertificate(encryptedFile);
+            openWithKeyStore(encryptedFile, keyStore, password);
+
+            // There are other options. You can use a X509Store or X509Certificate2
+            // to construct a PdfPublicKeyDecryptionHandler and then use it 
+            // to open a certificate protected document.
+        }
+
+        private static void openWithAutoSelectedCertificate(string encryptedFile)
+        {
+            try
+            {
+                // This will only work if a matching certificate is installed in the
+                // X.509 certificate store used by the current user
+                using (PdfDocument pdf = new PdfDocument(encryptedFile))
+                {
+                    MessageBox.Show(
+                        string.Format(
+                            "Opened with an auto-selected certificate from the current user certificate store. " +
+                            "Permissions = {0}",
+                            pdf.GrantedPermissions
+                        )
+                    );
+                }
+            }
+            catch (PdfException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private static void openWithKeyStore(string encryptedFile, string keyStore, string password)
+        {
+            try
+            {
+                PdfPublicKeyDecryptionHandler handler = new PdfPublicKeyDecryptionHandler(keyStore, password);
+                using (PdfDocument pdf = new PdfDocument(encryptedFile, handler))
+                {
+                    MessageBox.Show(
+                        string.Format(
+                            "Opened with a certificate from the key store at {0}. Permissions = {1}",
+                            keyStore,
+                            pdf.GrantedPermissions
+                        )
+                    );
+                }
+            }
+            catch (PdfException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+    }
+}

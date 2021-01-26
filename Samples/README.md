@@ -226,6 +226,8 @@
 [Extract text from link target](/Samples/Pages%20and%20Navigation/TextFromLink)
 
 # Security
+[OpenCertificateProtectedDocument](/Samples/Security/OpenCertificateProtectedDocument)
+
 [Permissions](/Samples/Security/Permissions)
 
 [Protect PDF document with AES](/Samples/Security/ProtectDocumentWithAes)

@@ -291,7 +291,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggingWithNLog", "General 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignDocumentEmbedTimestamp", "Digital signatures\SignDocumentEmbedTimestamp\C#\SignDocumentEmbedTimestamp.csproj", "{A803024E-F1E5-4A8E-9245-7F0E9B2D1356}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateDocumentFromBlazorWasm", "General operations\CreateDocumentFromBlazorWasm\CreateDocumentFromBlazorWasm.csproj", "{8713DB16-D336-40CD-A4E1-E198855523D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreateDocumentFromBlazorWasm", "General operations\CreateDocumentFromBlazorWasm\CreateDocumentFromBlazorWasm.csproj", "{8713DB16-D336-40CD-A4E1-E198855523D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCertificateProtectedDocument", "Security\OpenCertificateProtectedDocument\C#\OpenCertificateProtectedDocument.csproj", "{13350ACF-8214-4AA6-8AF0-496BFC7546AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -815,6 +817,10 @@ Global
 		{8713DB16-D336-40CD-A4E1-E198855523D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8713DB16-D336-40CD-A4E1-E198855523D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8713DB16-D336-40CD-A4E1-E198855523D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13350ACF-8214-4AA6-8AF0-496BFC7546AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13350ACF-8214-4AA6-8AF0-496BFC7546AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13350ACF-8214-4AA6-8AF0-496BFC7546AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13350ACF-8214-4AA6-8AF0-496BFC7546AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -949,6 +955,7 @@ Global
 		{AB9F8A29-C188-47D7-A312-F7B63A3E3AF1} = {E7C6FCE0-A244-4347-9E50-27434EDBBCFC}
 		{A803024E-F1E5-4A8E-9245-7F0E9B2D1356} = {80D726EA-AAE5-4744-BAEE-6F6C8A01E493}
 		{8713DB16-D336-40CD-A4E1-E198855523D1} = {E7C6FCE0-A244-4347-9E50-27434EDBBCFC}
+		{13350ACF-8214-4AA6-8AF0-496BFC7546AE} = {F8C1E248-3923-46C6-B4A7-14ED09FE019B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61DC7F3F-A5C8-48BD-845F-83DE6BD2527B}
