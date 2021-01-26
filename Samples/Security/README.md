@@ -15,6 +15,10 @@ This sample shows how to setup user acess permissions for a PDF document.
 
 This sample shows how to protect your PDF document with a password using AES 256-bit encryption algorithm.
 
+[Protect PDF document with certificate](/Samples/Security/ProtectDocumentWithCertificate)
+
+This sample shows how to protect your PDF document with one or more certificates using AES 256-bit encryption algorithm.
+
 [Set password](/Samples/Security/SetPassword)
 
 This sample shows how to protect your PDF document with a password.

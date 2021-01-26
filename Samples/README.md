@@ -232,6 +232,8 @@
 
 [Protect PDF document with AES](/Samples/Security/ProtectDocumentWithAes)
 
+[Protect PDF document with certificate](/Samples/Security/ProtectDocumentWithCertificate)
+
 [Set password](/Samples/Security/SetPassword)
 
 # Text

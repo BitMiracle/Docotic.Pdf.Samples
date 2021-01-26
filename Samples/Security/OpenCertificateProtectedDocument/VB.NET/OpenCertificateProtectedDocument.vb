@@ -15,9 +15,6 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim keyStore As String = "key-store.p12"
             Dim password As String = "password"
 
-            Dim info = PdfDocument.GetEncryptionInfo(encryptedFile)
-            MessageBox.Show(info.ToString())
-
             openWithAutoSelectedCertificate(encryptedFile)
             openWithKeyStore(encryptedFile, keyStore, password)
 

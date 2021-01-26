@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{443DB666-39ED-4CDE-BE48-9A7F010CD4C8}</ProjectGuid>
+    <ProjectGuid>{58ACDBC9-60DF-4049-A30E-E528B5551EEC}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <StartupObject>BitMiracle.Docotic.Pdf.Samples.BitMiracle.Docotic.Pdf.Samples.OpenCertificateProtectedDocument</StartupObject>
+    <StartupObject>BitMiracle.Docotic.Pdf.Samples.BitMiracle.Docotic.Pdf.Samples.ProtectDocumentWithCertificate</StartupObject>
     <RootNamespace>BitMiracle.Docotic.Pdf.Samples</RootNamespace>
-    <AssemblyName>OpenCertificateProtectedDocument</AssemblyName>
+    <AssemblyName>ProtectDocumentWithCertificate</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Console</MyType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
@@ -41,7 +41,6 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -53,7 +52,7 @@
     <Import Include="System.Diagnostics" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OpenCertificateProtectedDocument.vb" />
+    <Compile Include="ProtectDocumentWithCertificate.vb" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

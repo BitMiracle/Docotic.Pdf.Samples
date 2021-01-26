@@ -295,6 +295,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreateDocumentFromBlazorWas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCertificateProtectedDocument", "Security\OpenCertificateProtectedDocument\C#\OpenCertificateProtectedDocument.csproj", "{13350ACF-8214-4AA6-8AF0-496BFC7546AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtectDocumentWithCertificate", "Security\ProtectDocumentWithCertificate\C#\ProtectDocumentWithCertificate.csproj", "{58D5C5B9-94DF-4778-8839-B82C4BEA246D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -821,6 +823,10 @@ Global
 		{13350ACF-8214-4AA6-8AF0-496BFC7546AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13350ACF-8214-4AA6-8AF0-496BFC7546AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13350ACF-8214-4AA6-8AF0-496BFC7546AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58D5C5B9-94DF-4778-8839-B82C4BEA246D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58D5C5B9-94DF-4778-8839-B82C4BEA246D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58D5C5B9-94DF-4778-8839-B82C4BEA246D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58D5C5B9-94DF-4778-8839-B82C4BEA246D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -956,6 +962,7 @@ Global
 		{A803024E-F1E5-4A8E-9245-7F0E9B2D1356} = {80D726EA-AAE5-4744-BAEE-6F6C8A01E493}
 		{8713DB16-D336-40CD-A4E1-E198855523D1} = {E7C6FCE0-A244-4347-9E50-27434EDBBCFC}
 		{13350ACF-8214-4AA6-8AF0-496BFC7546AE} = {F8C1E248-3923-46C6-B4A7-14ED09FE019B}
+		{58D5C5B9-94DF-4778-8839-B82C4BEA246D} = {F8C1E248-3923-46C6-B4A7-14ED09FE019B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61DC7F3F-A5C8-48BD-845F-83DE6BD2527B}
