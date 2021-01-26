@@ -47,7 +47,6 @@ namespace BitMiracle.Docotic.Pdf.Samples
             handler.AddRecipient(keyStoreUser, passwordUser, permissions);
 
             return handler;
-
         }
     }
 }
