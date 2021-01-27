@@ -1,5 +1,5 @@
 # Security
-This group contains samples that show how to protect your PDF documents with password and how to disallow specific operations with produced documents.
+This group contains samples that show how to protect your PDF documents with passwords or certificates. There are also samples for how to disallow specific operations with produced documents.
 
 Don't miss [all other samples](/Samples).
 
