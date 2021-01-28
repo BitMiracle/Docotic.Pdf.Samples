@@ -3,21 +3,21 @@ This group contains samples that show how to protect your PDF documents with pas
 
 Don't miss [all other samples](/Samples).
 
-[OpenCertificateProtectedDocument](/Samples/Security/OpenCertificateProtectedDocument)
+[Open document encrypted with a certificate](/Samples/Security/OpenCertificateProtectedDocument)
 
 This sample shows how to open PDF documents protected with certificates.
 
 [Permissions](/Samples/Security/Permissions)
 
-This sample shows how to setup user acess permissions for a PDF document.
+This sample shows how to set up user acess permissions for a PDF document.
 
 [Protect PDF document with AES](/Samples/Security/ProtectDocumentWithAes)
 
-This sample shows how to protect your PDF document with a password using AES 256-bit encryption algorithm.
+This sample shows how to protect your PDF document with a password using the AES 256-bit encryption algorithm.
 
 [Protect PDF document with certificate](/Samples/Security/ProtectDocumentWithCertificate)
 
-This sample shows how to protect your PDF document with one or more certificates using AES 256-bit encryption algorithm.
+This sample shows how to protect your PDF document with one or more certificates using the AES 256-bit encryption algorithm.
 
 [Set password](/Samples/Security/SetPassword)
 

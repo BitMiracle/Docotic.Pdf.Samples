@@ -226,7 +226,7 @@
 [Extract text from link target](/Samples/Pages%20and%20Navigation/TextFromLink)
 
 # Security
-[OpenCertificateProtectedDocument](/Samples/Security/OpenCertificateProtectedDocument)
+[Open document encrypted with a certificate](/Samples/Security/OpenCertificateProtectedDocument)
 
 [Permissions](/Samples/Security/Permissions)
 
