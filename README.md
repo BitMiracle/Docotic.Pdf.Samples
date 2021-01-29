@@ -1,5 +1,5 @@
 # Docotic.Pdf.Samples
-Contains Docotic.Pdf sample code and the latest stable version of the library
+Contains Docotic.Pdf sample code.
 
 [All Samples](/Samples)
 
@@ -38,10 +38,12 @@ Contains Docotic.Pdf sample code and the latest stable version of the library
 # Docotic.Pdf library
 Docotic.Pdf library is the PDF library for .NET (including .NET Core / .NET Standard).
 
-You can request evaluation license on the library page  
+Docotic.Pdf comes with [free](https://bitmiracle.com/pdf-library/free-pdf-library.aspx) and [paid](https://bitmiracle.com/pdf-library/purchase.aspx) licenses.
+
+You can request an evaluation license on the library page  
 https://bitmiracle.com/pdf-library/
 
-Latest version of the library is available on the download page and on NuGet  
+The latest version of the library is available on the download page and NuGet  
 https://bitmiracle.com/pdf-library/download-pdf-library.aspx  
 https://www.nuget.org/packages/BitMiracle.Docotic.Pdf/
 
