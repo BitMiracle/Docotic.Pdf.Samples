@@ -9,7 +9,7 @@ This sample shows how to open PDF documents protected with certificates.
 
 [Permissions](/Samples/Security/Permissions)
 
-This sample shows how to set up user acess permissions for a PDF document.
+This sample shows how to set up user access permissions for a PDF document.
 
 [Protect PDF document with AES](/Samples/Security/ProtectDocumentWithAes)
 
