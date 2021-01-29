@@ -1,4 +1,4 @@
-# Open document encrypted with a certificate 
+# Open PDF document encrypted with a certificate in C# and VB.NET
 This sample shows how to open PDF documents protected with certificates in C# and VB.NET.
 
 If you have a matching certificate installed in the X.509 certificate store used by the current user, there is no need to do anything special. [The library](https://bitmiracle.com/pdf-library/) will find and use the certificate automatically. 

@@ -226,15 +226,15 @@
 [Extract text from link target](/Samples/Pages%20and%20Navigation/TextFromLink)
 
 # Security
-[Open document encrypted with a certificate](/Samples/Security/OpenCertificateProtectedDocument)
+[Open PDF document encrypted with a certificate](/Samples/Security/OpenCertificateProtectedDocument)
 
-[Permissions](/Samples/Security/Permissions)
+[Set up PDF permissions](/Samples/Security/Permissions)
 
 [Protect PDF document with AES](/Samples/Security/ProtectDocumentWithAes)
 
 [Protect PDF document with certificate](/Samples/Security/ProtectDocumentWithCertificate)
 
-[Set password](/Samples/Security/SetPassword)
+[Encrypt PDF with a password](/Samples/Security/SetPassword)
 
 # Text
 [Character spacing](/Samples/Text/CharacterSpacing)

@@ -1,4 +1,4 @@
-# Protect PDF document with a certificate
+# Protect PDF document with a certificate in C# and VB.NET
 This sample shows how to protect your PDF document with one or more certificates using the AES 256-bit encryption algorithm in C# and VB.NET.
 
 Create an instance of [PdfPublicKeyEncryptionHandler class](https://bitmiracle.com/pdf-library/help/pdfpublickeyencryptionhandler.html) using an X509Certificate2 certificate or a key store. If you would like to limit permissions for the document, then use a constructor overload that accepts an instance of PdfPermissions class. 
