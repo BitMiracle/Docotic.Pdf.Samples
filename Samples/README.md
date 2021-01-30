@@ -232,7 +232,7 @@
 
 [Protect PDF document with AES](/Samples/Security/ProtectDocumentWithAes)
 
-[Protect PDF document with certificate](/Samples/Security/ProtectDocumentWithCertificate)
+[Protect PDF document with a certificate](/Samples/Security/ProtectDocumentWithCertificate)
 
 [Encrypt PDF with a password](/Samples/Security/SetPassword)
 
