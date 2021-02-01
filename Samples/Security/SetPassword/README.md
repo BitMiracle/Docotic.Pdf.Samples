@@ -7,5 +7,5 @@ To protect the document, first, create an instance of [PdfStandardEncryptionHand
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
-* [Encrypt and decrypt PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/passwords-and-security.aspx) article
+* [Encrypt PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/encrypt-pdf.aspx) article
 * [Permissions](/Samples/Security/Permissions) sample

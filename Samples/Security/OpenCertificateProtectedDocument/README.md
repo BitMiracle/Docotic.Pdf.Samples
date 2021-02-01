@@ -7,4 +7,4 @@ In other cases, you can create an instance of [PdfPublicKeyDecryptionHandler cla
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
-* [Encrypt and decrypt PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/passwords-and-security.aspx) article
+* [Decrypt PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/decrypt-pdf-remove-passwords.aspx) article

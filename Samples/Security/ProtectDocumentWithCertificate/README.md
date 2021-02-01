@@ -9,5 +9,5 @@ To add more recipients, please use [AddRecipient](https://bitmiracle.com/pdf-lib
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
-* [Encrypt and decrypt PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/passwords-and-security.aspx) article
+* [Encrypt PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/encrypt-pdf.aspx) article
 * [Protect PDF document with AES](/Samples/Security/ProtectDocumentWithAes) sample
