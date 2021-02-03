@@ -68,7 +68,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         index = pdfText.IndexOf(word, index + 1, comparison)
                         If index < 0 Then Exit While
 
-                        Dim intersection As PdfRectangle = getIntersectionBounds(w, index, word.Length)
+                        Dim intersection As PdfRectangle = getIntersectionBounds(w, pdfText, index, word.Length)
                         Yield {intersection}
                     End While
                 Next
@@ -96,7 +96,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     If matchWord(pdfText, wordsToFind, i, comparison) Then
                         Dim wordLength As Integer = wordsToFind(i).Length
                         Dim startIndex As Integer = If((i = 0), (pdfText.Length - wordLength), 0)
-                        foundPhrase(i) = getIntersectionBounds(w, startIndex, wordLength)
+                        foundPhrase(i) = getIntersectionBounds(w, pdfText, startIndex, wordLength)
                         i += 1
                         If i < wordsToFind.Length Then Continue For
 
@@ -222,17 +222,25 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
         Private Shared Function getIntersectionBounds(
             ByVal data As PdfTextData,
+            ByVal text As String,
             ByVal startIndex As Integer,
             ByVal length As Integer
             ) As PdfRectangle
 
-            Dim text As String = data.GetText()
             If startIndex = 0 AndAlso text.Length = length Then
                 Return data.Bounds
             End If
 
-            Dim charBounds As IEnumerable(Of PdfRectangle) = data _
-                .GetCharacters() _
+            Dim characters As IEnumerable(Of PdfTextData) = data.GetCharacters()
+            If (Not containsLtrCharactersOnly(data, text)) Then
+                ' Process right-to-left chunks in the reverse order.
+                '
+                ' Note that this approach might not work for chunks
+                ' containing both left-to-right and right-to-left characters.
+                characters = characters.Reverse()
+            End If
+
+            Dim charBounds As IEnumerable(Of PdfRectangle) = characters _
                 .Skip(startIndex) _
                 .Take(length) _
                 .[Select](Function(c) c.Bounds)
@@ -243,6 +251,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Next
 
             Return union
+        End Function
+
+        Private Shared Function containsLtrCharactersOnly(ByVal data As PdfTextData, ByVal textLogical As String) As Boolean
+            Dim noBidiOptions = New PdfTextConversionOptions With {.UseBidi = False}
+            Dim textVisual As String = data.GetText(noBidiOptions)
+            Return textLogical = textVisual
         End Function
 
         Private Shared Function matchWord(

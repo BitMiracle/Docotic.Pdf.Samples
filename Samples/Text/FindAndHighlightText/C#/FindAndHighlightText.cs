@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -76,7 +76,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         if (index < 0)
                             break;
 
-                        PdfRectangle intersection = getIntersectionBounds(w, index, word.Length);
+                        PdfRectangle intersection = getIntersectionBounds(w, pdfText, index, word.Length);
                         yield return new[] { intersection };
                     }
                 }
@@ -106,7 +106,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     {
                         int wordLength = wordsToFind[i].Length;
                         int startIndex = (i == 0) ? (pdfText.Length - wordLength) : 0;
-                        foundPhrase[i] = getIntersectionBounds(w, startIndex, wordLength);
+                        foundPhrase[i] = getIntersectionBounds(w, pdfText, startIndex, wordLength);
                         ++i;
                         if (i < wordsToFind.Length)
                             continue;
@@ -223,13 +223,22 @@ namespace BitMiracle.Docotic.Pdf.Samples
             );
         }
 
-        private static PdfRectangle getIntersectionBounds(PdfTextData data, int startIndex, int length)
+        private static PdfRectangle getIntersectionBounds(PdfTextData data, string text, int startIndex, int length)
         {
-            string text = data.GetText();
             if (startIndex == 0 && text.Length == length)
                 return data.Bounds;
 
-            IEnumerable<PdfRectangle> charBounds = data.GetCharacters()
+            IEnumerable<PdfTextData> characters = data.GetCharacters();
+            if (!containsLtrCharactersOnly(data, text))
+            {
+                // Process right-to-left chunks in the reverse order.
+                //
+                // Note that this approach might not work for chunks
+                // containing both left-to-right and right-to-left characters.
+                characters = characters.Reverse();
+            }
+
+            IEnumerable<PdfRectangle> charBounds = characters
                 .Skip(startIndex)
                 .Take(length)
                 .Select(c => c.Bounds);
@@ -239,6 +248,15 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 union = PdfRectangle.Union(b, union);
 
             return union;
+        }
+
+        private static bool containsLtrCharactersOnly(PdfTextData data, string textLogical)
+        {
+            // A simple trick to detect right-to-left / bidirectional text.
+            // Compare logical and visual representations of text to detect directionality.
+            var noBidiOptions = new PdfTextConversionOptions { UseBidi = false };
+            string textVisual = data.GetText(noBidiOptions);
+            return textLogical == textVisual;
         }
 
         private static bool matchWord(string text, string[] wordsToFind, int wordIndex, StringComparison comparison)
