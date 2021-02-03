@@ -100,7 +100,7 @@ Namespace BitMiracle.Docotic.Samples
                     Continue For
                 End If
 
-                result.Append(textData.Text + " ")
+                result.Append(textData.GetText() + " ")
             Next
 
             Return result.ToString()

@@ -63,9 +63,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 For Each w As PdfTextData In page.GetWords()
                     Dim index As Integer = -1
-
+                    Dim pdfText As String = w.GetText()
                     While True
-                        index = w.Text.IndexOf(word, index + 1, comparison)
+                        index = pdfText.IndexOf(word, index + 1, comparison)
                         If index < 0 Then Exit While
 
                         Dim intersection As PdfRectangle = getIntersectionBounds(w, index, word.Length)
@@ -92,9 +92,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim foundPhrase = New PdfRectangle(wordsToFind.Length - 1) {}
                 For Each w As PdfTextData In words
 
-                    If matchWord(w.Text, wordsToFind, i, comparison) Then
+                    Dim pdfText As String = w.GetText()
+                    If matchWord(pdfText, wordsToFind, i, comparison) Then
                         Dim wordLength As Integer = wordsToFind(i).Length
-                        Dim startIndex As Integer = If((i = 0), (w.Text.Length - wordLength), 0)
+                        Dim startIndex As Integer = If((i = 0), (pdfText.Length - wordLength), 0)
                         foundPhrase(i) = getIntersectionBounds(w, startIndex, wordLength)
                         i += 1
                         If i < wordsToFind.Length Then Continue For
@@ -225,7 +226,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ByVal length As Integer
             ) As PdfRectangle
 
-            Dim text As String = data.Text
+            Dim text As String = data.GetText()
             If startIndex = 0 AndAlso text.Length = length Then
                 Return data.Bounds
             End If

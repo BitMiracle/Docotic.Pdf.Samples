@@ -71,7 +71,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                             gr.TranslateTransform(td.Position.X, td.Position.Y)
                             concatMatrix(gr, td.TransformationMatrix)
 
-                            gr.DrawString(td.Text, font, brush, PointF.Empty)
+                            gr.DrawString(td.GetText(), font, brush, PointF.Empty)
                         End Using
                     End Using
                 End Sub
