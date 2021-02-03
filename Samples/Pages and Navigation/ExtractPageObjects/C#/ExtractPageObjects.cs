@@ -68,7 +68,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 td.RenderingMode == PdfTextRenderingMode.AddToPath)
                 return;
 
-            if (Math.Abs(td.FontSize) < 0.001)
+            double fontSizeAbs = Math.Abs(td.FontSize);
+            if (fontSizeAbs < 0.001)
                 return;
 
             if (Math.Abs(td.Bounds.Width) < 0.001 || Math.Abs(td.Bounds.Height) < 0.001)
@@ -76,12 +77,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             saveStateAndDraw(gr, td.ClipRegion, () =>
             {
-                using (Font font = toGdiFont(td.Font, td.FontSize))
+                using (Font font = toGdiFont(td.Font, fontSizeAbs))
                 {
                     using (Brush brush = toGdiBrush(td.Brush))
                     {
                         gr.TranslateTransform((float)td.Position.X, (float)td.Position.Y);
                         concatMatrix(gr, td.TransformationMatrix);
+                        if (Math.Sign(td.FontSize) < 0)
+                            gr.ScaleTransform(1, -1);
 
                         gr.DrawString(td.GetText(), font, brush, PointF.Empty);
                     }
@@ -371,6 +374,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // A trick to load a similar font for system. Ideally we should load font from raw bytes. Use PdfFont.Save()
             // method for that.
             string fontName = font.Name;
+            if (fontName.Contains("Courier"))
+                return "Courier New";
+
             if (fontName.Contains("Times"))
                 return "Times New Roman";
 

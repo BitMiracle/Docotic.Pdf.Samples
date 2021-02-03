@@ -56,7 +56,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Return
             End If
 
-            If Math.Abs(td.FontSize) < 0.001 Then
+            Dim fontSizeAbs As Double = Math.Abs(td.FontSize)
+            If fontSizeAbs < 0.001 Then
                 Return
             End If
 
@@ -66,10 +67,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             saveStateAndDraw(gr, td.ClipRegion,
                 Sub()
-                    Using font As Font = toGdiFont(td.Font, td.FontSize)
+                    Using font As Font = toGdiFont(td.Font, fontSizeAbs)
                         Using brush As Brush = toGdiBrush(td.Brush)
                             gr.TranslateTransform(td.Position.X, td.Position.Y)
                             concatMatrix(gr, td.TransformationMatrix)
+                            If (Math.Sign(td.FontSize) < 0) Then
+                                gr.ScaleTransform(1, -1)
+                            End If
 
                             gr.DrawString(td.GetText(), font, brush, PointF.Empty)
                         End Using
@@ -308,6 +312,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' A trick to load a similar font for system. Ideally we should load font from raw bytes. Use PdfFont.Save()
             ' method for that.
             Dim fontName As String = font.Name
+            If (fontName.Contains("Courier")) Then
+                Return "Courier New"
+            End If
+
             If fontName.Contains("Times") Then
                 Return "Times New Roman"
             End If
