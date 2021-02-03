@@ -83,7 +83,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         gr.TranslateTransform((float)td.Position.X, (float)td.Position.Y);
                         concatMatrix(gr, td.TransformationMatrix);
 
-                        gr.DrawString(td.Text, font, brush, PointF.Empty);
+                        gr.DrawString(td.GetText(), font, brush, PointF.Empty);
                     }
                 }
             });

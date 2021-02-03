@@ -68,10 +68,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 string word = wordsToFind[0];
                 foreach (PdfTextData w in page.GetWords())
                 {
+                    string pdfText = w.GetText();
                     int index = -1;
                     for (;;)
                     {
-                        index = w.Text.IndexOf(word, index + 1, comparison);
+                        index = pdfText.IndexOf(word, index + 1, comparison);
                         if (index < 0)
                             break;
 
@@ -100,10 +101,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 var foundPhrase = new PdfRectangle[wordsToFind.Length];
                 foreach (PdfTextData w in words)
                 {
-                    if (matchWord(w.Text, wordsToFind, i, comparison))
+                    string pdfText = w.GetText();
+                    if (matchWord(pdfText, wordsToFind, i, comparison))
                     {
                         int wordLength = wordsToFind[i].Length;
-                        int startIndex = (i == 0) ? (w.Text.Length - wordLength) : 0;
+                        int startIndex = (i == 0) ? (pdfText.Length - wordLength) : 0;
                         foundPhrase[i] = getIntersectionBounds(w, startIndex, wordLength);
                         ++i;
                         if (i < wordsToFind.Length)
@@ -223,7 +225,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static PdfRectangle getIntersectionBounds(PdfTextData data, int startIndex, int length)
         {
-            string text = data.Text;
+            string text = data.GetText();
             if (startIndex == 0 && text.Length == length)
                 return data.Bounds;
 

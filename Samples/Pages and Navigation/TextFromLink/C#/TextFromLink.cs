@@ -104,7 +104,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 if (textData.Position.Y < targetPage.Height - linkAction.View.Top - eps)
                     continue;
 
-                result.Append(textData.Text + " ");
+                result.Append(textData.GetText() + " ");
             }
 
             return result.ToString();
