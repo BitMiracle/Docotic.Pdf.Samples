@@ -71,7 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BitMiracle.Docotic.Pdf">
-      <Version>7.4.11263</Version>
+      <Version>7.5.11645</Version>
     </PackageReference>
     <PackageReference Include="NLog">
       <Version>4.7.6</Version>
