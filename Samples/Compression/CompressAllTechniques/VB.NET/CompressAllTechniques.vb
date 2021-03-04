@@ -209,7 +209,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 End If
 
                 If font.Format = PdfFontFormat.TrueType OrElse font.Format = PdfFontFormat.CidType2 Then
-                    Dim loader As GdiFontLoader = New GdiFontLoader()
+                    Dim loader As SystemFontLoader = SystemFontLoader.Instance
                     Dim fontBytes = loader.Load(font.Name, font.Bold, font.Italic)
 
                     If fontBytes IsNot Nothing Then

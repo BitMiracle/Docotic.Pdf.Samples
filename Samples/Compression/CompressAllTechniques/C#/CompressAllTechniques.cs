@@ -225,7 +225,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                 if (font.Format == PdfFontFormat.TrueType || font.Format == PdfFontFormat.CidType2)
                 {
-                    GdiFontLoader loader = new GdiFontLoader();
+                    SystemFontLoader loader = SystemFontLoader.Instance;
                     byte[] fontBytes = loader.Load(font.Name, font.Bold, font.Italic);
                     if (fontBytes != null)
                     {
