@@ -1,5 +1,4 @@
 Imports System.Diagnostics
-Imports System.Drawing
 
 Imports BitMiracle.Docotic.Pdf
 
@@ -16,7 +15,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf As New PdfDocument()
                 Dim canvas As PdfCanvas = pdf.Pages(0).Canvas
 
-                Dim systemFont As PdfFont = pdf.AddFont("Arial", FontStyle.Italic Or FontStyle.Strikeout)
+                Dim systemFont As PdfFont = pdf.AddFont("Arial", False, True, False, True)
                 canvas.Font = systemFont
                 canvas.DrawString(10, 50, "Hello, world!")
 

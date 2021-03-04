@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Drawing;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -18,7 +17,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 PdfCanvas canvas = pdf.Pages[0].Canvas;
 
-                PdfFont systemFont = pdf.AddFont("Arial", FontStyle.Italic | FontStyle.Strikeout);
+                PdfFont systemFont = pdf.AddFont("Arial", false, true, false, true);
                 canvas.Font = systemFont;
                 canvas.DrawString(10, 50, "Hello, world!");
 

@@ -1,5 +1,4 @@
 Imports System.Diagnostics
-Imports System.Drawing
 Imports System.IO
 
 Imports BitMiracle.Docotic.Pdf
@@ -18,11 +17,6 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 Dim image As PdfImage = pdf.AddImage("Sample data/ammerland.jpg")
                 canvas.DrawImage(image, 10, 50)
-
-                Using bitmap As New Bitmap("Sample data/pink.png")
-                    Dim image2 As PdfImage = pdf.AddImage(bitmap)
-                    canvas.DrawImage(image2, 400, 50, 100, 150, -45)
-                End Using
 
                 pdf.Save(pathToFile)
             End Using

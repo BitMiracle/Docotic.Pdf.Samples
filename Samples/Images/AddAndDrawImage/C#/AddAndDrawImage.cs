@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using System.Drawing;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -20,12 +19,6 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                 PdfImage image = pdf.AddImage("Sample data/ammerland.jpg");
                 canvas.DrawImage(image, 10, 50);
-
-                using (Bitmap bitmap = new Bitmap("Sample data/pink.png"))
-                {
-                    PdfImage image2 = pdf.AddImage(bitmap);
-                    canvas.DrawImage(image2, 400, 50, 100, 150, -45);
-                }
 
                 pdf.Save(pathToFile);
             }
