@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Printing;
 using BitMiracle.Docotic.Pdf;
+using BitMiracle.Docotic.Pdf.Gdi;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {

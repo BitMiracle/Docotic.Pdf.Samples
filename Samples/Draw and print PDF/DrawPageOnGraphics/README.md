@@ -9,6 +9,8 @@ It means that if you create Graphics based on a System.Drawing.Bitmap, the size 
 
 This example shows how to create Graphics based on the bitmap with a resolution equal to 300 DPI and draw a PdfPage on the drawing surface of that Graphics.
 
+This sample code uses free [Docotic.Pdf.Gdi add-on](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Gdi) for Docotic.Pdf library. In certain environments, it is not recommended to use the add-on. Please read the description for the addon-on for more information.
+
 ## See also
 * [Render and print PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/draw-print-pdf.aspx) article
 * [Convert PDF to image in C# and VB.NET](https://bitmiracle.com/pdf-library/convert-pdf-to-image.aspx) article

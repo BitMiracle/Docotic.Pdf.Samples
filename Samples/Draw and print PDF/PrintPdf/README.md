@@ -7,6 +7,8 @@ The demo app comes in C# and VB.NET versions for Windows Forms and WPF. The app 
 3. Print multiple pages.
 4. Set up the paper size, the orientation, and other print settings.
 
+This sample code uses free [Docotic.Pdf.Gdi add-on](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Gdi) for Docotic.Pdf library. In certain environments, it is not recommended to use the add-on. Please read the description for the addon-on for more information.
+
 ## See also
 * [Render and print PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/draw-print-pdf.aspx) article
 * [Print PDF in Eto.Forms applications](/Samples/Draw%20and%20print%20PDF/PrintPdfEtoForms)

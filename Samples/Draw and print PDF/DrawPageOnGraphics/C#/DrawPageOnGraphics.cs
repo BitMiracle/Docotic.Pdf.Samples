@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Drawing;
 
 using BitMiracle.Docotic.Pdf;
+using BitMiracle.Docotic.Pdf.Gdi;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {

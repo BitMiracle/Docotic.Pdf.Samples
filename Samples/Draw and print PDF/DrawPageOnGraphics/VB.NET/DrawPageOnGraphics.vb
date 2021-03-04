@@ -2,6 +2,7 @@ Imports System.Diagnostics
 Imports System.Drawing
 
 Imports BitMiracle.Docotic.Pdf
+Imports BitMiracle.Docotic.Pdf.Gdi
 
 Namespace BitMiracle.Docotic.Pdf.Samples
     Public NotInheritable Class DrawPageOnGraphics

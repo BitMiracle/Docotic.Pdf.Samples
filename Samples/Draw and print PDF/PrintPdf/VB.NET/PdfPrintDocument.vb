@@ -3,6 +3,7 @@ Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports System.Drawing.Printing
 Imports BitMiracle.Docotic.Pdf
+Imports BitMiracle.Docotic.Pdf.Gdi
 
 Namespace BitMiracle.Docotic.Pdf.Samples
     Friend Class PdfPrintDocument

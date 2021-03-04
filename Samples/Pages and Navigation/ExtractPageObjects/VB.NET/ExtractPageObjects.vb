@@ -5,6 +5,7 @@ Imports System.Drawing.Drawing2D
 Imports System.Drawing.Imaging
 Imports System.IO
 Imports BitMiracle.Docotic.Pdf
+Imports BitMiracle.Docotic.Pdf.Gdi
 
 Namespace BitMiracle.Docotic.Pdf.Samples
     Public NotInheritable Class ExtractPageObjects
