@@ -1,2 +1,8 @@
-# Do no exclude Samples from language detection
+# Do not exclude Samples from language detection
 Samples/** linguist-documentation=false
+
+# Always use CRLF line endings in C# and VB.NET files
+*.cs text eol=crlf
+*.vb text eol=crlf
+*.config text eol=crlf
+*.sln text eol=crlf
