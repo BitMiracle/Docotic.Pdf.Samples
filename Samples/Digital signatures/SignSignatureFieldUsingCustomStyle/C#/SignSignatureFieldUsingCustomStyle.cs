@@ -29,12 +29,18 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     ContactInfo = "support@example.com"
                 };
 
-                options.Appearance.IncludeDate = false;
-                options.Appearance.IncludeDistinguishedName = false;
-                
-                options.Appearance.NameLabel = "Digital signiert von";
-                options.Appearance.ReasonLabel = "Grund:";
-                options.Appearance.LocationLabel = "Ort:";
+                PdfSignatureAppearanceOptions appearance = options.Appearance;
+                appearance.IncludeDate = false;
+                appearance.IncludeDistinguishedName = false;
+
+                appearance.Image = pdf.AddImage("Sample Data/ammerland.jpg");
+                appearance.Font = pdf.AddFont(PdfBuiltInFont.Courier);
+                appearance.FontSize = 0; // calculate font size automatically
+                appearance.TextAlignment = PdfSignatureTextAlignment.Right;
+
+                appearance.NameLabel = "Digital signiert von";
+                appearance.ReasonLabel = "Grund:";
+                appearance.LocationLabel = "Ort:";
 
                 pdf.SignAndSave(options, outputFileName);
             }

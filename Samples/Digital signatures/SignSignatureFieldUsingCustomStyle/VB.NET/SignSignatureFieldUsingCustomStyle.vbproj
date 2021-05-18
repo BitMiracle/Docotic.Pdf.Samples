@@ -59,6 +59,10 @@
       <Link>Sample Data\SignatureFields.pdf</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="..\..\..\Sample Data\ammerland.jpg">
+      <Link>Sample Data\ammerland.jpg</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
@@ -66,7 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BitMiracle.Docotic.Pdf">
-      <Version>8.0.11774</Version>
+      <Version>8.0.11906-dev</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

@@ -26,12 +26,19 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     .Location = "My workplace",
                     .ContactInfo = "support@example.com"
                 }
-                options.Appearance.IncludeDate = False
-                options.Appearance.IncludeDistinguishedName = False
 
-                options.Appearance.NameLabel = "Digital signiert von"
-                options.Appearance.ReasonLabel = "Grund:"
-                options.Appearance.LocationLabel = "Ort:"
+                Dim appearance = options.Appearance
+                appearance.IncludeDate = False
+                appearance.IncludeDistinguishedName = False
+
+                appearance.Image = pdf.AddImage("Sample Data/ammerland.jpg")
+                appearance.Font = pdf.AddFont(PdfBuiltInFont.Courier)
+                appearance.FontSize = 0 ' calculate font size automatically
+                appearance.TextAlignment = PdfSignatureTextAlignment.Right
+
+                appearance.NameLabel = "Digital signiert von"
+                appearance.ReasonLabel = "Grund:"
+                appearance.LocationLabel = "Ort:"
 
                 pdf.SignAndSave(options, outputFileName)
             End Using
