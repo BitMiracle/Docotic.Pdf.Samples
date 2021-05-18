@@ -18,6 +18,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 ' Without the change the sample will not work.
 
                 Dim field As PdfSignatureField = TryCast(pdf.GetControl("Control"), PdfSignatureField)
+                field.BackgroundColor = New PdfGrayColor(80)
+
                 Dim options As PdfSigningOptions = New PdfSigningOptions("keystore.p12", "password") With {
                     .DigestAlgorithm = PdfDigestAlgorithm.Sha256,
                     .Format = PdfSignatureFormat.Pkcs7Detached,
@@ -34,6 +36,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 appearance.Image = pdf.AddImage("Sample Data/ammerland.jpg")
                 appearance.Font = pdf.AddFont(PdfBuiltInFont.Courier)
                 appearance.FontSize = 0 ' calculate font size automatically
+                appearance.FontColor = New PdfRgbColor(0, 0, 255)
                 appearance.TextAlignment = PdfSignatureTextAlignment.Right
 
                 appearance.NameLabel = "Digital signiert von"

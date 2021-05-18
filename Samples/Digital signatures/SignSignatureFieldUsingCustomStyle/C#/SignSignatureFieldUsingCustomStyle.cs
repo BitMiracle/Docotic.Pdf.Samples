@@ -19,6 +19,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 // Without the change the sample will not work.
 
                 PdfSignatureField field = pdf.GetControl("Control") as PdfSignatureField;
+                field.BackgroundColor = new PdfGrayColor(80);
+
                 PdfSigningOptions options = new PdfSigningOptions("keystore.p12", "password")
                 {
                     DigestAlgorithm = PdfDigestAlgorithm.Sha256,
@@ -36,6 +38,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 appearance.Image = pdf.AddImage("Sample Data/ammerland.jpg");
                 appearance.Font = pdf.AddFont(PdfBuiltInFont.Courier);
                 appearance.FontSize = 0; // calculate font size automatically
+                appearance.FontColor = new PdfRgbColor(0, 0, 255);
                 appearance.TextAlignment = PdfSignatureTextAlignment.Right;
 
                 appearance.NameLabel = "Digital signiert von";
