@@ -1,4 +1,4 @@
-﻿Imports System.Diagnostics
+Imports System.Diagnostics
 Imports System.IO
 
 Imports BitMiracle.Docotic.Pdf
