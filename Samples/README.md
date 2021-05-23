@@ -155,6 +155,10 @@
 
 [Transparency](/Samples/Graphics/Transparency)
 
+# HTML to PDF
+
+[Hello, HTML to PDF in console app](/Samples/HtmlToPdf/HtmlToPdfConsole)
+
 # Images
 [Add and draw images](/Samples/Images/AddAndDrawImage)
 

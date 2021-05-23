@@ -12,3 +12,5 @@ build/
 [Bb]in/
 [Oo]bj/
 packages/
+Samples/HtmlToPdf/.local-chromium
+Samples/HtmlToPdf/*.pdf

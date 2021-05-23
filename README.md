@@ -21,6 +21,8 @@ Contains Docotic.Pdf sample code.
 
 [Graphics](/Samples/Graphics)
 
+[HTML to PDF](/Samples/HtmlToPdf)
+
 [Images](/Samples/Images)
 
 [Layers](/Samples/Layers)
