@@ -14,3 +14,7 @@ This sample shows how to convert a URL to PDF in a Windows Forms application.
 [Hello, HTML to PDF in WPF app](/Samples/HtmlToPdf/HtmlToPdfWpf)
 
 This sample shows how to convert a URL to PDF in a WPF application.
+
+[Convert HTML to PDF with delay](/Samples/HtmlToPdf/ConvertWithDelay)
+
+This sample shows how to delay an HTML to PDF conversion.

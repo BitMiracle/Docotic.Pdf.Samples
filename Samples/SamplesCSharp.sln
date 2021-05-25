@@ -305,6 +305,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlToPdfWindowsForms", "Ht
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlToPdfWpf", "HtmlToPdf\HtmlToPdfWpf\C#\HtmlToPdfWpf.csproj", "{0E332606-9399-40CE-A14D-1831146C77C8}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConvertWithDelay", "HtmlToPdf\ConvertWithDelay\C#\ConvertWithDelay.csproj", "{ADEE2FD5-05F0-408A-938E-7CDEA793F071}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -847,6 +849,10 @@ Global
 		{0E332606-9399-40CE-A14D-1831146C77C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E332606-9399-40CE-A14D-1831146C77C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E332606-9399-40CE-A14D-1831146C77C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADEE2FD5-05F0-408A-938E-7CDEA793F071}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADEE2FD5-05F0-408A-938E-7CDEA793F071}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADEE2FD5-05F0-408A-938E-7CDEA793F071}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADEE2FD5-05F0-408A-938E-7CDEA793F071}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -986,6 +992,7 @@ Global
 		{0F0D0A29-2DF6-4E19-A182-44D05C11C76D} = {89D4F6D4-9E07-4ED4-9CA9-159B8E8B8250}
 		{64F66412-E086-49B1-ABE5-12A00914EEB0} = {89D4F6D4-9E07-4ED4-9CA9-159B8E8B8250}
 		{0E332606-9399-40CE-A14D-1831146C77C8} = {89D4F6D4-9E07-4ED4-9CA9-159B8E8B8250}
+		{ADEE2FD5-05F0-408A-938E-7CDEA793F071} = {89D4F6D4-9E07-4ED4-9CA9-159B8E8B8250}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61DC7F3F-A5C8-48BD-845F-83DE6BD2527B}

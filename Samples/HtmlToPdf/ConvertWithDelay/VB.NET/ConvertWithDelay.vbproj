@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>BitMiracle.Docotic.Pdf.Samples</RootNamespace>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <StartWorkingDirectory>$(SolutionDir)\HtmlToPdf</StartWorkingDirectory>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BitMiracle.Docotic.Pdf.HtmlToPdf" Version="8.0.11923-dev" />
+  </ItemGroup>
+
+</Project>

@@ -163,6 +163,8 @@
 
 [Hello, HTML to PDF in WPF app](/Samples/HtmlToPdf/HtmlToPdfWpf)
 
+[Convert HTML to PDF with delay](/Samples/HtmlToPdf/ConvertWithDelay)
+
 # Images
 [Add and draw images](/Samples/Images/AddAndDrawImage)
 
