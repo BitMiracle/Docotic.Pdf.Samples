@@ -297,6 +297,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HtmlToPdf", "HtmlToPdf", "{
 EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "HtmlToPdfConsole", "HtmlToPdf\HtmlToPdfConsole\VB.NET\HtmlToPdfConsole.vbproj", "{18665425-8BB8-4CCB-8657-79AD39003A93}"
 EndProject
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "HtmlToPdfWindowsForms", "HtmlToPdf\HtmlToPdfWindowsForms\VB.NET\HtmlToPdfWindowsForms.vbproj", "{72B47B01-FAFC-4B3C-8C1A-4BD74B614392}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -823,6 +825,10 @@ Global
 		{18665425-8BB8-4CCB-8657-79AD39003A93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18665425-8BB8-4CCB-8657-79AD39003A93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18665425-8BB8-4CCB-8657-79AD39003A93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72B47B01-FAFC-4B3C-8C1A-4BD74B614392}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72B47B01-FAFC-4B3C-8C1A-4BD74B614392}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72B47B01-FAFC-4B3C-8C1A-4BD74B614392}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72B47B01-FAFC-4B3C-8C1A-4BD74B614392}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -958,6 +964,7 @@ Global
 		{443DB666-39ED-4CDE-BE48-9A7F010CD4C8} = {8C2E3BCF-4D43-4B6F-AC00-DD2A9B1A6527}
 		{58ACDBC9-60DF-4049-A30E-E528B5551EEC} = {8C2E3BCF-4D43-4B6F-AC00-DD2A9B1A6527}
 		{18665425-8BB8-4CCB-8657-79AD39003A93} = {FBA7A940-CAD1-473C-BCAC-526C122DFA2F}
+		{72B47B01-FAFC-4B3C-8C1A-4BD74B614392} = {FBA7A940-CAD1-473C-BCAC-526C122DFA2F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {50A18C19-4AC0-4BF0-9AA5-7C45E6C1E9A6}

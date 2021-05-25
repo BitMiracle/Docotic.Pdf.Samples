@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 
 using BitMiracle.Docotic.Pdf.HtmlToPdf;
 
-namespace HtmlToPdfConsole
+namespace BitMiracle.Docotic.Pdf.Samples
 {
-    class Program
+    class HtmlToPdfConsole
     {
         // In C# 7.1 you can have an async Main in your console application. 
 
@@ -20,11 +20,11 @@ namespace HtmlToPdfConsole
         {
             Task.Run(async () =>
             {
-                await convertUrlToPdf("https://bitmiracle.com/", "HtmlToPdfConsole.pdf");
+                await convertUrlToPdfAsync("https://bitmiracle.com/", "HtmlToPdfConsole.pdf");
             }).GetAwaiter().GetResult();
         }
 
-        private static async Task convertUrlToPdf(string urlString, string pdfFileName)
+        private static async Task convertUrlToPdfAsync(string urlString, string pdfFileName)
         {
             // NOTE: 
             // When used in trial mode, the library imposes some restrictions.

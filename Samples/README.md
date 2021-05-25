@@ -159,6 +159,8 @@
 
 [Hello, HTML to PDF in console app](/Samples/HtmlToPdf/HtmlToPdfConsole)
 
+[Hello, HTML to PDF in Windows Forms app](/Samples/HtmlToPdf/HtmlToPdfWindowsForms)
+
 # Images
 [Add and draw images](/Samples/Images/AddAndDrawImage)
 

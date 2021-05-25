@@ -301,6 +301,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HtmlToPdf", "HtmlToPdf", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlToPdfConsole", "HtmlToPdf\HtmlToPdfConsole\C#\HtmlToPdfConsole.csproj", "{0F0D0A29-2DF6-4E19-A182-44D05C11C76D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlToPdfWindowsForms", "HtmlToPdf\HtmlToPdfWindowsForms\C#\HtmlToPdfWindowsForms.csproj", "{64F66412-E086-49B1-ABE5-12A00914EEB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -835,6 +837,10 @@ Global
 		{0F0D0A29-2DF6-4E19-A182-44D05C11C76D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F0D0A29-2DF6-4E19-A182-44D05C11C76D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F0D0A29-2DF6-4E19-A182-44D05C11C76D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64F66412-E086-49B1-ABE5-12A00914EEB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64F66412-E086-49B1-ABE5-12A00914EEB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64F66412-E086-49B1-ABE5-12A00914EEB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64F66412-E086-49B1-ABE5-12A00914EEB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -972,6 +978,7 @@ Global
 		{13350ACF-8214-4AA6-8AF0-496BFC7546AE} = {F8C1E248-3923-46C6-B4A7-14ED09FE019B}
 		{58D5C5B9-94DF-4778-8839-B82C4BEA246D} = {F8C1E248-3923-46C6-B4A7-14ED09FE019B}
 		{0F0D0A29-2DF6-4E19-A182-44D05C11C76D} = {89D4F6D4-9E07-4ED4-9CA9-159B8E8B8250}
+		{64F66412-E086-49B1-ABE5-12A00914EEB0} = {89D4F6D4-9E07-4ED4-9CA9-159B8E8B8250}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61DC7F3F-A5C8-48BD-845F-83DE6BD2527B}
