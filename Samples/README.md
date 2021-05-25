@@ -161,6 +161,8 @@
 
 [Hello, HTML to PDF in Windows Forms app](/Samples/HtmlToPdf/HtmlToPdfWindowsForms)
 
+[Hello, HTML to PDF in WPF app](/Samples/HtmlToPdf/HtmlToPdfWpf)
+
 # Images
 [Add and draw images](/Samples/Images/AddAndDrawImage)
 
