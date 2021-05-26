@@ -165,6 +165,8 @@
 
 [Convert HTML to PDF with delay](/Samples/HtmlToPdf/ConvertWithDelay)
 
+[Convert HTML to PDF after a script run](/Samples/HtmlToPdf/ConvertAfterScriptRun)
+
 # Images
 [Add and draw images](/Samples/Images/AddAndDrawImage)
 

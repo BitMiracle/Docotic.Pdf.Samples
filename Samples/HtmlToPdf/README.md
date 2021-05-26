@@ -18,3 +18,7 @@ This sample shows how to convert a URL to PDF in a WPF application.
 [Convert HTML to PDF with delay](/Samples/HtmlToPdf/ConvertWithDelay)
 
 This sample shows how to delay an HTML to PDF conversion.
+
+[Convert HTML to PDF after a script run](/Samples/HtmlToPdf/ConvertAfterScriptRun)
+
+This sample shows how to run a script before converting HTML to PDF.

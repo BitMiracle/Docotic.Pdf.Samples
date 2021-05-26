@@ -9,3 +9,4 @@ This sample code uses free [Docotic.Pdf.HtmlToPdf add-on](https://www.nuget.org/
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Convert HTML to PDF after a script run](/Samples/HtmlToPdf/ConvertAfterScriptRun) sample
