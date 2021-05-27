@@ -309,6 +309,8 @@ Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ConvertLocalHtml", "HtmlToP
 EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ConvertWithMarginsAndScale", "HtmlToPdf\ConvertWithMarginsAndScale\VB.NET\ConvertWithMarginsAndScale.vbproj", "{162DF9B7-A618-45E3-94BA-13F5A8859E79}"
 EndProject
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ConvertPasswordProtected", "HtmlToPdf\ConvertPasswordProtected\VB.NET\ConvertPasswordProtected.vbproj", "{B5BB5D06-FA04-45CB-8AA9-D88D1CB28079}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -859,6 +861,10 @@ Global
 		{162DF9B7-A618-45E3-94BA-13F5A8859E79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{162DF9B7-A618-45E3-94BA-13F5A8859E79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{162DF9B7-A618-45E3-94BA-13F5A8859E79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5BB5D06-FA04-45CB-8AA9-D88D1CB28079}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5BB5D06-FA04-45CB-8AA9-D88D1CB28079}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5BB5D06-FA04-45CB-8AA9-D88D1CB28079}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5BB5D06-FA04-45CB-8AA9-D88D1CB28079}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1000,6 +1006,7 @@ Global
 		{46D0CFC9-5D96-47C2-8507-5985B9B94C40} = {FBA7A940-CAD1-473C-BCAC-526C122DFA2F}
 		{ACE27FE7-3D8A-490D-AC87-F8834042CCE3} = {FBA7A940-CAD1-473C-BCAC-526C122DFA2F}
 		{162DF9B7-A618-45E3-94BA-13F5A8859E79} = {FBA7A940-CAD1-473C-BCAC-526C122DFA2F}
+		{B5BB5D06-FA04-45CB-8AA9-D88D1CB28079} = {FBA7A940-CAD1-473C-BCAC-526C122DFA2F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {50A18C19-4AC0-4BF0-9AA5-7C45E6C1E9A6}

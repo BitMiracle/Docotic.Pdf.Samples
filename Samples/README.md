@@ -171,6 +171,8 @@
 
 [Convert HTML to PDF with margins and custom scaling](/Samples/HtmlToPdf/ConvertWithMarginsAndScale)
 
+[Convert password-protected HTML to PDF](/Samples/HtmlToPdf/ConvertPasswordProtected)
+
 # Images
 [Add and draw images](/Samples/Images/AddAndDrawImage)
 

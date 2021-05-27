@@ -30,3 +30,7 @@ This sample shows how to convert an HTML string or a file to PDF.
 [Convert HTML to PDF with margins and custom scaling](/Samples/HtmlToPdf/ConvertWithMarginsAndScale)
 
 This sample shows how to set up margins and a scaling factor when converting HTML to PDF.
+
+[Convert password-protected HTML to PDF](/Samples/HtmlToPdf/ConvertPasswordProtected)
+
+This sample shows how to convert a password-protected HTML to PDF.
