@@ -22,3 +22,7 @@ This sample shows how to delay an HTML to PDF conversion.
 [Convert HTML to PDF after a script run](/Samples/HtmlToPdf/ConvertAfterScriptRun)
 
 This sample shows how to run a script before converting HTML to PDF.
+
+[Convert local HTML to PDF](/Samples/HtmlToPdf/ConvertLocalHtml)
+
+This sample shows how to convert an HTML string or a file to PDF.

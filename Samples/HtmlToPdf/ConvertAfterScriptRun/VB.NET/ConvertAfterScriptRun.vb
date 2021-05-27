@@ -8,7 +8,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Async Function()
                     Await convertAfterScriptRun()
                 End Function
-        ).GetAwaiter().GetResult()
+            ).GetAwaiter().GetResult()
         End Sub
 
         Private Shared Async Function convertAfterScriptRun() As Task

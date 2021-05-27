@@ -8,7 +8,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Async Function()
                     Await convertWithDelay()
                 End Function
-        ).GetAwaiter().GetResult()
+            ).GetAwaiter().GetResult()
         End Sub
 
         Private Shared Async Function convertWithDelay() As Task

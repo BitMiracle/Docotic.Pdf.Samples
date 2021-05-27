@@ -309,6 +309,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConvertWithDelay", "HtmlToP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConvertAfterScriptRun", "HtmlToPdf\ConvertAfterScriptRun\C#\ConvertAfterScriptRun.csproj", "{321D8F3F-D6A0-455F-89DF-003F1EA89A3B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConvertLocalHtml", "HtmlToPdf\ConvertLocalHtml\C#\ConvertLocalHtml.csproj", "{EE771DE2-6E85-4BC4-B1FB-1C99E084E5E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -859,6 +861,10 @@ Global
 		{321D8F3F-D6A0-455F-89DF-003F1EA89A3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{321D8F3F-D6A0-455F-89DF-003F1EA89A3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{321D8F3F-D6A0-455F-89DF-003F1EA89A3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE771DE2-6E85-4BC4-B1FB-1C99E084E5E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE771DE2-6E85-4BC4-B1FB-1C99E084E5E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE771DE2-6E85-4BC4-B1FB-1C99E084E5E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE771DE2-6E85-4BC4-B1FB-1C99E084E5E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1000,6 +1006,7 @@ Global
 		{0E332606-9399-40CE-A14D-1831146C77C8} = {89D4F6D4-9E07-4ED4-9CA9-159B8E8B8250}
 		{ADEE2FD5-05F0-408A-938E-7CDEA793F071} = {89D4F6D4-9E07-4ED4-9CA9-159B8E8B8250}
 		{321D8F3F-D6A0-455F-89DF-003F1EA89A3B} = {89D4F6D4-9E07-4ED4-9CA9-159B8E8B8250}
+		{EE771DE2-6E85-4BC4-B1FB-1C99E084E5E8} = {89D4F6D4-9E07-4ED4-9CA9-159B8E8B8250}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61DC7F3F-A5C8-48BD-845F-83DE6BD2527B}

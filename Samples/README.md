@@ -167,6 +167,8 @@
 
 [Convert HTML to PDF after a script run](/Samples/HtmlToPdf/ConvertAfterScriptRun)
 
+[Convert local HTML to PDF](/Samples/HtmlToPdf/ConvertLocalHtml)
+
 # Images
 [Add and draw images](/Samples/Images/AddAndDrawImage)
 

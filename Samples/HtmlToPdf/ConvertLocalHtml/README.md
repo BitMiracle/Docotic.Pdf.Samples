@@ -1,0 +1,9 @@
+# Convert local HTML to PDF in C# or VB.NET
+This sample shows how to convert an HTML string or a file to PDF in C# or VB.NET application.
+
+The [HTML converter class](https://bitmiracle.com/pdf-library/help/htmlconverter.html) provides methods that accept a file name or a string with some HTML code. You can use them to convert some auto-generated local HTML or content uploaded by users. It is also possible to specify a base URL.
+
+This sample code uses free [Docotic.Pdf.HtmlToPdf add-on](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.HtmlToPdf/) for Docotic.Pdf library.
+
+## See also
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
