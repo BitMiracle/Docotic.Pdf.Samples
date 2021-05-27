@@ -21,6 +21,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 var options = new HtmlConversionOptions();
                 options.Authentication.SetCredentials("foo", "bar");
 
+                // The following two lines are here just to make the output easier to read.
                 options.Page.MarginTop = 100;
                 options.Page.Scale = 2;
 

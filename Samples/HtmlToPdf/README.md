@@ -34,3 +34,7 @@ This sample shows how to set up margins and a scaling factor when converting HTM
 [Convert password-protected HTML to PDF](/Samples/HtmlToPdf/ConvertPasswordProtected)
 
 This sample shows how to convert a password-protected HTML to PDF.
+
+[Convert HTML to PDF ignoring SSL errors](/Samples/HtmlToPdf/ConvertIgnoringSslErrors)
+
+This sample shows how to convert HTML to PDF ignoring SSL errors.

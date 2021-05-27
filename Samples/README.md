@@ -173,6 +173,8 @@
 
 [Convert password-protected HTML to PDF](/Samples/HtmlToPdf/ConvertPasswordProtected)
 
+[Convert HTML to PDF ignoring SSL errors](/Samples/HtmlToPdf/ConvertIgnoringSslErrors)
+
 # Images
 [Add and draw images](/Samples/Images/AddAndDrawImage)
 
