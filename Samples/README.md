@@ -169,6 +169,8 @@
 
 [Convert local HTML to PDF](/Samples/HtmlToPdf/ConvertLocalHtml)
 
+[Convert HTML to PDF with margins and custom scaling](/Samples/HtmlToPdf/ConvertWithMarginsAndScale)
+
 # Images
 [Add and draw images](/Samples/Images/AddAndDrawImage)
 

@@ -26,3 +26,7 @@ This sample shows how to run a script before converting HTML to PDF.
 [Convert local HTML to PDF](/Samples/HtmlToPdf/ConvertLocalHtml)
 
 This sample shows how to convert an HTML string or a file to PDF.
+
+[Convert HTML to PDF with margins and custom scaling](/Samples/HtmlToPdf/ConvertWithMarginsAndScale)
+
+This sample shows how to set up margins and a scaling factor when converting HTML to PDF.
