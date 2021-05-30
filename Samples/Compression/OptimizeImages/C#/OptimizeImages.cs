@@ -88,7 +88,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             if (image.Compression == PdfImageCompression.Group4Fax ||
                 image.Compression == PdfImageCompression.Group3Fax ||
-                image.Compression == PdfImageCompression.JBig2)
+                image.Compression == PdfImageCompression.JBig2 ||
+                (image.ComponentCount == 1 && image.BitsPerComponent == 1))
             {
                 return resizeBilevelImage(image, ratio);
             }

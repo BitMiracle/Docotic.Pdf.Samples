@@ -88,7 +88,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             If image.Compression = PdfImageCompression.Group4Fax OrElse
                 image.Compression = PdfImageCompression.Group3Fax OrElse
-                image.Compression = PdfImageCompression.JBig2 Then
+                image.Compression = PdfImageCompression.JBig2 OrElse
+                (image.ComponentCount = 1 And image.BitsPerComponent = 1) Then
                 Return resizeBilevelImage(image, ratio)
             End If
 
