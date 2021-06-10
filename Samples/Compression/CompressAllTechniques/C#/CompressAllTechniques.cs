@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
+
 using BitMiracle.Docotic.Pdf;
 
 namespace BitMiracle.Docotic.Pdf.Samples
@@ -124,7 +125,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             if (image.Compression == PdfImageCompression.Group4Fax ||
                 image.Compression == PdfImageCompression.Group3Fax ||
-                image.Compression == PdfImageCompression.JBig2)
+                image.Compression == PdfImageCompression.JBig2 ||
+                (image.ComponentCount == 1 && image.BitsPerComponent == 1))
             {
                 return resizeBilevelImage(image, ratio);
             }
@@ -233,7 +235,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         continue;
                     }
                 }
-                
+
                 if (Array.Exists(alwaysUnembedList, name => font.Name == name))
                     font.Unembed();
             }
