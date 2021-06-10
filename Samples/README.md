@@ -73,6 +73,8 @@
 # Forms and Annotations
 [Text annotations](/Samples/Forms%20and%20Annotations/TextAnnotations)
 
+[Add 3D annotation to PDF document](/Samples/Forms%20and%20Annotations/3dAnnotations)
+
 [Button with image](/Samples/Forms%20and%20Annotations/ButtonImage)
 
 [Buttons](/Samples/Forms%20and%20Annotations/Buttons)

@@ -1,11 +1,15 @@
 # Forms and Annotations
-This group contains samples that show how to add interactive elements like annotations and controls to your PDF documents and how to fill forms.
+This group contains samples that show how to create PDF annotations and controls and how to fill PDF forms in C# and VB.NET using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
 Don't miss [all other samples](/Samples).
 
 [Text annotations](/Samples/Forms%20and%20Annotations/TextAnnotations)
 
 This sample shows how to add text annotations (sticky notes) to your PDF document using PdfPage.AddTextAnnotation(..) method.
+
+[Add 3D annotation to PDF document](/Samples/Forms%20and%20Annotations/3dAnnotations)
+
+This sample shows how to create 3D PDF document in C# and VB.NET.
 
 [Button with image](/Samples/Forms%20and%20Annotations/ButtonImage)
 
