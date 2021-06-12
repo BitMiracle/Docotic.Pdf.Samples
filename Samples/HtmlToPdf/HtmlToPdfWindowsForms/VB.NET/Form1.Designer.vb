@@ -65,6 +65,7 @@ Partial Class Form1
         '
         'Form1
         '
+        Me.AcceptButton = Me.buttonConvert
         Me.AutoScaleDimensions = New System.Drawing.SizeF(13.0!, 32.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(583, 212)

@@ -9,7 +9,7 @@
     <Grid>
         <Label Content="URL to convert:" HorizontalAlignment="Left" Margin="35,32,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.043,0.24"/>
         <TextBox x:Name="textBoxUrl" HorizontalAlignment="Left" Margin="38,63,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="271"/>
-        <Button x:Name="buttonConvert" Content="Convert" HorizontalAlignment="Left" Margin="38,101,0,0" VerticalAlignment="Top" Click="Button_Click" Width="136"/>
+        <Button x:Name="buttonConvert" Content="Convert" HorizontalAlignment="Left" Margin="38,101,0,0" VerticalAlignment="Top" Click="Button_Click" Width="136" IsDefault="True"/>
         <ProgressBar x:Name="progressBarConverting" HorizontalAlignment="Left" Height="20" Margin="179,101,0,0" VerticalAlignment="Top" Width="130" IsIndeterminate="True"/>
 
     </Grid>

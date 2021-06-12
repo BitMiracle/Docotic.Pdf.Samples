@@ -73,6 +73,7 @@ namespace HtmlToPdfWindowsForms
             // 
             // Form1
             // 
+            this.AcceptButton = this.buttonConvert;
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(583, 212);

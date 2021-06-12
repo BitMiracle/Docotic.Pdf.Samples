@@ -28,7 +28,16 @@ namespace HtmlToPdfWpf
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             setConvertingMode(true);
-            await convertUrlToPdfAsync(textBoxUrl.Text, "HtmlToPdfWpf.pdf");
+
+            try
+            {
+                await convertUrlToPdfAsync(textBoxUrl.Text, "HtmlToPdfWpf.pdf");
+            }
+            catch (HtmlConverterException ex)
+            {
+                MessageBox.Show(ex.Message, "Conversion failed");
+                setConvertingMode(false);
+            }
         }
 
         private async Task convertUrlToPdfAsync(string urlString, string pdfFileName)

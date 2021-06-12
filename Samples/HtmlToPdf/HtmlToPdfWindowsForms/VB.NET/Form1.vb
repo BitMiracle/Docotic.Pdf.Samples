@@ -26,7 +26,13 @@ Public Class Form1
 
     Private Async Sub buttonConvert_Click(sender As Object, e As EventArgs) Handles buttonConvert.Click
         setConvertingMode(True)
-        Await convertUrlToPdfAsync(textBoxUrl.Text, "HtmlToPdfWindowsForms.pdf")
+
+        Try
+            Await convertUrlToPdfAsync(textBoxUrl.Text, "HtmlToPdfWindowsForms.pdf")
+        Catch ex As HtmlConverterException
+            MessageBox.Show(ex.Message, "Conversion failed")
+            setConvertingMode(False)
+        End Try
     End Sub
 
     Private Async Function convertUrlToPdfAsync(ByVal urlString As String, ByVal pdfFileName As String) As Task
