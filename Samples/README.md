@@ -159,11 +159,11 @@
 
 # HTML to PDF
 
-[Hello, HTML to PDF in console app](/Samples/HtmlToPdf/HtmlToPdfConsole)
+[HTML to PDF conversion in console app](/Samples/HtmlToPdf/HtmlToPdfConsole)
 
-[Hello, HTML to PDF in Windows Forms app](/Samples/HtmlToPdf/HtmlToPdfWindowsForms)
+[HTML to PDF conversion in Windows Forms app](/Samples/HtmlToPdf/HtmlToPdfWindowsForms)
 
-[Hello, HTML to PDF in WPF app](/Samples/HtmlToPdf/HtmlToPdfWpf)
+[HTML to PDF conversion in WPF app](/Samples/HtmlToPdf/HtmlToPdfWpf)
 
 [Convert HTML to PDF with delay](/Samples/HtmlToPdf/ConvertWithDelay)
 

@@ -3,15 +3,15 @@ This group contains samples that show how to convert HTML to PDF documents.
 
 Don't miss [all other samples](/Samples).
 
-[Hello, HTML to PDF in console app](/Samples/HtmlToPdf/HtmlToPdfConsole)
+[HTML to PDF conversion in console app](/Samples/HtmlToPdf/HtmlToPdfConsole)
 
 This sample shows how to convert a URL to PDF in a console application.
 
-[Hello, HTML to PDF in Windows Forms app](/Samples/HtmlToPdf/HtmlToPdfWindowsForms)
+[HTML to PDF conversion in Windows Forms app](/Samples/HtmlToPdf/HtmlToPdfWindowsForms)
 
 This sample shows how to convert a URL to PDF in a Windows Forms application.
 
-[Hello, HTML to PDF in WPF app](/Samples/HtmlToPdf/HtmlToPdfWpf)
+[HTML to PDF conversion in WPF app](/Samples/HtmlToPdf/HtmlToPdfWpf)
 
 This sample shows how to convert a URL to PDF in a WPF application.
 
