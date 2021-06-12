@@ -1,5 +1,5 @@
 # HTML to PDF 
-This group contains samples that show how to convert HTML to PDF documents.
+This group contains samples that show how to convert HTML to PDF documents in C# and VB.NET using [Docotic.Pdf library](https://bitmiracle.com/pdf-library).
 
 Don't miss [all other samples](/Samples).
 
