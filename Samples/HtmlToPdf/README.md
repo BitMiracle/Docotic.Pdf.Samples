@@ -31,10 +31,10 @@ This sample shows how to convert an HTML string or a file to PDF.
 
 This sample shows how to set up margins and a scaling factor when converting HTML to PDF.
 
-[Convert password-protected HTML to PDF](/Samples/HtmlToPdf/ConvertPasswordProtected)
+[Convert password-protected URL to PDF](/Samples/HtmlToPdf/ConvertPasswordProtected)
 
-This sample shows how to convert a password-protected HTML to PDF.
+This sample shows how to convert a password-protected web page to PDF.
 
-[Convert HTML to PDF ignoring SSL errors](/Samples/HtmlToPdf/ConvertIgnoringSslErrors)
+[Convert URL to PDF ignoring SSL errors](/Samples/HtmlToPdf/ConvertIgnoringSslErrors)
 
-This sample shows how to convert HTML to PDF ignoring SSL errors.
+This sample shows how to convert a web page to PDF ignoring SSL errors.

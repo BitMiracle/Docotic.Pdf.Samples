@@ -173,9 +173,9 @@
 
 [Convert HTML to PDF with margins and custom scaling](/Samples/HtmlToPdf/ConvertWithMarginsAndScale)
 
-[Convert password-protected HTML to PDF](/Samples/HtmlToPdf/ConvertPasswordProtected)
+[Convert password-protected URL to PDF](/Samples/HtmlToPdf/ConvertPasswordProtected)
 
-[Convert HTML to PDF ignoring SSL errors](/Samples/HtmlToPdf/ConvertIgnoringSslErrors)
+[Convert URL to PDF ignoring SSL errors](/Samples/HtmlToPdf/ConvertIgnoringSslErrors)
 
 # Images
 [Add and draw images](/Samples/Images/AddAndDrawImage)
