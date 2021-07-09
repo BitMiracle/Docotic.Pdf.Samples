@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
-
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -9,15 +8,12 @@
     <StartWorkingDirectory>$(SolutionDir)\HtmlToPdf</StartWorkingDirectory>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
-
   <ItemGroup>
     <Import Include="System.Data" />
     <Import Include="System.Drawing" />
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
-
   <ItemGroup>
-    <PackageReference Include="BitMiracle.Docotic.Pdf.HtmlToPdf" Version="8.0.11923-dev" />
+    <PackageReference Include="BitMiracle.Docotic.Pdf.HtmlToPdf" Version="8.1.12215" />
   </ItemGroup>
-
 </Project>

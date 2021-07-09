@@ -13,6 +13,6 @@
   <ItemGroup>
     <PackageReference Include="Amazon.Lambda.Core" Version="1.2.0" />
     <PackageReference Include="Amazon.Lambda.Serialization.Json" Version="1.8.0" />
-    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="8.0.11774" />
+    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="8.1.12215" />
   </ItemGroup>
 </Project>
