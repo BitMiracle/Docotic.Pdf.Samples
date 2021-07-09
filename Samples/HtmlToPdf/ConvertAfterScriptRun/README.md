@@ -9,4 +9,5 @@ This sample code uses free [Docotic.Pdf.HtmlToPdf add-on](https://www.nuget.org/
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Convert HTML to PDF in C# and VB.NET](https://bitmiracle.com/pdf-library/html-to-pdf.aspx) article
 * [Convert HTML to PDF with delay](/Samples/HtmlToPdf/ConvertWithDelay) sample
