@@ -7,3 +7,4 @@ Use [Pdf3dAnnotation.Activation property](https://bitmiracle.com/pdf-library/hel
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Add rich media annotation to PDF document](/Samples/Forms%20and%20Annotations/RichMediaAnnotations) sample

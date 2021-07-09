@@ -11,6 +11,10 @@ This sample shows how to add text annotations (sticky notes) to your PDF documen
 
 This sample shows how to create 3D PDF document in C# and VB.NET.
 
+[Add rich media annotation to PDF document](/Samples/Forms%20and%20Annotations/RichMediaAnnotations)
+
+This sample shows how to create rich media annotations in PDF documents.
+
 [Button with image](/Samples/Forms%20and%20Annotations/ButtonImage)
 
 This sample shows how to create buttons with images in PDF documents.

@@ -319,6 +319,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConvertIgnoringSslErrors", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3dAnnotations", "Forms and Annotations\3dAnnotations\C#\3dAnnotations.csproj", "{6C38D48A-B692-497A-A80B-740341B01EDC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichMediaAnnotations", "Forms and Annotations\RichMediaAnnotations\C#\RichMediaAnnotations.csproj", "{5956E6D2-11C7-48E6-BE8D-385AB5950AA3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -889,6 +891,10 @@ Global
 		{6C38D48A-B692-497A-A80B-740341B01EDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C38D48A-B692-497A-A80B-740341B01EDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C38D48A-B692-497A-A80B-740341B01EDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5956E6D2-11C7-48E6-BE8D-385AB5950AA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5956E6D2-11C7-48E6-BE8D-385AB5950AA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5956E6D2-11C7-48E6-BE8D-385AB5950AA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5956E6D2-11C7-48E6-BE8D-385AB5950AA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1035,6 +1041,7 @@ Global
 		{B0A19650-3987-4E7C-B6C2-8F7C8B91F1EE} = {89D4F6D4-9E07-4ED4-9CA9-159B8E8B8250}
 		{6A1AFAD3-486B-4CF4-855C-553055C484AF} = {89D4F6D4-9E07-4ED4-9CA9-159B8E8B8250}
 		{6C38D48A-B692-497A-A80B-740341B01EDC} = {A0631674-E845-41C0-8386-D9305DA577E1}
+		{5956E6D2-11C7-48E6-BE8D-385AB5950AA3} = {A0631674-E845-41C0-8386-D9305DA577E1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61DC7F3F-A5C8-48BD-845F-83DE6BD2527B}

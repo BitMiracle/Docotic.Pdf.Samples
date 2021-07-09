@@ -75,6 +75,8 @@
 
 [Add 3D annotation to PDF document](/Samples/Forms%20and%20Annotations/3dAnnotations)
 
+[Add rich media annotation to PDF document](/Samples/Forms%20and%20Annotations/RichMediaAnnotations)
+
 [Button with image](/Samples/Forms%20and%20Annotations/ButtonImage)
 
 [Buttons](/Samples/Forms%20and%20Annotations/Buttons)
