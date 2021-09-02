@@ -321,6 +321,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3dAnnotations", "Forms and 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichMediaAnnotations", "Forms and Annotations\RichMediaAnnotations\C#\RichMediaAnnotations.csproj", "{5956E6D2-11C7-48E6-BE8D-385AB5950AA3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemovePaths", "Graphics\RemovePaths\C#\RemovePaths.csproj", "{135AAD79-F96A-410E-BA9D-A624585659B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -895,6 +897,10 @@ Global
 		{5956E6D2-11C7-48E6-BE8D-385AB5950AA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5956E6D2-11C7-48E6-BE8D-385AB5950AA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5956E6D2-11C7-48E6-BE8D-385AB5950AA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{135AAD79-F96A-410E-BA9D-A624585659B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{135AAD79-F96A-410E-BA9D-A624585659B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{135AAD79-F96A-410E-BA9D-A624585659B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{135AAD79-F96A-410E-BA9D-A624585659B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1042,6 +1048,7 @@ Global
 		{6A1AFAD3-486B-4CF4-855C-553055C484AF} = {89D4F6D4-9E07-4ED4-9CA9-159B8E8B8250}
 		{6C38D48A-B692-497A-A80B-740341B01EDC} = {A0631674-E845-41C0-8386-D9305DA577E1}
 		{5956E6D2-11C7-48E6-BE8D-385AB5950AA3} = {A0631674-E845-41C0-8386-D9305DA577E1}
+		{135AAD79-F96A-410E-BA9D-A624585659B7} = {E8BF4C4F-2425-4F80-8F1A-9D0B8711D3C5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61DC7F3F-A5C8-48BD-845F-83DE6BD2527B}

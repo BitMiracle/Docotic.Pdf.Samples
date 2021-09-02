@@ -317,6 +317,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "3dAnnotations", "Forms and 
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RichMediaAnnotations", "Forms and Annotations\RichMediaAnnotations\VB.NET\RichMediaAnnotations.vbproj", "{93D7ECD1-662B-4ED9-BED8-2686FD1B26F1}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RemovePaths", "Graphics\RemovePaths\VB.NET\RemovePaths.vbproj", "{50471430-05B8-48D6-9CF1-0D4B1E000060}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -883,6 +885,10 @@ Global
 		{93D7ECD1-662B-4ED9-BED8-2686FD1B26F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93D7ECD1-662B-4ED9-BED8-2686FD1B26F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93D7ECD1-662B-4ED9-BED8-2686FD1B26F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50471430-05B8-48D6-9CF1-0D4B1E000060}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50471430-05B8-48D6-9CF1-0D4B1E000060}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50471430-05B8-48D6-9CF1-0D4B1E000060}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50471430-05B8-48D6-9CF1-0D4B1E000060}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1028,6 +1034,7 @@ Global
 		{00F94518-3C76-4FF6-886A-06554EB16C22} = {FBA7A940-CAD1-473C-BCAC-526C122DFA2F}
 		{2FBA1A05-0B99-41AC-A769-01F82DBB0405} = {9025591C-FF6E-452F-BFDA-26E93CC1D358}
 		{93D7ECD1-662B-4ED9-BED8-2686FD1B26F1} = {9025591C-FF6E-452F-BFDA-26E93CC1D358}
+		{50471430-05B8-48D6-9CF1-0D4B1E000060} = {D51D25D4-39F8-43C8-932B-8A680BD8E535}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {50A18C19-4AC0-4BF0-9AA5-7C45E6C1E9A6}
