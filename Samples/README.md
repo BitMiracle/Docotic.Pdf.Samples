@@ -155,7 +155,7 @@
 
 [Patterns](/Samples/Graphics/Patterns)
 
-[Remove paths](/Samples/Images/RemovePaths)
+[Remove paths](/Samples/Graphics/RemovePaths)
 
 [Shapes](/Samples/Graphics/Shapes)
 
