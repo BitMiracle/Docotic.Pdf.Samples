@@ -323,6 +323,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichMediaAnnotations", "For
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemovePaths", "Graphics\RemovePaths\C#\RemovePaths.csproj", "{135AAD79-F96A-410E-BA9D-A624585659B7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemovePaintedImages", "Images\RemovePaintedImages\C#\RemovePaintedImages.csproj", "{C3D31BE2-EC25-4F7F-939B-C08E993D139C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -901,6 +903,10 @@ Global
 		{135AAD79-F96A-410E-BA9D-A624585659B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{135AAD79-F96A-410E-BA9D-A624585659B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{135AAD79-F96A-410E-BA9D-A624585659B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3D31BE2-EC25-4F7F-939B-C08E993D139C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3D31BE2-EC25-4F7F-939B-C08E993D139C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3D31BE2-EC25-4F7F-939B-C08E993D139C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3D31BE2-EC25-4F7F-939B-C08E993D139C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1049,6 +1055,7 @@ Global
 		{6C38D48A-B692-497A-A80B-740341B01EDC} = {A0631674-E845-41C0-8386-D9305DA577E1}
 		{5956E6D2-11C7-48E6-BE8D-385AB5950AA3} = {A0631674-E845-41C0-8386-D9305DA577E1}
 		{135AAD79-F96A-410E-BA9D-A624585659B7} = {E8BF4C4F-2425-4F80-8F1A-9D0B8711D3C5}
+		{C3D31BE2-EC25-4F7F-939B-C08E993D139C} = {4F5146E7-A769-4D0B-94F0-8106CC5C883B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61DC7F3F-A5C8-48BD-845F-83DE6BD2527B}

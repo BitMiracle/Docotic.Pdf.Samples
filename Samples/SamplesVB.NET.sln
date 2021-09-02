@@ -319,6 +319,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RichMediaAnnotations", "For
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RemovePaths", "Graphics\RemovePaths\VB.NET\RemovePaths.vbproj", "{50471430-05B8-48D6-9CF1-0D4B1E000060}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RemovePaintedImages", "Images\RemovePaintedImages\VB.NET\RemovePaintedImages.vbproj", "{3A94DABB-821F-4DFA-B139-B9DE50295DDE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -889,6 +891,10 @@ Global
 		{50471430-05B8-48D6-9CF1-0D4B1E000060}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50471430-05B8-48D6-9CF1-0D4B1E000060}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50471430-05B8-48D6-9CF1-0D4B1E000060}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A94DABB-821F-4DFA-B139-B9DE50295DDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A94DABB-821F-4DFA-B139-B9DE50295DDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A94DABB-821F-4DFA-B139-B9DE50295DDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A94DABB-821F-4DFA-B139-B9DE50295DDE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1035,6 +1041,7 @@ Global
 		{2FBA1A05-0B99-41AC-A769-01F82DBB0405} = {9025591C-FF6E-452F-BFDA-26E93CC1D358}
 		{93D7ECD1-662B-4ED9-BED8-2686FD1B26F1} = {9025591C-FF6E-452F-BFDA-26E93CC1D358}
 		{50471430-05B8-48D6-9CF1-0D4B1E000060} = {D51D25D4-39F8-43C8-932B-8A680BD8E535}
+		{3A94DABB-821F-4DFA-B139-B9DE50295DDE} = {E0428E1E-3748-44F9-A06E-66D4E757F8D0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {50A18C19-4AC0-4BF0-9AA5-7C45E6C1E9A6}

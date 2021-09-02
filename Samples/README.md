@@ -155,12 +155,13 @@
 
 [Patterns](/Samples/Graphics/Patterns)
 
+[Remove paths](/Samples/Images/RemovePaths)
+
 [Shapes](/Samples/Graphics/Shapes)
 
 [Transparency](/Samples/Graphics/Transparency)
 
 # HTML to PDF
-
 [HTML to PDF conversion in console app](/Samples/HtmlToPdf/HtmlToPdfConsole)
 
 [HTML to PDF conversion in Windows Forms app](/Samples/HtmlToPdf/HtmlToPdfWindowsForms)
@@ -195,6 +196,8 @@
 [Extract painted images](/Samples/Images/ExtractPaintedImages)
 
 [Image masks](/Samples/Images/ImageMasks)
+
+[Remove painted images](/Samples/Images/RemovePaintedImages)
 
 [Replace image](/Samples/Images/ReplaceImage)
 

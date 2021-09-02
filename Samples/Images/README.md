@@ -35,6 +35,10 @@ This sample shows how to extract images painted on page in a PDF document using 
 
 This sample shows how to use mask images.
 
+[Remove painted image](/Samples/Images/RemovePaintedImages)
+
+This sample shows how to remove images painted on a PDF page.
+
 [Replace image](/Samples/Images/ReplaceImage)
 
 This sample shows how to replace existing images in PdfDocument.
