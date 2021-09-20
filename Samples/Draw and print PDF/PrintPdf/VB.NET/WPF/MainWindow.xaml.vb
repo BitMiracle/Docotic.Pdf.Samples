@@ -19,6 +19,10 @@
                 dlg.Filter = "PDF files (*.pdf)|*.pdf"
 
                 If dlg.ShowDialog() = Forms.DialogResult.OK Then
+                    ' NOTE:
+                    ' When used in trial mode, the library imposes some restrictions.
+                    ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
+                    ' for more information.
 
                     Using pdf = New PdfDocument(dlg.FileName)
                         action(pdf, getPrintSize())

@@ -69,6 +69,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
         Private Sub printDocument_QueryPageSettings(ByVal sender As Object, ByVal e As QueryPageSettingsEventArgs)
             Dim page = m_pdf.Pages(m_pageIndex)
+
+            ' Auto-detect portrait/landscape orientation.
+            ' Printer settings for orientation are ignored in this sample.
             Dim pageSize = getPageSizeInPoints(page)
             e.PageSettings.Landscape = pageSize.Width > pageSize.Height
 
@@ -77,6 +80,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
         Private Sub printDocument_PrintPage(ByVal sender As Object, ByVal e As PrintPageEventArgs)
             Dim gr = e.Graphics
+
+            ' Work in points to have consistent units for all contexts
+            ' 1. Printer
+            ' 2. Print preview
+            ' 3. PDF
             gr.PageUnit = GraphicsUnit.Point
 
             If m_printAction = PrintAction.PrintToPreview Then
@@ -117,6 +125,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Sub
 
         Private Shared Function getPageBox(ByVal page As PdfPage) As PdfBox
+            ' Emit Adobe Reader behavior - prefer CropBox, but use MediaBox bounds when
+            ' some CropBox bound Is out of MediaBox area.
             Dim mediaBox = page.MediaBox
             Dim cropBox = page.CropBox
 
@@ -153,6 +163,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 printableArea.Height = tmp
             End If
 
+            ' PrintableArea is expressed in hundredths of an inch
             Const PrinterSpaceToPoint = 72.0F / 100.0F
             Return New RectangleF(
                 printableArea.X * PrinterSpaceToPoint,
