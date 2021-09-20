@@ -180,6 +180,8 @@
 
 [Convert URL to PDF ignoring SSL errors](/Samples/HtmlToPdf/ConvertIgnoringSslErrors)
 
+[Convert HTML to PDF with header and footer](/Samples/HtmlToPdf/ConvertWithHeaderAndFooter)
+
 # Images
 [Add and draw images](/Samples/Images/AddAndDrawImage)
 
