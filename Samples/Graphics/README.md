@@ -39,6 +39,10 @@ This sample shows how to construct and use graphics path.
 
 This sample shows how to use colored and uncolored tiling patterns.
 
+[Remove paths](/Samples/Graphics/RemovePaths)
+
+This sample shows how to remove vector paths drawn on a PDF page.
+
 [Shapes](/Samples/Graphics/Shapes)
 
 This sample shows how to draw geometrical shapes, such as circles, ellipses, rectangles and rounded rectangles using PdfCanvas class.

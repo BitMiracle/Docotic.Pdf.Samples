@@ -155,12 +155,13 @@
 
 [Patterns](/Samples/Graphics/Patterns)
 
+[Remove paths](/Samples/Graphics/RemovePaths)
+
 [Shapes](/Samples/Graphics/Shapes)
 
 [Transparency](/Samples/Graphics/Transparency)
 
 # HTML to PDF
-
 [HTML to PDF conversion in console app](/Samples/HtmlToPdf/HtmlToPdfConsole)
 
 [HTML to PDF conversion in Windows Forms app](/Samples/HtmlToPdf/HtmlToPdfWindowsForms)
@@ -179,6 +180,8 @@
 
 [Convert URL to PDF ignoring SSL errors](/Samples/HtmlToPdf/ConvertIgnoringSslErrors)
 
+[Convert HTML to PDF with header and footer](/Samples/HtmlToPdf/ConvertWithHeaderAndFooter)
+
 # Images
 [Add and draw images](/Samples/Images/AddAndDrawImage)
 
@@ -195,6 +198,8 @@
 [Extract painted images](/Samples/Images/ExtractPaintedImages)
 
 [Image masks](/Samples/Images/ImageMasks)
+
+[Remove painted images](/Samples/Images/RemovePaintedImages)
 
 [Replace image](/Samples/Images/ReplaceImage)
 

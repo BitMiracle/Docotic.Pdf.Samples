@@ -38,3 +38,7 @@ This sample shows how to convert a password-protected web page to PDF.
 [Convert URL to PDF ignoring SSL errors](/Samples/HtmlToPdf/ConvertIgnoringSslErrors)
 
 This sample shows how to convert a web page to PDF ignoring SSL errors.
+
+[Convert HTML to PDF with header and footer](/Samples/HtmlToPdf/ConvertWithHeaderAndFooter)
+
+This sample shows how to specify header and footer templates when converting HTML to PDF.
