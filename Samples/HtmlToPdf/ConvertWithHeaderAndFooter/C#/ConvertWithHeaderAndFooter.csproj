@@ -13,6 +13,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="BitMiracle.Docotic.Pdf.HtmlToPdf" Version="8.1.12463-dev" />
+    <PackageReference Include="BitMiracle.Docotic.Pdf.HtmlToPdf" Version="8.2.12561" />
   </ItemGroup>
 </Project>
