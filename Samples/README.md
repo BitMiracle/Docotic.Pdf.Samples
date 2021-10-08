@@ -182,6 +182,8 @@
 
 [Convert HTML to PDF with header and footer](/Samples/HtmlToPdf/ConvertWithHeaderAndFooter)
 
+[Convert HTML and put it over existing PDF content](/Samples/HtmlToPdf/PutHtmlOverPdf)
+
 # Images
 [Add and draw images](/Samples/Images/AddAndDrawImage)
 

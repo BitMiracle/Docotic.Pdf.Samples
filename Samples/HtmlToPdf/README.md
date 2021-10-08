@@ -42,3 +42,7 @@ This sample shows how to convert a web page to PDF ignoring SSL errors.
 [Convert HTML to PDF with header and footer](/Samples/HtmlToPdf/ConvertWithHeaderAndFooter)
 
 This sample shows how to specify header and footer templates when converting HTML to PDF.
+
+[Convert HTML and put it over existing PDF content](/Samples/HtmlToPdf/PutHtmlOverPdf)
+
+This sample shows how to convert HTML and put it over existing PDF content.

@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>BitMiracle.Docotic.Pdf.Samples</RootNamespace>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <StartWorkingDirectory>$(SolutionDir)\HtmlToPdf</StartWorkingDirectory>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="..\..\..\Sample Data\simple-graphics.pdf" Link="simple-graphics.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="BitMiracle.Docotic.Pdf.HtmlToPdf" Version="8.2.12560-dev" />
+  </ItemGroup>
+</Project>
