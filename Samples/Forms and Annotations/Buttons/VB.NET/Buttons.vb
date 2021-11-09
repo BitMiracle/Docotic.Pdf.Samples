@@ -18,7 +18,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 Dim button As PdfButton = page.AddButton(10, 50, 100, 50)
                 button.BackgroundColor = New PdfGrayColor(60)
-                button.BorderColor = New PdfRgbColor(128, 0, 128)
+                button.Border.Color = New PdfRgbColor(128, 0, 128)
                 button.Text = "Button"
 
                 pdf.Save(pathToFile)

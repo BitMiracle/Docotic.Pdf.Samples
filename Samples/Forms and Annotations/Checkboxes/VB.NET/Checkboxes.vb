@@ -23,7 +23,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 readonlyCheckBox.Checked = True
 
                 Dim checkBoxWithBorder As PdfCheckBox = page.AddCheckBox(10, 150, 140, 15, "Check box with colored border")
-                checkBoxWithBorder.BorderColor = New PdfCmykColor(40, 90, 70, 3)
+                checkBoxWithBorder.Border.Color = New PdfCmykColor(40, 90, 70, 3)
 
                 pdf.Save(pathToFile)
             End Using

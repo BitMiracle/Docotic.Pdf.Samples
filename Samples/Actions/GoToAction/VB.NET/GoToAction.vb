@@ -18,8 +18,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 Dim action As PdfGoToAction = pdf.CreateGoToPageAction(1, 300)
                 Dim annotation As PdfActionArea = pdf.Pages(0).AddActionArea(10, 50, 100, 30, action)
-                annotation.BorderColor = New PdfRgbColor(255, 0, 0)
-                annotation.BorderDashPattern = New PdfDashPattern(New Single() {3, 2})
+                annotation.Border.Color = New PdfRgbColor(255, 0, 0)
+                annotation.Border.DashPattern = New PdfDashPattern(New Single() {3, 2})
+                annotation.Border.Width = 1
+                annotation.Border.Style = PdfMarkerLineStyle.Dashed
 
                 pdf.Save("GoToAction.pdf")
             End Using

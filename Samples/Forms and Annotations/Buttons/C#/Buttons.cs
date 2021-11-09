@@ -19,7 +19,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                 PdfButton button = page.AddButton(10, 50, 100, 50);
                 button.BackgroundColor = new PdfGrayColor(60);
-                button.BorderColor = new PdfRgbColor(128, 0, 128);
+                button.Border.Color = new PdfRgbColor(128, 0, 128);
                 button.Text = "Button";
 
                 pdf.Save(pathToFile);

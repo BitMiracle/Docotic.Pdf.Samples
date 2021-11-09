@@ -21,7 +21,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 comboBox.AddItem("First item");
                 comboBox.AddItem("Second item");
                 comboBox.AddItem("Third item");
-                comboBox.BorderColor = new PdfRgbColor(255, 0, 0);
+                comboBox.Border.Color = new PdfRgbColor(255, 0, 0);
                 comboBox.Text = "Second item";
 
                 PdfComboBox comboBox2 = page.AddComboBox(10, 80, 120, 15);

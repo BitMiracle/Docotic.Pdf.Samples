@@ -15,8 +15,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 Dim uriAction As PdfUriAction = pdf.CreateHyperlinkAction(New Uri("http://www.google.com"))
                 Dim annotation As PdfActionArea = pdf.Pages(0).AddActionArea(10, 50, 100, 100, uriAction)
-                annotation.BorderColor = New PdfRgbColor(0, 0, 0)
-                annotation.BorderDashPattern = New PdfDashPattern(New Single() {3, 2})
+                annotation.Border.Color = New PdfRgbColor(0, 0, 0)
+                annotation.Border.DashPattern = New PdfDashPattern(New Single() {3, 2})
+                annotation.Border.Width = 1
+                annotation.Border.Style = PdfMarkerLineStyle.Dashed
 
                 pdf.Save("UriAction.pdf")
             End Using

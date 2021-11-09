@@ -23,7 +23,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 readonlyCheckBox.Checked = true;
 
                 PdfCheckBox checkBoxWithBorder = page.AddCheckBox(10, 150, 140, 15, "Check box with colored border");
-                checkBoxWithBorder.BorderColor = new PdfCmykColor(40, 90, 70, 3);
+                checkBoxWithBorder.Border.Color = new PdfCmykColor(40, 90, 70, 3);
 
                 pdf.Save(pathToFile);
             }

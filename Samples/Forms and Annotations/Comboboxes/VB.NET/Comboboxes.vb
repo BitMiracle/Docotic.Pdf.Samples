@@ -20,7 +20,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 comboBox.AddItem("First item")
                 comboBox.AddItem("Second item")
                 comboBox.AddItem("Third item")
-                comboBox.BorderColor = New PdfRgbColor(255, 0, 0)
+                comboBox.Border.Color = New PdfRgbColor(255, 0, 0)
                 comboBox.Text = "Second item"
 
                 Dim comboBox2 As PdfComboBox = page.AddComboBox(10, 80, 120, 15)
