@@ -1,8 +1,7 @@
-using System.Diagnostics;
+using System;
+using System.IO;
+using System.Reflection;
 using System.Text;
-using System.Windows.Forms;
-
-using BitMiracle.Docotic.Pdf;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -14,10 +13,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // When used in trial mode, the library imposes some restrictions.
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
-            
-            using (PdfDocument pdf = new PdfDocument(@"Sample Data\Attachments.pdf"))
+
+            var location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            using (PdfDocument pdf = new PdfDocument(Path.Combine(location, "Attachments.pdf")))
             {
-                StringBuilder attachmentNames = new StringBuilder(); 
+                StringBuilder attachmentNames = new StringBuilder();
 
                 // collect names of files attached to the document
                 foreach (PdfFileSpecification spec in pdf.SharedAttachments)
@@ -36,7 +36,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     }
                 }
 
-                MessageBox.Show(attachmentNames.ToString(), "Attachments List");
+                Console.WriteLine("Attachments List:");
+                Console.WriteLine(attachmentNames.ToString());
             }
         }
     }
