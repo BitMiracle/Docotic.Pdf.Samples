@@ -53,17 +53,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.FlattenControls()
 
                 ' 6. Clear metadata
-                pdf.Metadata.Basic.Clear()
-                pdf.Metadata.DublinCore.Clear()
-                pdf.Metadata.MediaManagement.Clear()
-                pdf.Metadata.Pdf.Clear()
-                pdf.Metadata.RightsManagement.Clear()
-                pdf.Metadata.[Custom].Properties.Clear()
-
-                For Each schema As XmpSchema In pdf.Metadata.Schemas
-                    schema.Properties.Clear()
-                Next
-
+                pdf.Metadata.Unembed()
                 pdf.Info.Clear(False)
 
                 ' 7. Unembed fonts
