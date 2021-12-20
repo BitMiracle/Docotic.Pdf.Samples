@@ -14,3 +14,4 @@ build/
 packages/
 Samples/HtmlToPdf/.local-chromium
 Samples/HtmlToPdf/*.pdf
+Samples/Output/*.pdf
