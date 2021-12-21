@@ -1,5 +1,5 @@
+using System;
 using System.IO;
-using System.Windows.Forms;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string fdfFile = "ExportFdfData.fdf";
 
-            using (PdfDocument pdf = new PdfDocument("Sample Data/form.pdf"))
+            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\form.pdf"))
             {
                 foreach (PdfControl control in pdf.GetControls())
                 {
@@ -45,7 +45,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.ExportFdf(fdfFile);
             }
 
-            MessageBox.Show("FDF file is exported to " + Path.Combine(Directory.GetCurrentDirectory(), fdfFile));
+            Console.WriteLine("FDF file is exported to " + Path.Combine(Directory.GetCurrentDirectory(), fdfFile));
         }
     }
 }

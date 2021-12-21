@@ -1,4 +1,4 @@
-using System.Windows.Forms;
+using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -11,7 +11,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            using (PdfDocument pdf = new PdfDocument("Sample data/ComboBoxes.pdf"))
+            using (PdfDocument pdf = new PdfDocument(@"..\Sample data\ComboBoxes.pdf"))
             {
                 System.Text.StringBuilder sb = new System.Text.StringBuilder();
                 foreach (PdfWidget widget in pdf.Pages[0].Widgets)
@@ -34,9 +34,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 }
 
                 if (sb.Length == 0)
-                    MessageBox.Show("No combo boxes found on first page");
+                    Console.WriteLine("No combo boxes found on first page");
                 else
-                    MessageBox.Show(sb.ToString());
+                    Console.WriteLine(sb.ToString());
             }
         }
     }

@@ -1,5 +1,3 @@
-Imports System.Diagnostics
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -14,13 +12,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Const pathToFile As String = "FlattenFormFields.pdf"
 
-            Using pdf As New PdfDocument("Sample Data\form.pdf")
+            Using pdf As New PdfDocument("..\Sample Data\form.pdf")
                 pdf.FlattenControls()
 
                 pdf.Save(pathToFile)
             End Using
 
-            Process.Start(pathToFile)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace

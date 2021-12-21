@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -13,7 +13,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "FillForm.pdf";
 
-            using (PdfDocument pdf = new PdfDocument("Sample data/form.pdf"))
+            using (PdfDocument pdf = new PdfDocument(@"..\Sample data\form.pdf"))
             {
                 foreach (PdfControl control in pdf.GetControls())
                 {
@@ -55,7 +55,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Save(pathToFile);
             }
 
-            Process.Start(pathToFile);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }

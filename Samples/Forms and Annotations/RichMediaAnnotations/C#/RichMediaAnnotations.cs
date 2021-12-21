@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -18,14 +18,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 PdfPage page = pdf.Pages[0];
 
                 var bounds = new PdfRectangle(10, 50, 200, 100);
-                PdfFileSpecification sound = pdf.CreateFileAttachment(@"Sample Data\sound.mp3");
+                PdfFileSpecification sound = pdf.CreateFileAttachment(@"..\Sample Data\sound.mp3");
                 PdfRichMediaAnnotation annot = page.AddRichMediaAnnotation(bounds, sound, PdfRichMediaContentType.Sound);
                 annot.Activation.ActivationMode = PdfRichMediaActivationMode.OnPageOpen;
 
                 pdf.Save(PathToFile);
             }
 
-            Process.Start(PathToFile);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }

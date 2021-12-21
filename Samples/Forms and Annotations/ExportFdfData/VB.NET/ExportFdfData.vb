@@ -1,5 +1,4 @@
 Imports System.IO
-Imports System.Windows.Forms
 
 Imports BitMiracle.Docotic.Pdf
 
@@ -13,7 +12,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Dim fdfFile As String = "ExportFdfData.fdf"
 
-            Using pdf As New PdfDocument("Sample Data/form.pdf")
+            Using pdf As New PdfDocument("..\Sample Data\form.pdf")
                 For Each control As PdfControl In pdf.GetControls
                     Select Case control.Name
                         Case "login"
@@ -42,7 +41,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.ExportFdf(fdfFile)
             End Using
 
-            MessageBox.Show("FDF file is exported to " + Path.Combine(Directory.GetCurrentDirectory(), fdfFile))
+            Console.WriteLine("FDF file is exported to " + Path.Combine(Directory.GetCurrentDirectory(), fdfFile))
         End Sub
     End Class
 End Namespace

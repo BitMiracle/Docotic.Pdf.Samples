@@ -1,6 +1,3 @@
-Imports System.Diagnostics
-Imports System.Drawing
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -12,8 +9,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' for more information.
 
             Using pdf As New PdfDocument()
-                Dim startPoint As New PointF(10, 10)
-                Dim size As New SizeF(100, 100)
+                Dim startPoint As New PdfPoint(10, 10)
+                Dim size As New PdfSize(100, 100)
                 Dim distance As Single = 30.0F
                 Dim horizontalAlignments As PdfTextAlign() = {PdfTextAlign.Left, PdfTextAlign.Center, PdfTextAlign.Right}
 
@@ -31,7 +28,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 Dim pathToFile As String = "TextFieldAlignment.pdf"
                 pdf.Save(pathToFile)
-                Process.Start(pathToFile)
+                Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
             End Using
         End Sub
     End Class

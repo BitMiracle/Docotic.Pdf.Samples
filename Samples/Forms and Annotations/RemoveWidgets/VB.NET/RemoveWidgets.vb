@@ -1,4 +1,3 @@
-Imports System.Diagnostics
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -9,10 +8,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
-            Using pdf As New PdfDocument("Sample Data/form.pdf")
+            Using pdf As New PdfDocument("..\Sample Data\form.pdf")
                 pdf.Pages(0).Widgets.RemoveAt(1)
                 pdf.Save("RemoveWidgetFromPage.pdf")
-                Process.Start("RemoveWidgetFromPage.pdf")
 
                 For Each widget As PdfWidget In pdf.GetWidgets()
                     pdf.RemoveWidget(widget)
@@ -21,7 +19,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Save("RemoveWidgets.pdf")
             End Using
 
-            Process.Start("RemoveWidgets.pdf")
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace

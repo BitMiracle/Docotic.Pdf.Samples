@@ -1,8 +1,3 @@
-Imports System.Diagnostics
-Imports System.IO
-
-Imports BitMiracle.Docotic.Pdf
-
 Namespace BitMiracle.Docotic.Pdf.Samples
     Public NotInheritable Class ThreeDAnnotations
         Public Shared Sub Main()
@@ -17,13 +12,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim page As PdfPage = pdf.Pages(0)
 
                 Dim bounds As PdfRectangle = New PdfRectangle(10, 80, 400, 400)
-                Dim annot As Pdf3dAnnotation = page.Add3dAnnotation(bounds, "Sample Data\dice.u3d")
+                Dim annot As Pdf3dAnnotation = page.Add3dAnnotation(bounds, "..\Sample Data\dice.u3d")
                 annot.Activation.ActivationMode = PdfRichMediaActivationMode.OnPageOpen
 
                 pdf.Save(PathToFile)
             End Using
 
-            Process.Start(PathToFile)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace

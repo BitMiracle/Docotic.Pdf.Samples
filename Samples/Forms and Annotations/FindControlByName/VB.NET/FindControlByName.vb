@@ -1,5 +1,3 @@
-Imports System.Diagnostics
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -12,7 +10,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Const pathToFile As String = "FindControlByName.pdf"
 
-            Using pdf As New PdfDocument("Sample Data\form.pdf")
+            Using pdf As New PdfDocument("..\Sample Data\form.pdf")
                 Dim emailTextBox As PdfTextBox = TryCast(pdf.GetControl("email"), PdfTextBox)
                 Debug.Assert(emailTextBox IsNot Nothing)
 
@@ -21,7 +19,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Save(pathToFile)
             End Using
 
-            Process.Start(pathToFile)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace
