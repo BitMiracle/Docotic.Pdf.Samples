@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.IO;
+using System.Reflection;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -12,7 +14,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // for more information.
 
             string outputFileName = "SignDocument.pdf";
-            using (PdfDocument pdf = new PdfDocument("Sample data/jpeg.pdf"))
+            var location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            using (PdfDocument pdf = new PdfDocument(Path.Combine(location, "jpeg.pdf")))
             {
                 // IMPORTANT:
                 // Replace "keystore.p12" and "password" with your own .p12 or .pfx path and password.
@@ -30,7 +33,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.SignAndSave(options, outputFileName);
             }
 
-            Process.Start(outputFileName);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }

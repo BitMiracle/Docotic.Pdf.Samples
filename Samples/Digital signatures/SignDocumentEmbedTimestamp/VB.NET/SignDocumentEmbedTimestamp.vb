@@ -1,4 +1,5 @@
-Imports System.Diagnostics
+Imports System.IO
+Imports System.Reflection
 
 Imports BitMiracle.Docotic.Pdf
 
@@ -11,8 +12,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' for more information.
 
             Dim outputFileName = "SignDocumentEmbedTimestamp.pdf"
-
-            Using pdf As PdfDocument = New PdfDocument("Sample data/jpeg.pdf")
+            Dim location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
+            Using pdf As PdfDocument = New PdfDocument(Path.Combine(location, "jpeg.pdf"))
                 ' IMPORTANT:
                 ' Replace "keystore.p12" And "password" with your own .p12 Or .pfx path And password.
                 ' Without the change the sample will Not work.
@@ -35,7 +36,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.SignAndSave(options, outputFileName)
             End Using
 
-            Process.Start(outputFileName)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace
