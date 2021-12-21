@@ -1,6 +1,6 @@
-using System.Diagnostics;
-
-using BitMiracle.Docotic.Pdf;
+using System;
+using System.IO;
+using System.Reflection;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -15,7 +15,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
             
             string outputPath = "SaveAsTiff.tiff";
 
-            using (var pdf = new PdfDocument(@"Sample Data\jfif3.pdf"))
+            var location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            using (PdfDocument pdf = new PdfDocument(Path.Combine(location, "jfif3.pdf")))
             {
                 PdfDrawOptions options = PdfDrawOptions.Create();
                 options.BackgroundColor = new PdfRgbColor(255, 255, 255);
@@ -23,7 +24,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.SaveAsTiff(outputPath, options);
             }
 
-            Process.Start(outputPath);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }

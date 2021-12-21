@@ -1,4 +1,5 @@
-Imports System.Diagnostics
+Imports System.IO
+Imports System.Reflection
 
 Imports BitMiracle.Docotic.Pdf
 
@@ -12,7 +13,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Dim pathToImage As String = "SavePageAsImage.jpg"
 
-            Using pdf As New PdfDocument("Sample Data\jfif3.pdf")
+            Dim location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
+            Using pdf As New PdfDocument(Path.Combine(location, "jfif3.pdf"))
                 Dim options As PdfDrawOptions = PdfDrawOptions.Create()
                 options.BackgroundColor = New PdfRgbColor(255, 255, 255)
                 options.Compression = ImageCompressionOptions.CreateJpeg()
@@ -20,7 +22,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Pages(1).Save(pathToImage, options)
             End Using
 
-            Process.Start(pathToImage)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace

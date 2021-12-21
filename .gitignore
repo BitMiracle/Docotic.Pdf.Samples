@@ -16,3 +16,5 @@ Samples/HtmlToPdf/.local-chromium
 Samples/HtmlToPdf/*.pdf
 Samples/Output/*.pdf
 Samples/Output/*.doc
+Samples/Output/*.png
+Samples/Output/*.tiff

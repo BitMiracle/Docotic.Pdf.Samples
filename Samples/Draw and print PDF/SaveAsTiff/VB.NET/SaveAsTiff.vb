@@ -1,4 +1,5 @@
-Imports System.Diagnostics
+Imports System.IO
+Imports System.Reflection
 
 Imports BitMiracle.Docotic.Pdf
 
@@ -12,14 +13,15 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Dim outputPath As String = "SaveAsTiff.tiff"
 
-            Using pdf = New PdfDocument("Sample Data\jfif3.pdf")
+            Dim location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
+            Using pdf As New PdfDocument(Path.Combine(location, "jfif3.pdf"))
                 Dim options As PdfDrawOptions = PdfDrawOptions.Create()
                 options.BackgroundColor = New PdfRgbColor(255, 255, 255)
 
                 pdf.SaveAsTiff(outputPath, options)
             End Using
 
-            Process.Start(outputPath)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace

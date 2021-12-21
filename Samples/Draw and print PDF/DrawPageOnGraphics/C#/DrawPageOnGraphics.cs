@@ -1,7 +1,8 @@
-using System.Diagnostics;
+using System;
 using System.Drawing;
+using System.IO;
+using System.Reflection;
 
-using BitMiracle.Docotic.Pdf;
 using BitMiracle.Docotic.Pdf.Gdi;
 
 namespace BitMiracle.Docotic.Pdf.Samples
@@ -17,10 +18,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
             
             string pathToImage = "DrawPageOnGraphics.png";
 
-            using (PdfDocument pdf = new PdfDocument(@"Sample Data\jfif3.pdf"))
+            var location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            using (PdfDocument pdf = new PdfDocument(Path.Combine(location, "jfif3.pdf")))
             {
                 const float TargetResolution = 300;
-                
+
                 PdfPage page = pdf.Pages[0];
                 double scaleFactor = TargetResolution / page.Resolution;
 
@@ -35,7 +37,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 }
             }
 
-            Process.Start(pathToImage);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }
