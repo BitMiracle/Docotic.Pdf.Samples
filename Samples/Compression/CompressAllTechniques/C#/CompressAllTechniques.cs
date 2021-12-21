@@ -2,9 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Windows.Forms;
-
-using BitMiracle.Docotic.Pdf;
+using System.Reflection;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -17,7 +15,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            const string originalFile = @"Sample Data\jpeg.pdf";
+            var location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string originalFile = Path.Combine(location, "jpeg.pdf");
             const string compressedFile = "CompressAllTechniques.pdf";
 
             using (var pdf = new PdfDocument(originalFile))
@@ -85,9 +84,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 new FileInfo(originalFile).Length,
                 new FileInfo(compressedFile).Length
             );
-            MessageBox.Show(message);
+            Console.WriteLine(message);
 
-            Process.Start(compressedFile);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
 
         private static bool optimizeImage(PdfPaintedImage painted)

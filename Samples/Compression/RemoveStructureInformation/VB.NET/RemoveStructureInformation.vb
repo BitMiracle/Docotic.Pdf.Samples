@@ -1,16 +1,13 @@
-Imports System
-Imports System.Diagnostics
 Imports System.IO
-Imports System.Windows.Forms
-
-Imports Microsoft.VisualBasic
 
 Imports BitMiracle.Docotic.Pdf
+Imports System.Reflection
 
 Namespace BitMiracle.Docotic.Pdf.Samples
     Public NotInheritable Class RemoveStructureInformation
         Public Shared Sub Main()
-            Const originalFile As String = "Sample Data\BRAILLE CODES WITH TRANSLATION.pdf"
+            Dim location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
+            Dim originalFile As String = Path.Combine(location, "BRAILLE CODES WITH TRANSLATION.pdf")
             Const compressedFile As String = "RemoveStructureInformation.pdf"
 
             ' NOTE: 
@@ -34,9 +31,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 New FileInfo(originalFile).Length,
                 New FileInfo(compressedFile).Length
             )
-            MessageBox.Show(message)
-
-            Process.Start(compressedFile)
+            Console.WriteLine(message)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace

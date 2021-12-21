@@ -1,6 +1,6 @@
-using System.Diagnostics;
+using System;
 using System.IO;
-using System.Windows.Forms;
+using System.Reflection;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -8,7 +8,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
     {
         public static void Main()
         {
-            const string originalFile = @"Sample Data\BRAILLE CODES WITH TRANSLATION.pdf";
+            var location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string originalFile = Path.Combine(location, "BRAILLE CODES WITH TRANSLATION.pdf");
             const string compressedFile = "RemoveStructureInformation.pdf";
 
             // NOTE: 
@@ -33,9 +34,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 new FileInfo(originalFile).Length,
                 new FileInfo(compressedFile).Length
             );
-            MessageBox.Show(message);
-
-            Process.Start(compressedFile);
+            Console.WriteLine(message);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }
