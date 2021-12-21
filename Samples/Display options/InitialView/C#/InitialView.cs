@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.IO;
+using System.Reflection;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -13,6 +15,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             useFitHeight();
             usePercentZoom();
+
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
 
         private static void useFitHeight()
@@ -24,21 +28,18 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                 pdf.Save("FitHeight.pdf");
             }
-
-            Process.Start("FitHeight.pdf");
         }
 
         private static void usePercentZoom()
         {
-            using (PdfDocument pdf = new PdfDocument("Sample data/form.pdf"))
+            var location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            using (PdfDocument pdf = new PdfDocument(Path.Combine(location, "form.pdf")))
             {
                 pdf.InitialView = pdf.CreateView(0);
                 pdf.InitialView.SetZoom(40);
 
                 pdf.Save("Percent.pdf");
             }
-
-            Process.Start("Percent.pdf");
         }
     }
 }

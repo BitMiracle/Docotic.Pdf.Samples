@@ -1,4 +1,5 @@
-Imports System.Diagnostics
+Imports System.IO
+Imports System.Reflection
 
 Imports BitMiracle.Docotic.Pdf
 
@@ -12,13 +13,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Dim pathToFile As String = "PageLayout.pdf"
 
-            Using pdf As New PdfDocument("Sample data/jfif3.pdf")
+            Dim location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
+            Using pdf As New PdfDocument(Path.Combine(location, "jfif3.pdf"))
                 pdf.PageLayout = PdfPageLayout.TwoColumnLeft
 
                 pdf.Save(pathToFile)
             End Using
 
-            Process.Start(pathToFile)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace
