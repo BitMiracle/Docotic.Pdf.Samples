@@ -1,5 +1,5 @@
 Imports System.IO
-Imports System.Reflection
+
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -11,8 +11,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
-            Dim location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
-            Dim originalFile As String = Path.Combine(location, "jpeg.pdf")
+            Dim originalFile As String = "..\Sample Data\jpeg.pdf"
             Const compressedFile As String = "CompressAllTechniques.pdf"
 
             Using pdf As New PdfDocument(originalFile)

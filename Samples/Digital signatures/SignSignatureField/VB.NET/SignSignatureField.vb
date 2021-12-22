@@ -1,6 +1,3 @@
-Imports System.IO
-Imports System.Reflection
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -12,8 +9,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' for more information.
 
             Dim outputFileName = "SignSignatureField.pdf"
-            Dim location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
-            Using pdf As PdfDocument = New PdfDocument(Path.Combine(location, "SignatureFields.pdf"))
+            Using pdf As PdfDocument = New PdfDocument("..\Sample Data\SignatureFields.pdf")
                 ' IMPORTANT:
                 ' Replace "keystore.p12" And "password" with your own .p12 Or .pfx path And password.
                 ' Without the change the sample will Not work.

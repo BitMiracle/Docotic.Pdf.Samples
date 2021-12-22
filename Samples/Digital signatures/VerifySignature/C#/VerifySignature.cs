@@ -1,7 +1,5 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 
 namespace BitMiracle.Docotic.Pdf.Samples
@@ -16,8 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // for more information.
 
             StringBuilder sb = new StringBuilder();
-            var location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            using (PdfDocument pdf = new PdfDocument(Path.Combine(location, "signed.pdf")))
+            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\signed.pdf"))
             {
                 PdfControl field = pdf.GetControls().FirstOrDefault(c => c.Type == PdfWidgetType.Signature);
                 if (field == null)

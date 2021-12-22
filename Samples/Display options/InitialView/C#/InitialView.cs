@@ -1,6 +1,4 @@
 ﻿using System;
-using System.IO;
-using System.Reflection;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -32,8 +30,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static void usePercentZoom()
         {
-            var location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            using (PdfDocument pdf = new PdfDocument(Path.Combine(location, "form.pdf")))
+            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\form.pdf"))
             {
                 pdf.InitialView = pdf.CreateView(0);
                 pdf.InitialView.SetZoom(40);

@@ -1,6 +1,4 @@
 Imports System.Drawing
-Imports System.IO
-Imports System.Reflection
 
 Imports BitMiracle.Docotic.Pdf
 Imports BitMiracle.Docotic.Pdf.Gdi
@@ -15,8 +13,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Dim pathToImage As String = "DrawPageOnGraphics.png"
 
-            Dim location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
-            Using pdf As New PdfDocument(Path.Combine(location, "jfif3.pdf"))
+            Using pdf As New PdfDocument("..\Sample Data\jfif3.pdf")
                 Const TargetResolution As Single = 300
 
                 Dim page As PdfPage = pdf.Pages(0)

@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Reflection;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -15,8 +13,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            var location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string originalFile = Path.Combine(location, "jpeg.pdf");
+            string originalFile = @"..\Sample Data\jpeg.pdf";
             const string compressedFile = "CompressAllTechniques.pdf";
 
             using (var pdf = new PdfDocument(originalFile))

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.IO;
-using System.Reflection;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -15,8 +13,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "PageLayout.pdf";
 
-            var location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            using (PdfDocument pdf = new PdfDocument(Path.Combine(location, "jfif3.pdf")))
+            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\jfif3.pdf"))
             {
                 pdf.PageLayout = PdfPageLayout.TwoColumnLeft;
 

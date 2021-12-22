@@ -5,11 +5,6 @@
     <StartWorkingDirectory>$(SolutionDir)\Output</StartWorkingDirectory>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="..\..\..\Sample Data\form.pdf" Link="form.pdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="BitMiracle.Docotic.Pdf" Version="8.3.12622" />
   </ItemGroup>
 </Project>

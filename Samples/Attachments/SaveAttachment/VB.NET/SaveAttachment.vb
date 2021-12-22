@@ -1,6 +1,3 @@
-Imports System.IO
-Imports System.Reflection
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -11,8 +8,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
-            Dim location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
-            Using pdf As New PdfDocument(Path.Combine(location, "Attachments.pdf"))
+            Using pdf As New PdfDocument("..\Sample Data\Attachments.pdf")
                 Dim spec As PdfFileSpecification = pdf.SharedAttachments("File Attachment testing.doc")
                 If spec IsNot Nothing And spec.Contents IsNot Nothing Then
                     Const pathToFile As String = "attachment.doc"

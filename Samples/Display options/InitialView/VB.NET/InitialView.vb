@@ -1,6 +1,3 @@
-Imports System.IO
-Imports System.Reflection
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -28,8 +25,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Sub
 
         Private Shared Sub usePercentZoom()
-            Dim location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
-            Using pdf As New PdfDocument(Path.Combine(location, "form.pdf"))
+            Using pdf As New PdfDocument("..\Sample Data\form.pdf")
 
                 pdf.InitialView = pdf.CreateView(0)
                 pdf.InitialView.SetZoom(40)

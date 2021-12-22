@@ -12,8 +12,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' for more information.
 
             Dim outputFileName As String = "SignSignatureFieldUsingCustomStyle.pdf"
-            Dim location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
-            Using pdf As PdfDocument = New PdfDocument(Path.Combine(location, "SignatureFields.pdf"))
+            Using pdf As PdfDocument = New PdfDocument("..\Sample Data\SignatureFields.pdf")
                 ' IMPORTANT:
                 ' Replace "keystore.p12" and "password" with your own .p12 or .pfx path and password.
                 ' Without the change the sample will not work.
@@ -34,7 +33,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 appearance.IncludeDate = False
                 appearance.IncludeDistinguishedName = False
 
-                appearance.Image = pdf.AddImage("Sample Data/ammerland.jpg")
+                appearance.Image = pdf.AddImage("..\Sample Data\ammerland.jpg")
                 appearance.Font = pdf.AddFont(PdfBuiltInFont.Courier)
                 appearance.FontSize = 0 ' calculate font size automatically
                 appearance.FontColor = New PdfRgbColor(0, 0, 255)

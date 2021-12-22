@@ -1,12 +1,6 @@
-Imports System
-Imports System.Diagnostics
 Imports System.IO
-Imports System.Windows.Forms
-
-Imports Microsoft.VisualBasic
 
 Imports BitMiracle.Docotic.Pdf
-Imports System.Reflection
 
 Namespace BitMiracle.Docotic.Pdf.Samples
     Public NotInheritable Class OptimizeImages
@@ -17,8 +11,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
-            Dim location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
-            Dim originalFile As String = Path.Combine(location, "jpeg.pdf")
+            Dim originalFile As String = "..\Sample Data\jpeg.pdf"
             Const compressedFile As String = "OptimizeImages.pdf"
 
             Using pdf As New PdfDocument(originalFile)

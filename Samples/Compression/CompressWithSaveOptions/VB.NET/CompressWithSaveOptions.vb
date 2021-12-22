@@ -1,13 +1,11 @@
 Imports System.IO
-Imports System.Reflection
 
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
     Public NotInheritable Class CompressWithSaveOptions
         Public Shared Sub Main()
-            Dim location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
-            Dim originalFile As String = Path.Combine(location, "BRAILLE CODES WITH TRANSLATION.pdf")
+            Dim originalFile As String = "..\Sample Data\BRAILLE CODES WITH TRANSLATION.pdf"
             Const compressedFile As String = "CompressWithSaveOptions.pdf"
 
             ' NOTE: 

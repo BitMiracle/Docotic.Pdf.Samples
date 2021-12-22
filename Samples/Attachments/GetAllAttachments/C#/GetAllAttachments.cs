@@ -1,6 +1,4 @@
 using System;
-using System.IO;
-using System.Reflection;
 using System.Text;
 
 namespace BitMiracle.Docotic.Pdf.Samples
@@ -14,8 +12,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            var location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            using (PdfDocument pdf = new PdfDocument(Path.Combine(location, "Attachments.pdf")))
+            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\Attachments.pdf"))
             {
                 StringBuilder attachmentNames = new StringBuilder();
 

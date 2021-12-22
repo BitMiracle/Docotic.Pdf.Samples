@@ -1,5 +1,3 @@
-Imports System.IO
-Imports System.Reflection
 Imports System.Text
 
 Imports BitMiracle.Docotic.Pdf
@@ -12,8 +10,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
-            Dim location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
-            Using pdf As New PdfDocument(Path.Combine(location, "Attachments.pdf"))
+            Using pdf As New PdfDocument("..\Sample Data\Attachments.pdf")
                 Dim attachmentNames As New StringBuilder()
 
                 ' collect names of files attached to the document

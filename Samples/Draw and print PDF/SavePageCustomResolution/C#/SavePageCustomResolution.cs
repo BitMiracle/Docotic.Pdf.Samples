@@ -1,6 +1,4 @@
 using System;
-using System.IO;
-using System.Reflection;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -15,8 +13,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToImage = "SavePageCustomResolution.png";
 
-            var location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            using (PdfDocument pdf = new PdfDocument(Path.Combine(location, "gmail-cheat-sheet.pdf")))
+            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\gmail-cheat-sheet.pdf"))
             {
                 PdfDrawOptions options = PdfDrawOptions.Create();
                 options.BackgroundColor = new PdfRgbColor(255, 255, 255);

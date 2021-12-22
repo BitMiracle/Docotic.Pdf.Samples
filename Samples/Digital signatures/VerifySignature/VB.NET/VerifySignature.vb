@@ -1,5 +1,3 @@
-Imports System.IO
-Imports System.Reflection
 Imports System.Text
 
 Imports BitMiracle.Docotic.Pdf
@@ -13,8 +11,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' for more information.
 
             Dim sb As StringBuilder = New StringBuilder()
-            Dim location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
-            Using pdf As PdfDocument = New PdfDocument(Path.Combine(location, "signed.pdf"))
+            Using pdf As PdfDocument = New PdfDocument("..\Sample Data\signed.pdf")
                 Dim field As PdfControl = pdf.GetControls().FirstOrDefault(Function(c) c.Type = PdfWidgetType.Signature)
                 If field Is Nothing Then
                     Console.WriteLine("Document does not contain signature fields", "Verification result")
