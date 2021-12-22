@@ -1,4 +1,4 @@
-using System.Diagnostics;
+using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -13,14 +13,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "LinearizeDocument.pdf";
 
-            using (PdfDocument pdf = new PdfDocument(@"Sample Data\gmail-cheat-sheet.pdf"))
+            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\gmail-cheat-sheet.pdf"))
             {
                 pdf.SaveOptions.Linearize = true;
 
                 pdf.Save(pathToFile);
             }
 
-            Process.Start(pathToFile);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }

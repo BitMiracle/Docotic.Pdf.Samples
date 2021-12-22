@@ -1,8 +1,4 @@
-Imports System.Diagnostics
 Imports System.Text
-Imports System.Windows.Forms
-
-Imports Microsoft.VisualBasic
 
 Imports BitMiracle.Docotic.Pdf
 
@@ -14,7 +10,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
-            Const originalFile As String = "Sample Data\Link.pdf"
+            Const originalFile As String = "..\Sample Data\Link.pdf"
             Using first As New PdfDocument(originalFile)
                 first.Save("first.pdf")
             End Using
@@ -46,7 +42,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 message.AppendLine("No")
             End If
 
-            MessageBox.Show(message.ToString())
+            Console.WriteLine(message.ToString())
         End Sub
     End Class
 End Namespace

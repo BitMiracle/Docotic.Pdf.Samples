@@ -1,6 +1,6 @@
+using System;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -13,7 +13,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             string[] documentsToCheck = { "encrypted.pdf", "jfif3.pdf", "public-key-encrypted.pdf" };
             foreach (string fileName in documentsToCheck)
             {
-                PdfEncryptionInfo info = PdfDocument.GetEncryptionInfo(@"Sample Data\" + fileName);
+                PdfEncryptionInfo info = PdfDocument.GetEncryptionInfo(@"..\Sample Data\" + fileName);
                 if (info == null)
                 {
                     message.AppendFormat("{0} - is not encrypted\r\n", fileName);
@@ -33,7 +33,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 }
             }
 
-            MessageBox.Show(message.ToString());
+            Console.WriteLine(message.ToString());
         }
     }
 }

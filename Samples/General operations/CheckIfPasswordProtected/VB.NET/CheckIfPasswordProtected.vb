@@ -1,10 +1,6 @@
 Imports System.Text
-Imports System.Windows.Forms
-
-Imports Microsoft.VisualBasic
 
 Imports BitMiracle.Docotic.Pdf
-Imports System.Linq
 
 Namespace BitMiracle.Docotic.Pdf.Samples
     Public NotInheritable Class CheckIfPasswordProtected
@@ -13,7 +9,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Dim documentsToCheck As String() = {"encrypted.pdf", "jfif3.pdf", "public-key-encrypted.pdf"}
             For Each fileName As String In documentsToCheck
-                Dim info As PdfEncryptionInfo = PdfDocument.GetEncryptionInfo("Sample Data\" & fileName)
+                Dim info As PdfEncryptionInfo = PdfDocument.GetEncryptionInfo("..\Sample Data\" & fileName)
                 If info Is Nothing Then
                     message.AppendFormat("{0} - is not encrypted" & vbCrLf, fileName)
                 ElseIf TypeOf info Is PdfStandardEncryptionInfo Then
@@ -31,7 +27,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 End If
             Next
 
-            MessageBox.Show(message.ToString())
+            Console.WriteLine(message.ToString())
         End Sub
     End Class
 End Namespace

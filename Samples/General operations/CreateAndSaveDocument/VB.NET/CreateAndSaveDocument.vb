@@ -1,6 +1,3 @@
-Imports System.Diagnostics
-Imports System.IO
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -22,8 +19,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Save(pathToFile)
             End Using
 
-            ' opens saved document in default PDF viewer
-            Process.Start(pathToFile)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace

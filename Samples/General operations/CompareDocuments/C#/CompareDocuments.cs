@@ -1,6 +1,5 @@
-using System.Diagnostics;
+using System;
 using System.Text;
-using System.Windows.Forms;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -13,7 +12,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            const string originalFile = @"Sample Data\Link.pdf";
+            const string originalFile = @"..\Sample Data\Link.pdf";
             using (PdfDocument first = new PdfDocument(originalFile))
                 first.Save("first.pdf");
 
@@ -35,7 +34,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             equals = PdfDocument.DocumentsAreEqual("first.pdf", "third.pdf");
             message.AppendLine("first.pdf equals to third.pdf?\r\n" + (equals ? "Yes" : "No"));
 
-            MessageBox.Show(message.ToString());
+            Console.WriteLine(message.ToString());
         }
     }
 }

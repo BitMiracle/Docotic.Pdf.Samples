@@ -1,6 +1,4 @@
-using System.Windows.Forms;
-
-using BitMiracle.Docotic.Pdf;
+using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -13,10 +11,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
             
-            using (PdfDocument pdf = new PdfDocument(@"Sample Data\PDF-A.pdf"))
+            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\PDF-A.pdf"))
             {
                 PdfaConformance level = pdf.GetPdfaConformance();
-                MessageBox.Show("PDF/A conformance level: " + level);
+                Console.WriteLine("PDF/A conformance level: " + level);
             }
         }
     }
