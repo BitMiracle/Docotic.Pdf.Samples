@@ -1,5 +1,7 @@
 Imports System.IO
+Imports System.Reflection
 Imports System.Text
+Imports BitMiracle.Docotic.Pdf
 Imports Tesseract
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -11,10 +13,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' for more information.
 
             Dim documentText = New StringBuilder()
-            Using pdf = New PdfDocument("Sample data/Freedman Scora.pdf")
-
-                Using engine = New TesseractEngine("tessdata", "eng", EngineMode.LstmOnly)
-
+            Using pdf = New PdfDocument("..\Sample data\Freedman Scora.pdf")
+                Dim location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
+                Dim tessData = Path.Combine(location, "tessdata")
+                Using engine = New TesseractEngine(tessData, "eng", EngineMode.LstmOnly)
                     For i As Integer = 0 To pdf.PageCount - 1
                         If documentText.Length > 0 Then documentText.Append(vbCrLf & vbCrLf)
 
@@ -58,7 +60,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 writer.Write(documentText.ToString())
             End Using
 
-            Process.Start(Result)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace

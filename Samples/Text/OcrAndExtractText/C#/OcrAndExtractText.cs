@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Text;
+
 using Tesseract;
 
 namespace BitMiracle.Docotic.Pdf.Samples
@@ -16,9 +17,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // for more information.
 
             var documentText = new StringBuilder();
-            using (var pdf = new PdfDocument("Sample data/Freedman Scora.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample data\Freedman Scora.pdf"))
             {
-                using (var engine = new TesseractEngine(@"tessdata", "eng", EngineMode.LstmOnly))
+                var location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                var tessData = Path.Combine(location, @"tessdata");
+                using (var engine = new TesseractEngine(tessData, "eng", EngineMode.LstmOnly))
                 {
                     for (int i = 0; i < pdf.PageCount; ++i)
                     {
@@ -67,7 +70,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             using (var writer = new StreamWriter(Result))
                 writer.Write(documentText.ToString());
 
-            Process.Start(Result);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }

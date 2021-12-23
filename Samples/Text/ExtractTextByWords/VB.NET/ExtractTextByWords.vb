@@ -1,5 +1,3 @@
-Imports System.Diagnostics
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -12,7 +10,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Dim pathToFile As String = "ExtractTextByWords.pdf"
 
-            Using pdf As New PdfDocument("Sample Data\form.pdf")
+            Using pdf As New PdfDocument("..\Sample Data\form.pdf")
 
                 Dim page As PdfPage = pdf.Pages(0)
                 For Each data As PdfTextData In page.GetWords()
@@ -22,7 +20,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Save(pathToFile)
             End Using
 
-            Process.Start(pathToFile)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace

@@ -1,6 +1,6 @@
-Imports System
-Imports System.Collections.Generic
-Imports System.Diagnostics
+Imports System.IO
+Imports System.Reflection
+Imports BitMiracle.Docotic.Pdf
 Imports Tesseract
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -11,12 +11,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
-            Using pdf = New PdfDocument("Sample data/Freedman Scora.pdf")
+            Using pdf = New PdfDocument("..\Sample data\Freedman Scora.pdf")
                 ' This font Is used to draw all recognized text chunks in PDF.
                 ' Make sure that the font defines all glyphs for the target language.
                 Dim universalFont As PdfFont = pdf.AddFont("Arial")
 
-                Using engine = New TesseractEngine("tessdata", "eng", EngineMode.LstmOnly)
+                Dim location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
+                Dim tessData = Path.Combine(location, "tessdata")
+                Using engine = New TesseractEngine(tessData, "eng", EngineMode.LstmOnly)
                     For i As Integer = 0 To pdf.PageCount - 1
                         Dim page As PdfPage = pdf.Pages(i)
 
@@ -51,7 +53,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 universalFont.RemoveUnusedGlyphs()
                 Const Result As String = "OcrAndMakeSearchable.pdf"
                 pdf.Save(Result)
-                Process.Start(Result)
+
+                Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
             End Using
         End Sub
 
