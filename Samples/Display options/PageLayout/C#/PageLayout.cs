@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -13,14 +13,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "PageLayout.pdf";
 
-            using (PdfDocument pdf = new PdfDocument("Sample data/jfif3.pdf"))
+            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\jfif3.pdf"))
             {
                 pdf.PageLayout = PdfPageLayout.TwoColumnLeft;
 
                 pdf.Save(pathToFile);
             }
 
-            Process.Start(pathToFile);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }

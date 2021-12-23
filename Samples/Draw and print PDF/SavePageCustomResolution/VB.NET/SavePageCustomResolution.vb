@@ -1,5 +1,3 @@
-Imports System.Diagnostics
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -12,7 +10,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Dim pathToImage As String = "SavePageCustomResolution.png"
 
-            Using pdf As New PdfDocument("Sample Data\gmail-cheat-sheet.pdf")
+            Using pdf As New PdfDocument("..\Sample Data\gmail-cheat-sheet.pdf")
                 Dim options As PdfDrawOptions = PdfDrawOptions.Create()
                 options.BackgroundColor = New PdfRgbColor(255, 255, 255)
                 options.HorizontalResolution = 600
@@ -21,7 +19,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Pages(0).Save(pathToImage, options)
             End Using
 
-            Process.Start(pathToImage)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace

@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -13,14 +13,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "MergeDocuments.pdf";
 
-            using (PdfDocument pdf = new PdfDocument("Sample data/form.pdf"))
+            using (PdfDocument pdf = new PdfDocument(@"..\Sample data\form.pdf"))
             {
-                pdf.Append("Sample data/jfif3.pdf");
+                pdf.Append(@"..\Sample data\jfif3.pdf");
 
                 pdf.Save(pathToFile);
             }
 
-            Process.Start(pathToFile);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Threading.Tasks;
 
 using BitMiracle.Docotic.Pdf.HtmlToPdf;
@@ -25,9 +24,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     pdf.Save("ConvertLocalHtmlString.pdf");
 
                 // Convert a local HTML file
-                var assemblyPath = AppDomain.CurrentDomain.BaseDirectory;
-                var sampleHtmlPath = Path.Combine(assemblyPath, "sample.html");
-                using (var pdf = await converter.CreatePdfAsync(sampleHtmlPath))
+                using (var pdf = await converter.CreatePdfAsync(@"..\Sample Data\sample.html"))
                     pdf.Save("ConvertLocalHtmlFile.pdf");
 
                 // Convert some HTML specifying a base URL

@@ -1,6 +1,4 @@
-using System.Diagnostics;
-
-using BitMiracle.Docotic.Pdf;
+using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -15,14 +13,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
             
             string pathToImage = "MakePageThumbnail.png";
 
-            using (PdfDocument pdf = new PdfDocument(@"Sample Data/jfif3.pdf"))
+            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\jfif3.pdf"))
             {
                 PdfDrawOptions options = PdfDrawOptions.CreateFitSize(new PdfSize(200, 200), false);
                 options.BackgroundColor = new PdfGrayColor(100);
                 pdf.Pages[0].Save(pathToImage, options);
             }
 
-            Process.Start(pathToImage);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }

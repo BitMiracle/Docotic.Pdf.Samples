@@ -1,9 +1,8 @@
-Imports System
-Imports System.Diagnostics
 Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports System.Drawing.Imaging
 Imports System.IO
+
 Imports BitMiracle.Docotic.Pdf
 Imports BitMiracle.Docotic.Pdf.Gdi
 
@@ -17,7 +16,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Const PathToFile As String = "ExtractPageObjects.png"
 
-            Using pdf = New PdfDocument("Sample Data\gmail-cheat-sheet.pdf")
+            Using pdf = New PdfDocument("..\Sample Data\gmail-cheat-sheet.pdf")
                 Dim page As PdfPage = pdf.Pages(0)
 
                 Const TargetResolution As Single = 300
@@ -49,7 +48,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 End Using
             End Using
 
-            Process.Start(PathToFile)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
 
         Private Shared Sub drawText(gr As Graphics, td As PdfTextData)

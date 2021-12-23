@@ -1,6 +1,4 @@
-using System.Diagnostics;
-
-using BitMiracle.Docotic.Pdf;
+using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -13,7 +11,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            using (PdfDocument pdf = new PdfDocument(@"Sample Data\ImageScaleAndRotate.pdf"))
+            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\ImageScaleAndRotate.pdf"))
             {
                 PdfCollection<PdfPaintedImage> paintedImages = pdf.Pages[0].GetPaintedImages();
                 
@@ -21,14 +19,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                 // save image as is
                 string imageAsIs = "PdfImage.Save";
-                string fullPath = image.Image.Save(imageAsIs);
-                Process.Start(fullPath);
+                image.Image.Save(imageAsIs);
 
                 // save image as painted
                 string imageAsPainted = "PdfPaintedImage.SaveAsPainted.tiff";
                 image.SaveAsPainted(imageAsPainted, PdfExtractedImageFormat.Tiff);
-                Process.Start(imageAsPainted);
             }
+
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }

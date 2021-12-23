@@ -1,10 +1,9 @@
 using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
-using BitMiracle.Docotic.Pdf;
+
 using BitMiracle.Docotic.Pdf.Gdi;
 
 namespace BitMiracle.Docotic.Pdf.Samples
@@ -20,7 +19,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             const string PathToFile = "ExtractPageObjects.png";
 
-            using (var pdf = new PdfDocument(@"Sample Data\gmail-cheat-sheet.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample Data\gmail-cheat-sheet.pdf"))
             {
                 PdfPage page = pdf.Pages[0];
 
@@ -60,7 +59,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 }
             }
 
-            Process.Start(PathToFile);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
 
         private static void drawText(Graphics gr, PdfTextData td)

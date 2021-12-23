@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -15,14 +15,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 PdfCanvas canvas = pdf.Pages[0].Canvas;
 
-                PdfColorProfile colorProfile = pdf.AddColorProfile("Sample data/AdobeRGB1998.icc");
+                PdfColorProfile colorProfile = pdf.AddColorProfile(@"..\Sample data\AdobeRGB1998.icc");
                 canvas.Brush.Color = new PdfRgbColor(colorProfile, 20, 80, 240);
                 canvas.DrawRectangle(new PdfRectangle(10, 50, 100, 70), PdfDrawMode.Fill);
 
                 pdf.Save("ColorProfiles.pdf");
             }
 
-            Process.Start("ColorProfiles.pdf");
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }

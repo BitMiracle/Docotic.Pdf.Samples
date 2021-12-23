@@ -1,7 +1,4 @@
-Imports System
-Imports System.Collections.Generic
-Imports System.Diagnostics
-Imports System.Linq
+Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
     Public NotInheritable Class FindAndHighlightText
@@ -13,7 +10,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Dim pathToFile As String = "FindAndHighlightText.pdf"
 
-            Using pdf As New PdfDocument("Sample Data\jfif3.pdf")
+            Using pdf As New PdfDocument("..\Sample Data\jfif3.pdf")
                 Const TextToFind As String = "JPEG File Interchange Format"
                 Const Comparison As StringComparison = StringComparison.InvariantCultureIgnoreCase
                 Dim highlightColor = New PdfRgbColor(255, 255, 0)
@@ -23,7 +20,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Save(pathToFile)
             End Using
 
-            Process.Start(pathToFile)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
 
         Private Shared Sub highlightPhrases(
@@ -123,7 +120,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 If result.TryGetValue(matrix, matrixChunks) Then
                     matrixChunks.Add(word)
                 Else
-                    result(matrix) = New List(Of PdfTextData) From { word }
+                    result(matrix) = New List(Of PdfTextData) From {word}
                 End If
             Next
 

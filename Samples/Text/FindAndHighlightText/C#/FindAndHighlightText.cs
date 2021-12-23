@@ -16,7 +16,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "FindAndHighlightText.pdf";
 
-            using (var pdf = new PdfDocument(@"Sample Data\jfif3.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample Data\jfif3.pdf"))
             {
                 const string TextToFind = "JPEG File Interchange Format";
                 const StringComparison Comparison = StringComparison.InvariantCultureIgnoreCase;
@@ -27,7 +27,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Save(pathToFile);
             }
 
-            Process.Start(pathToFile);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
 
         private static void highlightPhrases(PdfDocument pdf, string textToFind, StringComparison comparison,

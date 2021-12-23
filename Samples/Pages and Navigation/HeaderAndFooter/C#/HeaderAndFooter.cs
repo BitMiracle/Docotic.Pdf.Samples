@@ -1,4 +1,4 @@
-using System.Diagnostics;
+using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -13,7 +13,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             
             const string PathToFile = "HeaderAndFooter.pdf";
 
-            using (var pdf = new PdfDocument(@"Sample Data/BRAILLE CODES WITH TRANSLATION.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample Data\BRAILLE CODES WITH TRANSLATION.pdf"))
             {
                 PdfFont font = pdf.AddFont(PdfBuiltInFont.Helvetica);
 
@@ -27,7 +27,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Save(PathToFile);
             }
 
-            Process.Start(PathToFile);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
 
         private static void drawHeader(PdfPage page, PdfFont font)

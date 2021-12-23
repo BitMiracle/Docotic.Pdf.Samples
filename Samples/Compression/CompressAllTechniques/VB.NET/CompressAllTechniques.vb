@@ -1,8 +1,5 @@
-Imports System
-Imports System.Collections.Generic
-Imports System.Diagnostics
 Imports System.IO
-Imports System.Windows.Forms
+
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -14,7 +11,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
-            Const originalFile As String = "Sample Data\jpeg.pdf"
+            Dim originalFile As String = "..\Sample Data\jpeg.pdf"
             Const compressedFile As String = "CompressAllTechniques.pdf"
 
             Using pdf As New PdfDocument(originalFile)
@@ -73,9 +70,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 New FileInfo(originalFile).Length,
                 New FileInfo(compressedFile).Length
             )
-            MessageBox.Show(message)
-
-            Process.Start(compressedFile)
+            Console.WriteLine(message)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
 
         Private Shared Function optimizeImage(ByVal painted As PdfPaintedImage) As Boolean

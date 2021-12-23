@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.IO;
+using System.Reflection;
+
 using Tesseract;
 
 namespace BitMiracle.Docotic.Pdf.Samples
@@ -14,13 +16,15 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            using (var pdf = new PdfDocument("Sample data/Freedman Scora.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample data\Freedman Scora.pdf"))
             {
                 // This font is used to draw all recognized text chunks in PDF.
                 // Make sure that the font defines all glyphs for the target language.
                 PdfFont universalFont = pdf.AddFont("Arial");
 
-                using (var engine = new TesseractEngine(@"tessdata", "eng", EngineMode.LstmOnly))
+                var location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                var tessData = Path.Combine(location, @"tessdata");
+                using (var engine = new TesseractEngine(tessData, "eng", EngineMode.LstmOnly))
                 {
                     for (int i = 0; i < pdf.PageCount; ++i)
                     {
@@ -66,7 +70,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 const string Result = "OcrAndMakeSearchable.pdf";
                 pdf.Save(Result);
 
-                Process.Start(Result);
+                Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
             }
         }
 

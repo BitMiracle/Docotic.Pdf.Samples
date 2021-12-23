@@ -1,6 +1,3 @@
-Imports System.Diagnostics
-Imports System.IO
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -17,14 +14,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim page As PdfPage = pdf.Pages(0)
 
                 Dim bounds As PdfRectangle = New PdfRectangle(10, 50, 200, 100)
-                Dim sound As PdfFileSpecification = pdf.CreateFileAttachment("Sample Data\sound.mp3")
+                Dim sound As PdfFileSpecification = pdf.CreateFileAttachment("..\Sample Data\sound.mp3")
                 Dim annot As PdfRichMediaAnnotation = page.AddRichMediaAnnotation(bounds, sound, PdfRichMediaContentType.Sound)
                 annot.Activation.ActivationMode = PdfRichMediaActivationMode.OnPageOpen
 
                 pdf.Save(PathToFile)
             End Using
 
-            Process.Start(PathToFile)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace

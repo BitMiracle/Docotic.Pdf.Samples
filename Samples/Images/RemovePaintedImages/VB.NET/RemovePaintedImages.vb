@@ -1,5 +1,3 @@
-Imports System.Diagnostics
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -12,7 +10,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Const PathToFile As String = "RemovePaintedImages.pdf"
 
-            Using pdf = New PdfDocument("Sample Data\ImageScaleAndRotate.pdf")
+            Using pdf = New PdfDocument("..\Sample Data\ImageScaleAndRotate.pdf")
                 Dim page As PdfPage = pdf.Pages(0)
                 page.RemovePaintedImages(
                     Function(image)
@@ -24,7 +22,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Save(PathToFile)
             End Using
 
-            Process.Start(PathToFile)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace

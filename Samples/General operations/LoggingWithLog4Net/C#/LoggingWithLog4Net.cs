@@ -24,7 +24,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // will put its log messages into the configured loggers. 
             // The following code should produce log messages in console and in 
             // log-file.txt file next to application's exe file.
-            using (PdfDocument pdf = new PdfDocument(@"Sample Data\Attachments.pdf"))
+            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\Attachments.pdf"))
             {
                 using (MemoryStream ms = new MemoryStream())
                     pdf.Pages[0].Save(ms, PdfDrawOptions.Create()); 

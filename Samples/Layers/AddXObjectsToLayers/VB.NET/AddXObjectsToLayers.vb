@@ -1,7 +1,3 @@
-Imports System.Diagnostics
-Imports System.Drawing
-Imports System.IO
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -14,7 +10,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
-			Dim pathToFile As String = "AddXObjectsToLayers.pdf"
+            Dim pathToFile As String = "AddXObjectsToLayers.pdf"
 
             Using pdf As New PdfDocument()
                 pdf.PageMode = PdfPageMode.UseOC
@@ -38,7 +34,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Save(pathToFile)
             End Using
 
-            Process.Start(pathToFile)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace

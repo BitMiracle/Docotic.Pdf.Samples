@@ -1,4 +1,4 @@
-using System.Diagnostics;
+using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -11,11 +11,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            using (PdfDocument pdf = new PdfDocument("Sample Data/form.pdf"))
+            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\form.pdf"))
             {
                 pdf.Pages[0].Widgets.RemoveAt(1);
                 pdf.Save("RemoveWidgetFromPage.pdf");
-                Process.Start("RemoveWidgetFromPage.pdf");
 
                 foreach (PdfWidget widget in pdf.GetWidgets())
                     pdf.RemoveWidget(widget);
@@ -23,7 +22,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Save("RemoveWidgets.pdf");
             }
 
-            Process.Start("RemoveWidgets.pdf");
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }

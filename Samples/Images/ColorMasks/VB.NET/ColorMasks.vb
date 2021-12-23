@@ -1,5 +1,3 @@
-Imports System.Diagnostics
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -20,13 +18,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.Brush.Color = New PdfRgbColor(0, 255, 0)
                 canvas.DrawRectangle(New PdfRectangle(50, 450, 1150, 150), PdfDrawMode.Fill)
 
-                Dim image As PdfImage = pdf.AddImage("Sample data/pink.png", New PdfRgbColor(255, 0, 255))
+                Dim image As PdfImage = pdf.AddImage("..\Sample data\pink.png", New PdfRgbColor(255, 0, 255))
                 canvas.DrawImage(image, 550, 200)
 
                 pdf.Save(pathToFile)
             End Using
 
-            Process.Start(pathToFile)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace

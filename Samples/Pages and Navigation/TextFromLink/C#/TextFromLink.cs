@@ -1,7 +1,5 @@
 using System;
-using System.Drawing;
 using System.Text;
-using System.Windows.Forms;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -41,12 +39,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            using (PdfDocument pdf = new PdfDocument(@"Sample Data\Link.pdf"))
+            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\Link.pdf"))
             {
                 LinkInfo linkInfo = getFirstLink(pdf);
                 if (linkInfo == null)
                 {
-                    MessageBox.Show("Document doesn't contain links!");
+                    Console.WriteLine("Document doesn't contain links!");
                     return;
                 }
 
@@ -61,8 +59,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 linkDescription.AppendLine("Text from link:");
                 linkDescription.AppendLine(getTextFromLink(linkInfo.Action));
 
-                System.Diagnostics.Process.Start(@"Sample Data\Link.pdf");
-                MessageBox.Show(linkDescription.ToString());
+                Console.WriteLine(linkDescription.ToString());
+                Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
             }
         }
 

@@ -1,4 +1,4 @@
-using System.Diagnostics;
+using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -13,7 +13,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             const string PathToFile = "CopyPageObjects.pdf";
 
-            using (var pdf = new PdfDocument(@"Sample Data/BRAILLE CODES WITH TRANSLATION.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample Data\BRAILLE CODES WITH TRANSLATION.pdf"))
             {
                 using (PdfDocument copy = pdf.CopyPages(0, 1))
                 {
@@ -69,7 +69,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 }
             }
 
-            Process.Start(PathToFile);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
 
         private static void setClipRegion(PdfCanvas canvas, PdfClipRegion clipRegion)

@@ -1,4 +1,3 @@
-Imports System.Windows.Forms
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -28,13 +27,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 ' This will only work if a matching certificate is installed in the
                 ' X.509 certificate store used by the current user
                 Using pdf As PdfDocument = New PdfDocument(encryptedFile)
-                    MessageBox.Show(
+                    Console.WriteLine(
                         String.Format(
                         "Opened with an auto-selected certificate from the current user certificate store. " &
                         "Permissions = {0}", pdf.GrantedPermissions))
                 End Using
             Catch ex As PdfException
-                MessageBox.Show(ex.ToString())
+                Console.WriteLine(ex.ToString())
             End Try
         End Sub
 
@@ -43,13 +42,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim handler As PdfPublicKeyDecryptionHandler = New PdfPublicKeyDecryptionHandler(keyStore, password)
 
                 Using pdf As PdfDocument = New PdfDocument(encryptedFile, handler)
-                    MessageBox.Show(
+                    Console.WriteLine(
                         String.Format(
                         "Opened with a certificate from the key store at {0}. Permissions = {1}",
                         keyStore, pdf.GrantedPermissions))
                 End Using
             Catch ex As PdfException
-                MessageBox.Show(ex.ToString())
+                Console.WriteLine(ex.ToString())
             End Try
         End Sub
     End Class

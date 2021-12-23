@@ -1,4 +1,4 @@
-using System.Diagnostics;
+using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -13,14 +13,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "ImportFdfData.pdf";
 
-            using (PdfDocument pdf = new PdfDocument("Sample data/form.pdf"))
+            using (PdfDocument pdf = new PdfDocument(@"..\Sample data\form.pdf"))
             {
-                pdf.ImportFdf("Sample data/form.fdf");
+                pdf.ImportFdf(@"..\Sample data\form.fdf");
 
                 pdf.Save(pathToFile);
             }
 
-            Process.Start(pathToFile);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }

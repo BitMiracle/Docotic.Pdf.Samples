@@ -1,6 +1,4 @@
-using System.Diagnostics;
-
-using BitMiracle.Docotic.Pdf;
+using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -20,13 +18,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 PdfPage page = pdf.Pages[0];
 
                 PdfButton button = page.AddButton(10, 50, 100, 100);
-                button.Image = pdf.AddImage(@"Sample Data\\pink.png");
+                button.Image = pdf.AddImage(@"..\Sample Data\pink.png");
                 button.Layout = PdfButtonLayout.ImageOnly;
 
                 pdf.Save(pathToFile);
             }
 
-            Process.Start(pathToFile);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }

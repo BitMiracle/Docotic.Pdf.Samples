@@ -1,5 +1,3 @@
-Imports System.Diagnostics
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -10,7 +8,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
-            Using pdf As New PdfDocument("Sample Data\jfif3.pdf")
+            Using pdf As New PdfDocument("..\Sample Data\jfif3.pdf")
 
                 ' copy third and first pages to a new PDF document (page indexes are zero-based)
                 Using copy As PdfDocument = pdf.CopyPages(New Integer() {2, 0})
@@ -23,7 +21,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             End Using
 
-            Process.Start("CopyPages.pdf")
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace

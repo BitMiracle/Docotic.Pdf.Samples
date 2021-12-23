@@ -1,4 +1,3 @@
-Imports System.Diagnostics
 Imports System.Drawing
 
 Imports BitMiracle.Docotic.Pdf
@@ -14,7 +13,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Dim pathToImage As String = "DrawPageOnGraphics.png"
 
-            Using pdf As New PdfDocument("Sample Data\jfif3.pdf")
+            Using pdf As New PdfDocument("..\Sample Data\jfif3.pdf")
                 Const TargetResolution As Single = 300
 
                 Dim page As PdfPage = pdf.Pages(0)
@@ -31,7 +30,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 End Using
             End Using
 
-            Process.Start(pathToImage)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace

@@ -18,7 +18,7 @@ namespace ExtractTextOnAwsLambda
             PdfConfigurationOptions config = PdfConfigurationOptions.Create();
             config.FontLoader = new DirectoryFontLoader(new[] { "/usr/share/fonts" }, true);
 
-            using (var pdf = new PdfDocument("Attachments.pdf", config))
+            using (var pdf = new PdfDocument(@"..\Sample Data\Attachments.pdf", config))
             {
                 return pdf.GetTextWithFormatting();
             }

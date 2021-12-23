@@ -1,5 +1,3 @@
-Imports System.Diagnostics
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -12,7 +10,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Dim pathToFile As String = "OpenDocument.pdf"
 
-            Using pdf As New PdfDocument("Sample data/jfif3.pdf")
+            Using pdf As New PdfDocument("..\Sample data\jfif3.pdf")
                 Dim canvas As PdfCanvas = pdf.Pages(0).Canvas
                 canvas.Font = pdf.AddFont(PdfBuiltInFont.Helvetica)
                 canvas.FontSize = 20
@@ -21,7 +19,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Save(pathToFile)
             End Using
 
-            Process.Start(pathToFile)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace

@@ -1,5 +1,3 @@
-Imports System.Windows.Forms
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -10,9 +8,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
-            Using pdf As New PdfDocument("Sample Data\PDF-A.pdf")
+            Using pdf As New PdfDocument("..\Sample Data\PDF-A.pdf")
                 Dim level As PdfaConformance = pdf.GetPdfaConformance()
-                MessageBox.Show("PDF/A conformance level: " + level.ToString())
+                Console.WriteLine("PDF/A conformance level: " + level.ToString())
             End Using
         End Sub
     End Class

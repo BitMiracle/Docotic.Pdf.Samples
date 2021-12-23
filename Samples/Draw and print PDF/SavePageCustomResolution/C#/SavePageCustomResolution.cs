@@ -1,6 +1,4 @@
-using System.Diagnostics;
-
-using BitMiracle.Docotic.Pdf;
+using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -15,7 +13,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToImage = "SavePageCustomResolution.png";
 
-            using (PdfDocument pdf = new PdfDocument(@"Sample Data\gmail-cheat-sheet.pdf"))
+            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\gmail-cheat-sheet.pdf"))
             {
                 PdfDrawOptions options = PdfDrawOptions.Create();
                 options.BackgroundColor = new PdfRgbColor(255, 255, 255);
@@ -25,7 +23,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Pages[0].Save(pathToImage, options);
             }
 
-            Process.Start(pathToImage);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }

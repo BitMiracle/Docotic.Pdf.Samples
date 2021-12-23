@@ -1,5 +1,3 @@
-Imports System.Diagnostics
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -12,7 +10,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Dim pathToFile As String = "CreateXObjectFromPage.pdf"
 
-            Using other As New PdfDocument("Sample Data\jfif3.pdf")
+            Using other As New PdfDocument("..\Sample Data\jfif3.pdf")
                 Using pdf As New PdfDocument()
                     Dim firstXObject As PdfXObject = pdf.CreateXObject(other.Pages(0))
                     Dim secondXObject As PdfXObject = pdf.CreateXObject(other.Pages(1))
@@ -26,7 +24,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 End Using
             End Using
 
-            Process.Start(pathToFile)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace

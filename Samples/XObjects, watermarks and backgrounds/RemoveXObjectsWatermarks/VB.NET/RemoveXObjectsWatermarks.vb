@@ -1,7 +1,3 @@
-Imports System.Diagnostics
-Imports System.Drawing
-Imports System.IO
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -14,7 +10,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Dim pathToFile As String = "RemoveXObjectsWatermarks.pdf"
 
-            Using pdf As New PdfDocument("Sample Data\DocumentWithWatermark.pdf")
+            Using pdf As New PdfDocument("..\Sample Data\DocumentWithWatermark.pdf")
                 For Each page As PdfPage In pdf.Pages
                     ' remove first XObject (in this case it's a watermark)
                     page.XObjects.RemoveAt(0)
@@ -23,7 +19,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Save(pathToFile)
             End Using
 
-            Process.Start(pathToFile)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace

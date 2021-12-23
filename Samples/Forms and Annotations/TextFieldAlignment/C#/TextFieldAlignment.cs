@@ -1,5 +1,4 @@
-using System.Diagnostics;
-using System.Drawing;
+using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -14,8 +13,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (PdfDocument pdf = new PdfDocument())
             {
-                PointF startPoint = new PointF(10, 10);
-                SizeF size = new SizeF(100, 100);
+                PdfPoint startPoint = new PdfPoint(10, 10);
+                PdfSize size = new PdfSize(100, 100);
                 float distance = 30.0f;
                 PdfTextAlign[] horizontalAlignments = { PdfTextAlign.Left, PdfTextAlign.Center, PdfTextAlign.Right };
 
@@ -35,7 +34,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                 string pathToFile = "TextFieldAlignment.pdf";
                 pdf.Save(pathToFile);
-                Process.Start(pathToFile);
+                Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
             }
         }
     }

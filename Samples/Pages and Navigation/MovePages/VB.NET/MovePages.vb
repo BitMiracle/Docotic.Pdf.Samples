@@ -1,7 +1,3 @@
-Imports System.Diagnostics
-Imports System.Drawing
-Imports System.IO
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -19,9 +15,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 ' move first half of pages to the end of the document
                 pdf.MovePages(0, 5, pdf.PageCount)
 
-                Dim pathToFile As String = "MovePagesContinuous.pdf"
-                pdf.Save(pathToFile)
-                Process.Start(pathToFile)
+                pdf.Save("MovePagesContinuous.pdf")
             End Using
 
             ' This shows how to move arbitrary sets of pages
@@ -33,10 +27,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 ' move odd pages to the end of the document
                 pdf.MovePages(indexes, pdf.PageCount)
 
-                Dim pathToFile As String = "MovePagesArbitrary.pdf"
-                pdf.Save(pathToFile)
-                Process.Start(pathToFile)
+                pdf.Save("MovePagesArbitrary.pdf")
             End Using
+
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
 
         Private Shared Sub buildTestDocument(pdf As PdfDocument)

@@ -1,6 +1,4 @@
-using System.Diagnostics;
-
-using BitMiracle.Docotic.Pdf;
+using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -15,13 +13,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
             
             string pathToImage = "DrawZoomedPage.png";
 
-            using (PdfDocument pdf = new PdfDocument(@"Sample Data\jfif3.pdf"))
+            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\jfif3.pdf"))
             {
                 PdfDrawOptions options = PdfDrawOptions.CreateZoom(400);
                 pdf.Pages[0].Save(pathToImage, options);
             }
 
-            Process.Start(pathToImage);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }

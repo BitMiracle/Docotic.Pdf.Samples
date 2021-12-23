@@ -5,7 +5,7 @@
     <RootNamespace>HtmlToPdfWindowsForms</RootNamespace>
     <StartupObject>Sub Main</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
-    <StartWorkingDirectory>$(SolutionDir)\HtmlToPdf</StartWorkingDirectory>
+    <StartWorkingDirectory>$(SolutionDir)\Output</StartWorkingDirectory>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>

@@ -1,6 +1,4 @@
-using System.Diagnostics;
-
-using BitMiracle.Docotic.Pdf;
+using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -15,7 +13,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             
             const string PathToFile = "RemovePaths.pdf";
 
-            using (var pdf = new PdfDocument(@"Sample Data\form.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample Data\form.pdf"))
             {
                 PdfPage page = pdf.Pages[0];
                 page.RemovePaths(
@@ -25,19 +23,19 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         if (path.PaintMode == PdfDrawMode.Stroke)
                             return false;
 
-                        return (
+                        return 
                             path.Brush.Color is PdfRgbColor fillColor &&
                             fillColor.R == 255 &&
                             fillColor.G == 127 &&
                             fillColor.B == 64
-                        );
+                        ;
                     }
                 );
 
                 pdf.Save(PathToFile);
             }
 
-            Process.Start(PathToFile);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }

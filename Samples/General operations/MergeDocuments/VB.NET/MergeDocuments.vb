@@ -1,5 +1,3 @@
-Imports System.Diagnostics
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -12,13 +10,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Dim pathToFile As String = "MergeDocuments.pdf"
 
-            Using pdf As New PdfDocument("Sample data/form.pdf")
-                pdf.Append("Sample data/jfif3.pdf")
+            Using pdf As New PdfDocument("..\Sample data\form.pdf")
+                pdf.Append("..\Sample data\jfif3.pdf")
 
                 pdf.Save(pathToFile)
             End Using
 
-            Process.Start(pathToFile)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace

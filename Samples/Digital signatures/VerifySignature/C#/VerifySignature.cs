@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // for more information.
 
             StringBuilder sb = new StringBuilder();
-            using (PdfDocument pdf = new PdfDocument("Sample data/signed.pdf"))
+            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\signed.pdf"))
             {
                 PdfControl field = pdf.GetControls().FirstOrDefault(c => c.Type == PdfWidgetType.Signature);
                 if (field == null)

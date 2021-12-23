@@ -1,5 +1,3 @@
-Imports System.Diagnostics
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -16,13 +14,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim page As PdfPage = pdf.Pages(0)
 
                 Dim button As PdfButton = page.AddButton(10, 50, 100, 100)
-                button.Image = pdf.AddImage("Sample Data\\pink.png")
+                button.Image = pdf.AddImage("..\Sample Data\pink.png")
                 button.Layout = PdfButtonLayout.ImageOnly
 
                 pdf.Save(pathToFile)
             End Using
 
-            Process.Start(pathToFile)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace

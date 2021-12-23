@@ -1,6 +1,3 @@
-Imports System.Diagnostics
-Imports System.Windows.Forms
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -11,14 +8,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
-            Using pdf As New PdfDocument("Sample Data\Attachments.pdf")
+            Using pdf As New PdfDocument("..\Sample Data\Attachments.pdf")
                 Dim spec As PdfFileSpecification = pdf.SharedAttachments("File Attachment testing.doc")
                 If spec IsNot Nothing And spec.Contents IsNot Nothing Then
                     Const pathToFile As String = "attachment.doc"
                     spec.Contents.Save(pathToFile)
-                    Process.Start(pathToFile)
+                    Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
                 Else
-                    MessageBox.Show("Can't save shared attachment", "Error")
+                    Console.WriteLine($"Can't save the shared attachment")
                 End If
             End Using
         End Sub

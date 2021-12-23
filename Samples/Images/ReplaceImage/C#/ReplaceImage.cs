@@ -1,4 +1,4 @@
-using System.Diagnostics;
+using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -11,15 +11,15 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit https://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            using (var pdf = new PdfDocument(@"Sample Data\gmail-cheat-sheet.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample Data\gmail-cheat-sheet.pdf"))
             {
                 foreach (var image in pdf.GetImages(false))
-                    image.ReplaceWith(@"Sample Data\ammerland.jpg");
+                    image.ReplaceWith(@"..\Sample Data\ammerland.jpg");
 
                 pdf.Save("ReplaceImage.pdf");
             }
 
-            Process.Start("ReplaceImage.pdf");
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }

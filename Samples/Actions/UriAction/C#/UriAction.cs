@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -24,7 +23,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Save("UriAction.pdf");
             }
 
-            Process.Start("UriAction.pdf");
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }

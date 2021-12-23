@@ -1,6 +1,4 @@
-Imports System.Diagnostics
 Imports System.Text
-Imports System.Windows.Forms
 
 Imports BitMiracle.Docotic.Pdf
 
@@ -12,7 +10,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
-            Using pdf As New PdfDocument("Sample Data\Attachments.pdf")
+            Using pdf As New PdfDocument("..\Sample Data\Attachments.pdf")
                 Dim attachmentNames As New StringBuilder()
 
                 ' collect names of files attached to the document
@@ -32,7 +30,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     Next
                 Next
 
-                MessageBox.Show(attachmentNames.ToString(), "Attachments List")
+                Console.WriteLine("Attachments List:")
+                Console.WriteLine(attachmentNames.ToString())
             End Using
         End Sub
     End Class

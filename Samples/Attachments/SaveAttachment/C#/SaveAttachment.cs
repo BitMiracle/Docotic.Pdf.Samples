@@ -1,7 +1,4 @@
-using System.Diagnostics;
-using System.Windows.Forms;
-
-using BitMiracle.Docotic.Pdf;
+using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -14,18 +11,18 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            using (PdfDocument pdf = new PdfDocument(@"Sample Data\Attachments.pdf"))
+            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\Attachments.pdf"))
             {
                 PdfFileSpecification spec = pdf.SharedAttachments["File Attachment testing.doc"];
                 if (spec != null && spec.Contents != null)
                 {
                     const string pathToFile = "attachment.doc";
                     spec.Contents.Save(pathToFile);
-                    Process.Start(pathToFile);
+                    Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
                 }
                 else
                 {
-                    MessageBox.Show("Can't save shared attachment", "Error");
+                    Console.WriteLine($"Can't save the shared attachment");
                 }
             }
         }

@@ -1,6 +1,3 @@
-Imports System.Windows.Forms
-Imports Microsoft.VisualBasic
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -31,9 +28,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Next
 
                 If sb.Length = 0 Then
-                    MessageBox.Show("No combo boxes found on first page")
+                    Console.WriteLine("No combo boxes found on first page")
                 Else
-                    MessageBox.Show(sb.ToString())
+                    Console.WriteLine(sb.ToString())
                 End If
 
             End Using

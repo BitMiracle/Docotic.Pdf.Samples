@@ -1,5 +1,3 @@
-Imports System
-Imports System.IO
 Imports BitMiracle.Docotic.Pdf.HtmlToPdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -28,9 +26,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 End Using
 
                 ' Convert a local HTML file
-                Dim assemblyPath = AppDomain.CurrentDomain.BaseDirectory
-                Dim sampleHtmlPath = Path.Combine(assemblyPath, "sample.html")
-                Using pdf = Await converter.CreatePdfAsync(sampleHtmlPath)
+                Using pdf = Await converter.CreatePdfAsync("..\Sample Data\sample.html")
                     pdf.Save("ConvertLocalHtmlFile.pdf")
                 End Using
 

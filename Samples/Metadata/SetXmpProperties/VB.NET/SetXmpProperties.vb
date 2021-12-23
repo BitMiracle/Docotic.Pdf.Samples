@@ -1,7 +1,3 @@
-Imports System.Diagnostics
-Imports System.Drawing
-Imports System.IO
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -23,8 +19,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 Dim pathToFile As String = "SetXmpProperties.pdf"
                 pdf.Save(pathToFile)
-                Process.Start(pathToFile)
             End Using
+
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace

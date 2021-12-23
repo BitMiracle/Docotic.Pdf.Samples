@@ -1,6 +1,4 @@
-using System.Diagnostics;
-
-using BitMiracle.Docotic.Pdf;
+using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -15,7 +13,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             
             const string PathToFile = "ExtractPaths.pdf";
 
-            using (var pdf = new PdfDocument(@"Sample Data\gmail-cheat-sheet.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample Data\gmail-cheat-sheet.pdf"))
             {
                 using (PdfDocument copy = pdf.CopyPages(0, 1))
                 {
@@ -52,7 +50,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 }
             }
 
-            Process.Start(PathToFile);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
 
         private static void setClipRegion(PdfCanvas canvas, PdfClipRegion clipRegion)

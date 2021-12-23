@@ -1,5 +1,3 @@
-Imports System
-Imports System.IO
 Imports BitMiracle.Docotic.Pdf.HtmlToPdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -28,10 +26,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim htmlCode = "<div style=""position: absolute; top: 270px; right: 100px;\"">" +
                     "I would like to put this here</div>"
                 Using htmlPdf = Await converter.CreatePdfFromStringAsync(htmlCode, options)
-                    Dim assemblyPath = AppDomain.CurrentDomain.BaseDirectory
-                    Dim pdfPath = Path.Combine(assemblyPath, "simple-graphics.pdf")
-
-                    Using pdf = New PdfDocument(pdfPath)
+                    Using pdf = New PdfDocument("..\Sample Data\simple-graphics.pdf")
                         ' Create an XObject from a page in the document generated from HTML.
                         ' Please note that the code uses different document instances to call the
                         ' method And access the collection of the pages.
