@@ -1,5 +1,3 @@
-Imports System.Diagnostics
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -13,7 +11,6 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim pathToFile As String = "Metadata.pdf"
 
             Using pdf As New PdfDocument()
-
                 pdf.Info.Author = "Sample Browser application"
                 pdf.Info.Subject = "Document metadata"
                 pdf.Info.Title = "Custom title goes here"
@@ -25,7 +22,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Save(pathToFile)
             End Using
 
-            Process.Start(pathToFile)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace
