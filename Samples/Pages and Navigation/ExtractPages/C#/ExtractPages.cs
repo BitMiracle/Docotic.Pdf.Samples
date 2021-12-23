@@ -1,4 +1,4 @@
-using System.Diagnostics;
+using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -32,12 +32,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     extracted.Save("ExtractPages.pdf");
                 }
 
-                Process.Start("ExtractPages.pdf");
-
                 original.Save("ExtractPages_original.pdf");
             }
 
-            Process.Start("ExtractPages_original.pdf");
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }

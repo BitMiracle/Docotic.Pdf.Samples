@@ -1,7 +1,4 @@
-Imports System
-Imports System.Drawing
 Imports System.Text
-Imports System.Windows.Forms
 
 Imports BitMiracle.Docotic.Pdf
 
@@ -41,10 +38,10 @@ Namespace BitMiracle.Docotic.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
-            Using pdf As New PdfDocument("Sample Data\Link.pdf")
+            Using pdf As New PdfDocument("..\Sample Data\Link.pdf")
                 Dim linkInfo As LinkInfo = getFirstLink(pdf)
                 If linkInfo Is Nothing Then
-                    MessageBox.Show("Document doesn't contain links!")
+                    Console.WriteLine("Document doesn't contain links!")
                     Return
                 End If
 
@@ -59,8 +56,8 @@ Namespace BitMiracle.Docotic.Samples
                 linkDescription.AppendLine("Text from link:")
                 linkDescription.AppendLine(getTextFromLink(linkInfo.Action))
 
-                System.Diagnostics.Process.Start("Sample Data\Link.pdf")
-                MessageBox.Show(linkDescription.ToString())
+                Console.WriteLine(linkDescription.ToString())
+                Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
             End Using
         End Sub
 
@@ -87,7 +84,7 @@ Namespace BitMiracle.Docotic.Samples
         Private Shared Function getTextFromLink(ByVal linkAction As PdfGoToAction) As String
             Dim targetPage As PdfPage = linkAction.View.Page
             If targetPage Is Nothing Then
-                Return [String].Empty
+                Return String.Empty
             End If
 
             Dim result As New StringBuilder()

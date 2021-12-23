@@ -1,4 +1,4 @@
-using System.Diagnostics;
+using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -11,7 +11,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            using (var pdf = new PdfDocument(@"Sample Data\jfif3.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample Data\jfif3.pdf"))
             {
                 // copy third and first pages to a new PDF document (page indexes are zero-based)
                 using (PdfDocument copy = pdf.CopyPages(new int[] { 2, 0 }))
@@ -24,7 +24,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 }
             }
 
-            Process.Start("CopyPages.pdf");
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }

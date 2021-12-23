@@ -1,5 +1,3 @@
-Imports System.Diagnostics
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -29,12 +27,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     extracted.Save("ExtractPages.pdf")
                 End Using
 
-                Process.Start("ExtractPages.pdf")
-
                 original.Save("ExtractPages_original.pdf")
             End Using
 
-            Process.Start("ExtractPages_original.pdf")
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace

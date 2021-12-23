@@ -1,5 +1,3 @@
-Imports System.Diagnostics
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -12,7 +10,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Const PathToFile As String = "HeaderAndFooter.pdf"
 
-            Using pdf = New PdfDocument("Sample Data/BRAILLE CODES WITH TRANSLATION.pdf")
+            Using pdf = New PdfDocument("..\Sample Data\BRAILLE CODES WITH TRANSLATION.pdf")
                 Dim font As PdfFont = pdf.AddFont(PdfBuiltInFont.Helvetica)
 
                 For i As Integer = 0 To pdf.PageCount - 1
@@ -24,7 +22,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Save(PathToFile)
             End Using
 
-            Process.Start(PathToFile)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
 
         Private Shared Sub drawHeader(ByVal page As PdfPage, ByVal font As PdfFont)
