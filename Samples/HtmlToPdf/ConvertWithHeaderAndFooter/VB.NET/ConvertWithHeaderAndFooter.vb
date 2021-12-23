@@ -1,6 +1,5 @@
-Imports System
 Imports System.IO
-Imports System.Reflection
+
 Imports BitMiracle.Docotic.Pdf.HtmlToPdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -22,11 +21,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using converter = Await HtmlConverter.CreateAsync()
                 Dim options = New HtmlConversionOptions()
 
-                Dim location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
-                options.Page.HeaderTemplate = File.ReadAllText(Path.Combine(location, "header-template.html"))
+                options.Page.HeaderTemplate = File.ReadAllText("..\Sample Data\header-template.html")
                 options.Page.MarginTop = 110
 
-                options.Page.FooterTemplate = File.ReadAllText(Path.Combine(location, "footer-template.html"))
+                options.Page.FooterTemplate = File.ReadAllText("..\Sample Data\footer-template.html")
                 options.Page.MarginBottom = 50
 
                 Dim url = New Uri("https://www.iana.org/glossary")

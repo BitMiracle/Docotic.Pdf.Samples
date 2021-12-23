@@ -3,16 +3,8 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>BitMiracle.Docotic.Pdf.Samples</RootNamespace>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <StartWorkingDirectory>$(SolutionDir)\HtmlToPdf</StartWorkingDirectory>
+    <StartWorkingDirectory>$(SolutionDir)\Output</StartWorkingDirectory>
   </PropertyGroup>
-  <ItemGroup>
-    <Content Include="..\..\..\Sample Data\footer-template.html" Link="footer-template.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\Sample Data\header-template.html" Link="header-template.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BitMiracle.Docotic.Pdf.HtmlToPdf" Version="8.3.12622" />
   </ItemGroup>

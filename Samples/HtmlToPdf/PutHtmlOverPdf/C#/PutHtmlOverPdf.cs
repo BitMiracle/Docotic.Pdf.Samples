@@ -1,6 +1,4 @@
 ﻿using System;
-using System.IO;
-using System.Reflection;
 using System.Threading.Tasks;
 
 using BitMiracle.Docotic.Pdf.HtmlToPdf;
@@ -29,8 +27,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     "I would like to put this here</div>";
                 using (var htmlPdf = await converter.CreatePdfFromStringAsync(htmlCode, options))
                 {
-                    var location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                    var pdfPath = Path.Combine(location, "simple-graphics.pdf");
+                    var pdfPath = @"..\Sample Data\simple-graphics.pdf";
                     using (var pdf = new PdfDocument(pdfPath))
                     {
                         // Create an XObject from a page in the document generated from HTML.

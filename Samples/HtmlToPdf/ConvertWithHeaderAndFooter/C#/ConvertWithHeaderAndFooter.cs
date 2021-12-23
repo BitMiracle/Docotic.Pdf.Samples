@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Reflection;
 using System.Threading.Tasks;
 
 using BitMiracle.Docotic.Pdf.HtmlToPdf;
@@ -20,11 +19,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 var options = new HtmlConversionOptions();
 
-                var location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                options.Page.HeaderTemplate = File.ReadAllText(Path.Combine(location, "header-template.html"));
+                options.Page.HeaderTemplate = File.ReadAllText(@"..\Sample Data\header-template.html");
                 options.Page.MarginTop = 110;
 
-                options.Page.FooterTemplate = File.ReadAllText(Path.Combine(location, "footer-template.html"));
+                options.Page.FooterTemplate = File.ReadAllText(@"..\Sample Data\footer-template.html");
                 options.Page.MarginBottom = 50;
 
                 var url = new Uri("https://www.iana.org/glossary");
