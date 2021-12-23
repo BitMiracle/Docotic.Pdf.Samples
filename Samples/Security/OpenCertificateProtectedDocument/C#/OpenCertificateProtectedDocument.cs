@@ -1,4 +1,4 @@
-using System.Windows.Forms;
+using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -33,7 +33,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 // X.509 certificate store used by the current user
                 using (PdfDocument pdf = new PdfDocument(encryptedFile))
                 {
-                    MessageBox.Show(
+                    Console.WriteLine(
                         string.Format(
                             "Opened with an auto-selected certificate from the current user certificate store. " +
                             "Permissions = {0}",
@@ -44,7 +44,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
             catch (PdfException ex)
             {
-                MessageBox.Show(ex.ToString());
+                Console.WriteLine(ex.ToString());
             }
         }
 
@@ -55,7 +55,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 PdfPublicKeyDecryptionHandler handler = new PdfPublicKeyDecryptionHandler(keyStore, password);
                 using (PdfDocument pdf = new PdfDocument(encryptedFile, handler))
                 {
-                    MessageBox.Show(
+                    Console.WriteLine(
                         string.Format(
                             "Opened with a certificate from the key store at {0}. Permissions = {1}",
                             keyStore,
@@ -66,7 +66,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
             catch (PdfException ex)
             {
-                MessageBox.Show(ex.ToString());
+                Console.WriteLine(ex.ToString());
             }
         }
     }

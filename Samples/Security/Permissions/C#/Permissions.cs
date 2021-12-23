@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -13,7 +13,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "Permissions.pdf";
 
-            using (PdfDocument pdf = new PdfDocument("Sample data/form.pdf"))
+            using (PdfDocument pdf = new PdfDocument(@"..\Sample data\form.pdf"))
             {
                 // an owner password should be set in order to use user access permissions
                 PdfStandardEncryptionHandler handler = new PdfStandardEncryptionHandler("owner", "user");
@@ -23,7 +23,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Save(pathToFile);
             }
 
-            Process.Start(pathToFile);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }
