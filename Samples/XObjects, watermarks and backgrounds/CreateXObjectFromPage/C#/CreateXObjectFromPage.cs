@@ -1,6 +1,4 @@
-using System.Diagnostics;
-
-using BitMiracle.Docotic.Pdf;
+using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -15,7 +13,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             
             string pathToFile = "CreateXObjectFromPage.pdf";
 
-            using (PdfDocument other = new PdfDocument(@"Sample Data\jfif3.pdf"))
+            using (PdfDocument other = new PdfDocument(@"..\Sample Data\jfif3.pdf"))
             {
                 using (PdfDocument pdf = new PdfDocument())
                 {
@@ -31,7 +29,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 }
             }
 
-            Process.Start(pathToFile);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }
