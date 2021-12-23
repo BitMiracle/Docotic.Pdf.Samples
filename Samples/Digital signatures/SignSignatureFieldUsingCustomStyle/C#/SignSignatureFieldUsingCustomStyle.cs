@@ -35,7 +35,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 appearance.IncludeDate = false;
                 appearance.IncludeDistinguishedName = false;
 
-                appearance.Image = pdf.AddImage("Sample Data/ammerland.jpg");
+                appearance.Image = pdf.AddImage(@"..\Sample Data\ammerland.jpg");
                 appearance.Font = pdf.AddFont(PdfBuiltInFont.Courier);
                 appearance.FontSize = 0; // calculate font size automatically
                 appearance.FontColor = new PdfRgbColor(0, 0, 255);

@@ -16,7 +16,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "FindAndHighlightText.pdf";
 
-            using (var pdf = new PdfDocument(@"Sample Data\jfif3.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample Data\jfif3.pdf"))
             {
                 const string TextToFind = "JPEG File Interchange Format";
                 const StringComparison Comparison = StringComparison.InvariantCultureIgnoreCase;
