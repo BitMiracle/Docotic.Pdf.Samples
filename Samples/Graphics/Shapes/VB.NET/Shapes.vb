@@ -1,5 +1,3 @@
-Imports System.Diagnostics
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -21,7 +19,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Save("Shapes.pdf")
             End Using
 
-            Process.Start("Shapes.pdf")
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace

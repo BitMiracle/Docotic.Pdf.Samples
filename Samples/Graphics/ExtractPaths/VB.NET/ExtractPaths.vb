@@ -1,5 +1,3 @@
-Imports System.Diagnostics
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -12,7 +10,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Const PathToFile As String = "ExtractPaths.pdf"
 
-            Using pdf = New PdfDocument("Sample Data\gmail-cheat-sheet.pdf")
+            Using pdf = New PdfDocument("..\Sample Data\gmail-cheat-sheet.pdf")
                 Using copy As PdfDocument = pdf.CopyPages(0, 1)
                     Dim sourcePage As PdfPage = copy.Pages(0)
                     Dim copyPage As PdfPage = copy.AddPage()
@@ -48,7 +46,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 End Using
             End Using
 
-            Process.Start(PathToFile)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
 
         Private Shared Sub setClipRegion(canvas As PdfCanvas, clipRegion As PdfClipRegion)
