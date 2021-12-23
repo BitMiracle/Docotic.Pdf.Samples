@@ -1,4 +1,4 @@
-using System.Diagnostics;
+using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -17,11 +17,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 PdfCanvas canvas = pdf.Pages[0].Canvas;
 
-                PdfImageFrames imageFrames = pdf.OpenImage(@"Sample Data\pink.png");
+                PdfImageFrames imageFrames = pdf.OpenImage(@"..\Sample Data\pink.png");
                 PdfImage originalImage = pdf.AddImage(imageFrames[0]);
                 canvas.DrawImage(originalImage, 10, 10, 0);
 
-                PdfImageFrames imageFramesToRecompress = pdf.OpenImage(@"Sample Data\pink.png");
+                PdfImageFrames imageFramesToRecompress = pdf.OpenImage(@"..\Sample Data\pink.png");
                 PdfImageFrame frame = imageFramesToRecompress[0];
                 frame.OutputCompression = PdfImageCompression.Jpeg;
                 frame.JpegQuality = 50;
@@ -33,7 +33,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Save(pathToFile);
             }
 
-            Process.Start(pathToFile);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }

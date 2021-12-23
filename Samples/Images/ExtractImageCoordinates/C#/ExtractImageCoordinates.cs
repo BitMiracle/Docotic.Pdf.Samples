@@ -1,6 +1,4 @@
-using System.Diagnostics;
-
-using BitMiracle.Docotic.Pdf;
+using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -15,7 +13,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "ExtractImageCoordinates.pdf";
 
-            using (PdfDocument pdf = new PdfDocument(@"Sample Data\gmail-cheat-sheet.pdf"))
+            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\gmail-cheat-sheet.pdf"))
             {
                 foreach (PdfPage page in pdf.Pages)
                 {
@@ -30,8 +28,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 }
                 pdf.Save(pathToFile);
             }
-            
-            Process.Start(pathToFile);
+
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }

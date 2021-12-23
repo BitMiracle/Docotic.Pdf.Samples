@@ -1,7 +1,4 @@
 using System;
-using System.Diagnostics;
-
-using BitMiracle.Docotic.Pdf;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -16,7 +13,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             
             const string PathToFile = "RemovePaintedImages.pdf";
 
-            using (var pdf = new PdfDocument(@"Sample Data\ImageScaleAndRotate.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample Data\ImageScaleAndRotate.pdf"))
             {
                 PdfPage page = pdf.Pages[0];
                 page.RemovePaintedImages(
@@ -31,7 +28,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Save(PathToFile);
             }
 
-            Process.Start(PathToFile);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }

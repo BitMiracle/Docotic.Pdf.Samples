@@ -1,4 +1,4 @@
-using System.Diagnostics;
+using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -17,13 +17,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 PdfCanvas canvas = pdf.Pages[0].Canvas;
 
-                PdfImage image = pdf.AddImage("Sample data/ammerland.jpg");
+                PdfImage image = pdf.AddImage(@"..\Sample data\ammerland.jpg");
                 canvas.DrawImage(image, 10, 50);
 
                 pdf.Save(pathToFile);
             }
 
-            Process.Start(pathToFile);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }

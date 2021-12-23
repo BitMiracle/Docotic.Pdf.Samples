@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -22,13 +22,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.Brush.Color = new PdfRgbColor(0, 255, 0);
                 canvas.DrawRectangle(new PdfRectangle(50, 450, 1150, 150), PdfDrawMode.Fill);
 
-                PdfImage image = pdf.AddImage("Sample data/pink.png", new PdfRgbColor(255, 0, 255));
+                PdfImage image = pdf.AddImage(@"..\Sample data\pink.png", new PdfRgbColor(255, 0, 255));
                 canvas.DrawImage(image, 550, 200);
 
                 pdf.Save(pathToFile);
             }
 
-            Process.Start(pathToFile);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }

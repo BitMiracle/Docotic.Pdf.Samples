@@ -1,6 +1,3 @@
-Imports System.Diagnostics
-Imports System.IO
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -15,13 +12,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf As New PdfDocument()
                 Dim canvas As PdfCanvas = pdf.Pages(0).Canvas
 
-                Dim image As PdfImage = pdf.AddImage("Sample data/ammerland.jpg")
+                Dim image As PdfImage = pdf.AddImage("..\Sample data\ammerland.jpg")
                 canvas.DrawImage(image, 10, 50)
 
                 pdf.Save(pathToFile)
             End Using
 
-            Process.Start(pathToFile)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace

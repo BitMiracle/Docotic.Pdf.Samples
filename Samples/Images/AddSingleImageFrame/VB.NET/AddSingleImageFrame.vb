@@ -1,5 +1,3 @@
-Imports System.Diagnostics
-
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -13,7 +11,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim pathToFile As String = "AddSingleImageFrame.pdf"
 
             Using pdf As New PdfDocument()
-                Dim frames As PdfImageFrames = pdf.OpenImage("Sample Data\multipage.tif")
+                Dim frames As PdfImageFrames = pdf.OpenImage("..\Sample Data\multipage.tif")
                 Dim secondFrame As PdfImageFrame = frames(1)
 
                 Dim image As PdfImage = pdf.AddImage(secondFrame)
@@ -22,7 +20,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Save(pathToFile)
             End Using
 
-            Process.Start(pathToFile)
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace

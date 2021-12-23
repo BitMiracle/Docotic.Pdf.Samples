@@ -1,3 +1,5 @@
+Imports BitMiracle.Docotic.Pdf
+
 Namespace BitMiracle.Docotic.Pdf.Samples
     Public NotInheritable Class ReplaceImage
         Public Shared Sub Main()
@@ -6,15 +8,15 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
-            Using pdf = New PdfDocument("Sample Data\gmail-cheat-sheet.pdf")
+            Using pdf = New PdfDocument("..\Sample Data\gmail-cheat-sheet.pdf")
                 For Each image In pdf.GetImages(False)
-                    image.ReplaceWith("Sample Data\ammerland.jpg")
+                    image.ReplaceWith("..\Sample Data\ammerland.jpg")
                 Next
 
                 pdf.Save("ReplaceImage.pdf")
             End Using
 
-            Process.Start("ReplaceImage.pdf")
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
     End Class
 End Namespace

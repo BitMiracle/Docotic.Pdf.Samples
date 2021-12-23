@@ -1,4 +1,4 @@
-using System.Diagnostics;
+using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -15,8 +15,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 string[] tiffFiles =
                 {
-                    @"Sample Data\multipage.tif",
-                    @"Sample Data\pinkMask.tif"
+                    @"..\Sample Data\multipage.tif",
+                    @"..\Sample Data\pinkMask.tif"
                 };
 
                 int imagesAdded = 0;
@@ -44,7 +44,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Save("TiffToPdf.pdf");
             }
 
-            Process.Start("TiffToPdf.pdf");
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }

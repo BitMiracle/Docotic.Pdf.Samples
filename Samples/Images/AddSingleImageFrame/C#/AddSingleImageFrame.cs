@@ -1,4 +1,4 @@
-using System.Diagnostics;
+using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -15,7 +15,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (PdfDocument pdf = new PdfDocument())
             {
-                PdfImageFrames frames = pdf.OpenImage(@"Sample Data\multipage.tif");
+                PdfImageFrames frames = pdf.OpenImage(@"..\Sample Data\multipage.tif");
                 PdfImageFrame secondFrame = frames[1];
 
                 PdfImage image = pdf.AddImage(secondFrame);
@@ -24,7 +24,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Save(pathToFile);
             }
 
-            Process.Start(pathToFile);
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
     }
 }
