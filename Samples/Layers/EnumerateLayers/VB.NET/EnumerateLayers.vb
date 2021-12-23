@@ -10,7 +10,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
-            Using pdf As New PdfDocument("Sample Data\BorderPinksOranges.pdf")
+            Using pdf As New PdfDocument("..\Sample Data\BorderPinksOranges.pdf")
                 Dim layers As PdfCollection(Of PdfLayer) = pdf.Layers
                 For Each layer As PdfLayer In layers
                     Dim message As String = String.Format("Name = {0}" & vbLf & "Visible = {1}" & vbLf & "Intents = ", layer.Name, layer.Visible)
@@ -20,7 +20,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         message += " "
                     Next
 
-                    System.Windows.Forms.MessageBox.Show(message, "Layer Info")
+                    Console.WriteLine("Layer Info:")
+                    Console.WriteLine(message)
+                    Console.WriteLine()
                 Next
             End Using
         End Sub

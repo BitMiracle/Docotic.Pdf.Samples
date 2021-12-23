@@ -1,4 +1,4 @@
-using BitMiracle.Docotic.Pdf;
+using System;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -11,7 +11,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
             
-            using (PdfDocument pdf = new PdfDocument(@"Sample Data\BorderPinksOranges.pdf"))
+            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\BorderPinksOranges.pdf"))
             {
                 PdfCollection<PdfLayer> layers = pdf.Layers;
                 foreach (PdfLayer layer in layers)
@@ -25,7 +25,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         message += " ";
                     }
 
-                    System.Windows.Forms.MessageBox.Show(message, "Layer Info");
+                    Console.WriteLine("Layer Info:");
+                    Console.WriteLine(message);
+                    Console.WriteLine();
                 }
             }
         }
