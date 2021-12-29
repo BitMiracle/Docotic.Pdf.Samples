@@ -5,10 +5,9 @@
     <StartWorkingDirectory>$(SolutionDir)\Output</StartWorkingDirectory>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="8.3.12622" />
+    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="8.4.12906" />
     <PackageReference Include="log4net" Version="2.0.12" />
   </ItemGroup>
-  
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="copy &quot;$(ProjectDir)app.config&quot; &quot;$(TargetPath).config&quot;" />
   </Target>

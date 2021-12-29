@@ -21,8 +21,7 @@
     <DefineTrace>true</DefineTrace>
     <IncrementalBuild>true</IncrementalBuild>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>
-    </DocumentationFile>
+    <DocumentationFile></DocumentationFile>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
@@ -35,8 +34,7 @@
     <IncrementalBuild>false</IncrementalBuild>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>
-    </DocumentationFile>
+    <DocumentationFile></DocumentationFile>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
@@ -142,10 +140,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BitMiracle.Docotic.Pdf">
-      <Version>8.3.12622</Version>
+      <Version>8.4.12906</Version>
     </PackageReference>
     <PackageReference Include="BitMiracle.Docotic.Pdf.Gdi">
-      <Version>8.3.12622</Version>
+      <Version>8.4.12906</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
