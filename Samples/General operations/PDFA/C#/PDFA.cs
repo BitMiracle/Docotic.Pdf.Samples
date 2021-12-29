@@ -15,9 +15,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (PdfDocument pdf = new PdfDocument())
             {
-                pdf.SaveOptions.ProducePdfA = true;
-
-                pdf.Save(pathToFile);
+                var saveOptions = new PdfSaveOptions { ProducePdfA = true };
+                pdf.Save(pathToFile, saveOptions);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");

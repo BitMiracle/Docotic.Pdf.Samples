@@ -15,9 +15,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 ' an owner password should be set in order to use user access permissions
                 Dim handler = New PdfStandardEncryptionHandler("owner", "user")
                 handler.UserPermissions.Flags = PdfPermissionFlags.None
-                pdf.SaveOptions.EncryptionHandler = handler
 
-                pdf.Save(pathToFile)
+                Dim saveOptions As New PdfSaveOptions With {.EncryptionHandler = handler}
+                pdf.Save(pathToFile, saveOptions)
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")

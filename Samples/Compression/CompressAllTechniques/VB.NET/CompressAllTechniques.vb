@@ -36,11 +36,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Next
 
                 ' 3. Setup save options
-                pdf.SaveOptions.Compression = PdfCompression.Flate
-                pdf.SaveOptions.UseObjectStreams = True
-                pdf.SaveOptions.RemoveUnusedObjects = True
-                pdf.SaveOptions.OptimizeIndirectObjects = True
-                pdf.SaveOptions.WriteWithoutFormatting = True
+                Dim saveOptions As New PdfSaveOptions With
+                {
+                    .Compression = PdfCompression.Flate,
+                    .UseObjectStreams = True,
+                    .RemoveUnusedObjects = True,
+                    .OptimizeIndirectObjects = True,
+                    .WriteWithoutFormatting = True
+                }
 
                 ' 4. Remove structure information
                 pdf.RemoveStructureInformation()
@@ -62,7 +65,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 ' 9. Remove page-piece dictionaries
                 pdf.RemovePieceInfo()
 
-                pdf.Save(compressedFile)
+                pdf.Save(compressedFile, saveOptions)
             End Using
 
             Dim message As String = String.Format(

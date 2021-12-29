@@ -17,13 +17,15 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (PdfDocument pdf = new PdfDocument(originalFile))
             {
-                pdf.SaveOptions.Compression = PdfCompression.Flate;
-                pdf.SaveOptions.UseObjectStreams = true;
-                pdf.SaveOptions.RemoveUnusedObjects = true;
-                pdf.SaveOptions.OptimizeIndirectObjects = true;
-                pdf.SaveOptions.WriteWithoutFormatting = true;
-
-                pdf.Save(compressedFile);
+                var saveOptions = new PdfSaveOptions
+                {
+                    Compression = PdfCompression.Flate,
+                    UseObjectStreams = true,
+                    RemoveUnusedObjects = true,
+                    OptimizeIndirectObjects = true,
+                    WriteWithoutFormatting = true
+                };
+                pdf.Save(compressedFile, saveOptions);
             }
 
             // NOTE: 

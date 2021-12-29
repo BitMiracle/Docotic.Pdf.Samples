@@ -11,9 +11,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim pathToFile As String = "SetPassword.pdf"
 
             Using pdf As New PdfDocument()
-                pdf.SaveOptions.EncryptionHandler = New PdfStandardEncryptionHandler(String.Empty, "test")
-
-                pdf.Save(pathToFile)
+                Dim saveOptions As New PdfSaveOptions With
+                {
+                    .EncryptionHandler = New PdfStandardEncryptionHandler(String.Empty, "test")
+                }
+                pdf.Save(pathToFile, saveOptions)
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")

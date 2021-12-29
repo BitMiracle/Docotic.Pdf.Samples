@@ -11,9 +11,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim pathToFile As String = "PDFA.pdf"
 
             Using pdf As New PdfDocument()
-                pdf.SaveOptions.ProducePdfA = True
-
-                pdf.Save(pathToFile)
+                Dim saveOptions As New PdfSaveOptions With {.ProducePdfA = True}
+                pdf.Save(pathToFile, saveOptions)
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")

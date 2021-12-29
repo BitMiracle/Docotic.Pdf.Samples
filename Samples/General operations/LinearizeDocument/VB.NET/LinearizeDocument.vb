@@ -11,9 +11,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim pathToFile As String = "LinearizeDocument.pdf"
 
             Using pdf As New PdfDocument("..\Sample Data\gmail-cheat-sheet.pdf")
-                pdf.SaveOptions.Linearize = True
-
-                pdf.Save(pathToFile)
+                Dim saveOptions As New PdfSaveOptions With {.Linearize = True}
+                pdf.Save(pathToFile, saveOptions)
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")

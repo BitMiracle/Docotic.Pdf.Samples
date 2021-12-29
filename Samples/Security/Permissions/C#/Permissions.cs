@@ -18,9 +18,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 // an owner password should be set in order to use user access permissions
                 PdfStandardEncryptionHandler handler = new PdfStandardEncryptionHandler("owner", "user");
                 handler.UserPermissions.Flags = PdfPermissionFlags.None;
-                pdf.SaveOptions.EncryptionHandler = handler;
 
-                pdf.Save(pathToFile);
+                var saveOptions = new PdfSaveOptions { EncryptionHandler = handler };
+                pdf.Save(pathToFile, saveOptions);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");

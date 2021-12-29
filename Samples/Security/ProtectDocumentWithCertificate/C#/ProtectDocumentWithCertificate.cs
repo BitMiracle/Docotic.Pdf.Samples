@@ -19,9 +19,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                 PdfPublicKeyEncryptionHandler handler = createEncryptionHandler();
                 handler.Algorithm = PdfEncryptionAlgorithm.Aes256Bit;
-                pdf.SaveOptions.EncryptionHandler = handler;
 
-                pdf.Save(pathToFile);
+                var saveOptions = new PdfSaveOptions { EncryptionHandler = handler };
+                pdf.Save(pathToFile, saveOptions);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");

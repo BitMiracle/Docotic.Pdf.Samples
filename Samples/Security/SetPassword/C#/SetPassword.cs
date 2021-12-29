@@ -15,9 +15,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (PdfDocument pdf = new PdfDocument())
             {
-                pdf.SaveOptions.EncryptionHandler = new PdfStandardEncryptionHandler(string.Empty, "test");
-
-                pdf.Save(pathToFile);
+                var saveOptions = new PdfSaveOptions
+                {
+                    EncryptionHandler = new PdfStandardEncryptionHandler(string.Empty, "test")
+                };
+                pdf.Save(pathToFile, saveOptions);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");

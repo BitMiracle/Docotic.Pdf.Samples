@@ -15,9 +15,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\gmail-cheat-sheet.pdf"))
             {
-                pdf.SaveOptions.Linearize = true;
-
-                pdf.Save(pathToFile);
+                var saveOptions = new PdfSaveOptions { Linearize = true };
+                pdf.Save(pathToFile, saveOptions);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");

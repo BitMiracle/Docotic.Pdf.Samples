@@ -17,11 +17,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 pdf.Pages[0].Canvas.DrawString("Hello World!");
 
-                PdfStandardEncryptionHandler handler = new PdfStandardEncryptionHandler(string.Empty, "user");
-                handler.Algorithm = PdfEncryptionAlgorithm.Aes256Bit;
-                pdf.SaveOptions.EncryptionHandler = handler;
-
-                pdf.Save(pathToFile);
+                var saveOptions = new PdfSaveOptions
+                {
+                    EncryptionHandler = new PdfStandardEncryptionHandler(string.Empty, "user")
+                    {
+                        Algorithm = PdfEncryptionAlgorithm.Aes256Bit
+                    }
+                };
+                pdf.Save(pathToFile, saveOptions);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");

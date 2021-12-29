@@ -13,11 +13,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf As New PdfDocument()
                 pdf.Pages(0).Canvas.DrawString("Hello World!")
 
-                Dim handler = New PdfStandardEncryptionHandler(String.Empty, "user")
-                handler.Algorithm = PdfEncryptionAlgorithm.Aes256Bit
-                pdf.SaveOptions.EncryptionHandler = handler
-
-                pdf.Save(pathToFile)
+                Dim saveOptions As New PdfSaveOptions With
+                {
+                    .EncryptionHandler = New PdfStandardEncryptionHandler(String.Empty, "user") With
+                    {
+                        .Algorithm = PdfEncryptionAlgorithm.Aes256Bit
+                    }
+                }
+                pdf.Save(pathToFile, saveOptions)
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")

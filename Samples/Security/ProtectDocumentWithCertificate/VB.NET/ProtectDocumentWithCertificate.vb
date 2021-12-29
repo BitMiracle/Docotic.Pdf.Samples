@@ -15,9 +15,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 Dim handler = createEncryptionHandler()
                 handler.Algorithm = PdfEncryptionAlgorithm.Aes256Bit
-                pdf.SaveOptions.EncryptionHandler = handler
 
-                pdf.Save(pathToFile)
+                Dim saveOptions As New PdfSaveOptions With {.EncryptionHandler = handler}
+                pdf.Save(pathToFile, saveOptions)
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")

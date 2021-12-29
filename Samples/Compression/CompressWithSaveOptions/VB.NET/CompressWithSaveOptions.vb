@@ -14,13 +14,15 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' for more information.
 
             Using pdf As New PdfDocument(originalFile)
-                pdf.SaveOptions.Compression = PdfCompression.Flate
-                pdf.SaveOptions.UseObjectStreams = True
-                pdf.SaveOptions.RemoveUnusedObjects = True
-                pdf.SaveOptions.OptimizeIndirectObjects = True
-                pdf.SaveOptions.WriteWithoutFormatting = True
-
-                pdf.Save(compressedFile)
+                Dim saveOptions As New PdfSaveOptions With
+                {
+                    .Compression = PdfCompression.Flate,
+                    .UseObjectStreams = True,
+                    .RemoveUnusedObjects = True,
+                    .OptimizeIndirectObjects = True,
+                    .WriteWithoutFormatting = True
+                }
+                pdf.Save(compressedFile, saveOptions)
             End Using
 
             ' NOTE:

@@ -38,11 +38,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 }
 
                 // 3. Setup save options
-                pdf.SaveOptions.Compression = PdfCompression.Flate;
-                pdf.SaveOptions.UseObjectStreams = true;
-                pdf.SaveOptions.RemoveUnusedObjects = true;
-                pdf.SaveOptions.OptimizeIndirectObjects = true;
-                pdf.SaveOptions.WriteWithoutFormatting = true;
+                var saveOptions = new PdfSaveOptions
+                {
+                    Compression = PdfCompression.Flate,
+                    UseObjectStreams = true,
+                    RemoveUnusedObjects = true,
+                    OptimizeIndirectObjects = true,
+                    WriteWithoutFormatting = true
+                };
 
                 // 4. Remove structure information
                 pdf.RemoveStructureInformation();
@@ -64,7 +67,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 // 9. Remove page-piece dictionaries
                 pdf.RemovePieceInfo();
 
-                pdf.Save(compressedFile);
+                pdf.Save(compressedFile, saveOptions);
             }
 
             string message = string.Format(
