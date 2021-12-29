@@ -278,8 +278,6 @@
 
 [Extract text by words](/Samples/Text/ExtractTextByWords)
 
-[Extract text on AWS Lambda](/Samples/Text/ExtractTextOnAwsLambda)
-
 [Find and highlight text](/Samples/Text/FindAndHighlightText)
 
 [Fonts](/Samples/Text/Fonts)
