@@ -186,10 +186,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
         private static PdfSize getPageSizeInPoints(PdfPage page)
         {
             PdfBox pageArea = getPageBox(page);
+            double userUnit = page.UserUnit;
             if (page.Rotation == PdfRotation.Rotate90 || page.Rotation == PdfRotation.Rotate270)
-                return new PdfSize(pageArea.Height, pageArea.Width);
+                return new PdfSize(pageArea.Height * userUnit, pageArea.Width * userUnit);
 
-            return pageArea.Size;
+            return new PdfSize(pageArea.Width * userUnit, pageArea.Height * userUnit);
         }
 
         private static RectangleF getPrintableAreaInPoints(PageSettings pageSettings)

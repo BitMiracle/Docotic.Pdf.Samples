@@ -20,6 +20,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     PdfPage sourcePage = copy.Pages[0];
                     PdfPage copyPage = copy.AddPage();
 
+                    copyPage.UserUnit = sourcePage.UserUnit;
                     copyPage.Rotation = sourcePage.Rotation;
                     copyPage.MediaBox = sourcePage.MediaBox;
                     if (sourcePage.CropBox != sourcePage.MediaBox)

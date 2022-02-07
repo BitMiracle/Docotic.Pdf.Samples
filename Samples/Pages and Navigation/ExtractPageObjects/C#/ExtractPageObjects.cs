@@ -34,6 +34,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         gr.SmoothingMode = SmoothingMode.HighQuality;
                         gr.PageUnit = GraphicsUnit.Point;
 
+                        float userUnit = (float)page.UserUnit;
+                        gr.ScaleTransform(userUnit, userUnit);
+
                         gr.SetClip(page.CropBox.ToRectangleF(page.Height), CombineMode.Intersect);
 
                         foreach (PdfPageObject obj in page.GetObjects())
@@ -41,15 +44,15 @@ namespace BitMiracle.Docotic.Pdf.Samples
                             switch (obj.Type)
                             {
                                 case PdfPageObjectType.Text:
-                                    drawText(gr, (PdfTextData)obj);
+                                    drawText(gr, (PdfTextData)obj, userUnit);
                                     break;
 
                                 case PdfPageObjectType.Image:
-                                    drawImage(gr, (PdfPaintedImage)obj);
+                                    drawImage(gr, (PdfPaintedImage)obj, userUnit);
                                     break;
 
                                 case PdfPageObjectType.Path:
-                                    drawPath(gr, (PdfPath)obj);
+                                    drawPath(gr, (PdfPath)obj, userUnit);
                                     break;
                             }
                         }
@@ -62,7 +65,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
 
-        private static void drawText(Graphics gr, PdfTextData td)
+        private static void drawText(Graphics gr, PdfTextData td, float userUnit)
         {
             if (td.RenderingMode == PdfTextRenderingMode.NeitherFillNorStroke ||
                 td.RenderingMode == PdfTextRenderingMode.AddToPath)
@@ -75,7 +78,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             if (Math.Abs(td.Bounds.Width) < 0.001 || Math.Abs(td.Bounds.Height) < 0.001)
                 return;
 
-            saveStateAndDraw(gr, td.ClipRegion, () =>
+            saveStateAndDraw(gr, td.ClipRegion, userUnit, () =>
             {
                 using (Font font = toGdiFont(td.Font, fontSizeAbs))
                 {
@@ -92,7 +95,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             });
         }
 
-        private static void drawImage(Graphics gr, PdfPaintedImage image)
+        private static void drawImage(Graphics gr, PdfPaintedImage image, float userUnit)
         {
             // Do not render images with zero width or height. GDI+ throws OutOfMemoryException
             // in x86 processes for regular image size (e.g. 1x51) and very small transformation
@@ -110,7 +113,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 image.Image.Save(stream);
                 using (Bitmap bitmap = (Bitmap)Image.FromStream(stream))
                 {
-                    saveStateAndDraw(gr, image.ClipRegion, () =>
+                    saveStateAndDraw(gr, image.ClipRegion, userUnit, () =>
                     {
                         gr.TranslateTransform((float)image.Position.X, (float)image.Position.Y);
                         concatMatrix(gr, image.TransformationMatrix);
@@ -139,12 +142,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
         }
 
-        private static void drawPath(Graphics gr, PdfPath path)
+        private static void drawPath(Graphics gr, PdfPath path, float userUnit)
         {
             if (!path.PaintMode.HasValue)
                 return;
 
-            saveStateAndDraw(gr, path.ClipRegion, () =>
+            saveStateAndDraw(gr, path.ClipRegion, userUnit, () =>
             {
                 concatMatrix(gr, path.TransformationMatrix);
 
@@ -157,12 +160,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
             });
         }
 
-        private static void saveStateAndDraw(Graphics gr, PdfClipRegion clipRegion, Action draw)
+        private static void saveStateAndDraw(Graphics gr, PdfClipRegion clipRegion, float userUnit, Action draw)
         {
             var state = gr.Save();
             try
             {
-                setClipRegion(gr, clipRegion);
+                setClipRegion(gr, clipRegion, userUnit);
 
                 draw();
             }
@@ -172,7 +175,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
         }
 
-        private static void setClipRegion(Graphics gr, PdfClipRegion clipRegion)
+        private static void setClipRegion(Graphics gr, PdfClipRegion clipRegion, float userUnit)
         {
             if (clipRegion.IntersectedPaths.Count == 0)
                 return;
@@ -180,7 +183,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             Matrix transformationBefore = gr.Transform;
             try
             {
-                gr.Transform = new Matrix();
+                gr.Transform = new Matrix(userUnit, 0, 0, userUnit, 0, 0);
                 foreach (PdfPath clipPath in clipRegion.IntersectedPaths)
                 {
                     using (var gdiPath = new GraphicsPath())
