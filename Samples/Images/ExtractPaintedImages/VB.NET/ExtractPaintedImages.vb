@@ -14,12 +14,16 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim image As PdfPaintedImage = paintedImages(0)
 
                 ' save image as is
-                Dim imageAsIs As String = "PdfImage.Save"
-                image.Image.Save(imageAsIs)
+                image.Image.Save("PdfImage.Save")
 
                 ' save image as painted
-                Dim imageAsPainted As String = "PdfPaintedImage.SaveAsPainted.tiff"
-                image.SaveAsPainted(imageAsPainted, PdfExtractedImageFormat.Tiff)
+                Dim options = New PdfPaintedImageSavingOptions With
+                {
+                    .Format = PdfExtractedImageFormat.Tiff,
+                    .HorizontalResolution = 300,
+                    .VerticalResolution = 300
+                }
+                image.SaveAsPainted("PdfPaintedImage.SaveAsPainted.tiff", options)
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")

@@ -18,12 +18,16 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 PdfPaintedImage image = paintedImages[0];
 
                 // save image as is
-                string imageAsIs = "PdfImage.Save";
-                image.Image.Save(imageAsIs);
+                image.Image.Save("PdfImage.Save");
 
                 // save image as painted
-                string imageAsPainted = "PdfPaintedImage.SaveAsPainted.tiff";
-                image.SaveAsPainted(imageAsPainted, PdfExtractedImageFormat.Tiff);
+                var options = new PdfPaintedImageSavingOptions
+                {
+                    Format = PdfExtractedImageFormat.Tiff,
+                    HorizontalResolution = 300,
+                    VerticalResolution = 300
+                };
+                image.SaveAsPainted("PdfPaintedImage.SaveAsPainted.tiff", options);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
