@@ -15,6 +15,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     Dim sourcePage As PdfPage = copy.Pages(0)
                     Dim copyPage As PdfPage = copy.AddPage()
 
+                    copyPage.UserUnit = sourcePage.UserUnit
                     copyPage.Rotation = sourcePage.Rotation
                     copyPage.MediaBox = sourcePage.MediaBox
                     If sourcePage.CropBox <> sourcePage.MediaBox Then

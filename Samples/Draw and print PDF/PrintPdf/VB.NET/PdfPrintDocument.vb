@@ -147,11 +147,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
         Private Shared Function getPageSizeInPoints(ByVal page As PdfPage) As PdfSize
             Dim pageArea = getPageBox(page)
+            Dim userUnit = page.UserUnit
             If page.Rotation = PdfRotation.Rotate90 OrElse page.Rotation = PdfRotation.Rotate270 Then
-                Return New PdfSize(pageArea.Height, pageArea.Width)
+                Return New PdfSize(pageArea.Height * userUnit, pageArea.Width * userUnit)
             End If
 
-            Return pageArea.Size
+            Return New PdfSize(pageArea.Width * userUnit, pageArea.Height * userUnit)
         End Function
 
         Private Shared Function getPrintableAreaInPoints(ByVal pageSettings As PageSettings) As RectangleF

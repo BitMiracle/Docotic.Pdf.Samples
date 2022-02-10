@@ -28,18 +28,21 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         gr.SmoothingMode = SmoothingMode.HighQuality
                         gr.PageUnit = GraphicsUnit.Point
 
+                        Dim userUnit As Single = page.UserUnit
+                        gr.ScaleTransform(userUnit, userUnit)
+
                         gr.SetClip(page.CropBox.ToRectangleF(page.Height), CombineMode.Intersect)
 
                         For Each obj As PdfPageObject In page.GetObjects()
                             Select Case obj.Type
                                 Case PdfPageObjectType.Text
-                                    drawText(gr, DirectCast(obj, PdfTextData))
+                                    drawText(gr, DirectCast(obj, PdfTextData), userUnit)
 
                                 Case PdfPageObjectType.Image
-                                    drawImage(gr, DirectCast(obj, PdfPaintedImage))
+                                    drawImage(gr, DirectCast(obj, PdfPaintedImage), userUnit)
 
                                 Case PdfPageObjectType.Path
-                                    drawPath(gr, DirectCast(obj, PdfPath))
+                                    drawPath(gr, DirectCast(obj, PdfPath), userUnit)
                             End Select
                         Next
                     End Using
@@ -51,7 +54,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
 
-        Private Shared Sub drawText(gr As Graphics, td As PdfTextData)
+        Private Shared Sub drawText(gr As Graphics, td As PdfTextData, userUnit As Single)
             If td.RenderingMode = PdfTextRenderingMode.NeitherFillNorStroke OrElse td.RenderingMode = PdfTextRenderingMode.AddToPath Then
                 Return
             End If
@@ -65,7 +68,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Return
             End If
 
-            saveStateAndDraw(gr, td.ClipRegion,
+            saveStateAndDraw(gr, td.ClipRegion, userUnit,
                 Sub()
                     Using font As Font = toGdiFont(td.Font, fontSizeAbs)
                         Using brush As Brush = toGdiBrush(td.Brush)
@@ -82,7 +85,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             )
         End Sub
 
-        Private Shared Sub drawImage(gr As Graphics, im As PdfPaintedImage)
+        Private Shared Sub drawImage(gr As Graphics, im As PdfPaintedImage, userUnit As Single)
             ' Do not render images with zero width or height. GDI+ throws OutOfMemoryException
             ' in x86 processes for regular image size (e.g. 1x51) and very small transformation
             ' matrix (e.g. { 0.000005, 0, 0, 0.003, x, y }).
@@ -99,7 +102,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using stream = New MemoryStream()
                 im.Image.Save(stream)
                 Using bitmap As Bitmap = DirectCast(Image.FromStream(stream), Bitmap)
-                    saveStateAndDraw(gr, im.ClipRegion,
+                    saveStateAndDraw(gr, im.ClipRegion, userUnit,
                         Sub()
                             gr.TranslateTransform(im.Position.X, im.Position.Y)
                             concatMatrix(gr, im.TransformationMatrix)
@@ -127,12 +130,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End Using
         End Sub
 
-        Private Shared Sub drawPath(gr As Graphics, path As PdfPath)
+        Private Shared Sub drawPath(gr As Graphics, path As PdfPath, userUnit As Single)
             If Not path.PaintMode.HasValue Then
                 Return
             End If
 
-            saveStateAndDraw(gr, path.ClipRegion,
+            saveStateAndDraw(gr, path.ClipRegion, userUnit,
                 Sub()
                     concatMatrix(gr, path.TransformationMatrix)
 
@@ -145,10 +148,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             )
         End Sub
 
-        Private Shared Sub saveStateAndDraw(gr As Graphics, clipRegion As PdfClipRegion, draw As Action)
+        Private Shared Sub saveStateAndDraw(gr As Graphics, clipRegion As PdfClipRegion, userUnit As Single, draw As Action)
             Dim state = gr.Save()
             Try
-                setClipRegion(gr, clipRegion)
+                setClipRegion(gr, clipRegion, userUnit)
 
                 draw()
             Finally
@@ -156,14 +159,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End Try
         End Sub
 
-        Private Shared Sub setClipRegion(gr As Graphics, clipRegion As PdfClipRegion)
+        Private Shared Sub setClipRegion(gr As Graphics, clipRegion As PdfClipRegion, userUnit As Single)
             If clipRegion.IntersectedPaths.Count = 0 Then
                 Return
             End If
 
             Dim transformationBefore As Matrix = gr.Transform
             Try
-                gr.Transform = New Matrix()
+                gr.Transform = New Matrix(userUnit, 0, 0, userUnit, 0, 0)
                 For Each clipPath As PdfPath In clipRegion.IntersectedPaths
                     Using gdiPath = New GraphicsPath()
                         toGdiPath(clipPath, gdiPath)

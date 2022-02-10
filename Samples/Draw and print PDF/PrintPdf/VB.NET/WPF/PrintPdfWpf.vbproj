@@ -140,10 +140,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BitMiracle.Docotic.Pdf">
-      <Version>8.4.12906</Version>
+      <Version>8.4.13033-dev</Version>
     </PackageReference>
     <PackageReference Include="BitMiracle.Docotic.Pdf.Gdi">
-      <Version>8.4.12906</Version>
+      <Version>8.4.13033-dev</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
