@@ -18,7 +18,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 Dim rectWithLink As New PdfRectangle(10, 70, 200, 100)
                 page.Canvas.DrawRectangle(rectWithLink, PdfDrawMode.Stroke)
-                page.Canvas.DrawString("Go to Google", rectWithLink, PdfTextAlign.Center, PdfVerticalAlign.Center)
+
+                Dim options = New PdfTextDrawingOptions(rectWithLink) With
+                {
+                    .HorizontalAlignment = PdfTextAlign.Center,
+                    .VerticalAlignment = PdfVerticalAlign.Center
+                }
+                page.Canvas.DrawText("Go to Google", options)
                 page.AddHyperlink(rectWithLink, New Uri("http://google.com"))
 
                 pdf.Save(pathToFile)

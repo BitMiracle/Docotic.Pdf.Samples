@@ -43,9 +43,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Next
 
             canvas.Brush.Color = New PdfGrayColor(0)
-            canvas.DrawString("Project", cellBounds(0), PdfTextAlign.Center, PdfVerticalAlign.Center)
-            canvas.DrawString("License", cellBounds(1), PdfTextAlign.Center, PdfVerticalAlign.Center)
-            canvas.DrawString("Description", cellBounds(2), PdfTextAlign.Center, PdfVerticalAlign.Center)
+            drawCenteredText(canvas, "Project", cellBounds(0))
+            drawCenteredText(canvas, "License", cellBounds(1))
+            drawCenteredText(canvas, "Description", cellBounds(2))
 
             canvas.RestoreState()
         End Sub
@@ -54,7 +54,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim bodyLeftCorner As New PdfPoint(m_leftTableCorner.X, m_leftTableCorner.Y + RowHeight)
             Dim firstCellBounds As New PdfRectangle(bodyLeftCorner, New PdfSize(m_columnWidths(0), RowHeight * 2))
             canvas.DrawRectangle(firstCellBounds)
-            canvas.DrawString("Docotic.Pdf", firstCellBounds, PdfTextAlign.Center, PdfVerticalAlign.Center)
+            drawCenteredText(canvas, "Docotic.Pdf", firstCellBounds)
 
             Dim cells As PdfRectangle(,) = New PdfRectangle(1, 1) {
                 {New PdfRectangle(bodyLeftCorner.X + m_columnWidths(0), bodyLeftCorner.Y, m_columnWidths(1), RowHeight),
@@ -66,10 +66,19 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.DrawRectangle(rect, PdfDrawMode.Stroke)
             Next
 
-            canvas.DrawString("Application License", cells(0, 0), PdfTextAlign.Center, PdfVerticalAlign.Center)
-            canvas.DrawString("For end-user applications", cells(0, 1), PdfTextAlign.Center, PdfVerticalAlign.Center)
-            canvas.DrawString("Server License", cells(1, 0), PdfTextAlign.Center, PdfVerticalAlign.Center)
-            canvas.DrawString("For server-based services", cells(1, 1), PdfTextAlign.Center, PdfVerticalAlign.Center)
+            drawCenteredText(canvas, "Application License", cells(0, 0))
+            drawCenteredText(canvas, "For end-user applications", cells(0, 1))
+            drawCenteredText(canvas, "Server License", cells(1, 0))
+            drawCenteredText(canvas, "For server-based services", cells(1, 1))
+        End Sub
+
+        Private Shared Sub drawCenteredText(canvas As PdfCanvas, text As String, bounds As PdfRectangle)
+            Dim options = New PdfTextDrawingOptions(bounds) With
+            {
+                .HorizontalAlignment = PdfTextAlign.Center,
+                .VerticalAlignment = PdfVerticalAlign.Center
+            }
+            canvas.DrawText(text, options)
         End Sub
     End Class
 End Namespace

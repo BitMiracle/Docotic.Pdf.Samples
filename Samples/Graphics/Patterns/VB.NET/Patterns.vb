@@ -31,7 +31,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Dim canvas As PdfCanvas = pdf.GetPage(0).Canvas
             canvas.Brush.Pattern = pattern
-            canvas.DrawString(New PdfPoint(50, 50), 0, "Pattern-filled text")
+            canvas.DrawString(New PdfPoint(50, 50), "Pattern-filled text")
             canvas.DrawCircle(New PdfPoint(0, 0), 20, PdfDrawMode.FillAndStroke)
         End Sub
 

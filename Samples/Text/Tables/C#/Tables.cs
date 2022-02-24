@@ -51,9 +51,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
 
             canvas.Brush.Color = new PdfGrayColor(0);
-            canvas.DrawString("Project", cellBounds[0], PdfTextAlign.Center, PdfVerticalAlign.Center);
-            canvas.DrawString("License", cellBounds[1], PdfTextAlign.Center, PdfVerticalAlign.Center);
-            canvas.DrawString("Description", cellBounds[2], PdfTextAlign.Center, PdfVerticalAlign.Center);
+            drawCenteredText(canvas, "Project", cellBounds[0]);
+            drawCenteredText(canvas, "License", cellBounds[1]);
+            drawCenteredText(canvas, "Description", cellBounds[2]);
 
             canvas.RestoreState();
         }
@@ -63,7 +63,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             PdfPoint bodyLeftCorner = new PdfPoint(m_leftTableCorner.X, m_leftTableCorner.Y + RowHeight);
             PdfRectangle firstCellBounds = new PdfRectangle(bodyLeftCorner, new PdfSize(m_columnWidths[0], RowHeight * 2));
             canvas.DrawRectangle(firstCellBounds);
-            canvas.DrawString("Docotic.Pdf", firstCellBounds, PdfTextAlign.Center, PdfVerticalAlign.Center);
+            drawCenteredText(canvas, "Docotic.Pdf", firstCellBounds);
 
             PdfRectangle[,] cells = new PdfRectangle[2, 2]
             {
@@ -80,10 +80,20 @@ namespace BitMiracle.Docotic.Pdf.Samples
             foreach (PdfRectangle rect in cells)
                 canvas.DrawRectangle(rect, PdfDrawMode.Stroke);
 
-            canvas.DrawString("Application License", cells[0, 0], PdfTextAlign.Center, PdfVerticalAlign.Center);
-            canvas.DrawString("For end-user applications", cells[0, 1], PdfTextAlign.Center, PdfVerticalAlign.Center);
-            canvas.DrawString("Server License", cells[1, 0], PdfTextAlign.Center, PdfVerticalAlign.Center);
-            canvas.DrawString("For server-based services", cells[1, 1], PdfTextAlign.Center, PdfVerticalAlign.Center);
+            drawCenteredText(canvas, "Application License", cells[0, 0]);
+            drawCenteredText(canvas, "For end-user applications", cells[0, 1]);
+            drawCenteredText(canvas, "Server License", cells[1, 0]);
+            drawCenteredText(canvas, "For server-based services", cells[1, 1]);
+        }
+
+        private static void drawCenteredText(PdfCanvas canvas, string text, PdfRectangle bounds)
+        {
+            var options = new PdfTextDrawingOptions(bounds)
+            {
+                HorizontalAlignment = PdfTextAlign.Center,
+                VerticalAlignment = PdfVerticalAlign.Center
+            };
+            canvas.DrawText(text, options);
         }
     }
 }

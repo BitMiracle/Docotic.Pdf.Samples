@@ -15,9 +15,21 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 canvas.DrawString(10, 50, "Hello, world!")
 
-                Const longString As String = "Lorem ipsum dolor sit amet, consectetur adipisicing elit"
-                canvas.DrawString(longString, New PdfRectangle(10, 70, 40, 150), PdfTextAlign.Left, PdfVerticalAlign.Top)
-                canvas.DrawText(longString, New PdfRectangle(70, 70, 40, 150), PdfTextAlign.Left, PdfVerticalAlign.Top)
+                Const LongString As String = "Lorem ipsum dolor sit amet, consectetur adipisicing elit"
+                Dim singleLineOptions = New PdfTextDrawingOptions(New PdfRectangle(10, 70, 40, 150)) With
+                {
+                    .Multiline = False,
+                    .HorizontalAlignment = PdfTextAlign.Left,
+                    .VerticalAlignment = PdfVerticalAlign.Top
+                }
+                canvas.DrawText(LongString, singleLineOptions)
+
+                Dim multiLineOptions = New PdfTextDrawingOptions(New PdfRectangle(70, 70, 40, 150)) With
+                {
+                    .HorizontalAlignment = PdfTextAlign.Left,
+                    .VerticalAlignment = PdfVerticalAlign.Top
+                }
+                canvas.DrawText(LongString, multiLineOptions)
 
                 pdf.Save(pathToFile)
             End Using

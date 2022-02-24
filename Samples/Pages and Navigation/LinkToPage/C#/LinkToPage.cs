@@ -22,18 +22,28 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 PdfCanvas canvas = firstPage.Canvas;
                 PdfRectangle rectForLinkToSecondPage = new PdfRectangle(10, 50, 100, 60);
                 canvas.DrawRectangle(rectForLinkToSecondPage, PdfDrawMode.Stroke);
-                canvas.DrawString("Go to 2nd page", rectForLinkToSecondPage, PdfTextAlign.Center, PdfVerticalAlign.Center);
+                drawCenteredText(canvas, "Go to 2nd page", rectForLinkToSecondPage);
                 firstPage.AddLinkToPage(rectForLinkToSecondPage, 1);
 
                 PdfRectangle rectForLinkToThirdPage = new PdfRectangle(150, 50, 100, 60);
                 canvas.DrawRectangle(rectForLinkToThirdPage, PdfDrawMode.Stroke);
-                canvas.DrawString("Go to 3rd page", rectForLinkToThirdPage, PdfTextAlign.Center, PdfVerticalAlign.Center);
+                drawCenteredText(canvas, "Go to 3rd page", rectForLinkToThirdPage);
                 firstPage.AddLinkToPage(rectForLinkToThirdPage, pdf.Pages[2]);
 
                 pdf.Save(pathToFile);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+        }
+
+        private static void drawCenteredText(PdfCanvas canvas, string text, PdfRectangle bounds)
+        {
+            var options = new PdfTextDrawingOptions(bounds)
+            {
+                HorizontalAlignment = PdfTextAlign.Center,
+                VerticalAlignment = PdfVerticalAlign.Center
+            };
+            canvas.DrawText(text, options);
         }
     }
 }

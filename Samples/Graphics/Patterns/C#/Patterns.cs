@@ -36,7 +36,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             PdfCanvas canvas = pdf.GetPage(0).Canvas;
             canvas.Brush.Pattern = pattern;
-            canvas.DrawString(new PdfPoint(50, 50), 0, "Pattern-filled text");
+            canvas.DrawString(new PdfPoint(50, 50), "Pattern-filled text");
             canvas.DrawCircle(new PdfPoint(0, 0), 20, PdfDrawMode.FillAndStroke);
         }
 

@@ -22,7 +22,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                 PdfRectangle rectWithLink = new PdfRectangle(10, 70, 200, 100);
                 page.Canvas.DrawRectangle(rectWithLink, PdfDrawMode.Stroke);
-                page.Canvas.DrawString("Go to Google", rectWithLink, PdfTextAlign.Center, PdfVerticalAlign.Center);
+
+                var options = new PdfTextDrawingOptions(rectWithLink)
+                {
+                    HorizontalAlignment = PdfTextAlign.Center,
+                    VerticalAlignment = PdfVerticalAlign.Center
+                };
+                page.Canvas.DrawText("Go to Google", options);
+
                 page.AddHyperlink(rectWithLink, new Uri("http://google.com"));
 
                 pdf.Save(pathToFile);
