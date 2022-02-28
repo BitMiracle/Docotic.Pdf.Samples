@@ -25,8 +25,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim signingTime = If(signature.SigningTime, Date.MinValue)
                 sb.AppendFormat("Signed on: {0}" & vbLf, signingTime.ToShortDateString())
 
-                If contents.Timestamp IsNot Nothing Then
-                    sb.AppendFormat("Embedded timestamp: {0}" & vbLf, contents.Timestamp)
+                Dim timestampToken = contents.GetTimestampToken()
+                If timestampToken IsNot Nothing Then
+                    sb.AppendFormat("Embedded timestamp: {0}" & vbLf, timestampToken.GenerationTime)
+
+                    If timestampToken.TimestampAuthority IsNot Nothing Then
+                        sb.AppendFormat("Timestamp authority: {0}" & vbLf, timestampToken.TimestampAuthority.Name)
+                    End If
+
                     sb.AppendFormat("Timestamp is intact: {0}" & vbLf & vbLf, contents.VerifyTimestamp())
                 Else
                     sb.AppendLine()
