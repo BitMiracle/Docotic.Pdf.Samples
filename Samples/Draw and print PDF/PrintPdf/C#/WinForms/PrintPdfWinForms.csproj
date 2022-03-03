@@ -11,7 +11,7 @@
     <Compile Include="..\PrintSize.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="8.4.13033-dev" />
-    <PackageReference Include="BitMiracle.Docotic.Pdf.Gdi" Version="8.4.13033-dev" />
+    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="8.5.13147" />
+    <PackageReference Include="BitMiracle.Docotic.Pdf.Gdi" Version="8.5.13147" />
   </ItemGroup>
 </Project>

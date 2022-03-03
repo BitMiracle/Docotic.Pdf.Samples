@@ -5,7 +5,7 @@
     <StartWorkingDirectory>$(SolutionDir)\Output</StartWorkingDirectory>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="8.4.12906" />
+    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="8.5.13147" />
     <PackageReference Include="log4net" Version="2.0.12" />
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
