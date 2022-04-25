@@ -20,49 +20,19 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     PdfPage sourcePage = copy.Pages[0];
                     PdfPage copyPage = copy.AddPage();
 
-                    copyPage.UserUnit = sourcePage.UserUnit;
-                    copyPage.Rotation = sourcePage.Rotation;
-                    copyPage.MediaBox = sourcePage.MediaBox;
-                    if (sourcePage.CropBox != sourcePage.MediaBox)
-                        copyPage.CropBox = sourcePage.CropBox;
-
-                    PdfCanvas target = copyPage.Canvas;
-                    foreach (PdfPageObject obj in sourcePage.GetObjects())
+                    var options = new PdfObjectExtractionOptions
                     {
-                        target.SaveState();
-                        setClipRegion(target, obj.ClipRegion);
+                        // Set this option to true if you need to convert searchable text to vector paths
+                        ExtractTextAsPath = false,
 
-                        if (obj.Type == PdfPageObjectType.Path)
-                        {
-                            PdfPath path = (PdfPath)obj;
-                            target.Transform(path.TransformationMatrix);
-
-                            if (path.PaintMode == PdfDrawMode.Fill || path.PaintMode == PdfDrawMode.FillAndStroke)
-                                setBrush(target.Brush, path.Brush);
-
-                            if (path.PaintMode == PdfDrawMode.Stroke || path.PaintMode == PdfDrawMode.FillAndStroke)
-                                setPen(target.Pen, path.Pen);
-
-                            appendPath(target, path);
-                            drawPath(target, path);
-                        }
-                        else if (obj.Type == PdfPageObjectType.Image)
-                        {
-                            PdfPaintedImage image = (PdfPaintedImage)obj;
-                            target.TranslateTransform(image.Position.X, image.Position.Y);
-                            target.Transform(image.TransformationMatrix);
-
-                            setBrush(target.Brush, image.Brush);
-                            target.DrawImage(image.Image, 0, 0, 0);
-                        }
-                        else if (obj.Type == PdfPageObjectType.Text)
-                        {
-                            PdfTextData text = (PdfTextData)obj;
-                            drawText(target, text);
-                        }
-
-                        target.RestoreState();
-                    }
+                        // Usually, you need to set this option to false. That allows to properly handle
+                        // documents with transparency groups.
+                        // The value = true is recommended for backward compatibility or if you do not
+                        // worry about transparency.
+                        FlattenXObjects = false
+                    };
+                    var copier = new PageObjectCopier(copy, options);
+                    copier.Copy(sourcePage, copyPage);
 
                     copy.RemovePage(0);
 
@@ -71,137 +41,6 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
-        }
-
-        private static void setClipRegion(PdfCanvas canvas, PdfClipRegion clipRegion)
-        {
-            if (clipRegion.IntersectedPaths.Count == 0)
-                return;
-
-            PdfMatrix transformationBefore = canvas.TransformationMatrix;
-            try
-            {
-                foreach (PdfPath clipPath in clipRegion.IntersectedPaths)
-                {
-                    canvas.ResetTransform();
-                    canvas.Transform(clipPath.TransformationMatrix);
-                    appendPath(canvas, clipPath);
-                    canvas.SetClip(clipPath.ClipMode.Value);
-                }
-            }
-            finally
-            {
-                canvas.ResetTransform();
-                canvas.Transform(transformationBefore);
-            }
-        }
-
-        private static void setBrush(PdfBrush dst, PdfBrushInfo src)
-        {
-            PdfColor color = src.Color;
-            if (color != null)
-                dst.Color = color;
-
-            dst.Opacity = src.Opacity;
-
-            var pattern = src.Pattern;
-            if (pattern != null)
-                dst.Pattern = pattern;
-        }
-
-        private static void setPen(PdfPen dst, PdfPenInfo src)
-        {
-            PdfColor color = src.Color;
-            if (color != null)
-                dst.Color = color;
-
-            var pattern = src.Pattern;
-            if (pattern != null)
-                dst.Pattern = pattern;
-
-            dst.DashPattern = src.DashPattern;
-            dst.EndCap = src.EndCap;
-            dst.LineJoin = src.LineJoin;
-            dst.MiterLimit = src.MiterLimit;
-            dst.Opacity = src.Opacity;
-            dst.Width = src.Width;
-        }
-
-        private static void appendPath(PdfCanvas target, PdfPath path)
-        {
-            foreach (PdfSubpath subpath in path.Subpaths)
-            {
-                foreach (PdfPathSegment segment in subpath.Segments)
-                {
-                    switch (segment.Type)
-                    {
-                        case PdfPathSegmentType.Point:
-                            target.CurrentPosition = ((PdfPointSegment)segment).Value;
-                            break;
-
-                        case PdfPathSegmentType.Line:
-                            PdfLineSegment line = (PdfLineSegment)segment;
-                            target.CurrentPosition = line.Start;
-                            target.AppendLineTo(line.End);
-                            break;
-
-                        case PdfPathSegmentType.Bezier:
-                            PdfBezierSegment bezier = (PdfBezierSegment)segment;
-                            target.CurrentPosition = bezier.Start;
-                            target.AppendCurveTo(bezier.FirstControl, bezier.SecondControl, bezier.End);
-                            break;
-
-                        case PdfPathSegmentType.Rectangle:
-                            target.AppendRectangle(((PdfRectangleSegment)segment).Bounds);
-                            break;
-
-                        case PdfPathSegmentType.CloseSubpath:
-                            target.ClosePath();
-                            break;
-                    }
-                }
-            }
-        }
-
-        private static void drawPath(PdfCanvas target, PdfPath path)
-        {
-            switch (path.PaintMode)
-            {
-                case PdfDrawMode.Fill:
-                    target.FillPath(path.FillMode.Value);
-                    break;
-
-                case PdfDrawMode.FillAndStroke:
-                    target.FillAndStrokePath(path.FillMode.Value);
-                    break;
-
-                case PdfDrawMode.Stroke:
-                    target.StrokePath();
-                    break;
-
-                default:
-                    target.ResetPath();
-                    break;
-            }
-        }
-
-        private static void drawText(PdfCanvas target, PdfTextData td)
-        {
-            target.TextRenderingMode = td.RenderingMode;
-            setBrush(target.Brush, td.Brush);
-            setPen(target.Pen, td.Pen);
-
-            target.TextPosition = PdfPoint.Empty;
-            target.FontSize = td.FontSize;
-            target.Font = td.Font;
-            target.CharacterSpacing = td.CharacterSpacing;
-            target.WordSpacing = td.WordSpacing;
-            target.TextHorizontalScaling = td.HorizontalScaling;
-
-            target.TranslateTransform(td.Position.X, td.Position.Y);
-            target.Transform(td.TransformationMatrix);
-
-            target.DrawString(td.GetCharacterCodes());
         }
     }
 }
