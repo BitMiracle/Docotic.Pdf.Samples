@@ -20,6 +20,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
         public void Copy(PdfPage sourcePage, PdfPage copyPage)
         {
             copyPage.Group = sourcePage.Group;
+            copyPage.UserUnit = sourcePage.UserUnit;
             copyPage.Rotation = sourcePage.Rotation;
             copyPage.MediaBox = sourcePage.MediaBox;
             if (sourcePage.CropBox != sourcePage.MediaBox)
@@ -139,6 +140,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
             target.TextPosition = PdfPoint.Empty;
             target.FontSize = td.FontSize;
             target.Font = td.Font;
+            target.CharacterSpacing = td.CharacterSpacing;
+            target.WordSpacing = td.WordSpacing;
+            target.TextHorizontalScaling = td.HorizontalScaling;
+
             target.TranslateTransform(td.Position.X, td.Position.Y);
             target.Transform(td.TransformationMatrix);
 
