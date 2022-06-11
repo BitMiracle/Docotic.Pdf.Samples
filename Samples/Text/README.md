@@ -43,6 +43,10 @@ This sample shows how to recognize and extract text from non-searchable PDF docu
 
 This sample shows how to create searchable PDF document from a non-searchable (image-based) document using Docotic.Pdf library and Tesseract OCR Engine.
 
+[OCR and extract garbled text from PDF documents](/Samples/Text/OcrGarbledText)
+
+This sample shows how to OCR and extract garbled text from PDF document.
+
 [Tables](/Samples/Text/Tables)
 
 This sample shows how to draw tables using methods for drawing text and lines.

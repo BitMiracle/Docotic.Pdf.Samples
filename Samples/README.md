@@ -288,6 +288,8 @@
 
 [OCR PDF and convert to searchable document](/Samples/Text/OcrAndMakeSearchable)
 
+[OCR and extract garbled text from PDF documents](/Samples/Text/OcrGarbledText)
+
 [Tables](/Samples/Text/Tables)
 
 [Horizontal scaling](/Samples/Text/TextHorizontalScaling)
