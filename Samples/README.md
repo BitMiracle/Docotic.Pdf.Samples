@@ -230,6 +230,8 @@
 
 [Copy pages](/Samples/Pages%20and%20Navigation/CopyPages)
 
+[Edit PDF page content](/Samples/Pages%20and%20Navigation/EditPageContent)
+
 [Extract text, paths and images](/Samples/Pages%20and%20Navigation/ExtractPageObjects)
 
 [Extract pages](/Samples/Pages%20and%20Navigation/ExtractPages)

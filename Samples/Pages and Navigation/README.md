@@ -15,6 +15,10 @@ This sample shows how to copy page objects (text, paths and images) to a new doc
 
 This sample shows how to copy pages from one PDF document to another.
 
+[Edit PDF page content](/Samples/Pages%20and%20Navigation/EditPageContent)
+
+This sample shows how to modify PDF page content.
+
 [Extract text, paths and images](/Samples/Pages%20and%20Navigation/ExtractPageObjects)
 
 This sample shows how to extract page objects (text, paths and images) from PdfDocument. The sample draws extracted objects on the drawing surface of a System.Drawing.Graphics.
