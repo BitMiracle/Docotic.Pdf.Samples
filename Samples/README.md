@@ -282,6 +282,8 @@
 
 [Find and highlight text](/Samples/Text/FindAndHighlightText)
 
+[Fix garbled text](/Samples/Text/FixGarbledText)
+
 [Fonts](/Samples/Text/Fonts)
 
 [Internationalization](/Samples/Text/Internationalization)
@@ -289,8 +291,6 @@
 [OCR PDF and extract plain text](/Samples/Text/OcrAndExtractText)
 
 [OCR PDF and convert to searchable document](/Samples/Text/OcrAndMakeSearchable)
-
-[OCR and extract garbled text from PDF documents](/Samples/Text/OcrGarbledText)
 
 [Tables](/Samples/Text/Tables)
 

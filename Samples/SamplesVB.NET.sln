@@ -1,301 +1,299 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29215.179
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{BDF28C67-3D00-4DB7-85CF-B78B1A232008}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GoToAction", "Actions\GoToAction\VB.NET\GoToAction.vbproj", "{33016D1C-2183-4A19-A99F-4F0D0284E32E}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "GoToAction", "Actions\GoToAction\VB.NET\GoToAction.vbproj", "{33016D1C-2183-4A19-A99F-4F0D0284E32E}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "HideAction", "Actions\HideAction\VB.NET\HideAction.vbproj", "{6521AB30-9969-441A-B231-77099D6A7A35}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "HideAction", "Actions\HideAction\VB.NET\HideAction.vbproj", "{6521AB30-9969-441A-B231-77099D6A7A35}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "JavaScriptAction", "Actions\JavaScriptAction\VB.NET\JavaScriptAction.vbproj", "{993DDAAA-18EC-4427-BF46-5084DAD7B91D}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "JavaScriptAction", "Actions\JavaScriptAction\VB.NET\JavaScriptAction.vbproj", "{993DDAAA-18EC-4427-BF46-5084DAD7B91D}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SubmitResetFormActions", "Actions\SubmitResetFormActions\VB.NET\SubmitResetFormActions.vbproj", "{6585ED9F-7066-44ED-A929-16063BD7404B}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "SubmitResetFormActions", "Actions\SubmitResetFormActions\VB.NET\SubmitResetFormActions.vbproj", "{6585ED9F-7066-44ED-A929-16063BD7404B}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "UriAction", "Actions\UriAction\VB.NET\UriAction.vbproj", "{7831A0E0-89FC-428B-8A72-F0507B7A2081}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "UriAction", "Actions\UriAction\VB.NET\UriAction.vbproj", "{7831A0E0-89FC-428B-8A72-F0507B7A2081}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Attachments", "Attachments", "{C133FDBE-D10F-4AA5-B6DF-605360B44322}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AddAttachments", "Attachments\AddAttachments\VB.NET\AddAttachments.vbproj", "{5A82B70E-9488-4F02-BB6C-6A933308C9CF}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "AddAttachments", "Attachments\AddAttachments\VB.NET\AddAttachments.vbproj", "{5A82B70E-9488-4F02-BB6C-6A933308C9CF}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GetAllAttachments", "Attachments\GetAllAttachments\VB.NET\GetAllAttachments.vbproj", "{C72ED4AC-2623-49E9-820D-35DC87C66BE9}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "GetAllAttachments", "Attachments\GetAllAttachments\VB.NET\GetAllAttachments.vbproj", "{C72ED4AC-2623-49E9-820D-35DC87C66BE9}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SaveAttachment", "Attachments\SaveAttachment\VB.NET\SaveAttachment.vbproj", "{B9F29DAF-75AC-4DCB-A9D7-9C9AA706E69D}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "SaveAttachment", "Attachments\SaveAttachment\VB.NET\SaveAttachment.vbproj", "{B9F29DAF-75AC-4DCB-A9D7-9C9AA706E69D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Compression", "Compression", "{787B1479-0C4D-4A5F-BD96-46E03E090EE7}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CompressAllTechniques", "Compression\CompressAllTechniques\VB.NET\CompressAllTechniques.vbproj", "{4F4AEF23-064A-4A40-8136-3750FAE28A31}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "CompressAllTechniques", "Compression\CompressAllTechniques\VB.NET\CompressAllTechniques.vbproj", "{4F4AEF23-064A-4A40-8136-3750FAE28A31}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CompressWithSaveOptions", "Compression\CompressWithSaveOptions\VB.NET\CompressWithSaveOptions.vbproj", "{0B76E4FF-4C91-4AB7-ACB1-D240B42BA33D}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "CompressWithSaveOptions", "Compression\CompressWithSaveOptions\VB.NET\CompressWithSaveOptions.vbproj", "{0B76E4FF-4C91-4AB7-ACB1-D240B42BA33D}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "OptimizeImages", "Compression\OptimizeImages\VB.NET\OptimizeImages.vbproj", "{8C507A09-13A6-4570-9A66-63F88A9FD15F}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "OptimizeImages", "Compression\OptimizeImages\VB.NET\OptimizeImages.vbproj", "{8C507A09-13A6-4570-9A66-63F88A9FD15F}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RemoveStructureInformation", "Compression\RemoveStructureInformation\VB.NET\RemoveStructureInformation.vbproj", "{49F520DB-7C9A-47E7-AEB3-184AA5889D48}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "RemoveStructureInformation", "Compression\RemoveStructureInformation\VB.NET\RemoveStructureInformation.vbproj", "{49F520DB-7C9A-47E7-AEB3-184AA5889D48}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Display options", "Display options", "{E9C2E293-B5B0-4EFA-84FD-88E9242E8D22}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "InitialView", "Display options\InitialView\VB.NET\InitialView.vbproj", "{23558355-D050-4BBB-B752-F07A28EDF1FC}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "InitialView", "Display options\InitialView\VB.NET\InitialView.vbproj", "{23558355-D050-4BBB-B752-F07A28EDF1FC}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PageLayout", "Display options\PageLayout\VB.NET\PageLayout.vbproj", "{8BBDDC32-F362-4DE2-BE2B-432B37646B3D}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "PageLayout", "Display options\PageLayout\VB.NET\PageLayout.vbproj", "{8BBDDC32-F362-4DE2-BE2B-432B37646B3D}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PageMode", "Display options\PageMode\VB.NET\PageMode.vbproj", "{F7394F50-691A-4829-ABB3-123FD43AD033}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "PageMode", "Display options\PageMode\VB.NET\PageMode.vbproj", "{F7394F50-691A-4829-ABB3-123FD43AD033}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ViewerPreferences", "Display options\ViewerPreferences\VB.NET\ViewerPreferences.vbproj", "{14E2CADD-B1B4-4C45-8F93-1BA55A65A52A}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ViewerPreferences", "Display options\ViewerPreferences\VB.NET\ViewerPreferences.vbproj", "{14E2CADD-B1B4-4C45-8F93-1BA55A65A52A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Draw and print PDF", "Draw and print PDF", "{5F899968-F0A4-4E85-BF25-6C45222AAD08}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "DrawPageOnGraphics", "Draw and print PDF\DrawPageOnGraphics\VB.NET\DrawPageOnGraphics.vbproj", "{F60405CE-38C6-49FB-B42D-9ACA4DA749AA}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "DrawPageOnGraphics", "Draw and print PDF\DrawPageOnGraphics\VB.NET\DrawPageOnGraphics.vbproj", "{F60405CE-38C6-49FB-B42D-9ACA4DA749AA}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "DrawZoomedPage", "Draw and print PDF\DrawZoomedPage\VB.NET\DrawZoomedPage.vbproj", "{4E9246D9-E9A2-40C3-9640-58C6E07ED799}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "DrawZoomedPage", "Draw and print PDF\DrawZoomedPage\VB.NET\DrawZoomedPage.vbproj", "{4E9246D9-E9A2-40C3-9640-58C6E07ED799}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MakePageThumbnail", "Draw and print PDF\MakePageThumbnail\VB.NET\MakePageThumbnail.vbproj", "{11939E05-23DA-40D8-BBCE-E51ED21E91CF}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "MakePageThumbnail", "Draw and print PDF\MakePageThumbnail\VB.NET\MakePageThumbnail.vbproj", "{11939E05-23DA-40D8-BBCE-E51ED21E91CF}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SaveAsTiff", "Draw and print PDF\SaveAsTiff\VB.NET\SaveAsTiff.vbproj", "{201DBCB4-7DB5-4040-B670-6E8E64617883}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "SaveAsTiff", "Draw and print PDF\SaveAsTiff\VB.NET\SaveAsTiff.vbproj", "{201DBCB4-7DB5-4040-B670-6E8E64617883}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SavePageAsImage", "Draw and print PDF\SavePageAsImage\VB.NET\SavePageAsImage.vbproj", "{BF228D1A-595E-44C1-83F2-31A935B1F65E}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "SavePageAsImage", "Draw and print PDF\SavePageAsImage\VB.NET\SavePageAsImage.vbproj", "{BF228D1A-595E-44C1-83F2-31A935B1F65E}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SavePageCustomResolution", "Draw and print PDF\SavePageCustomResolution\VB.NET\SavePageCustomResolution.vbproj", "{0058CEA0-6113-46EB-A40B-8EBAF3E75A10}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "SavePageCustomResolution", "Draw and print PDF\SavePageCustomResolution\VB.NET\SavePageCustomResolution.vbproj", "{0058CEA0-6113-46EB-A40B-8EBAF3E75A10}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Forms and Annotations", "Forms and Annotations", "{9025591C-FF6E-452F-BFDA-26E93CC1D358}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TextAnnotations", "Forms and Annotations\TextAnnotations\VB.NET\TextAnnotations.vbproj", "{3FC85FA8-5BD0-47EF-B54F-2EFD07C31B8C}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "TextAnnotations", "Forms and Annotations\TextAnnotations\VB.NET\TextAnnotations.vbproj", "{3FC85FA8-5BD0-47EF-B54F-2EFD07C31B8C}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ButtonImage", "Forms and Annotations\ButtonImage\VB.NET\ButtonImage.vbproj", "{18DCD5C8-8970-4201-A246-825BC1F8F86E}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ButtonImage", "Forms and Annotations\ButtonImage\VB.NET\ButtonImage.vbproj", "{18DCD5C8-8970-4201-A246-825BC1F8F86E}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Buttons", "Forms and Annotations\Buttons\VB.NET\Buttons.vbproj", "{BA4E1E06-7653-4E34-B6C5-D84811BE1E42}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Buttons", "Forms and Annotations\Buttons\VB.NET\Buttons.vbproj", "{BA4E1E06-7653-4E34-B6C5-D84811BE1E42}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Checkboxes", "Forms and Annotations\Checkboxes\VB.NET\Checkboxes.vbproj", "{1AB71AAF-27F8-46FB-84BF-CA93F8E62935}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Checkboxes", "Forms and Annotations\Checkboxes\VB.NET\Checkboxes.vbproj", "{1AB71AAF-27F8-46FB-84BF-CA93F8E62935}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Comboboxes", "Forms and Annotations\Comboboxes\VB.NET\Comboboxes.vbproj", "{C3438809-8303-4C3C-A77E-12F8322104C4}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Comboboxes", "Forms and Annotations\Comboboxes\VB.NET\Comboboxes.vbproj", "{C3438809-8303-4C3C-A77E-12F8322104C4}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ExportFdfData", "Forms and Annotations\ExportFdfData\VB.NET\ExportFdfData.vbproj", "{840C1A65-B37C-40DB-8D32-DC40DD409C27}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ExportFdfData", "Forms and Annotations\ExportFdfData\VB.NET\ExportFdfData.vbproj", "{840C1A65-B37C-40DB-8D32-DC40DD409C27}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FillForm", "Forms and Annotations\FillForm\VB.NET\FillForm.vbproj", "{2D7AC888-7445-42AC-BA33-3B012A8C5A4E}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "FillForm", "Forms and Annotations\FillForm\VB.NET\FillForm.vbproj", "{2D7AC888-7445-42AC-BA33-3B012A8C5A4E}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FindControlByName", "Forms and Annotations\FindControlByName\VB.NET\FindControlByName.vbproj", "{CD7FABE6-CAE0-4C9C-96AC-AC30940DE676}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "FindControlByName", "Forms and Annotations\FindControlByName\VB.NET\FindControlByName.vbproj", "{CD7FABE6-CAE0-4C9C-96AC-AC30940DE676}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FlattenFormFields", "Forms and Annotations\FlattenFormFields\VB.NET\FlattenFormFields.vbproj", "{0B203054-0F6E-4C71-A62C-D9112D377E56}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "FlattenFormFields", "Forms and Annotations\FlattenFormFields\VB.NET\FlattenFormFields.vbproj", "{0B203054-0F6E-4C71-A62C-D9112D377E56}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ImportFdfData", "Forms and Annotations\ImportFdfData\VB.NET\ImportFdfData.vbproj", "{E0676A59-9E29-429C-AD62-47E6A09E84FE}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ImportFdfData", "Forms and Annotations\ImportFdfData\VB.NET\ImportFdfData.vbproj", "{E0676A59-9E29-429C-AD62-47E6A09E84FE}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Listboxes", "Forms and Annotations\Listboxes\VB.NET\Listboxes.vbproj", "{C5EDBBC8-7C31-4DFB-AC28-94B37E111BD8}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Listboxes", "Forms and Annotations\Listboxes\VB.NET\Listboxes.vbproj", "{C5EDBBC8-7C31-4DFB-AC28-94B37E111BD8}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "NumericTextField", "Forms and Annotations\NumericTextField\VB.NET\NumericTextField.vbproj", "{6F6975D1-58F9-4346-B2CE-8622B692E980}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "NumericTextField", "Forms and Annotations\NumericTextField\VB.NET\NumericTextField.vbproj", "{6F6975D1-58F9-4346-B2CE-8622B692E980}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RadioButtons", "Forms and Annotations\RadioButtons\VB.NET\RadioButtons.vbproj", "{D5618253-7886-4A6F-BDB8-C46C210F3C68}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "RadioButtons", "Forms and Annotations\RadioButtons\VB.NET\RadioButtons.vbproj", "{D5618253-7886-4A6F-BDB8-C46C210F3C68}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ReadComboBoxItems", "Forms and Annotations\ReadComboBoxItems\VB.NET\ReadComboBoxItems.vbproj", "{96DBB4E3-E7DD-454D-B788-13A506AFCE35}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ReadComboBoxItems", "Forms and Annotations\ReadComboBoxItems\VB.NET\ReadComboBoxItems.vbproj", "{96DBB4E3-E7DD-454D-B788-13A506AFCE35}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RemoveWidgets", "Forms and Annotations\RemoveWidgets\VB.NET\RemoveWidgets.vbproj", "{39DBACDC-3A87-4A4E-A6F4-F4FC9FBAD518}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "RemoveWidgets", "Forms and Annotations\RemoveWidgets\VB.NET\RemoveWidgets.vbproj", "{39DBACDC-3A87-4A4E-A6F4-F4FC9FBAD518}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TextFieldAlignment", "Forms and Annotations\TextFieldAlignment\VB.NET\TextFieldAlignment.vbproj", "{C3523F91-85FF-4525-9F74-B3D63E5532F4}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "TextFieldAlignment", "Forms and Annotations\TextFieldAlignment\VB.NET\TextFieldAlignment.vbproj", "{C3523F91-85FF-4525-9F74-B3D63E5532F4}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TextFields", "Forms and Annotations\TextFields\VB.NET\TextFields.vbproj", "{49C41D88-846D-46A8-AB37-00C1E1A25C36}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "TextFields", "Forms and Annotations\TextFields\VB.NET\TextFields.vbproj", "{49C41D88-846D-46A8-AB37-00C1E1A25C36}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TextMarkupAnnotations", "Forms and Annotations\TextMarkupAnnotations\VB.NET\TextMarkupAnnotations.vbproj", "{6EDC2A29-55C3-48D3-9E7C-8CBCC3F3F2DD}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "TextMarkupAnnotations", "Forms and Annotations\TextMarkupAnnotations\VB.NET\TextMarkupAnnotations.vbproj", "{6EDC2A29-55C3-48D3-9E7C-8CBCC3F3F2DD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "General operations", "General operations", "{EC74EB52-2BC9-4122-B497-3ED0D51AC94B}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CheckConformanceToPdfA", "General operations\CheckConformanceToPdfA\VB.NET\CheckConformanceToPdfA.vbproj", "{3F7AFB60-69CE-42C3-BC41-291CD50B7E1C}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "CheckConformanceToPdfA", "General operations\CheckConformanceToPdfA\VB.NET\CheckConformanceToPdfA.vbproj", "{3F7AFB60-69CE-42C3-BC41-291CD50B7E1C}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CheckIfPasswordProtected", "General operations\CheckIfPasswordProtected\VB.NET\CheckIfPasswordProtected.vbproj", "{2AD13DDE-0675-4651-837C-F5A34203F2C6}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "CheckIfPasswordProtected", "General operations\CheckIfPasswordProtected\VB.NET\CheckIfPasswordProtected.vbproj", "{2AD13DDE-0675-4651-837C-F5A34203F2C6}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CompareDocuments", "General operations\CompareDocuments\VB.NET\CompareDocuments.vbproj", "{B4E99250-8220-4AC0-9971-047F67EF80F0}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "CompareDocuments", "General operations\CompareDocuments\VB.NET\CompareDocuments.vbproj", "{B4E99250-8220-4AC0-9971-047F67EF80F0}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CreateAndSaveDocument", "General operations\CreateAndSaveDocument\VB.NET\CreateAndSaveDocument.vbproj", "{A5394D49-F27A-46EE-9C52-D4CFC7C59707}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "CreateAndSaveDocument", "General operations\CreateAndSaveDocument\VB.NET\CreateAndSaveDocument.vbproj", "{A5394D49-F27A-46EE-9C52-D4CFC7C59707}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ErrorHandling", "General operations\ErrorHandling\VB.NET\ErrorHandling.vbproj", "{8977CCF8-8E60-495D-A9B4-43FCB3BEB55E}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ErrorHandling", "General operations\ErrorHandling\VB.NET\ErrorHandling.vbproj", "{8977CCF8-8E60-495D-A9B4-43FCB3BEB55E}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LinearizeDocument", "General operations\LinearizeDocument\VB.NET\LinearizeDocument.vbproj", "{DEB7CF31-DBBD-4064-9A6E-D09919E5BA87}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "LinearizeDocument", "General operations\LinearizeDocument\VB.NET\LinearizeDocument.vbproj", "{DEB7CF31-DBBD-4064-9A6E-D09919E5BA87}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MergeDocuments", "General operations\MergeDocuments\VB.NET\MergeDocuments.vbproj", "{62AF4F99-5A82-4488-BAF3-EC5FD40E5C50}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "MergeDocuments", "General operations\MergeDocuments\VB.NET\MergeDocuments.vbproj", "{62AF4F99-5A82-4488-BAF3-EC5FD40E5C50}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "OpenDocument", "General operations\OpenDocument\VB.NET\OpenDocument.vbproj", "{337EC7D9-82B6-46BF-9D03-29BE34B91DCB}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "OpenDocument", "General operations\OpenDocument\VB.NET\OpenDocument.vbproj", "{337EC7D9-82B6-46BF-9D03-29BE34B91DCB}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PDFA", "General operations\PDFA\VB.NET\PDFA.vbproj", "{5A4E2616-0623-49CF-AC8E-1118E7D666C4}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "PDFA", "General operations\PDFA\VB.NET\PDFA.vbproj", "{5A4E2616-0623-49CF-AC8E-1118E7D666C4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Graphics", "Graphics", "{D51D25D4-39F8-43C8-932B-8A680BD8E535}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "BlendModes", "Graphics\BlendModes\VB.NET\BlendModes.vbproj", "{7377C769-E03D-4369-87A6-AAF21E49437A}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "BlendModes", "Graphics\BlendModes\VB.NET\BlendModes.vbproj", "{7377C769-E03D-4369-87A6-AAF21E49437A}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Clipping", "Graphics\Clipping\VB.NET\Clipping.vbproj", "{960A84A4-E3E5-4694-8FC7-ACB9925117F9}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Clipping", "Graphics\Clipping\VB.NET\Clipping.vbproj", "{960A84A4-E3E5-4694-8FC7-ACB9925117F9}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ColorProfiles", "Graphics\ColorProfiles\VB.NET\ColorProfiles.vbproj", "{B5EA9F74-3C10-45F7-BC91-6D0DB41C407A}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ColorProfiles", "Graphics\ColorProfiles\VB.NET\ColorProfiles.vbproj", "{B5EA9F74-3C10-45F7-BC91-6D0DB41C407A}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Colors", "Graphics\Colors\VB.NET\Colors.vbproj", "{1EC58CDF-73FD-4DA3-9152-2DD90760AB3A}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Colors", "Graphics\Colors\VB.NET\Colors.vbproj", "{1EC58CDF-73FD-4DA3-9152-2DD90760AB3A}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ExtractPaths", "Graphics\ExtractPaths\VB.NET\ExtractPaths.vbproj", "{EAC4CD05-22D4-488D-8D6B-F53815F10E24}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ExtractPaths", "Graphics\ExtractPaths\VB.NET\ExtractPaths.vbproj", "{EAC4CD05-22D4-488D-8D6B-F53815F10E24}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GraphicsState", "Graphics\GraphicsState\VB.NET\GraphicsState.vbproj", "{1F304888-D446-4F4D-B381-CDF8E2695742}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "GraphicsState", "Graphics\GraphicsState\VB.NET\GraphicsState.vbproj", "{1F304888-D446-4F4D-B381-CDF8E2695742}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LinesAndCurves", "Graphics\LinesAndCurves\VB.NET\LinesAndCurves.vbproj", "{D96DAC73-23E2-4CF3-874E-4EF130ACB5D3}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "LinesAndCurves", "Graphics\LinesAndCurves\VB.NET\LinesAndCurves.vbproj", "{D96DAC73-23E2-4CF3-874E-4EF130ACB5D3}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Paths", "Graphics\Paths\VB.NET\Paths.vbproj", "{F1668E92-F1A9-4EE9-8055-8C99DF108537}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Paths", "Graphics\Paths\VB.NET\Paths.vbproj", "{F1668E92-F1A9-4EE9-8055-8C99DF108537}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Patterns", "Graphics\Patterns\VB.NET\Patterns.vbproj", "{D43BDCA2-7171-4BF2-A4EA-1056912BBF43}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Patterns", "Graphics\Patterns\VB.NET\Patterns.vbproj", "{D43BDCA2-7171-4BF2-A4EA-1056912BBF43}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Shapes", "Graphics\Shapes\VB.NET\Shapes.vbproj", "{F2B1EB0D-84A7-446F-8C18-EC77F8DF28C4}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Shapes", "Graphics\Shapes\VB.NET\Shapes.vbproj", "{F2B1EB0D-84A7-446F-8C18-EC77F8DF28C4}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Transparency", "Graphics\Transparency\VB.NET\Transparency.vbproj", "{B48A22DB-C7CE-4DB1-8FEB-439C14ED99E1}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Transparency", "Graphics\Transparency\VB.NET\Transparency.vbproj", "{B48A22DB-C7CE-4DB1-8FEB-439C14ED99E1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{E0428E1E-3748-44F9-A06E-66D4E757F8D0}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AddAndDrawImage", "Images\AddAndDrawImage\VB.NET\AddAndDrawImage.vbproj", "{CBAFEBAB-3E14-410A-98C9-0C90082A230A}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "AddAndDrawImage", "Images\AddAndDrawImage\VB.NET\AddAndDrawImage.vbproj", "{CBAFEBAB-3E14-410A-98C9-0C90082A230A}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AddRecompressedImages", "Images\AddRecompressedImages\VB.NET\AddRecompressedImages.vbproj", "{2795FA83-96DB-4AC0-91A7-4DDE64B015DB}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "AddRecompressedImages", "Images\AddRecompressedImages\VB.NET\AddRecompressedImages.vbproj", "{2795FA83-96DB-4AC0-91A7-4DDE64B015DB}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AddSingleImageFrame", "Images\AddSingleImageFrame\VB.NET\AddSingleImageFrame.vbproj", "{3AB5C730-1EF0-4287-8ACA-F45E7B1FA2DB}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "AddSingleImageFrame", "Images\AddSingleImageFrame\VB.NET\AddSingleImageFrame.vbproj", "{3AB5C730-1EF0-4287-8ACA-F45E7B1FA2DB}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ColorMasks", "Images\ColorMasks\VB.NET\ColorMasks.vbproj", "{CD5BA848-69F4-4516-B086-A2079DDCFCE9}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ColorMasks", "Images\ColorMasks\VB.NET\ColorMasks.vbproj", "{CD5BA848-69F4-4516-B086-A2079DDCFCE9}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ExtractImageCoordinates", "Images\ExtractImageCoordinates\VB.NET\ExtractImageCoordinates.vbproj", "{4D0E5C70-3239-46D5-814E-DC2D9EDFE42D}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ExtractImageCoordinates", "Images\ExtractImageCoordinates\VB.NET\ExtractImageCoordinates.vbproj", "{4D0E5C70-3239-46D5-814E-DC2D9EDFE42D}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ExtractImages", "Images\ExtractImages\VB.NET\ExtractImages.vbproj", "{A2A53F83-0060-4805-BEF1-8FC4CE63EA62}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ExtractImages", "Images\ExtractImages\VB.NET\ExtractImages.vbproj", "{A2A53F83-0060-4805-BEF1-8FC4CE63EA62}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ExtractPaintedImages", "Images\ExtractPaintedImages\VB.NET\ExtractPaintedImages.vbproj", "{EA0D68C2-4D2D-4804-8381-6F0096EDCCB0}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ExtractPaintedImages", "Images\ExtractPaintedImages\VB.NET\ExtractPaintedImages.vbproj", "{EA0D68C2-4D2D-4804-8381-6F0096EDCCB0}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ImageMasks", "Images\ImageMasks\VB.NET\ImageMasks.vbproj", "{1F69259E-8CE2-4826-BD52-ED370FDC8802}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ImageMasks", "Images\ImageMasks\VB.NET\ImageMasks.vbproj", "{1F69259E-8CE2-4826-BD52-ED370FDC8802}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Layers", "Layers", "{C797722F-9960-45A5-8E24-F78C5EE071E4}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AddAnnotationsAndControlsToLayers", "Layers\AddAnnotationsAndControlsToLayers\VB.NET\AddAnnotationsAndControlsToLayers.vbproj", "{A9563D61-F1AD-4E1D-949D-6A35883DEA6C}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "AddAnnotationsAndControlsToLayers", "Layers\AddAnnotationsAndControlsToLayers\VB.NET\AddAnnotationsAndControlsToLayers.vbproj", "{A9563D61-F1AD-4E1D-949D-6A35883DEA6C}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AddXObjectsToLayers", "Layers\AddXObjectsToLayers\VB.NET\AddXObjectsToLayers.vbproj", "{D21A7F32-E966-48B6-A605-1A7F1C1192C0}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "AddXObjectsToLayers", "Layers\AddXObjectsToLayers\VB.NET\AddXObjectsToLayers.vbproj", "{D21A7F32-E966-48B6-A605-1A7F1C1192C0}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CreateLayers", "Layers\CreateLayers\VB.NET\CreateLayers.vbproj", "{B74D2854-27D0-43F9-8786-20AE904C6F27}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "CreateLayers", "Layers\CreateLayers\VB.NET\CreateLayers.vbproj", "{B74D2854-27D0-43F9-8786-20AE904C6F27}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "EnumerateLayers", "Layers\EnumerateLayers\VB.NET\EnumerateLayers.vbproj", "{5E804E74-8500-4B9F-BC85-3E2B4655932F}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "EnumerateLayers", "Layers\EnumerateLayers\VB.NET\EnumerateLayers.vbproj", "{5E804E74-8500-4B9F-BC85-3E2B4655932F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Metadata", "Metadata", "{83AF6542-78CB-45C7-B2AF-6EB07FB810CB}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Metadata", "Metadata\Metadata\VB.NET\Metadata.vbproj", "{294C8064-E423-4203-A35B-82F85BBA1FFD}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Metadata", "Metadata\Metadata\VB.NET\Metadata.vbproj", "{294C8064-E423-4203-A35B-82F85BBA1FFD}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SetCustomXmpProperties", "Metadata\SetCustomXmpProperties\VB.NET\SetCustomXmpProperties.vbproj", "{D97BF9E7-A7B6-4EDF-A32E-DE6594FDF3CC}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "SetCustomXmpProperties", "Metadata\SetCustomXmpProperties\VB.NET\SetCustomXmpProperties.vbproj", "{D97BF9E7-A7B6-4EDF-A32E-DE6594FDF3CC}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SetXmpProperties", "Metadata\SetXmpProperties\VB.NET\SetXmpProperties.vbproj", "{EB8FFF5B-FEFC-46E5-8028-EA71DD71C561}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "SetXmpProperties", "Metadata\SetXmpProperties\VB.NET\SetXmpProperties.vbproj", "{EB8FFF5B-FEFC-46E5-8028-EA71DD71C561}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pages and Navigation", "Pages and Navigation", "{95D099C2-F75E-42E9-A456-AA49450CF922}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AddPages", "Pages and Navigation\AddPages\VB.NET\AddPages.vbproj", "{0F75F27B-D0A7-40A4-8031-A324033C3261}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "AddPages", "Pages and Navigation\AddPages\VB.NET\AddPages.vbproj", "{0F75F27B-D0A7-40A4-8031-A324033C3261}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CopyPageObjects", "Pages and Navigation\CopyPageObjects\VB.NET\CopyPageObjects.vbproj", "{B6F9B3AF-99DB-4405-9D2C-C841E9435D17}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "CopyPageObjects", "Pages and Navigation\CopyPageObjects\VB.NET\CopyPageObjects.vbproj", "{B6F9B3AF-99DB-4405-9D2C-C841E9435D17}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CopyPages", "Pages and Navigation\CopyPages\VB.NET\CopyPages.vbproj", "{0F33F8D3-0423-4A1E-9B45-8BA6C8F6480E}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "CopyPages", "Pages and Navigation\CopyPages\VB.NET\CopyPages.vbproj", "{0F33F8D3-0423-4A1E-9B45-8BA6C8F6480E}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "EditPageContent", "Pages and Navigation\EditPageContent\VB.NET\EditPageContent.vbproj", "{E4C3F172-9E6F-4F2A-8748-0BDEC7030765}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "EditPageContent", "Pages and Navigation\EditPageContent\VB.NET\EditPageContent.vbproj", "{E4C3F172-9E6F-4F2A-8748-0BDEC7030765}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ExtractPageObjects", "Pages and Navigation\ExtractPageObjects\VB.NET\ExtractPageObjects.vbproj", "{14FD1489-9E30-47A3-9206-F62E9A9F3E3B}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ExtractPageObjects", "Pages and Navigation\ExtractPageObjects\VB.NET\ExtractPageObjects.vbproj", "{14FD1489-9E30-47A3-9206-F62E9A9F3E3B}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ExtractPages", "Pages and Navigation\ExtractPages\VB.NET\ExtractPages.vbproj", "{E93B22CC-299B-4762-8E1D-E3E0D7ACAA5E}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ExtractPages", "Pages and Navigation\ExtractPages\VB.NET\ExtractPages.vbproj", "{E93B22CC-299B-4762-8E1D-E3E0D7ACAA5E}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Hyperlink", "Pages and Navigation\Hyperlink\VB.NET\Hyperlink.vbproj", "{92CBA800-EE00-41B5-9561-A7BD180FED60}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Hyperlink", "Pages and Navigation\Hyperlink\VB.NET\Hyperlink.vbproj", "{92CBA800-EE00-41B5-9561-A7BD180FED60}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LinkToPage", "Pages and Navigation\LinkToPage\VB.NET\LinkToPage.vbproj", "{32BD4675-D95B-4BFA-8A27-DAE1770F9DC1}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "LinkToPage", "Pages and Navigation\LinkToPage\VB.NET\LinkToPage.vbproj", "{32BD4675-D95B-4BFA-8A27-DAE1770F9DC1}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MovePages", "Pages and Navigation\MovePages\VB.NET\MovePages.vbproj", "{90D0824A-2FE9-4E8F-93A7-7FC74D26C762}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "MovePages", "Pages and Navigation\MovePages\VB.NET\MovePages.vbproj", "{90D0824A-2FE9-4E8F-93A7-7FC74D26C762}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Outline", "Pages and Navigation\Outline\VB.NET\Outline.vbproj", "{7A5538BE-7172-49C4-9AD0-616EE5402976}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Outline", "Pages and Navigation\Outline\VB.NET\Outline.vbproj", "{7A5538BE-7172-49C4-9AD0-616EE5402976}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "OutlineWithStyles", "Pages and Navigation\OutlineWithStyles\VB.NET\OutlineWithStyles.vbproj", "{098B44B9-7FE0-4AD1-A3C9-8AE7FDB0C24E}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "OutlineWithStyles", "Pages and Navigation\OutlineWithStyles\VB.NET\OutlineWithStyles.vbproj", "{098B44B9-7FE0-4AD1-A3C9-8AE7FDB0C24E}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PageLabels", "Pages and Navigation\PageLabels\VB.NET\PageLabels.vbproj", "{4EEA0D5F-4806-4EE1-ADB1-C705D44FA166}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "PageLabels", "Pages and Navigation\PageLabels\VB.NET\PageLabels.vbproj", "{4EEA0D5F-4806-4EE1-ADB1-C705D44FA166}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PageParameters", "Pages and Navigation\PageParameters\VB.NET\PageParameters.vbproj", "{193FC822-D98A-47A2-9DF3-2887958D702A}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "PageParameters", "Pages and Navigation\PageParameters\VB.NET\PageParameters.vbproj", "{193FC822-D98A-47A2-9DF3-2887958D702A}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RemovePages", "Pages and Navigation\RemovePages\VB.NET\RemovePages.vbproj", "{94E4D228-CBF3-4EEB-94DB-5A187FA5D506}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "RemovePages", "Pages and Navigation\RemovePages\VB.NET\RemovePages.vbproj", "{94E4D228-CBF3-4EEB-94DB-5A187FA5D506}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SwapPages", "Pages and Navigation\SwapPages\VB.NET\SwapPages.vbproj", "{56CCFDA6-4702-4B64-AF11-E5D1FCAD4966}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "SwapPages", "Pages and Navigation\SwapPages\VB.NET\SwapPages.vbproj", "{56CCFDA6-4702-4B64-AF11-E5D1FCAD4966}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TextFromLink", "Pages and Navigation\TextFromLink\VB.NET\TextFromLink.vbproj", "{0DB3B8E6-2DF0-4B7D-B634-959BE5601576}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "TextFromLink", "Pages and Navigation\TextFromLink\VB.NET\TextFromLink.vbproj", "{0DB3B8E6-2DF0-4B7D-B634-959BE5601576}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Security", "Security", "{8C2E3BCF-4D43-4B6F-AC00-DD2A9B1A6527}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Permissions", "Security\Permissions\VB.NET\Permissions.vbproj", "{9EFD865C-04EB-4ED1-B989-FE2F9D2E2D70}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Permissions", "Security\Permissions\VB.NET\Permissions.vbproj", "{9EFD865C-04EB-4ED1-B989-FE2F9D2E2D70}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ProtectDocumentWithAes", "Security\ProtectDocumentWithAes\VB.NET\ProtectDocumentWithAes.vbproj", "{42EEF305-3AAF-41CA-BD4B-4522B2B63EAA}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ProtectDocumentWithAes", "Security\ProtectDocumentWithAes\VB.NET\ProtectDocumentWithAes.vbproj", "{42EEF305-3AAF-41CA-BD4B-4522B2B63EAA}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SetPassword", "Security\SetPassword\VB.NET\SetPassword.vbproj", "{3E439EEB-A9A7-4D0E-9594-340E6BE40B50}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "SetPassword", "Security\SetPassword\VB.NET\SetPassword.vbproj", "{3E439EEB-A9A7-4D0E-9594-340E6BE40B50}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Text", "Text", "{DD2E9236-D5CB-42EE-83E5-5062D627CD80}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CharacterSpacing", "Text\CharacterSpacing\VB.NET\CharacterSpacing.vbproj", "{84C3049B-62BB-4088-AF8B-8EB9FDDDD524}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "CharacterSpacing", "Text\CharacterSpacing\VB.NET\CharacterSpacing.vbproj", "{84C3049B-62BB-4088-AF8B-8EB9FDDDD524}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "DrawText", "Text\DrawText\VB.NET\DrawText.vbproj", "{DE7FC31F-C146-43F4-BD78-30E0C6A4EF0B}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "DrawText", "Text\DrawText\VB.NET\DrawText.vbproj", "{DE7FC31F-C146-43F4-BD78-30E0C6A4EF0B}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "DrawTextFromBaseline", "Text\DrawTextFromBaseline\VB.NET\DrawTextFromBaseline.vbproj", "{B509D04A-D5A7-46EE-A84D-A360769DEA27}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "DrawTextFromBaseline", "Text\DrawTextFromBaseline\VB.NET\DrawTextFromBaseline.vbproj", "{B509D04A-D5A7-46EE-A84D-A360769DEA27}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ExtractText", "Text\ExtractText\VB.NET\ExtractText.vbproj", "{6440ABDC-1FE9-42F4-9E67-85C0E2E1898D}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ExtractText", "Text\ExtractText\VB.NET\ExtractText.vbproj", "{6440ABDC-1FE9-42F4-9E67-85C0E2E1898D}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ExtractTextByWords", "Text\ExtractTextByWords\VB.NET\ExtractTextByWords.vbproj", "{0FF16E66-69C1-4AE8-9CB2-20ADD098A56A}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ExtractTextByWords", "Text\ExtractTextByWords\VB.NET\ExtractTextByWords.vbproj", "{0FF16E66-69C1-4AE8-9CB2-20ADD098A56A}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Fonts", "Text\Fonts\VB.NET\Fonts.vbproj", "{0421D26F-B663-40FD-A44A-E83F5365B211}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Fonts", "Text\Fonts\VB.NET\Fonts.vbproj", "{0421D26F-B663-40FD-A44A-E83F5365B211}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Internationalization", "Text\Internationalization\VB.NET\Internationalization.vbproj", "{EB64E85C-D59B-49DD-A34C-D46164035E2D}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Internationalization", "Text\Internationalization\VB.NET\Internationalization.vbproj", "{EB64E85C-D59B-49DD-A34C-D46164035E2D}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Tables", "Text\Tables\VB.NET\Tables.vbproj", "{7F8F0CE2-27CC-4779-908C-944418B373B2}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Tables", "Text\Tables\VB.NET\Tables.vbproj", "{7F8F0CE2-27CC-4779-908C-944418B373B2}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TextHorizontalScaling", "Text\TextHorizontalScaling\VB.NET\TextHorizontalScaling.vbproj", "{78979272-AFF4-48DB-8FDE-E780D494C27F}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "TextHorizontalScaling", "Text\TextHorizontalScaling\VB.NET\TextHorizontalScaling.vbproj", "{78979272-AFF4-48DB-8FDE-E780D494C27F}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TextRenderingMode", "Text\TextRenderingMode\VB.NET\TextRenderingMode.vbproj", "{AE03DB21-B324-4669-94BB-19A5183AD992}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "TextRenderingMode", "Text\TextRenderingMode\VB.NET\TextRenderingMode.vbproj", "{AE03DB21-B324-4669-94BB-19A5183AD992}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TextRise", "Text\TextRise\VB.NET\TextRise.vbproj", "{E31A28F1-5FB2-41F2-9E27-A34BB91216CE}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "TextRise", "Text\TextRise\VB.NET\TextRise.vbproj", "{E31A28F1-5FB2-41F2-9E27-A34BB91216CE}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WordSpacing", "Text\WordSpacing\VB.NET\WordSpacing.vbproj", "{BCE45CF9-6524-4CB5-82F9-229894C29F93}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "WordSpacing", "Text\WordSpacing\VB.NET\WordSpacing.vbproj", "{BCE45CF9-6524-4CB5-82F9-229894C29F93}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XObjects, watermarks and backgrounds", "XObjects, watermarks and backgrounds", "{54CF5EBF-5111-4560-8418-63280CB6976E}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CreateXObjectFromPage", "XObjects, watermarks and backgrounds\CreateXObjectFromPage\VB.NET\CreateXObjectFromPage.vbproj", "{F9488397-F815-4559-89EC-00E1A172A604}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "CreateXObjectFromPage", "XObjects, watermarks and backgrounds\CreateXObjectFromPage\VB.NET\CreateXObjectFromPage.vbproj", "{F9488397-F815-4559-89EC-00E1A172A604}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RemoveXObjectsWatermarks", "XObjects, watermarks and backgrounds\RemoveXObjectsWatermarks\VB.NET\RemoveXObjectsWatermarks.vbproj", "{8DD067D6-D1FB-4CA4-8069-888029C48F0D}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "RemoveXObjectsWatermarks", "XObjects, watermarks and backgrounds\RemoveXObjectsWatermarks\VB.NET\RemoveXObjectsWatermarks.vbproj", "{8DD067D6-D1FB-4CA4-8069-888029C48F0D}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Watermarks", "XObjects, watermarks and backgrounds\Watermarks\VB.NET\Watermarks.vbproj", "{574DF59C-78CF-4933-B415-BB24DCA8910F}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Watermarks", "XObjects, watermarks and backgrounds\Watermarks\VB.NET\Watermarks.vbproj", "{574DF59C-78CF-4933-B415-BB24DCA8910F}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SaveAsBitonalTiff", "Draw and print PDF\SaveAsBitonalTiff\VB.NET\SaveAsBitonalTiff.vbproj", "{D94DE0AC-27FC-48D4-9EBA-E20076F5E257}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "SaveAsBitonalTiff", "Draw and print PDF\SaveAsBitonalTiff\VB.NET\SaveAsBitonalTiff.vbproj", "{D94DE0AC-27FC-48D4-9EBA-E20076F5E257}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ReplaceImage", "Images\ReplaceImage\VB.NET\ReplaceImage.vbproj", "{EBCF09CA-22BD-4C83-ABBF-FF4329FD5E6B}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ReplaceImage", "Images\ReplaceImage\VB.NET\ReplaceImage.vbproj", "{EBCF09CA-22BD-4C83-ABBF-FF4329FD5E6B}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "HeaderAndFooter", "Pages and Navigation\HeaderAndFooter\VB.NET\HeaderAndFooter.vbproj", "{50D3BC5A-A2F7-497C-B9C5-4539927484A4}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "HeaderAndFooter", "Pages and Navigation\HeaderAndFooter\VB.NET\HeaderAndFooter.vbproj", "{50D3BC5A-A2F7-497C-B9C5-4539927484A4}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FindAndHighlightText", "Text\FindAndHighlightText\VB.NET\FindAndHighlightText.vbproj", "{D7C92CBF-5D64-4C35-95DB-CF72EA08C76D}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "FindAndHighlightText", "Text\FindAndHighlightText\VB.NET\FindAndHighlightText.vbproj", "{D7C92CBF-5D64-4C35-95DB-CF72EA08C76D}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "OcrAndExtractText", "Text\OcrAndExtractText\VB.NET\OcrAndExtractText.vbproj", "{EFBE2B00-E3A1-436B-ACBB-FA9CB504A198}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "OcrAndExtractText", "Text\OcrAndExtractText\VB.NET\OcrAndExtractText.vbproj", "{EFBE2B00-E3A1-436B-ACBB-FA9CB504A198}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "OcrAndMakeSearchable", "Text\OcrAndMakeSearchable\VB.NET\OcrAndMakeSearchable.vbproj", "{8D02EBF0-7D6C-47A4-8873-5F3348B23D57}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "OcrAndMakeSearchable", "Text\OcrAndMakeSearchable\VB.NET\OcrAndMakeSearchable.vbproj", "{8D02EBF0-7D6C-47A4-8873-5F3348B23D57}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "OcrGarbledText", "Text\OcrGarbledText\VB.NET\OcrGarbledText.vbproj", "{D317F82D-929D-43FA-8BC5-ABE983A13342}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "TiffToPdf", "Images\TiffToPdf\VB.NET\TiffToPdf.vbproj", "{EFF294FD-EDDA-43BB-9E8C-83F4D7E7C36A}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TiffToPdf", "Images\TiffToPdf\VB.NET\TiffToPdf.vbproj", "{EFF294FD-EDDA-43BB-9E8C-83F4D7E7C36A}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PrintPdfWinForms", "Draw and print PDF\PrintPdf\VB.NET\WinForms\PrintPdfWinForms.vbproj", "{0919AB1D-D56A-0FCB-1083-ADC764748B13}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "PrintPdfWinForms", "Draw and print PDF\PrintPdf\VB.NET\WinForms\PrintPdfWinForms.vbproj", "{0919AB1D-D56A-0FCB-1083-ADC764748B13}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PrintPdfWpf", "Draw and print PDF\PrintPdf\VB.NET\WPF\PrintPdfWpf.vbproj", "{A493D8A3-E7E3-4498-8277-8839D1FC44C4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Digital signatures", "Digital signatures", "{6D0505BD-B25A-4219-A5EA-0F5E30DAC7F9}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SignatureFields", "Digital signatures\SignatureFields\VB.NET\SignatureFields.vbproj", "{0CC38F27-F70F-4E70-ACBF-A6314818E5D1}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "SignatureFields", "Digital signatures\SignatureFields\VB.NET\SignatureFields.vbproj", "{0CC38F27-F70F-4E70-ACBF-A6314818E5D1}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SignDocument", "Digital signatures\SignDocument\VB.NET\SignDocument.vbproj", "{249EDD74-D3D1-4B10-B0DE-1FC1B4B326CF}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "SignDocument", "Digital signatures\SignDocument\VB.NET\SignDocument.vbproj", "{249EDD74-D3D1-4B10-B0DE-1FC1B4B326CF}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SignSignatureField", "Digital signatures\SignSignatureField\VB.NET\SignSignatureField.vbproj", "{06988B5C-15E6-4ACD-8A13-B8C707DFD86E}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "SignSignatureField", "Digital signatures\SignSignatureField\VB.NET\SignSignatureField.vbproj", "{06988B5C-15E6-4ACD-8A13-B8C707DFD86E}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SignSignatureFieldUsingCustomStyle", "Digital signatures\SignSignatureFieldUsingCustomStyle\VB.NET\SignSignatureFieldUsingCustomStyle.vbproj", "{79D5084D-FCB7-4A4C-87BE-C1F33CDD248D}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "SignSignatureFieldUsingCustomStyle", "Digital signatures\SignSignatureFieldUsingCustomStyle\VB.NET\SignSignatureFieldUsingCustomStyle.vbproj", "{79D5084D-FCB7-4A4C-87BE-C1F33CDD248D}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SignSignatureFieldWithLock", "Digital signatures\SignSignatureFieldWithLock\VB.NET\SignSignatureFieldWithLock.vbproj", "{571D3026-A67A-4D99-BE1F-7903B68FB9EC}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "SignSignatureFieldWithLock", "Digital signatures\SignSignatureFieldWithLock\VB.NET\SignSignatureFieldWithLock.vbproj", "{571D3026-A67A-4D99-BE1F-7903B68FB9EC}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ReadSignatureProperties", "Digital signatures\ReadSignatureProperties\VB.NET\ReadSignatureProperties.vbproj", "{B9BC0D2B-B83F-443F-8449-5274C575DBD0}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ReadSignatureProperties", "Digital signatures\ReadSignatureProperties\VB.NET\ReadSignatureProperties.vbproj", "{B9BC0D2B-B83F-443F-8449-5274C575DBD0}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "VerifySignature", "Digital signatures\VerifySignature\VB.NET\VerifySignature.vbproj", "{F130CAB6-745F-4544-97FE-6589A063BEDC}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "VerifySignature", "Digital signatures\VerifySignature\VB.NET\VerifySignature.vbproj", "{F130CAB6-745F-4544-97FE-6589A063BEDC}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LoggingWithLog4Net", "General operations\LoggingWithLog4Net\VB.NET\LoggingWithLog4Net.vbproj", "{E063BB5C-9AD0-4A59-81DF-E4F5B76E0A8B}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "LoggingWithLog4Net", "General operations\LoggingWithLog4Net\VB.NET\LoggingWithLog4Net.vbproj", "{E063BB5C-9AD0-4A59-81DF-E4F5B76E0A8B}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LoggingWithNLog", "General operations\LoggingWithNLog\VB.NET\LoggingWithNLog.vbproj", "{B729E9D8-CAC5-4C81-83F5-A8CE081B7B97}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "LoggingWithNLog", "General operations\LoggingWithNLog\VB.NET\LoggingWithNLog.vbproj", "{B729E9D8-CAC5-4C81-83F5-A8CE081B7B97}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SignDocumentEmbedTimestamp", "Digital signatures\SignDocumentEmbedTimestamp\VB.NET\SignDocumentEmbedTimestamp.vbproj", "{51546C92-764B-4746-B6F4-CEC78882AD64}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "SignDocumentEmbedTimestamp", "Digital signatures\SignDocumentEmbedTimestamp\VB.NET\SignDocumentEmbedTimestamp.vbproj", "{51546C92-764B-4746-B6F4-CEC78882AD64}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "OpenCertificateProtectedDocument", "Security\OpenCertificateProtectedDocument\VB.NET\OpenCertificateProtectedDocument.vbproj", "{443DB666-39ED-4CDE-BE48-9A7F010CD4C8}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "OpenCertificateProtectedDocument", "Security\OpenCertificateProtectedDocument\VB.NET\OpenCertificateProtectedDocument.vbproj", "{443DB666-39ED-4CDE-BE48-9A7F010CD4C8}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ProtectDocumentWithCertificate", "Security\ProtectDocumentWithCertificate\VB.NET\ProtectDocumentWithCertificate.vbproj", "{58ACDBC9-60DF-4049-A30E-E528B5551EEC}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ProtectDocumentWithCertificate", "Security\ProtectDocumentWithCertificate\VB.NET\ProtectDocumentWithCertificate.vbproj", "{58ACDBC9-60DF-4049-A30E-E528B5551EEC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HtmlToPdf", "HtmlToPdf", "{FBA7A940-CAD1-473C-BCAC-526C122DFA2F}"
 EndProject
@@ -317,17 +315,19 @@ Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ConvertPasswordProtected", 
 EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ConvertIgnoringSslErrors", "HtmlToPdf\ConvertIgnoringSslErrors\VB.NET\ConvertIgnoringSslErrors.vbproj", "{00F94518-3C76-4FF6-886A-06554EB16C22}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "3dAnnotations", "Forms and Annotations\3dAnnotations\VB.NET\3dAnnotations.vbproj", "{2FBA1A05-0B99-41AC-A769-01F82DBB0405}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "3dAnnotations", "Forms and Annotations\3dAnnotations\VB.NET\3dAnnotations.vbproj", "{2FBA1A05-0B99-41AC-A769-01F82DBB0405}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RichMediaAnnotations", "Forms and Annotations\RichMediaAnnotations\VB.NET\RichMediaAnnotations.vbproj", "{93D7ECD1-662B-4ED9-BED8-2686FD1B26F1}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "RichMediaAnnotations", "Forms and Annotations\RichMediaAnnotations\VB.NET\RichMediaAnnotations.vbproj", "{93D7ECD1-662B-4ED9-BED8-2686FD1B26F1}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RemovePaths", "Graphics\RemovePaths\VB.NET\RemovePaths.vbproj", "{50471430-05B8-48D6-9CF1-0D4B1E000060}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "RemovePaths", "Graphics\RemovePaths\VB.NET\RemovePaths.vbproj", "{50471430-05B8-48D6-9CF1-0D4B1E000060}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RemovePaintedImages", "Images\RemovePaintedImages\VB.NET\RemovePaintedImages.vbproj", "{3A94DABB-821F-4DFA-B139-B9DE50295DDE}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "RemovePaintedImages", "Images\RemovePaintedImages\VB.NET\RemovePaintedImages.vbproj", "{3A94DABB-821F-4DFA-B139-B9DE50295DDE}"
 EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ConvertWithHeaderAndFooter", "HtmlToPdf\ConvertWithHeaderAndFooter\VB.NET\ConvertWithHeaderAndFooter.vbproj", "{2FC87200-5EE2-4DB2-84C2-BC896CAFF770}"
 EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "PutHtmlOverPdf", "HtmlToPdf\PutHtmlOverPdf\VB.NET\PutHtmlOverPdf.vbproj", "{45030D02-F88A-43CE-96F4-3935C90F7953}"
+EndProject
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "FixGarbledText", "Text\FixGarbledText\VB.NET\FixGarbledText.vbproj", "{46F3F24C-1243-4E78-9FCB-DB544BCE46A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -795,10 +795,6 @@ Global
 		{8D02EBF0-7D6C-47A4-8873-5F3348B23D57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D02EBF0-7D6C-47A4-8873-5F3348B23D57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D02EBF0-7D6C-47A4-8873-5F3348B23D57}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D317F82D-929D-43FA-8BC5-ABE983A13342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D317F82D-929D-43FA-8BC5-ABE983A13342}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D317F82D-929D-43FA-8BC5-ABE983A13342}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D317F82D-929D-43FA-8BC5-ABE983A13342}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EFF294FD-EDDA-43BB-9E8C-83F4D7E7C36A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EFF294FD-EDDA-43BB-9E8C-83F4D7E7C36A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFF294FD-EDDA-43BB-9E8C-83F4D7E7C36A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -919,6 +915,10 @@ Global
 		{45030D02-F88A-43CE-96F4-3935C90F7953}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45030D02-F88A-43CE-96F4-3935C90F7953}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45030D02-F88A-43CE-96F4-3935C90F7953}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46F3F24C-1243-4E78-9FCB-DB544BCE46A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46F3F24C-1243-4E78-9FCB-DB544BCE46A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46F3F24C-1243-4E78-9FCB-DB544BCE46A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46F3F24C-1243-4E78-9FCB-DB544BCE46A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1039,7 +1039,6 @@ Global
 		{D7C92CBF-5D64-4C35-95DB-CF72EA08C76D} = {DD2E9236-D5CB-42EE-83E5-5062D627CD80}
 		{EFBE2B00-E3A1-436B-ACBB-FA9CB504A198} = {DD2E9236-D5CB-42EE-83E5-5062D627CD80}
 		{8D02EBF0-7D6C-47A4-8873-5F3348B23D57} = {DD2E9236-D5CB-42EE-83E5-5062D627CD80}
-		{D317F82D-929D-43FA-8BC5-ABE983A13342} = {DD2E9236-D5CB-42EE-83E5-5062D627CD80}
 		{EFF294FD-EDDA-43BB-9E8C-83F4D7E7C36A} = {E0428E1E-3748-44F9-A06E-66D4E757F8D0}
 		{0919AB1D-D56A-0FCB-1083-ADC764748B13} = {5F899968-F0A4-4E85-BF25-6C45222AAD08}
 		{A493D8A3-E7E3-4498-8277-8839D1FC44C4} = {5F899968-F0A4-4E85-BF25-6C45222AAD08}
@@ -1070,6 +1069,7 @@ Global
 		{3A94DABB-821F-4DFA-B139-B9DE50295DDE} = {E0428E1E-3748-44F9-A06E-66D4E757F8D0}
 		{2FC87200-5EE2-4DB2-84C2-BC896CAFF770} = {FBA7A940-CAD1-473C-BCAC-526C122DFA2F}
 		{45030D02-F88A-43CE-96F4-3935C90F7953} = {FBA7A940-CAD1-473C-BCAC-526C122DFA2F}
+		{46F3F24C-1243-4E78-9FCB-DB544BCE46A2} = {DD2E9236-D5CB-42EE-83E5-5062D627CD80}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {50A18C19-4AC0-4BF0-9AA5-7C45E6C1E9A6}

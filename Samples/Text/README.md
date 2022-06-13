@@ -27,6 +27,10 @@ This sample shows how to extract text by words from a PDF page.
 
 This sample shows how to find and highlight phrase in a PDF document.
 
+[Fix garbled text](/Samples/Text/FixGarbledText)
+
+This sample shows how to extract text from PDF documents when regular methods produce garbled / unexpected text.
+
 [Fonts](/Samples/Text/Fonts)
 
 This sample shows how to use fonts in Docotic.Pdf library.
@@ -42,10 +46,6 @@ This sample shows how to recognize and extract text from non-searchable PDF docu
 [OCR PDF and convert to searchable document](/Samples/Text/OcrAndMakeSearchable)
 
 This sample shows how to create searchable PDF document from a non-searchable (image-based) document using Docotic.Pdf library and Tesseract OCR Engine.
-
-[OCR and extract garbled text from PDF documents](/Samples/Text/OcrGarbledText)
-
-This sample shows how to OCR and extract garbled text from PDF document.
 
 [Tables](/Samples/Text/Tables)
 

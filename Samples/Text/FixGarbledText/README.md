@@ -1,4 +1,4 @@
-# OCR and extract garbled text from PDF documents in C# and VB.NET
+# Fix garbled text when extracting from PDF documents in C# and VB.NET
 This sample shows how to OCR and extract garbled text from PDF document using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/) and [Tesseract OCR Engine](https://github.com/charlesw/tesseract).
 
 There are searchable PDF documents with incorrect text. This happens when the document does not contain mappings of glyphs to Unicode. Or contains incorrect mappings.

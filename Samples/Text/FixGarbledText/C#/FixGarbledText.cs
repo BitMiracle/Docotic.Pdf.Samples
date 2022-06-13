@@ -8,7 +8,7 @@ using Tesseract;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
-    public static class OcrGarbledText
+    public static class FixGarbledText
     {
         public static void Main()
         {
@@ -66,7 +66,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 }
             }
 
-            using (var writer = new StreamWriter("OcrGarbledText.txt"))
+            using (var writer = new StreamWriter("FixGarbledText.txt"))
                 writer.Write(documentText.ToString());
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");

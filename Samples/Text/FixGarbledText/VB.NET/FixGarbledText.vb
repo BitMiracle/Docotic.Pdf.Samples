@@ -7,7 +7,7 @@ Imports BitMiracle.Docotic.Pdf
 Imports Tesseract
 
 Namespace BitMiracle.Docotic.Pdf.Samples
-    Public NotInheritable Class OcrGarbledText
+    Public NotInheritable Class FixGarbledText
         Public Shared Sub Main()
             ' NOTE 
             ' When used in trial mode, the library imposes some restrictions.
@@ -56,7 +56,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 End Using
             End Using
 
-            Using writer = New StreamWriter("OcrGarbledText.txt")
+            Using writer = New StreamWriter("FixGarbledText.txt")
                 writer.Write(documentText.ToString())
             End Using
 
