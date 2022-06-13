@@ -29,7 +29,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         if (documentText.Length > 0)
                             documentText.Append("\r\n\r\n");
 
-                        // get list of character codes that are mapped to incorrect Unicode values
+                        // get a list of character codes that are not mapped to Unicode correctly
                         var unmappedCharacterCodes = new List<PdfCharacterCode>();
                         var firstPassOptions = new PdfTextExtractionOptions
                         {
@@ -43,6 +43,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         string text = page.GetText(firstPassOptions);
                         if (unmappedCharacterCodes.Count == 0)
                         {
+                            // there are no unmapped characters. Use the extracted text as is
                             documentText.Append(text);
                             continue;
                         }
@@ -50,7 +51,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         // perform OCR to get correct Unicode values
                         string[] recognizedText = ocrCharacterCodes(unmappedCharacterCodes, engine);
 
-                        // extract text and fix Unicode values for unmapped character codes
+                        // extract text replacing unmapped characters with correct Unicode values
                         int index = 0;
                         var options = new PdfTextExtractionOptions
                         {
@@ -81,7 +82,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 HorizontalResolution = 300,
                 VerticalResolution = 300,
                 Height = 20,
-                CharacterSpacing = 1.5 // slightly increase distance between characters to improve OCR quality
+
+                // slightly increase distance between characters to improve OCR quality
+                CharacterSpacing = 1.5 
             };
             using (var charCodeImage = new MemoryStream())
             {
@@ -98,7 +101,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     {
                         using (ResultIterator iter = recognizedPage.GetIterator())
                         {
-                            // map character codes to recognized text
+                            // map character codes to the recognized text
                             int lastCharCodeIndex = -1;
                             const PageIteratorLevel Level = PageIteratorLevel.Symbol;
                             iter.Begin();

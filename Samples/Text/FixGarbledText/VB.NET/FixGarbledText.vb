@@ -24,7 +24,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                         If documentText.Length > 0 Then documentText.Append(vbCrLf & vbCrLf)
 
-                        ' get list of character codes that are mapped to incorrect Unicode values
+                        ' get a list of character codes that are not mapped to Unicode correctly
                         Dim unmappedCharacterCodes = New List(Of PdfCharacterCode)()
                         Dim firstPassOptions = New PdfTextExtractionOptions With {
                             .UnmappedCharacterCodeHandler = Function(c)
@@ -35,6 +35,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         Dim page As PdfPage = pdf.Pages(i)
                         Dim text As String = page.GetText(firstPassOptions)
                         If unmappedCharacterCodes.Count = 0 Then
+                            ' there are no unmapped characters. Use the extracted text as is
                             documentText.Append(text)
                             Continue For
                         End If
@@ -42,7 +43,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         ' perform OCR to get correct Unicode values
                         Dim recognizedText As String() = ocrCharacterCodes(unmappedCharacterCodes, engine)
 
-                        ' extract text and fix Unicode values for unmapped character codes
+                        ' extract text replacing unmapped characters with correct Unicode values
                         Dim index As Integer = 0
                         Dim options = New PdfTextExtractionOptions With {
                             .UnmappedCharacterCodeHandler = Function(c)
@@ -73,6 +74,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 .CharacterSpacing = 1.5 ' slightly increase distance between characters to improve OCR quality
             }
             Using charCodeImage = New MemoryStream()
+                ' get bounds of rendered character codes
                 Dim widthsPoints As Double() = rasterizer.Save(charCodeImage, charCodes)
                 Dim positionsPoints As Double() = New Double(widthsPoints.Length - 1) {}
 
@@ -80,11 +82,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     positionsPoints(j) = positionsPoints(j - 1) + widthsPoints(j - 1) + rasterizer.CharacterSpacing
                 Next
 
+                ' perform OCR
                 Using img As Pix = Pix.LoadFromMemory(charCodeImage.ToArray())
-
                     Using recognizedPage As Page = engine.Process(img)
-
                         Using iter As ResultIterator = recognizedPage.GetIterator()
+                            ' map character codes to the recognized text
                             Dim lastCharCodeIndex As Integer = -1
                             Const Level As PageIteratorLevel = PageIteratorLevel.Symbol
                             iter.Begin()
