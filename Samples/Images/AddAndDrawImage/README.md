@@ -1,4 +1,4 @@
-# Add and draw images
+# Add images to PDF in C# and VB.NET
 This samples shows how to use images in your PDF documents.
 
 There are several ways to add an image to your PDF document. You can create an image from a file in GIF/Tiff/Png/Bmp/Jpeg formats, or a buffer of image bytes, or an System.Drawing.Image object. 

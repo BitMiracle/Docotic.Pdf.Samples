@@ -43,6 +43,10 @@ This sample shows how to remove images painted on a PDF page.
 
 This sample shows how to replace existing images in PdfDocument.
 
+[SVG to PDF](/Samples/Images/SvgToPdf)
+
+This sample shows how to convert SVG images to PDF.
+
 [TIFF to PDF](/Samples/Images/TiffToPdf)
 
 This sample shows how to create PDF from single- and multipage TIFF images.

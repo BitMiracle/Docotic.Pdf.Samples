@@ -205,6 +205,8 @@
 
 [Replace image](/Samples/Images/ReplaceImage)
 
+[SVG to PDF](/Samples/Images/SvgToPdf)
+
 [TIFF to PDF](/Samples/Images/TiffToPdf)
 
 # Layers

@@ -331,6 +331,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PutHtmlOverPdf", "HtmlToPdf
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FixGarbledText", "Text\FixGarbledText\C#\FixGarbledText.csproj", "{2DC51C5F-F682-4C0F-BCE9-996F76B979E7}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SvgToPdf", "Images\SvgToPdf\C#\SvgToPdf.csproj", "{AAC300F7-5CC4-49AC-A24A-32E84FF1DCB1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -925,6 +927,10 @@ Global
 		{2DC51C5F-F682-4C0F-BCE9-996F76B979E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DC51C5F-F682-4C0F-BCE9-996F76B979E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DC51C5F-F682-4C0F-BCE9-996F76B979E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAC300F7-5CC4-49AC-A24A-32E84FF1DCB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAC300F7-5CC4-49AC-A24A-32E84FF1DCB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAC300F7-5CC4-49AC-A24A-32E84FF1DCB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAC300F7-5CC4-49AC-A24A-32E84FF1DCB1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1077,6 +1083,7 @@ Global
 		{20E5A51A-3D81-45C4-A6CB-10E007FB8855} = {89D4F6D4-9E07-4ED4-9CA9-159B8E8B8250}
 		{DB83074E-185B-418A-92BD-C8B2404E9C3B} = {89D4F6D4-9E07-4ED4-9CA9-159B8E8B8250}
 		{2DC51C5F-F682-4C0F-BCE9-996F76B979E7} = {FECDFAB2-56E3-4382-AD93-7B1A4BAC00E0}
+		{AAC300F7-5CC4-49AC-A24A-32E84FF1DCB1} = {4F5146E7-A769-4D0B-94F0-8106CC5C883B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61DC7F3F-A5C8-48BD-845F-83DE6BD2527B}
