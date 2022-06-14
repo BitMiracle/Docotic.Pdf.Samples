@@ -107,6 +107,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     // Perform OCR
                     using (Pix img = Pix.LoadFromMemory(charCodeImage.ToArray()))
                     {
+                        // Use SingleChar segmentation mode when the last batch contains a few characters
                         PageSegMode segMode = batchCodes.Length > 5 ? engine.DefaultPageSegMode : PageSegMode.SingleChar;
                         using (Page recognizedPage = engine.Process(img, segMode))
                         {
