@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 
@@ -29,7 +30,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         if (documentText.Length > 0)
                             documentText.Append("\r\n\r\n");
 
-                        // get a list of character codes that are not mapped to Unicode correctly
+                        // Get a list of character codes that are not mapped to Unicode correctly
                         var unmappedCharacterCodes = new List<PdfCharacterCode>();
                         var firstPassOptions = new PdfTextExtractionOptions
                         {
@@ -43,15 +44,15 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         string text = page.GetText(firstPassOptions);
                         if (unmappedCharacterCodes.Count == 0)
                         {
-                            // there are no unmapped characters. Use the extracted text as is
+                            // There are no unmapped characters. Use the extracted text as is
                             documentText.Append(text);
                             continue;
                         }
 
-                        // perform OCR to get correct Unicode values
+                        // Perform OCR to get correct Unicode values
                         string[] recognizedText = ocrCharacterCodes(unmappedCharacterCodes, engine);
 
-                        // extract text replacing unmapped characters with correct Unicode values
+                        // Extract text replacing unmapped characters with correct Unicode values
                         int index = 0;
                         var options = new PdfTextExtractionOptions
                         {
@@ -83,63 +84,76 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 VerticalResolution = 300,
                 Height = 20,
 
-                // slightly increase distance between characters to improve OCR quality
-                CharacterSpacing = 1.5 
+                // Slightly increase distance between characters to improve OCR quality
+                CharacterSpacing = 1.5
             };
-            using (var charCodeImage = new MemoryStream())
+
+            // Split character codes to batches because Tesseract cannot process too wide images.
+            // You may find the appropriate batch size heuristically based on the output image height and resolution.
+            // Or you may rasterize all character codes with the PdfTextRasterizer.Save method and
+            // calculate the batch size using the returning widths.
+            const int BatchSize = 400;
+            int batchIndex = 0;
+            foreach (PdfCharacterCode[] batchCodes in charCodes.Chunk(BatchSize))
             {
-                // get bounds of rendered character codes
-                double[] widthsPoints = rasterizer.Save(charCodeImage, charCodes);
-                double[] positionsPoints = new double[widthsPoints.Length];
-                for (int j = 1; j < positionsPoints.Length; ++j)
-                    positionsPoints[j] = positionsPoints[j - 1] + widthsPoints[j - 1] + rasterizer.CharacterSpacing;
-
-                // perform OCR
-                using (Pix img = Pix.LoadFromMemory(charCodeImage.ToArray()))
+                using (var charCodeImage = new MemoryStream())
                 {
-                    using (Page recognizedPage = engine.Process(img))
+                    // Get bounds of rendered character codes
+                    double[] widthsPoints = rasterizer.Save(charCodeImage, batchCodes);
+                    double[] positionsPoints = new double[widthsPoints.Length];
+                    for (int j = 1; j < positionsPoints.Length; ++j)
+                        positionsPoints[j] = positionsPoints[j - 1] + widthsPoints[j - 1] + rasterizer.CharacterSpacing;
+
+                    // Perform OCR
+                    using (Pix img = Pix.LoadFromMemory(charCodeImage.ToArray()))
                     {
-                        using (ResultIterator iter = recognizedPage.GetIterator())
+                        PageSegMode segMode = batchCodes.Length > 5 ? engine.DefaultPageSegMode : PageSegMode.SingleChar;
+                        using (Page recognizedPage = engine.Process(img, segMode))
                         {
-                            // map character codes to the recognized text
-                            int lastCharCodeIndex = -1;
-                            const PageIteratorLevel Level = PageIteratorLevel.Symbol;
-                            iter.Begin();
-                            do
+                            using (ResultIterator iter = recognizedPage.GetIterator())
                             {
-                                if (iter.TryGetBoundingBox(Level, out Rect bounds))
+                                // Map character codes to the recognized text
+                                int lastCharCodeIndex = -1;
+                                const PageIteratorLevel Level = PageIteratorLevel.Symbol;
+                                iter.Begin();
+                                do
                                 {
-                                    double bestIntersectionWidth = 0;
-                                    int bestMatchIndex = -1;
-                                    for (int c = lastCharCodeIndex + 1; c < charCodes.Count; ++c)
+                                    if (iter.TryGetBoundingBox(Level, out Rect bounds))
                                     {
-                                        double x = pointsToPixels(positionsPoints[c], rasterizer.HorizontalResolution);
-                                        double width = pointsToPixels(widthsPoints[c], rasterizer.HorizontalResolution);
-
-                                        if (bounds.X2 < x)
-                                            break;
-
-                                        if (x + width < bounds.X1)
-                                            continue;
-
-                                        double intersection = Math.Min(bounds.X2, x + width) - Math.Max(bounds.X1, x);
-                                        if (bestIntersectionWidth < intersection)
+                                        double bestIntersectionWidth = 0;
+                                        int bestMatchIndex = -1;
+                                        for (int c = lastCharCodeIndex + 1; c < batchCodes.Length; ++c)
                                         {
-                                            bestIntersectionWidth = intersection;
-                                            bestMatchIndex = c;
+                                            double x = pointsToPixels(positionsPoints[c], rasterizer.HorizontalResolution);
+                                            double width = pointsToPixels(widthsPoints[c], rasterizer.HorizontalResolution);
+
+                                            if (bounds.X2 < x)
+                                                break;
+
+                                            if (x + width < bounds.X1)
+                                                continue;
+
+                                            double intersection = Math.Min(bounds.X2, x + width) - Math.Max(bounds.X1, x);
+                                            if (bestIntersectionWidth < intersection)
+                                            {
+                                                bestIntersectionWidth = intersection;
+                                                bestMatchIndex = c;
+                                            }
+                                        }
+
+                                        if (bestMatchIndex >= 0)
+                                        {
+                                            recognizedText[batchIndex * BatchSize + bestMatchIndex] = iter.GetText(Level);
+                                            lastCharCodeIndex = bestMatchIndex;
                                         }
                                     }
-
-                                    if (bestMatchIndex >= 0)
-                                    {
-                                        recognizedText[bestMatchIndex] = iter.GetText(Level);
-                                        lastCharCodeIndex = bestMatchIndex;
-                                    }
-                                }
-                            } while (iter.Next(Level));
+                                } while (iter.Next(Level));
+                            }
                         }
                     }
                 }
+
+                ++batchIndex;
             }
 
             return recognizedText;

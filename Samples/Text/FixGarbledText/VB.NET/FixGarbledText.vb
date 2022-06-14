@@ -1,6 +1,7 @@
 Imports System
 Imports System.Collections.Generic
 Imports System.IO
+Imports System.Linq
 Imports System.Reflection
 Imports System.Text
 Imports BitMiracle.Docotic.Pdf
@@ -24,7 +25,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                         If documentText.Length > 0 Then documentText.Append(vbCrLf & vbCrLf)
 
-                        ' get a list of character codes that are not mapped to Unicode correctly
+                        ' Get a list of character codes that are not mapped to Unicode correctly
                         Dim unmappedCharacterCodes = New List(Of PdfCharacterCode)()
                         Dim firstPassOptions = New PdfTextExtractionOptions With {
                             .UnmappedCharacterCodeHandler = Function(c)
@@ -35,15 +36,15 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         Dim page As PdfPage = pdf.Pages(i)
                         Dim text As String = page.GetText(firstPassOptions)
                         If unmappedCharacterCodes.Count = 0 Then
-                            ' there are no unmapped characters. Use the extracted text as is
+                            ' There are no unmapped characters. Use the extracted text as is
                             documentText.Append(text)
                             Continue For
                         End If
 
-                        ' perform OCR to get correct Unicode values
+                        ' Perform OCR to get correct Unicode values
                         Dim recognizedText As String() = ocrCharacterCodes(unmappedCharacterCodes, engine)
 
-                        ' extract text replacing unmapped characters with correct Unicode values
+                        ' Extract text replacing unmapped characters with correct Unicode values
                         Dim index As Integer = 0
                         Dim options = New PdfTextExtractionOptions With {
                             .UnmappedCharacterCodeHandler = Function(c)
@@ -71,57 +72,70 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 .HorizontalResolution = 300,
                 .VerticalResolution = 300,
                 .Height = 20,
-                .CharacterSpacing = 1.5 ' slightly increase distance between characters to improve OCR quality
+                .CharacterSpacing = 1.5 ' Slightly increase distance between characters to improve OCR quality
             }
-            Using charCodeImage = New MemoryStream()
-                ' get bounds of rendered character codes
-                Dim widthsPoints As Double() = rasterizer.Save(charCodeImage, charCodes)
-                Dim positionsPoints As Double() = New Double(widthsPoints.Length - 1) {}
 
-                For j As Integer = 1 To positionsPoints.Length - 1
-                    positionsPoints(j) = positionsPoints(j - 1) + widthsPoints(j - 1) + rasterizer.CharacterSpacing
-                Next
+            ' Split character codes to batches because Tesseract cannot process too wide images.
+            ' You may find the appropriate batch size heuristically based on the output image height and resolution.
+            ' Or you may rasterize all character codes with the PdfTextRasterizer.Save method and
+            ' calculate the batch size using the returning widths.
+            Const BatchSize As Integer = 400
+            Dim batchIndex As Integer = 0
+            For Each batchCodes In charCodes.Chunk(BatchSize)
+                Using charCodeImage = New MemoryStream()
+                    ' Get bounds of rendered character codes
+                    Dim widthsPoints As Double() = rasterizer.Save(charCodeImage, batchCodes)
+                    Dim positionsPoints As Double() = New Double(widthsPoints.Length - 1) {}
 
-                ' perform OCR
-                Using img As Pix = Pix.LoadFromMemory(charCodeImage.ToArray())
-                    Using recognizedPage As Page = engine.Process(img)
-                        Using iter As ResultIterator = recognizedPage.GetIterator()
-                            ' map character codes to the recognized text
-                            Dim lastCharCodeIndex As Integer = -1
-                            Const Level As PageIteratorLevel = PageIteratorLevel.Symbol
-                            iter.Begin()
+                    For j As Integer = 1 To positionsPoints.Length - 1
+                        positionsPoints(j) = positionsPoints(j - 1) + widthsPoints(j - 1) + rasterizer.CharacterSpacing
+                    Next
 
-                            Do
-                                Dim bounds As Rect = Nothing
-                                If iter.TryGetBoundingBox(Level, bounds) Then
-                                    Dim bestIntersectionWidth As Double = 0
-                                    Dim bestMatchIndex As Integer = -1
+                    ' Perform OCR
+                    Using img As Pix = Pix.LoadFromMemory(charCodeImage.ToArray())
+                        ' Use SingleChar segmentation mode when the last batch contains a few characters
+                        Dim segMode As PageSegMode = If(batchCodes.Length > 5, engine.DefaultPageSegMode, PageSegMode.SingleChar)
+                        Using recognizedPage As Page = engine.Process(img, segMode)
+                            Using iter As ResultIterator = recognizedPage.GetIterator()
+                                ' Map character codes to the recognized text
+                                Dim lastCharCodeIndex As Integer = -1
+                                Const Level As PageIteratorLevel = PageIteratorLevel.Symbol
+                                iter.Begin()
 
-                                    For c As Integer = lastCharCodeIndex + 1 To charCodes.Count - 1
-                                        Dim x As Double = pointsToPixels(positionsPoints(c), rasterizer.HorizontalResolution)
-                                        Dim width As Double = pointsToPixels(widthsPoints(c), rasterizer.HorizontalResolution)
+                                Do
+                                    Dim bounds As Rect = Nothing
+                                    If iter.TryGetBoundingBox(Level, bounds) Then
+                                        Dim bestIntersectionWidth As Double = 0
+                                        Dim bestMatchIndex As Integer = -1
 
-                                        If bounds.X2 < x Then Exit For
+                                        For c As Integer = lastCharCodeIndex + 1 To batchCodes.Count - 1
+                                            Dim x As Double = pointsToPixels(positionsPoints(c), rasterizer.HorizontalResolution)
+                                            Dim width As Double = pointsToPixels(widthsPoints(c), rasterizer.HorizontalResolution)
 
-                                        If x + width < bounds.X1 Then Continue For
+                                            If bounds.X2 < x Then Exit For
 
-                                        Dim intersection As Double = Math.Min(bounds.X2, x + width) - Math.Max(bounds.X1, x)
-                                        If bestIntersectionWidth < intersection Then
-                                            bestIntersectionWidth = intersection
-                                            bestMatchIndex = c
+                                            If x + width < bounds.X1 Then Continue For
+
+                                            Dim intersection As Double = Math.Min(bounds.X2, x + width) - Math.Max(bounds.X1, x)
+                                            If bestIntersectionWidth < intersection Then
+                                                bestIntersectionWidth = intersection
+                                                bestMatchIndex = c
+                                            End If
+                                        Next
+
+                                        If bestMatchIndex >= 0 Then
+                                            recognizedText(batchIndex * BatchSize + bestMatchIndex) = iter.GetText(Level)
+                                            lastCharCodeIndex = bestMatchIndex
                                         End If
-                                    Next
-
-                                    If bestMatchIndex >= 0 Then
-                                        recognizedText(bestMatchIndex) = iter.GetText(Level)
-                                        lastCharCodeIndex = bestMatchIndex
                                     End If
-                                End If
-                            Loop While iter.[Next](Level)
+                                Loop While iter.[Next](Level)
+                            End Using
                         End Using
                     End Using
                 End Using
-            End Using
+
+                batchIndex += 1
+            Next
 
             Return recognizedText
         End Function
