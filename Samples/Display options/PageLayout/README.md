@@ -1,4 +1,7 @@
-# Page layout
-This sample shows how to instruct a PDF viewer to display the pages in two columns, with odd-numbered pages on the left.
+# Display PDF pages in two columns
+This sample shows how to instruct a PDF viewer to display the pages in two columns using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
-You can setup desired page layout using PdfDocument.PageLayout property.
+Use [PdfDocument.PageLayout property](https://bitmiracle.com/pdf-library/help/pdfdocument.pagelayout.html) to set up desired page layout.
+
+## See also
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
