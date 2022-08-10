@@ -15,6 +15,6 @@ This sample shows how to instruct a PDF viewer to display the pages in two colum
 
 This sample shows how to instruct a PDF viewer to display the document in certain mode.
 
-[Viewer preferences](/Samples/Display%20options/ViewerPreferences)
+[Specify a PDF viewer preferences](/Samples/Display%20options/ViewerPreferences)
 
 This sample shows how to specify a PDF viewer application preferences.
