@@ -7,10 +7,10 @@ Don't miss [all other samples](/Samples).
 
 This samples shows how to attach a file or add a file annotation to your PDF document.
 
-[List attachments and file annotations names](/Samples/Attachments/GetAllAttachments)
+[List attachments and file annotations names in PDF document](/Samples/Attachments/GetAllAttachments)
 
 This sample shows how to list names of all files attached to a PDF document.
 
-[Save (extract) attachment](/Samples/Attachments/SaveAttachment)
+[Extract attachments from PDF document](/Samples/Attachments/SaveAttachment)
 
 This sample shows how to save PDF attachment bytes (extract attached file).
