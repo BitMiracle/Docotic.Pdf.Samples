@@ -15,19 +15,19 @@ This sample shows how to create 3D PDF document in C# and VB.NET.
 
 This sample shows how to create rich media annotations in PDF documents.
 
-[Button with image](/Samples/Forms%20and%20Annotations/ButtonImage)
+[Add button with image to PDF document](/Samples/Forms%20and%20Annotations/ButtonImage)
 
 This sample shows how to create buttons with images in PDF documents.
 
-[Buttons](/Samples/Forms%20and%20Annotations/Buttons)
+[Add buttons to PDF document](/Samples/Forms%20and%20Annotations/Buttons)
 
 This sample shows how to use buttons in your PDF document.
 
-[Checkboxes](/Samples/Forms%20and%20Annotations/Checkboxes)
+[Add checkboxes to PDF document](/Samples/Forms%20and%20Annotations/Checkboxes)
 
 This sample shows how to use checkboxes in your PDF document.
 
-[Comboboxes](/Samples/Forms%20and%20Annotations/Comboboxes)
+[Add comboboxes to PDF document](/Samples/Forms%20and%20Annotations/Comboboxes)
 
 This sample shows how to use combo boxes in your PDF document.
 
@@ -35,7 +35,7 @@ This sample shows how to use combo boxes in your PDF document.
 
 This sample shows how to export filled form data from PDF document into a Forms Data Format (FDF) file.
 
-[Fill existing form](/Samples/Forms%20and%20Annotations/FillForm)
+[Fill PDF forms in C# and VB.NET](/Samples/Forms%20and%20Annotations/FillForm)
 
 This sample shows how to fill forms in existing PDF documents.
 
@@ -51,7 +51,7 @@ This sample shows how to flatten form fields in a PDF document.
 
 This sample shows how to populate a PDF form with data from a Forms Data Format (FDF) file.
 
-[Listboxes](/Samples/Forms%20and%20Annotations/Listboxes)
+[Add list boxes to PDF document](/Samples/Forms%20and%20Annotations/Listboxes)
 
 This sample shows how to use list boxes in your PDF document.
 
@@ -59,7 +59,7 @@ This sample shows how to use list boxes in your PDF document.
 
 This sample shows how to create text fields that allow only digits to be input.
 
-[Radio buttons](/Samples/Forms%20and%20Annotations/RadioButtons)
+[Add radio buttons to PDF document](/Samples/Forms%20and%20Annotations/RadioButtons)
 
 This sample shows how to use radio buttons in your PDF document.
 
@@ -75,7 +75,7 @@ This sample shows how to remove widgets from your PDF documents.
 
 This sample shows how to align text in PDF document text fields.
 
-[Text fields](/Samples/Forms%20and%20Annotations/TextFields)
+[Add text fields to PDF document](/Samples/Forms%20and%20Annotations/TextFields)
 
 This sample shows how to add text fields to your PDF document using PdfPage.AddTextBox(..) method.
 

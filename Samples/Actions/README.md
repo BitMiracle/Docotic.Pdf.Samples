@@ -3,22 +3,22 @@ This group contains samples that show how to use actions and event handlers in P
 
 Don't miss [all other samples](/Samples).
 
-[GoTo Action](/Samples/Actions/GoToAction)
+[Use GoTo actions in PDF documents](/Samples/Actions/GoToAction)
 
 This sample shows how to use Go-To actions.
 
-[Hide Action](/Samples/Actions/HideAction)
+[Use Hide actions in PDF documents](/Samples/Actions/HideAction)
 
 This sample shows how to use Hide actions.
 
-[JavaScript Action](/Samples/Actions/JavaScriptAction)
+[Use JavaScript actions in PDF documents](/Samples/Actions/JavaScriptAction)
 
 This sample shows how to use JavaScript actions in PDF documents.
 
-[Submit and Reset Form Actions](/Samples/Actions/SubmitResetFormActions)
+[Use Submit and Reset form actions in PDF documents](/Samples/Actions/SubmitResetFormActions)
 
 This sample shows how to use Submit-Form and Reset-Form actions.
 
-[Uri Action](/Samples/Actions/UriAction)
+[Use URI action in PDF documents](/Samples/Actions/UriAction)
 
 This sample shows how to create URI actions in PDF documents.
