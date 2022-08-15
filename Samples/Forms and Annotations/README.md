@@ -31,7 +31,7 @@ This sample shows how to use checkboxes in your PDF document.
 
 This sample shows how to use combo boxes in your PDF document.
 
-[Export FDF data](/Samples/Forms%20and%20Annotations/ExportFdfData)
+[Export FDF data from PDF document](/Samples/Forms%20and%20Annotations/ExportFdfData)
 
 This sample shows how to export filled form data from PDF document into a Forms Data Format (FDF) file.
 
@@ -39,7 +39,7 @@ This sample shows how to export filled form data from PDF document into a Forms 
 
 This sample shows how to fill forms in existing PDF documents.
 
-[Find control by name](/Samples/Forms%20and%20Annotations/FindControlByName)
+[Find PDF control by name](/Samples/Forms%20and%20Annotations/FindControlByName)
 
 This sample shows how to access an existing PDF control with given name using PdfDocument.GetControl method.
 
@@ -47,7 +47,7 @@ This sample shows how to access an existing PDF control with given name using Pd
 
 This sample shows how to flatten form fields in a PDF document.
 
-[Import FDF data](/Samples/Forms%20and%20Annotations/ImportFdfData)
+[Import FDF data to PDF document](/Samples/Forms%20and%20Annotations/ImportFdfData)
 
 This sample shows how to populate a PDF form with data from a Forms Data Format (FDF) file.
 
