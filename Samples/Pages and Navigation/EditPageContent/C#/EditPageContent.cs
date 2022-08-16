@@ -16,7 +16,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 int pageCount = pdf.PageCount;
                 for (int i = 0; i < pageCount; ++i)
                 {
-                    PdfPage sourcePage = pdf.Pages[0];
+                    PdfPage sourcePage = pdf.Pages[i];
                     PdfPage tempPage = pdf.AddPage();
 
                     // copy and modify page objects to a temporary page
