@@ -22,7 +22,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 options.VerticalResolution = 300;
 
                 // specify bitonal TIFF as the desired output compression
-                options.Compression = ImageCompressionOptions.CreateBitonalTiff();
+                options.Compression = ImageCompressionOptions.CreateTiff()
+                    .SetBitonal();
 
                 // save one page
                 pdf.Pages[0].Save(outputPagePath, options);
