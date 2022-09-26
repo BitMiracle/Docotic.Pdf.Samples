@@ -13,7 +13,8 @@ Docotic.Pdf supports different compression methods. You can use all of them to g
 6. remove metadata
 7. unembed fonts
 8. remove unused resources
-9. remove private application data
+9. remove unused font glyphs (font subsetting)
+10. remove private application data
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)

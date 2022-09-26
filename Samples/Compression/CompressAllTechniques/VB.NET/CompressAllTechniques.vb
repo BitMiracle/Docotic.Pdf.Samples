@@ -62,7 +62,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 ' 8. Remove unused resources
                 pdf.RemoveUnusedResources()
 
-                ' 9. Remove page-piece dictionaries
+                ' 9. Remove unused font glyphs
+                pdf.RemoveUnusedFontGlyphs()
+
+                ' 10. Remove page-piece dictionaries
                 pdf.RemovePieceInfo()
 
                 pdf.Save(compressedFile, saveOptions)
