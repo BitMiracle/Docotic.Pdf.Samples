@@ -1,12 +1,12 @@
 Imports System.IO
-
+Imports BitMiracle.Docotic
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
-    Public NotInheritable Class RemoveStructureInformation
+    Public NotInheritable Class FontSubsetting
         Public Shared Sub Main()
-            Dim originalFile As String = "..\Sample Data\BRAILLE CODES WITH TRANSLATION.pdf"
-            Const compressedFile As String = "RemoveStructureInformation.pdf"
+            Dim originalFile As String = "..\Sample Data\gmail-cheat-sheet.pdf"
+            Const compressedFile As String = "FontSubsetting.pdf"
 
             ' NOTE:
             ' When used in trial mode, the library imposes some restrictions.
@@ -14,7 +14,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' for more information.
 
             Using pdf As New PdfDocument(originalFile)
-                pdf.RemoveStructureInformation()
+                pdf.RemoveUnusedFontGlyphs()
 
                 pdf.Save(compressedFile)
             End Using

@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompressAllTechniques", "Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompressWithSaveOptions", "Compression\CompressWithSaveOptions\C#\CompressWithSaveOptions.csproj", "{DF3D3158-5921-4653-B6EE-412BE3B71C7F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FontSubsetting", "Compression\FontSubsetting\C#\FontSubsetting.csproj", "{7E8491EE-5D7B-40D4-BF9E-4D418C480B7E}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OptimizeImages", "Compression\OptimizeImages\C#\OptimizeImages.csproj", "{52D8CF43-FDCD-4877-B2A2-1FE56CA2874C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoveStructureInformation", "Compression\RemoveStructureInformation\C#\RemoveStructureInformation.csproj", "{94B49E24-D855-48E8-ABD8-E1A1670174EA}"
@@ -931,6 +933,10 @@ Global
 		{AAC300F7-5CC4-49AC-A24A-32E84FF1DCB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAC300F7-5CC4-49AC-A24A-32E84FF1DCB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAC300F7-5CC4-49AC-A24A-32E84FF1DCB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E8491EE-5D7B-40D4-BF9E-4D418C480B7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E8491EE-5D7B-40D4-BF9E-4D418C480B7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E8491EE-5D7B-40D4-BF9E-4D418C480B7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E8491EE-5D7B-40D4-BF9E-4D418C480B7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1084,6 +1090,7 @@ Global
 		{DB83074E-185B-418A-92BD-C8B2404E9C3B} = {89D4F6D4-9E07-4ED4-9CA9-159B8E8B8250}
 		{2DC51C5F-F682-4C0F-BCE9-996F76B979E7} = {FECDFAB2-56E3-4382-AD93-7B1A4BAC00E0}
 		{AAC300F7-5CC4-49AC-A24A-32E84FF1DCB1} = {4F5146E7-A769-4D0B-94F0-8106CC5C883B}
+		{7E8491EE-5D7B-40D4-BF9E-4D418C480B7E} = {88131CB0-F0B1-483D-8E0A-B354423288C5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61DC7F3F-A5C8-48BD-845F-83DE6BD2527B}

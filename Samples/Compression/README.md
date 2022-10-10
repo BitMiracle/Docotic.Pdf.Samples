@@ -18,3 +18,7 @@ This sample shows how to optimize existing images in PDF document.
 [Remove structure information from PDF documents](/Samples/Compression/RemoveStructureInformation)
 
 This sample shows how to reduce PDF file size by removing structure information from it.
+
+[Subset PDF fonts](/Samples/Compression/FontSubsetting)
+
+This sample shows how to optimize fonts in PDF documents.

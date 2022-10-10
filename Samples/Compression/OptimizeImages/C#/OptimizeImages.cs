@@ -8,7 +8,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
     {
         public static void Main()
         {
-            // NOTE: 
+            // NOTE:
             // When used in trial mode, the library imposes some restrictions.
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
@@ -36,7 +36,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Save(compressedFile);
             }
 
-            // NOTE: 
+            // NOTE:
             // This sample shows only one approach to reduce size of a PDF.
             // Please check CompressAllTechniques sample code to see more approaches.
             // https://github.com/BitMiracle/Docotic.Pdf.Samples/tree/master/Samples/Compression/CompressAllTechniques

@@ -3,21 +3,21 @@ using System.IO;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
-    public static class RemoveStructureInformation
+    public static class FontSubsetting
     {
         public static void Main()
         {
-            string originalFile = @"..\Sample Data\BRAILLE CODES WITH TRANSLATION.pdf";
-            const string compressedFile = "RemoveStructureInformation.pdf";
+            string originalFile = @"..\Sample Data\gmail-cheat-sheet.pdf";
+            const string compressedFile = "FontSubsetting.pdf";
 
             // NOTE:
             // When used in trial mode, the library imposes some restrictions.
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            using (PdfDocument pdf = new PdfDocument(originalFile))
+            using (var pdf = new PdfDocument(originalFile))
             {
-                pdf.RemoveStructureInformation();
+                pdf.RemoveUnusedFontGlyphs();
 
                 pdf.Save(compressedFile);
             }

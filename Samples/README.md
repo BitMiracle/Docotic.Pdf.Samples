@@ -25,6 +25,8 @@
 
 [Remove structure information from PDF document](/Samples/Compression/RemoveStructureInformation)
 
+[Subset PDF fonts](/Samples/Compression/FontSubsetting)
+
 # Digital signatures
 [Read signature properties](/Samples/Digital%20signatures/ReadSignatureProperties)
 

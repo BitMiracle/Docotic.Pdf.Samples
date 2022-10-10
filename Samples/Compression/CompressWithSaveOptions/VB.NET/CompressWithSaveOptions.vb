@@ -8,7 +8,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim originalFile As String = "..\Sample Data\BRAILLE CODES WITH TRANSLATION.pdf"
             Const compressedFile As String = "CompressWithSaveOptions.pdf"
 
-            ' NOTE: 
+            ' NOTE:
             ' When used in trial mode, the library imposes some restrictions.
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
