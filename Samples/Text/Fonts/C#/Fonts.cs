@@ -25,7 +25,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.Font = builtInFont;
                 canvas.DrawString(10, 70, "Hello, world!");
 
-                PdfFont fontFromFile = pdf.AddFontFromFile(@"..\Sample data\HolidayPi_BT.ttf");
+                PdfFont fontFromFile = pdf.AddFontFromFile(@"..\Sample data\Fonts\HolidayPi_BT.ttf");
                 canvas.Font = fontFromFile;
                 canvas.DrawString(10, 90, "Hello, world!");
 

@@ -21,7 +21,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.Font = builtInFont
                 canvas.DrawString(10, 70, "Hello, world!")
 
-                Dim fontFromFile As PdfFont = pdf.AddFontFromFile("..\Sample data\HolidayPi_BT.ttf")
+                Dim fontFromFile As PdfFont = pdf.AddFontFromFile("..\Sample data\Fonts\HolidayPi_BT.ttf")
                 canvas.Font = fontFromFile
                 canvas.DrawString(10, 90, "Hello, world!")
 

@@ -280,6 +280,8 @@
 
 [Draw text from baseline](/Samples/Text/DrawTextFromBaseline)
 
+[Embed PDF fonts](/Samples/Text/EmbedFonts)
+
 [Extract text](/Samples/Text/ExtractText)
 
 [Extract text by words](/Samples/Text/ExtractTextByWords)

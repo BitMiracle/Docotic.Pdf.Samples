@@ -15,6 +15,10 @@ This sample shows how to draw text on a canvas.
 
 This sample shows how to draw text starting at font's baseline.
 
+[Embed PDF fonts](/Samples/Text/EmbedFonts)
+
+This sample shows how to embed fonts in a PDF document.
+
 [Extract text](/Samples/Text/ExtractText)
 
 This sample shows how to extract text from a page or from entire PDF document.
