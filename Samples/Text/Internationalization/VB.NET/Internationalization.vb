@@ -20,7 +20,6 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 canvas.Font = pdf.AddFont("NSimSun")
                 canvas.DrawString(180, 50, "世界您好")
-                canvas.Font.RemoveUnusedGlyphs()
 
                 canvas.Font = pdf.AddFont("Times New Roman")
                 canvas.DrawString(180, 70, "Привет, мир")
@@ -30,7 +29,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 options.ReadingDirection = PdfReadingDirection.Rtl
                 canvas.DrawString(180, 110, "bidi בינלאומי", options)
 
-                canvas.Font.RemoveUnusedGlyphs()
+                pdf.RemoveUnusedFontGlyphs()
 
                 pdf.Save("Internationalization.pdf")
             End Using

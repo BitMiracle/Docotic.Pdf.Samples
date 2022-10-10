@@ -11,7 +11,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 PdfCanvas canvas = pdf.Pages[0].Canvas;
                 canvas.FontSize = 12;
@@ -24,7 +24,6 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                 canvas.Font = pdf.AddFont("NSimSun");
                 canvas.DrawString(180, 50, "世界您好");
-                canvas.Font.RemoveUnusedGlyphs();
 
                 canvas.Font = pdf.AddFont("Times New Roman");
                 canvas.DrawString(180, 70, "Привет, мир");
@@ -33,7 +32,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 var options = new PdfStringDrawingOptions { ReadingDirection = PdfReadingDirection.Rtl };
                 canvas.DrawString(180, 110, "bidi בינלאומי", options);
 
-                canvas.Font.RemoveUnusedGlyphs();
+                pdf.RemoveUnusedFontGlyphs();
 
                 pdf.Save("Internationalization.pdf");
             }
