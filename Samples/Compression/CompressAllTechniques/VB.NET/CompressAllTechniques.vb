@@ -1,5 +1,5 @@
 Imports System.IO
-
+Imports BitMiracle.Docotic
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -67,6 +67,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 ' 10. Remove page-piece dictionaries
                 pdf.RemovePieceInfo()
+
+                ' 11. Merge page content streams
+                For Each page As PdfPage In pdf.Pages
+                    page.MergeContentStreams()
+                Next
 
                 pdf.Save(compressedFile, saveOptions)
             End Using

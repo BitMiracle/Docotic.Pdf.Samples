@@ -70,6 +70,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 // 10. Remove page-piece dictionaries
                 pdf.RemovePieceInfo();
 
+                // 11. Merge page content streams
+                foreach (PdfPage page in pdf.Pages)
+                    page.MergeContentStreams();
+
                 pdf.Save(compressedFile, saveOptions);
             }
 

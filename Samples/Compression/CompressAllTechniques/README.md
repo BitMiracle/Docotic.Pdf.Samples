@@ -15,6 +15,7 @@ Docotic.Pdf supports different compression methods. You can use all of them to g
 8. remove unused resources
 9. remove unused font glyphs (font subsetting)
 10. remove private application data
+11. merge page content streams
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
