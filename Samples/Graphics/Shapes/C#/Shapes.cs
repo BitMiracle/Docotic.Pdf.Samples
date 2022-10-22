@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -11,6 +12,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
+            var pathToFile = "Shapes.pdf";
+
             using (PdfDocument pdf = new PdfDocument())
             {
                 PdfCanvas canvas = pdf.Pages[0].Canvas;
@@ -20,10 +23,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.DrawRectangle(new PdfRectangle(160, 80, 110, 50));
                 canvas.DrawRoundedRectangle(new PdfRectangle(160, 150, 110, 50), new PdfSize(30, 30));
 
-                pdf.Save("Shapes.pdf");
+                pdf.Save(pathToFile);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(pathToFile) { UseShellExecute = true });
         }
     }
 }

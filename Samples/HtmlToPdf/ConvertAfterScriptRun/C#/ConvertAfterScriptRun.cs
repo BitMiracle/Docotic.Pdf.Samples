@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 using BitMiracle.Docotic.Pdf.HtmlToPdf;
@@ -15,6 +16,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // for more information.
 
             var url = new Uri("https://plugins.yithemes.com/yith-infinite-scrolling");
+            var pathToFile = "ConvertAfterScriptRun.pdf";
             using (var converter = await HtmlConverter.CreateAsync())
             {
                 // The page at the url loads additional contents when scroll position changes.
@@ -44,10 +46,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 ";
                 options.Start.SetStartAfterScriptRun(js);
                 using (var pdf = await converter.CreatePdfAsync(url, options))
-                    pdf.Save("ConvertAfterScriptRun.pdf");
+                    pdf.Save(pathToFile);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(pathToFile) { UseShellExecute = true });
         }
     }
 }

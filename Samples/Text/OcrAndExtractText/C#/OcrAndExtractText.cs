@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Text;
@@ -71,6 +72,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 writer.Write(documentText.ToString());
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(Result) { UseShellExecute = true });
         }
     }
 }

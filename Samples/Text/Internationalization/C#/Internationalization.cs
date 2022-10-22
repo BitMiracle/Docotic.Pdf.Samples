@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -10,6 +11,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // When used in trial mode, the library imposes some restrictions.
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
+
+            var pathToFile = "Internationalization.pdf";
 
             using (var pdf = new PdfDocument())
             {
@@ -34,10 +37,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                 pdf.RemoveUnusedFontGlyphs();
 
-                pdf.Save("Internationalization.pdf");
+                pdf.Save(pathToFile);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(pathToFile) { UseShellExecute = true });
         }
     }
 }

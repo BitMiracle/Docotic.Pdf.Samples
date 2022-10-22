@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -10,6 +11,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // When used in trial mode, the library imposes some restrictions.
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
+
+            var extractedPagesFileName = "ExtractPages.pdf";
+            var remainingPagesFileName = "ExtractPages_original.pdf";
 
             using (var original = new PdfDocument())
             {
@@ -29,13 +33,16 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     // unused resources such as fonts, images, patterns.
                     extracted.RemoveUnusedResources();
 
-                    extracted.Save("ExtractPages.pdf");
+                    extracted.Save(extractedPagesFileName);
                 }
 
-                original.Save("ExtractPages_original.pdf");
+                original.Save(remainingPagesFileName);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(extractedPagesFileName) { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo(remainingPagesFileName) { UseShellExecute = true });
         }
     }
 }

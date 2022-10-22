@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -68,10 +69,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 }
             }
 
-            using (var writer = new StreamWriter("FixGarbledText.txt"))
+            var pathToFile = "FixGarbledText.txt";
+            using (var writer = new StreamWriter(pathToFile))
                 writer.Write(documentText.ToString());
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(pathToFile) { UseShellExecute = true });
         }
 
         private static string[] ocrCharacterCodes(List<PdfCharacterCode> charCodes, TesseractEngine engine)

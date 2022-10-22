@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -11,6 +12,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
+            var pathToFile = "RemovePages.pdf";
             using (PdfDocument pdf = new PdfDocument())
             {
                 PdfPage firstPage = pdf.Pages[0];
@@ -29,10 +31,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.InsertPage(1);
                 pdf.RemovePages(new int[] { 0, 1 });
 
-                pdf.Save("RemovePages.pdf");
+                pdf.Save(pathToFile);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(pathToFile) { UseShellExecute = true });
         }
     }
 }

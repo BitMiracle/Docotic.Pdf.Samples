@@ -28,6 +28,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(pathToFile) { UseShellExecute = true });
         }
 
         private static void highlightPhrases(PdfDocument pdf, string textToFind, StringComparison comparison,

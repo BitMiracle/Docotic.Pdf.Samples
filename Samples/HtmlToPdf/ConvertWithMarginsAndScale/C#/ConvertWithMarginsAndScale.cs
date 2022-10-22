@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 using BitMiracle.Docotic.Pdf.HtmlToPdf;
@@ -14,6 +15,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
+            var pathToFile = "ConvertWithMarginsAndScale.pdf";
+
             using (var converter = await HtmlConverter.CreateAsync())
             {
                 var html = "<html><head><style>body { background-color: coral; margin-top: 100px;}</style></head>" +
@@ -27,10 +30,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 options.Page.Scale = 1.5;
 
                 using (var pdf = await converter.CreatePdfFromStringAsync(html, options))
-                    pdf.Save("ConvertWithMarginsAndScale.pdf");
+                    pdf.Save(pathToFile);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(pathToFile) { UseShellExecute = true });
         }
     }
 }

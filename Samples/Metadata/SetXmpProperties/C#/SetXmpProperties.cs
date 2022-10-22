@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -11,6 +12,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
+            string pathToFile = "SetXmpProperties.pdf";
+
             using (PdfDocument pdf = new PdfDocument())
             {
                 pdf.Metadata.DublinCore.Creators = new XmpArray(XmpArrayType.Ordered);
@@ -21,11 +24,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                 pdf.Metadata.Pdf.Producer = new XmpString("me too!");
 
-                string pathToFile = "SetXmpProperties.pdf";
                 pdf.Save(pathToFile);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(pathToFile) { UseShellExecute = true });
         }
     }
 }

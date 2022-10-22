@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -15,6 +16,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
+            var pathToFile = "ConvertWithHeaderAndFooter.pdf";
             using (var converter = await HtmlConverter.CreateAsync())
             {
                 var options = new HtmlConversionOptions();
@@ -27,10 +29,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                 var url = new Uri("https://www.iana.org/glossary");
                 using (var pdf = await converter.CreatePdfAsync(url, options))
-                    pdf.Save("ConvertWithHeaderAndFooter.pdf");
+                    pdf.Save(pathToFile);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(pathToFile) { UseShellExecute = true });
         }
     }
 }

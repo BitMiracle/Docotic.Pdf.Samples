@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -11,6 +12,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
+            var outputName = "UriAction.pdf";
             using (PdfDocument pdf = new PdfDocument())
             {
                 PdfUriAction uriAction = pdf.CreateHyperlinkAction(new Uri("http://www.google.com"));
@@ -20,10 +22,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 annotation.Border.Width = 1;
                 annotation.Border.Style = PdfMarkerLineStyle.Dashed;
 
-                pdf.Save("UriAction.pdf");
+                pdf.Save(outputName);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(outputName) { UseShellExecute = true });
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 using BitMiracle.Docotic.Pdf.HtmlToPdf;
@@ -13,6 +14,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // When used in trial mode, the library imposes some restrictions.
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
+
+            var pathToFile = "PutHtmlOverPdf.pdf";
 
             using (var converter = await HtmlConverter.CreateAsync())
             {
@@ -38,12 +41,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         // Draw the XObject on a page from the existing PDF.
                         pdf.Pages[0].Canvas.DrawXObject(xObj, 0, 0);
 
-                        pdf.Save("PutHtmlOverPdf.pdf");
+                        pdf.Save(pathToFile);
                     }
                 }
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(pathToFile) { UseShellExecute = true });
         }
     }
 }

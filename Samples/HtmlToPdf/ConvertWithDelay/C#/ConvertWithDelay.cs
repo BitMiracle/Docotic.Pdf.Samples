@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 using BitMiracle.Docotic.Pdf.HtmlToPdf;
@@ -14,6 +15,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
+            var pathToFile = "ConvertWithDelay.pdf";
+
             // Wait for 10 seconds before starting the conversion.
             // This should be enough for the test to complete.
             var options = new HtmlConversionOptions();
@@ -22,10 +25,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
             using (var converter = await HtmlConverter.CreateAsync())
             {
                 using (var pdf = await converter.CreatePdfAsync(new Uri("https://html5test.com/"), options))
-                    pdf.Save("ConvertWithDelay.pdf");
+                    pdf.Save(pathToFile);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(pathToFile) { UseShellExecute = true });
         }
     }
 }

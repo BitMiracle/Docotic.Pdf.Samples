@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -34,7 +35,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                 string pathToFile = "TextFieldAlignment.pdf";
                 pdf.Save(pathToFile);
+
                 Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+                Process.Start(new ProcessStartInfo(pathToFile) { UseShellExecute = true });
             }
         }
     }
