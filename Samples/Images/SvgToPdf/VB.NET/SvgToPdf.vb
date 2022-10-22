@@ -16,13 +16,17 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
+            Dim pathToFile As String = "SvgToPdf.pdf"
+
             Using converter = Await HtmlConverter.CreateAsync()
                 Using pdf = Await converter.CreatePdfAsync("..\Sample Data\image.svg")
-                    pdf.Save("SvgToPdf.pdf")
+                    pdf.Save(pathToFile)
                 End Using
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
+
+            Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Function
     End Class
 End Namespace

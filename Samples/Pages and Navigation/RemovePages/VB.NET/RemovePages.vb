@@ -8,6 +8,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
+            Dim pathToFile As String = "RemovePages.pdf"
+
             Using pdf As New PdfDocument()
 
                 Dim firstPage As PdfPage = pdf.Pages(0)
@@ -26,10 +28,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.InsertPage(1)
                 pdf.RemovePages(New Integer() {0, 1})
 
-                pdf.Save("RemovePages.pdf")
+                pdf.Save(pathToFile)
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
+
+            Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Sub
     End Class
 End Namespace

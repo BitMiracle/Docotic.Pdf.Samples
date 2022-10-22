@@ -20,7 +20,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.InitialView = pdf.CreateView(0)
                 pdf.InitialView.SetFitHeight()
 
-                pdf.Save("FitHeight.pdf")
+                Dim pathToFile As String = "FitHeight.pdf"
+                pdf.Save(pathToFile)
+
+                Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
             End Using
         End Sub
 
@@ -30,7 +33,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.InitialView = pdf.CreateView(0)
                 pdf.InitialView.SetZoom(40)
 
-                pdf.Save("Percent.pdf")
+                Dim pathToFile As String = "Percent.pdf"
+                pdf.Save(pathToFile)
+
+                Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
             End Using
         End Sub
     End Class

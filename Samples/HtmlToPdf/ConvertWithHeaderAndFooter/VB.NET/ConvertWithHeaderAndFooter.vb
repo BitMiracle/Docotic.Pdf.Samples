@@ -18,6 +18,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
+            Dim pathToFile As String = "ConvertWithHeaderAndFooter.pdf"
+
             Using converter = Await HtmlConverter.CreateAsync()
                 Dim options = New HtmlConversionOptions()
 
@@ -29,11 +31,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 Dim url = New Uri("https://www.iana.org/glossary")
                 Using pdf = Await converter.CreatePdfAsync(url, options)
-                    pdf.Save("ConvertWithHeaderAndFooter.pdf")
+                    pdf.Save(pathToFile)
                 End Using
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
+
+            Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Function
     End Class
 End Namespace

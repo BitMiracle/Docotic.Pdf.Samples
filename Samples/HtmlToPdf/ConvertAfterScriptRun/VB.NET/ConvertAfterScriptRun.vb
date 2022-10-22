@@ -17,6 +17,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
+            Dim pathToFile As String = "ConvertAfterScriptRun.pdf"
+
             Dim url = New Uri("https://plugins.yithemes.com/yith-infinite-scrolling")
             Using converter = Await HtmlConverter.CreateAsync()
                 ' The page at the url loads additional contents when scroll position changes.
@@ -47,11 +49,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 options.Start.SetStartAfterScriptRun(js)
 
                 Using pdf = Await converter.CreatePdfAsync(url, options)
-                    pdf.Save("ConvertAfterScriptRun.pdf")
+                    pdf.Save(pathToFile)
                 End Using
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
+
+            Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Function
     End Class
 End Namespace

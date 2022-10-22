@@ -8,15 +8,19 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
+            Dim pathToFile As String = "ReplaceImage.pdf"
+
             Using pdf = New PdfDocument("..\Sample Data\gmail-cheat-sheet.pdf")
                 For Each image In pdf.GetImages(False)
                     image.ReplaceWith("..\Sample Data\ammerland.jpg")
                 Next
 
-                pdf.Save("ReplaceImage.pdf")
+                pdf.Save(pathToFile)
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
+
+            Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Sub
     End Class
 End Namespace

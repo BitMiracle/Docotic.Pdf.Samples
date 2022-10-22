@@ -8,6 +8,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
+            Dim pathToFile As String = "EditPageContent.pdf"
+
             Using pdf = New PdfDocument("..\Sample Data\form.pdf")
                 Dim pageCount As Integer = pdf.PageCount
                 For i As Integer = 0 To pageCount - 1
@@ -31,10 +33,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     pdf.RemovePage(pageCount)
                 Next
 
-                pdf.Save("EditPageContent.pdf")
+            Pdf.Save(pathToFile)
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
+
+            Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Sub
 
         ''' <summary>

@@ -7,6 +7,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' When used in trial mode, the library imposes some restrictions.
             ' Please visit https://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
+
+            Dim pathToFile As String = "TiffToPdf.pdf"
+
             Using pdf As PdfDocument = New PdfDocument
                 Dim tiffFiles() As String = New String() {
                     "..\Sample Data\multipage.tif",
@@ -30,10 +33,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         imagesAdded += 1
                     Next
                 Next
-                pdf.Save("TiffToPdf.pdf")
+                pdf.Save(pathToFile)
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
+
+            Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Sub
     End Class
 End Namespace

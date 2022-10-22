@@ -38,5 +38,7 @@ Class MainWindow
 
         setConvertingMode(False)
         MessageBox.Show(Me, $"The output is located in {Environment.CurrentDirectory}")
+
+        Process.Start(New ProcessStartInfo(pdfFileName) With {.UseShellExecute = True})
     End Function
 End Class

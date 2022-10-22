@@ -8,6 +8,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
+            Dim pathToFile As String = "ColorProfiles.pdf"
+
             Using pdf As New PdfDocument()
                 Dim canvas As PdfCanvas = Pdf.Pages(0).Canvas
 
@@ -15,10 +17,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.Brush.Color = New PdfRgbColor(colorProfile, 20, 80, 240)
                 canvas.DrawRectangle(New PdfRectangle(10, 50, 100, 70), PdfDrawMode.Fill)
 
-                pdf.Save("ColorProfiles.pdf")
+            Pdf.Save(pathToFile)
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
+
+            Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Sub
     End Class
 End Namespace

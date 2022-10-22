@@ -13,7 +13,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 If spec IsNot Nothing And spec.Contents IsNot Nothing Then
                     Const pathToFile As String = "attachment.doc"
                     spec.Contents.Save(pathToFile)
+
                     Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
+
+                    Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
                 Else
                     Console.WriteLine($"Can't save the shared attachment")
                 End If

@@ -8,6 +8,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
+            Dim pathToFile As String = "SetXmpProperties.pdf"
+
             Using pdf As New PdfDocument()
                 pdf.Metadata.DublinCore.Creators = New XmpArray(XmpArrayType.Ordered)
                 pdf.Metadata.DublinCore.Creators.Values.Add(New XmpString("me"))
@@ -17,11 +19,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 pdf.Metadata.Pdf.Producer = New XmpString("me too!")
 
-                Dim pathToFile As String = "SetXmpProperties.pdf"
                 pdf.Save(pathToFile)
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
+
+            Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Sub
     End Class
 End Namespace

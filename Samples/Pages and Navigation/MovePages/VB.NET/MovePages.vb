@@ -8,6 +8,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
+            Dim continuousOutputPath As String = "MovePagesContinuous.pdf"
+            Dim arbitraryOutputPath As String = "MovePagesArbitrary.pdf"
+
             ' This shows how to move continuous ranges of pages
             Using pdf As New PdfDocument()
                 buildTestDocument(pdf)
@@ -15,7 +18,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 ' move first half of pages to the end of the document
                 pdf.MovePages(0, 5, pdf.PageCount)
 
-                pdf.Save("MovePagesContinuous.pdf")
+                pdf.Save(continuousOutputPath)
             End Using
 
             ' This shows how to move arbitrary sets of pages
@@ -27,10 +30,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 ' move odd pages to the end of the document
                 pdf.MovePages(indexes, pdf.PageCount)
 
-                pdf.Save("MovePagesArbitrary.pdf")
+                pdf.Save(arbitraryOutputPath)
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
+
+            Process.Start(New ProcessStartInfo(continuousOutputPath) With {.UseShellExecute = True})
+            Process.Start(New ProcessStartInfo(arbitraryOutputPath) With {.UseShellExecute = True})
         End Sub
 
         Private Shared Sub buildTestDocument(pdf As PdfDocument)

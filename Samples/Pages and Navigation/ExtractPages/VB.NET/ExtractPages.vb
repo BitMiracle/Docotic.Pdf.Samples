@@ -8,6 +8,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
+            Dim extractedPagesOutputPath As String = "ExtractPages.pdf"
+            Dim remainingPagesOutputPath As String = "ExtractPages_original.pdf"
+
             Using original As New PdfDocument()
                 For i As Integer = 0 To 4
                     If i <> 0 Then
@@ -24,13 +27,17 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     ' unused resources such as fonts, images, patterns.
                     extracted.RemoveUnusedResources()
 
-                    extracted.Save("ExtractPages.pdf")
+                    extracted.Save(extractedPagesOutputPath)
                 End Using
 
-                original.Save("ExtractPages_original.pdf")
+                original.Save(remainingPagesOutputPath)
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
+
+            Process.Start(New ProcessStartInfo(extractedPagesOutputPath) With {.UseShellExecute = True})
+            Process.Start(New ProcessStartInfo(remainingPagesOutputPath) With {.UseShellExecute = True})
+
         End Sub
     End Class
 End Namespace

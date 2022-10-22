@@ -8,6 +8,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
+            Dim pathToFile As String = "GoToAction.pdf"
+
             Using pdf As New PdfDocument()
 
                 Dim secondPage As PdfPage = pdf.AddPage()
@@ -20,10 +22,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 annotation.Border.Width = 1
                 annotation.Border.Style = PdfMarkerLineStyle.Dashed
 
-                pdf.Save("GoToAction.pdf")
+                pdf.Save(pathToFile)
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
+
+            Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Sub
     End Class
 End Namespace

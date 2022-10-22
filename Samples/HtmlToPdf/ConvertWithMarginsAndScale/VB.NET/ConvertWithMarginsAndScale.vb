@@ -17,6 +17,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
+            Dim pathToFile As String = "ConvertWithMarginsAndScale.pdf"
+
             Using converter = Await HtmlConverter.CreateAsync()
                 Dim html = "<html><head><style>body { background-color: coral; margin-top: 100px;}</style></head>" &
                     "<body><h1>Did you notice the margins and the scale?</h1></body></html>"
@@ -29,11 +31,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 options.Page.Scale = 1.5
 
                 Using pdf = Await converter.CreatePdfFromStringAsync(html, options)
-                    pdf.Save("ConvertWithMarginsAndScale.pdf")
+                    pdf.Save(pathToFile)
                 End Using
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
+
+            Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Function
     End Class
 End Namespace

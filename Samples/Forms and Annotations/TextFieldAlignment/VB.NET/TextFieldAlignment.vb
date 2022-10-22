@@ -28,7 +28,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 Dim pathToFile As String = "TextFieldAlignment.pdf"
                 pdf.Save(pathToFile)
+
                 Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
+
+                Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
             End Using
         End Sub
     End Class

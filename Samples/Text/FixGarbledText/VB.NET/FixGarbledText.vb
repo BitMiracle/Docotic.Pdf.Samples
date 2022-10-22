@@ -58,11 +58,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 End Using
             End Using
 
-            Using writer = New StreamWriter("FixGarbledText.txt")
+            Dim pathToFile As String = "FixGarbledText.txt"
+            Using writer = New StreamWriter(pathToFile)
                 writer.Write(documentText.ToString())
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
+
+            Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Sub
 
         Private Shared Function ocrCharacterCodes(ByVal charCodes As List(Of PdfCharacterCode), ByVal engine As TesseractEngine) As String()

@@ -25,6 +25,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
+
+            Process.Start(New ProcessStartInfo(pdfFileName) With {.UseShellExecute = True})
         End Function
     End Class
 End Namespace

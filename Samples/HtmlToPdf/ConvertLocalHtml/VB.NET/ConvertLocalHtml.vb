@@ -16,18 +16,22 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
+            Dim htmlStringOutputPath As String = "ConvertLocalHtmlString.pdf"
+            Dim htmlFileOutputPath As String = "ConvertLocalHtmlFile.pdf"
+            Dim htmlWithBaseUrlOutputPath As String = "ConvertHtmlWithBaseUrl.pdf"
+
             ' It is possible to use the same converter for multiple conversions.
             ' When reusing the converter you save on converter instantiation time.
             Using converter = Await HtmlConverter.CreateAsync()
                 ' Convert some HTML code in a string
                 Dim html = "<body><br/><br/><br/><h1>Hello, World<h1></body>"
                 Using pdf = Await converter.CreatePdfFromStringAsync(html)
-                    pdf.Save("ConvertLocalHtmlString.pdf")
+                    pdf.Save(htmlStringOutputPath)
                 End Using
 
                 ' Convert a local HTML file
                 Using pdf = Await converter.CreatePdfAsync("..\Sample Data\sample.html")
-                    pdf.Save("ConvertLocalHtmlFile.pdf")
+                    pdf.Save(htmlFileOutputPath)
                 End Using
 
                 ' Convert some HTML specifying a base URL
@@ -35,11 +39,15 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim options = New HtmlConversionOptions()
                 options.Load.BaseUri = New Uri("https://bitmiracle.com/")
                 Using pdf = Await converter.CreatePdfFromStringAsync(incompleteHtml, options)
-                    pdf.Save("ConvertHtmlWithBaseUrl.pdf")
+                    pdf.Save(htmlWithBaseUrlOutputPath)
                 End Using
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
+
+            Process.Start(New ProcessStartInfo(htmlStringOutputPath) With {.UseShellExecute = True})
+            Process.Start(New ProcessStartInfo(htmlFileOutputPath) With {.UseShellExecute = True})
+            Process.Start(New ProcessStartInfo(htmlWithBaseUrlOutputPath) With {.UseShellExecute = True})
         End Function
     End Class
 End Namespace
