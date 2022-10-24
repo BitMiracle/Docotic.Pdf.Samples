@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
@@ -63,6 +64,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(PathToFile) { UseShellExecute = true });
         }
 
         private static void drawText(Graphics gr, PdfTextData td, float userUnit)

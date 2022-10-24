@@ -52,6 +52,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
+
+            Process.Start(New ProcessStartInfo(PathToFile) With {.UseShellExecute = True})
         End Sub
 
         Private Shared Sub drawText(gr As Graphics, td As PdfTextData, userUnit As Single)

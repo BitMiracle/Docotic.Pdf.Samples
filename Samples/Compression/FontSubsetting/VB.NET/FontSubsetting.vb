@@ -30,7 +30,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 New FileInfo(compressedFile).Length
             )
             Console.WriteLine(message)
+
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
+
+            Process.Start(New ProcessStartInfo(compressedFile) With {.UseShellExecute = True})
         End Sub
     End Class
 End Namespace

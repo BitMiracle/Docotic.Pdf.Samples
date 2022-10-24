@@ -8,6 +8,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
+            Dim pathToFile As String = "SetCustomXmpProperties.pdf"
+
             Using pdf As New PdfDocument()
                 Dim custom As XmpSchema = pdf.Metadata.Custom
 
@@ -49,11 +51,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 struct.Properties.Add("arrayWithAlternatives", languageArray)
                 custom.Properties.Add("structureProperty", struct)
 
-                Dim pathToFile As String = "SetCustomXmpProperties.pdf"
                 pdf.Save(pathToFile)
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
+
+            Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Sub
     End Class
 End Namespace

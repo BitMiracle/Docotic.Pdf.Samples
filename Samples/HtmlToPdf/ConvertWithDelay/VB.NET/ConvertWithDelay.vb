@@ -17,6 +17,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
+            Dim pathToFile As String = "ConvertWithDelay.pdf"
+
             ' Wait for 10 seconds before starting the conversion.
             ' This should be enough for the test to complete.
             Dim options = New HtmlConversionOptions()
@@ -24,11 +26,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Using converter = Await HtmlConverter.CreateAsync()
                 Using pdf = Await converter.CreatePdfAsync(New Uri("https://html5test.com/"), options)
-                    pdf.Save("ConvertWithDelay.pdf")
+                    pdf.Save(pathToFile)
                 End Using
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
+
+            Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Function
     End Class
 End Namespace

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 using BitMiracle.Docotic.Pdf.HtmlToPdf;
@@ -38,6 +39,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(pdfFileName) { UseShellExecute = true });
         }
     }
 }

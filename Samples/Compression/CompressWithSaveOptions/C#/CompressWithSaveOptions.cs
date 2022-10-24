@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.IO;
 
 namespace BitMiracle.Docotic.Pdf.Samples
@@ -40,6 +41,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
             );
             Console.WriteLine(message);
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(compressedFile) { UseShellExecute = true });
         }
     }
 }

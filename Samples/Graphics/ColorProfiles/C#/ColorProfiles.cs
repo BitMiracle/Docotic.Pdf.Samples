@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -11,6 +12,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
+            var pathToFile = "ColorProfiles.pdf";
             using (PdfDocument pdf = new PdfDocument())
             {
                 PdfCanvas canvas = pdf.Pages[0].Canvas;
@@ -19,10 +21,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.Brush.Color = new PdfRgbColor(colorProfile, 20, 80, 240);
                 canvas.DrawRectangle(new PdfRectangle(10, 50, 100, 70), PdfDrawMode.Fill);
 
-                pdf.Save("ColorProfiles.pdf");
+                pdf.Save(pathToFile);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(pathToFile) { UseShellExecute = true });
         }
     }
 }

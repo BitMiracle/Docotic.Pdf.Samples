@@ -23,6 +23,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
+
+            Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Sub
 
         Private Shared Sub drawColoredPattern(ByVal pdf As PdfDocument)

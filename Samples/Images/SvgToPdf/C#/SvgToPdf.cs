@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 using BitMiracle.Docotic.Pdf.HtmlToPdf;
@@ -14,13 +15,17 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
+            var pathToFile = "SvgToPdf.pdf";
+
             using (var converter = await HtmlConverter.CreateAsync())
             {
                 using (var pdf = await converter.CreatePdfAsync(@"..\Sample Data\image.svg"))
-                    pdf.Save("SvgToPdf.pdf");
+                    pdf.Save(pathToFile);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(pathToFile) { UseShellExecute = true });
         }
     }
 }

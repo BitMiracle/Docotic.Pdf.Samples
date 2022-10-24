@@ -17,6 +17,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
+            Dim pathToFile As String = "ConvertIgnoringSslErrors.pdf"
+
             Dim engineOptions = New HtmlEngineOptions With {
                 .IgnoreSslErrors = True
             }
@@ -25,11 +27,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim url = New Uri("https://self-signed.badssl.com/")
 
                 Using pdf = Await converter.CreatePdfAsync(url)
-                    pdf.Save("ConvertIgnoringSslErrors.pdf")
+                    pdf.Save(pathToFile)
                 End Using
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
+
+            Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Function
     End Class
 End Namespace

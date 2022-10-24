@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -16,15 +17,19 @@ namespace BitMiracle.Docotic.Pdf.Samples
             PdfConfigurationOptions config = PdfConfigurationOptions.Create();
             config.FontLoader = new DirectoryFontLoader(new[] { @"..\Sample Data\Fonts" }, false);
 
+            var outputFileName = "EmbedFonts.pdf";
+
             using (var pdf = new PdfDocument(FilePath, config))
             {
                 foreach (PdfFont font in pdf.GetFonts())
                     font.Embed();
 
-                pdf.Save("EmbedFonts.pdf");
+                pdf.Save(outputFileName);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(outputFileName) { UseShellExecute = true });
         }
     }
 }

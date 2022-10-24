@@ -60,7 +60,6 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 linkDescription.AppendLine(getTextFromLink(linkInfo.Action));
 
                 Console.WriteLine(linkDescription.ToString());
-                Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
             }
         }
 

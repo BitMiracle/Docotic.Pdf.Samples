@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -11,11 +12,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
+            var pathToFile = "";
+
             using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\gmail-cheat-sheet.pdf"))
             {
                 foreach (PdfImage image in pdf.GetImages())
                 {
-                    image.Save("ExtractedImage");
+                    pathToFile = image.Save("ExtractedImage");
 
                     // Only extract first image in this sample
                     break;
@@ -23,6 +26,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(pathToFile) { UseShellExecute = true });
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -19,24 +20,30 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static void useFitHeight()
         {
+            var outputName = "FitHeight.pdf";
             using (PdfDocument pdf = new PdfDocument())
             {
                 pdf.InitialView = pdf.CreateView(0);
                 pdf.InitialView.SetFitHeight();
 
-                pdf.Save("FitHeight.pdf");
+                pdf.Save(outputName);
             }
+
+            Process.Start(new ProcessStartInfo(outputName) { UseShellExecute = true });
         }
 
         private static void usePercentZoom()
         {
+            var outputName = "Percent.pdf";
             using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\form.pdf"))
             {
                 pdf.InitialView = pdf.CreateView(0);
                 pdf.InitialView.SetZoom(40);
 
-                pdf.Save("Percent.pdf");
+                pdf.Save(outputName);
             }
+
+            Process.Start(new ProcessStartInfo(outputName) { UseShellExecute = true });
         }
     }
 }

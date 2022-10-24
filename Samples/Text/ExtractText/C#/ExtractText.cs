@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 
 namespace BitMiracle.Docotic.Pdf.Samples
@@ -12,20 +13,21 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
+            string documentTextFile = "Document text.txt";
+            string documentTextFormattedFile = "Document text with formatting.txt";
+            string firstPageTextFile = "First page text.txt";
+
             using (PdfDocument pdf = new PdfDocument(@"..\Sample data\jfif3.pdf"))
             {
                 // Extract plain text from document
-                string documentTextFile = "Document text.txt";
                 using (StreamWriter writer = new StreamWriter(documentTextFile))
                     writer.Write(pdf.GetText());
 
                 // Extract text with formatting from document
-                string documentTextFormattedFile = "Document text with formatting.txt";
                 using (StreamWriter writer = new StreamWriter(documentTextFormattedFile))
                     writer.Write(pdf.GetTextWithFormatting());
 
                 // Only extract visible plain text from first page
-                string firstPageTextFile = "First page text.txt";
                 using (StreamWriter writer = new StreamWriter(firstPageTextFile))
                 {
                     var options = new PdfTextExtractionOptions
@@ -38,6 +40,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(documentTextFile) { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo(documentTextFormattedFile) { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo(firstPageTextFile) { UseShellExecute = true });
         }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -11,6 +12,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
+            var continuousFileName = "MovePagesContinuous.pdf";
+            var arbitraryFileName = "MovePagesArbitrary.pdf";
+
             // This shows how to move continuous ranges of pages
             using (PdfDocument pdf = new PdfDocument())
             {
@@ -19,7 +23,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 // move first half of pages to the end of the document
                 pdf.MovePages(0, 5, pdf.PageCount);
 
-                pdf.Save("MovePagesContinuous.pdf");
+                pdf.Save(continuousFileName);
             }
 
             // This shows how to move arbitrary sets of pages
@@ -32,10 +36,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 // move odd pages to the end of the document
                 pdf.MovePages(indexes, pdf.PageCount);
 
-                pdf.Save("MovePagesArbitrary.pdf");
+                pdf.Save(arbitraryFileName);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(continuousFileName) { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo(arbitraryFileName) { UseShellExecute = true });
         }
 
         private static void buildTestDocument(PdfDocument pdf)

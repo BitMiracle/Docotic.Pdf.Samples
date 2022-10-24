@@ -16,6 +16,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
+            Dim pathToFile As String = "PutHtmlOverPdf.pdf"
+
             Using converter = Await HtmlConverter.CreateAsync()
                 ' It Is important to specify page size And turn on transparent background.
                 ' Usually, the size should be equal to the size of the page you want to overlay.
@@ -35,12 +37,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         ' Draw the XObject on a page from the existing PDF.
                         pdf.Pages(0).Canvas.DrawXObject(xObj, 0, 0)
 
-                        pdf.Save("PutHtmlOverPdf.pdf")
+                        pdf.Save(pathToFile)
                     End Using
                 End Using
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
+
+            Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Function
     End Class
 End Namespace

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -10,6 +11,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // When used in trial mode, the library imposes some restrictions.
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
+
+            var outputName = "GoToAction.pdf";
 
             using (PdfDocument pdf = new PdfDocument())
             {
@@ -23,10 +26,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 annotation.Border.Width = 1;
                 annotation.Border.Style = PdfMarkerLineStyle.Dashed;
 
-                pdf.Save("GoToAction.pdf");
+                pdf.Save(outputName);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(outputName) { UseShellExecute = true });
         }
     }
 }

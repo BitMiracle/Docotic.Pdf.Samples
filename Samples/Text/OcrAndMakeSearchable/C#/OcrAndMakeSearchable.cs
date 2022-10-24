@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 
@@ -71,6 +72,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Save(Result);
 
                 Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+                Process.Start(new ProcessStartInfo(Result) { UseShellExecute = true });
             }
         }
 

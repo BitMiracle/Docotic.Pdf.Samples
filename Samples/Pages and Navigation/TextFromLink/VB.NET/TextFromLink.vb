@@ -57,7 +57,6 @@ Namespace BitMiracle.Docotic.Samples
                 linkDescription.AppendLine(getTextFromLink(linkInfo.Action))
 
                 Console.WriteLine(linkDescription.ToString())
-                Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
             End Using
         End Sub
 

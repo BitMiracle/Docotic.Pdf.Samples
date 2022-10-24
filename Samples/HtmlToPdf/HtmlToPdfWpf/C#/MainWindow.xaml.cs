@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -54,7 +55,10 @@ namespace HtmlToPdfWpf
             }
 
             setConvertingMode(false);
+
             MessageBox.Show(this, $"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(pdfFileName) { UseShellExecute = true });
         }
     }
 }

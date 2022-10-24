@@ -8,6 +8,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
+            Dim pathToFile As String = "CopyPages.pdf"
+
             Using pdf As New PdfDocument("..\Sample Data\jfif3.pdf")
 
                 ' copy third and first pages to a new PDF document (page indexes are zero-based)
@@ -16,12 +18,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     ' unused resources such as fonts, images, patterns.
                     copy.RemoveUnusedResources()
 
-                    copy.Save("CopyPages.pdf")
-                End Using
+                copy.Save(pathToFile)
+            End Using
 
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
+
+            Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Sub
     End Class
 End Namespace

@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Drawing;
 
 using BitMiracle.Docotic.Pdf.Gdi;
@@ -35,6 +36,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(pathToImage) { UseShellExecute = true });
         }
     }
 }

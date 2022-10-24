@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 using BitMiracle.Docotic.Pdf.HtmlToPdf;
@@ -14,6 +15,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
+            var pathToFile = "ConvertPasswordProtected.pdf";
+
             using (var converter = await HtmlConverter.CreateAsync())
             {
                 var url = new Uri("http://httpbin.org/basic-auth/foo/bar");
@@ -26,10 +29,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 options.Page.Scale = 2;
 
                 using (var pdf = await converter.CreatePdfAsync(url, options))
-                    pdf.Save("ConvertPasswordProtected.pdf");
+                    pdf.Save(pathToFile);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(pathToFile) { UseShellExecute = true });
         }
     }
 }

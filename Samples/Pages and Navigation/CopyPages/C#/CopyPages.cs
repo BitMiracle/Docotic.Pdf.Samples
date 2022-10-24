@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -11,6 +12,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
+            var pathToFile = "CopyPages.pdf";
+
             using (var pdf = new PdfDocument(@"..\Sample Data\jfif3.pdf"))
             {
                 // copy third and first pages to a new PDF document (page indexes are zero-based)
@@ -20,11 +23,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     // unused resources such as fonts, images, patterns.
                     copy.RemoveUnusedResources();
 
-                    copy.Save("CopyPages.pdf");
+                    copy.Save(pathToFile);
                 }
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(pathToFile) { UseShellExecute = true });
         }
     }
 }

@@ -38,7 +38,7 @@ Contains Docotic.Pdf sample code.
 [XObjects, watermarks and backgrounds](/Samples/XObjects%2C%20watermarks%20and%20backgrounds)
 
 # Docotic.Pdf library
-Docotic.Pdf library is the PDF library for .NET (including .NET Core / .NET Standard).
+Docotic.Pdf library is the PDF library for .NET 6, .NET 5, .NET Standard / .NET Core, and .NET 4.x frameworks.
 
 Docotic.Pdf comes with [free](https://bitmiracle.com/pdf-library/free-pdf-library.aspx) and [paid](https://bitmiracle.com/pdf-library/purchase.aspx) licenses.
 

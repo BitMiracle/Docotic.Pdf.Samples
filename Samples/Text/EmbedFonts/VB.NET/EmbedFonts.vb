@@ -10,6 +10,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
+            Dim outputPath As String = "EmbedFonts.pdf"
+
             Const FilePath As String = "..\Sample Data\non-embedded-font.pdf"
 
             Dim config As PdfConfigurationOptions = PdfConfigurationOptions.Create()
@@ -21,10 +23,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     font.Embed()
                 Next
 
-                pdf.Save("EmbedFonts.pdf")
+                pdf.Save(outputPath)
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
+
+            Process.Start(New ProcessStartInfo(outputPath) With {.UseShellExecute = True})
         End Sub
     End Class
 End Namespace
