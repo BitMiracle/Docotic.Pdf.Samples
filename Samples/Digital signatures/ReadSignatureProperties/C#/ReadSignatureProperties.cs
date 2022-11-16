@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace BitMiracle.Docotic.Pdf.Samples
@@ -48,12 +49,29 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 sb.AppendFormat("Valid from {0} up to {1}\n", certificate.ValidFrom, certificate.ValidUpto);
                 sb.AppendFormat("Timestamp Authority URL: {0}\n", certificate.GetTimestampAuthorityUrl());
 
-                PdfSignatureCertificate issuer = contents.GetIssuerCertificateFor(certificate);
                 sb.AppendLine();
                 sb.AppendLine("== Issuer certificate:");
-                sb.AppendFormat("Subject DN: {0}\n", issuer.Subject.Name);
-                sb.AppendFormat("Issuer DN: {0}\n", issuer.Issuer.Name);
-                sb.AppendFormat("Serial number: {0}\n", issuer.SerialNumber);
+
+                PdfSignatureCertificate issuer = contents.GetIssuerCertificateFor(certificate);
+                if (issuer == null)
+                {
+                    sb.AppendLine("Not embedded in the PDF: true");
+
+                    X509Certificate2 issuer2 = findCertificateByIssuerName(certificate.Issuer);
+                    if (issuer2 != null)
+                    {
+                        sb.AppendLine("Found in a local list of certificates: true");
+                        sb.AppendFormat("Subject DN: {0}\n", issuer2.Subject);
+                        sb.AppendFormat("Issuer DN: {0}\n", issuer2.Issuer);
+                        sb.AppendFormat("Serial number: {0}\n", issuer2.SerialNumber);
+                    }
+                }
+                else
+                {
+                    sb.AppendFormat("Subject DN: {0}\n", issuer.Subject.Name);
+                    sb.AppendFormat("Issuer DN: {0}\n", issuer.Issuer.Name);
+                    sb.AppendFormat("Serial number: {0}\n", issuer.SerialNumber);
+                }
             }
 
             Console.WriteLine(sb.ToString());
@@ -64,6 +82,21 @@ namespace BitMiracle.Docotic.Pdf.Samples
             return (field.Width == 0 && field.Height == 0) ||
                     field.Flags.HasFlag(PdfWidgetFlags.Hidden) ||
                     field.Flags.HasFlag(PdfWidgetFlags.NoView);
+        }
+
+        private static X509Certificate2 findCertificateByIssuerName(X500DistinguishedName issuerName)
+        {
+            using (var certificatesStore = new X509Store(StoreName.CertificateAuthority, StoreLocation.CurrentUser))
+            {
+                certificatesStore.Open(OpenFlags.OpenExistingOnly);
+
+                var searchType = X509FindType.FindBySubjectDistinguishedName;
+                string findValue = issuerName.Name;
+                X509Certificate2Collection matchingCertificates = certificatesStore.Certificates.Find(searchType,
+                    findValue, false);
+
+                return matchingCertificates.Count > 0 ? matchingCertificates[0] : null;
+            }
         }
     }
 }

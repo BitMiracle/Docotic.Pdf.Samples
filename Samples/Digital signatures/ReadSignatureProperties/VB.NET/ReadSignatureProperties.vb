@@ -1,3 +1,4 @@
+Imports System.Security.Cryptography.X509Certificates
 Imports System.Text
 
 Imports BitMiracle.Docotic.Pdf
@@ -43,12 +44,25 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 sb.AppendFormat("Valid from {0} up to {1}" & vbLf, certificate.ValidFrom, certificate.ValidUpto)
                 sb.AppendFormat("Timestamp Authority URL: {0}" & vbLf, certificate.GetTimestampAuthorityUrl())
 
-                Dim issuer = contents.GetIssuerCertificateFor(certificate)
                 sb.AppendLine()
                 sb.AppendLine("== Issuer certificate:")
-                sb.AppendFormat("Subject DN: {0}" & vbLf, issuer.Subject.Name)
-                sb.AppendFormat("Issuer DN: {0}" & vbLf, issuer.Issuer.Name)
-                sb.AppendFormat("Serial number: {0}" & vbLf, issuer.SerialNumber)
+
+                Dim issuer = contents.GetIssuerCertificateFor(certificate)
+                If issuer Is Nothing Then
+                    sb.AppendLine("Not embedded in the PDF: true")
+
+                    Dim issuer2 As X509Certificate2 = findCertificateByIssuerName(certificate.Issuer)
+                    If issuer2 IsNot Nothing Then
+                        sb.AppendLine("Found in a local list of certificates: true")
+                        sb.AppendFormat("Subject DN: {0}" & vbLf, issuer2.Subject)
+                        sb.AppendFormat("Issuer DN: {0}" & vbLf, issuer2.Issuer)
+                        sb.AppendFormat("Serial number: {0}" & vbLf, issuer2.SerialNumber)
+                    End If
+                Else
+                    sb.AppendFormat("Subject DN: {0}" & vbLf, issuer.Subject.Name)
+                    sb.AppendFormat("Issuer DN: {0}" & vbLf, issuer.Issuer.Name)
+                    sb.AppendFormat("Serial number: {0}" & vbLf, issuer.SerialNumber)
+                End If
             End Using
 
             Console.WriteLine(sb.ToString(), "Signature Info")
@@ -56,6 +70,19 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
         Private Shared Function isInvisible(ByVal field As PdfSignatureField) As Boolean
             Return field.Width = 0 AndAlso field.Height = 0 OrElse field.Flags.HasFlag(PdfWidgetFlags.Hidden) OrElse field.Flags.HasFlag(PdfWidgetFlags.NoView)
+        End Function
+
+        Private Shared Function findCertificateByIssuerName(ByVal issuerName As X500DistinguishedName) As X509Certificate2
+            Using certificatesStore = New X509Store(StoreName.CertificateAuthority, StoreLocation.CurrentUser)
+                certificatesStore.Open(OpenFlags.OpenExistingOnly)
+
+                Dim searchType = X509FindType.FindBySubjectDistinguishedName
+                Dim findValue As String = issuerName.Name
+                Dim matchingCertificates As X509Certificate2Collection = certificatesStore.Certificates.Find(searchType,
+                    findValue, False)
+
+                Return If(matchingCertificates.Count > 0, matchingCertificates(0), Nothing)
+            End Using
         End Function
     End Class
 End Namespace
