@@ -213,32 +213,35 @@ namespace BitMiracle.Docotic.Pdf.Samples
         /// </summary>
         private static void unembedFonts(PdfDocument pdf)
         {
-            string[] alwaysUnembedList = new string[] { "MyriadPro-Regular" };
-            string[] alwaysKeepList = new string[] { "ImportantFontName", "AnotherImportantFontName" };
+            string[] alwaysUnembedList = { "MyriadPro-Regular" };
+            string[] alwaysKeepList = { "ImportantFontName", "AnotherImportantFontName" };
 
             foreach (PdfFont font in pdf.GetFonts())
             {
-                if (!font.Embedded ||
-                    font.EncodingName == "Built-In" ||
-                    Array.Exists(alwaysKeepList, name => font.Name == name))
-                {
+                if (Array.Exists(alwaysKeepList, name => font.Name == name))
                     continue;
-                }
 
-                if (font.Format == PdfFontFormat.TrueType || font.Format == PdfFontFormat.CidType2)
+                if (canUnembed(font))
                 {
-                    SystemFontLoader loader = SystemFontLoader.Instance;
-                    byte[] fontBytes = loader.Load(font.Name, font.Bold, font.Italic);
-                    if (fontBytes != null)
-                    {
-                        font.Unembed();
-                        continue;
-                    }
+                    font.Unembed();
+                    continue;
                 }
 
                 if (Array.Exists(alwaysUnembedList, name => font.Name == name))
                     font.Unembed();
             }
+        }
+
+        private static bool canUnembed(PdfFont font)
+        {
+            if (!font.Embedded || font.EncodingName == "Built-In")
+                return false;
+
+            PdfFontFormat format = font.Format;
+            if (format == PdfFontFormat.TrueType || format == PdfFontFormat.CidType2)
+                return font.IsAvailableThroughLoader();
+
+            return font.IsBuiltIn();
         }
     }
 }

@@ -5,6 +5,6 @@
     <StartWorkingDirectory>$(SolutionDir)\Output</StartWorkingDirectory>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="8.7.13832-dev" />
+    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="8.7.14010-dev" />
   </ItemGroup>
 </Project>

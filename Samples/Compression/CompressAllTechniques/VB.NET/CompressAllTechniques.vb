@@ -203,20 +203,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             For Each font In pdf.GetFonts()
 
-                If Not font.Embedded OrElse
-                    Equals(font.EncodingName, "Built-In") OrElse
-                    Array.Exists(alwaysKeepList, Function(name) Equals(font.Name, name)) Then
+                If Array.Exists(alwaysKeepList, Function(name) Equals(font.Name, name)) Then
                     Continue For
                 End If
 
-                If font.Format = PdfFontFormat.TrueType OrElse font.Format = PdfFontFormat.CidType2 Then
-                    Dim loader As SystemFontLoader = SystemFontLoader.Instance
-                    Dim fontBytes = loader.Load(font.Name, font.Bold, font.Italic)
-
-                    If fontBytes IsNot Nothing Then
-                        font.Unembed()
-                        Continue For
-                    End If
+                If canUnembed(font) Then
+                    font.Unembed()
+                    Continue For
                 End If
 
                 If Array.Exists(alwaysUnembedList, Function(name) Equals(font.Name, name)) Then
@@ -224,5 +217,18 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 End If
             Next
         End Sub
+
+        Private Shared Function canUnembed(ByVal font As PdfFont) As Boolean
+            If Not font.Embedded OrElse font.EncodingName = "Built-In" Then
+                Return False
+            End If
+
+            Dim format As PdfFontFormat = font.Format
+            If format = PdfFontFormat.TrueType OrElse format = PdfFontFormat.CidType2 Then
+                Return font.IsAvailableThroughLoader()
+            End If
+
+            Return font.IsBuiltIn()
+        End Function
     End Class
 End Namespace
