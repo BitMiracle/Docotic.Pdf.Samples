@@ -137,9 +137,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
             setPen(target.Pen, td.Pen);
             target.BlendMode = td.BlendMode;
 
-            target.TextPosition = PdfPoint.Empty;
             target.FontSize = td.FontSize;
             target.Font = td.Font;
+            target.TextPosition = PdfPoint.Empty;
             target.CharacterSpacing = td.CharacterSpacing;
             target.WordSpacing = td.WordSpacing;
             target.TextHorizontalScaling = td.HorizontalScaling;
