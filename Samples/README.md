@@ -220,6 +220,9 @@
 
 [Enumerate layers](/Samples/Layers/EnumerateLayers)
 
+# Layout
+[Generate PDF documents with complex layout](/Samples/Layout/ComplexLayout)
+
 # Metadata
 [Document metadata](/Samples/Metadata/Metadata)
 

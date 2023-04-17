@@ -27,6 +27,8 @@ Contains Docotic.Pdf sample code.
 
 [Layers](/Samples/Layers)
 
+[Layout](/Samples/Layout)
+
 [Metadata](/Samples/Metadata)
 
 [Pages and Navigation](/Samples/Pages%20and%20Navigation)
