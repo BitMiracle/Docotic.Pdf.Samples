@@ -6,3 +6,7 @@ Don't miss [all other samples](/Samples).
 [Generate PDF documents with complex layout](/Samples/Layout/ComplexLayout)
 
 This sample shows how to create PDF documents with complex layouts.
+
+[Layout components](/Samples/Layout/Components)
+
+This sample shows how to create PDF documents using custom layout components.

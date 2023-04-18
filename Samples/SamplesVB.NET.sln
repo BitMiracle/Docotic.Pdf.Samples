@@ -339,6 +339,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Layout", "Layout", "{BCB70B
 EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ComplexLayout", "Layout\ComplexLayout\VB.NET\ComplexLayout.vbproj", "{31D5997B-0D20-4F1E-AB2C-C4E205852FDB}"
 EndProject
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Components", "Layout\Components\VB.NET\Components.vbproj", "{6E1CA926-0546-4381-8CA6-1B20B0D746F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -945,6 +947,10 @@ Global
 		{31D5997B-0D20-4F1E-AB2C-C4E205852FDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31D5997B-0D20-4F1E-AB2C-C4E205852FDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31D5997B-0D20-4F1E-AB2C-C4E205852FDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E1CA926-0546-4381-8CA6-1B20B0D746F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E1CA926-0546-4381-8CA6-1B20B0D746F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E1CA926-0546-4381-8CA6-1B20B0D746F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E1CA926-0546-4381-8CA6-1B20B0D746F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1100,6 +1106,7 @@ Global
 		{46F3F24C-1243-4E78-9FCB-DB544BCE46A2} = {DD2E9236-D5CB-42EE-83E5-5062D627CD80}
 		{F243C652-1241-467C-9189-7364C1E13C72} = {E0428E1E-3748-44F9-A06E-66D4E757F8D0}
 		{31D5997B-0D20-4F1E-AB2C-C4E205852FDB} = {BCB70BB6-F731-4E3D-A60F-E581CFA49432}
+		{6E1CA926-0546-4381-8CA6-1B20B0D746F8} = {BCB70BB6-F731-4E3D-A60F-E581CFA49432}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {50A18C19-4AC0-4BF0-9AA5-7C45E6C1E9A6}

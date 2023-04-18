@@ -223,6 +223,8 @@
 # Layout
 [Generate PDF documents with complex layout](/Samples/Layout/ComplexLayout)
 
+[Layout components](/Samples/Layout/Components)
+
 # Metadata
 [Document metadata](/Samples/Metadata/Metadata)
 
