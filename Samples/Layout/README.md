@@ -18,3 +18,7 @@ This sample shows how to generate PDF documents with header and footer.
 [Table of contents](/Samples/Layout/TableOfContents)
 
 This sample shows how to add table of contents to your PDF documents.
+
+[Text styling](/Samples/Layout/TextStyling)
+
+This sample shows how to customize text appearance in PDF documents.

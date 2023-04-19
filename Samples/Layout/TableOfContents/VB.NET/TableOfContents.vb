@@ -3,6 +3,11 @@ Imports BitMiracle.Docotic.Pdf.Layout
 Namespace BitMiracle.Docotic.Pdf.Samples
     NotInheritable Class TableOfContents
         Public Shared Sub Main()
+            ' NOTE:
+            ' When used in trial mode, the library imposes some restrictions.
+            ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
+            ' for more information.
+
             Const PathToFile As String = "TableOfContents.pdf"
             PdfDocumentBuilder.Create().Generate(PathToFile,
                 Sub(doc)
