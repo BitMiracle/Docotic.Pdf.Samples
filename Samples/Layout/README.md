@@ -11,6 +11,10 @@ This sample shows how to create PDF documents with complex layouts.
 
 This sample shows how to create PDF documents using custom layout components.
 
+[Add header and footer to PDF documents](/Samples/Layout/HeaderFooter)
+
+This sample shows how to generate PDF documents with header and footer.
+
 [Table of contents](/Samples/Layout/TableOfContents)
 
 This sample shows how to add table of contents to your PDF documents.

@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>BitMiracle.Docotic.Pdf.Samples</RootNamespace>
+    <TargetFramework>net6.0</TargetFramework>
+    <StartWorkingDirectory>$(SolutionDir)\Output</StartWorkingDirectory>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="BitMiracle.Docotic.Pdf.Layout" Version="8.8.15155-dev" />
+  </ItemGroup>
+</Project>

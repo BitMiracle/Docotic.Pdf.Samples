@@ -1,5 +1,5 @@
 # Add table of contents to PDF documents in C# and VB.NET
-This sample shows how to add table of contents to PDF documents in using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
+This sample shows how to add table of contents to PDF documents using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
 Add sections to your PDF document using LayoutContainer.Section method.
 In table of contents, use LayoutContainer.SectionLink or TextContainer.SectionLink methods to add section links.

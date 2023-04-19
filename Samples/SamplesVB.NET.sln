@@ -343,6 +343,8 @@ Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Components", "Layout\Compon
 EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "TableOfContents", "Layout\TableOfContents\VB.NET\TableOfContents.vbproj", "{EBE80AC1-A24F-471B-B015-94E990A541AE}"
 EndProject
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "HeaderFooter", "Layout\HeaderFooter\VB.NET\HeaderFooter.vbproj", "{817126CE-BAE2-4920-944B-5DCDC07554AC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -957,6 +959,10 @@ Global
 		{EBE80AC1-A24F-471B-B015-94E990A541AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBE80AC1-A24F-471B-B015-94E990A541AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBE80AC1-A24F-471B-B015-94E990A541AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{817126CE-BAE2-4920-944B-5DCDC07554AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{817126CE-BAE2-4920-944B-5DCDC07554AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{817126CE-BAE2-4920-944B-5DCDC07554AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{817126CE-BAE2-4920-944B-5DCDC07554AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1114,6 +1120,7 @@ Global
 		{31D5997B-0D20-4F1E-AB2C-C4E205852FDB} = {BCB70BB6-F731-4E3D-A60F-E581CFA49432}
 		{6E1CA926-0546-4381-8CA6-1B20B0D746F8} = {BCB70BB6-F731-4E3D-A60F-E581CFA49432}
 		{EBE80AC1-A24F-471B-B015-94E990A541AE} = {BCB70BB6-F731-4E3D-A60F-E581CFA49432}
+		{817126CE-BAE2-4920-944B-5DCDC07554AC} = {BCB70BB6-F731-4E3D-A60F-E581CFA49432}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {50A18C19-4AC0-4BF0-9AA5-7C45E6C1E9A6}

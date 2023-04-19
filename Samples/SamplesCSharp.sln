@@ -345,6 +345,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Components", "Layout\Compon
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TableOfContents", "Layout\TableOfContents\C#\TableOfContents.csproj", "{D886F578-7DE7-4414-815F-2DA1A463C9D5}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeaderFooter", "Layout\HeaderFooter\C#\HeaderFooter.csproj", "{A650A782-F669-4937-AA44-4B739968668F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -963,6 +965,10 @@ Global
 		{D886F578-7DE7-4414-815F-2DA1A463C9D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D886F578-7DE7-4414-815F-2DA1A463C9D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D886F578-7DE7-4414-815F-2DA1A463C9D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A650A782-F669-4937-AA44-4B739968668F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A650A782-F669-4937-AA44-4B739968668F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A650A782-F669-4937-AA44-4B739968668F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A650A782-F669-4937-AA44-4B739968668F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1121,6 +1127,7 @@ Global
 		{E75947ED-59CE-4C02-A373-75E08DFE13F5} = {0DF4BBEF-BCCD-4D6D-B7B6-8CDD34D6FFC0}
 		{D7B5E47B-18CE-4552-8DD6-D8F89324DA62} = {0DF4BBEF-BCCD-4D6D-B7B6-8CDD34D6FFC0}
 		{D886F578-7DE7-4414-815F-2DA1A463C9D5} = {0DF4BBEF-BCCD-4D6D-B7B6-8CDD34D6FFC0}
+		{A650A782-F669-4937-AA44-4B739968668F} = {0DF4BBEF-BCCD-4D6D-B7B6-8CDD34D6FFC0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61DC7F3F-A5C8-48BD-845F-83DE6BD2527B}
