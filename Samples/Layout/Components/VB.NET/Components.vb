@@ -139,7 +139,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
     End Class
 
     Class WorldCupStats
-        Public Shared ReadOnly Qatar2022 As TeamStats() = New TeamStats() {
+        Public Shared ReadOnly Qatar2022 = New TeamStats() {
             New TeamStats("France", 7, 16),
             New TeamStats("Argentina", 7, 15),
             New TeamStats("England", 5, 13),
@@ -174,7 +174,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             New TeamStats("Wales", 3, 1)
         }
 
-        Public Shared ReadOnly Russia2018 As TeamStats() = New TeamStats() {
+        Public Shared ReadOnly Russia2018 = New TeamStats() {
             New TeamStats("Belgium", 7, 16),
             New TeamStats("Croatia", 7, 14),
             New TeamStats("France", 7, 14),

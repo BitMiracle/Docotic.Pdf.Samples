@@ -343,6 +343,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComplexLayout", "Layout\Com
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Components", "Layout\Components\C#\Components.csproj", "{D7B5E47B-18CE-4552-8DD6-D8F89324DA62}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TableOfContents", "Layout\TableOfContents\C#\TableOfContents.csproj", "{D886F578-7DE7-4414-815F-2DA1A463C9D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -957,6 +959,10 @@ Global
 		{D7B5E47B-18CE-4552-8DD6-D8F89324DA62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7B5E47B-18CE-4552-8DD6-D8F89324DA62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7B5E47B-18CE-4552-8DD6-D8F89324DA62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D886F578-7DE7-4414-815F-2DA1A463C9D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D886F578-7DE7-4414-815F-2DA1A463C9D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D886F578-7DE7-4414-815F-2DA1A463C9D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D886F578-7DE7-4414-815F-2DA1A463C9D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1114,6 +1120,7 @@ Global
 		{AAC300F7-5CC4-49AC-A24A-32E84FF1DCB1} = {4F5146E7-A769-4D0B-94F0-8106CC5C883B}
 		{E75947ED-59CE-4C02-A373-75E08DFE13F5} = {0DF4BBEF-BCCD-4D6D-B7B6-8CDD34D6FFC0}
 		{D7B5E47B-18CE-4552-8DD6-D8F89324DA62} = {0DF4BBEF-BCCD-4D6D-B7B6-8CDD34D6FFC0}
+		{D886F578-7DE7-4414-815F-2DA1A463C9D5} = {0DF4BBEF-BCCD-4D6D-B7B6-8CDD34D6FFC0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61DC7F3F-A5C8-48BD-845F-83DE6BD2527B}

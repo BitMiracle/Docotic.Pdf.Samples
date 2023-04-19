@@ -10,3 +10,7 @@ This sample shows how to create PDF documents with complex layouts.
 [Layout components](/Samples/Layout/Components)
 
 This sample shows how to create PDF documents using custom layout components.
+
+[Table of contents](/Samples/Layout/TableOfContents)
+
+This sample shows how to add table of contents to your PDF documents.
