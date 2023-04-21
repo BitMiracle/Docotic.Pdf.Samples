@@ -22,3 +22,7 @@ This sample shows how to add table of contents to your PDF documents.
 [Text styling](/Samples/Layout/TextStyling)
 
 This sample shows how to customize text appearance in PDF documents.
+
+[Typography](/Samples/Layout/Typography)
+
+This sample shows how to manage text styles using Typography class.
