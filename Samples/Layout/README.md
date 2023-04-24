@@ -19,6 +19,10 @@ This sample shows how to generate PDF documents with header and footer.
 
 This sample shows how to manage fonts using Docotic.Pdf.Layout add-on.
 
+[Pages](/Samples/Layout/Pages)
+
+This sample shows how to customize PDF page settings.
+
 [Table of contents](/Samples/Layout/TableOfContents)
 
 This sample shows how to add table of contents to your PDF documents.

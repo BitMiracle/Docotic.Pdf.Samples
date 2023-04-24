@@ -24,7 +24,6 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     t.Footer = t.Plain.FontSize(8);
                 });
 
-
                 doc.Pages(page =>
                 {
                     page.Size(PdfPaperSize.A5);
