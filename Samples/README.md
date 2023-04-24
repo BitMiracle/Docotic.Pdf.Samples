@@ -229,11 +229,11 @@
 
 [Fonts](/Samples/Layout/Fonts)
 
-[Pages](/Samples/Layout/Pages)
+[Page layout in PDF documents](/Samples/Layout/Pages)
 
-[Table of contents](/Samples/Layout/TableOfContents)
+[Create table of contents in PDF documents](/Samples/Layout/TableOfContents)
 
-[Tables](/Samples/Layout/Tables)
+[Add tables to PDF documents](/Samples/Layout/Tables)
 
 [Text styling](/Samples/Layout/TextStyling)
 
