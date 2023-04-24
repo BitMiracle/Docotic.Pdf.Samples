@@ -30,4 +30,5 @@ This sample code uses free [Docotic.Pdf.Layout add-on](https://www.nuget.org/pac
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Fonts](/Samples/Layout/Fonts)
 * [Typography](/Samples/Layout/Typography)
