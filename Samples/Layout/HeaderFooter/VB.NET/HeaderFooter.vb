@@ -27,15 +27,39 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                             page.Header().Height(60).AlignRight().AlignBottom().Text("Page header")
 
-                            Dim loremIpsum = File.ReadAllText("../Sample Data/lorem-ipsum.txt")
-                            page.Content().PaddingVertical(10).Text(loremIpsum)
+                            page.Content().PaddingVertical(10).Decoration(
+                                Sub(d)
+                                    Dim decorationBg = New PdfGrayColor(95)
+                                    d.Before().Background(decorationBg).Text(
+                                        Sub(t)
+                                            t.Span("Decoration header (")
+                                            t.CurrentPageNumber()
+                                            t.Span(" / ")
+                                            t.PageCount()
+                                            t.Span(")")
+                                        End Sub)
+
+                                    d.Content().Table(
+                                        Sub(Table)
+                                            Table.Columns(Sub(c) c.RelativeColumn())
+
+                                            Dim tableBg = New PdfGrayColor(70)
+                                            Table.Header(Sub(h) h.Cell().Background(tableBg).Text("Table header"))
+
+                                            Dim loremIpsum As String = File.ReadAllText("../Sample Data/lorem-ipsum.txt")
+                                            Table.Cell().Text(loremIpsum)
+
+                                            Table.Footer(Sub(f) f.Cell().Background(tableBg).Text("Table footer"))
+                                        End Sub)
+
+                                    d.After().Background(decorationBg).Text("Decoration footer")
+                                End Sub)
 
                             page.Footer().Height(30).AlignCenter().Text(
                                 Sub(t)
-                                    t.CurrentPageNumber().Format(
-                                        Function(n)
-                                            Return If(n?.ToRoman(), "")
-                                        End Function)
+                                    t.CurrentPageNumber().
+                                        FontColor(New PdfRgbColor(255, 0, 0)).
+                                        Format(Function(n) If(n?.ToRoman(), ""))
                                 End Sub)
                         End Sub)
                 End Sub)

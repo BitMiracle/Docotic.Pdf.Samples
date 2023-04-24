@@ -35,13 +35,42 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         .AlignBottom()
                         .Text("Page header");
 
-                    string loremIpsum = File.ReadAllText("../Sample Data/lorem-ipsum.txt");
-                    page.Content().PaddingVertical(10).Text(loremIpsum);
+                    page.Content().PaddingVertical(10).Decoration(d =>
+                    {
+                        PdfGrayColor decorationBg = new(95);
+                        d.Before()
+                            .Background(decorationBg)
+                            .Text(t =>
+                            {
+                                t.Span("Decoration header (");
+                                t.CurrentPageNumber();
+                                t.Span(" / ");
+                                t.PageCount();
+                                t.Span(")");
+                            });
+
+                        d.Content().Table(table =>
+                        {
+                            table.Columns(c => c.RelativeColumn());
+
+                            PdfGrayColor tableBg = new(70);
+                            table.Header(h => h.Cell().Background(tableBg).Text("Table header"));
+
+                            string loremIpsum = File.ReadAllText("../Sample Data/lorem-ipsum.txt");
+                            table.Cell().Text(loremIpsum);
+
+                            table.Footer(f => f.Cell().Background(tableBg).Text("Table footer"));
+                        });
+
+                        d.After()
+                            .Background(decorationBg)
+                            .Text("Decoration footer");
+                    });
 
                     page.Footer()
                         .Height(30)
                         .AlignCenter()
-                        .Text(t => t.CurrentPageNumber().Format(n => n?.ToRoman() ?? string.Empty));
+                        .Text(t => t.CurrentPageNumber().FontColor(new PdfRgbColor(255, 0, 0)).Format(n => n?.ToRoman() ?? string.Empty));
                 });
             });
 

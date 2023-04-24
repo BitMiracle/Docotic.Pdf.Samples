@@ -4,6 +4,10 @@ This sample shows how to add header and footer to PDF documents using [Docotic.P
 You can use PageLayout.Header and PageLayout.Footer methods to add common headers and footers to PDF pages.
 Use TextContainer.CurrentPageNumber method to add a page number to the current page.
 
+The library also provides ways to add common headers and footers within page body:
+* Use LayoutContainer.Table method to add a table. Then, use Table.Header() and Footer() methods.
+* Use LayoutContainer.Decoration method to add a decoration container. Then, use Decoration.Before() and Decoration.After() methods.
+
 This sample code uses free [Docotic.Pdf.Layout add-on](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Layout/) for Docotic.Pdf library.
 
 ## See also
