@@ -21,7 +21,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                         ' Or provide file path / stream explicitly
                         Dim path = New FileInfo("..\Sample Data\Fonts\Algerian.ttf")
-                        Dim holiday As TextStyle = doc.TextStyleWithFont(path, FontEmbedMode.EmbedUsedGlyphs)
+                        Dim holiday As TextStyle = doc.TextStyleWithFont(path)
+
+                        Dim hebrew As TextStyle = doc.TextStyleWithFont(SystemFont.Family("Noto Sans Hebrew"), FontEmbedMode.EmbedAllGlyphs)
 
                         doc.Pages(
                             Sub(page)
@@ -36,6 +38,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                                         t.Line("Fallback: ₩Ѻ")
 
                                         t.Line("Missing glyph handler: 💁👌🎍😍")
+
+                                        t.Line("RTL text: השעה").Style(hebrew)
                                     End Sub)
                             End Sub)
                     End Sub)

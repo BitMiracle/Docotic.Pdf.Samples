@@ -26,7 +26,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                     // Or provide file path / stream explicitly
                     FileInfo path = new(@"..\Sample Data\Fonts\Algerian.ttf");
-                    TextStyle holiday = doc.TextStyleWithFont(path, FontEmbedMode.EmbedUsedGlyphs);
+                    TextStyle holiday = doc.TextStyleWithFont(path);
+
+                    TextStyle hebrew = doc.TextStyleWithFont(SystemFont.Family("Noto Sans Hebrew"), FontEmbedMode.EmbedAllGlyphs);
 
                     doc.Pages(page =>
                     {
@@ -41,6 +43,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
                             t.Line("Fallback: ₩Ѻ");
 
                             t.Line("Missing glyph handler: 💁👌🎍😍");
+
+                            t.Line("RTL text: השעה").Style(hebrew);
                         });
                     });
                 });
