@@ -23,6 +23,10 @@ This sample shows how to manage fonts using Docotic.Pdf.Layout add-on.
 
 This sample shows how to customize PDF page settings.
 
+[PDF document builder](/Samples/Layout/PdfDocumentBuilder)
+
+This sample shows how to use PdfDocumentBuilder class.
+
 [Create table of contents in PDF documents](/Samples/Layout/TableOfContents)
 
 This sample shows how to add table of contents to your PDF documents.

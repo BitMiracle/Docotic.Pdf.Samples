@@ -231,6 +231,8 @@
 
 [Page layout in PDF documents](/Samples/Layout/Pages)
 
+[PDF document builder](/Samples/Layout/PdfDocumentBuilder)
+
 [Create table of contents in PDF documents](/Samples/Layout/TableOfContents)
 
 [Add tables to PDF documents](/Samples/Layout/Tables)
