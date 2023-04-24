@@ -355,6 +355,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fonts", "Layout\Fonts\C#\Fo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pages", "Layout\Pages\C#\Pages.csproj", "{4BBB1907-D891-4E57-880D-8237AC586927}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tables", "Layout\Tables\C#\Tables.csproj", "{93CD3B44-FE35-477C-BBF1-C04E56999E4D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -993,6 +995,10 @@ Global
 		{4BBB1907-D891-4E57-880D-8237AC586927}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BBB1907-D891-4E57-880D-8237AC586927}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BBB1907-D891-4E57-880D-8237AC586927}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93CD3B44-FE35-477C-BBF1-C04E56999E4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93CD3B44-FE35-477C-BBF1-C04E56999E4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93CD3B44-FE35-477C-BBF1-C04E56999E4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93CD3B44-FE35-477C-BBF1-C04E56999E4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1156,6 +1162,7 @@ Global
 		{503E451F-9BD6-4D89-BBED-5BBB198494D4} = {0DF4BBEF-BCCD-4D6D-B7B6-8CDD34D6FFC0}
 		{603EF6AD-D2E7-4AEC-83AC-65F31B192D5A} = {0DF4BBEF-BCCD-4D6D-B7B6-8CDD34D6FFC0}
 		{4BBB1907-D891-4E57-880D-8237AC586927} = {0DF4BBEF-BCCD-4D6D-B7B6-8CDD34D6FFC0}
+		{93CD3B44-FE35-477C-BBF1-C04E56999E4D} = {0DF4BBEF-BCCD-4D6D-B7B6-8CDD34D6FFC0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61DC7F3F-A5C8-48BD-845F-83DE6BD2527B}

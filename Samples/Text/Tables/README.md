@@ -1,4 +1,9 @@
-# Tables
-This sample shows how to draw tables using methods for drawing text and lines.
+# Draw tables in PDF document
+This sample shows how to draw tables in PDF documents using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
-Note, that currently Docotic.Pdf library doesn't provide any high-level API for tables.
+*NOTE*: This sample uses low-level PdfCanvas API. There is a [Docotic.Pdf.Layout add-on](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Layout/)
+providing more convenient API for tables. Take a look at [this sample](/Samples/Layout/Tables).
+
+## See also
+* [Add tables to PDF document in C# and VB.NET](/Samples/Layout/Tables) sample
+* [Get free time-limited license key for Docotic.Pdf](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)

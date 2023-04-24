@@ -27,6 +27,10 @@ This sample shows how to customize PDF page settings.
 
 This sample shows how to add table of contents to your PDF documents.
 
+[Add tables to PDF documents](/Samples/Layout/Tables)
+
+This sample shows how to create tables in PDF documents.
+
 [Text styling](/Samples/Layout/TextStyling)
 
 This sample shows how to customize text appearance in PDF documents.

@@ -225,6 +225,20 @@
 
 [Layout components](/Samples/Layout/Components)
 
+[Add header and footer to PDF documents](/Samples/Layout/HeaderFooter)
+
+[Fonts](/Samples/Layout/Fonts)
+
+[Pages](/Samples/Layout/Pages)
+
+[Table of contents](/Samples/Layout/TableOfContents)
+
+[Tables](/Samples/Layout/Tables)
+
+[Text styling](/Samples/Layout/TextStyling)
+
+[Typography](/Samples/Layout/Typography)
+
 # Metadata
 [Document metadata](/Samples/Metadata/Metadata)
 

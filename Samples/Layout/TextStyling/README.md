@@ -29,6 +29,6 @@ the `custom` style. This style uses custom font with explicitly set additional p
 This sample code uses free [Docotic.Pdf.Layout add-on](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Layout/) for Docotic.Pdf library.
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
 * [Fonts](/Samples/Layout/Fonts)
 * [Typography](/Samples/Layout/Typography)
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
