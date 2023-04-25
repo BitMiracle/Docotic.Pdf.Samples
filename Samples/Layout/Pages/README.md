@@ -17,4 +17,5 @@ This sample code uses free [Docotic.Pdf.Layout add-on](https://www.nuget.org/pac
 
 ## See also
 * [Add header and footer to PDF documents](/Samples/Layout/HeaderFooter)
+* [Create multi-column PDF documents in C# and VB.NET](/Samples/Layout/RowsColumns)
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)

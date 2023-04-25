@@ -233,6 +233,8 @@
 
 [PDF document builder](/Samples/Layout/PdfDocumentBuilder)
 
+[Create multi-column PDF documents](/Samples/Layout/RowsColumns)
+
 [Create table of contents in PDF documents](/Samples/Layout/TableOfContents)
 
 [Add tables to PDF documents](/Samples/Layout/Tables)

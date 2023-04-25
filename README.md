@@ -51,5 +51,10 @@ The latest version of the library is available on the download page and NuGet
 https://bitmiracle.com/pdf-library/download-pdf-library.aspx  
 https://www.nuget.org/packages/BitMiracle.Docotic.Pdf/
 
+There are free add-ons to the library:
+* HtmlToPdf add-on https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.HtmlToPdf/
+* Layout add-on https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Layout/
+* Gdi add-on https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Gdi/
+
 Documentation for the library is available here  
 https://bitmiracle.com/pdf-library/help/

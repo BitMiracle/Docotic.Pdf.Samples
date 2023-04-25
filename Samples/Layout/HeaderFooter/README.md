@@ -11,5 +11,6 @@ The library also provides ways to add common headers and footers within page bod
 This sample code uses free [Docotic.Pdf.Layout add-on](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Layout/) for Docotic.Pdf library.
 
 ## See also
+* [Page layout in PDF documents](/Samples/Layout/Pages)
 * [Add tables to PDF documents in C# and VB.NET](/Samples/Layout/Tables)
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)

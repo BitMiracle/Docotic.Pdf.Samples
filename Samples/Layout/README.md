@@ -27,6 +27,10 @@ This sample shows how to customize PDF page settings.
 
 This sample shows how to use PdfDocumentBuilder class.
 
+[Create multi-column PDF documents](/Samples/Layout/RowsColumns)
+
+This sample shows how to organize PDF content using rows and columns.
+
 [Create table of contents in PDF documents](/Samples/Layout/TableOfContents)
 
 This sample shows how to add table of contents to your PDF documents.
