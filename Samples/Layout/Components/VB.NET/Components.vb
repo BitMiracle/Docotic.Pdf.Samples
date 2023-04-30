@@ -98,7 +98,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                                         t.Footer(
                                             Sub(f)
-                                                f.Cell().ColumnSpan(4).AlignRight().Text($"Subtotal goals: {subTotalGoals}")
+                                                f.Cell(Sub(cell) cell.ColumnSpan(4)).AlignRight().Text($"Subtotal goals: {subTotalGoals}")
                                             End Sub)
                                     End Sub)
 

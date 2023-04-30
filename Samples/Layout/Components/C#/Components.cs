@@ -110,7 +110,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                             t.Footer(f =>
                             {
-                                f.Cell().ColumnSpan(4).AlignRight().Text($"Subtotal goals: {subTotalGoals}");
+                                f.Cell(c => c.ColumnSpan(4)).AlignRight().Text($"Subtotal goals: {subTotalGoals}");
                             });
                         });
 

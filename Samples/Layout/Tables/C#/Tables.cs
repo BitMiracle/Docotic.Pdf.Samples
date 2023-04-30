@@ -69,8 +69,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static LayoutContainer bodyCell(Table t, bool alt, int rowSpan = 1)
         {
-            return t.Cell()
-                .RowSpan(rowSpan)
+            return t.Cell(c => c.RowSpan(rowSpan))
                 .Container(c => alt ? c.Background(new PdfGrayColor(90)) : c)
                 .Border(b => b.Thickness(CellBorderThickness))
                 .PaddingVertical(CellVerticalPadding)

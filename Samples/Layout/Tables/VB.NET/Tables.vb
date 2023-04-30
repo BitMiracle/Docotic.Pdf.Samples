@@ -63,8 +63,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
         Private Shared Function bodyCell(t As Table, alt As Boolean, Optional rowSpan As Integer = 1) As LayoutContainer
             Return t.
-                Cell().
-                RowSpan(rowSpan).
+                Cell(Sub(c) c.RowSpan(rowSpan)).
                 Container(Function(c) If(alt, c.Background(New PdfGrayColor(90)), c)).
                 Border(Function(b) b.Thickness(CellBorderThickness)).
                 PaddingVertical(CellVerticalPadding).
