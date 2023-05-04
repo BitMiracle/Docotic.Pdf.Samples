@@ -119,7 +119,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     });
                 });
 
-                if (e.Size.Height <= context.AvailableSize.Height)
+                if (e.TryFit(context.AvailableSize, out _))
                     bestResult = (e, subTotalGoals);
                 else
                     break;

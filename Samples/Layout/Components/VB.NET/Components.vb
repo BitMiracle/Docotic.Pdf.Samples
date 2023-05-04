@@ -108,7 +108,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                             End Sub)
                     End Sub)
 
-                If e.Size.Height <= context.AvailableSize.Height Then
+                Dim actualSize As PdfSize
+                If e.TryFit(context.AvailableSize, actualSize) Then
                     bestResult = (e, subTotalGoals)
                 Else
                     Exit For
