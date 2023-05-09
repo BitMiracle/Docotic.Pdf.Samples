@@ -32,7 +32,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                                     Dim columnBg = New PdfGrayColor(95)
                                     column.Header().Background(columnBg).Text(
                                         Sub(t)
-                                            t.Span("Decoration header (")
+                                            t.Span("Column header (")
                                             t.CurrentPageNumber()
                                             t.Span(" / ")
                                             t.PageCount()
@@ -52,7 +52,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                                             Table.Footer(Sub(f) f.Cell().Background(tableBg).Text("Table footer"))
                                         End Sub)
 
-                                    column.Footer().Background(columnBg).Text("Decoration footer")
+                                    column.Footer().Background(columnBg).Text("Column footer")
                                 End Sub)
 
                             page.Footer().Height(30).AlignCenter().Text(

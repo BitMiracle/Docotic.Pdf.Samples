@@ -42,7 +42,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                             .Background(columnBg)
                             .Text(t =>
                             {
-                                t.Span("Decoration header (");
+                                t.Span("Column header (");
                                 t.CurrentPageNumber();
                                 t.Span(" / ");
                                 t.PageCount();
@@ -64,7 +64,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                         c.Footer()
                             .Background(columnBg)
-                            .Text("Decoration footer");
+                            .Text("Column footer");
                     });
 
                     page.Footer()
