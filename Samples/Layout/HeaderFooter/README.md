@@ -6,7 +6,7 @@ Use TextContainer.CurrentPageNumber method to add a page number to the current p
 
 The library also provides ways to add common headers and footers within page body:
 * Use LayoutContainer.Table method to add a table. Then, use Table.Header() and Footer() methods.
-* Use LayoutContainer.Decoration method to add a decoration container. Then, use Decoration.Before() and Decoration.After() methods.
+* Use LayoutContainer.Column method to add a column. Then, use Column.Header() and Column.Footer() methods.
 
 This sample code uses free [Docotic.Pdf.Layout add-on](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Layout/) for Docotic.Pdf library.
 
