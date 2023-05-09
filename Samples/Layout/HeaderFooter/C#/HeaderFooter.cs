@@ -35,11 +35,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         .AlignBottom()
                         .Text("Page header");
 
-                    page.Content().PaddingVertical(10).Decoration(d =>
+                    page.Content().PaddingVertical(10).Column(c =>
                     {
-                        PdfGrayColor decorationBg = new(95);
-                        d.Before()
-                            .Background(decorationBg)
+                        PdfGrayColor columnBg = new(95);
+                        c.Header()
+                            .Background(columnBg)
                             .Text(t =>
                             {
                                 t.Span("Decoration header (");
@@ -49,7 +49,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                                 t.Span(")");
                             });
 
-                        d.Content().Table(table =>
+                        c.Item().Table(table =>
                         {
                             table.Columns(c => c.RelativeColumn());
 
@@ -62,8 +62,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
                             table.Footer(f => f.Cell().Background(tableBg).Text("Table footer"));
                         });
 
-                        d.After()
-                            .Background(decorationBg)
+                        c.Footer()
+                            .Background(columnBg)
                             .Text("Decoration footer");
                     });
 
