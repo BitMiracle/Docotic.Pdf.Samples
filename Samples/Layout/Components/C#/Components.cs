@@ -19,15 +19,15 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 doc.Pages(page =>
                 {
-                    page.Size(PdfPaperSize.A5);
-                    page.MarginVertical(50);
-                    page.MarginHorizontal(40);
-
-                    page.Content().Column(c =>
-                    {
-                        c.Item().Component(new GoalTable(2022, WorldCupStats.Qatar2022));
-                        c.Item().Component(new GoalTable(2018, WorldCupStats.Russia2018));
-                    });
+                    page.Size(PdfPaperSize.A5)
+                        .MarginVertical(50)
+                        .MarginHorizontal(40)
+                        .Content()
+                        .Column(c =>
+                        {
+                            c.Item().Component(new GoalTable(2022, WorldCupStats.Qatar2022));
+                            c.Item().Component(new GoalTable(2018, WorldCupStats.Russia2018));
+                        });
                 });
             });
 

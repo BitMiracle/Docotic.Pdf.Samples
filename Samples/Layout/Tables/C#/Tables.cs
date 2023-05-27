@@ -18,9 +18,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 doc.Pages(page =>
                 {
-                    page.TextStyle(t => t.Parent.FontSize(8));
-                    page.MarginVertical(50);
-                    page.MarginHorizontal(10);
+                    page.TextStyle(t => t.Parent.FontSize(8))
+                        .MarginVertical(50)
+                        .MarginHorizontal(10);
 
                     page.Content().Width(400).Table(t =>
                     {

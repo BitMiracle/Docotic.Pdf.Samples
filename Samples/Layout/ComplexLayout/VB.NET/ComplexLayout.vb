@@ -40,8 +40,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             doc.Pages(
                 Sub(page)
-                    page.MarginVertical(20)
-                    page.MarginHorizontal(40)
+                    page.MarginVertical(20).MarginHorizontal(40)
 
                     header(page.Header(), logo)
 

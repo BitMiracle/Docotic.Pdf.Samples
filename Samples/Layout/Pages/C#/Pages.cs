@@ -19,10 +19,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 doc.Pages(page =>
                 {
-                    page.Size(PdfPaperSize.A4, PdfPaperOrientation.Portrait);
-                    page.MarginVertical(50);
-                    page.MarginHorizontal(40);
-                    page.BackgroundColor(new PdfGrayColor(95));
+                    page.Size(PdfPaperSize.A4, PdfPaperOrientation.Portrait)
+                        .MarginVertical(50)
+                        .MarginHorizontal(40)
+                        .BackgroundColor(new PdfGrayColor(95));
 
                     PdfRgbColor watermarkColor = new(255, 0, 0);
                     page.Foreground()
@@ -50,18 +50,18 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                 doc.Pages(page =>
                 {
-                    page.Size(PdfPaperSize.A3, PdfPaperOrientation.Landscape);
-                    page.MarginVertical(50);
-                    page.ContentFromRightToLeft();
-
-                    page.Content().Text("Hello World");
+                    page.Size(PdfPaperSize.A3, PdfPaperOrientation.Landscape)
+                        .MarginVertical(50)
+                        .ContentFromRightToLeft()
+                        .Content()
+                        .Text("Hello World");
                 });
 
                 doc.Pages(page =>
                 {
-                    page.Size(100, 100);
-
-                    page.Content().Text("Custom page size");
+                    page.Size(100, 100)
+                        .Content()
+                        .Text("Custom page size");
                 });
             });
 

@@ -34,9 +34,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                 doc.Pages(page =>
                 {
-                    page.MarginTop(50);
-
-                    page.TextStyle(root);
+                    page.TextStyle(root).MarginTop(50);
 
                     page.Header().Text(t =>
                     {

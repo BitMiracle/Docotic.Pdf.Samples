@@ -13,9 +13,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Sub(doc)
                     doc.Pages(
                         Sub(page)
-                            page.TextStyle(Function(t) t.Parent.FontSize(8))
-                            page.MarginVertical(50)
-                            page.MarginHorizontal(10)
+                            page.TextStyle(Function(t) t.Parent.FontSize(8)).
+                                MarginVertical(50).
+                                MarginHorizontal(10)
 
                             page.Content().Width(400).Table(
                                 Sub(t)

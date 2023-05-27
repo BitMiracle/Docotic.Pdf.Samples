@@ -31,9 +31,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                     doc.Pages(
                         Sub(page)
-                            page.MarginTop(50)
-
-                            page.TextStyle(root)
+                            page.TextStyle(root).MarginTop(50)
 
                             page.Header().Text(
                                 Sub(t)

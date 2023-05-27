@@ -22,8 +22,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                     doc.Pages(
                         Sub(page)
-                            page.Size(PdfPaperSize.A5)
-                            page.MarginHorizontal(50)
+                            page.Size(PdfPaperSize.A5).MarginHorizontal(50)
 
                             page.Header().Height(60).AlignRight().AlignBottom().Text("Page header")
 

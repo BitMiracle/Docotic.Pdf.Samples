@@ -32,20 +32,19 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                     doc.Pages(page =>
                     {
-                        page.TextStyle(holiday.Fallback(roboto));
+                        page.TextStyle(holiday.Fallback(roboto))
+                            .MarginTop(50)
+                            .Content()
+                            .Text(t =>
+                            {
+                                t.Line("Regular text");
 
-                        page.MarginTop(50);
+                                t.Line("Fallback: ₩Ѻ");
 
-                        page.Content().Text(t =>
-                        {
-                            t.Line("Regular text");
+                                t.Line("Missing glyph handler: 💁👌🎍😍");
 
-                            t.Line("Fallback: ₩Ѻ");
-
-                            t.Line("Missing glyph handler: 💁👌🎍😍");
-
-                            t.Line("RTL text: השעה").Style(hebrew);
-                        });
+                                t.Line("RTL text: השעה").Style(hebrew);
+                            });
                     });
                 });
 

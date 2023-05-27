@@ -13,15 +13,15 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Sub(doc)
                     doc.Pages(
                         Sub(page)
-                            page.Size(PdfPaperSize.A5)
-                            page.MarginVertical(50)
-                            page.MarginHorizontal(40)
-
-                            page.Content().Column(
-                                Sub(c)
-                                    c.Item().Component(New GoalTable(2022, WorldCupStats.Qatar2022))
-                                    c.Item().Component(New GoalTable(2018, WorldCupStats.Russia2018))
-                                End Sub)
+                            page.Size(PdfPaperSize.A5).
+                                MarginVertical(50).
+                                MarginHorizontal(40).
+                                Content().
+                                Column(
+                                    Sub(c)
+                                        c.Item().Component(New GoalTable(2022, WorldCupStats.Qatar2022))
+                                        c.Item().Component(New GoalTable(2018, WorldCupStats.Russia2018))
+                                    End Sub)
                         End Sub)
                 End Sub)
 

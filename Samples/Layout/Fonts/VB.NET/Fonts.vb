@@ -27,20 +27,19 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                         doc.Pages(
                             Sub(page)
-                                page.TextStyle(holiday.Fallback(roboto))
+                                page.TextStyle(holiday.Fallback(roboto)).
+                                    MarginTop(50).
+                                    Content().
+                                    Text(
+                                        Sub(t)
+                                            t.Line("Regular text")
 
-                                page.MarginTop(50)
+                                            t.Line("Fallback: ₩Ѻ")
 
-                                page.Content().Text(
-                                    Sub(t)
-                                        t.Line("Regular text")
+                                            t.Line("Missing glyph handler: 💁👌🎍😍")
 
-                                        t.Line("Fallback: ₩Ѻ")
-
-                                        t.Line("Missing glyph handler: 💁👌🎍😍")
-
-                                        t.Line("RTL text: השעה").Style(hebrew)
-                                    End Sub)
+                                            t.Line("RTL text: השעה").Style(hebrew)
+                                        End Sub)
                             End Sub)
                     End Sub)
 
