@@ -3,7 +3,7 @@ This sample shows how to create PDF documents using custom layout components usi
 
 Layout components helps you to re-use common elements in different parts of a PDF document. They also allow to respect rendering context (current page, available space).
 
-In this sample, we use the GoalTable component to display goals per country from soccer world cups. Goal tables do not fit to a single page and sub-total number of goals is shown on each page.
+In this sample, we use the `GoalTable` component to display goals per country from soccer world cups. Goal tables do not fit to a single page and sub-total number of goals is shown on each page.
 
 This sample code uses free [Docotic.Pdf.Layout add-on](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Layout/) for Docotic.Pdf library.
 
