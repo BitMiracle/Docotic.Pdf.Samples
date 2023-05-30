@@ -1,13 +1,14 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
-
+using System.Runtime.Versioning;
 using BitMiracle.Docotic.Pdf.Gdi;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
     public static class DrawPageOnGraphics
     {
+        [SupportedOSPlatform("windows")]
         public static void Main()
         {
             // NOTE: 

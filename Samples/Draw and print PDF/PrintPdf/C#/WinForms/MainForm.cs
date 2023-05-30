@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using BitMiracle.Docotic.Pdf;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {

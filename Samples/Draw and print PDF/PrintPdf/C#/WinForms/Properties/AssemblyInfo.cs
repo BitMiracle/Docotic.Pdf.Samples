@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 
 [assembly: AssemblyTitle("PrintPdfWinForms")]
 [assembly: AssemblyDescription("")]
@@ -13,3 +14,4 @@ using System.Runtime.InteropServices;
 [assembly: Guid("79163b47-cd7b-4cda-b947-69ad2106ec03")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: SupportedOSPlatform("windows")]

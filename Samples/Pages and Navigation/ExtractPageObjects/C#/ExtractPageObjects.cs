@@ -4,11 +4,12 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
-
+using System.Runtime.Versioning;
 using BitMiracle.Docotic.Pdf.Gdi;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
+    [SupportedOSPlatform("windows")]
     public static class ExtractPageObjects
     {
         public static void Main()

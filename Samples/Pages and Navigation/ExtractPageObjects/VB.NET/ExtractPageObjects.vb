@@ -2,11 +2,12 @@ Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports System.Drawing.Imaging
 Imports System.IO
-
+Imports System.Runtime.Versioning
 Imports BitMiracle.Docotic.Pdf
 Imports BitMiracle.Docotic.Pdf.Gdi
 
 Namespace BitMiracle.Docotic.Pdf.Samples
+    <SupportedOSPlatform("windows")>
     Public NotInheritable Class ExtractPageObjects
         Public Shared Sub Main()
             ' NOTE: 

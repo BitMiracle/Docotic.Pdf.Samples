@@ -1,10 +1,11 @@
 Imports System.Drawing
-
+Imports System.Runtime.Versioning
 Imports BitMiracle.Docotic.Pdf
 Imports BitMiracle.Docotic.Pdf.Gdi
 
 Namespace BitMiracle.Docotic.Pdf.Samples
     Public NotInheritable Class DrawPageOnGraphics
+        <SupportedOSPlatform("windows")>
         Public Shared Sub Main()
             ' NOTE: 
             ' When used in trial mode, the library imposes some restrictions.
