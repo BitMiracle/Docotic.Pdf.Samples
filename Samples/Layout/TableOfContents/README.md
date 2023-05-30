@@ -8,5 +8,6 @@ You can use TextContainer.FirstPageNumber, TextContainer.LastPageNumber and Text
 This sample code uses free [Docotic.Pdf.Layout add-on](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Layout/) for Docotic.Pdf library.
 
 ## See also
+* [Create PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/create-pdf.aspx) article
 * [Generate PDF documents with complex layout](/Samples/Layout/ComplexLayout)
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)

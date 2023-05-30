@@ -16,6 +16,7 @@ PageLayout class provides the following methods to generate page content:
 This sample code uses free [Docotic.Pdf.Layout add-on](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Layout/) for Docotic.Pdf library.
 
 ## See also
+* [Create PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/create-pdf.aspx) article
 * [Add header and footer to PDF documents](/Samples/Layout/HeaderFooter)
 * [Create multi-column PDF documents in C# and VB.NET](/Samples/Layout/RowsColumns)
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
