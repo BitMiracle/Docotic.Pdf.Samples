@@ -17,7 +17,15 @@ namespace BitMiracle.Docotic.Pdf.Samples
             using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\form.pdf"))
             {
                 pdf.FlattenControls();
-                
+
+                // Alternatively, you can:
+                // 1. Flatten controls and annotations
+                // pdf.FlattenWidgets();
+                //
+                // 2. Flatten individual controls
+                // foreach (PdfControl control in pdf.GetControls())
+                //     control.Flatten();
+
                 pdf.Save(pathToFile);
             }
 

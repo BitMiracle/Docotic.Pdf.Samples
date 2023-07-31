@@ -49,7 +49,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.RemoveStructureInformation()
 
                 ' 5. Flatten form fields 
-                ' Controls become uneditable after that
+                ' Controls become uneditable after that. Alternatively, you can use PdfDocument.FlattenWidgets() method
+                ' to flatten controls and annotations.
                 pdf.FlattenControls()
 
                 ' 6. Clear metadata

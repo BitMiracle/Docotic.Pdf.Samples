@@ -9,7 +9,7 @@ Docotic.Pdf supports different compression methods. You can use all of them to g
 2. compress images (if any)
 3. optimize PDF objects
 4. remove structure information
-5. flatten PDF form fields
+5. flatten PDF form fields and annotations
 6. remove metadata
 7. unembed fonts
 8. remove unused resources
