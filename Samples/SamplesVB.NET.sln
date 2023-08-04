@@ -359,6 +359,8 @@ Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "PdfDocumentBuilder", "Layou
 EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "RowsColumns", "Layout\RowsColumns\VB.NET\RowsColumns.vbproj", "{B495D98A-8BCA-4658-9DB5-FAD820CDCAAD}"
 EndProject
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "SignAlreadySignedDocument", "Digital signatures\SignAlreadySignedDocument\VB.NET\SignAlreadySignedDocument.vbproj", "{ABC60339-A732-41CC-BE75-B62BE09FE478}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1005,6 +1007,10 @@ Global
 		{B495D98A-8BCA-4658-9DB5-FAD820CDCAAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B495D98A-8BCA-4658-9DB5-FAD820CDCAAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B495D98A-8BCA-4658-9DB5-FAD820CDCAAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABC60339-A732-41CC-BE75-B62BE09FE478}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABC60339-A732-41CC-BE75-B62BE09FE478}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABC60339-A732-41CC-BE75-B62BE09FE478}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABC60339-A732-41CC-BE75-B62BE09FE478}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1170,6 +1176,7 @@ Global
 		{7FB04E83-A2D1-4918-8BD3-4B7156B0F8B8} = {BCB70BB6-F731-4E3D-A60F-E581CFA49432}
 		{B2084326-D899-4F37-9280-90CED9F2DA68} = {BCB70BB6-F731-4E3D-A60F-E581CFA49432}
 		{B495D98A-8BCA-4658-9DB5-FAD820CDCAAD} = {BCB70BB6-F731-4E3D-A60F-E581CFA49432}
+		{ABC60339-A732-41CC-BE75-B62BE09FE478} = {6D0505BD-B25A-4219-A5EA-0F5E30DAC7F9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {50A18C19-4AC0-4BF0-9AA5-7C45E6C1E9A6}

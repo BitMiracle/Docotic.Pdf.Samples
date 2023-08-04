@@ -44,6 +44,8 @@
 
 [Verify signature](/Samples/Digital%20signatures/VerifySignature)
 
+[Sign an already signed PDF document](/Samples/Digital%20signatures/SignAlreadySignedDocument)
+
 # Display options
 [Initial view](/Samples/Display%20options/InitialView)
 

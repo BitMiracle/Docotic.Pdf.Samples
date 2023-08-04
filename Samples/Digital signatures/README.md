@@ -34,3 +34,7 @@ This sample shows how to create and sign a signature field with lock.
 [Verify PDF signature](/Samples/Digital%20signatures/VerifySignature)
 
 This sample shows how to verify a PDF signature and to check revocation of its signing certificate.
+
+[Sign an already signed PDF document](/Samples/Digital%20signatures/SignAlreadySignedDocument)
+
+This sample shows how to add a digital signature to an already signed PDF document.

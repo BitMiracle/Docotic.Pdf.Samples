@@ -361,6 +361,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PdfDocumentBuilder", "Layou
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RowsColumns", "Layout\RowsColumns\C#\RowsColumns.csproj", "{E1EA6D64-73DA-46E8-9AAA-310483E62893}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignAlreadySignedDocument", "Digital signatures\SignAlreadySignedDocument\C#\SignAlreadySignedDocument.csproj", "{C3984AED-B1E0-43C5-821C-CFFA0447879A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1011,6 +1013,10 @@ Global
 		{E1EA6D64-73DA-46E8-9AAA-310483E62893}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1EA6D64-73DA-46E8-9AAA-310483E62893}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1EA6D64-73DA-46E8-9AAA-310483E62893}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3984AED-B1E0-43C5-821C-CFFA0447879A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3984AED-B1E0-43C5-821C-CFFA0447879A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3984AED-B1E0-43C5-821C-CFFA0447879A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3984AED-B1E0-43C5-821C-CFFA0447879A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1177,6 +1183,7 @@ Global
 		{93CD3B44-FE35-477C-BBF1-C04E56999E4D} = {0DF4BBEF-BCCD-4D6D-B7B6-8CDD34D6FFC0}
 		{E13D37F9-2ABB-4697-AE0F-9D48642ADF2D} = {0DF4BBEF-BCCD-4D6D-B7B6-8CDD34D6FFC0}
 		{E1EA6D64-73DA-46E8-9AAA-310483E62893} = {0DF4BBEF-BCCD-4D6D-B7B6-8CDD34D6FFC0}
+		{C3984AED-B1E0-43C5-821C-CFFA0447879A} = {80D726EA-AAE5-4744-BAEE-6F6C8A01E493}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61DC7F3F-A5C8-48BD-845F-83DE6BD2527B}
