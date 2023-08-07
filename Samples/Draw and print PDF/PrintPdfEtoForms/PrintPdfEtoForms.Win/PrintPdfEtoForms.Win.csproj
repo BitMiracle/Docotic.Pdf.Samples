@@ -2,12 +2,12 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>net6.0-windows</TargetFrameworks>
     <Company>Bit Miracle</Company>
     <Authors>Bit Miracle</Authors>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <ProjectReference Include="..\PrintPdfEtoForms\PrintPdfEtoForms.csproj" />
   </ItemGroup>
