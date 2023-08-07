@@ -2,7 +2,7 @@ Imports BitMiracle.Docotic
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
-    Public NotInheritable Class SignDocument
+    Public NotInheritable Class SignAlreadySignedDocument
         Public Shared Sub Main()
             ' NOTE:
             ' When used in trial mode, the library imposes some restrictions.
