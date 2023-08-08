@@ -46,6 +46,8 @@
 
 [Sign an already signed PDF document](/Samples/Digital%20signatures/SignAlreadySignedDocument)
 
+[Sign a PDF form by multiple people](/Samples/Digital%20signatures/SignByMultiplePeople)
+
 # Display options
 [Initial view](/Samples/Display%20options/InitialView)
 

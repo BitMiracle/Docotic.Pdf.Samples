@@ -38,3 +38,7 @@ This sample shows how to verify a PDF signature and to check revocation of its s
 [Sign an already signed PDF document](/Samples/Digital%20signatures/SignAlreadySignedDocument)
 
 This sample shows how to add a digital signature to an already signed PDF document.
+
+[Sign a PDF form by multiple people](/Samples/Digital%20signatures/SignByMultiplePeople)
+
+This sample shows how to get a PDF form signed by multiple people. 
