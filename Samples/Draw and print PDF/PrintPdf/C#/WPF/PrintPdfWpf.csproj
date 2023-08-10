@@ -86,7 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BitMiracle.Docotic.Pdf.Gdi">
-      <Version>9.0.15477</Version>
+      <Version>9.1.15876</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
