@@ -1,7 +1,7 @@
 # Remove structure information from PDF document in .NET
 This sample shows how to reduce PDF file size by removing structure information from it.
 
-To remove structure information from a PDF please use [PdfDocument.RemoveStructureInformation() method](https://bitmiracle.com/pdf-library/help/pdfdocument.removestructureinformation.html). This method can significantly reduce output file size. 
+To remove structure information from a PDF please use [PdfDocument.RemoveStructureInformation() method](https://bitmiracle.com/pdf-library/api/pdfdocument-removestructureinformation). This method can significantly reduce output file size.
 
 Please note that document without structure information will be less accessible for assistive devices.
 

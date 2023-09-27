@@ -1,7 +1,7 @@
 # Display PDF document in certain mode
 This sample shows how to instruct a PDF viewer to display the document in certain mode using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
-[PdfDocument.PageMode property](https://bitmiracle.com/pdf-library/help/pdfdocument.pagemode.html) specifies which additional panels
+[PdfDocument.PageMode property](https://bitmiracle.com/pdf-library/api/pdfdocument-pagemode) specifies which additional panels
 should be shown in a PDF viewer application. For example, you can instruct a PDF viewer application to show bookmarks panel or show document in full screen mode.
 
 ## See also
