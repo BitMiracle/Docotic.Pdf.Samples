@@ -1,7 +1,7 @@
 # HTML to PDF conversion in C# or VB.NET Windows Forms app
 This sample shows how to convert a URL to PDF in C# or VB.NET Windows Forms application.
 
-The [HTML to PDF API](https://bitmiracle.com/pdf-library/help/bitmiracle.docotic.pdf.htmltopdf.html) is an asynchronous-only one. You can use the API from an async event handler or another async method. 
+The [HTML to PDF API](https://bitmiracle.com/pdf-library/api/htmltopdf/bitmiracle-docotic-pdf-htmltopdf) is an asynchronous-only one. You can use the API from an async event handler or another async method. 
 
 This sample code uses free [Docotic.Pdf.HtmlToPdf add-on](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.HtmlToPdf/) for Docotic.Pdf library.
 
