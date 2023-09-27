@@ -5,7 +5,7 @@ There are searchable PDF documents that look just fine. But it’s not possible 
 
 This happens when the document does not contain mappings of glyphs to Unicode characters. Or contains incorrect mappings.
 
-There is [PdfTextExtractionOptions.UnmappedCharacterHandler](https://bitmiracle.com/pdf-library/help/pdftextextractionoptions.unmappedcharacterhandler.html) property. This sample shows how to perform OCR for unmapped characters and then replace them with correct Unicode values.
+There is [PdfTextExtractionOptions.UnmappedCharacterHandler](https://bitmiracle.com/pdf-library/api/pdftextextractionoptions-unmappedcharacterhandler) property. This sample shows how to perform OCR for unmapped characters and then replace them with correct Unicode values.
 
 This sample uses [Docotic.Pdf library](https://bitmiracle.com/pdf-library/) and [Tesseract OCR Engine](https://github.com/charlesw/tesseract). You would also need to have [Visual Studio 2015-2019 x86 & x64 runtimes](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) installed.
 

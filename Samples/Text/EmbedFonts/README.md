@@ -1,8 +1,8 @@
 # Embed PDF fonts in C# and VB.NET
 This sample shows how to embed fonts in a PDF document using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
-Use [PdfFont.Embed()](https://bitmiracle.com/pdf-library/help/pdffont.embed.html) method to embed the given font in a PDF document.
-By default, this method uses [SystemFontLoader](https://bitmiracle.com/pdf-library/help/systemfontloader.html) to load bytes for TrueType/OpenType fonts.
+Use [PdfFont.Embed()](https://bitmiracle.com/pdf-library/api/pdffont-embed) method to embed the given font in a PDF document.
+By default, this method uses [SystemFontLoader](https://bitmiracle.com/pdf-library/api/systemfontloader) to load bytes for TrueType/OpenType fonts.
 
 This sample shows how to embed TrueType font bytes using fonts from a custom directory.
 

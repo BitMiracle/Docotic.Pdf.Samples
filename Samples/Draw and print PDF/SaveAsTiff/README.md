@@ -1,7 +1,7 @@
 # Convert PDF to multipage TIFF in C# and VB.NET
 This sample shows how to save a PDF document as a multipage TIFF image using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
-Use [PdfDocument.SaveAsTiff method](https://bitmiracle.com/pdf-library/help/pdfdocument.saveastiff.html) with specific [PdfDrawOptions](https://bitmiracle.com/pdf-library/help/pdfdrawoptions.html). To create PdfDrawOptions, use [PdfDrawOptions.Create() method](https://bitmiracle.com/pdf-library/help/pdfdrawoptions.create.html). You can fine-tune the options after creation.
+Use [PdfDocument.SaveAsTiff method](https://bitmiracle.com/pdf-library/api/pdfdocument-saveastiff) with specific [PdfDrawOptions](https://bitmiracle.com/pdf-library/api/pdfdrawoptions). To create PdfDrawOptions, use [PdfDrawOptions.Create() method](https://bitmiracle.com/pdf-library/api/pdfdrawoptions-create). You can fine-tune the options after creation.
 
 ## See also
 * [Convert PDF to image in C# and VB.NET](https://bitmiracle.com/pdf-library/convert-pdf-to-image.aspx) article

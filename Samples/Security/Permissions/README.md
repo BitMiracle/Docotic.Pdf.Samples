@@ -3,7 +3,7 @@ This sample shows how to set up user access permissions for a PDF document in C#
 
 Only encrypted documents can have user access permissions set up.
 
-When encrypting with a password, there are two password types: "user" and "owner" passwords. Opening a PDF document with an "owner" password allows you to do everything with it. Opening a PDF document with a "user" password allows only operations specified by the user [access permissions](https://bitmiracle.com/pdf-library/help/pdfpermissions.html). 
+When encrypting with a password, there are two password types: "user" and "owner" passwords. Opening a PDF document with an "owner" password allows you to do everything with it. Opening a PDF document with a "user" password allows only operations specified by the user [access permissions](https://bitmiracle.com/pdf-library/api/pdfpermissions).
 
 User access permissions may be used to disallow printing of the document, filling of form fields, or other operations. 
 

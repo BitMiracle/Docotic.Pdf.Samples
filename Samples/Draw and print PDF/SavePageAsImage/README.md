@@ -1,7 +1,7 @@
 # Save PDF page as PNG, JPG, or TIFF image in C# and VB.NET
 This sample shows how to save a PDF page as an image using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/). I.e., how to convert a PDF page to PNG, JPG, or TIFF image.
 
-Use [PdfPage.Save method](https://bitmiracle.com/pdf-library/help/pdfpage.save.html) with specific [PdfDrawOptions](https://bitmiracle.com/pdf-library/help/pdfdrawoptions.html). To create PdfDrawOptions, use [PdfDrawOptions.Create() method](https://bitmiracle.com/pdf-library/help/pdfdrawoptions.create.html). This method will create default options: PNG images with a transparent background. Please note that you can fine-tune options after creation.
+Use [PdfPage.Save method](https://bitmiracle.com/pdf-library/api/pdfpage-save) with specific [PdfDrawOptions](https://bitmiracle.com/pdf-library/api/pdfdrawoptions). To create PdfDrawOptions, use [PdfDrawOptions.Create() method](https://bitmiracle.com/pdf-library/api/pdfdrawoptions-create). This method will create default options: PNG images with a transparent background. Please note that you can fine-tune options after creation.
 
 ## See also
 * [Convert PDF to image in C# and VB.NET](https://bitmiracle.com/pdf-library/convert-pdf-to-image.aspx) article

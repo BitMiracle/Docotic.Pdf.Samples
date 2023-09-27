@@ -1,7 +1,7 @@
 # Find PDF control by name
 This sample shows how to access an existing PDF control with given name using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
-Use [PdfDocument.GetControl method](https://bitmiracle.com/pdf-library/help/pdfdocument.getcontrol.html)
+Use [PdfDocument.GetControl method](https://bitmiracle.com/pdf-library/api/pdfdocument-getcontrol)
 to find a PDF control by full name or name. You can access document controls using their PDF names
 in any PDF document with a form.
 
