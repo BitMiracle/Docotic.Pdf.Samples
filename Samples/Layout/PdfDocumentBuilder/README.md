@@ -1,7 +1,7 @@
 # PDF document builder in Docotic.Pdf.Layout add-on
 This sample shows how to use PdfDocumentBuilder class from [Docotic.Pdf.Layout add-on](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Layout/).
 
-[PdfDocumentBuilder](https://bitmiracle.com/pdf-library/help/pdfdocumentbuilder.html) is an entry point
+[PdfDocumentBuilder](https://bitmiracle.com/pdf-library/api/layout/pdfdocumentbuilder) is an entry point
 in Docotic.Pdf.Layout add-on. It allows you to set parameters of generated PDF documents:
 * encryption
 * metadata
