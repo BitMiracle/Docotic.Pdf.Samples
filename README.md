@@ -57,4 +57,4 @@ There are free add-ons to the library:
 * Gdi add-on https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Gdi/
 
 Documentation for the library is available here  
-https://bitmiracle.com/pdf-library/help/
+https://bitmiracle.com/pdf-library/help.aspx
