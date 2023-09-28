@@ -5,5 +5,5 @@ This sample shows how to extract text by words from a PDF page in C# and VB.NET.
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
-* [Extract text from PDF in C# and VB.NET](https://bitmiracle.com/blog/extract-text-from-pdf-in-net) article
+* [Extract text from PDF in C# and VB.NET](https://bitmiracle.com/pdf-library/extract-text-from-pdf-in-net.aspx) article
 * [Find and highlight text in a PDF document](/Samples/Text/FindAndHighlightText) sample

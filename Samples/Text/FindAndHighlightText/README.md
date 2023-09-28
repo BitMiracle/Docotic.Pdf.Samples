@@ -5,5 +5,5 @@ Use [PdfPage.GetWords() method](https://bitmiracle.com/pdf-library/api/pdfpage-g
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
-* [Extract text from PDF in C# and VB.NET](https://bitmiracle.com/blog/extract-text-from-pdf-in-net) article
+* [Extract text from PDF in C# and VB.NET](https://bitmiracle.com/pdf-library/extract-text-from-pdf-in-net.aspx) article
 * [OCR PDF and convert to searchable document](/Samples/Text/OcrAndMakeSearchable) sample
