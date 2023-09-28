@@ -4,7 +4,7 @@ This sample shows how to customize text appearance in PDF documents using [Docot
 You can use [Document.TextStyleWithFont methods](https://bitmiracle.com/pdf-library/api/layout/document-textstylewithfont) to create a text style for a custom font.
 Or you can start with [TextStyle.Parent](https://bitmiracle.com/pdf-library/api/layout/textstyle-parent) to customize some settings of a parent or default text style.
 
-Use [TextStyle methods](https://bitmiracle.com/pdf-library/api/layout/textstyle-methods) to reach a desired text appearance. You can change font size, color, letter spacing, and so on.
+Use [TextStyle methods](https://bitmiracle.com/pdf-library/api/layout/textstyle#methods) to reach a desired text appearance. You can change font size, color, letter spacing, and so on.
 
 Layout elements allow you to apply text style using these methods:
 * [PageLayout.TextStyle](https://bitmiracle.com/pdf-library/api/layout/pagelayout-textstyle)
