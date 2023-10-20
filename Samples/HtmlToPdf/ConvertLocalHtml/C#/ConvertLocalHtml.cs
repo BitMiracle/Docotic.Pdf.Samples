@@ -24,7 +24,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             using (var converter = await HtmlConverter.CreateAsync())
             {
                 // Convert some HTML code in a string
-                var html = "<body><br/><br/><br/><h1>Hello, World<h1></body>";
+                var html = "<body><br/><br/><br/><h1>Hello, World</h1></body>";
                 using (var pdf = await converter.CreatePdfFromStringAsync(html))
                     pdf.Save(htmlStringOutputName);
 
