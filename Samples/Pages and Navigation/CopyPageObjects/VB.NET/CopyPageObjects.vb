@@ -20,6 +20,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     ' Set this option to true if you need to convert searchable text to vector paths
                     options.ExtractTextAsPath = False
 
+                    ' Set this option to true to ignore marked content (such as layers Or tagged data)
+                    '
+                    ' This sample does Not preserve all structure information because page objects are
+                    ' copied to another page. Look at the EditPageContent sample that shows how to copy
+                    ' page objects to the same page and preserve all structure information.
+                    options.FlattenMarkedContent = False
+
                     ' Usually, you need to set this option to false. That allows to properly handle
                     ' documents with transparency groups.
                     ' The value = true is recommended for backward compatibility or if you do not

@@ -27,6 +27,16 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
         Public Sub copyPageObjects(objects As IEnumerable(Of PdfPageObject), target As PdfCanvas)
             For Each obj As PdfPageObject In objects
+                If (obj.Type = PdfPageObjectType.MarkedContent) Then
+                    Dim markedContent As PdfMarkedContent = DirectCast(obj, PdfMarkedContent)
+
+                    target.BeginMarkedContent(markedContent.Tag.Name, markedContent.Properties)
+                    copyPageObjects(markedContent.GetObjects(), target)
+                    target.EndMarkedContent()
+
+                    Continue For
+                End If
+
                 target.SaveState()
                 setClipRegion(target, obj.ClipRegion)
 

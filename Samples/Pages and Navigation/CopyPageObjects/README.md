@@ -5,6 +5,9 @@ Use PdfDocument.CopyPage method to copy full page content and associated resourc
 
 Copying of page objects is useful when you want to remove or replace some content (e.g., text) from the page.
 
+This sample does not preserve all structure information because page objects are copied to another page.
+Look at the [Edit PDF page content](/Samples/Pages%20and%20Navigation/EditPageContent) sample that shows how to copy page objects to the same page and preserve structure information.
+
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
 * [Remove paths](/Samples/Graphics/RemovePaths) sample

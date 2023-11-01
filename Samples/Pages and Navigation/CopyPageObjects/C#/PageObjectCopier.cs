@@ -34,6 +34,17 @@ namespace BitMiracle.Docotic.Pdf.Samples
         {
             foreach (PdfPageObject obj in objects)
             {
+                if (obj.Type == PdfPageObjectType.MarkedContent)
+                {
+                    PdfMarkedContent markedContent = (PdfMarkedContent)obj;
+
+                    target.BeginMarkedContent(markedContent.Tag.Name, markedContent.Properties);
+                    copyPageObjects(markedContent.GetObjects(), target);
+                    target.EndMarkedContent();
+
+                    continue;
+                }
+
                 target.SaveState();
                 setClipRegion(target, obj.ClipRegion);
 
