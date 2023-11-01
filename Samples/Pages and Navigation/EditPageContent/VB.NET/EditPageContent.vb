@@ -11,29 +11,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim pathToFile As String = "EditPageContent.pdf"
 
             Using pdf = New PdfDocument("..\Sample Data\form.pdf")
-                Dim pageCount As Integer = pdf.PageCount
-                For i As Integer = 0 To pageCount - 1
-                    Dim sourcePage As PdfPage = pdf.Pages(0)
-                    Dim tempPage As PdfPage = pdf.AddPage()
-
-                    ' copy And modify page objects to a temporary page
-                    Dim copier = New PageObjectCopier(pdf, Nothing, AddressOf replaceColor, AddressOf shouldRemoveText)
-                    copier.Copy(sourcePage, tempPage)
-
-                    ' clear content of the source page
-                    sourcePage.Canvas.Clear()
-
-                    ' copy modified objects from the temporary page to the source page
-                    tempPage.Rotation = PdfRotation.None
-                    Dim xobj As PdfXObject = pdf.CreateXObject(tempPage)
-                    Dim mediaBox As PdfBox = sourcePage.MediaBox
-                    sourcePage.Canvas.DrawXObject(xobj, mediaBox.Left, -mediaBox.Bottom, xobj.Width, xobj.Height, 0)
-
-                    ' remove the temporary page
-                    pdf.RemovePage(pageCount)
+                For Each page As PdfPage In pdf.Pages
+                    Dim editor = New PageContentEditor(pdf, Nothing, AddressOf replaceColor, AddressOf shouldRemoveText)
+                    editor.Edit(page)
                 Next
 
-            Pdf.Save(pathToFile)
+                pdf.Save(pathToFile)
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")

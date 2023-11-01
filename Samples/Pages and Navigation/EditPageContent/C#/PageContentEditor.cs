@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Linq;
 using BitMiracle.Docotic.Pdf;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
-    class PageObjectCopier
+    class PageContentEditor
     {
         private readonly PdfDocument m_document;
         private readonly PdfObjectExtractionOptions m_options;
@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private readonly Dictionary<string, PdfXObject> m_xobjectCopies = new Dictionary<string, PdfXObject>();
 
-        public PageObjectCopier(
+        public PageContentEditor(
             PdfDocument document,
             PdfObjectExtractionOptions options = null,
             Func<PdfColor, PdfColor> replaceColor = null,
@@ -32,23 +32,34 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 m_shouldRemoveText = t => false;
         }
 
-        public void Copy(PdfPage sourcePage, PdfPage copyPage)
+        public void Edit(PdfPage page)
         {
-            copyPage.Group = sourcePage.Group;
-            copyPage.UserUnit = sourcePage.UserUnit;
-            copyPage.Rotation = sourcePage.Rotation;
-            copyPage.MediaBox = sourcePage.MediaBox;
-            if (sourcePage.CropBox != sourcePage.MediaBox)
-                copyPage.CropBox = sourcePage.CropBox;
+            // You can remove the ToArray call here if necessary because PdfPage.GetObjects returns
+            // final collections in the current version. We use ToArray to illustrate that in future
+            // versions PdfPage.GetObjects might become lazy. In that case, you need to load all page
+            // objects before clearing the canvas.
+            IEnumerable<PdfPageObject> objects = page.GetObjects(m_options).ToArray();
 
-            IEnumerable<PdfPageObject> objects = sourcePage.GetObjects(m_options);
-            copyPageObjects(objects, copyPage.Canvas);
+            PdfCanvas canvas = page.Canvas;
+            canvas.Clear();
+            copyPageObjects(objects, canvas);
         }
 
-        public void copyPageObjects(IEnumerable<PdfPageObject> objects, PdfCanvas target)
+        private void copyPageObjects(IEnumerable<PdfPageObject> objects, PdfCanvas target)
         {
             foreach (PdfPageObject obj in objects)
             {
+                if (obj.Type == PdfPageObjectType.MarkedContent)
+                {
+                    PdfMarkedContent markedContent = (PdfMarkedContent)obj;
+
+                    target.BeginMarkedContent(markedContent.Tag.Name, markedContent.Properties);
+                    copyPageObjects(markedContent.GetObjects(), target);
+                    target.EndMarkedContent();
+
+                    continue;
+                }
+
                 target.SaveState();
                 setClipRegion(target, obj.ClipRegion);
 

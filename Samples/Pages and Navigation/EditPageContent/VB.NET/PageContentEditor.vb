@@ -2,7 +2,7 @@
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
-    Class PageObjectCopier
+    Class PageContentEditor
         Private ReadOnly m_document As PdfDocument
         Private ReadOnly m_options As PdfObjectExtractionOptions
         Private ReadOnly m_replaceColor As Func(Of PdfColor, PdfColor)
@@ -34,21 +34,30 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End If
         End Sub
 
-        Public Sub Copy(sourcePage As PdfPage, copyPage As PdfPage)
-            copyPage.Group = sourcePage.Group
-            copyPage.UserUnit = sourcePage.UserUnit
-            copyPage.Rotation = sourcePage.Rotation
-            copyPage.MediaBox = sourcePage.MediaBox
-            If sourcePage.CropBox <> sourcePage.MediaBox Then
-                copyPage.CropBox = sourcePage.CropBox
-            End If
+        Public Sub Edit(page As PdfPage)
+            ' You can remove the ToArray call here if necessary because PdfPage.GetObjects returns
+            ' final collections in the current version. We use ToArray to illustrate that in future
+            ' versions PdfPage.GetObjects might become lazy. In that case, you need to load all page
+            ' objects before clearing the canvas.
+            Dim objects As IEnumerable(Of PdfPageObject) = page.GetObjects(m_options).ToArray()
 
-            Dim objects As IEnumerable(Of PdfPageObject) = sourcePage.GetObjects(m_options)
-            copyPageObjects(objects, copyPage.Canvas)
+            Dim canvas As PdfCanvas = page.Canvas
+            canvas.Clear()
+            copyPageObjects(objects, canvas)
         End Sub
 
         Public Sub copyPageObjects(objects As IEnumerable(Of PdfPageObject), target As PdfCanvas)
             For Each obj As PdfPageObject In objects
+                If (obj.Type = PdfPageObjectType.MarkedContent) Then
+                    Dim markedContent As PdfMarkedContent = DirectCast(obj, PdfMarkedContent)
+
+                    target.BeginMarkedContent(markedContent.Tag.Name, markedContent.Properties)
+                    copyPageObjects(markedContent.GetObjects(), target)
+                    target.EndMarkedContent()
+
+                    Continue For
+                End If
+
                 target.SaveState()
                 setClipRegion(target, obj.ClipRegion)
 

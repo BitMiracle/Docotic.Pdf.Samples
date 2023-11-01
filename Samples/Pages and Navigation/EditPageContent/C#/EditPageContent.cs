@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using BitMiracle.Docotic.Pdf;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -16,27 +17,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (var pdf = new PdfDocument(@"..\Sample Data\form.pdf"))
             {
-                int pageCount = pdf.PageCount;
-                for (int i = 0; i < pageCount; ++i)
+                foreach (PdfPage page in pdf.Pages)
                 {
-                    PdfPage sourcePage = pdf.Pages[i];
-                    PdfPage tempPage = pdf.AddPage();
-
-                    // copy and modify page objects to a temporary page
-                    var copier = new PageObjectCopier(pdf, null, replaceColor, shouldRemoveText);
-                    copier.Copy(sourcePage, tempPage);
-
-                    // clear content of the source page
-                    sourcePage.Canvas.Clear();
-
-                    // copy modified objects from the temporary page to the source page
-                    tempPage.Rotation = PdfRotation.None;
-                    PdfXObject xobj = pdf.CreateXObject(tempPage);
-                    PdfBox mediaBox = sourcePage.MediaBox;
-                    sourcePage.Canvas.DrawXObject(xobj, mediaBox.Left, -mediaBox.Bottom, xobj.Width, xobj.Height, 0);
-
-                    // remove the temporary page
-                    pdf.RemovePage(pageCount);
+                    var editor = new PageContentEditor(pdf, null, replaceColor, shouldRemoveText);
+                    editor.Edit(page);
                 }
 
                 pdf.Save(pathToFile);
