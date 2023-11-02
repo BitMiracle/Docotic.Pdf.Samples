@@ -41,7 +41,18 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                         gr.SetClip(page.CropBox.ToRectangleF(page.Height), CombineMode.Intersect);
 
-                        foreach (PdfPageObject obj in page.GetObjects())
+                        // We do not need to handle marked content and XObjects in this sample.
+                        // You may want to set these options to false in order to:
+                        // * Respect transparency groups for XObjects
+                        // * Respect layers or tagged content
+                        //
+                        // Look at the EditPageContent sample that shows how to handle marked content and XObjects.
+                        var options = new PdfObjectExtractionOptions
+                        {
+                            FlattenMarkedContent = true,
+                            FlattenXObjects = true,
+                        };
+                        foreach (PdfPageObject obj in page.GetObjects(options))
                         {
                             switch (obj.Type)
                             {

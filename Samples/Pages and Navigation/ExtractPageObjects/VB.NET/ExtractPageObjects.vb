@@ -34,7 +34,17 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                         gr.SetClip(page.CropBox.ToRectangleF(page.Height), CombineMode.Intersect)
 
-                        For Each obj As PdfPageObject In page.GetObjects()
+                        ' We do not need to handle marked content and XObjects in this sample.
+                        ' You may want to set these options to false in order to:
+                        ' * Respect transparency groups for XObjects
+                        ' * Respect layers or tagged content
+                        '
+                        ' Look at the EditPageContent sample that shows how to handle marked content and XObjects.
+                        Dim options = New PdfObjectExtractionOptions With {
+                            .FlattenMarkedContent = True,
+                            .FlattenXObjects = True
+                        }
+                        For Each obj As PdfPageObject In page.GetObjects(options)
                             Select Case obj.Type
                                 Case PdfPageObjectType.Text
                                     drawText(gr, DirectCast(obj, PdfTextData), userUnit)
