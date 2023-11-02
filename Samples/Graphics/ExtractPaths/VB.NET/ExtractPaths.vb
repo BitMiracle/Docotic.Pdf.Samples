@@ -15,6 +15,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     Dim sourcePage As PdfPage = copy.Pages(0)
                     Dim copyPage As PdfPage = copy.AddPage()
 
+                    copyPage.Group = sourcePage.Group
                     copyPage.UserUnit = sourcePage.UserUnit
                     copyPage.Rotation = sourcePage.Rotation
                     copyPage.MediaBox = sourcePage.MediaBox
@@ -22,8 +23,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         copyPage.CropBox = sourcePage.CropBox
                     End If
 
+                    Dim options = New PdfObjectExtractionOptions With {
+                        .FlattenMarkedContent = True,
+                        .FlattenXObjects = True
+                    }
                     Dim target As PdfCanvas = copyPage.Canvas
-                    For Each obj As PdfPageObject In sourcePage.GetObjects()
+                    For Each obj As PdfPageObject In sourcePage.GetObjects(options)
                         If obj.Type <> PdfPageObjectType.Path Then
                             Continue For
                         End If

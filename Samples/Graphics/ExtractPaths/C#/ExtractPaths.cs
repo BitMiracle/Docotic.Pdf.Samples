@@ -21,14 +21,20 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     PdfPage sourcePage = copy.Pages[0];
                     PdfPage copyPage = copy.AddPage();
 
+                    copyPage.Group = sourcePage.Group;
                     copyPage.UserUnit = sourcePage.UserUnit;
                     copyPage.Rotation = sourcePage.Rotation;
                     copyPage.MediaBox = sourcePage.MediaBox;
                     if (sourcePage.CropBox != sourcePage.MediaBox)
                         copyPage.CropBox = sourcePage.CropBox;
 
+                    var options = new PdfObjectExtractionOptions
+                    {
+                        FlattenMarkedContent = true,
+                        FlattenXObjects = true,
+                    };
                     PdfCanvas target = copyPage.Canvas;
-                    foreach (PdfPageObject obj in sourcePage.GetObjects())
+                    foreach (PdfPageObject obj in sourcePage.GetObjects(options))
                     {
                         if (obj.Type != PdfPageObjectType.Path)
                             continue;
