@@ -21,6 +21,16 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim secondLayer As PdfLayer = pdf.CreateLayer("Second Layer", False, PdfLayerIntent.View)
                 secondLayer.Visible = True
 
+                Dim canvas As PdfCanvas = pdf.Pages(0).Canvas
+
+                canvas.BeginMarkedContent(PdfTagType.OC.ToString(), firstLayer)
+                canvas.DrawString(10, 50, "First")
+                canvas.EndMarkedContent()
+
+                canvas.BeginMarkedContent(PdfTagType.OC.ToString(), secondLayer)
+                canvas.DrawString(10, 70, "Second")
+                canvas.EndMarkedContent()
+
                 pdf.Save(pathToFile)
             End Using
 

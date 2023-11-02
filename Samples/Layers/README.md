@@ -1,5 +1,5 @@
 # Layers
-This group contains samples for Layers (also known as optional content groups).
+This group contains samples showing how to work with PDF layers (also known as optional content groups) in C# and VB.NET using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
 Don't miss [all other samples](/Samples).
 
