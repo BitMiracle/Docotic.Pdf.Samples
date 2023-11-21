@@ -19,15 +19,24 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim pathToFile As String = "PutHtmlOverPdf.pdf"
 
             Using converter = Await HtmlConverter.CreateAsync()
-                ' It Is important to specify page size And turn on transparent background.
-                ' Usually, the size should be equal to the size of the page you want to overlay.
+                ' It is important to specify page size. Usually, the size should be equal to the size of the page
+                ' you want to overlay.
                 Dim options = New HtmlConversionOptions()
-                options.Page.TransparentBackground = True
                 options.Page.SetSizeInches(4.13, 5.83)
+
+                ' The library produces transparent background by default. If you need an opaque background then you can
+                ' use CSS background like that:
+                'options.Start.SetStartAfterScriptRun("document.body.style.background = 'white'")
+                '
+                ' Alternatively, you can add a white background watermark to all converted pages.
+                ' Look at the addWhiteBackground method below for more detail.
 
                 Dim htmlCode = "<div style=""position: absolute; top: 270px; right: 100px;\"">" +
                     "I would like to put this here</div>"
                 Using htmlPdf = Await converter.CreatePdfFromStringAsync(htmlCode, options)
+                    ' Uncomment to apply semi-transparent red background:
+                    'addBackground(htmlPdf, New PdfRgbColor(255, 0, 0), 25)
+
                     Using pdf = New PdfDocument("..\Sample Data\simple-graphics.pdf")
                         ' Create an XObject from a page in the document generated from HTML.
                         ' Please note that the code uses different document instances to call the
@@ -46,5 +55,27 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Function
+
+        Private Shared Sub addBackground(pdf As PdfDocument, color As PdfColor, opacity As Integer)
+            Dim background As PdfXObject = pdf.CreateXObject()
+            background.DrawOnBackground = True
+
+            Dim first = True
+            For Each page As PdfPage In pdf.Pages
+                If first Then
+                    background.Width = page.Width
+                    background.Height = page.Height
+
+                    If opacity <> 100 Then background.Canvas.Brush.Opacity = opacity
+
+                    background.Canvas.Brush.Color = color
+                    background.Canvas.DrawRectangle(New PdfRectangle(0, 0, page.Width, page.Height), PdfDrawMode.Fill)
+
+                    first = False
+                End If
+
+                page.Canvas.DrawXObject(background, 0, 0)
+            Next
+        End Sub
     End Class
 End Namespace
