@@ -8,14 +8,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
 {
     class ConvertAfterScriptRun
     {
-        static async Task Main(string[] args)
+        static async Task Main()
         {
             // NOTE: 
             // When used in trial mode, the library imposes some restrictions.
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            var url = new Uri("https://plugins.yithemes.com/yith-infinite-scrolling");
+            var url = new Uri("https://infinite-scroll.com/demo/full-page/");
             var pathToFile = "ConvertAfterScriptRun.pdf";
             using (var converter = await HtmlConverter.CreateAsync())
             {

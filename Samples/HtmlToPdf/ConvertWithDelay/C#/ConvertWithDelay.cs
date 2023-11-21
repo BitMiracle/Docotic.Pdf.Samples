@@ -8,7 +8,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 {
     class ConvertWithDelay
     {
-        static async Task Main(string[] args)
+        static async Task Main()
         {
             // NOTE: 
             // When used in trial mode, the library imposes some restrictions.
@@ -24,7 +24,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (var converter = await HtmlConverter.CreateAsync())
             {
-                using (var pdf = await converter.CreatePdfAsync(new Uri("https://html5test.com/"), options))
+                using (var pdf = await converter.CreatePdfAsync(new Uri("http://acid3.acidtests.org/"), options))
                     pdf.Save(pathToFile);
             }
 

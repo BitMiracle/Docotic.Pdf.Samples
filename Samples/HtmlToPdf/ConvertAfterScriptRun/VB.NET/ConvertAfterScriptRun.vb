@@ -19,7 +19,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Dim pathToFile As String = "ConvertAfterScriptRun.pdf"
 
-            Dim url = New Uri("https://plugins.yithemes.com/yith-infinite-scrolling")
+            Dim url = New Uri("https://infinite-scroll.com/demo/full-page/")
             Using converter = Await HtmlConverter.CreateAsync()
                 ' The page at the url loads additional contents when scroll position changes.
                 ' Let's run a script before the conversion. The script scrolls the page until

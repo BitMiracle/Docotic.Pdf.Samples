@@ -25,7 +25,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             options.Start.SetStartAfterDelay(10 * 1000)
 
             Using converter = Await HtmlConverter.CreateAsync()
-                Using pdf = Await converter.CreatePdfAsync(New Uri("https://html5test.com/"), options)
+                Using pdf = Await converter.CreatePdfAsync(New Uri("http://acid3.acidtests.org/"), options)
                     pdf.Save(pathToFile)
                 End Using
             End Using
