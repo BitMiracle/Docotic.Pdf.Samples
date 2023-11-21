@@ -17,7 +17,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         // The following shows how to use the HTML to PDF API from a regular synchronous method
 
-        static void Main(string[] args)
+        static void Main()
         {
             Task.Run(async () =>
             {

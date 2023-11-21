@@ -8,7 +8,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 {
     class SvgToPdf
     {
-        static async Task Main(string[] args)
+        static async Task Main()
         {
             // NOTE: 
             // When used in trial mode, the library imposes some restrictions.
