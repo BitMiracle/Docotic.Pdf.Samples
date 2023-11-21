@@ -20,8 +20,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Without the changes the sample will not work.
 
             Dim outputFileName = "SignAlreadySignedDocument.pdf"
-            Using pdf As PdfDocument = New PdfDocument("your-signed-document.pdf")
-                Dim signingOptions As PdfSigningOptions = New PdfSigningOptions("keystore.p12", "password") With {
+            Using pdf As New PdfDocument("your-signed-document.pdf")
+                Dim signingOptions As New PdfSigningOptions("keystore.p12", "password") With {
                     .DigestAlgorithm = PdfDigestAlgorithm.Sha256,
                     .Format = PdfSignatureFormat.Pkcs7Detached,
                     .Reason = "Adding signature to a signed document",
@@ -29,7 +29,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     .ContactInfo = "support@example.com"
                 }
 
-                Dim saveOptions As PdfSaveOptions = New PdfSaveOptions With {
+                Dim saveOptions As New PdfSaveOptions With {
                     .WriteIncrementally = True
                 }
 

@@ -143,8 +143,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static void SetText(PdfDocument pdf, string textBoxName, string text)
         {
-            var textBox = pdf.GetControl(textBoxName) as PdfTextBox;
-            textBox.Text = text;
+            if (pdf.GetControl(textBoxName) is PdfTextBox textBox)
+                textBox.Text = text;
+            else
+                throw new ArgumentException($"Unable to find a text box by name = '{textBoxName}'", nameof(textBoxName));
         }
 
         private static void OpenResult(string path)

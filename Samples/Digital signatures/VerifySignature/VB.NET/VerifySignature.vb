@@ -10,15 +10,20 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
-            Dim sb As StringBuilder = New StringBuilder()
-            Using pdf As PdfDocument = New PdfDocument("..\Sample Data\signed.pdf")
+            Dim sb As New StringBuilder()
+            Using pdf As New PdfDocument("..\Sample Data\signed.pdf")
                 Dim field As PdfControl = pdf.GetControls().FirstOrDefault(Function(c) c.Type = PdfWidgetType.Signature)
                 If field Is Nothing Then
-                    Console.WriteLine("Document does not contain signature fields", "Verification result")
+                    Console.WriteLine("Document does not contain signature fields")
                     Return
                 End If
 
                 Dim signature = CType(field, PdfSignatureField).Signature
+                If signature Is Nothing Then
+                    Console.WriteLine("Signature field does not have an associated signature")
+                    Return
+                End If
+
                 Dim contents = signature.Contents
                 sb.AppendFormat("Signed part is intact: {0}" & vbLf, contents.VerifyDigest())
 
@@ -52,10 +57,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 checkRevocation(signature, sb, PdfCertificateRevocationCheckMode.OnlineCrl)
             End Using
 
-            Console.WriteLine(sb.ToString(), "Verification result")
+            Console.WriteLine(sb.ToString())
         End Sub
 
-        Private Shared Sub checkRevocation(ByVal signature As PdfSignature, ByVal sb As StringBuilder, ByVal mode As PdfCertificateRevocationCheckMode)
+        Private Shared Sub checkRevocation(signature As PdfSignature, sb As StringBuilder, mode As PdfCertificateRevocationCheckMode)
             Dim contents = signature.Contents
             Dim signingTime = If(signature.SigningTime, Date.MinValue)
 

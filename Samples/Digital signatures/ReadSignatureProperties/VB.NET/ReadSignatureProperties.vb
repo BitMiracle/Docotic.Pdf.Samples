@@ -11,8 +11,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
-            Dim sb As StringBuilder = New StringBuilder()
-            Using pdf As PdfDocument = New PdfDocument("..\Sample Data\signed.pdf")
+            Dim sb As New StringBuilder()
+            Using pdf As New PdfDocument("..\Sample Data\signed.pdf")
                 Dim control As PdfControl = pdf.GetControls().FirstOrDefault(Function(c) c.Type = PdfWidgetType.Signature)
                 If control Is Nothing Then
                     Console.WriteLine("Document does not contain signature fields")
@@ -23,6 +23,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 sb.AppendFormat("Signature field is invisible: {0}" & vbLf, isInvisible(field))
 
                 Dim signature = field.Signature
+                If signature Is Nothing Then
+                    sb.AppendLine("Signature field does not have an associated signature")
+                    Console.WriteLine(sb.ToString())
+                    Return
+                End If
+
                 sb.AppendFormat("Signed by: {0}" & vbLf, signature.Name)
                 sb.AppendFormat("Signing time: {0}" & vbLf, signature.SigningTime)
                 sb.AppendFormat("Signed at: {0}" & vbLf, signature.Location)
@@ -65,14 +71,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 End If
             End Using
 
-            Console.WriteLine(sb.ToString(), "Signature Info")
+            Console.WriteLine(sb.ToString())
         End Sub
 
-        Private Shared Function isInvisible(ByVal field As PdfSignatureField) As Boolean
+        Private Shared Function isInvisible(field As PdfSignatureField) As Boolean
             Return field.Width = 0 AndAlso field.Height = 0 OrElse field.Flags.HasFlag(PdfWidgetFlags.Hidden) OrElse field.Flags.HasFlag(PdfWidgetFlags.NoView)
         End Function
 
-        Private Shared Function findCertificateByIssuerName(ByVal issuerName As X500DistinguishedName) As X509Certificate2
+        Private Shared Function findCertificateByIssuerName(issuerName As X500DistinguishedName) As X509Certificate2
             Using certificatesStore = New X509Store(StoreName.CertificateAuthority, StoreLocation.CurrentUser)
                 certificatesStore.Open(OpenFlags.OpenExistingOnly)
 

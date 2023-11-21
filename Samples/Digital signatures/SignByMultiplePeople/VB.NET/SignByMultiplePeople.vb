@@ -133,6 +133,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
         Private Shared Sub SetText(pdf As PdfDocument, textBoxName As String, text As String)
             Dim textBox = TryCast(pdf.GetControl(textBoxName), PdfTextBox)
+            If textBox Is Nothing Then
+                Throw New ArgumentException($"Unable to find a text box by name = '{textBoxName}'", NameOf(textBoxName))
+            End If
+
             textBox.Text = text
         End Sub
 

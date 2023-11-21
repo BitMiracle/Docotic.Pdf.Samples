@@ -13,17 +13,23 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            StringBuilder sb = new StringBuilder();
-            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\signed.pdf"))
+            var sb = new StringBuilder();
+            using (var pdf = new PdfDocument(@"..\Sample Data\signed.pdf"))
             {
-                PdfControl field = pdf.GetControls().FirstOrDefault(c => c.Type == PdfWidgetType.Signature);
-                if (field == null)
+                PdfControl? field = pdf.GetControls().FirstOrDefault(c => c.Type == PdfWidgetType.Signature);
+                if (field is null)
                 {
                     Console.WriteLine("Document does not contain signature fields");
                     return;
                 }
 
-                PdfSignature signature = ((PdfSignatureField)field).Signature;
+                PdfSignature? signature = ((PdfSignatureField)field).Signature;
+                if (signature is null)
+                {
+                    Console.WriteLine("Signature field does not have an associated signature");
+                    return;
+                }
+
                 PdfSignatureContents contents = signature.Contents;
                 sb.AppendFormat("Signed part is intact: {0}\n", contents.VerifyDigest());
 

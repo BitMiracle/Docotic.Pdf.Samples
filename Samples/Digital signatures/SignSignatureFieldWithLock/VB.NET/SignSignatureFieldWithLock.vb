@@ -25,7 +25,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 ' IMPORTANT
                 ' Replace "keystore.p12" And "password" with your own .p12 or .pfx path and password.
                 ' Without the change the sample will not work.
-                Dim options As PdfSigningOptions = New PdfSigningOptions("keystore.p12", "password") With {
+                Dim options As New PdfSigningOptions("keystore.p12", "password") With {
                     .DigestAlgorithm = PdfDigestAlgorithm.Sha256,
                     .Format = PdfSignatureFormat.Pkcs7Detached,
                     .Field = first,

@@ -9,12 +9,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' for more information.
 
             Dim outputFileName = "SignDocument.pdf"
-            Using pdf As PdfDocument = New PdfDocument("..\Sample Data\jpeg.pdf")
+            Using pdf As New PdfDocument("..\Sample Data\jpeg.pdf")
                 ' IMPORTANT:
                 ' Replace "keystore.p12" And "password" with your own .p12 Or .pfx path And password.
                 ' Without the change the sample will Not work.
 
-                Dim options As PdfSigningOptions = New PdfSigningOptions("keystore.p12", "password") With {
+                Dim options As New PdfSigningOptions("keystore.p12", "password") With {
                     .DigestAlgorithm = PdfDigestAlgorithm.Sha256,
                     .Format = PdfSignatureFormat.Pkcs7Detached,
                     .Reason = "Testing digital signatures",

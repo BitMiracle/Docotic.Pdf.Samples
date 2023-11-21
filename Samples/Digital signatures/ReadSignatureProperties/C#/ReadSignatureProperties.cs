@@ -14,11 +14,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            StringBuilder sb = new StringBuilder();
-            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\signed.pdf"))
+            var sb = new StringBuilder();
+            using (var pdf = new PdfDocument(@"..\Sample Data\signed.pdf"))
             {
-                PdfControl control = pdf.GetControls().FirstOrDefault(c => c.Type == PdfWidgetType.Signature);
-                if (control == null)
+                PdfControl? control = pdf.GetControls().FirstOrDefault(c => c.Type == PdfWidgetType.Signature);
+                if (control is null)
                 {
                     Console.WriteLine("Document does not contain signature fields");
                     return;
@@ -27,7 +27,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 PdfSignatureField field = (PdfSignatureField)control;
                 sb.AppendFormat("Signature field is invisible: {0}\n", isInvisible(field));
 
-                PdfSignature signature = field.Signature;
+                PdfSignature? signature = field.Signature;
+                if (signature is null)
+                {
+                    sb.AppendLine("Signature field does not have an associated signature");
+                    Console.WriteLine(sb.ToString());
+                    return;
+                }
+
                 sb.AppendFormat("Signed by: {0}\n", signature.Name);
                 sb.AppendFormat("Signing time: {0}\n", signature.SigningTime);
                 sb.AppendFormat("Signed at: {0}\n", signature.Location);
@@ -52,12 +59,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 sb.AppendLine();
                 sb.AppendLine("== Issuer certificate:");
 
-                PdfSignatureCertificate issuer = contents.GetIssuerCertificateFor(certificate);
+                PdfSignatureCertificate? issuer = contents.GetIssuerCertificateFor(certificate);
                 if (issuer == null)
                 {
                     sb.AppendLine("Not embedded in the PDF: true");
 
-                    X509Certificate2 issuer2 = findCertificateByIssuerName(certificate.Issuer);
+                    X509Certificate2? issuer2 = findCertificateByIssuerName(certificate.Issuer);
                     if (issuer2 != null)
                     {
                         sb.AppendLine("Found in a local list of certificates: true");
@@ -84,7 +91,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     field.Flags.HasFlag(PdfWidgetFlags.NoView);
         }
 
-        private static X509Certificate2 findCertificateByIssuerName(X500DistinguishedName issuerName)
+        private static X509Certificate2? findCertificateByIssuerName(X500DistinguishedName issuerName)
         {
             using (var certificatesStore = new X509Store(StoreName.CertificateAuthority, StoreLocation.CurrentUser))
             {

@@ -23,9 +23,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Without the changes the sample will not work.
 
             string outputFileName = "SignAlreadySignedDocument.pdf";
-            using (PdfDocument pdf = new PdfDocument(@"your-signed-document.pdf"))
+            using (var pdf = new PdfDocument(@"your-signed-document.pdf"))
             {
-                PdfSigningOptions signingOptions = new PdfSigningOptions("keystore.p12", "password")
+                var signingOptions = new PdfSigningOptions("keystore.p12", "password")
                 {
                     DigestAlgorithm = PdfDigestAlgorithm.Sha256,
                     Format = PdfSignatureFormat.Pkcs7Detached,

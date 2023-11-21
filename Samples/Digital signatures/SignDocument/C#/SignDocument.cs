@@ -13,13 +13,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // for more information.
 
             string outputFileName = "SignDocument.pdf";
-            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\jpeg.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample Data\jpeg.pdf"))
             {
                 // IMPORTANT:
                 // Replace "keystore.p12" and "password" with your own .p12 or .pfx path and password.
                 // Without the change the sample will not work.
 
-                PdfSigningOptions options = new PdfSigningOptions("keystore.p12", "password")
+                var options = new PdfSigningOptions("keystore.p12", "password")
                 {
                     DigestAlgorithm = PdfDigestAlgorithm.Sha256,
                     Format = PdfSignatureFormat.Pkcs7Detached,
