@@ -13,7 +13,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // for more information.
 
             var outputName = "UriAction.pdf";
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 PdfUriAction uriAction = pdf.CreateHyperlinkAction(new Uri("http://www.google.com"));
                 PdfActionArea annotation = pdf.Pages[0].AddActionArea(10, 50, 100, 100, uriAction);

@@ -12,9 +12,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\Attachments.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample Data\Attachments.pdf"))
             {
-                StringBuilder attachmentNames = new StringBuilder();
+                var attachmentNames = new StringBuilder();
 
                 // collect names of files attached to the document
                 foreach (PdfFileSpecification spec in pdf.SharedAttachments)
@@ -29,7 +29,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                             continue;
 
                         PdfFileAttachmentAnnotation fileAnnot = (PdfFileAttachmentAnnotation)widget;
-                        attachmentNames.AppendLine(fileAnnot.File.Specification);
+                        attachmentNames.AppendLine(fileAnnot.File?.Specification);
                     }
                 }
 

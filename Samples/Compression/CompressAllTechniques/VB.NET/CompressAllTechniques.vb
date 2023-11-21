@@ -25,6 +25,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                     For Each painted As PdfPaintedImage In page.GetPaintedImages()
                         Dim image As PdfImage = painted.Image
+
+                        ' Image ID may be null for inline images, which cannot be recompressed
+                        If image.Id Is Nothing Then
+                            Continue For
+                        End If
+
                         If alreadyCompressedImageIds.Contains(image.Id) Then
                             Continue For
                         End If
@@ -92,7 +98,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         Private Shared Function optimizeImage(ByVal painted As PdfPaintedImage) As Boolean
             Dim image As PdfImage = painted.Image
 
-            ' inline images can Not be recompressed unless you move them to resources
+            ' inline images cannot be recompressed unless you move them to resources
             ' using PdfCanvas.MoveInlineImagesToResources 
             If image.IsInline Then
                 Return False

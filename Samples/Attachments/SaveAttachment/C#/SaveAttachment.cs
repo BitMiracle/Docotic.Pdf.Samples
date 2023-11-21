@@ -12,9 +12,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\Attachments.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample Data\Attachments.pdf"))
             {
-                PdfFileSpecification spec = pdf.SharedAttachments["File Attachment testing.doc"];
+                PdfFileSpecification? spec = pdf.SharedAttachments["File Attachment testing.doc"];
                 if (spec != null && spec.Contents != null)
                 {
                     const string pathToFile = "attachment.doc";

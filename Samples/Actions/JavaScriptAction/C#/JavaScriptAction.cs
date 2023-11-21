@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "JavaScriptAction.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 pdf.OnOpenDocument = pdf.CreateJavaScriptAction("app.alert(\"Hello from JavaScript.\",3)");
 

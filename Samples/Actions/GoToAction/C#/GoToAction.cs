@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             var outputName = "GoToAction.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 PdfPage secondPage = pdf.AddPage();
                 secondPage.Canvas.DrawString(10, 300, "Go-to action target");

@@ -30,6 +30,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     foreach (PdfPaintedImage painted in page.GetPaintedImages())
                     {
                         PdfImage image = painted.Image;
+
+                        // Image ID may be null for inline images, which cannot be recompressed
+                        if (image.Id == null)
+                            continue;
+
                         if (alreadyCompressedImageIds.Contains(image.Id))
                             continue;
 
@@ -95,8 +100,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
         {
             PdfImage image = painted.Image;
 
-            // inline images can not be recompressed unless you move them to resources
-            // using PdfCanvas.MoveInlineImagesToResources 
+            // inline images cannot be recompressed unless you move them to resources
+            // using the PdfCanvas.MoveInlineImagesToResources method.
             if (image.IsInline)
                 return false;
 

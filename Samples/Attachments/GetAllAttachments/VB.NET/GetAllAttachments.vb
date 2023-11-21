@@ -26,7 +26,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         End If
 
                         Dim fileAnnot As PdfFileAttachmentAnnotation = DirectCast(widget, PdfFileAttachmentAnnotation)
-                        attachmentNames.AppendLine(fileAnnot.File.Specification)
+                        If fileAnnot.File IsNot Nothing Then
+                            attachmentNames.AppendLine(fileAnnot.File.Specification)
+                        Else
+                            attachmentNames.AppendLine()
+                        End If
                     Next
                 Next
 

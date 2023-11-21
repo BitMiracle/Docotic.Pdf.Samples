@@ -16,7 +16,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            using (PdfDocument pdf = new PdfDocument(originalFile))
+            using (var pdf = new PdfDocument(originalFile))
             {
                 pdf.RemoveStructureInformation();
 

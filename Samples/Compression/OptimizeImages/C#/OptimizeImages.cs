@@ -17,7 +17,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             string originalFile = @"..\Sample Data\jpeg.pdf";
             const string compressedFile = "OptimizeImages.pdf";
 
-            using (PdfDocument pdf = new PdfDocument(originalFile))
+            using (var pdf = new PdfDocument(originalFile))
             {
                 var alreadyCompressedImageIds = new HashSet<string>();
                 for (int i = 0; i < pdf.PageCount; ++i)
@@ -26,6 +26,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     foreach (PdfPaintedImage painted in page.GetPaintedImages())
                     {
                         PdfImage image = painted.Image;
+
+                        // Image ID may be null for inline images, which cannot be recompressed
+                        if (image.Id == null)
+                            continue;
+
                         if (alreadyCompressedImageIds.Contains(image.Id))
                             continue;
 
@@ -57,7 +62,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
         {
             PdfImage image = painted.Image;
 
-            // inline images can not be recompressed unless you move them to resources
+            // inline images cannot be recompressed unless you move them to resources
             // using PdfCanvas.MoveInlineImagesToResources 
             if (image.IsInline)
                 return false;
