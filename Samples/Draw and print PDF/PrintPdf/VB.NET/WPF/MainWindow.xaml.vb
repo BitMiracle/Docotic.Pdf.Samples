@@ -14,7 +14,7 @@
             processExistingPdfDocument(AddressOf PdfPrintHelper.ShowPrintPreview)
         End Sub
 
-        Private Sub processExistingPdfDocument(ByVal action As Func(Of PdfDocument, PrintSize, Forms.DialogResult))
+        Private Sub processExistingPdfDocument(action As Func(Of PdfDocument, PrintSize, Forms.DialogResult))
             Using dlg = New Forms.OpenFileDialog()
                 dlg.Filter = "PDF files (*.pdf)|*.pdf"
 

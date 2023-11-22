@@ -4,7 +4,7 @@ Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
     Friend Module PdfPrintHelper
-        Function ShowPrintDialog(ByVal pdf As PdfDocument, ByVal printSize As PrintSize) As DialogResult
+        Function ShowPrintDialog(pdf As PdfDocument, printSize As PrintSize) As DialogResult
             Using printDialog = New PrintDialog()
                 printDialog.AllowSomePages = True
                 printDialog.AllowCurrentPage = True
@@ -25,7 +25,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End Using
         End Function
 
-        Function ShowPrintPreview(ByVal pdf As PdfDocument, ByVal printSize As PrintSize) As DialogResult
+        Function ShowPrintPreview(pdf As PdfDocument, printSize As PrintSize) As DialogResult
             Using previewDialog = New PrintPreviewDialog()
 
                 Using printDocument = New PdfPrintDocument(pdf, printSize)
@@ -44,7 +44,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End Using
         End Function
 
-        Private Sub setupPrintButton(ByVal previewDialog As PrintPreviewDialog, ByVal pdf As PdfDocument, ByVal printSize As PrintSize)
+        Private Sub setupPrintButton(previewDialog As PrintPreviewDialog, pdf As PdfDocument, printSize As PrintSize)
             ' reuse the image of the default print button
             Dim openPrintDialog As ToolStripButton = New ToolStripButton With {
                 .Image = CType(previewDialog.Controls(1), ToolStrip).ImageList.Images(0),
@@ -52,7 +52,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             }
 
             AddHandler openPrintDialog.Click, New EventHandler(
-                Sub(ByVal sender As Object, ByVal e As EventArgs)
+                Sub(sender As Object, e As EventArgs)
                     If PdfPrintHelper.ShowPrintDialog(pdf, printSize) = DialogResult.OK Then
                         previewDialog.Close()
                     End If

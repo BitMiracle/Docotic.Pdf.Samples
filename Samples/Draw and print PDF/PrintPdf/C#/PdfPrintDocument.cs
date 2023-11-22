@@ -22,9 +22,6 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         public PdfPrintDocument(PdfDocument pdf, PrintSize printSize)
         {
-            if (pdf == null)
-                throw new ArgumentNullException("pdf");
-
             m_pdf = pdf;
             m_printSize = printSize;
 
@@ -47,9 +44,6 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         public void Print(PrinterSettings settings)
         {
-            if (settings == null)
-                throw new ArgumentNullException("settings");
-
             m_printDocument.PrinterSettings = settings;
             m_printDocument.Print();
         }
@@ -102,7 +96,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private void printDocument_PrintPage(object sender, PrintPageEventArgs e)
         {
-            Graphics gr = e.Graphics;
+            Graphics? gr = e.Graphics;
+            if (gr is null)
+                return;
 
             // Work in points to have consistent units for all contexts:
             // 1. Printer

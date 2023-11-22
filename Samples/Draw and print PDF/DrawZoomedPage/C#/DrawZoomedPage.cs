@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             
             string pathToImage = "DrawZoomedPage.png";
 
-            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\jfif3.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample Data\jfif3.pdf"))
             {
                 PdfDrawOptions options = PdfDrawOptions.CreateZoom(400);
                 pdf.Pages[0].Save(pathToImage, options);

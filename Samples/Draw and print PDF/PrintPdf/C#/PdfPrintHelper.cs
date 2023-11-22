@@ -8,59 +8,55 @@ namespace BitMiracle.Docotic.Pdf.Samples
     {
         public static DialogResult ShowPrintDialog(PdfDocument pdf, PrintSize printSize)
         {
-            using (var printDialog = new PrintDialog())
+            using var printDialog = new PrintDialog
             {
-                printDialog.AllowSomePages = true;
-                printDialog.AllowCurrentPage = true;
-                printDialog.AllowSelection = true;
+                AllowSomePages = true,
+                AllowCurrentPage = true,
+                AllowSelection = true,
+            };
 
-                printDialog.PrinterSettings.MinimumPage = 1;
-                printDialog.PrinterSettings.MaximumPage = pdf.PageCount;
-                printDialog.PrinterSettings.FromPage = printDialog.PrinterSettings.MinimumPage;
-                printDialog.PrinterSettings.ToPage = printDialog.PrinterSettings.MaximumPage;
+            printDialog.PrinterSettings.MinimumPage = 1;
+            printDialog.PrinterSettings.MaximumPage = pdf.PageCount;
+            printDialog.PrinterSettings.FromPage = printDialog.PrinterSettings.MinimumPage;
+            printDialog.PrinterSettings.ToPage = printDialog.PrinterSettings.MaximumPage;
 
-                var result = printDialog.ShowDialog();
-                if (result == DialogResult.OK)
-                {
-                    using (var printDocument = new PdfPrintDocument(pdf, printSize))
-                        printDocument.Print(printDialog.PrinterSettings);
-                }
-
-                return result;
+            var result = printDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                using var printDocument = new PdfPrintDocument(pdf, printSize);
+                printDocument.Print(printDialog.PrinterSettings);
             }
+
+            return result;
         }
 
         public static DialogResult ShowPrintPreview(PdfDocument pdf, PrintSize printSize)
         {
-            using (var previewDialog = new PrintPreviewDialog())
-            {
-                using (var printDocument = new PdfPrintDocument(pdf, printSize))
-                {
-                    previewDialog.Document = printDocument.PrintDocument;
+            using var previewDialog = new PrintPreviewDialog();
+            using var printDocument = new PdfPrintDocument(pdf, printSize);
+            previewDialog.Document = printDocument.PrintDocument;
 
-                    // By default the print button sends the preview to the default printer
-                    // The following method replaces the default button with the custom button.
-                    // The custom button opens print dialog.
-                    setupPrintButton(previewDialog, pdf, printSize);
+            // By default the print button sends the preview to the default printer
+            // The following method replaces the default button with the custom button.
+            // The custom button opens print dialog.
+            setupPrintButton(previewDialog, pdf, printSize);
 
-                    // Remove the following line if you do not want preview maximized
-                    previewDialog.WindowState = FormWindowState.Maximized;
+            // Remove the following line if you do not want preview maximized
+            previewDialog.WindowState = FormWindowState.Maximized;
 
-                    return previewDialog.ShowDialog();
-                }
-            }
+            return previewDialog.ShowDialog();
         }
 
         private static void setupPrintButton(PrintPreviewDialog previewDialog, PdfDocument pdf, PrintSize printSize)
         {
-            ToolStripButton openPrintDialog = new ToolStripButton
+            var openPrintDialog = new ToolStripButton
             {
                 // reuse the image of the default print button
                 Image = ((ToolStrip)previewDialog.Controls[1]).ImageList.Images[0],
                 DisplayStyle = ToolStripItemDisplayStyle.Image
             };
 
-            openPrintDialog.Click += new EventHandler(delegate (object sender, EventArgs e)
+            openPrintDialog.Click += new EventHandler((sender, e) =>
             {
                 if (ShowPrintDialog(pdf, printSize) == DialogResult.OK)
                     previewDialog.Close();

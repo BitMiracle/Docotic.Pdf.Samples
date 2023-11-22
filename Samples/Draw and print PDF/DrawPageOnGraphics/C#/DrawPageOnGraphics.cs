@@ -18,22 +18,20 @@ namespace BitMiracle.Docotic.Pdf.Samples
             
             string pathToImage = "DrawPageOnGraphics.png";
 
-            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\jfif3.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample Data\jfif3.pdf"))
             {
                 const float TargetResolution = 300;
 
                 PdfPage page = pdf.Pages[0];
                 double scaleFactor = TargetResolution / page.Resolution;
 
-                using (Bitmap bitmap = new Bitmap((int)(page.Width * scaleFactor), (int)(page.Height * scaleFactor)))
-                {
-                    bitmap.SetResolution(TargetResolution, TargetResolution);
+                using var bitmap = new Bitmap((int)(page.Width * scaleFactor), (int)(page.Height * scaleFactor));
+                bitmap.SetResolution(TargetResolution, TargetResolution);
 
-                    using (Graphics gr = Graphics.FromImage(bitmap))
-                        page.Draw(gr);
+                using Graphics gr = Graphics.FromImage(bitmap);
+                page.Draw(gr);
 
-                    bitmap.Save(pathToImage);
-                }
+                bitmap.Save(pathToImage);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");

@@ -29,20 +29,18 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private void processExistingPdfDocument(Func<PdfDocument, PrintSize, DialogResult> action)
         {
-            using (OpenFileDialog dlg = new OpenFileDialog())
+            using var dlg = new OpenFileDialog();
+            dlg.Filter = "PDF files (*.pdf)|*.pdf";
+
+            if (dlg.ShowDialog() == DialogResult.OK)
             {
-                dlg.Filter = "PDF files (*.pdf)|*.pdf";
+                // NOTE:
+                // When used in trial mode, the library imposes some restrictions.
+                // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
+                // for more information.
 
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    // NOTE: 
-                    // When used in trial mode, the library imposes some restrictions.
-                    // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
-                    // for more information.
-
-                    using (PdfDocument pdf = new PdfDocument(dlg.FileName))
-                        action(pdf, getPrintSize());
-                }
+                using var pdf = new PdfDocument(dlg.FileName);
+                action(pdf, getPrintSize());
             }
         }
     }

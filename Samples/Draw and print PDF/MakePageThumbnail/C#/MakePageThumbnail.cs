@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             
             string pathToImage = "MakePageThumbnail.png";
 
-            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\jfif3.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample Data\jfif3.pdf"))
             {
                 PdfDrawOptions options = PdfDrawOptions.CreateFitSize(new PdfSize(200, 200), false);
                 options.BackgroundColor = new PdfGrayColor(100);

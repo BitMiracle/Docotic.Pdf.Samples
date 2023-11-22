@@ -15,7 +15,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             string outputDocumentPath = "SaveAsBitonalTiff.tiff";
             string outputPagePath = "SaveAsBitonalTiff_page0.tiff";
 
-            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\jfif3.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample Data\jfif3.pdf"))
             {
                 PdfDrawOptions options = PdfDrawOptions.Create();
                 options.BackgroundColor = new PdfRgbColor(255, 255, 255);

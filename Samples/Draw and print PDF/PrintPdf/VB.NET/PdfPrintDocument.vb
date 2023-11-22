@@ -18,7 +18,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         Private m_lastPageIndex As Integer
         Private m_printableAreaInPoints As RectangleF
 
-        Public Sub New(ByVal pdf As PdfDocument, ByVal printSize As PrintSize)
+        Public Sub New(pdf As PdfDocument, printSize As PrintSize)
             If pdf Is Nothing Then Throw New ArgumentNullException("pdf")
             m_pdf = pdf
             m_printSize = printSize
@@ -39,13 +39,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             m_printDocument.Dispose()
         End Sub
 
-        Public Sub Print(ByVal settings As PrinterSettings)
+        Public Sub Print(settings As PrinterSettings)
             If settings Is Nothing Then Throw New ArgumentNullException("settings")
             m_printDocument.PrinterSettings = settings
             m_printDocument.Print()
         End Sub
 
-        Private Sub printDocument_BeginPrint(ByVal sender As Object, ByVal e As PrintEventArgs)
+        Private Sub printDocument_BeginPrint(sender As Object, e As PrintEventArgs)
             Dim printDocument = CType(sender, PrintDocument)
             printDocument.OriginAtMargins = False
 
@@ -67,7 +67,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End Select
         End Sub
 
-        Private Sub printDocument_QueryPageSettings(ByVal sender As Object, ByVal e As QueryPageSettingsEventArgs)
+        Private Sub printDocument_QueryPageSettings(sender As Object, e As QueryPageSettingsEventArgs)
             Dim page = m_pdf.Pages(m_pageIndex)
 
             ' Auto-detect portrait/landscape orientation.
@@ -78,8 +78,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             m_printableAreaInPoints = getPrintableAreaInPoints(e.PageSettings)
         End Sub
 
-        Private Sub printDocument_PrintPage(ByVal sender As Object, ByVal e As PrintPageEventArgs)
+        Private Sub printDocument_PrintPage(sender As Object, e As PrintPageEventArgs)
             Dim gr = e.Graphics
+            If gr Is Nothing Then Return
 
             ' Work in points to have consistent units for all contexts
             ' 1. Printer
@@ -115,16 +116,16 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             e.HasMorePages = m_pageIndex <= m_lastPageIndex
         End Sub
 
-        Private Sub printDocument_EndPrint(ByVal sender As Object, ByVal e As PrintEventArgs)
+        Private Sub printDocument_EndPrint(sender As Object, e As PrintEventArgs)
         End Sub
 
-        Private Sub centerContentInPrintableArea(ByVal gr As Graphics, ByVal contentSizeInPoints As PdfSize, ByVal scaleFactor As Single)
+        Private Sub centerContentInPrintableArea(gr As Graphics, contentSizeInPoints As PdfSize, scaleFactor As Single)
             Dim xDiff As Single = CSng(m_printableAreaInPoints.Width - contentSizeInPoints.Width * scaleFactor)
             Dim yDiff As Single = CSng(m_printableAreaInPoints.Height - contentSizeInPoints.Height * scaleFactor)
             If Math.Abs(xDiff) > 0 OrElse Math.Abs(yDiff) > 0 Then gr.TranslateTransform(xDiff / 2, yDiff / 2)
         End Sub
 
-        Private Shared Function getPageBox(ByVal page As PdfPage) As PdfBox
+        Private Shared Function getPageBox(page As PdfPage) As PdfBox
             ' Emit Adobe Reader behavior - prefer CropBox, but use MediaBox bounds when
             ' some CropBox bound Is out of MediaBox area.
             Dim mediaBox = page.MediaBox
@@ -145,7 +146,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Return New PdfBox(left, bottom, right, top)
         End Function
 
-        Private Shared Function getPageSizeInPoints(ByVal page As PdfPage) As PdfSize
+        Private Shared Function getPageSizeInPoints(page As PdfPage) As PdfSize
             Dim pageArea = getPageBox(page)
             Dim userUnit = page.UserUnit
             If page.Rotation = PdfRotation.Rotate90 OrElse page.Rotation = PdfRotation.Rotate270 Then
@@ -155,7 +156,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Return New PdfSize(pageArea.Width * userUnit, pageArea.Height * userUnit)
         End Function
 
-        Private Shared Function getPrintableAreaInPoints(ByVal pageSettings As PageSettings) As RectangleF
+        Private Shared Function getPrintableAreaInPoints(pageSettings As PageSettings) As RectangleF
             Dim printableArea = pageSettings.PrintableArea
 
             If pageSettings.Landscape Then
