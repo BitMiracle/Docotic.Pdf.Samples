@@ -13,7 +13,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // for more information.
 
             var pathToFile = "ColorProfiles.pdf";
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 PdfCanvas canvas = pdf.Pages[0].Canvas;
 

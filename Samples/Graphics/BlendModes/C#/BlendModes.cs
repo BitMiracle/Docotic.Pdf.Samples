@@ -14,14 +14,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "BlendModes.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 PdfCanvas canvas = pdf.Pages[0].Canvas;
 
-                PdfPoint location = new PdfPoint(50, 80);
-                PdfSize size = new PdfSize(50, 50);
+                var location = new PdfPoint(50, 80);
+                var size = new PdfSize(50, 50);
 
-                PdfBlendMode[] modes = new PdfBlendMode[] { PdfBlendMode.Hue, PdfBlendMode.Lighten, PdfBlendMode.Darken };
+                var modes = new PdfBlendMode[] { PdfBlendMode.Hue, PdfBlendMode.Lighten, PdfBlendMode.Darken };
                 for (int i = 0; i < modes.Length; ++i)
                 {
                     if (i != 0)
@@ -37,7 +37,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                     canvas.BlendMode = modes[i];
                     canvas.Brush.Color = new PdfRgbColor(125, 125, 255);
-                    PdfRectangle secondRect = new PdfRectangle(location.X + 15, location.Y + 15, size.Width, size.Height);
+                    var secondRect = new PdfRectangle(location.X + 15, location.Y + 15, size.Width, size.Height);
                     canvas.DrawRectangle(secondRect, 0, PdfDrawMode.Fill);
                 }
 

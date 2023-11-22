@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "Patterns.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 PdfCanvas canvas = pdf.Pages[0].Canvas;
                 PdfFont helvetica = pdf.AddFont(PdfBuiltInFont.HelveticaBoldOblique, false, false);
@@ -57,7 +57,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
         private static void fill(PdfTilingPattern pattern)
         {
             PdfCanvas canvas = pattern.Canvas;
-            PdfColor red = new PdfRgbColor(255, 0, 0);
+            var red = new PdfRgbColor(255, 0, 0);
             canvas.Brush.Color = red;
             canvas.Pen.Color = red;
             canvas.AppendCircle(new PdfPoint(2, 2), 2);

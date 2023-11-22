@@ -14,11 +14,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "Transparency.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 PdfCanvas canvas = pdf.Pages[0].Canvas;
 
-                PdfRectangle rect = new PdfRectangle(50, 50, 50, 50);
+                var rect = new PdfRectangle(50, 50, 50, 50);
 
                 canvas.Brush.Opacity = 100;
                 canvas.Pen.Opacity = 100;

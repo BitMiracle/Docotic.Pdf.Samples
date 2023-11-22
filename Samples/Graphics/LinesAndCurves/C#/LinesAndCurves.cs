@@ -14,12 +14,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "LinesAndCurves.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 PdfCanvas canvas = pdf.Pages[0].Canvas;
 
                 //draw star
-                PdfPoint startPosition = new PdfPoint(30, 80);
+                var startPosition = new PdfPoint(30, 80);
                 canvas.CurrentPosition = startPosition;
                 canvas.DrawLineTo(110, 80);
                 canvas.DrawLineTo(45, 110);
