@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             
             const string pathToFile = "FlattenFormFields.pdf";
 
-            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\form.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample Data\form.pdf"))
             {
                 pdf.FlattenControls();
 

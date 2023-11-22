@@ -24,10 +24,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // For testing purposes you can use the same keystore for all signers.
             var signers = new Credentials[]
             {
-                new Credentials("Frida Palacios", @"keystore.p12", "password"), // request author
-                new Credentials("Dax Yu", @"keystore.p12", "password"), // registered by
-                new Credentials("Lana Conway", @"keystore.p12", "password"), // approved by
-                new Credentials("Paulina Mann", @"keystore.p12", "password"), // executed by
+                new("Frida Palacios", @"keystore.p12", "password"), // request author
+                new("Dax Yu", @"keystore.p12", "password"), // registered by
+                new("Lana Conway", @"keystore.p12", "password"), // approved by
+                new("Paulina Mann", @"keystore.p12", "password"), // executed by
             };
 
             // Start by filling in the requester name. Then sign as an author, disallowing

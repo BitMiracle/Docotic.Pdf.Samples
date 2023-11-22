@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "Comboboxes.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 PdfPage page = pdf.Pages[0];
 

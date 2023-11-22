@@ -8,7 +8,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
     {
         public static void Main()
         {
-            StringBuilder validationJavascript = new StringBuilder();
+            var validationJavascript = new StringBuilder();
             validationJavascript.AppendLine("function validateNumeric(event) {");
             validationJavascript.AppendLine("    var validCharacters = \"0123456789\";");
             validationJavascript.AppendLine("    for (var i = 0; i < event.change.length; i++) {");
@@ -27,7 +27,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "NumericTextField.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 pdf.SharedScripts.Add(
                     pdf.CreateJavaScriptAction(validationJavascript.ToString())

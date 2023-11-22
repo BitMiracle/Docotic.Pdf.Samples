@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "ImportFdfData.pdf";
 
-            using (PdfDocument pdf = new PdfDocument(@"..\Sample data\form.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample data\form.pdf"))
             {
                 pdf.ImportFdf(@"..\Sample data\form.fdf");
 

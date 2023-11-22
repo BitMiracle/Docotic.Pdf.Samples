@@ -14,14 +14,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
             
             string pathToFile = "TextMarkupAnnotations.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 PdfPage page = pdf.Pages[0];
                 PdfCanvas canvas = page.Canvas;
 
                 // Draw text on the page
                 const string Text = "Highlighted text";
-                PdfPoint textPosition = new PdfPoint(10, 50);
+                var textPosition = new PdfPoint(10, 50);
                 canvas.FontSize = 30;
                 canvas.DrawString(textPosition, Text);
 

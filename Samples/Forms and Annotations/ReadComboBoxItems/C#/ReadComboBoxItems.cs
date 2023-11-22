@@ -11,13 +11,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            using (PdfDocument pdf = new PdfDocument(@"..\Sample data\ComboBoxes.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample data\ComboBoxes.pdf"))
             {
-                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                var sb = new System.Text.StringBuilder();
                 foreach (PdfWidget widget in pdf.Pages[0].Widgets)
                 {
-                    PdfComboBox comboBox = widget as PdfComboBox;
-                    if (comboBox != null)
+                    if (widget is PdfComboBox comboBox)
                     {
                         sb.Append("Combobox '");
                         sb.Append(comboBox.Name);

@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             var removeFromPageOutputName = "RemoveWidgetFromPage.pdf";
             var removeAllOutputName = "RemoveWidgets.pdf";
-            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\form.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample Data\form.pdf"))
             {
                 pdf.Pages[0].Widgets.RemoveAt(1);
                 pdf.Save(removeFromPageOutputName);

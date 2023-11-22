@@ -14,12 +14,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             const string pathToFile = "FindControlByName.pdf";
 
-            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\form.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample Data\form.pdf"))
             {
-                PdfTextBox emailTextBox = pdf.GetControl("email") as PdfTextBox;
-                Debug.Assert(emailTextBox != null);
-
-                emailTextBox.Text = "support@bitmiracle.com";
+                if (pdf.GetControl("email") is PdfTextBox emailTextBox)
+                    emailTextBox.Text = "support@bitmiracle.com";
 
                 pdf.Save(pathToFile);
             }

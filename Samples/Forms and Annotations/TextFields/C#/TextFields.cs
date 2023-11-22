@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "TextFields.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 PdfPage page = pdf.Pages[0];
                 PdfTextBox textBox = page.AddTextBox(10, 50, 100, 30);

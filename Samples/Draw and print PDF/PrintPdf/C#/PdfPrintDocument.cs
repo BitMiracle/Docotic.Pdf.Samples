@@ -12,7 +12,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
         private readonly PrintDocument m_printDocument;
         private readonly PrintSize m_printSize;
 
-        private PdfDocument m_pdf;
+        private readonly PdfDocument m_pdf;
 
         private PrintAction m_printAction;
         private int m_pageIndex;
@@ -96,7 +96,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private void printDocument_PrintPage(object sender, PrintPageEventArgs e)
         {
-            Graphics? gr = e.Graphics;
+            var gr = e.Graphics;
             if (gr is null)
                 return;
 

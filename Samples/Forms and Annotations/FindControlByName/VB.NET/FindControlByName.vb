@@ -12,9 +12,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Using pdf As New PdfDocument("..\Sample Data\form.pdf")
                 Dim emailTextBox As PdfTextBox = TryCast(pdf.GetControl("email"), PdfTextBox)
-                Debug.Assert(emailTextBox IsNot Nothing)
-
-                emailTextBox.Text = "support@bitmiracle.com"
+                If emailTextBox IsNot Nothing Then
+                    emailTextBox.Text = "support@bitmiracle.com"
+                End If
 
                 pdf.Save(pathToFile)
             End Using

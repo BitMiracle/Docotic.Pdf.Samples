@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             
             string pathToFile = "Listboxes.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 PdfPage page = pdf.Pages[0];
 
@@ -26,9 +26,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                 PdfListItem[] items =
                 {
-                    new PdfListItem("One", "1"),
-                    new PdfListItem("Two", "2"),
-                    new PdfListItem("Three", "3"),
+                    new("One", "1"),
+                    new("Two", "2"),
+                    new("Three", "3"),
                 };
                 PdfListBox listBox2 = page.AddListBox(10, 140, 120, 80);
                 listBox2.AddItems(items);

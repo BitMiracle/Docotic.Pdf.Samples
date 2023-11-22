@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "FillForm.pdf";
 
-            using (PdfDocument pdf = new PdfDocument(@"..\Sample data\form.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample data\form.pdf"))
             {
                 foreach (PdfControl control in pdf.GetControls())
                 {

@@ -13,7 +13,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf As New PdfDocument()
                 Dim page As PdfPage = pdf.Pages(0)
 
-                Dim bounds As PdfRectangle = New PdfRectangle(10, 50, 200, 100)
+                Dim bounds As New PdfRectangle(10, 50, 200, 100)
                 Dim sound As PdfFileSpecification = pdf.CreateFileAttachment("..\Sample Data\sound.mp3")
                 Dim annot As PdfRichMediaAnnotation = page.AddRichMediaAnnotation(bounds, sound, PdfRichMediaContentType.Sound)
                 annot.Activation.ActivationMode = PdfRichMediaActivationMode.OnPageOpen
