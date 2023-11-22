@@ -8,7 +8,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
-            Using pdf As New PdfDocument("Sample data/ComboBoxes.pdf")
+            Using pdf As New PdfDocument("..\Sample data\ComboBoxes.pdf")
 
                 Dim sb As New System.Text.StringBuilder()
                 For Each widget As PdfWidget In pdf.Pages(0).Widgets

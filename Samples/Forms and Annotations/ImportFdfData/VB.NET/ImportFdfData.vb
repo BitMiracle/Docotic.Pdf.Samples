@@ -10,8 +10,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Dim pathToFile As String = "ImportFdfData.pdf"
 
-            Using pdf As New PdfDocument("Sample data/form.pdf")
-                pdf.ImportFdf("Sample data/form.fdf")
+            Using pdf As New PdfDocument("..\Sample data\form.pdf")
+                pdf.ImportFdf("..\Sample data\form.fdf")
 
                 pdf.Save(pathToFile)
             End Using

@@ -10,7 +10,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Dim pathToFile As String = "FillForm.pdf"
 
-            Using pdf As New PdfDocument("Sample data/form.pdf")
+            Using pdf As New PdfDocument("..\Sample data\form.pdf")
                 For Each control As PdfControl In pdf.GetControls
                     Select Case control.Name
                         Case "login"
