@@ -21,7 +21,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
         private static void useFitHeight()
         {
             var outputName = "FitHeight.pdf";
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 pdf.InitialView = pdf.CreateView(0);
                 pdf.InitialView.SetFitHeight();
@@ -35,7 +35,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
         private static void usePercentZoom()
         {
             var outputName = "Percent.pdf";
-            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\form.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample Data\form.pdf"))
             {
                 pdf.InitialView = pdf.CreateView(0);
                 pdf.InitialView.SetZoom(40);

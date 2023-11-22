@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "ViewerPreferences.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 pdf.ViewerPreferences.CenterWindow = true;
                 pdf.ViewerPreferences.FitWindow = true;

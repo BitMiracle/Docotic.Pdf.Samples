@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "PageLayout.pdf";
 
-            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\jfif3.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample Data\jfif3.pdf"))
             {
                 pdf.PageLayout = PdfPageLayout.TwoColumnLeft;
 
