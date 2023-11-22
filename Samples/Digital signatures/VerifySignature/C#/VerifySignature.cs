@@ -14,56 +14,55 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // for more information.
 
             var sb = new StringBuilder();
-            using (var pdf = new PdfDocument(@"..\Sample Data\signed.pdf"))
+            using var pdf = new PdfDocument(@"..\Sample Data\signed.pdf");
+
+            PdfControl? field = pdf.GetControls().FirstOrDefault(c => c.Type == PdfWidgetType.Signature);
+            if (field is null)
             {
-                PdfControl? field = pdf.GetControls().FirstOrDefault(c => c.Type == PdfWidgetType.Signature);
-                if (field is null)
-                {
-                    Console.WriteLine("Document does not contain signature fields");
-                    return;
-                }
-
-                PdfSignature? signature = ((PdfSignatureField)field).Signature;
-                if (signature is null)
-                {
-                    Console.WriteLine("Signature field does not have an associated signature");
-                    return;
-                }
-
-                PdfSignatureContents contents = signature.Contents;
-                sb.AppendFormat("Signed part is intact: {0}\n", contents.VerifyDigest());
-
-                DateTime signingTime = signature.SigningTime ?? DateTime.MinValue;
-                sb.AppendFormat("Signed on: {0}\n", signingTime.ToShortDateString());
-
-                var timestampToken = contents.GetTimestampToken();
-                if (timestampToken != null)
-                {
-                    sb.AppendFormat("Embedded timestamp: {0}\n", timestampToken.GenerationTime);
-                    if (timestampToken.TimestampAuthority != null)
-                        sb.AppendFormat("Timestamp authority: {0}\n", timestampToken.TimestampAuthority.Name);
-                    sb.AppendFormat("Timestamp is intact: {0}\n\n", contents.VerifyTimestamp());
-                }
-                else
-                {
-                    sb.AppendLine();
-                }
-
-                if (contents.CheckHasEmbeddedOcsp())
-                {
-                    sb.AppendLine("Signature has OCSP embedded.");
-                    checkRevocation(signature, sb, PdfCertificateRevocationCheckMode.EmbeddedOcsp);
-                }
-
-                if (contents.CheckHasEmbeddedCrl())
-                {
-                    sb.AppendLine("Signature has CRL embedded.");
-                    checkRevocation(signature, sb, PdfCertificateRevocationCheckMode.EmbeddedCrl);
-                }
-
-                checkRevocation(signature, sb, PdfCertificateRevocationCheckMode.OnlineOcsp);
-                checkRevocation(signature, sb, PdfCertificateRevocationCheckMode.OnlineCrl);
+                Console.WriteLine("Document does not contain signature fields");
+                return;
             }
+
+            PdfSignature? signature = ((PdfSignatureField)field).Signature;
+            if (signature is null)
+            {
+                Console.WriteLine("Signature field does not have an associated signature");
+                return;
+            }
+
+            PdfSignatureContents contents = signature.Contents;
+            sb.AppendFormat("Signed part is intact: {0}\n", contents.VerifyDigest());
+
+            DateTime signingTime = signature.SigningTime ?? DateTime.MinValue;
+            sb.AppendFormat("Signed on: {0}\n", signingTime.ToShortDateString());
+
+            var timestampToken = contents.GetTimestampToken();
+            if (timestampToken != null)
+            {
+                sb.AppendFormat("Embedded timestamp: {0}\n", timestampToken.GenerationTime);
+                if (timestampToken.TimestampAuthority != null)
+                    sb.AppendFormat("Timestamp authority: {0}\n", timestampToken.TimestampAuthority.Name);
+                sb.AppendFormat("Timestamp is intact: {0}\n\n", contents.VerifyTimestamp());
+            }
+            else
+            {
+                sb.AppendLine();
+            }
+
+            if (contents.CheckHasEmbeddedOcsp())
+            {
+                sb.AppendLine("Signature has OCSP embedded.");
+                checkRevocation(signature, sb, PdfCertificateRevocationCheckMode.EmbeddedOcsp);
+            }
+
+            if (contents.CheckHasEmbeddedCrl())
+            {
+                sb.AppendLine("Signature has CRL embedded.");
+                checkRevocation(signature, sb, PdfCertificateRevocationCheckMode.EmbeddedCrl);
+            }
+
+            checkRevocation(signature, sb, PdfCertificateRevocationCheckMode.OnlineOcsp);
+            checkRevocation(signature, sb, PdfCertificateRevocationCheckMode.OnlineCrl);
 
             Console.WriteLine(sb.ToString());
         }

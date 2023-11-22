@@ -12,22 +12,20 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            using (var pdf = new PdfDocument(@"..\Sample Data\Attachments.pdf"))
+            using var pdf = new PdfDocument(@"..\Sample Data\Attachments.pdf");
+            PdfFileSpecification? spec = pdf.SharedAttachments["File Attachment testing.doc"];
+            if (spec != null && spec.Contents != null)
             {
-                PdfFileSpecification? spec = pdf.SharedAttachments["File Attachment testing.doc"];
-                if (spec != null && spec.Contents != null)
-                {
-                    const string pathToFile = "attachment.doc";
-                    spec.Contents.Save(pathToFile);
+                const string pathToFile = "attachment.doc";
+                spec.Contents.Save(pathToFile);
 
-                    Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+                Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
 
-                    Process.Start(new ProcessStartInfo(pathToFile) { UseShellExecute = true });
-                }
-                else
-                {
-                    Console.WriteLine($"Can't save the shared attachment");
-                }
+                Process.Start(new ProcessStartInfo(pathToFile) { UseShellExecute = true });
+            }
+            else
+            {
+                Console.WriteLine($"Can't save the shared attachment");
             }
         }
     }

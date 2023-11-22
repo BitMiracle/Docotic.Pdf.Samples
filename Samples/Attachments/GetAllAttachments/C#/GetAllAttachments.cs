@@ -12,30 +12,28 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            using (var pdf = new PdfDocument(@"..\Sample Data\Attachments.pdf"))
+            using var pdf = new PdfDocument(@"..\Sample Data\Attachments.pdf");
+            var attachmentNames = new StringBuilder();
+
+            // collect names of files attached to the document
+            foreach (PdfFileSpecification spec in pdf.SharedAttachments)
+                attachmentNames.AppendLine(spec.Specification);
+
+            // collect names of files used in file attachment annotations
+            foreach (PdfPage page in pdf.Pages)
             {
-                var attachmentNames = new StringBuilder();
-
-                // collect names of files attached to the document
-                foreach (PdfFileSpecification spec in pdf.SharedAttachments)
-                    attachmentNames.AppendLine(spec.Specification);
-
-                // collect names of files used in file attachment annotations
-                foreach (PdfPage page in pdf.Pages)
+                foreach (PdfWidget widget in page.Widgets)
                 {
-                    foreach (PdfWidget widget in page.Widgets)
-                    {
-                        if (widget.Type != PdfWidgetType.FileAttachment)
-                            continue;
+                    if (widget.Type != PdfWidgetType.FileAttachment)
+                        continue;
 
-                        PdfFileAttachmentAnnotation fileAnnot = (PdfFileAttachmentAnnotation)widget;
-                        attachmentNames.AppendLine(fileAnnot.File?.Specification);
-                    }
+                    PdfFileAttachmentAnnotation fileAnnot = (PdfFileAttachmentAnnotation)widget;
+                    attachmentNames.AppendLine(fileAnnot.File?.Specification);
                 }
-
-                Console.WriteLine("Attachments List:");
-                Console.WriteLine(attachmentNames.ToString());
             }
+
+            Console.WriteLine("Attachments List:");
+            Console.WriteLine(attachmentNames.ToString());
         }
     }
 }
