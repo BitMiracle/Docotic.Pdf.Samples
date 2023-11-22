@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             
             string pathToFile = "RemoveXObjectsWatermarks.pdf";
 
-            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\DocumentWithWatermark.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample Data\DocumentWithWatermark.pdf"))
             {
                 foreach (PdfPage page in pdf.Pages)
                 {

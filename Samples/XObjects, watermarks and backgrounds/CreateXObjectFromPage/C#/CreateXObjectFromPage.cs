@@ -14,20 +14,18 @@ namespace BitMiracle.Docotic.Pdf.Samples
             
             string pathToFile = "CreateXObjectFromPage.pdf";
 
-            using (PdfDocument other = new PdfDocument(@"..\Sample Data\jfif3.pdf"))
+            using (var other = new PdfDocument(@"..\Sample Data\jfif3.pdf"))
             {
-                using (PdfDocument pdf = new PdfDocument())
-                {
-                    PdfXObject firstXObject = pdf.CreateXObject(other.Pages[0]);
-                    PdfXObject secondXObject = pdf.CreateXObject(other.Pages[1]);
+                using var pdf = new PdfDocument();
+                PdfXObject firstXObject = pdf.CreateXObject(other.Pages[0]);
+                PdfXObject secondXObject = pdf.CreateXObject(other.Pages[1]);
 
-                    PdfPage page = pdf.Pages[0];
-                    double halfOfPage = page.Width / 2;
-                    pdf.Pages[0].Canvas.DrawXObject(firstXObject, 0, 0, halfOfPage, 400, 0);
-                    pdf.Pages[0].Canvas.DrawXObject(secondXObject, halfOfPage, 0, halfOfPage, 400, 0);
+                PdfPage page = pdf.Pages[0];
+                double halfOfPage = page.Width / 2;
+                pdf.Pages[0].Canvas.DrawXObject(firstXObject, 0, 0, halfOfPage, 400, 0);
+                pdf.Pages[0].Canvas.DrawXObject(secondXObject, halfOfPage, 0, halfOfPage, 400, 0);
 
-                    pdf.Save(pathToFile);
-                }
+                pdf.Save(pathToFile);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
