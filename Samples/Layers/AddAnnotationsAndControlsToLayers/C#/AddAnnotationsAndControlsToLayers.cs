@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             
             string pathToFile = "AddAnnotationsAndControlsToLayers.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 pdf.PageMode = PdfPageMode.UseOC;
 
