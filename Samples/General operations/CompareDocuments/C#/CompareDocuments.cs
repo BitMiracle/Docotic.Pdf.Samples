@@ -13,19 +13,19 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // for more information.
 
             const string originalFile = @"..\Sample Data\Link.pdf";
-            using (PdfDocument first = new PdfDocument(originalFile))
+            using (var first = new PdfDocument(originalFile))
                 first.Save("first.pdf");
 
-            using (PdfDocument second = new PdfDocument(originalFile))
+            using (var second = new PdfDocument(originalFile))
                 second.Save("second.pdf");
 
-            using (PdfDocument third = new PdfDocument(originalFile))
+            using (var third = new PdfDocument(originalFile))
             {
                 third.Pages[0].Canvas.DrawString("Hello");
                 third.Save("third.pdf");
             }
 
-            StringBuilder message = new StringBuilder();
+            var message = new StringBuilder();
             bool equals = PdfDocument.DocumentsAreEqual("first.pdf", "second.pdf");
             message.AppendLine("first.pdf equals to second.pdf?\r\n" + (equals ? "Yes" : "No"));
 

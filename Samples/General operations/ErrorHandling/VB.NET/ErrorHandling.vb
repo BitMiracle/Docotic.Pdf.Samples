@@ -18,7 +18,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     ' define glyphs for Russian characters. So, we expect that a PdfException will be thrown.
                     page.Canvas.DrawString(10, 50, "Привет, мир!")
                 Catch ex As CannotShowTextException
-                    page.Canvas.Font = pdf.AddFont("Arial")
+                    Dim arial = pdf.AddFont("Arial")
+                    If arial Is Nothing Then
+                        Console.WriteLine("Cannot use Arial font")
+                        Return
+                    End If
+
+                    page.Canvas.Font = arial
                     page.Canvas.DrawString(10, 50, "Expected exception occurred:")
                     page.Canvas.DrawString(10, 65, ex.Message)
                 End Try

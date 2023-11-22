@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "OpenDocument.pdf";
 
-            using (PdfDocument pdf = new PdfDocument(@"..\Sample data\jfif3.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample data\jfif3.pdf"))
             {
                 PdfCanvas canvas = pdf.Pages[0].Canvas;
                 canvas.Font = pdf.AddFont(PdfBuiltInFont.Helvetica);

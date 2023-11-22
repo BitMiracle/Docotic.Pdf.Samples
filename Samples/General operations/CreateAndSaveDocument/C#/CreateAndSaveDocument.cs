@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "CreateAndSaveDocument.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 // let's draw "Hello, world" on the first page
                 PdfPage firstPage = pdf.Pages[0];

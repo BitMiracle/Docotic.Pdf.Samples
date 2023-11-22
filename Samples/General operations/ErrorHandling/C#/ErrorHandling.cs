@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "ErrorHandling.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 PdfPage page = pdf.Pages[0];
 
@@ -26,7 +26,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 }
                 catch (CannotShowTextException ex)
                 {
-                    page.Canvas.Font = pdf.AddFont("Arial");
+                    PdfFont? arial = pdf.AddFont("Arial");
+                    if (arial is null)
+                    {
+                        Console.WriteLine("Cannot use Arial font");
+                        return;
+                    }
+
+                    page.Canvas.Font = arial;
                     page.Canvas.DrawString(10, 50, "Expected exception occurred:");
                     page.Canvas.DrawString(10, 65, ex.Message);
                 }

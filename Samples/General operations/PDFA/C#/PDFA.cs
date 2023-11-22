@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "PDFA.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 var saveOptions = new PdfSaveOptions { ProducePdfA = true };
                 pdf.Save(pathToFile, saveOptions);

@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "LinearizeDocument.pdf";
 
-            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\gmail-cheat-sheet.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample Data\gmail-cheat-sheet.pdf"))
             {
                 var saveOptions = new PdfSaveOptions { Linearize = true };
                 pdf.Save(pathToFile, saveOptions);
