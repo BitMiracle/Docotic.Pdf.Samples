@@ -17,18 +17,18 @@ namespace BitMiracle.Docotic.Pdf.Samples
             string documentTextFormattedFile = "Document text with formatting.txt";
             string firstPageTextFile = "First page text.txt";
 
-            using (PdfDocument pdf = new PdfDocument(@"..\Sample data\jfif3.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample data\jfif3.pdf"))
             {
                 // Extract plain text from document
-                using (StreamWriter writer = new StreamWriter(documentTextFile))
+                using (var writer = new StreamWriter(documentTextFile))
                     writer.Write(pdf.GetText());
 
                 // Extract text with formatting from document
-                using (StreamWriter writer = new StreamWriter(documentTextFormattedFile))
+                using (var writer = new StreamWriter(documentTextFormattedFile))
                     writer.Write(pdf.GetTextWithFormatting());
 
                 // Only extract visible plain text from first page
-                using (StreamWriter writer = new StreamWriter(firstPageTextFile))
+                using (var writer = new StreamWriter(firstPageTextFile))
                 {
                     var options = new PdfTextExtractionOptions
                     {

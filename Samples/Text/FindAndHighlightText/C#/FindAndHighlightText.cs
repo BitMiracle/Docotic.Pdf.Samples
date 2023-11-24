@@ -130,7 +130,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 matrix.OffsetX = 0;
                 matrix.OffsetY = 0;
 
-                if (result.TryGetValue(matrix, out List<PdfTextData> matrixChunks))
+                if (result.TryGetValue(matrix, out List<PdfTextData>? matrixChunks))
                     matrixChunks.Add(word);
                 else
                     result[matrix] = new List<PdfTextData> { word };

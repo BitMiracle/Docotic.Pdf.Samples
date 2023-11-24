@@ -22,7 +22,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
             var documentText = new StringBuilder();
             using (var pdf = new PdfDocument(@"..\Sample data\Broken text encoding.pdf"))
             {
-                string location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                string? location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                if (location == null)
+                {
+                    Console.WriteLine("Invalid assembly location");
+                    return;
+                }
+
                 string tessData = Path.Combine(location, @"tessdata");
                 using (var engine = new TesseractEngine(tessData, "eng", EngineMode.LstmOnly))
                 {
@@ -109,53 +115,49 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         positionsPoints[j] = positionsPoints[j - 1] + widthsPoints[j - 1] + rasterizer.CharacterSpacing;
 
                     // Perform OCR
-                    using (Pix img = Pix.LoadFromMemory(charCodeImage.ToArray()))
+                    using Pix img = Pix.LoadFromMemory(charCodeImage.ToArray());
+
+                    // Use SingleChar segmentation mode when the last batch contains a few characters
+                    PageSegMode segMode = batchCodes.Length > 5 ? engine.DefaultPageSegMode : PageSegMode.SingleChar;
+                    using Page recognizedPage = engine.Process(img, segMode);
+                    using ResultIterator iter = recognizedPage.GetIterator();
+
+                    // Map character codes to the recognized text
+                    int lastCharCodeIndex = -1;
+                    const PageIteratorLevel Level = PageIteratorLevel.Symbol;
+                    iter.Begin();
+                    do
                     {
-                        // Use SingleChar segmentation mode when the last batch contains a few characters
-                        PageSegMode segMode = batchCodes.Length > 5 ? engine.DefaultPageSegMode : PageSegMode.SingleChar;
-                        using (Page recognizedPage = engine.Process(img, segMode))
+                        if (iter.TryGetBoundingBox(Level, out Rect bounds))
                         {
-                            using (ResultIterator iter = recognizedPage.GetIterator())
+                            double bestIntersectionWidth = 0;
+                            int bestMatchIndex = -1;
+                            for (int c = lastCharCodeIndex + 1; c < batchCodes.Length; ++c)
                             {
-                                // Map character codes to the recognized text
-                                int lastCharCodeIndex = -1;
-                                const PageIteratorLevel Level = PageIteratorLevel.Symbol;
-                                iter.Begin();
-                                do
+                                double x = pointsToPixels(positionsPoints[c], rasterizer.HorizontalResolution);
+                                double width = pointsToPixels(widthsPoints[c], rasterizer.HorizontalResolution);
+
+                                if (bounds.X2 < x)
+                                    break;
+
+                                if (x + width < bounds.X1)
+                                    continue;
+
+                                double intersection = Math.Min(bounds.X2, x + width) - Math.Max(bounds.X1, x);
+                                if (bestIntersectionWidth < intersection)
                                 {
-                                    if (iter.TryGetBoundingBox(Level, out Rect bounds))
-                                    {
-                                        double bestIntersectionWidth = 0;
-                                        int bestMatchIndex = -1;
-                                        for (int c = lastCharCodeIndex + 1; c < batchCodes.Length; ++c)
-                                        {
-                                            double x = pointsToPixels(positionsPoints[c], rasterizer.HorizontalResolution);
-                                            double width = pointsToPixels(widthsPoints[c], rasterizer.HorizontalResolution);
+                                    bestIntersectionWidth = intersection;
+                                    bestMatchIndex = c;
+                                }
+                            }
 
-                                            if (bounds.X2 < x)
-                                                break;
-
-                                            if (x + width < bounds.X1)
-                                                continue;
-
-                                            double intersection = Math.Min(bounds.X2, x + width) - Math.Max(bounds.X1, x);
-                                            if (bestIntersectionWidth < intersection)
-                                            {
-                                                bestIntersectionWidth = intersection;
-                                                bestMatchIndex = c;
-                                            }
-                                        }
-
-                                        if (bestMatchIndex >= 0)
-                                        {
-                                            recognizedText[batchIndex * BatchSize + bestMatchIndex] = iter.GetText(Level);
-                                            lastCharCodeIndex = bestMatchIndex;
-                                        }
-                                    }
-                                } while (iter.Next(Level));
+                            if (bestMatchIndex >= 0)
+                            {
+                                recognizedText[batchIndex * BatchSize + bestMatchIndex] = iter.GetText(Level);
+                                lastCharCodeIndex = bestMatchIndex;
                             }
                         }
-                    }
+                    } while (iter.Next(Level));
                 }
 
                 ++batchIndex;

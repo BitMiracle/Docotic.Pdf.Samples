@@ -26,10 +26,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Sub
 
         Private Shared Sub highlightPhrases(
-            ByVal pdf As PdfDocument,
-            ByVal textToFind As String,
-            ByVal comparison As StringComparison,
-            ByVal highlightColor As PdfColor
+            pdf As PdfDocument,
+            textToFind As String,
+            comparison As StringComparison,
+            highlightColor As PdfColor
             )
             If String.IsNullOrEmpty(textToFind) Then
                 Throw New ArgumentNullException(NameOf(textToFind))
@@ -50,9 +50,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Sub
 
         Private Shared Iterator Function findPhrases(
-            ByVal page As PdfPage,
-            ByVal wordsToFind As String(),
-            ByVal comparison As StringComparison
+            page As PdfPage,
+            wordsToFind As String(),
+            comparison As StringComparison
             ) As IEnumerable(Of PdfRectangle())
 
             If wordsToFind.Length = 0 Then Return
@@ -108,7 +108,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Function
 
         Private Shared Function groupWordsByTransformations(
-            ByVal page As PdfPage
+            page As PdfPage
             ) As Dictionary(Of PdfMatrix, List(Of PdfTextData))
 
             Dim result = New Dictionary(Of PdfMatrix, List(Of PdfTextData))()
@@ -130,8 +130,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Function
 
         Private Shared Sub sortWords(
-            ByVal words As List(Of PdfTextData),
-            ByVal transformation As PdfMatrix
+            words As List(Of PdfTextData),
+            transformation As PdfMatrix
             )
 
             ' For some transformations we should invert X coordinates during sorting.
@@ -165,7 +165,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             )
         End Sub
 
-        Private Shared Function normalizeScaleFactors(ByVal m As PdfMatrix) As PdfMatrix
+        Private Shared Function normalizeScaleFactors(m As PdfMatrix) As PdfMatrix
             Dim scale As Double = getScaleFactor(m.M11, m.M12, m.M21, m.M22)
 
             ' Round to 1 fractional digit to avoid separation of similar matrices
@@ -189,27 +189,27 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Function
 
         Private Shared Function measureHorizontalDistance(
-            ByVal first As PdfPoint,
-            ByVal second As PdfPoint,
-            ByVal m As PdfMatrix
+            first As PdfPoint,
+            second As PdfPoint,
+            m As PdfMatrix
             ) As Double
 
             Return m.M11 * (first.X - second.X) + m.M21 * (first.Y - second.Y)
         End Function
 
         Private Shared Function measureVerticalDistance(
-            ByVal first As PdfPoint,
-            ByVal second As PdfPoint,
-            ByVal m As PdfMatrix
+            first As PdfPoint,
+            second As PdfPoint,
+            m As PdfMatrix
             ) As Double
 
             Return m.M12 * (first.X - second.X) + m.M22 * (first.Y - second.Y)
         End Function
 
         Private Shared Function transformVector(
-            ByVal m As PdfMatrix,
-            ByVal x As Double,
-            ByVal y As Double
+            m As PdfMatrix,
+            x As Double,
+            y As Double
             ) As PdfPoint
 
             ' Multiply
@@ -220,10 +220,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Function
 
         Private Shared Function getIntersectionBounds(
-            ByVal data As PdfTextData,
-            ByVal text As String,
-            ByVal startIndex As Integer,
-            ByVal length As Integer
+            data As PdfTextData,
+            text As String,
+            startIndex As Integer,
+            length As Integer
             ) As PdfRectangle
 
             If startIndex = 0 AndAlso text.Length = length Then
@@ -252,17 +252,17 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Return union
         End Function
 
-        Private Shared Function containsLtrCharactersOnly(ByVal data As PdfTextData, ByVal textLogical As String) As Boolean
+        Private Shared Function containsLtrCharactersOnly(data As PdfTextData, textLogical As String) As Boolean
             Dim noBidiOptions = New PdfTextConversionOptions With {.UseBidi = False}
             Dim textVisual As String = data.GetText(noBidiOptions)
             Return textLogical = textVisual
         End Function
 
         Private Shared Function matchWord(
-            ByVal text As String,
-            ByVal wordsToFind As String(),
-            ByVal wordIndex As Integer,
-            ByVal comparison As StringComparison
+            text As String,
+            wordsToFind As String(),
+            wordIndex As Integer,
+            comparison As StringComparison
             ) As Boolean
 
             Debug.Assert(wordsToFind.Length > 1)

@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "ExtractTextByWords.pdf";
 
-            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\form.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample Data\form.pdf"))
             {
                 PdfPage page = pdf.Pages[0];
                 foreach (PdfTextData data in page.GetWords())

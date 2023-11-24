@@ -18,6 +18,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Using pdf = New PdfDocument("..\Sample data\Broken text encoding.pdf")
                 Dim location As String = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
+                If location Is Nothing Then
+                    Console.WriteLine("Invalid assembly location")
+                    Return
+                End If
+
                 Dim tessData As String = Path.Combine(location, "tessdata")
 
                 Using engine = New TesseractEngine(tessData, "eng", EngineMode.LstmOnly)
@@ -68,7 +73,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Sub
 
-        Private Shared Function ocrCharacterCodes(ByVal charCodes As List(Of PdfCharacterCode), ByVal engine As TesseractEngine) As String()
+        Private Shared Function ocrCharacterCodes(charCodes As List(Of PdfCharacterCode), engine As TesseractEngine) As String()
             Dim recognizedText As String() = New String(charCodes.Count - 1) {}
 
             Dim rasterizer = New PdfTextRasterizer With {
@@ -111,7 +116,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                                         Dim bestIntersectionWidth As Double = 0
                                         Dim bestMatchIndex As Integer = -1
 
-                                        For c As Integer = lastCharCodeIndex + 1 To batchCodes.Count - 1
+                                        For c As Integer = lastCharCodeIndex + 1 To batchCodes.Length - 1
                                             Dim x As Double = pointsToPixels(positionsPoints(c), rasterizer.HorizontalResolution)
                                             Dim width As Double = pointsToPixels(widthsPoints(c), rasterizer.HorizontalResolution)
 
@@ -143,7 +148,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Return recognizedText
         End Function
 
-        Private Shared Function pointsToPixels(ByVal points As Double, ByVal dpi As Double) As Double
+        Private Shared Function pointsToPixels(points As Double, dpi As Double) As Double
             Return points * dpi / 72
         End Function
     End Class
