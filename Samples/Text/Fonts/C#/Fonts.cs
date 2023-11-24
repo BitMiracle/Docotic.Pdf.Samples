@@ -14,11 +14,17 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "Fonts.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 PdfCanvas canvas = pdf.Pages[0].Canvas;
 
-                PdfFont systemFont = pdf.AddFont("Arial", false, true, false, true);
+                PdfFont? systemFont = pdf.AddFont("Arial", false, true, false, true);
+                if (systemFont is null)
+                {
+                    Console.WriteLine("Cannot add font");
+                    return;
+                }
+
                 canvas.Font = systemFont;
                 canvas.DrawString(10, 50, "Hello, world!");
 

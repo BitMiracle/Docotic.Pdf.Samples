@@ -21,9 +21,20 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 // This font is used to draw all recognized text chunks in PDF.
                 // Make sure that the font defines all glyphs for the target language.
-                PdfFont universalFont = pdf.AddFont("Arial");
+                PdfFont? universalFont = pdf.AddFont("Arial");
+                if (universalFont is null)
+                {
+                    Console.WriteLine("Cannot add Arial font");
+                    return;
+                }
 
                 var location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                if (location == null)
+                {
+                    Console.WriteLine("Invalid assembly location");
+                    return;
+                }
+
                 var tessData = Path.Combine(location, @"tessdata");
                 using (var engine = new TesseractEngine(tessData, "eng", EngineMode.LstmOnly))
                 {
@@ -50,7 +61,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                                 Console.WriteLine($"Possible recognition error: low confidence {word.Confidence} for word '{word.Text}'");
 
                             Rect bounds = word.Bounds;
-                            PdfRectangle pdfBounds = new PdfRectangle(
+                            var pdfBounds = new PdfRectangle(
                                 bounds.X1 * ImageToPdfScaleFactor,
                                 bounds.Y1 * ImageToPdfScaleFactor,
                                 bounds.Width * ImageToPdfScaleFactor,
@@ -87,27 +98,22 @@ namespace BitMiracle.Docotic.Pdf.Samples
             options.VerticalResolution = resolution;
             page.Save(tempFileName, options);
 
-            using (var img = Pix.LoadFromFile(tempFileName))
-            {
-                using (var recognizedPage = engine.Process(img))
-                {
-                    using (ResultIterator iter = recognizedPage.GetIterator())
-                    {
-                        const PageIteratorLevel Level = PageIteratorLevel.Word;
-                        iter.Begin();
-                        do
-                        {
-                            if (iter.TryGetBoundingBox(Level, out Rect bounds))
-                            {
-                                string text = iter.GetText(Level);
-                                float confidence = iter.GetConfidence(Level);
+            using var img = Pix.LoadFromFile(tempFileName);
+            using var recognizedPage = engine.Process(img);
+            using ResultIterator iter = recognizedPage.GetIterator();
 
-                                yield return new RecognizedTextChunk(text, bounds, confidence);
-                            }
-                        } while (iter.Next(Level));
-                    }
+            const PageIteratorLevel Level = PageIteratorLevel.Word;
+            iter.Begin();
+            do
+            {
+                if (iter.TryGetBoundingBox(Level, out Rect bounds))
+                {
+                    string text = iter.GetText(Level);
+                    float confidence = iter.GetConfidence(Level);
+
+                    yield return new RecognizedTextChunk(text, bounds, confidence);
                 }
-            }
+            } while (iter.Next(Level));
         }
 
         private static void tuneFontSize(PdfCanvas canvas, double targetTextWidth, string text)

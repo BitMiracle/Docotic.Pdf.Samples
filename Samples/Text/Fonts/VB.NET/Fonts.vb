@@ -14,6 +14,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim canvas As PdfCanvas = pdf.Pages(0).Canvas
 
                 Dim systemFont As PdfFont = pdf.AddFont("Arial", False, True, False, True)
+                If systemFont Is Nothing Then
+                    Console.WriteLine("Cannot add font")
+                    Return
+                End If
+
                 canvas.Font = systemFont
                 canvas.DrawString(10, 50, "Hello, world!")
 

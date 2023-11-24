@@ -15,6 +15,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim documentText = New StringBuilder()
             Using pdf = New PdfDocument("..\Sample data\Freedman Scora.pdf")
                 Dim location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
+                If location Is Nothing Then
+                    Console.WriteLine("Invalid assembly location")
+                    Return
+                End If
+
                 Dim tessData = Path.Combine(location, "tessdata")
                 Using engine = New TesseractEngine(tessData, "eng", EngineMode.LstmOnly)
                     For i As Integer = 0 To pdf.PageCount - 1

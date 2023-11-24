@@ -15,8 +15,17 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 ' This font Is used to draw all recognized text chunks in PDF.
                 ' Make sure that the font defines all glyphs for the target language.
                 Dim universalFont As PdfFont = pdf.AddFont("Arial")
+                If universalFont Is Nothing Then
+                    Console.WriteLine("Cannot add Arial font")
+                    Return
+                End If
 
                 Dim location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
+                If location Is Nothing Then
+                    Console.WriteLine("Invalid assembly location")
+                    Return
+                End If
+
                 Dim tessData = Path.Combine(location, "tessdata")
                 Using engine = New TesseractEngine(tessData, "eng", EngineMode.LstmOnly)
                     For i As Integer = 0 To pdf.PageCount - 1
@@ -39,7 +48,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                             If word.Confidence < 80 Then Console.WriteLine($"Possible recognition error: low confidence {word.Confidence} for word '{word.Text}'")
 
                             Dim bounds As Rect = word.Bounds
-                            Dim pdfBounds As PdfRectangle = New PdfRectangle(bounds.X1 * ImageToPdfScaleFactor, bounds.Y1 * ImageToPdfScaleFactor, bounds.Width * ImageToPdfScaleFactor, bounds.Height * ImageToPdfScaleFactor)
+                            Dim pdfBounds As New PdfRectangle(bounds.X1 * ImageToPdfScaleFactor, bounds.Y1 * ImageToPdfScaleFactor, bounds.Width * ImageToPdfScaleFactor, bounds.Height * ImageToPdfScaleFactor)
 
                             tuneFontSize(canvas, pdfBounds.Width, word.Text)
 
@@ -60,7 +69,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End Using
         End Sub
 
-        Private Shared Iterator Function recognizeWords(ByVal page As PdfPage, ByVal engine As TesseractEngine, ByVal resolution As Integer, ByVal tempFileName As String) As IEnumerable(Of RecognizedTextChunk)
+        Private Shared Iterator Function recognizeWords(
+            page As PdfPage,
+            engine As TesseractEngine,
+            resolution As Integer,
+            tempFileName As String) As IEnumerable(Of RecognizedTextChunk)
+
             ' Save PDF page as high-resolution image
             Dim options As PdfDrawOptions = PdfDrawOptions.Create()
             options.BackgroundColor = New PdfRgbColor(255, 255, 255)
@@ -91,7 +105,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End Using
         End Function
 
-        Private Shared Sub tuneFontSize(ByVal canvas As PdfCanvas, ByVal targetTextWidth As Double, ByVal text As String)
+        Private Shared Sub tuneFontSize(canvas As PdfCanvas, targetTextWidth As Double, text As String)
             Const [Step] As Double = 0.1
 
             Dim bestFontSize As Double = canvas.FontSize
@@ -114,11 +128,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End While
         End Sub
 
-        Private Shared Function getDistanceToBaseline(ByVal font As PdfFont, ByVal fontSize As Double) As Double
+        Private Shared Function getDistanceToBaseline(font As PdfFont, fontSize As Double) As Double
             Return font.TopSideBearing * font.TransformationMatrix.M22 * fontSize
         End Function
 
-        Private Shared Sub showTextAtRotatedPage(ByVal text As String, ByVal position As PdfPoint, ByVal page As PdfPage, ByVal pageBox As PdfBox)
+        Private Shared Sub showTextAtRotatedPage(text As String, position As PdfPoint, page As PdfPage, pageBox As PdfBox)
             Dim canvas As PdfCanvas = page.Canvas
 
             If page.Rotation = PdfRotation.None Then
@@ -137,7 +151,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     canvas.TranslateTransform(pageBox.Width - position.Y, position.X)
             End Select
 
-            canvas.RotateTransform(CInt(page.Rotation) * 90)
+            canvas.RotateTransform(page.Rotation * 90)
             canvas.DrawString(0, 0, text)
             canvas.RestoreState()
         End Sub

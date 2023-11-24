@@ -7,8 +7,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
     {
         private const double TableWidth = 400.0;
         private const double RowHeight = 30.0;
-        private static readonly PdfPoint m_leftTableCorner = new PdfPoint(10, 50);
-        private static readonly double[] m_columnWidths = new double[3] { 100, 100, 200 };
+        private static readonly PdfPoint m_leftTableCorner = new(10, 50);
+        private static readonly double[] m_columnWidths = { 100, 100, 200 };
 
         public static void Main()
         {
@@ -19,7 +19,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "Tables.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 PdfCanvas canvas = pdf.Pages[0].Canvas;
                 drawHeader(canvas);
@@ -37,14 +37,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
         {
             canvas.SaveState();
             canvas.Brush.Color = new PdfGrayColor(75);
-            PdfRectangle headerBounds = new PdfRectangle(m_leftTableCorner, new PdfSize(TableWidth, RowHeight));
+            var headerBounds = new PdfRectangle(m_leftTableCorner, new PdfSize(TableWidth, RowHeight));
             canvas.DrawRectangle(headerBounds, PdfDrawMode.FillAndStroke);
 
-            PdfRectangle[] cellBounds = new PdfRectangle[3]
+            var cellBounds = new PdfRectangle[3]
             {
-                new PdfRectangle(m_leftTableCorner.X, m_leftTableCorner.Y, m_columnWidths[0], RowHeight),
-                new PdfRectangle(m_leftTableCorner.X + m_columnWidths[0], m_leftTableCorner.Y, m_columnWidths[1], RowHeight),
-                new PdfRectangle(m_leftTableCorner.X + m_columnWidths[0] + m_columnWidths[1], m_leftTableCorner.Y, m_columnWidths[2], RowHeight)
+                new(m_leftTableCorner.X, m_leftTableCorner.Y, m_columnWidths[0], RowHeight),
+                new(m_leftTableCorner.X + m_columnWidths[0], m_leftTableCorner.Y, m_columnWidths[1], RowHeight),
+                new(m_leftTableCorner.X + m_columnWidths[0] + m_columnWidths[1], m_leftTableCorner.Y, m_columnWidths[2], RowHeight)
             };
 
             for (int i = 1; i <= 2; ++i)
@@ -63,20 +63,20 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static void drawTableBody(PdfCanvas canvas)
         {
-            PdfPoint bodyLeftCorner = new PdfPoint(m_leftTableCorner.X, m_leftTableCorner.Y + RowHeight);
-            PdfRectangle firstCellBounds = new PdfRectangle(bodyLeftCorner, new PdfSize(m_columnWidths[0], RowHeight * 2));
+            var bodyLeftCorner = new PdfPoint(m_leftTableCorner.X, m_leftTableCorner.Y + RowHeight);
+            var firstCellBounds = new PdfRectangle(bodyLeftCorner, new PdfSize(m_columnWidths[0], RowHeight * 2));
             canvas.DrawRectangle(firstCellBounds);
             drawCenteredText(canvas, "Docotic.Pdf", firstCellBounds);
 
-            PdfRectangle[,] cells = new PdfRectangle[2, 2]
+            var cells = new PdfRectangle[2, 2]
             {
                 {
-                    new PdfRectangle(bodyLeftCorner.X + m_columnWidths[0], bodyLeftCorner.Y, m_columnWidths[1], RowHeight),
-                    new PdfRectangle(bodyLeftCorner.X + m_columnWidths[0] + m_columnWidths[1], bodyLeftCorner.Y, m_columnWidths[2], RowHeight)
+                    new(bodyLeftCorner.X + m_columnWidths[0], bodyLeftCorner.Y, m_columnWidths[1], RowHeight),
+                    new(bodyLeftCorner.X + m_columnWidths[0] + m_columnWidths[1], bodyLeftCorner.Y, m_columnWidths[2], RowHeight)
                 },
                 {
-                    new PdfRectangle(bodyLeftCorner.X + m_columnWidths[0], bodyLeftCorner.Y + RowHeight, m_columnWidths[1], RowHeight),
-                    new PdfRectangle(bodyLeftCorner.X + m_columnWidths[0] + m_columnWidths[1], bodyLeftCorner.Y + RowHeight, m_columnWidths[2], RowHeight)
+                    new(bodyLeftCorner.X + m_columnWidths[0], bodyLeftCorner.Y + RowHeight, m_columnWidths[1], RowHeight),
+                    new(bodyLeftCorner.X + m_columnWidths[0] + m_columnWidths[1], bodyLeftCorner.Y + RowHeight, m_columnWidths[2], RowHeight)
                 }
             };
 

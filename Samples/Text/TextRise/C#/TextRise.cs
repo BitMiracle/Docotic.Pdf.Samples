@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "TextRise.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 const string sampleText = "Hello!";
                 PdfCanvas canvas = pdf.Pages[0].Canvas;

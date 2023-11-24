@@ -25,10 +25,24 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.DrawString(10, 90, "Portugal: ");
                 canvas.DrawString(10, 110, "Bidirectional: ");
 
-                canvas.Font = pdf.AddFont("NSimSun");
+                PdfFont? nsimsun = pdf.AddFont("NSimSun");
+                if (nsimsun is null)
+                {
+                    Console.WriteLine("Cannot add NSimSun font");
+                    return;
+                }
+
+                canvas.Font = nsimsun;
                 canvas.DrawString(180, 50, "世界您好");
 
-                canvas.Font = pdf.AddFont("Times New Roman");
+                PdfFont? timesNewRoman = pdf.AddFont("Times New Roman");
+                if (timesNewRoman is null)
+                {
+                    Console.WriteLine("Cannot add Times New Roman font");
+                    return;
+                }
+
+                canvas.Font = timesNewRoman;
                 canvas.DrawString(180, 70, "Привет, мир");
                 canvas.DrawString(180, 90, "Olá mundo");
 

@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "TextHorizontalScaling.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 const string sampleText = "Lorem ipsum dolor sit amet, consectetur adipisicing elit";
                 PdfCanvas canvas = pdf.Pages[0].Canvas;

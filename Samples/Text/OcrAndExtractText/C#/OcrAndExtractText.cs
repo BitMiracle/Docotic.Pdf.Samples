@@ -21,49 +21,52 @@ namespace BitMiracle.Docotic.Pdf.Samples
             using (var pdf = new PdfDocument(@"..\Sample data\Freedman Scora.pdf"))
             {
                 var location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                var tessData = Path.Combine(location, @"tessdata");
-                using (var engine = new TesseractEngine(tessData, "eng", EngineMode.LstmOnly))
+                if (location == null)
                 {
-                    for (int i = 0; i < pdf.PageCount; ++i)
+                    Console.WriteLine("Invalid assembly location");
+                    return;
+                }
+
+                var tessData = Path.Combine(location, @"tessdata");
+                using var engine = new TesseractEngine(tessData, "eng", EngineMode.LstmOnly);
+
+                for (int i = 0; i < pdf.PageCount; ++i)
+                {
+                    if (documentText.Length > 0)
+                        documentText.Append("\r\n\r\n");
+
+                    PdfPage page = pdf.Pages[i];
+                    string searchableText = page.GetText();
+
+                    // Simple check if the page contains searchable text.
+                    // We do not need to perform OCR in that case.
+                    if (!string.IsNullOrEmpty(searchableText.Trim()))
                     {
-                        if (documentText.Length > 0)
-                            documentText.Append("\r\n\r\n");
-
-                        PdfPage page = pdf.Pages[i];
-                        string searchableText = page.GetText();
-
-                        // Simple check if the page contains searchable text.
-                        // We do not need to perform OCR in that case.
-                        if (!string.IsNullOrEmpty(searchableText.Trim()))
-                        {
-                            documentText.Append(searchableText);
-                            continue;
-                        }
-
-                        // This page is not searchable.
-                        // Save PDF page as a high-resolution image.
-                        PdfDrawOptions options = PdfDrawOptions.Create();
-                        options.BackgroundColor = new PdfRgbColor(255, 255, 255);
-                        options.HorizontalResolution = 200;
-                        options.VerticalResolution = 200;
-
-                        string pageImage = $"page_{i}.png";
-                        page.Save(pageImage, options);
-
-                        // Perform OCR
-                        using (Pix img = Pix.LoadFromFile(pageImage))
-                        {
-                            using (Page recognizedPage = engine.Process(img))
-                            {
-                                Console.WriteLine($"Mean confidence for page #{i}: {recognizedPage.GetMeanConfidence()}");
-
-                                string recognizedText = recognizedPage.GetText();
-                                documentText.Append(recognizedText);
-                            }
-                        }
-
-                        File.Delete(pageImage);
+                        documentText.Append(searchableText);
+                        continue;
                     }
+
+                    // This page is not searchable.
+                    // Save PDF page as a high-resolution image.
+                    PdfDrawOptions options = PdfDrawOptions.Create();
+                    options.BackgroundColor = new PdfRgbColor(255, 255, 255);
+                    options.HorizontalResolution = 200;
+                    options.VerticalResolution = 200;
+
+                    string pageImage = $"page_{i}.png";
+                    page.Save(pageImage, options);
+
+                    // Perform OCR
+                    using (Pix img = Pix.LoadFromFile(pageImage))
+                    {
+                        using Page recognizedPage = engine.Process(img);
+                        Console.WriteLine($"Mean confidence for page #{i}: {recognizedPage.GetMeanConfidence()}");
+
+                        string recognizedText = recognizedPage.GetText();
+                        documentText.Append(recognizedText);
+                    }
+
+                    File.Delete(pageImage);
                 }
             }
 

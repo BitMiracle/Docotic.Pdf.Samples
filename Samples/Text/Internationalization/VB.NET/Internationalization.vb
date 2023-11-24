@@ -20,15 +20,28 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.DrawString(10, 90, "Portugal: ")
                 canvas.DrawString(10, 110, "Bidirectional: ")
 
-                canvas.Font = pdf.AddFont("NSimSun")
+                Dim nsimsun = pdf.AddFont("NSimSun")
+                If nsimsun Is Nothing Then
+                    Console.WriteLine("Cannot add NSimSun font")
+                    Return
+                End If
+
+                canvas.Font = nsimsun
                 canvas.DrawString(180, 50, "世界您好")
 
-                canvas.Font = pdf.AddFont("Times New Roman")
+                Dim timesNewRoman = pdf.AddFont("Times New Roman")
+                If timesNewRoman Is Nothing Then
+                    Console.WriteLine("Cannot add Times New Roman font")
+                    Return
+                End If
+
+                canvas.Font = timesNewRoman
                 canvas.DrawString(180, 70, "Привет, мир")
                 canvas.DrawString(180, 90, "Olá mundo")
 
-                Dim options = New PdfStringDrawingOptions
-                options.ReadingDirection = PdfReadingDirection.Rtl
+                Dim options = New PdfStringDrawingOptions With {
+                    .ReadingDirection = PdfReadingDirection.Rtl
+                }
                 canvas.DrawString(180, 110, "bidi בינלאומי", options)
 
                 pdf.RemoveUnusedFontGlyphs()
