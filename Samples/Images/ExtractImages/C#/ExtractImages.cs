@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             var pathToFile = "";
 
-            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\gmail-cheat-sheet.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample Data\gmail-cheat-sheet.pdf"))
             {
                 foreach (PdfImage image in pdf.GetImages())
                 {

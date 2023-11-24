@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             var pathToFile = "TiffToPdf.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 string[] tiffFiles =
                 {
@@ -26,7 +26,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 foreach (string tiff in tiffFiles)
                 {
                     // open potentially multipage TIFF
-                    PdfImageFrames frames = pdf.OpenImage(tiff);
+                    PdfImageFrames? frames = pdf.OpenImage(tiff);
+                    if (frames is null)
+                    {
+                        Console.WriteLine("Cannot add image");
+                        return;
+                    }
+
                     foreach (PdfImageFrame frame in frames)
                     {
                         if (imagesAdded != 0)

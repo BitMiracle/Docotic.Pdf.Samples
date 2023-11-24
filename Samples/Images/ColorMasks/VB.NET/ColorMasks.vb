@@ -19,6 +19,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.DrawRectangle(New PdfRectangle(50, 450, 1150, 150), PdfDrawMode.Fill)
 
                 Dim image As PdfImage = pdf.AddImage("..\Sample data\pink.png", New PdfRgbColor(255, 0, 255))
+                If image Is Nothing Then
+                    Console.WriteLine("Cannot add image")
+                    Return
+                End If
+
                 canvas.DrawImage(image, 550, 200)
 
                 pdf.Save(pathToFile)

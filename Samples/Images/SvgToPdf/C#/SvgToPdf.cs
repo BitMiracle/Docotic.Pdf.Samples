@@ -19,8 +19,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (var converter = await HtmlConverter.CreateAsync())
             {
-                using (var pdf = await converter.CreatePdfAsync(@"..\Sample Data\image.svg"))
-                    pdf.Save(pathToFile);
+                using var pdf = await converter.CreatePdfAsync(@"..\Sample Data\image.svg");
+                pdf.Save(pathToFile);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");

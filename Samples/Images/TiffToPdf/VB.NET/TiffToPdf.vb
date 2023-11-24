@@ -10,7 +10,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Dim pathToFile As String = "TiffToPdf.pdf"
 
-            Using pdf As PdfDocument = New PdfDocument
+            Using pdf As New PdfDocument
                 Dim tiffFiles() As String = New String() {
                     "..\Sample Data\multipage.tif",
                     "..\Sample Data\pinkMask.tif"
@@ -19,6 +19,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 For Each tiff As String In tiffFiles
                     ' open potentially multipage TIFF
                     Dim frames As PdfImageFrames = pdf.OpenImage(tiff)
+                    If frames Is Nothing Then
+                        Console.WriteLine("Cannot add image")
+                        Return
+                    End If
+
                     For Each frame As PdfImageFrame In frames
                         If imagesAdded <> 0 Then
                             pdf.AddPage()

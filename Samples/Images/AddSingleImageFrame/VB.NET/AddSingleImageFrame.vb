@@ -12,6 +12,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Using pdf As New PdfDocument()
                 Dim frames As PdfImageFrames = pdf.OpenImage("..\Sample Data\multipage.tif")
+                If frames Is Nothing Then
+                    Console.WriteLine("Cannot add image")
+                    Return
+                End If
+
                 Dim secondFrame As PdfImageFrame = frames(1)
 
                 Dim image As PdfImage = pdf.AddImage(secondFrame)

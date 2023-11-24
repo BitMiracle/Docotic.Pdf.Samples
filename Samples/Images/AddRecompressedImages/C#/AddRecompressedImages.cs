@@ -14,15 +14,27 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "AddRecompressedImages.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 PdfCanvas canvas = pdf.Pages[0].Canvas;
 
-                PdfImageFrames imageFrames = pdf.OpenImage(@"..\Sample Data\pink.png");
+                PdfImageFrames? imageFrames = pdf.OpenImage(@"..\Sample Data\pink.png");
+                if (imageFrames is null)
+                {
+                    Console.WriteLine("Cannot add image");
+                    return;
+                }
+
                 PdfImage originalImage = pdf.AddImage(imageFrames[0]);
                 canvas.DrawImage(originalImage, 10, 10, 0);
 
-                PdfImageFrames imageFramesToRecompress = pdf.OpenImage(@"..\Sample Data\pink.png");
+                PdfImageFrames? imageFramesToRecompress = pdf.OpenImage(@"..\Sample Data\pink.png");
+                if (imageFramesToRecompress is null)
+                {
+                    Console.WriteLine("Cannot add image");
+                    return;
+                }
+
                 PdfImageFrame frame = imageFramesToRecompress[0];
                 frame.OutputCompression = PdfImageCompression.Jpeg;
                 frame.JpegQuality = 50;

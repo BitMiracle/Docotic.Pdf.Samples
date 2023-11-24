@@ -15,10 +15,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
             var asIsOutputName = "";
             var asPaintedOutputName = "PdfPaintedImage.SaveAsPainted.tiff";
 
-            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\ImageScaleAndRotate.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample Data\ImageScaleAndRotate.pdf"))
             {
                 PdfCollection<PdfPaintedImage> paintedImages = pdf.Pages[0].GetPaintedImages();
-                
+
                 PdfPaintedImage image = paintedImages[0];
 
                 // save image as is

@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "ColorMasks.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 PdfCanvas canvas = pdf.Pages[0].Canvas;
                 double scale = pdf.Pages[0].Resolution / 150;
@@ -23,7 +23,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.Brush.Color = new PdfRgbColor(0, 255, 0);
                 canvas.DrawRectangle(new PdfRectangle(50, 450, 1150, 150), PdfDrawMode.Fill);
 
-                PdfImage image = pdf.AddImage(@"..\Sample data\pink.png", new PdfRgbColor(255, 0, 255));
+                PdfImage? image = pdf.AddImage(@"..\Sample data\pink.png", new PdfRgbColor(255, 0, 255));
+                if (image is null)
+                {
+                    Console.WriteLine("Cannot add image");
+                    return;
+                }
+
                 canvas.DrawImage(image, 550, 200);
 
                 pdf.Save(pathToFile);
