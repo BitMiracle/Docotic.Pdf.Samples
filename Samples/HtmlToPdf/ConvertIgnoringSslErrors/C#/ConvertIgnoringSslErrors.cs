@@ -24,8 +24,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
             using (var converter = await HtmlConverter.CreateAsync(engineOptions))
             {
                 var url = new Uri("https://self-signed.badssl.com/");
-                using (var pdf = await converter.CreatePdfAsync(url))
-                    pdf.Save(pathToFile);
+                using var pdf = await converter.CreatePdfAsync(url);
+                pdf.Save(pathToFile);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");

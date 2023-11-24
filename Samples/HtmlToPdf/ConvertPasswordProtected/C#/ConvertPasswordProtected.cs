@@ -28,8 +28,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 options.Page.MarginTop = 100;
                 options.Page.Scale = 2;
 
-                using (var pdf = await converter.CreatePdfAsync(url, options))
-                    pdf.Save(pathToFile);
+                using var pdf = await converter.CreatePdfAsync(url, options);
+                pdf.Save(pathToFile);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");

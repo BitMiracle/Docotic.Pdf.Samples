@@ -28,8 +28,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 options.Page.MarginBottom = 50;
 
                 var url = new Uri("https://www.iana.org/glossary");
-                using (var pdf = await converter.CreatePdfAsync(url, options))
-                    pdf.Save(pathToFile);
+                using var pdf = await converter.CreatePdfAsync(url, options);
+                pdf.Save(pathToFile);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");

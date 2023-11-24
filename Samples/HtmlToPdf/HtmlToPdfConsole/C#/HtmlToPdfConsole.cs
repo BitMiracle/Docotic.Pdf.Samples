@@ -8,22 +8,19 @@ namespace BitMiracle.Docotic.Pdf.Samples
 {
     class HtmlToPdfConsole
     {
-        // In C# 7.1 you can have an async Main in your console application. 
-
-        ////static async Task Main(string[] args)
-        ////{
-        ////    await convertUrlToPdf("https://bitmiracle.com/", "HtmlToPdfConsole.pdf");
-        ////}
+        static async Task Main()
+        {
+            await convertUrlToPdfAsync("https://bitmiracle.com/", "HtmlToPdfConsole.pdf");
+        }
 
         // The following shows how to use the HTML to PDF API from a regular synchronous method
-
-        static void Main()
-        {
-            Task.Run(async () =>
-            {
-                await convertUrlToPdfAsync("https://bitmiracle.com/", "HtmlToPdfConsole.pdf");
-            }).GetAwaiter().GetResult();
-        }
+        ////static void Main()
+        ////{
+        ////    Task.Run(async () =>
+        ////    {
+        ////        await convertUrlToPdfAsync("https://bitmiracle.com/", "HtmlToPdfConsole.pdf");
+        ////    }).GetAwaiter().GetResult();
+        ////}
 
         private static async Task convertUrlToPdfAsync(string urlString, string pdfFileName)
         {
@@ -34,8 +31,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (var converter = await HtmlConverter.CreateAsync())
             {
-                using (var pdf = await converter.CreatePdfAsync(new Uri(urlString)))
-                    pdf.Save(pdfFileName);
+                using var pdf = await converter.CreatePdfAsync(new Uri(urlString));
+                pdf.Save(pdfFileName);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");

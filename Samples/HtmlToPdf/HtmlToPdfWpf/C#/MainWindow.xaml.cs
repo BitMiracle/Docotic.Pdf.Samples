@@ -50,8 +50,8 @@ namespace HtmlToPdfWpf
 
             using (var converter = await HtmlConverter.CreateAsync())
             {
-                using (var pdf = await converter.CreatePdfAsync(new Uri(urlString)))
-                    pdf.Save(pdfFileName);
+                using var pdf = await converter.CreatePdfAsync(new Uri(urlString));
+                pdf.Save(pdfFileName);
             }
 
             setConvertingMode(false);

@@ -45,8 +45,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     scrollDownUntilYouCantAnyMore();
                 ";
                 options.Start.SetStartAfterScriptRun(js);
-                using (var pdf = await converter.CreatePdfAsync(url, options))
-                    pdf.Save(pathToFile);
+
+                using var pdf = await converter.CreatePdfAsync(url, options);
+                pdf.Save(pathToFile);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
