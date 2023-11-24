@@ -13,7 +13,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // for more information.
 
             var pathToFile = "RemovePages.pdf";
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 PdfPage firstPage = pdf.Pages[0];
                 firstPage.Canvas.DrawString(10, 50, "Main page");

@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "OutlineWithStyles.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 pdf.PageMode = PdfPageMode.UseOutlines;
                 pdf.PageLayout = PdfPageLayout.OneColumn;
@@ -57,7 +57,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
         private static void BuildTestOutline(PdfDocument pdf)
         {
             PdfOutlineItem root = pdf.OutlineRoot;
-            PdfOutlineItem lastParent = null;
+            PdfOutlineItem? lastParent = null;
 
             PdfFont times = pdf.AddFont(PdfBuiltInFont.TimesItalic);
             double pageWidth = pdf.GetPage(0).Width;
@@ -81,7 +81,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 if (i == 1 || i == 10 || i == 20)
                     lastParent = root.AddChild(titleFormat, action);
                 else
-                    lastParent.AddChild(titleFormat, action);
+                    lastParent!.AddChild(titleFormat, action);
             }
         }
     }
