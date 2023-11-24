@@ -28,7 +28,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                 PdfFont fontFromFile = pdf.AddFontFromFile(@"..\Sample data\Fonts\HolidayPi_BT.ttf");
                 canvas.Font = fontFromFile;
-                canvas.DrawString(10, 90, "Hello, world!");
+                canvas.DrawString(10, 90, "Hello world");
 
                 // Remove unused glyphs from TrueType fonts to optimize size of result PDF file.
                 systemFont.RemoveUnusedGlyphs();
