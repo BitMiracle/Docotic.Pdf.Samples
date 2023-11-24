@@ -16,46 +16,44 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (var pdf = new PdfDocument(@"..\Sample Data\gmail-cheat-sheet.pdf"))
             {
-                using (PdfDocument copy = pdf.CopyPages(0, 1))
+                using PdfDocument copy = pdf.CopyPages(0, 1);
+                PdfPage sourcePage = copy.Pages[0];
+                PdfPage copyPage = copy.AddPage();
+
+                copyPage.Group = sourcePage.Group;
+                copyPage.UserUnit = sourcePage.UserUnit;
+                copyPage.Rotation = sourcePage.Rotation;
+                copyPage.MediaBox = sourcePage.MediaBox;
+                if (sourcePage.CropBox != sourcePage.MediaBox)
+                    copyPage.CropBox = sourcePage.CropBox;
+
+                var options = new PdfObjectExtractionOptions
                 {
-                    PdfPage sourcePage = copy.Pages[0];
-                    PdfPage copyPage = copy.AddPage();
+                    FlattenMarkedContent = true,
+                    FlattenXObjects = true,
+                };
+                PdfCanvas target = copyPage.Canvas;
+                foreach (PdfPageObject obj in sourcePage.GetObjects(options))
+                {
+                    if (obj.Type != PdfPageObjectType.Path)
+                        continue;
 
-                    copyPage.Group = sourcePage.Group;
-                    copyPage.UserUnit = sourcePage.UserUnit;
-                    copyPage.Rotation = sourcePage.Rotation;
-                    copyPage.MediaBox = sourcePage.MediaBox;
-                    if (sourcePage.CropBox != sourcePage.MediaBox)
-                        copyPage.CropBox = sourcePage.CropBox;
-
-                    var options = new PdfObjectExtractionOptions
+                    target.SaveState();
                     {
-                        FlattenMarkedContent = true,
-                        FlattenXObjects = true,
-                    };
-                    PdfCanvas target = copyPage.Canvas;
-                    foreach (PdfPageObject obj in sourcePage.GetObjects(options))
-                    {
-                        if (obj.Type != PdfPageObjectType.Path)
-                            continue;
+                        PdfPath path = (PdfPath)obj;
+                        target.Transform(path.TransformationMatrix);
+                        setClipRegion(target, path.ClipRegion);
+                        setBrushAndPen(target, path);
 
-                        target.SaveState();
-                        {
-                            PdfPath path = (PdfPath)obj;
-                            target.Transform(path.TransformationMatrix);
-                            setClipRegion(target, path.ClipRegion);
-                            setBrushAndPen(target, path);
-
-                            appendPath(target, path);
-                            drawPath(target, path);
-                        }
-                        target.RestoreState();
+                        appendPath(target, path);
+                        drawPath(target, path);
                     }
-
-                    copy.RemovePage(0);
-
-                    copy.Save(PathToFile);
+                    target.RestoreState();
                 }
+
+                copy.RemovePage(0);
+
+                copy.Save(PathToFile);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
@@ -76,7 +74,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     canvas.ResetTransform();
                     canvas.Transform(clipPath.TransformationMatrix);
                     appendPath(canvas, clipPath);
-                    canvas.SetClip(clipPath.ClipMode.Value);
+                    canvas.SetClip(clipPath.ClipMode!.Value);
                 }
             }
             finally
@@ -92,7 +90,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 target.Brush.Opacity = path.Brush.Opacity;
 
-                PdfColor color = path.Brush.Color;
+                PdfColor? color = path.Brush.Color;
                 if (color != null)
                     target.Brush.Color = path.Brush.Color;
             }
@@ -106,7 +104,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 target.Pen.LineJoin = path.Pen.LineJoin;
                 target.Pen.MiterLimit = path.Pen.MiterLimit;
 
-                PdfColor color = path.Pen.Color;
+                PdfColor? color = path.Pen.Color;
                 if (color != null)
                     target.Pen.Color = path.Pen.Color;
             }
@@ -153,11 +151,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
             switch (path.PaintMode)
             {
                 case PdfDrawMode.Fill:
-                    target.FillPath(path.FillMode.Value);
+                    target.FillPath(path.FillMode!.Value);
                     break;
 
                 case PdfDrawMode.FillAndStroke:
-                    target.FillAndStrokePath(path.FillMode.Value);
+                    target.FillAndStrokePath(path.FillMode!.Value);
                     break;
 
                 case PdfDrawMode.Stroke:
