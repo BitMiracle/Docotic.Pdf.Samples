@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "SetXmpProperties.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 pdf.Metadata.DublinCore.Creators = new XmpArray(XmpArrayType.Ordered);
                 pdf.Metadata.DublinCore.Creators.Values.Add(new XmpString("me"));
