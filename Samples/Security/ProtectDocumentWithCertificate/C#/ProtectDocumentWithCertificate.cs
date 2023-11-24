@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "ProtectDocumentWithCertificate.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 pdf.Pages[0].Canvas.DrawString("Hello World!");
 
@@ -32,7 +32,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static PdfPublicKeyEncryptionHandler createEncryptionHandler()
         {
-            // TODO: 
+            // TODO:
             // Change the constants, or the sample won't work.
 
             string keyStoreOwner = "key-store-owner.p12";
@@ -42,11 +42,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
             string passwordUser = "password";
 
             // You can also use an X509Certificate2 certificate to construct the handler
-            PdfPublicKeyEncryptionHandler handler = new PdfPublicKeyEncryptionHandler(keyStoreOwner, passwordOwner);
+            var handler = new PdfPublicKeyEncryptionHandler(keyStoreOwner, passwordOwner);
 
             // Add another recipient with non-owner permissions
-            PdfPermissions permissions = new PdfPermissions();
-            permissions.Flags = PdfPermissionFlags.FillFormFields | PdfPermissionFlags.PrintDocument;
+            var permissions = new PdfPermissions
+            {
+                Flags = PdfPermissionFlags.FillFormFields | PdfPermissionFlags.PrintDocument
+            };
             handler.AddRecipient(keyStoreUser, passwordUser, permissions);
 
             return handler;

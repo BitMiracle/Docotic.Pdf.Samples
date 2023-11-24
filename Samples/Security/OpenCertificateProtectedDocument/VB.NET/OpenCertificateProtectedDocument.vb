@@ -8,7 +8,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
-            ' TODO 
+            ' TODO:
             ' Change the constants, Or the sample won't work.
             Dim encryptedFile As String = "certificate-encrypted.pdf"
             Dim keyStore As String = "key-store.p12"
@@ -22,11 +22,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' to open a certificate protected document.
         End Sub
 
-        Private Shared Sub openWithAutoSelectedCertificate(ByVal encryptedFile As String)
+        Private Shared Sub openWithAutoSelectedCertificate(encryptedFile As String)
             Try
                 ' This will only work if a matching certificate is installed in the
                 ' X.509 certificate store used by the current user
-                Using pdf As PdfDocument = New PdfDocument(encryptedFile)
+                Using pdf As New PdfDocument(encryptedFile)
                     Console.WriteLine(
                         String.Format(
                         "Opened with an auto-selected certificate from the current user certificate store. " &
@@ -37,11 +37,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End Try
         End Sub
 
-        Private Shared Sub openWithKeyStore(ByVal encryptedFile As String, ByVal keyStore As String, ByVal password As String)
+        Private Shared Sub openWithKeyStore(encryptedFile As String, keyStore As String, password As String)
             Try
-                Dim handler As PdfPublicKeyDecryptionHandler = New PdfPublicKeyDecryptionHandler(keyStore, password)
+                Dim handler As New PdfPublicKeyDecryptionHandler(keyStore, password)
 
-                Using pdf As PdfDocument = New PdfDocument(encryptedFile, handler)
+                Using pdf As New PdfDocument(encryptedFile, handler)
                     Console.WriteLine(
                         String.Format(
                         "Opened with a certificate from the key store at {0}. Permissions = {1}",

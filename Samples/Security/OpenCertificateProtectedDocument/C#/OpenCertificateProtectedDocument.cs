@@ -11,7 +11,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            // TODO: 
+            // TODO:
             // Change the constants, or the sample won't work.
             string encryptedFile = "certificate-encrypted.pdf";
             string keyStore = "key-store.p12";
@@ -31,16 +31,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 // This will only work if a matching certificate is installed in the
                 // X.509 certificate store used by the current user
-                using (PdfDocument pdf = new PdfDocument(encryptedFile))
-                {
-                    Console.WriteLine(
-                        string.Format(
-                            "Opened with an auto-selected certificate from the current user certificate store. " +
-                            "Permissions = {0}",
-                            pdf.GrantedPermissions
-                        )
-                    );
-                }
+                using var pdf = new PdfDocument(encryptedFile);
+                Console.WriteLine(
+                    string.Format(
+                        "Opened with an auto-selected certificate from the current user certificate store. " +
+                        "Permissions = {0}",
+                        pdf.GrantedPermissions
+                    )
+                );
             }
             catch (PdfException ex)
             {
@@ -52,17 +50,15 @@ namespace BitMiracle.Docotic.Pdf.Samples
         {
             try
             {
-                PdfPublicKeyDecryptionHandler handler = new PdfPublicKeyDecryptionHandler(keyStore, password);
-                using (PdfDocument pdf = new PdfDocument(encryptedFile, handler))
-                {
-                    Console.WriteLine(
-                        string.Format(
-                            "Opened with a certificate from the key store at {0}. Permissions = {1}",
-                            keyStore,
-                            pdf.GrantedPermissions
-                        )
-                    );
-                }
+                var handler = new PdfPublicKeyDecryptionHandler(keyStore, password);
+                using var pdf = new PdfDocument(encryptedFile, handler);
+                Console.WriteLine(
+                    string.Format(
+                        "Opened with a certificate from the key store at {0}. Permissions = {1}",
+                        keyStore,
+                        pdf.GrantedPermissions
+                    )
+                );
             }
             catch (PdfException ex)
             {

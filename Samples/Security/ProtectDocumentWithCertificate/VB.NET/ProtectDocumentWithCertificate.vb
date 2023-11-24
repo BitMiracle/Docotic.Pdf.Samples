@@ -36,11 +36,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim passwordUser As String = "password"
 
             ' You can also use an X509Certificate2 certificate to construct the handler
-            Dim handler As PdfPublicKeyEncryptionHandler = New PdfPublicKeyEncryptionHandler(keyStoreOwner, passwordOwner)
+            Dim handler As New PdfPublicKeyEncryptionHandler(keyStoreOwner, passwordOwner)
 
             ' Add another recipient with non-owner permissions
-            Dim permissions As PdfPermissions = New PdfPermissions()
-            permissions.Flags = PdfPermissionFlags.FillFormFields Or PdfPermissionFlags.PrintDocument
+            Dim permissions As New PdfPermissions With {
+                .Flags = PdfPermissionFlags.FillFormFields Or PdfPermissionFlags.PrintDocument
+            }
             handler.AddRecipient(keyStoreUser, passwordUser, permissions)
 
             Return handler

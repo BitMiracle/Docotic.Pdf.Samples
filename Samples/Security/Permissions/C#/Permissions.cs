@@ -14,10 +14,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "Permissions.pdf";
 
-            using (PdfDocument pdf = new PdfDocument(@"..\Sample data\form.pdf"))
+            using (var pdf = new PdfDocument(@"..\Sample data\form.pdf"))
             {
                 // an owner password should be set in order to use user access permissions
-                PdfStandardEncryptionHandler handler = new PdfStandardEncryptionHandler("owner", "user");
+                var handler = new PdfStandardEncryptionHandler("owner", "user");
                 handler.UserPermissions.Flags = PdfPermissionFlags.None;
 
                 var saveOptions = new PdfSaveOptions { EncryptionHandler = handler };
