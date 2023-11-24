@@ -14,14 +14,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "Hyperlink.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 pdf.AutoCreateUriActions = true;
 
                 PdfPage page = pdf.Pages[0];
                 page.Canvas.DrawString(10, 50, "Url: http://bitmiracle.com");
 
-                PdfRectangle rectWithLink = new PdfRectangle(10, 70, 200, 100);
+                var rectWithLink = new PdfRectangle(10, 70, 200, 100);
                 page.Canvas.DrawRectangle(rectWithLink, PdfDrawMode.Stroke);
 
                 var options = new PdfTextDrawingOptions(rectWithLink)

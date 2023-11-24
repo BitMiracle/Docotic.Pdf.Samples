@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "Outline.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 pdf.PageMode = PdfPageMode.UseOutlines;
 
@@ -28,9 +28,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 }
 
                 PdfOutlineItem root = pdf.OutlineRoot;
-                PdfOutlineItem outlineForPage1 = root.AddChild("Page 1", 0);
+                root.AddChild("Page 1", 0);
                 PdfOutlineItem outlineForPage2 = root.AddChild("Page 2", 1);
-                PdfOutlineItem childOutlineForPage3 = outlineForPage2.AddChild("Page 3", 2);
+                outlineForPage2.AddChild("Page 3", 2);
 
                 pdf.Save(pathToFile);
             }

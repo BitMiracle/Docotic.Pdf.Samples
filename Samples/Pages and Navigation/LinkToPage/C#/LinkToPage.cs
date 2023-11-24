@@ -14,19 +14,19 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             string pathToFile = "LinkToPage.pdf";
 
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 pdf.AddPage();
                 pdf.AddPage();
 
                 PdfPage firstPage = pdf.Pages[0];
                 PdfCanvas canvas = firstPage.Canvas;
-                PdfRectangle rectForLinkToSecondPage = new PdfRectangle(10, 50, 100, 60);
+                var rectForLinkToSecondPage = new PdfRectangle(10, 50, 100, 60);
                 canvas.DrawRectangle(rectForLinkToSecondPage, PdfDrawMode.Stroke);
                 drawCenteredText(canvas, "Go to 2nd page", rectForLinkToSecondPage);
                 firstPage.AddLinkToPage(rectForLinkToSecondPage, 1);
 
-                PdfRectangle rectForLinkToThirdPage = new PdfRectangle(150, 50, 100, 60);
+                var rectForLinkToThirdPage = new PdfRectangle(150, 50, 100, 60);
                 canvas.DrawRectangle(rectForLinkToThirdPage, PdfDrawMode.Stroke);
                 drawCenteredText(canvas, "Go to 3rd page", rectForLinkToThirdPage);
                 firstPage.AddLinkToPage(rectForLinkToThirdPage, pdf.Pages[2]);

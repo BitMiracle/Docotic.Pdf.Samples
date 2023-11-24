@@ -9,9 +9,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
         private readonly PdfDocument m_document;
         private readonly PdfObjectExtractionOptions m_options;
 
-        private readonly Dictionary<string, PdfXObject> m_xobjectCopies = new Dictionary<string, PdfXObject>();
+        private readonly Dictionary<string, PdfXObject> m_xobjectCopies = new();
 
-        public PageObjectCopier(PdfDocument document, PdfObjectExtractionOptions options = null)
+        public PageObjectCopier(PdfDocument document, PdfObjectExtractionOptions? options = null)
         {
             m_document = document;
             m_options = options ?? new PdfObjectExtractionOptions();
@@ -112,7 +112,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private void setBrush(PdfBrush dst, PdfBrushInfo src)
         {
-            PdfColor color = src.Color;
+            PdfColor? color = src.Color;
             if (color != null)
                 dst.Color = color;
 
@@ -125,7 +125,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private void setPen(PdfPen dst, PdfPenInfo src)
         {
-            PdfColor color = src.Color;
+            PdfColor? color = src.Color;
             if (color != null)
                 dst.Color = color;
 
@@ -174,7 +174,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     canvas.ResetTransform();
                     canvas.Transform(clipPath.TransformationMatrix);
                     appendPath(canvas, clipPath);
-                    canvas.SetClip(clipPath.ClipMode.Value);
+                    canvas.SetClip(clipPath.ClipMode!.Value);
                 }
             }
             finally
@@ -225,11 +225,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
             switch (path.PaintMode)
             {
                 case PdfDrawMode.Fill:
-                    target.FillPath(path.FillMode.Value);
+                    target.FillPath(path.FillMode!.Value);
                     break;
 
                 case PdfDrawMode.FillAndStroke:
-                    target.FillAndStrokePath(path.FillMode.Value);
+                    target.FillAndStrokePath(path.FillMode!.Value);
                     break;
 
                 case PdfDrawMode.Stroke:

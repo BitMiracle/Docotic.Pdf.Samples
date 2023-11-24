@@ -22,9 +22,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Next
 
                 Dim root As PdfOutlineItem = pdf.OutlineRoot
-                Dim outlineForPage1 As PdfOutlineItem = root.AddChild("Page 1", 0)
+                root.AddChild("Page 1", 0)
                 Dim outlineForPage2 As PdfOutlineItem = root.AddChild("Page 2", 1)
-                Dim childOutlineForPage3 As PdfOutlineItem = outlineForPage2.AddChild("Page 3", 2)
+                outlineForPage2.AddChild("Page 3", 2)
 
                 pdf.Save(pathToFile)
             End Using

@@ -27,7 +27,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(New ProcessStartInfo(PathToFile) With {.UseShellExecute = True})
         End Sub
 
-        Private Shared Sub drawHeader(ByVal page As PdfPage, ByVal font As PdfFont)
+        Private Shared Sub drawHeader(page As PdfPage, font As PdfFont)
             Dim canvas = page.Canvas
             canvas.Font = font
             canvas.FontSize = 30
@@ -40,7 +40,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             showTextAtRotatedPage(HeaderText, headerPosition, page)
         End Sub
 
-        Private Shared Sub drawFooter(ByVal pageIndex As Integer, ByVal page As PdfPage, ByVal font As PdfFont)
+        Private Shared Sub drawFooter(pageIndex As Integer, page As PdfPage, font As PdfFont)
             Dim canvas = page.Canvas
             canvas.Font = font
             canvas.FontSize = 14
@@ -52,7 +52,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             showTextAtRotatedPage((pageIndex + 1).ToString(), positionRightBottom, page)
         End Sub
 
-        Private Shared Function getRotatedPageSize(ByVal page As PdfPage) As PdfSize
+        Private Shared Function getRotatedPageSize(page As PdfPage) As PdfSize
             If page.Rotation = PdfRotation.Rotate90 OrElse page.Rotation = PdfRotation.Rotate270 Then
                 Return New PdfSize(page.Height, page.Width)
             End If
@@ -60,7 +60,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Return New PdfSize(page.Width, page.Height)
         End Function
 
-        Private Shared Sub showTextAtRotatedPage(ByVal text As String, ByVal position As PdfPoint, ByVal page As PdfPage)
+        Private Shared Sub showTextAtRotatedPage(text As String, position As PdfPoint, page As PdfPage)
             Dim canvas As PdfCanvas = page.Canvas
 
             If page.Rotation = PdfRotation.None Then

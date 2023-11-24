@@ -1,11 +1,10 @@
-﻿Imports System.Collections.Generic
-Imports BitMiracle.Docotic.Pdf
+﻿Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
     Class PageObjectCopier
         Private ReadOnly m_document As PdfDocument
         Private ReadOnly m_options As PdfObjectExtractionOptions
-        Private ReadOnly m_xobjectCopies As Dictionary(Of String, PdfXObject) = New Dictionary(Of String, PdfXObject)()
+        Private ReadOnly m_xobjectCopies As New Dictionary(Of String, PdfXObject)()
 
         Public Sub New(document As PdfDocument, Optional options As PdfObjectExtractionOptions = Nothing)
             m_document = document

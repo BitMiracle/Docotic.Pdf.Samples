@@ -16,7 +16,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             var arbitraryFileName = "MovePagesArbitrary.pdf";
 
             // This shows how to move continuous ranges of pages
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 buildTestDocument(pdf);
 
@@ -27,7 +27,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
 
             // This shows how to move arbitrary sets of pages
-            using (PdfDocument pdf = new PdfDocument())
+            using (var pdf = new PdfDocument())
             {
                 buildTestDocument(pdf);
 
