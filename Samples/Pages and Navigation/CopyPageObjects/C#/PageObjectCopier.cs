@@ -90,7 +90,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                     // Extract and copy page objects from XObject
                     PdfXObject srcXObject = xobj.XObject;
-                    if (!m_xobjectCopies.TryGetValue(srcXObject.Id, out PdfXObject copyXObject))
+                    if (!m_xobjectCopies.TryGetValue(srcXObject.Id, out PdfXObject? copyXObject))
                     {
                         copyXObject = m_document.CreateXObject();
                         m_xobjectCopies.Add(srcXObject.Id, copyXObject);

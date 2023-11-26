@@ -27,52 +27,50 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                 const float TargetResolution = 300;
                 double scaleFactor = TargetResolution / page.Resolution;
-                using (Bitmap bitmap = new Bitmap((int)(page.Width * scaleFactor), (int)(page.Height * scaleFactor)))
+                using var bitmap = new Bitmap((int)(page.Width * scaleFactor), (int)(page.Height * scaleFactor));
+                bitmap.SetResolution(TargetResolution, TargetResolution);
+
+                using (var gr = Graphics.FromImage(bitmap))
                 {
-                    bitmap.SetResolution(TargetResolution, TargetResolution);
+                    gr.SmoothingMode = SmoothingMode.HighQuality;
+                    gr.PageUnit = GraphicsUnit.Point;
 
-                    using (var gr = Graphics.FromImage(bitmap))
+                    float userUnit = (float)page.UserUnit;
+                    gr.ScaleTransform(userUnit, userUnit);
+
+                    gr.SetClip(page.CropBox.ToRectangleF(page.Height), CombineMode.Intersect);
+
+                    // We do not need to handle marked content and XObjects in this sample.
+                    // You may want to set these options to false in order to:
+                    // * Respect transparency groups for XObjects
+                    // * Respect layers or tagged content
+                    //
+                    // Look at the EditPageContent sample that shows how to handle marked content and XObjects.
+                    var options = new PdfObjectExtractionOptions
                     {
-                        gr.SmoothingMode = SmoothingMode.HighQuality;
-                        gr.PageUnit = GraphicsUnit.Point;
-
-                        float userUnit = (float)page.UserUnit;
-                        gr.ScaleTransform(userUnit, userUnit);
-
-                        gr.SetClip(page.CropBox.ToRectangleF(page.Height), CombineMode.Intersect);
-
-                        // We do not need to handle marked content and XObjects in this sample.
-                        // You may want to set these options to false in order to:
-                        // * Respect transparency groups for XObjects
-                        // * Respect layers or tagged content
-                        //
-                        // Look at the EditPageContent sample that shows how to handle marked content and XObjects.
-                        var options = new PdfObjectExtractionOptions
+                        FlattenMarkedContent = true,
+                        FlattenXObjects = true,
+                    };
+                    foreach (PdfPageObject obj in page.GetObjects(options))
+                    {
+                        switch (obj.Type)
                         {
-                            FlattenMarkedContent = true,
-                            FlattenXObjects = true,
-                        };
-                        foreach (PdfPageObject obj in page.GetObjects(options))
-                        {
-                            switch (obj.Type)
-                            {
-                                case PdfPageObjectType.Text:
-                                    drawText(gr, (PdfTextData)obj, userUnit);
-                                    break;
+                            case PdfPageObjectType.Text:
+                                drawText(gr, (PdfTextData)obj, userUnit);
+                                break;
 
-                                case PdfPageObjectType.Image:
-                                    drawImage(gr, (PdfPaintedImage)obj, userUnit);
-                                    break;
+                            case PdfPageObjectType.Image:
+                                drawImage(gr, (PdfPaintedImage)obj, userUnit);
+                                break;
 
-                                case PdfPageObjectType.Path:
-                                    drawPath(gr, (PdfPath)obj, userUnit);
-                                    break;
-                            }
+                            case PdfPageObjectType.Path:
+                                drawPath(gr, (PdfPath)obj, userUnit);
+                                break;
                         }
                     }
-
-                    bitmap.Save(PathToFile, ImageFormat.Png);
                 }
+
+                bitmap.Save(PathToFile, ImageFormat.Png);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
@@ -95,18 +93,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             saveStateAndDraw(gr, td.ClipRegion, userUnit, () =>
             {
-                using (Font font = toGdiFont(td.Font, fontSizeAbs))
-                {
-                    using (Brush brush = toGdiBrush(td.Brush))
-                    {
-                        gr.TranslateTransform((float)td.Position.X, (float)td.Position.Y);
-                        concatMatrix(gr, td.TransformationMatrix);
-                        if (Math.Sign(td.FontSize) < 0)
-                            gr.ScaleTransform(1, -1);
+                gr.TranslateTransform((float)td.Position.X, (float)td.Position.Y);
+                concatMatrix(gr, td.TransformationMatrix);
+                if (Math.Sign(td.FontSize) < 0)
+                    gr.ScaleTransform(1, -1);
 
-                        gr.DrawString(td.GetText(), font, brush, PointF.Empty);
-                    }
-                }
+                using Font font = toGdiFont(td.Font, fontSizeAbs);
+                using Brush brush = toGdiBrush(td.Brush);
+                gr.DrawString(td.GetText(), font, brush, PointF.Empty);
             });
         }
 
@@ -123,38 +117,35 @@ namespace BitMiracle.Docotic.Pdf.Samples
             if (image.Image.IsMask)
                 return;
 
-            using (var stream = new MemoryStream())
+            using var stream = new MemoryStream();
+            image.Image.Save(stream);
+
+            using Bitmap bitmap = (Bitmap)Image.FromStream(stream);
+            saveStateAndDraw(gr, image.ClipRegion, userUnit, () =>
             {
-                image.Image.Save(stream);
-                using (Bitmap bitmap = (Bitmap)Image.FromStream(stream))
+                gr.TranslateTransform((float)image.Position.X, (float)image.Position.Y);
+                concatMatrix(gr, image.TransformationMatrix);
+
+                // Important for rendering of neighbour image tiles
+                gr.PixelOffsetMode = PixelOffsetMode.Half;
+
+                var imageSize = new PdfSize(image.Image.Width, image.Image.Height);
+                if (imageSize.Width < bitmap.Width && imageSize.Height < bitmap.Height)
                 {
-                    saveStateAndDraw(gr, image.ClipRegion, userUnit, () =>
-                    {
-                        gr.TranslateTransform((float)image.Position.X, (float)image.Position.Y);
-                        concatMatrix(gr, image.TransformationMatrix);
-
-                        // Important for rendering of neighbour image tiles
-                        gr.PixelOffsetMode = PixelOffsetMode.Half;
-
-                        PdfSize imageSize = new PdfSize(image.Image.Width, image.Image.Height);
-                        if (imageSize.Width < bitmap.Width && imageSize.Height < bitmap.Height)
-                        {
-                            // the bitmap produced from the image is larger than the image.
-                            // usually this happens when image has a mask image which is larger than the image itself.
-                            InterpolationMode current = gr.InterpolationMode;
-                            gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                            gr.DrawImage(bitmap, 0, 0, (float)imageSize.Width, (float)imageSize.Height);
-                            gr.InterpolationMode = current;
-                        }
-                        else
-                        {
-                            // bitmap has the same size 
-                            // or one of it's dimensions is longer than the corresponding image dimension
-                            gr.DrawImage(bitmap, 0, 0, bitmap.Width, bitmap.Height);
-                        }
-                    });
+                    // the bitmap produced from the image is larger than the image.
+                    // usually this happens when image has a mask image which is larger than the image itself.
+                    InterpolationMode current = gr.InterpolationMode;
+                    gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    gr.DrawImage(bitmap, 0, 0, (float)imageSize.Width, (float)imageSize.Height);
+                    gr.InterpolationMode = current;
                 }
-            }
+                else
+                {
+                    // bitmap has the same size 
+                    // or one of it's dimensions is longer than the corresponding image dimension
+                    gr.DrawImage(bitmap, 0, 0, bitmap.Width, bitmap.Height);
+                }
+            });
         }
 
         private static void drawPath(Graphics gr, PdfPath path, float userUnit)
@@ -166,12 +157,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 concatMatrix(gr, path.TransformationMatrix);
 
-                using (var gdiPath = new GraphicsPath())
-                {
-                    toGdiPath(path, gdiPath);
-
-                    fillStrokePath(gr, path, gdiPath);
-                }
+                using var gdiPath = new GraphicsPath();
+                toGdiPath(path, gdiPath);
+                fillStrokePath(gr, path, gdiPath);
             });
         }
 
@@ -201,14 +189,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 gr.Transform = new Matrix(userUnit, 0, 0, userUnit, 0, 0);
                 foreach (PdfPath clipPath in clipRegion.IntersectedPaths)
                 {
-                    using (var gdiPath = new GraphicsPath())
-                    {
-                        toGdiPath(clipPath, gdiPath);
-                        gdiPath.Transform(toGdiMatrix(clipPath.TransformationMatrix));
+                    using var gdiPath = new GraphicsPath();
+                    toGdiPath(clipPath, gdiPath);
+                    gdiPath.Transform(toGdiMatrix(clipPath.TransformationMatrix));
 
-                        gdiPath.FillMode = (FillMode)clipPath.ClipMode.Value;
-                        gr.SetClip(gdiPath, CombineMode.Intersect);
-                    }
+                    gdiPath.FillMode = (FillMode)clipPath.ClipMode!.Value;
+                    gr.SetClip(gdiPath, CombineMode.Intersect);
                 }
             }
             finally
@@ -251,7 +237,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                             // GDI+ does not render rectangles with negative or very small width and height. Render such
                             // rectangles by lines, but respect direction. Otherwise non-zero winding rule for
                             // path filling will not work.
-                            gdiPath.AddLines(new PointF[]
+                            gdiPath.AddLines(new[]
                             {
                                 rect.Location,
                                 new PointF(rect.X + rect.Width, rect.Y),
@@ -271,35 +257,27 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static void fillStrokePath(Graphics gr, PdfPath path, GraphicsPath gdiPath)
         {
-            PdfDrawMode paintMode = path.PaintMode.Value;
+            PdfDrawMode paintMode = path.PaintMode!.Value;
             if (paintMode == PdfDrawMode.Fill || paintMode == PdfDrawMode.FillAndStroke)
             {
-                using (var brush = toGdiBrush(path.Brush))
-                {
-                    gdiPath.FillMode = (FillMode)path.FillMode.Value;
-                    gr.FillPath(brush, gdiPath);
-                }
+                using var brush = toGdiBrush(path.Brush);
+                gdiPath.FillMode = (FillMode)path.FillMode!.Value;
+                gr.FillPath(brush, gdiPath);
             }
 
             if (paintMode == PdfDrawMode.Stroke || paintMode == PdfDrawMode.FillAndStroke)
             {
-                using (var pen = toGdiPen(path.Pen))
-                {
-                    gr.DrawPath(pen, gdiPath);
-                }
+                using var pen = toGdiPen(path.Pen);
+                gr.DrawPath(pen, gdiPath);
             }
         }
 
         private static void concatMatrix(Graphics gr, PdfMatrix transformation)
         {
-            using (var m = toGdiMatrix(transformation))
-            {
-                using (Matrix current = gr.Transform)
-                {
-                    current.Multiply(m, MatrixOrder.Prepend);
-                    gr.Transform = current;
-                }
-            }
+            using var m = toGdiMatrix(transformation);
+            using Matrix current = gr.Transform;
+            current.Multiply(m, MatrixOrder.Prepend);
+            gr.Transform = current;
         }
 
         private static Matrix toGdiMatrix(PdfMatrix matrix)
@@ -329,7 +307,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             };
         }
 
-        private static Color toGdiColor(PdfColor pdfColor, int opacityPercent)
+        private static Color toGdiColor(PdfColor? pdfColor, int opacityPercent)
         {
             if (pdfColor == null)
                 return Color.Empty;
@@ -353,38 +331,24 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static LineCap toGdiLineCap(PdfLineCap lineCap)
         {
-            switch (lineCap)
+            return lineCap switch
             {
-                case PdfLineCap.ButtEnd:
-                    return LineCap.Flat;
-
-                case PdfLineCap.Round:
-                    return LineCap.Round;
-
-                case PdfLineCap.ProjectingSquare:
-                    return LineCap.Square;
-
-                default:
-                    throw new InvalidOperationException("We should never be here");
-            }
+                PdfLineCap.ButtEnd => LineCap.Flat,
+                PdfLineCap.Round => LineCap.Round,
+                PdfLineCap.ProjectingSquare => LineCap.Square,
+                _ => throw new InvalidOperationException("We should never be here"),
+            };
         }
 
         private static LineJoin toGdiLineJoin(PdfLineJoin lineJoin)
         {
-            switch (lineJoin)
+            return lineJoin switch
             {
-                case PdfLineJoin.Miter:
-                    return LineJoin.Miter;
-
-                case PdfLineJoin.Round:
-                    return LineJoin.Round;
-
-                case PdfLineJoin.Bevel:
-                    return LineJoin.Bevel;
-
-                default:
-                    throw new InvalidOperationException("We should never be here");
-            }
+                PdfLineJoin.Miter => LineJoin.Miter,
+                PdfLineJoin.Round => LineJoin.Round,
+                PdfLineJoin.Bevel => LineJoin.Bevel,
+                _ => throw new InvalidOperationException("We should never be here"),
+            };
         }
 
         private static string getFontName(PdfFont font)

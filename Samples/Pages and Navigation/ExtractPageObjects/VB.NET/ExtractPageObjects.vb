@@ -263,11 +263,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Function
 
         Private Shared Function toGdiPen(pen As PdfPenInfo) As Pen
-            Dim gdiPen As Pen = New Pen(toGdiColor(pen.Color, pen.Opacity), pen.Width)
-            gdiPen.LineJoin = toGdiLineJoin(pen.LineJoin)
-            gdiPen.EndCap = toGdiLineCap(pen.EndCap)
-            gdiPen.MiterLimit = CSng(pen.MiterLimit)
-            Return gdiPen
+            Return New Pen(toGdiColor(pen.Color, pen.Opacity), pen.Width) With {
+                .LineJoin = toGdiLineJoin(pen.LineJoin),
+                .EndCap = toGdiLineCap(pen.EndCap),
+                .MiterLimit = CSng(pen.MiterLimit)
+            }
         End Function
 
         Private Shared Function toGdiColor(pdfColor As PdfColor, opacityPercent As Integer) As Color
