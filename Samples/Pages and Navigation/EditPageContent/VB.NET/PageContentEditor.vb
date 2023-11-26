@@ -8,7 +8,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         Private ReadOnly m_replaceColor As Func(Of PdfColor, PdfColor)
         Private ReadOnly m_shouldRemoveText As Func(Of PdfTextData, Boolean)
 
-        Private ReadOnly m_xobjectCopies As Dictionary(Of String, PdfXObject) = New Dictionary(Of String, PdfXObject)()
+        Private ReadOnly m_xobjectCopies As New Dictionary(Of String, PdfXObject)()
 
         Public Sub New(
             document As PdfDocument,
@@ -19,19 +19,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             m_document = document
             m_options = If(options, New PdfObjectExtractionOptions())
 
-            m_replaceColor = replaceColor
-            If m_replaceColor Is Nothing Then
-                m_replaceColor = Function(c)
-                                     Return c
-                                 End Function
-            End If
+            m_replaceColor = If(replaceColor, Function(c)
+                                                  Return c
+                                              End Function)
 
-            m_shouldRemoveText = shouldRemoveText
-            If m_shouldRemoveText Is Nothing Then
-                m_shouldRemoveText = Function(t)
-                                         Return False
-                                     End Function
-            End If
+            m_shouldRemoveText = If(shouldRemoveText, Function(t)
+                                                          Return False
+                                                      End Function)
         End Sub
 
         Public Sub Edit(page As PdfPage)

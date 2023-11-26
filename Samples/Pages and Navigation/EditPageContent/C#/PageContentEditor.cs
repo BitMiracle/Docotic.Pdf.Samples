@@ -12,24 +12,18 @@ namespace BitMiracle.Docotic.Pdf.Samples
         private readonly Func<PdfColor, PdfColor> m_replaceColor;
         private readonly Func<PdfTextData, bool> m_shouldRemoveText;
 
-        private readonly Dictionary<string, PdfXObject> m_xobjectCopies = new Dictionary<string, PdfXObject>();
+        private readonly Dictionary<string, PdfXObject> m_xobjectCopies = new();
 
         public PageContentEditor(
             PdfDocument document,
-            PdfObjectExtractionOptions options = null,
-            Func<PdfColor, PdfColor> replaceColor = null,
-            Func<PdfTextData, bool> shouldRemoveText = null)
+            PdfObjectExtractionOptions? options = null,
+            Func<PdfColor, PdfColor>? replaceColor = null,
+            Func<PdfTextData, bool>? shouldRemoveText = null)
         {
             m_document = document;
             m_options = options ?? new PdfObjectExtractionOptions();
-
-            m_replaceColor = replaceColor;
-            if (m_replaceColor == null)
-                m_replaceColor = c => c;
-
-            m_shouldRemoveText = shouldRemoveText;
-            if (m_shouldRemoveText == null)
-                m_shouldRemoveText = t => false;
+            m_replaceColor = replaceColor ?? (c => c);
+            m_shouldRemoveText = shouldRemoveText ?? (t => false);
         }
 
         public void Edit(PdfPage page)
@@ -105,7 +99,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                     // Extract and copy page objects from XObject
                     PdfXObject srcXObject = xobj.XObject;
-                    if (!m_xobjectCopies.TryGetValue(srcXObject.Id, out PdfXObject copyXObject))
+                    if (!m_xobjectCopies.TryGetValue(srcXObject.Id, out PdfXObject? copyXObject))
                     {
                         copyXObject = m_document.CreateXObject();
                         m_xobjectCopies.Add(srcXObject.Id, copyXObject);
@@ -127,7 +121,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private void setBrush(PdfBrush dst, PdfBrushInfo src)
         {
-            PdfColor color = src.Color;
+            PdfColor? color = src.Color;
             if (color != null)
                 dst.Color = m_replaceColor(color);
 
@@ -140,7 +134,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private void setPen(PdfPen dst, PdfPenInfo src)
         {
-            PdfColor color = src.Color;
+            PdfColor? color = src.Color;
             if (color != null)
                 dst.Color = m_replaceColor(color);
 
@@ -192,7 +186,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     canvas.ResetTransform();
                     canvas.Transform(clipPath.TransformationMatrix);
                     appendPath(canvas, clipPath);
-                    canvas.SetClip(clipPath.ClipMode.Value);
+                    canvas.SetClip(clipPath.ClipMode!.Value);
                 }
             }
             finally
@@ -243,11 +237,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
             switch (path.PaintMode)
             {
                 case PdfDrawMode.Fill:
-                    target.FillPath(path.FillMode.Value);
+                    target.FillPath(path.FillMode!.Value);
                     break;
 
                 case PdfDrawMode.FillAndStroke:
-                    target.FillAndStrokePath(path.FillMode.Value);
+                    target.FillAndStrokePath(path.FillMode!.Value);
                     break;
 
                 case PdfDrawMode.Stroke:
