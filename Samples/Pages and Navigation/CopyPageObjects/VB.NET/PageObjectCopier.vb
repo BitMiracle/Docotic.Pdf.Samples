@@ -115,7 +115,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             dst.Width = src.Width
         End Sub
 
-        Private Sub drawText(target As PdfCanvas, td As PdfTextData)
+        Private Shared Sub drawText(target As PdfCanvas, td As PdfTextData)
             target.TextRenderingMode = td.RenderingMode
             setBrush(target.Brush, td.Brush)
             setPen(target.Pen, td.Pen)

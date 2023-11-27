@@ -110,7 +110,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
         }
 
-        private void setBrush(PdfBrush dst, PdfBrushInfo src)
+        private static void setBrush(PdfBrush dst, PdfBrushInfo src)
         {
             PdfColor? color = src.Color;
             if (color != null)
@@ -123,7 +123,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 dst.Pattern = pattern;
         }
 
-        private void setPen(PdfPen dst, PdfPenInfo src)
+        private static void setPen(PdfPen dst, PdfPenInfo src)
         {
             PdfColor? color = src.Color;
             if (color != null)
@@ -141,7 +141,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             dst.Width = src.Width;
         }
 
-        private void drawText(PdfCanvas target, PdfTextData td)
+        private static void drawText(PdfCanvas target, PdfTextData td)
         {
             target.TextRenderingMode = td.RenderingMode;
             setBrush(target.Brush, td.Brush);
