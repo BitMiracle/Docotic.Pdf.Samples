@@ -1,37 +1,12 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
     public static class TextFromLink
     {
-        private class LinkInfo
-        {
-            public readonly PdfGoToAction Action;
-            public readonly int Index = -1;
-            public readonly PdfRectangle Bounds;
-            public readonly int OwnerPageNumber = -1;
-            public readonly int TargetPageNumber = -1;
-
-            public LinkInfo(PdfDocument pdf, PdfActionArea actionArea, int index)
-            {
-                if (pdf == null)
-                    throw new ArgumentNullException("document");
-
-                if (actionArea == null)
-                    throw new ArgumentNullException("actionArea");
-
-                Action = actionArea.Action as PdfGoToAction;
-                if (Action == null)
-                    throw new ArgumentException("Action area doesn't contain link", "actionArea");
-
-                Index = index;
-                Bounds = actionArea.BoundingBox;
-                OwnerPageNumber = pdf.IndexOf(actionArea.Owner);
-                TargetPageNumber = pdf.IndexOf(Action.View.Page);
-            }
-        }
-
         public static void Main()
         {
             // NOTE: 
@@ -39,72 +14,93 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            using (PdfDocument pdf = new PdfDocument(@"..\Sample Data\Link.pdf"))
+            using var pdf = new PdfDocument(@"..\Sample Data\Link.pdf");
+            LinkInfo? linkInfo = getLinks(pdf).FirstOrDefault();
+            if (linkInfo == null)
             {
-                LinkInfo linkInfo = getFirstLink(pdf);
-                if (linkInfo == null)
-                {
-                    Console.WriteLine("Document doesn't contain links!");
-                    return;
-                }
-
-                StringBuilder linkDescription = new StringBuilder();
-                linkDescription.AppendLine("Link's index in document widgets collection: " + linkInfo.Index);
-                linkDescription.AppendLine("Number of page with link: " + linkInfo.OwnerPageNumber);
-                linkDescription.AppendLine("Link bounds: " + linkInfo.Bounds.ToString());
-                linkDescription.AppendLine("Link points to page # " + linkInfo.TargetPageNumber);
-                linkDescription.AppendLine("NOTE: All page numbers are zero-based. If you use trial version of Docotic.Pdf then even pages of original document are not loaded.");
-
-                linkDescription.AppendLine();
-                linkDescription.AppendLine("Text from link:");
-                linkDescription.AppendLine(getTextFromLink(linkInfo.Action));
-
-                Console.WriteLine(linkDescription.ToString());
+                Console.WriteLine("Document doesn't contain links!");
+                return;
             }
+
+            var linkDescription = new StringBuilder();
+            linkDescription.AppendLine("Number of page with the link: " + linkInfo.OwnerPageIndex);
+            linkDescription.AppendLine("Link's index in the page widgets collection: " + linkInfo.OwnerPageWidgetIndex);
+            linkDescription.AppendLine("Link bounds: " + linkInfo.Bounds.ToString());
+            linkDescription.AppendLine("Link points to page # " + pdf.IndexOf(linkInfo.TargetPage));
+            linkDescription.AppendLine("NOTE: All page numbers are zero-based. If you use trial version of Docotic.Pdf then even pages of original document are not loaded.");
+
+            linkDescription.AppendLine();
+            linkDescription.AppendLine("Text from link:");
+            linkDescription.AppendLine(getTextFromLink(linkInfo.TargetPage, linkInfo.TopOffset));
+
+            Console.WriteLine(linkDescription.ToString());
         }
 
-        private static LinkInfo getFirstLink(PdfDocument pdf)
+        private static IEnumerable<LinkInfo> getLinks(PdfDocument pdf)
         {
-            int i = 0;
-            foreach (PdfWidget widget in pdf.GetWidgets())
+            for (int i = 0; i < pdf.PageCount; ++i)
             {
-                PdfActionArea actionArea = widget as PdfActionArea;
-                if (actionArea != null)
+                PdfPage page = pdf.Pages[i];
+                int widgetIndex = 0;
+                foreach (PdfWidget widget in page.Widgets)
                 {
-                    PdfGoToAction linkAction = actionArea.Action as PdfGoToAction;
-                    if (linkAction != null)
+                    if (widget is PdfActionArea actionArea)
                     {
-                        // lets ignore links which point to an absent page
-                        if (linkAction.View.Page != null)
-                            return new LinkInfo(pdf, actionArea, i);
+                        if (actionArea.Action is PdfGoToAction linkAction)
+                        {
+                            PdfDocumentView? view = linkAction.View;
+                            if (view is not null)
+                            {
+                                // lets ignore links which point to an absent page
+                                PdfPage? targetPage = view.Page;
+                                if (targetPage is not null)
+                                {
+                                    yield return new LinkInfo(
+                                        i, widgetIndex, actionArea.BoundingBox, targetPage, view.Top);
+                                }
+                            }
+                        }
                     }
+
+                    ++widgetIndex;
                 }
-
-                i++;
             }
-
-            return null;
         }
 
-        private static string getTextFromLink(PdfGoToAction linkAction)
+        private static string getTextFromLink(PdfPage targetPage, double? topOffset)
         {
-            PdfPage targetPage = linkAction.View.Page;
-            if (targetPage == null)
-                return String.Empty;
-
-            StringBuilder result = new StringBuilder();
+            var result = new StringBuilder();
 
             const float eps = 5.0f; // small reserve for text start vertical position
             PdfCollection<PdfTextData> textFromTargetPage = targetPage.Canvas.GetTextData();
             foreach (PdfTextData textData in textFromTargetPage)
             {
-                if (textData.Position.Y < targetPage.Height - linkAction.View.Top - eps)
+                if (textData.Position.Y < targetPage.Height - topOffset - eps)
                     continue;
 
                 result.Append(textData.GetText() + " ");
             }
 
             return result.ToString();
+        }
+
+        private class LinkInfo
+        {
+            public readonly int OwnerPageIndex;
+            public readonly int OwnerPageWidgetIndex;
+            public readonly PdfRectangle Bounds;
+            public readonly PdfPage TargetPage;
+            public readonly double? TopOffset;
+
+            public LinkInfo(
+                int ownerPageIndex, int ownerWidgetIndex, PdfRectangle linkBounds, PdfPage targetPage, double? topOffset)
+            {
+                OwnerPageIndex = ownerPageIndex;
+                OwnerPageWidgetIndex = ownerWidgetIndex;
+                Bounds = linkBounds;
+                TargetPage = targetPage;
+                TopOffset = topOffset;
+            }
         }
     }
 }
