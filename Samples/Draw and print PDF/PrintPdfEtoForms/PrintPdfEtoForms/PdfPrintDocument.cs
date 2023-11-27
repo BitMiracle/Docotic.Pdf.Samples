@@ -16,7 +16,7 @@ namespace BitMiracle.Docotic.Pdf.Samples.PrintPdfEtoForms
             m_pdf = pdf ?? throw new ArgumentNullException(nameof(pdf));
 
             m_printDocument = new PrintDocument();
-            m_printDocument.PrintPage += printDocument_PrintPage;
+            m_printDocument.PrintPage += PrintDocument_PrintPage;
         }
 
         public void Dispose()
@@ -31,7 +31,7 @@ namespace BitMiracle.Docotic.Pdf.Samples.PrintPdfEtoForms
             m_printDocument.Print();
         }
 
-        private void printDocument_PrintPage(object? sender, PrintPageEventArgs e)
+        private void PrintDocument_PrintPage(object? sender, PrintPageEventArgs e)
         {
             Graphics gr = e.Graphics;
 

@@ -16,7 +16,7 @@ namespace BitMiracle.Docotic.Pdf.Samples.PrintPdfEtoForms
                 Padding = 10,
                 Items =
                 {
-                    new Button(onPrint)
+                    new Button(OnPrint)
                     {
                         Text = "Print PDF document"
                     }
@@ -24,7 +24,7 @@ namespace BitMiracle.Docotic.Pdf.Samples.PrintPdfEtoForms
             };
         }
 
-        private void onPrint(object? sender, EventArgs e)
+        private void OnPrint(object? sender, EventArgs e)
         {
             using var dlg = new OpenFileDialog();
             dlg.Filters.Add("PDF files (*.pdf)|*.pdf");
