@@ -13,10 +13,7 @@ namespace BitMiracle.Docotic.Pdf.Samples.PrintPdfEtoForms
 
         public PdfPrintDocument(PdfDocument pdf)
         {
-            if (pdf == null)
-                throw new ArgumentNullException("pdf");
-
-            m_pdf = pdf;
+            m_pdf = pdf ?? throw new ArgumentNullException(nameof(pdf));
 
             m_printDocument = new PrintDocument();
             m_printDocument.PrintPage += printDocument_PrintPage;
@@ -29,31 +26,26 @@ namespace BitMiracle.Docotic.Pdf.Samples.PrintPdfEtoForms
 
         public void Print(PrintSettings settings)
         {
-            if (settings == null)
-                throw new ArgumentNullException("settings");
-
-            m_printDocument.PrintSettings = settings;
+            m_printDocument.PrintSettings = settings ?? throw new ArgumentNullException(nameof(settings));
             m_printDocument.PageCount = settings.SelectedPageRange.Length();
             m_printDocument.Print();
         }
 
-        private void printDocument_PrintPage(object sender, PrintPageEventArgs e)
+        private void printDocument_PrintPage(object? sender, PrintPageEventArgs e)
         {
             Graphics gr = e.Graphics;
 
-            using (var stream = new MemoryStream())
-            {
-                PdfDrawOptions options = PdfDrawOptions.Create();
-                options.HorizontalResolution = gr.DPI;
-                options.VerticalResolution = gr.DPI;
+            using var stream = new MemoryStream();
+            PdfDrawOptions options = PdfDrawOptions.Create();
+            options.HorizontalResolution = gr.DPI;
+            options.VerticalResolution = gr.DPI;
 
-                PdfPage page = m_pdf.Pages[m_printDocument.PrintSettings.SelectedPageRange.Start - 1 + e.CurrentPage];
-                page.Save(stream, options);
+            PdfPage page = m_pdf.Pages[m_printDocument.PrintSettings.SelectedPageRange.Start - 1 + e.CurrentPage];
+            page.Save(stream, options);
 
-                stream.Position = 0;
-                using (var bitmap = new Bitmap(stream))
-                    gr.DrawImage(bitmap, 0, 0);
-            }
+            stream.Position = 0;
+            using var bitmap = new Bitmap(stream);
+            gr.DrawImage(bitmap, 0, 0);
         }
     }
 }

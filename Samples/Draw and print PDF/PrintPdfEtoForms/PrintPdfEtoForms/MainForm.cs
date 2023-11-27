@@ -24,22 +24,20 @@ namespace BitMiracle.Docotic.Pdf.Samples.PrintPdfEtoForms
             };
         }
 
-        private void onPrint(object sender, EventArgs e)
+        private void onPrint(object? sender, EventArgs e)
         {
-            using (var dlg = new OpenFileDialog())
+            using var dlg = new OpenFileDialog();
+            dlg.Filters.Add("PDF files (*.pdf)|*.pdf");
+
+            if (dlg.ShowDialog(this) == DialogResult.Ok)
             {
-                dlg.Filters.Add("PDF files (*.pdf)|*.pdf");
+                // NOTE:
+                // When used in trial mode, the library imposes some restrictions.
+                // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
+                // for more information.
 
-                if (dlg.ShowDialog(this) == DialogResult.Ok)
-                {
-                    // NOTE: 
-                    // When used in trial mode, the library imposes some restrictions.
-                    // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
-                    // for more information.
-
-                    using (var pdf = new PdfDocument(dlg.FileName))
-                        PdfPrintHelper.ShowPrintDialog(this, pdf);
-                }
+                using var pdf = new PdfDocument(dlg.FileName);
+                PdfPrintHelper.ShowPrintDialog(this, pdf);
             }
         }
     }
