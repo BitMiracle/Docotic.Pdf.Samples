@@ -52,22 +52,22 @@ namespace BitMiracle.Docotic.Pdf.Samples
             if (contents.CheckHasEmbeddedOcsp())
             {
                 sb.AppendLine("Signature has OCSP embedded.");
-                checkRevocation(signature, sb, PdfCertificateRevocationCheckMode.EmbeddedOcsp);
+                CheckRevocation(signature, sb, PdfCertificateRevocationCheckMode.EmbeddedOcsp);
             }
 
             if (contents.CheckHasEmbeddedCrl())
             {
                 sb.AppendLine("Signature has CRL embedded.");
-                checkRevocation(signature, sb, PdfCertificateRevocationCheckMode.EmbeddedCrl);
+                CheckRevocation(signature, sb, PdfCertificateRevocationCheckMode.EmbeddedCrl);
             }
 
-            checkRevocation(signature, sb, PdfCertificateRevocationCheckMode.OnlineOcsp);
-            checkRevocation(signature, sb, PdfCertificateRevocationCheckMode.OnlineCrl);
+            CheckRevocation(signature, sb, PdfCertificateRevocationCheckMode.OnlineOcsp);
+            CheckRevocation(signature, sb, PdfCertificateRevocationCheckMode.OnlineCrl);
 
             Console.WriteLine(sb.ToString());
         }
 
-        private static void checkRevocation(PdfSignature signature, StringBuilder sb, PdfCertificateRevocationCheckMode mode)
+        private static void CheckRevocation(PdfSignature signature, StringBuilder sb, PdfCertificateRevocationCheckMode mode)
         {
             PdfSignatureContents contents = signature.Contents;
             DateTime signingTime = signature.SigningTime ?? DateTime.MinValue;

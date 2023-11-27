@@ -12,13 +12,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            useFitHeight();
-            usePercentZoom();
+            UseFitHeight();
+            UsePercentZoom();
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
         }
 
-        private static void useFitHeight()
+        private static void UseFitHeight()
         {
             var outputName = "FitHeight.pdf";
             using (var pdf = new PdfDocument())
@@ -32,7 +32,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(new ProcessStartInfo(outputName) { UseShellExecute = true });
         }
 
-        private static void usePercentZoom()
+        private static void UsePercentZoom()
         {
             var outputName = "Percent.pdf";
             using (var pdf = new PdfDocument(@"..\Sample Data\form.pdf"))

@@ -20,7 +20,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 End If
 
                 Dim field = CType(control, PdfSignatureField)
-                sb.AppendFormat("Signature field is invisible: {0}" & vbLf, isInvisible(field))
+                sb.AppendFormat("Signature field is invisible: {0}" & vbLf, IsInvisible(field))
 
                 Dim signature = field.Signature
                 If signature Is Nothing Then
@@ -57,7 +57,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 If issuer Is Nothing Then
                     sb.AppendLine("Not embedded in the PDF: true")
 
-                    Dim issuer2 As X509Certificate2 = findCertificateByIssuerName(certificate.Issuer)
+                    Dim issuer2 As X509Certificate2 = FindCertificateByIssuerName(certificate.Issuer)
                     If issuer2 IsNot Nothing Then
                         sb.AppendLine("Found in a local list of certificates: true")
                         sb.AppendFormat("Subject DN: {0}" & vbLf, issuer2.Subject)
@@ -74,11 +74,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Console.WriteLine(sb.ToString())
         End Sub
 
-        Private Shared Function isInvisible(field As PdfSignatureField) As Boolean
+        Private Shared Function IsInvisible(field As PdfSignatureField) As Boolean
             Return field.Width = 0 AndAlso field.Height = 0 OrElse field.Flags.HasFlag(PdfWidgetFlags.Hidden) OrElse field.Flags.HasFlag(PdfWidgetFlags.NoView)
         End Function
 
-        Private Shared Function findCertificateByIssuerName(issuerName As X500DistinguishedName) As X509Certificate2
+        Private Shared Function FindCertificateByIssuerName(issuerName As X500DistinguishedName) As X509Certificate2
             Using certificatesStore = New X509Store(StoreName.CertificateAuthority, StoreLocation.CurrentUser)
                 certificatesStore.Open(OpenFlags.OpenExistingOnly)
 

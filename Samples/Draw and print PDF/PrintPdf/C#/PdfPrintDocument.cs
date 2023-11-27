@@ -26,10 +26,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
             m_printSize = printSize;
 
             m_printDocument = new PrintDocument();
-            m_printDocument.BeginPrint += printDocument_BeginPrint;
-            m_printDocument.QueryPageSettings += printDocument_QueryPageSettings;
-            m_printDocument.PrintPage += printDocument_PrintPage;
-            m_printDocument.EndPrint += printDocument_EndPrint;
+            m_printDocument.BeginPrint += PrintDocument_BeginPrint;
+            m_printDocument.QueryPageSettings += PrintDocument_QueryPageSettings;
+            m_printDocument.PrintPage += PrintDocument_PrintPage;
+            m_printDocument.EndPrint += PrintDocument_EndPrint;
         }
 
         public PrintDocument PrintDocument
@@ -48,7 +48,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             m_printDocument.Print();
         }
 
-        private void printDocument_BeginPrint(object sender, PrintEventArgs e)
+        private void PrintDocument_BeginPrint(object sender, PrintEventArgs e)
         {
             PrintDocument printDocument = (PrintDocument)sender;
             printDocument.OriginAtMargins = false;
@@ -82,19 +82,19 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
         }
 
-        private void printDocument_QueryPageSettings(object sender, QueryPageSettingsEventArgs e)
+        private void PrintDocument_QueryPageSettings(object sender, QueryPageSettingsEventArgs e)
         {
             PdfPage page = m_pdf.Pages[m_pageIndex];
 
             // Auto-detect portrait/landscape orientation.
             // Printer settings for orientation are ignored in this sample.
-            PdfSize pageSize = getPageSizeInPoints(page);
+            PdfSize pageSize = GetPageSizeInPoints(page);
             e.PageSettings.Landscape = pageSize.Width > pageSize.Height;
 
-            m_printableAreaInPoints = getPrintableAreaInPoints(e.PageSettings);
+            m_printableAreaInPoints = GetPrintableAreaInPoints(e.PageSettings);
         }
 
-        private void printDocument_PrintPage(object sender, PrintPageEventArgs e)
+        private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
         {
             var gr = e.Graphics;
             if (gr is null)
@@ -118,7 +118,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
 
             PdfPage page = m_pdf.Pages[m_pageIndex];
-            PdfSize pageSizeInPoints = getPageSizeInPoints(page);
+            PdfSize pageSizeInPoints = GetPageSizeInPoints(page);
 
             if (m_printSize == PrintSize.FitPage)
             {
@@ -126,12 +126,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 float sy = (float)(m_printableAreaInPoints.Height / pageSizeInPoints.Height);
                 float scaleFactor = Math.Min(sx, sy);
 
-                centerContentInPrintableArea(gr, pageSizeInPoints, scaleFactor);
+                CenterContentInPrintableArea(gr, pageSizeInPoints, scaleFactor);
                 gr.ScaleTransform(scaleFactor, scaleFactor);
             }
             else if (m_printSize == PrintSize.ActualSize)
             {
-                centerContentInPrintableArea(gr, pageSizeInPoints, 1);
+                CenterContentInPrintableArea(gr, pageSizeInPoints, 1);
             }
 
             page.Draw(gr);
@@ -140,11 +140,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
             e.HasMorePages = (m_pageIndex <= m_lastPageIndex);
         }
 
-        private void printDocument_EndPrint(object sender, PrintEventArgs e)
+        private void PrintDocument_EndPrint(object sender, PrintEventArgs e)
         {
         }
 
-        private void centerContentInPrintableArea(Graphics gr, PdfSize contentSizeInPoints, float scaleFactor)
+        private void CenterContentInPrintableArea(Graphics gr, PdfSize contentSizeInPoints, float scaleFactor)
         {
             float xDiff = (float)(m_printableAreaInPoints.Width - contentSizeInPoints.Width * scaleFactor);
             float yDiff = (float)(m_printableAreaInPoints.Height - contentSizeInPoints.Height * scaleFactor);
@@ -152,7 +152,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 gr.TranslateTransform(xDiff / 2, yDiff / 2);
         }
 
-        private static PdfBox getPageBox(PdfPage page)
+        private static PdfBox GetPageBox(PdfPage page)
         {
             // Emit Adobe Reader behavior - prefer CropBox, but use MediaBox bounds when
             // some CropBox bound is out of MediaBox area.
@@ -179,9 +179,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
             return new PdfBox(left, bottom, right, top);
         }
 
-        private static PdfSize getPageSizeInPoints(PdfPage page)
+        private static PdfSize GetPageSizeInPoints(PdfPage page)
         {
-            PdfBox pageArea = getPageBox(page);
+            PdfBox pageArea = GetPageBox(page);
             double userUnit = page.UserUnit;
             if (page.Rotation == PdfRotation.Rotate90 || page.Rotation == PdfRotation.Rotate270)
                 return new PdfSize(pageArea.Height * userUnit, pageArea.Width * userUnit);
@@ -189,7 +189,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             return new PdfSize(pageArea.Width * userUnit, pageArea.Height * userUnit);
         }
 
-        private static RectangleF getPrintableAreaInPoints(PageSettings pageSettings)
+        private static RectangleF GetPrintableAreaInPoints(PageSettings pageSettings)
         {
             RectangleF printableArea = pageSettings.PrintableArea;
             if (pageSettings.Landscape)

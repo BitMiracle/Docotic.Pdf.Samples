@@ -12,22 +12,22 @@ namespace BitMiracle.Docotic.Pdf.Samples
             InitializeComponent();
         }
 
-        private PrintSize getPrintSize()
+        private PrintSize GetPrintSize()
         {
             return (printSize.SelectedIndex == FitPageIndex) ? PrintSize.FitPage : PrintSize.ActualSize;
         }
 
-        private void printButton_Click(object sender, EventArgs e)
+        private void PrintButton_Click(object sender, EventArgs e)
         {
-            processExistingPdfDocument(PdfPrintHelper.ShowPrintDialog);
+            ProcessExistingPdfDocument(PdfPrintHelper.ShowPrintDialog);
         }
 
-        private void previewButton_Click(object sender, EventArgs e)
+        private void PreviewButton_Click(object sender, EventArgs e)
         {
-            processExistingPdfDocument(PdfPrintHelper.ShowPrintPreview);
+            ProcessExistingPdfDocument(PdfPrintHelper.ShowPrintPreview);
         }
 
-        private void processExistingPdfDocument(Func<PdfDocument, PrintSize, DialogResult> action)
+        private void ProcessExistingPdfDocument(Func<PdfDocument, PrintSize, DialogResult> action)
         {
             using var dlg = new OpenFileDialog();
             dlg.Filter = "PDF files (*.pdf)|*.pdf";
@@ -40,7 +40,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 // for more information.
 
                 using var pdf = new PdfDocument(dlg.FileName);
-                action(pdf, getPrintSize());
+                action(pdf, GetPrintSize());
             }
         }
     }

@@ -12,20 +12,20 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             InitializeComponent()
         End Sub
 
-        Private Function getPrintSize() As PrintSize
+        Private Function GetPrintSize() As PrintSize
             Return If(printSize.SelectedIndex = FitPageIndex, Samples.PrintSize.FitPage, Samples.PrintSize.ActualSize)
         End Function
 
-        Private Sub printButton_Click(sender As Object, e As EventArgs) Handles printButton.Click
-            processExistingPdfDocument(New Func(Of PdfDocument, PrintSize, DialogResult)(AddressOf ShowPrintDialog))
+        Private Sub PrintButton_Click(sender As Object, e As EventArgs) Handles printButton.Click
+            ProcessExistingPdfDocument(New Func(Of PdfDocument, PrintSize, DialogResult)(AddressOf ShowPrintDialog))
         End Sub
 
-        Private Sub previewButton_Click(ByVal sender As Object, ByVal e As EventArgs) Handles previewButton.Click
-            processExistingPdfDocument(New Func(Of PdfDocument, PrintSize, DialogResult)(AddressOf ShowPrintPreview))
+        Private Sub PreviewButton_Click(sender As Object, e As EventArgs) Handles previewButton.Click
+            ProcessExistingPdfDocument(New Func(Of PdfDocument, PrintSize, DialogResult)(AddressOf ShowPrintPreview))
         End Sub
 
-        Private Sub processExistingPdfDocument(ByVal action As Func(Of PdfDocument, PrintSize, DialogResult))
-            Using dlg As OpenFileDialog = New OpenFileDialog()
+        Private Sub ProcessExistingPdfDocument(action As Func(Of PdfDocument, PrintSize, DialogResult))
+            Using dlg As New OpenFileDialog()
                 dlg.Filter = "PDF files (*.pdf)|*.pdf"
 
                 If dlg.ShowDialog() = DialogResult.OK Then
@@ -35,7 +35,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     ' for more information.
 
                     Using pdf As PdfDocument = New PdfDocument(dlg.FileName)
-                        action(pdf, getPrintSize())
+                        action(pdf, GetPrintSize())
                     End Using
                 End If
             End Using

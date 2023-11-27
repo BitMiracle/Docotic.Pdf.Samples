@@ -44,7 +44,7 @@
             this.printButton.TabIndex = 0;
             this.printButton.Text = "Print";
             this.printButton.UseVisualStyleBackColor = true;
-            this.printButton.Click += new System.EventHandler(this.printButton_Click);
+            this.printButton.Click += new System.EventHandler(this.PrintButton_Click);
             // 
             // previewButton
             // 
@@ -55,7 +55,7 @@
             this.previewButton.TabIndex = 1;
             this.previewButton.Text = "Preview";
             this.previewButton.UseVisualStyleBackColor = true;
-            this.previewButton.Click += new System.EventHandler(this.previewButton_Click);
+            this.previewButton.Click += new System.EventHandler(this.PreviewButton_Click);
             // 
             // printSize
             // 

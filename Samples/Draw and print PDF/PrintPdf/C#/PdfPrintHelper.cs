@@ -39,7 +39,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // By default the print button sends the preview to the default printer
             // The following method replaces the default button with the custom button.
             // The custom button opens print dialog.
-            setupPrintButton(previewDialog, pdf, printSize);
+            SetupPrintButton(previewDialog, pdf, printSize);
 
             // Remove the following line if you do not want preview maximized
             previewDialog.WindowState = FormWindowState.Maximized;
@@ -47,7 +47,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             return previewDialog.ShowDialog();
         }
 
-        private static void setupPrintButton(PrintPreviewDialog previewDialog, PdfDocument pdf, PrintSize printSize)
+        private static void SetupPrintButton(PrintPreviewDialog previewDialog, PdfDocument pdf, PrintSize printSize)
         {
             var openPrintDialog = new ToolStripButton
             {

@@ -8,13 +8,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
-            useFitHeight()
-            usePercentZoom()
+            UseFitHeight()
+            UsePercentZoom()
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
         End Sub
 
-        Private Shared Sub useFitHeight()
+        Private Shared Sub UseFitHeight()
             Using pdf As New PdfDocument()
 
                 pdf.InitialView = pdf.CreateView(0)
@@ -27,7 +27,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End Using
         End Sub
 
-        Private Shared Sub usePercentZoom()
+        Private Shared Sub UsePercentZoom()
             Using pdf As New PdfDocument("..\Sample Data\form.pdf")
 
                 pdf.InitialView = pdf.CreateView(0)

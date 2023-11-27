@@ -13,37 +13,35 @@ namespace BitMiracle.Docotic.Pdf.Samples
             InitializeComponent();
         }
 
-        private PrintSize getPrintSize()
+        private PrintSize GetPrintSize()
         {
             return (PrintSizeCombobox.SelectedIndex == FitPageIndex) ? PrintSize.FitPage : PrintSize.ActualSize;
         }
 
         private void Print_Click(object sender, RoutedEventArgs e)
         {
-            processExistingPdfDocument(PdfPrintHelper.ShowPrintDialog);
+            ProcessExistingPdfDocument(PdfPrintHelper.ShowPrintDialog);
         }
 
         private void Preview_Click(object sender, RoutedEventArgs e)
         {
-            processExistingPdfDocument(PdfPrintHelper.ShowPrintPreview);
+            ProcessExistingPdfDocument(PdfPrintHelper.ShowPrintPreview);
         }
 
-        private void processExistingPdfDocument(Func<PdfDocument, PrintSize, DialogResult> action)
+        private void ProcessExistingPdfDocument(Func<PdfDocument, PrintSize, DialogResult> action)
         {
-            using (var dlg = new OpenFileDialog())
+            using var dlg = new OpenFileDialog();
+            dlg.Filter = "PDF files (*.pdf)|*.pdf";
+
+            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                dlg.Filter = "PDF files (*.pdf)|*.pdf";
+                // NOTE:
+                // When used in trial mode, the library imposes some restrictions.
+                // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
+                // for more information.
 
-                if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    // NOTE: 
-                    // When used in trial mode, the library imposes some restrictions.
-                    // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
-                    // for more information.
-
-                    using (var pdf = new PdfDocument(dlg.FileName))
-                        action(pdf, getPrintSize());
-                }
+                using var pdf = new PdfDocument(dlg.FileName);
+                action(pdf, GetPrintSize());
             }
         }
     }

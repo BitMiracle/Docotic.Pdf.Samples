@@ -34,7 +34,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     ' By default the print button sends the preview to the default printer
                     ' The following method replaces the default button with the custom button.
                     ' The custom button opens print dialog.
-                    setupPrintButton(previewDialog, pdf, printSize)
+                    SetupPrintButton(previewDialog, pdf, printSize)
 
                     ' Remove the following line if you do not want preview maximized
                     previewDialog.WindowState = FormWindowState.Maximized
@@ -44,9 +44,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End Using
         End Function
 
-        Private Sub setupPrintButton(previewDialog As PrintPreviewDialog, pdf As PdfDocument, printSize As PrintSize)
+        Private Sub SetupPrintButton(previewDialog As PrintPreviewDialog, pdf As PdfDocument, printSize As PrintSize)
             ' reuse the image of the default print button
-            Dim openPrintDialog As ToolStripButton = New ToolStripButton With {
+            Dim openPrintDialog As New ToolStripButton With {
                 .Image = CType(previewDialog.Controls(1), ToolStrip).ImageList.Images(0),
                 .DisplayStyle = ToolStripItemDisplayStyle.Image
             }

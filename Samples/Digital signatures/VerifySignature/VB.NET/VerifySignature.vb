@@ -45,22 +45,22 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 If contents.CheckHasEmbeddedOcsp() Then
                     sb.AppendLine("Signature has OCSP embedded.")
-                    checkRevocation(signature, sb, PdfCertificateRevocationCheckMode.EmbeddedOcsp)
+                    CheckRevocation(signature, sb, PdfCertificateRevocationCheckMode.EmbeddedOcsp)
                 End If
 
                 If contents.CheckHasEmbeddedCrl() Then
                     sb.AppendLine("Signature has CRL embedded.")
-                    checkRevocation(signature, sb, PdfCertificateRevocationCheckMode.EmbeddedCrl)
+                    CheckRevocation(signature, sb, PdfCertificateRevocationCheckMode.EmbeddedCrl)
                 End If
 
-                checkRevocation(signature, sb, PdfCertificateRevocationCheckMode.OnlineOcsp)
-                checkRevocation(signature, sb, PdfCertificateRevocationCheckMode.OnlineCrl)
+                CheckRevocation(signature, sb, PdfCertificateRevocationCheckMode.OnlineOcsp)
+                CheckRevocation(signature, sb, PdfCertificateRevocationCheckMode.OnlineCrl)
             End Using
 
             Console.WriteLine(sb.ToString())
         End Sub
 
-        Private Shared Sub checkRevocation(signature As PdfSignature, sb As StringBuilder, mode As PdfCertificateRevocationCheckMode)
+        Private Shared Sub CheckRevocation(signature As PdfSignature, sb As StringBuilder, mode As PdfCertificateRevocationCheckMode)
             Dim contents = signature.Contents
             Dim signingTime = If(signature.SigningTime, Date.MinValue)
 

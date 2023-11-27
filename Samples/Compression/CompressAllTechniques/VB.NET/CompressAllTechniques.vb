@@ -35,7 +35,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                             Continue For
                         End If
 
-                        If optimizeImage(painted) Then
+                        If OptimizeImage(painted) Then
                             alreadyCompressedImageIds.Add(image.Id)
                         End If
                     Next
@@ -64,7 +64,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Info.Clear(False)
 
                 ' 7. Unembed fonts
-                unembedFonts(pdf)
+                UnembedFonts(pdf)
 
                 ' 8. Remove unused resources
                 pdf.RemoveUnusedResources()
@@ -95,7 +95,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(New ProcessStartInfo(compressedFile) With {.UseShellExecute = True})
         End Sub
 
-        Private Shared Function optimizeImage(ByVal painted As PdfPaintedImage) As Boolean
+        Private Shared Function OptimizeImage(painted As PdfPaintedImage) As Boolean
             Dim image As PdfImage = painted.Image
 
             ' inline images cannot be recompressed unless you move them to resources
@@ -118,7 +118,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             If ratio <= 1 Then
                 ' the image size is smaller then the painted size
-                Return recompressImage(image)
+                Return RecompressImage(image)
             End If
 
             If ratio < 1.1 Then
@@ -131,13 +131,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 image.Compression = PdfImageCompression.Group3Fax OrElse
                 image.Compression = PdfImageCompression.JBig2 OrElse
                 (image.ComponentCount = 1 And image.BitsPerComponent = 1) Then
-                Return resizeBilevelImage(image, ratio)
+                Return ResizeBilevelImage(image, ratio)
             End If
 
             Dim resizedWidth As Integer = Int(Math.Floor(image.Width / ratio))
             Dim resizedHeight As Integer = Int(Math.Floor(image.Height / ratio))
 
-            If (image.ComponentCount >= 3 AndAlso image.BitsPerComponent = 8) OrElse isGrayJpeg(image) Then
+            If (image.ComponentCount >= 3 AndAlso image.BitsPerComponent = 8) OrElse IsGrayJpeg(image) Then
                 image.ResizeTo(resizedWidth, resizedHeight, PdfImageCompression.Jpeg, 90)
                 ' or image.ResizeTo(resizedWidth, resizedHeight, PdfImageCompression.Jpeg2000, 10);
             Else
@@ -147,7 +147,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Return True
         End Function
 
-        Private Shared Function recompressImage(ByVal image As PdfImage) As Boolean
+        Private Shared Function RecompressImage(image As PdfImage) As Boolean
             If image.ComponentCount = 1 AndAlso
                 image.BitsPerComponent = 1 AndAlso
                 image.Compression = PdfImageCompression.Group3Fax Then
@@ -173,7 +173,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Return False
         End Function
 
-        Private Shared Function resizeBilevelImage(ByVal image As PdfImage, ByVal ratio As Double) As Boolean
+        Private Shared Function ResizeBilevelImage(image As PdfImage, ratio As Double) As Boolean
             ' Fax documents usually look better if integer-ratio scaling is used
             ' Fractional-ratio scaling introduces more artifacts
             Dim intRatio As Integer = ratio
@@ -192,7 +192,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Return True
         End Function
 
-        Private Shared Function isGrayJpeg(ByVal image As PdfImage) As Boolean
+        Private Shared Function IsGrayJpeg(image As PdfImage) As Boolean
             Dim isJpegCompressed = image.Compression = PdfImageCompression.Jpeg OrElse
                 image.Compression = PdfImageCompression.Jpeg2000
             Return isJpegCompressed AndAlso image.ComponentCount = 1 AndAlso image.BitsPerComponent = 8
@@ -204,7 +204,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         ''' * or has its name included in the "always unembed" list
         ''' * and its name is not included in the "always keep" list. 
         ''' </summary>
-        Private Shared Sub unembedFonts(ByVal pdf As PdfDocument)
+        Private Shared Sub UnembedFonts(pdf As PdfDocument)
             Dim alwaysUnembedList = {"MyriadPro-Regular"}
             Dim alwaysKeepList = {"ImportantFontName", "AnotherImportantFontName"}
 
@@ -214,7 +214,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     Continue For
                 End If
 
-                If canUnembed(font) Then
+                If CanUnembed(font) Then
                     font.Unembed()
                     Continue For
                 End If
@@ -225,7 +225,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Next
         End Sub
 
-        Private Shared Function canUnembed(ByVal font As PdfFont) As Boolean
+        Private Shared Function CanUnembed(font As PdfFont) As Boolean
             If Not font.Embedded OrElse font.EncodingName = "Built-In" Then
                 Return False
             End If

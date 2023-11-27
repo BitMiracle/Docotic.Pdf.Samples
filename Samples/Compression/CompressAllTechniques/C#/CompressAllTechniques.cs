@@ -38,7 +38,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         if (alreadyCompressedImageIds.Contains(image.Id))
                             continue;
 
-                        if (optimizeImage(painted))
+                        if (OptimizeImage(painted))
                             alreadyCompressedImageIds.Add(image.Id);
                     }
                 }
@@ -66,7 +66,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Info.Clear(false);
 
                 // 7. Unembed fonts
-                unembedFonts(pdf);
+                UnembedFonts(pdf);
 
                 // 8. Remove unused resources
                 pdf.RemoveUnusedResources();
@@ -96,7 +96,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(new ProcessStartInfo(compressedFile) { UseShellExecute = true });
         }
 
-        private static bool optimizeImage(PdfPaintedImage painted)
+        private static bool OptimizeImage(PdfPaintedImage painted)
         {
             PdfImage image = painted.Image;
 
@@ -119,7 +119,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             if (ratio <= 1)
             {
                 // the image size is smaller then the painted size
-                return recompressImage(image);
+                return RecompressImage(image);
             }
 
             if (ratio < 1.1)
@@ -134,12 +134,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 image.Compression == PdfImageCompression.JBig2 ||
                 (image.ComponentCount == 1 && image.BitsPerComponent == 1))
             {
-                return resizeBilevelImage(image, ratio);
+                return ResizeBilevelImage(image, ratio);
             }
 
             int resizedWidth = (int)Math.Floor(image.Width / ratio);
             int resizedHeight = (int)Math.Floor(image.Height / ratio);
-            if ((image.ComponentCount >= 3 && image.BitsPerComponent == 8) || isGrayJpeg(image))
+            if ((image.ComponentCount >= 3 && image.BitsPerComponent == 8) || IsGrayJpeg(image))
             {
                 image.ResizeTo(resizedWidth, resizedHeight, PdfImageCompression.Jpeg, 90);
                 // or image.ResizeTo(resizedWidth, resizedHeight, PdfImageCompression.Jpeg2000, 10);
@@ -152,7 +152,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             return true;
         }
 
-        private static bool recompressImage(PdfImage image)
+        private static bool RecompressImage(PdfImage image)
         {
             if (image.ComponentCount == 1 &&
                 image.BitsPerComponent == 1 &&
@@ -184,7 +184,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             return false;
         }
 
-        private static bool resizeBilevelImage(PdfImage image, double ratio)
+        private static bool ResizeBilevelImage(PdfImage image, double ratio)
         {
             // Fax documents usually look better if integer-ratio scaling is used
             // Fractional-ratio scaling introduces more artifacts
@@ -204,7 +204,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             return true;
         }
 
-        private static bool isGrayJpeg(PdfImage image)
+        private static bool IsGrayJpeg(PdfImage image)
         {
             var isJpegCompressed = image.Compression == PdfImageCompression.Jpeg ||
                 image.Compression == PdfImageCompression.Jpeg2000;
@@ -217,7 +217,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
         /// * or has its name included in the "always unembed" list
         /// * and its name is not included in the "always keep" list. 
         /// </summary>
-        private static void unembedFonts(PdfDocument pdf)
+        private static void UnembedFonts(PdfDocument pdf)
         {
             string[] alwaysUnembedList = { "MyriadPro-Regular" };
             string[] alwaysKeepList = { "ImportantFontName", "AnotherImportantFontName" };
@@ -227,7 +227,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 if (Array.Exists(alwaysKeepList, name => font.Name == name))
                     continue;
 
-                if (canUnembed(font))
+                if (CanUnembed(font))
                 {
                     font.Unembed();
                     continue;
@@ -238,7 +238,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
         }
 
-        private static bool canUnembed(PdfFont font)
+        private static bool CanUnembed(PdfFont font)
         {
             if (!font.Embedded || font.EncodingName == "Built-In")
                 return false;

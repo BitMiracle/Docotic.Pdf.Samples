@@ -25,7 +25,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 }
 
                 PdfSignatureField field = (PdfSignatureField)control;
-                sb.AppendFormat("Signature field is invisible: {0}\n", isInvisible(field));
+                sb.AppendFormat("Signature field is invisible: {0}\n", IsInvisible(field));
 
                 PdfSignature? signature = field.Signature;
                 if (signature is null)
@@ -64,7 +64,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 {
                     sb.AppendLine("Not embedded in the PDF: true");
 
-                    X509Certificate2? issuer2 = findCertificateByIssuerName(certificate.Issuer);
+                    X509Certificate2? issuer2 = FindCertificateByIssuerName(certificate.Issuer);
                     if (issuer2 != null)
                     {
                         sb.AppendLine("Found in a local list of certificates: true");
@@ -84,26 +84,24 @@ namespace BitMiracle.Docotic.Pdf.Samples
             Console.WriteLine(sb.ToString());
         }
 
-        private static bool isInvisible(PdfSignatureField field)
+        private static bool IsInvisible(PdfSignatureField field)
         {
             return (field.Width == 0 && field.Height == 0) ||
                     field.Flags.HasFlag(PdfWidgetFlags.Hidden) ||
                     field.Flags.HasFlag(PdfWidgetFlags.NoView);
         }
 
-        private static X509Certificate2? findCertificateByIssuerName(X500DistinguishedName issuerName)
+        private static X509Certificate2? FindCertificateByIssuerName(X500DistinguishedName issuerName)
         {
-            using (var certificatesStore = new X509Store(StoreName.CertificateAuthority, StoreLocation.CurrentUser))
-            {
-                certificatesStore.Open(OpenFlags.OpenExistingOnly);
+            using var certificatesStore = new X509Store(StoreName.CertificateAuthority, StoreLocation.CurrentUser);
+            certificatesStore.Open(OpenFlags.OpenExistingOnly);
 
-                var searchType = X509FindType.FindBySubjectDistinguishedName;
-                string findValue = issuerName.Name;
-                X509Certificate2Collection matchingCertificates = certificatesStore.Certificates.Find(searchType,
-                    findValue, false);
+            var searchType = X509FindType.FindBySubjectDistinguishedName;
+            string findValue = issuerName.Name;
+            X509Certificate2Collection matchingCertificates = certificatesStore.Certificates.Find(searchType,
+                findValue, false);
 
-                return matchingCertificates.Count > 0 ? matchingCertificates[0] : null;
-            }
+            return matchingCertificates.Count > 0 ? matchingCertificates[0] : null;
         }
     }
 }
