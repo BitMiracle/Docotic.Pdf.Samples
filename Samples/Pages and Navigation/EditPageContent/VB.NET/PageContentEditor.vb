@@ -37,49 +37,49 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Dim canvas As PdfCanvas = page.Canvas
             canvas.Clear()
-            copyPageObjects(objects, canvas)
+            CopyPageObjects(objects, canvas)
         End Sub
 
-        Public Sub copyPageObjects(objects As IEnumerable(Of PdfPageObject), target As PdfCanvas)
+        Public Sub CopyPageObjects(objects As IEnumerable(Of PdfPageObject), target As PdfCanvas)
             For Each obj As PdfPageObject In objects
                 If (obj.Type = PdfPageObjectType.MarkedContent) Then
                     Dim markedContent As PdfMarkedContent = DirectCast(obj, PdfMarkedContent)
 
                     target.BeginMarkedContent(markedContent.Tag.Name, markedContent.Properties)
-                    copyPageObjects(markedContent.GetObjects(), target)
+                    CopyPageObjects(markedContent.GetObjects(), target)
                     target.EndMarkedContent()
 
                     Continue For
                 End If
 
                 target.SaveState()
-                setClipRegion(target, obj.ClipRegion)
+                SetClipRegion(target, obj.ClipRegion)
 
                 If obj.Type = PdfPageObjectType.Path Then
                     Dim path As PdfPath = DirectCast(obj, PdfPath)
                     target.Transform(path.TransformationMatrix)
-                    If path.PaintMode = PdfDrawMode.Fill OrElse path.PaintMode = PdfDrawMode.FillAndStroke Then setBrush(target.Brush, path.Brush)
-                    If path.PaintMode = PdfDrawMode.Stroke OrElse path.PaintMode = PdfDrawMode.FillAndStroke Then setPen(target.Pen, path.Pen)
+                    If path.PaintMode = PdfDrawMode.Fill OrElse path.PaintMode = PdfDrawMode.FillAndStroke Then SetBrush(target.Brush, path.Brush)
+                    If path.PaintMode = PdfDrawMode.Stroke OrElse path.PaintMode = PdfDrawMode.FillAndStroke Then SetPen(target.Pen, path.Pen)
                     target.BlendMode = path.BlendMode
 
-                    appendPath(target, path)
-                    drawPath(target, path)
+                    AppendPath(target, path)
+                    DrawPath(target, path)
                 ElseIf obj.Type = PdfPageObjectType.Image Then
                     Dim image As PdfPaintedImage = DirectCast(obj, PdfPaintedImage)
                     target.TranslateTransform(image.Position.X, image.Position.Y)
                     target.Transform(image.TransformationMatrix)
 
-                    setBrush(target.Brush, image.Brush)
+                    SetBrush(target.Brush, image.Brush)
                     target.BlendMode = image.BlendMode
 
                     target.DrawImage(image.Image, 0, 0, 0)
                 ElseIf obj.Type = PdfPageObjectType.Text Then
                     Dim text As PdfTextData = CType(obj, PdfTextData)
-                    drawText(target, text)
+                    DrawText(target, text)
                 ElseIf obj.Type = PdfPageObjectType.XObject Then
                     Dim xobj As PdfPaintedXObject = CType(obj, PdfPaintedXObject)
-                    setBrush(target.Brush, xobj.Brush)
-                    setPen(target.Pen, xobj.Pen)
+                    SetBrush(target.Brush, xobj.Brush)
+                    SetPen(target.Pen, xobj.Pen)
                     target.BlendMode = xobj.BlendMode
                     target.Transform(xobj.TransformationMatrix)
 
@@ -95,7 +95,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         copyXObject.Group = srcXObject.Group
 
                         Dim nestedObjects As IEnumerable(Of PdfPageObject) = srcXObject.GetObjects(m_options)
-                        copyPageObjects(nestedObjects, copyXObject.Canvas)
+                        CopyPageObjects(nestedObjects, copyXObject.Canvas)
                     End If
 
                     target.DrawXObject(copyXObject, PdfPoint.Empty)
@@ -106,7 +106,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Sub
 
 
-        Private Sub setBrush(dst As PdfBrush, src As PdfBrushInfo)
+        Private Sub SetBrush(dst As PdfBrush, src As PdfBrushInfo)
             Dim color As PdfColor = src.Color
             If color IsNot Nothing Then dst.Color = m_replaceColor(color)
 
@@ -116,7 +116,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             If pattern IsNot Nothing Then dst.Pattern = pattern
         End Sub
 
-        Private Sub setPen(dst As PdfPen, src As PdfPenInfo)
+        Private Sub SetPen(dst As PdfPen, src As PdfPenInfo)
             Dim color As PdfColor = src.Color
             If color IsNot Nothing Then dst.Color = m_replaceColor(color)
 
@@ -131,12 +131,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             dst.Width = src.Width
         End Sub
 
-        Private Sub drawText(target As PdfCanvas, td As PdfTextData)
+        Private Sub DrawText(target As PdfCanvas, td As PdfTextData)
             If m_shouldRemoveText(td) Then Return
 
             target.TextRenderingMode = td.RenderingMode
-            setBrush(target.Brush, td.Brush)
-            setPen(target.Pen, td.Pen)
+            SetBrush(target.Brush, td.Brush)
+            SetPen(target.Pen, td.Pen)
             target.BlendMode = td.BlendMode
 
             target.FontSize = td.FontSize
@@ -152,7 +152,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             target.DrawString(td.GetCharCodes())
         End Sub
 
-        Private Shared Sub setClipRegion(canvas As PdfCanvas, clipRegion As PdfClipRegion)
+        Private Shared Sub SetClipRegion(canvas As PdfCanvas, clipRegion As PdfClipRegion)
             If clipRegion.IntersectedPaths.Count = 0 Then
                 Return
             End If
@@ -162,7 +162,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 For Each clipPath As PdfPath In clipRegion.IntersectedPaths
                     canvas.ResetTransform()
                     canvas.Transform(clipPath.TransformationMatrix)
-                    appendPath(canvas, clipPath)
+                    AppendPath(canvas, clipPath)
                     canvas.SetClip(clipPath.ClipMode.Value)
                 Next
             Finally
@@ -171,7 +171,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End Try
         End Sub
 
-        Private Shared Sub appendPath(target As PdfCanvas, path As PdfPath)
+        Private Shared Sub AppendPath(target As PdfCanvas, path As PdfPath)
             For Each subpath As PdfSubpath In path.Subpaths
                 For Each segment As PdfPathSegment In subpath.Segments
                     Select Case segment.Type
@@ -203,7 +203,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Next
         End Sub
 
-        Private Shared Sub drawPath(target As PdfCanvas, path As PdfPath)
+        Private Shared Sub DrawPath(target As PdfCanvas, path As PdfPath)
             Select Case path.PaintMode
                 Case PdfDrawMode.Fill
                     target.FillPath(path.FillMode.Value)

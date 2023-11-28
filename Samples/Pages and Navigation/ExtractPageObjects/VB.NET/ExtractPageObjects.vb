@@ -47,13 +47,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         For Each obj As PdfPageObject In page.GetObjects(options)
                             Select Case obj.Type
                                 Case PdfPageObjectType.Text
-                                    drawText(gr, DirectCast(obj, PdfTextData), userUnit)
+                                    DrawText(gr, DirectCast(obj, PdfTextData), userUnit)
 
                                 Case PdfPageObjectType.Image
-                                    drawImage(gr, DirectCast(obj, PdfPaintedImage), userUnit)
+                                    DrawImage(gr, DirectCast(obj, PdfPaintedImage), userUnit)
 
                                 Case PdfPageObjectType.Path
-                                    drawPath(gr, DirectCast(obj, PdfPath), userUnit)
+                                    DrawPath(gr, DirectCast(obj, PdfPath), userUnit)
                             End Select
                         Next
                     End Using
@@ -67,7 +67,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(New ProcessStartInfo(PathToFile) With {.UseShellExecute = True})
         End Sub
 
-        Private Shared Sub drawText(gr As Graphics, td As PdfTextData, userUnit As Single)
+        Private Shared Sub DrawText(gr As Graphics, td As PdfTextData, userUnit As Single)
             If td.RenderingMode = PdfTextRenderingMode.NeitherFillNorStroke OrElse td.RenderingMode = PdfTextRenderingMode.AddToPath Then
                 Return
             End If
@@ -81,12 +81,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Return
             End If
 
-            saveStateAndDraw(gr, td.ClipRegion, userUnit,
+            SaveStateAndDraw(gr, td.ClipRegion, userUnit,
                 Sub()
-                    Using font As Font = toGdiFont(td.Font, fontSizeAbs)
-                        Using brush As Brush = toGdiBrush(td.Brush)
+                    Using font As Font = ToGdiFont(td.Font, fontSizeAbs)
+                        Using brush As Brush = ToGdiBrush(td.Brush)
                             gr.TranslateTransform(td.Position.X, td.Position.Y)
-                            concatMatrix(gr, td.TransformationMatrix)
+                            ConcatMatrix(gr, td.TransformationMatrix)
                             If (Math.Sign(td.FontSize) < 0) Then
                                 gr.ScaleTransform(1, -1)
                             End If
@@ -98,7 +98,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             )
         End Sub
 
-        Private Shared Sub drawImage(gr As Graphics, im As PdfPaintedImage, userUnit As Single)
+        Private Shared Sub DrawImage(gr As Graphics, im As PdfPaintedImage, userUnit As Single)
             ' Do not render images with zero width or height. GDI+ throws OutOfMemoryException
             ' in x86 processes for regular image size (e.g. 1x51) and very small transformation
             ' matrix (e.g. { 0.000005, 0, 0, 0.003, x, y }).
@@ -115,10 +115,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using stream = New MemoryStream()
                 im.Image.Save(stream)
                 Using bitmap As Bitmap = DirectCast(Image.FromStream(stream), Bitmap)
-                    saveStateAndDraw(gr, im.ClipRegion, userUnit,
+                    SaveStateAndDraw(gr, im.ClipRegion, userUnit,
                         Sub()
                             gr.TranslateTransform(im.Position.X, im.Position.Y)
-                            concatMatrix(gr, im.TransformationMatrix)
+                            ConcatMatrix(gr, im.TransformationMatrix)
 
                             ' Important for rendering of neighbour image tiles
                             gr.PixelOffsetMode = PixelOffsetMode.Half
@@ -143,28 +143,28 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End Using
         End Sub
 
-        Private Shared Sub drawPath(gr As Graphics, path As PdfPath, userUnit As Single)
+        Private Shared Sub DrawPath(gr As Graphics, path As PdfPath, userUnit As Single)
             If Not path.PaintMode.HasValue Then
                 Return
             End If
 
-            saveStateAndDraw(gr, path.ClipRegion, userUnit,
+            SaveStateAndDraw(gr, path.ClipRegion, userUnit,
                 Sub()
-                    concatMatrix(gr, path.TransformationMatrix)
+                    ConcatMatrix(gr, path.TransformationMatrix)
 
                     Using gdiPath = New GraphicsPath()
-                        toGdiPath(path, gdiPath)
+                        ToGdiPath(path, gdiPath)
 
-                        fillStrokePath(gr, path, gdiPath)
+                        FillStrokePath(gr, path, gdiPath)
                     End Using
                 End Sub
             )
         End Sub
 
-        Private Shared Sub saveStateAndDraw(gr As Graphics, clipRegion As PdfClipRegion, userUnit As Single, draw As Action)
+        Private Shared Sub SaveStateAndDraw(gr As Graphics, clipRegion As PdfClipRegion, userUnit As Single, draw As Action)
             Dim state = gr.Save()
             Try
-                setClipRegion(gr, clipRegion, userUnit)
+                SetClipRegion(gr, clipRegion, userUnit)
 
                 draw()
             Finally
@@ -172,7 +172,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End Try
         End Sub
 
-        Private Shared Sub setClipRegion(gr As Graphics, clipRegion As PdfClipRegion, userUnit As Single)
+        Private Shared Sub SetClipRegion(gr As Graphics, clipRegion As PdfClipRegion, userUnit As Single)
             If clipRegion.IntersectedPaths.Count = 0 Then
                 Return
             End If
@@ -182,8 +182,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 gr.Transform = New Matrix(userUnit, 0, 0, userUnit, 0, 0)
                 For Each clipPath As PdfPath In clipRegion.IntersectedPaths
                     Using gdiPath = New GraphicsPath()
-                        toGdiPath(clipPath, gdiPath)
-                        gdiPath.Transform(toGdiMatrix(clipPath.TransformationMatrix))
+                        ToGdiPath(clipPath, gdiPath)
+                        gdiPath.Transform(ToGdiMatrix(clipPath.TransformationMatrix))
 
                         gdiPath.FillMode = DirectCast(clipPath.ClipMode.Value, FillMode)
                         gr.SetClip(gdiPath, CombineMode.Intersect)
@@ -194,7 +194,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End Try
         End Sub
 
-        Private Shared Sub toGdiPath(path As PdfPath, gdiPath As GraphicsPath)
+        Private Shared Sub ToGdiPath(path As PdfPath, gdiPath As GraphicsPath)
             For Each subpath As PdfSubpath In path.Subpaths
                 gdiPath.StartFigure()
 
@@ -229,24 +229,24 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Next
         End Sub
 
-        Private Shared Sub fillStrokePath(gr As Graphics, path As PdfPath, gdiPath As GraphicsPath)
+        Private Shared Sub FillStrokePath(gr As Graphics, path As PdfPath, gdiPath As GraphicsPath)
             Dim paintMode As PdfDrawMode = path.PaintMode.Value
             If paintMode = PdfDrawMode.Fill OrElse paintMode = PdfDrawMode.FillAndStroke Then
-                Using brush = toGdiBrush(path.Brush)
+                Using brush = ToGdiBrush(path.Brush)
                     gdiPath.FillMode = DirectCast(path.FillMode.Value, FillMode)
                     gr.FillPath(brush, gdiPath)
                 End Using
             End If
 
             If paintMode = PdfDrawMode.Stroke OrElse paintMode = PdfDrawMode.FillAndStroke Then
-                Using pen = toGdiPen(path.Pen)
+                Using pen = ToGdiPen(path.Pen)
                     gr.DrawPath(pen, gdiPath)
                 End Using
             End If
         End Sub
 
-        Private Shared Sub concatMatrix(gr As Graphics, transformation As PdfMatrix)
-            Using m = toGdiMatrix(transformation)
+        Private Shared Sub ConcatMatrix(gr As Graphics, transformation As PdfMatrix)
+            Using m = ToGdiMatrix(transformation)
                 Using current As Matrix = gr.Transform
                     current.Multiply(m, MatrixOrder.Prepend)
                     gr.Transform = current
@@ -254,23 +254,23 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End Using
         End Sub
 
-        Private Shared Function toGdiMatrix(matrix As PdfMatrix) As Matrix
+        Private Shared Function ToGdiMatrix(matrix As PdfMatrix) As Matrix
             Return New Matrix(matrix.M11, matrix.M12, matrix.M21, matrix.M22, matrix.OffsetX, matrix.OffsetY)
         End Function
 
-        Private Shared Function toGdiBrush(brush As PdfBrushInfo) As Brush
-            Return New SolidBrush(toGdiColor(brush.Color, brush.Opacity))
+        Private Shared Function ToGdiBrush(brush As PdfBrushInfo) As Brush
+            Return New SolidBrush(ToGdiColor(brush.Color, brush.Opacity))
         End Function
 
-        Private Shared Function toGdiPen(pen As PdfPenInfo) As Pen
-            Return New Pen(toGdiColor(pen.Color, pen.Opacity), pen.Width) With {
-                .LineJoin = toGdiLineJoin(pen.LineJoin),
-                .EndCap = toGdiLineCap(pen.EndCap),
+        Private Shared Function ToGdiPen(pen As PdfPenInfo) As Pen
+            Return New Pen(ToGdiColor(pen.Color, pen.Opacity), pen.Width) With {
+                .LineJoin = ToGdiLineJoin(pen.LineJoin),
+                .EndCap = ToGdiLineCap(pen.EndCap),
                 .MiterLimit = CSng(pen.MiterLimit)
             }
         End Function
 
-        Private Shared Function toGdiColor(pdfColor As PdfColor, opacityPercent As Integer) As Color
+        Private Shared Function ToGdiColor(pdfColor As PdfColor, opacityPercent As Integer) As Color
             If pdfColor Is Nothing Then
                 Return Color.Empty
             End If
@@ -285,14 +285,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Return Color.FromArgb(alpha, rgbColor.R, rgbColor.G, rgbColor.B)
         End Function
 
-        Private Shared Function toGdiFont(font As PdfFont, fontSize As Double) As Font
-            Dim fontName As String = getFontName(font)
-            Dim fontStyle As FontStyle = getFontStyle(font)
+        Private Shared Function ToGdiFont(font As PdfFont, fontSize As Double) As Font
+            Dim fontName As String = GetFontName(font)
+            Dim fontStyle As FontStyle = GetFontStyle(font)
 
             Return New Font(fontName, CSng(fontSize), fontStyle)
         End Function
 
-        Private Shared Function toGdiLineCap(pdfLineCap As PdfLineCap) As LineCap
+        Private Shared Function ToGdiLineCap(pdfLineCap As PdfLineCap) As LineCap
             Select Case pdfLineCap
                 Case PdfLineCap.ButtEnd
                     Return LineCap.Flat
@@ -308,7 +308,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End Select
         End Function
 
-        Private Shared Function toGdiLineJoin(pdfLineJoin As PdfLineJoin) As LineJoin
+        Private Shared Function ToGdiLineJoin(pdfLineJoin As PdfLineJoin) As LineJoin
             Select Case pdfLineJoin
                 Case PdfLineJoin.Miter
                     Return LineJoin.Miter
@@ -324,7 +324,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End Select
         End Function
 
-        Private Shared Function getFontName(font As PdfFont) As String
+        Private Shared Function GetFontName(font As PdfFont) As String
             ' A trick to load a similar font for system. Ideally we should load font from raw bytes. Use PdfFont.Save()
             ' method for that.
             Dim fontName As String = font.Name
@@ -347,7 +347,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Return font.Name
         End Function
 
-        Private Shared Function getFontStyle(font As PdfFont) As FontStyle
+        Private Shared Function GetFontStyle(font As PdfFont) As FontStyle
             Dim gdiFontStyle As FontStyle = FontStyle.Regular
 
             If font.Bold Then

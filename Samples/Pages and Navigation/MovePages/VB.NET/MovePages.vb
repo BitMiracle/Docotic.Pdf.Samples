@@ -13,7 +13,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             ' This shows how to move continuous ranges of pages
             Using pdf As New PdfDocument()
-                buildTestDocument(pdf)
+                BuildTestDocument(pdf)
 
                 ' move first half of pages to the end of the document
                 pdf.MovePages(0, 5, pdf.PageCount)
@@ -23,7 +23,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             ' This shows how to move arbitrary sets of pages
             Using pdf As New PdfDocument()
-                buildTestDocument(pdf)
+                BuildTestDocument(pdf)
 
                 Dim indexes As Integer() = New Integer() {0, 2, 4, 6, 8}
 
@@ -39,7 +39,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(New ProcessStartInfo(arbitraryOutputPath) With {.UseShellExecute = True})
         End Sub
 
-        Private Shared Sub buildTestDocument(pdf As PdfDocument)
+        Private Shared Sub BuildTestDocument(pdf As PdfDocument)
             Dim times As PdfFont = pdf.AddFont(PdfBuiltInFont.HelveticaBoldOblique)
             Dim pageWidth As Double = pdf.GetPage(0).Width
 

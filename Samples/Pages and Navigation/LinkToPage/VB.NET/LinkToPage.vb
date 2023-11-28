@@ -18,12 +18,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim canvas As PdfCanvas = firstPage.Canvas
                 Dim rectForLinkToSecondPage As New PdfRectangle(10, 50, 100, 60)
                 canvas.DrawRectangle(rectForLinkToSecondPage, PdfDrawMode.Stroke)
-                drawCenteredText(canvas, "Go to 2nd page", rectForLinkToSecondPage)
+                DrawCenteredText(canvas, "Go to 2nd page", rectForLinkToSecondPage)
                 firstPage.AddLinkToPage(rectForLinkToSecondPage, 1)
 
                 Dim rectForLinkToThirdPage As New PdfRectangle(150, 50, 100, 60)
                 canvas.DrawRectangle(rectForLinkToThirdPage, PdfDrawMode.Stroke)
-                drawCenteredText(canvas, "Go to 3rd page", rectForLinkToThirdPage)
+                DrawCenteredText(canvas, "Go to 3rd page", rectForLinkToThirdPage)
                 firstPage.AddLinkToPage(rectForLinkToThirdPage, pdf.Pages(2))
 
                 pdf.Save(pathToFile)
@@ -34,7 +34,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Sub
 
-        Private Shared Sub drawCenteredText(canvas As PdfCanvas, text As String, bounds As PdfRectangle)
+        Private Shared Sub DrawCenteredText(canvas As PdfCanvas, text As String, bounds As PdfRectangle)
             Dim options = New PdfTextDrawingOptions(bounds) With
             {
                 .HorizontalAlignment = PdfTextAlign.Center,

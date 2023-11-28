@@ -11,7 +11,7 @@ Namespace BitMiracle.Docotic.Samples
             ' for more information.
 
             Using pdf As New PdfDocument("..\Sample Data\Link.pdf")
-                Dim linkInfo As LinkInfo = getLinks(pdf).FirstOrDefault()
+                Dim linkInfo As LinkInfo = GetLinks(pdf).FirstOrDefault()
                 If linkInfo Is Nothing Then
                     Console.WriteLine("Document doesn't contain links!")
                     Return
@@ -26,13 +26,13 @@ Namespace BitMiracle.Docotic.Samples
 
                 linkDescription.AppendLine()
                 linkDescription.AppendLine("Text from link:")
-                linkDescription.AppendLine(getTextFromLink(linkInfo.TargetPage, linkInfo.TopOffset))
+                linkDescription.AppendLine(GetTextFromLink(linkInfo.TargetPage, linkInfo.TopOffset))
 
                 Console.WriteLine(linkDescription.ToString())
             End Using
         End Sub
 
-        Private Shared Iterator Function getLinks(pdf As PdfDocument) As IEnumerable(Of LinkInfo)
+        Private Shared Iterator Function GetLinks(pdf As PdfDocument) As IEnumerable(Of LinkInfo)
             For i As Integer = 0 To pdf.PageCount - 1
                 Dim page As PdfPage = pdf.Pages(i)
                 Dim widgetIndex As Integer = 0
@@ -61,7 +61,7 @@ Namespace BitMiracle.Docotic.Samples
             Next
         End Function
 
-        Private Shared Function getTextFromLink(targetPage As PdfPage, topOffset As Double?) As String
+        Private Shared Function GetTextFromLink(targetPage As PdfPage, topOffset As Double?) As String
             Dim result As New StringBuilder()
 
             ' small reserve for text start vertical position

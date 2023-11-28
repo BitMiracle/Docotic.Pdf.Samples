@@ -16,7 +16,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (var pdf = new PdfDocument())
             {
-                buildTestDocument(pdf);
+                BuildTestDocument(pdf);
 
                 pdf.SwapPages(9, 0);
                 pdf.SwapPages(8, 1);
@@ -29,7 +29,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(new ProcessStartInfo(pathToFile) { UseShellExecute = true });
         }
 
-        private static void buildTestDocument(PdfDocument pdf)
+        private static void BuildTestDocument(PdfDocument pdf)
         {
             PdfFont times = pdf.AddFont(PdfBuiltInFont.HelveticaBoldOblique);
             double pageWidth = pdf.GetPage(0).Width;

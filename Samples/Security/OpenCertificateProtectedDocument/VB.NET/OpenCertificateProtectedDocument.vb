@@ -14,15 +14,15 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim keyStore As String = "key-store.p12"
             Dim password As String = "password"
 
-            openWithAutoSelectedCertificate(encryptedFile)
-            openWithKeyStore(encryptedFile, keyStore, password)
+            OpenWithAutoSelectedCertificate(encryptedFile)
+            OpenWithKeyStore(encryptedFile, keyStore, password)
 
             ' There are other options. You can use a X509Store Or X509Certificate2
             ' to construct a PdfPublicKeyDecryptionHandler And then use it 
             ' to open a certificate protected document.
         End Sub
 
-        Private Shared Sub openWithAutoSelectedCertificate(encryptedFile As String)
+        Private Shared Sub OpenWithAutoSelectedCertificate(encryptedFile As String)
             Try
                 ' This will only work if a matching certificate is installed in the
                 ' X.509 certificate store used by the current user
@@ -37,7 +37,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End Try
         End Sub
 
-        Private Shared Sub openWithKeyStore(encryptedFile As String, keyStore As String, password As String)
+        Private Shared Sub OpenWithKeyStore(encryptedFile As String, keyStore As String, password As String)
             Try
                 Dim handler As New PdfPublicKeyDecryptionHandler(keyStore, password)
 

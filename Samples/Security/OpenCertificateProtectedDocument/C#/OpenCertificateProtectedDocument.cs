@@ -17,15 +17,15 @@ namespace BitMiracle.Docotic.Pdf.Samples
             string keyStore = "key-store.p12";
             string password = "password";
 
-            openWithAutoSelectedCertificate(encryptedFile);
-            openWithKeyStore(encryptedFile, keyStore, password);
+            OpenWithAutoSelectedCertificate(encryptedFile);
+            OpenWithKeyStore(encryptedFile, keyStore, password);
 
             // There are other options. You can use a X509Store or X509Certificate2
             // to construct a PdfPublicKeyDecryptionHandler and then use it 
             // to open a certificate protected document.
         }
 
-        private static void openWithAutoSelectedCertificate(string encryptedFile)
+        private static void OpenWithAutoSelectedCertificate(string encryptedFile)
         {
             try
             {
@@ -46,7 +46,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
         }
 
-        private static void openWithKeyStore(string encryptedFile, string keyStore, string password)
+        private static void OpenWithKeyStore(string encryptedFile, string keyStore, string password)
         {
             try
             {

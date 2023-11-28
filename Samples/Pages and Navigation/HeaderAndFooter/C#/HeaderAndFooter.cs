@@ -21,8 +21,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 for (int i = 0; i < pdf.PageCount; ++i)
                 {
                     PdfPage page = pdf.Pages[i];
-                    drawHeader(page, font);
-                    drawFooter(i, page, font);
+                    DrawHeader(page, font);
+                    DrawFooter(i, page, font);
                 }
 
                 pdf.Save(PathToFile);
@@ -33,7 +33,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(new ProcessStartInfo(PathToFile) { UseShellExecute = true });
         }
 
-        private static void drawHeader(PdfPage page, PdfFont font)
+        private static void DrawHeader(PdfPage page, PdfFont font)
         {
             const string HeaderText = "Header";
 
@@ -42,29 +42,29 @@ namespace BitMiracle.Docotic.Pdf.Samples
             canvas.FontSize = 30;
 
             double textWidth = canvas.GetTextWidth(HeaderText);
-            double rotatedPageWidth = getRotatedPageSize(page).Width;
+            double rotatedPageWidth = GetRotatedPageSize(page).Width;
             var headerPosition = new PdfPoint((rotatedPageWidth - textWidth) / 2, 10);
 
-            showTextAtRotatedPage(HeaderText, headerPosition, page);
+            ShowTextAtRotatedPage(HeaderText, headerPosition, page);
         }
 
-        private static void drawFooter(int pageIndex, PdfPage page, PdfFont font)
+        private static void DrawFooter(int pageIndex, PdfPage page, PdfFont font)
         {
             var canvas = page.Canvas;
             canvas.Font = font;
             canvas.FontSize = 14;
 
-            PdfSize rotatedPageSize = getRotatedPageSize(page);
+            PdfSize rotatedPageSize = GetRotatedPageSize(page);
             var paddingFromCorner = new PdfSize(30, 30);
             var positionRightBottom = new PdfPoint(
                 rotatedPageSize.Width - paddingFromCorner.Width,
                 rotatedPageSize.Height - paddingFromCorner.Height
             );
             
-            showTextAtRotatedPage((pageIndex + 1).ToString(), positionRightBottom, page);
+            ShowTextAtRotatedPage((pageIndex + 1).ToString(), positionRightBottom, page);
         }
 
-        private static PdfSize getRotatedPageSize(PdfPage page)
+        private static PdfSize GetRotatedPageSize(PdfPage page)
         {
             if (page.Rotation == PdfRotation.Rotate90 || page.Rotation == PdfRotation.Rotate270)
                 return new PdfSize(page.Height, page.Width);
@@ -72,7 +72,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             return new PdfSize(page.Width, page.Height);
         }
 
-        private static void showTextAtRotatedPage(string text, PdfPoint position, PdfPage page)
+        private static void ShowTextAtRotatedPage(string text, PdfPoint position, PdfPage page)
         {
             PdfCanvas canvas = page.Canvas;
             if (page.Rotation == PdfRotation.None)

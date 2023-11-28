@@ -56,15 +56,15 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         switch (obj.Type)
                         {
                             case PdfPageObjectType.Text:
-                                drawText(gr, (PdfTextData)obj, userUnit);
+                                DrawText(gr, (PdfTextData)obj, userUnit);
                                 break;
 
                             case PdfPageObjectType.Image:
-                                drawImage(gr, (PdfPaintedImage)obj, userUnit);
+                                DrawImage(gr, (PdfPaintedImage)obj, userUnit);
                                 break;
 
                             case PdfPageObjectType.Path:
-                                drawPath(gr, (PdfPath)obj, userUnit);
+                                DrawPath(gr, (PdfPath)obj, userUnit);
                                 break;
                         }
                     }
@@ -78,7 +78,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(new ProcessStartInfo(PathToFile) { UseShellExecute = true });
         }
 
-        private static void drawText(Graphics gr, PdfTextData td, float userUnit)
+        private static void DrawText(Graphics gr, PdfTextData td, float userUnit)
         {
             if (td.RenderingMode == PdfTextRenderingMode.NeitherFillNorStroke ||
                 td.RenderingMode == PdfTextRenderingMode.AddToPath)
@@ -91,20 +91,20 @@ namespace BitMiracle.Docotic.Pdf.Samples
             if (Math.Abs(td.Bounds.Width) < 0.001 || Math.Abs(td.Bounds.Height) < 0.001)
                 return;
 
-            saveStateAndDraw(gr, td.ClipRegion, userUnit, () =>
+            SaveStateAndDraw(gr, td.ClipRegion, userUnit, () =>
             {
                 gr.TranslateTransform((float)td.Position.X, (float)td.Position.Y);
-                concatMatrix(gr, td.TransformationMatrix);
+                ConcatMatrix(gr, td.TransformationMatrix);
                 if (Math.Sign(td.FontSize) < 0)
                     gr.ScaleTransform(1, -1);
 
-                using Font font = toGdiFont(td.Font, fontSizeAbs);
-                using Brush brush = toGdiBrush(td.Brush);
+                using Font font = ToGdiFont(td.Font, fontSizeAbs);
+                using Brush brush = ToGdiBrush(td.Brush);
                 gr.DrawString(td.GetText(), font, brush, PointF.Empty);
             });
         }
 
-        private static void drawImage(Graphics gr, PdfPaintedImage image, float userUnit)
+        private static void DrawImage(Graphics gr, PdfPaintedImage image, float userUnit)
         {
             // Do not render images with zero width or height. GDI+ throws OutOfMemoryException
             // in x86 processes for regular image size (e.g. 1x51) and very small transformation
@@ -121,10 +121,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
             image.Image.Save(stream);
 
             using Bitmap bitmap = (Bitmap)Image.FromStream(stream);
-            saveStateAndDraw(gr, image.ClipRegion, userUnit, () =>
+            SaveStateAndDraw(gr, image.ClipRegion, userUnit, () =>
             {
                 gr.TranslateTransform((float)image.Position.X, (float)image.Position.Y);
-                concatMatrix(gr, image.TransformationMatrix);
+                ConcatMatrix(gr, image.TransformationMatrix);
 
                 // Important for rendering of neighbour image tiles
                 gr.PixelOffsetMode = PixelOffsetMode.Half;
@@ -148,27 +148,27 @@ namespace BitMiracle.Docotic.Pdf.Samples
             });
         }
 
-        private static void drawPath(Graphics gr, PdfPath path, float userUnit)
+        private static void DrawPath(Graphics gr, PdfPath path, float userUnit)
         {
             if (!path.PaintMode.HasValue)
                 return;
 
-            saveStateAndDraw(gr, path.ClipRegion, userUnit, () =>
+            SaveStateAndDraw(gr, path.ClipRegion, userUnit, () =>
             {
-                concatMatrix(gr, path.TransformationMatrix);
+                ConcatMatrix(gr, path.TransformationMatrix);
 
                 using var gdiPath = new GraphicsPath();
-                toGdiPath(path, gdiPath);
-                fillStrokePath(gr, path, gdiPath);
+                ToGdiPath(path, gdiPath);
+                FillStrokePath(gr, path, gdiPath);
             });
         }
 
-        private static void saveStateAndDraw(Graphics gr, PdfClipRegion clipRegion, float userUnit, Action draw)
+        private static void SaveStateAndDraw(Graphics gr, PdfClipRegion clipRegion, float userUnit, Action draw)
         {
             var state = gr.Save();
             try
             {
-                setClipRegion(gr, clipRegion, userUnit);
+                SetClipRegion(gr, clipRegion, userUnit);
 
                 draw();
             }
@@ -178,7 +178,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
         }
 
-        private static void setClipRegion(Graphics gr, PdfClipRegion clipRegion, float userUnit)
+        private static void SetClipRegion(Graphics gr, PdfClipRegion clipRegion, float userUnit)
         {
             if (clipRegion.IntersectedPaths.Count == 0)
                 return;
@@ -190,8 +190,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 foreach (PdfPath clipPath in clipRegion.IntersectedPaths)
                 {
                     using var gdiPath = new GraphicsPath();
-                    toGdiPath(clipPath, gdiPath);
-                    gdiPath.Transform(toGdiMatrix(clipPath.TransformationMatrix));
+                    ToGdiPath(clipPath, gdiPath);
+                    gdiPath.Transform(ToGdiMatrix(clipPath.TransformationMatrix));
 
                     gdiPath.FillMode = (FillMode)clipPath.ClipMode!.Value;
                     gr.SetClip(gdiPath, CombineMode.Intersect);
@@ -203,7 +203,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
         }
 
-        private static void toGdiPath(PdfPath path, GraphicsPath gdiPath)
+        private static void ToGdiPath(PdfPath path, GraphicsPath gdiPath)
         {
             foreach (PdfSubpath subpath in path.Subpaths)
             {
@@ -255,32 +255,32 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
         }
 
-        private static void fillStrokePath(Graphics gr, PdfPath path, GraphicsPath gdiPath)
+        private static void FillStrokePath(Graphics gr, PdfPath path, GraphicsPath gdiPath)
         {
             PdfDrawMode paintMode = path.PaintMode!.Value;
             if (paintMode == PdfDrawMode.Fill || paintMode == PdfDrawMode.FillAndStroke)
             {
-                using var brush = toGdiBrush(path.Brush);
+                using var brush = ToGdiBrush(path.Brush);
                 gdiPath.FillMode = (FillMode)path.FillMode!.Value;
                 gr.FillPath(brush, gdiPath);
             }
 
             if (paintMode == PdfDrawMode.Stroke || paintMode == PdfDrawMode.FillAndStroke)
             {
-                using var pen = toGdiPen(path.Pen);
+                using var pen = ToGdiPen(path.Pen);
                 gr.DrawPath(pen, gdiPath);
             }
         }
 
-        private static void concatMatrix(Graphics gr, PdfMatrix transformation)
+        private static void ConcatMatrix(Graphics gr, PdfMatrix transformation)
         {
-            using var m = toGdiMatrix(transformation);
+            using var m = ToGdiMatrix(transformation);
             using Matrix current = gr.Transform;
             current.Multiply(m, MatrixOrder.Prepend);
             gr.Transform = current;
         }
 
-        private static Matrix toGdiMatrix(PdfMatrix matrix)
+        private static Matrix ToGdiMatrix(PdfMatrix matrix)
         {
             return new Matrix(
                 (float)matrix.M11,
@@ -292,22 +292,22 @@ namespace BitMiracle.Docotic.Pdf.Samples
             );
         }
 
-        private static Brush toGdiBrush(PdfBrushInfo brush)
+        private static Brush ToGdiBrush(PdfBrushInfo brush)
         {
-            return new SolidBrush(toGdiColor(brush.Color, brush.Opacity));
+            return new SolidBrush(ToGdiColor(brush.Color, brush.Opacity));
         }
 
-        private static Pen toGdiPen(PdfPenInfo pen)
+        private static Pen ToGdiPen(PdfPenInfo pen)
         {
-            return new Pen(toGdiColor(pen.Color, pen.Opacity), (float)pen.Width)
+            return new Pen(ToGdiColor(pen.Color, pen.Opacity), (float)pen.Width)
             {
-                LineJoin = toGdiLineJoin(pen.LineJoin),
-                EndCap = toGdiLineCap(pen.EndCap),
+                LineJoin = ToGdiLineJoin(pen.LineJoin),
+                EndCap = ToGdiLineCap(pen.EndCap),
                 MiterLimit = (float)pen.MiterLimit
             };
         }
 
-        private static Color toGdiColor(PdfColor? pdfColor, int opacityPercent)
+        private static Color ToGdiColor(PdfColor? pdfColor, int opacityPercent)
         {
             if (pdfColor == null)
                 return Color.Empty;
@@ -321,15 +321,15 @@ namespace BitMiracle.Docotic.Pdf.Samples
             return Color.FromArgb(alpha, rgbColor.R, rgbColor.G, rgbColor.B);
         }
 
-        private static Font toGdiFont(PdfFont font, double fontSize)
+        private static Font ToGdiFont(PdfFont font, double fontSize)
         {
-            string fontName = getFontName(font);
-            FontStyle fontStyle = getFontStyle(font);
+            string fontName = GetFontName(font);
+            FontStyle fontStyle = GetFontStyle(font);
 
             return new Font(fontName, (float)fontSize, fontStyle);
         }
 
-        private static LineCap toGdiLineCap(PdfLineCap lineCap)
+        private static LineCap ToGdiLineCap(PdfLineCap lineCap)
         {
             return lineCap switch
             {
@@ -340,7 +340,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             };
         }
 
-        private static LineJoin toGdiLineJoin(PdfLineJoin lineJoin)
+        private static LineJoin ToGdiLineJoin(PdfLineJoin lineJoin)
         {
             return lineJoin switch
             {
@@ -351,7 +351,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             };
         }
 
-        private static string getFontName(PdfFont font)
+        private static string GetFontName(PdfFont font)
         {
             // A trick to load a similar font for system. Ideally we should load font from raw bytes. Use PdfFont.Save()
             // method for that.
@@ -371,7 +371,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             return font.Name;
         }
 
-        private static FontStyle getFontStyle(PdfFont font)
+        private static FontStyle GetFontStyle(PdfFont font)
         {
             FontStyle fontStyle = FontStyle.Regular;
 

@@ -13,7 +13,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf As New PdfDocument()
                 pdf.Pages(0).Canvas.DrawString("Hello World!")
 
-                Dim handler = createEncryptionHandler()
+                Dim handler = CreateEncryptionHandler()
                 handler.Algorithm = PdfEncryptionAlgorithm.Aes256Bit
 
                 Dim saveOptions As New PdfSaveOptions With {.EncryptionHandler = handler}
@@ -25,7 +25,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Sub
 
-        Private Shared Function createEncryptionHandler() As PdfPublicKeyEncryptionHandler
+        Private Shared Function CreateEncryptionHandler() As PdfPublicKeyEncryptionHandler
             ' TODO: 
             ' Change the constants, or the sample won't work.
 

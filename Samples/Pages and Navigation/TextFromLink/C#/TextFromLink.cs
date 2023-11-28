@@ -15,7 +15,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // for more information.
 
             using var pdf = new PdfDocument(@"..\Sample Data\Link.pdf");
-            LinkInfo? linkInfo = getLinks(pdf).FirstOrDefault();
+            LinkInfo? linkInfo = GetLinks(pdf).FirstOrDefault();
             if (linkInfo == null)
             {
                 Console.WriteLine("Document doesn't contain links!");
@@ -31,12 +31,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             linkDescription.AppendLine();
             linkDescription.AppendLine("Text from link:");
-            linkDescription.AppendLine(getTextFromLink(linkInfo.TargetPage, linkInfo.TopOffset));
+            linkDescription.AppendLine(GetTextFromLink(linkInfo.TargetPage, linkInfo.TopOffset));
 
             Console.WriteLine(linkDescription.ToString());
         }
 
-        private static IEnumerable<LinkInfo> getLinks(PdfDocument pdf)
+        private static IEnumerable<LinkInfo> GetLinks(PdfDocument pdf)
         {
             for (int i = 0; i < pdf.PageCount; ++i)
             {
@@ -67,7 +67,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
         }
 
-        private static string getTextFromLink(PdfPage targetPage, double? topOffset)
+        private static string GetTextFromLink(PdfPage targetPage, double? topOffset)
         {
             var result = new StringBuilder();
 

@@ -12,7 +12,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Using pdf As New PdfDocument()
 
-                buildTestDocument(pdf)
+                BuildTestDocument(pdf)
 
                 pdf.SwapPages(9, 0)
                 pdf.SwapPages(8, 1)
@@ -25,7 +25,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Sub
 
-        Private Shared Sub buildTestDocument(pdf As PdfDocument)
+        Private Shared Sub BuildTestDocument(pdf As PdfDocument)
             Dim times As PdfFont = pdf.AddFont(PdfBuiltInFont.HelveticaBoldOblique)
             Dim pageWidth As Double = pdf.GetPage(0).Width
 

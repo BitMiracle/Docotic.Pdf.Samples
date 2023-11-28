@@ -18,7 +18,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 pdf.Pages[0].Canvas.DrawString("Hello World!");
 
-                PdfPublicKeyEncryptionHandler handler = createEncryptionHandler();
+                PdfPublicKeyEncryptionHandler handler = CreateEncryptionHandler();
                 handler.Algorithm = PdfEncryptionAlgorithm.Aes256Bit;
 
                 var saveOptions = new PdfSaveOptions { EncryptionHandler = handler };
@@ -30,7 +30,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(new ProcessStartInfo(pathToFile) { UseShellExecute = true });
         }
 
-        private static PdfPublicKeyEncryptionHandler createEncryptionHandler()
+        private static PdfPublicKeyEncryptionHandler CreateEncryptionHandler()
         {
             // TODO:
             // Change the constants, or the sample won't work.

@@ -18,7 +18,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // This shows how to move continuous ranges of pages
             using (var pdf = new PdfDocument())
             {
-                buildTestDocument(pdf);
+                BuildTestDocument(pdf);
 
                 // move first half of pages to the end of the document
                 pdf.MovePages(0, 5, pdf.PageCount);
@@ -29,7 +29,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // This shows how to move arbitrary sets of pages
             using (var pdf = new PdfDocument())
             {
-                buildTestDocument(pdf);
+                BuildTestDocument(pdf);
 
                 int[] indexes = new int[] { 0, 2, 4, 6, 8 };
 
@@ -45,7 +45,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(new ProcessStartInfo(arbitraryFileName) { UseShellExecute = true });
         }
 
-        private static void buildTestDocument(PdfDocument pdf)
+        private static void BuildTestDocument(PdfDocument pdf)
         {
             PdfFont times = pdf.AddFont(PdfBuiltInFont.HelveticaBoldOblique);
             double pageWidth = pdf.GetPage(0).Width;
