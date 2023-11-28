@@ -22,8 +22,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
             using (var pdf = new PdfDocument())
             {
                 PdfCanvas canvas = pdf.Pages[0].Canvas;
-                drawHeader(canvas);
-                drawTableBody(canvas);
+                DrawHeader(canvas);
+                DrawTableBody(canvas);
 
                 pdf.Save(pathToFile);
             }
@@ -33,7 +33,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(new ProcessStartInfo(pathToFile) { UseShellExecute = true });
         }
 
-        private static void drawHeader(PdfCanvas canvas)
+        private static void DrawHeader(PdfCanvas canvas)
         {
             canvas.SaveState();
             canvas.Brush.Color = new PdfGrayColor(75);
@@ -54,19 +54,19 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
 
             canvas.Brush.Color = new PdfGrayColor(0);
-            drawCenteredText(canvas, "Project", cellBounds[0]);
-            drawCenteredText(canvas, "License", cellBounds[1]);
-            drawCenteredText(canvas, "Description", cellBounds[2]);
+            DrawCenteredText(canvas, "Project", cellBounds[0]);
+            DrawCenteredText(canvas, "License", cellBounds[1]);
+            DrawCenteredText(canvas, "Description", cellBounds[2]);
 
             canvas.RestoreState();
         }
 
-        private static void drawTableBody(PdfCanvas canvas)
+        private static void DrawTableBody(PdfCanvas canvas)
         {
             var bodyLeftCorner = new PdfPoint(m_leftTableCorner.X, m_leftTableCorner.Y + RowHeight);
             var firstCellBounds = new PdfRectangle(bodyLeftCorner, new PdfSize(m_columnWidths[0], RowHeight * 2));
             canvas.DrawRectangle(firstCellBounds);
-            drawCenteredText(canvas, "Docotic.Pdf", firstCellBounds);
+            DrawCenteredText(canvas, "Docotic.Pdf", firstCellBounds);
 
             var cells = new PdfRectangle[2, 2]
             {
@@ -83,13 +83,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
             foreach (PdfRectangle rect in cells)
                 canvas.DrawRectangle(rect, PdfDrawMode.Stroke);
 
-            drawCenteredText(canvas, "Application License", cells[0, 0]);
-            drawCenteredText(canvas, "For end-user applications", cells[0, 1]);
-            drawCenteredText(canvas, "Server License", cells[1, 0]);
-            drawCenteredText(canvas, "For server-based services", cells[1, 1]);
+            DrawCenteredText(canvas, "Application License", cells[0, 0]);
+            DrawCenteredText(canvas, "For end-user applications", cells[0, 1]);
+            DrawCenteredText(canvas, "Server License", cells[1, 0]);
+            DrawCenteredText(canvas, "For server-based services", cells[1, 1]);
         }
 
-        private static void drawCenteredText(PdfCanvas canvas, string text, PdfRectangle bounds)
+        private static void DrawCenteredText(PdfCanvas canvas, string text, PdfRectangle bounds)
         {
             var options = new PdfTextDrawingOptions(bounds)
             {

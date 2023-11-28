@@ -12,83 +12,82 @@ namespace BitMiracle.Docotic.Pdf.Samples
     {
         public static void Main()
         {
-            // NOTE: 
+            // NOTE:
             // When used in trial mode, the library imposes some restrictions.
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            using (var pdf = new PdfDocument(@"..\Sample data\Freedman Scora.pdf"))
+            using var pdf = new PdfDocument(@"..\Sample data\Freedman Scora.pdf");
+
+            // This font is used to draw all recognized text chunks in PDF.
+            // Make sure that the font defines all glyphs for the target language.
+            PdfFont? universalFont = pdf.AddFont("Arial");
+            if (universalFont is null)
             {
-                // This font is used to draw all recognized text chunks in PDF.
-                // Make sure that the font defines all glyphs for the target language.
-                PdfFont? universalFont = pdf.AddFont("Arial");
-                if (universalFont is null)
-                {
-                    Console.WriteLine("Cannot add Arial font");
-                    return;
-                }
+                Console.WriteLine("Cannot add Arial font");
+                return;
+            }
 
-                var location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                if (location == null)
-                {
-                    Console.WriteLine("Invalid assembly location");
-                    return;
-                }
+            var location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            if (location == null)
+            {
+                Console.WriteLine("Invalid assembly location");
+                return;
+            }
 
-                var tessData = Path.Combine(location, @"tessdata");
-                using (var engine = new TesseractEngine(tessData, "eng", EngineMode.LstmOnly))
+            var tessData = Path.Combine(location, @"tessdata");
+            using (var engine = new TesseractEngine(tessData, "eng", EngineMode.LstmOnly))
+            {
+                for (int i = 0; i < pdf.PageCount; ++i)
                 {
-                    for (int i = 0; i < pdf.PageCount; ++i)
+                    PdfPage page = pdf.Pages[i];
+
+                    // Simple check if the page contains searchable text.
+                    // We do not need to do OCR in that case.
+                    if (!string.IsNullOrEmpty(page.GetText().Trim()))
+                        continue;
+
+                    var canvas = page.Canvas;
+                    canvas.Font = universalFont;
+
+                    // Produce invisible, but searchable text
+                    canvas.TextRenderingMode = PdfTextRenderingMode.NeitherFillNorStroke;
+
+                    const int Dpi = 200;
+                    const double ImageToPdfScaleFactor = 72.0 / Dpi;
+                    foreach (RecognizedTextChunk word in RecognizeWords(page, engine, Dpi, $"page_{i}.png"))
                     {
-                        PdfPage page = pdf.Pages[i];
+                        if (word.Confidence < 80)
+                            Console.WriteLine($"Possible recognition error: low confidence {word.Confidence} for word '{word.Text}'");
 
-                        // Simple check if the page contains searchable text.
-                        // We do not need to do OCR in that case.
-                        if (!string.IsNullOrEmpty(page.GetText().Trim()))
-                            continue;
+                        Rect bounds = word.Bounds;
+                        var pdfBounds = new PdfRectangle(
+                            bounds.X1 * ImageToPdfScaleFactor,
+                            bounds.Y1 * ImageToPdfScaleFactor,
+                            bounds.Width * ImageToPdfScaleFactor,
+                            bounds.Height * ImageToPdfScaleFactor
+                        );
 
-                        var canvas = page.Canvas;
-                        canvas.Font = universalFont;
+                        TuneFontSize(canvas, pdfBounds.Width, word.Text);
 
-                        // Produce invisible, but searchable text
-                        canvas.TextRenderingMode = PdfTextRenderingMode.NeitherFillNorStroke;
-
-                        const int Dpi = 200;
-                        const double ImageToPdfScaleFactor = 72.0 / Dpi;
-                        foreach (RecognizedTextChunk word in recognizeWords(page, engine, Dpi, $"page_{i}.png"))
-                        {
-                            if (word.Confidence < 80)
-                                Console.WriteLine($"Possible recognition error: low confidence {word.Confidence} for word '{word.Text}'");
-
-                            Rect bounds = word.Bounds;
-                            var pdfBounds = new PdfRectangle(
-                                bounds.X1 * ImageToPdfScaleFactor,
-                                bounds.Y1 * ImageToPdfScaleFactor,
-                                bounds.Width * ImageToPdfScaleFactor,
-                                bounds.Height * ImageToPdfScaleFactor
-                            );
-
-                            tuneFontSize(canvas, pdfBounds.Width, word.Text);
-
-                            double distanceToBaseLine = getDistanceToBaseline(canvas.Font, canvas.FontSize);
-                            var position = new PdfPoint(pdfBounds.Left, pdfBounds.Bottom - distanceToBaseLine);
-                            showTextAtRotatedPage(word.Text, position, page, page.MediaBox);
-                        }
+                        double distanceToBaseLine = GetDistanceToBaseline(canvas.Font, canvas.FontSize);
+                        var position = new PdfPoint(pdfBounds.Left, pdfBounds.Bottom - distanceToBaseLine);
+                        ShowTextAtRotatedPage(word.Text, position, page, page.MediaBox);
                     }
                 }
-
-                universalFont.RemoveUnusedGlyphs();
-
-                const string Result = "OcrAndMakeSearchable.pdf";
-                pdf.Save(Result);
-
-                Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
-
-                Process.Start(new ProcessStartInfo(Result) { UseShellExecute = true });
             }
+
+            universalFont.RemoveUnusedGlyphs();
+
+            const string Result = "OcrAndMakeSearchable.pdf";
+            pdf.Save(Result);
+
+            Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
+
+            Process.Start(new ProcessStartInfo(Result) { UseShellExecute = true });
         }
 
-        private static IEnumerable<RecognizedTextChunk> recognizeWords(PdfPage page, TesseractEngine engine,
+        private static IEnumerable<RecognizedTextChunk> RecognizeWords(PdfPage page, TesseractEngine engine,
             int resolution, string tempFileName)
         {
             // Save PDF page as high-resolution image
@@ -116,7 +115,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             } while (iter.Next(Level));
         }
 
-        private static void tuneFontSize(PdfCanvas canvas, double targetTextWidth, string text)
+        private static void TuneFontSize(PdfCanvas canvas, double targetTextWidth, string text)
         {
             const double Step = 0.1;
 
@@ -143,12 +142,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
         }
 
-        private static double getDistanceToBaseline(PdfFont font, double fontSize)
+        private static double GetDistanceToBaseline(PdfFont font, double fontSize)
         {
             return font.TopSideBearing * font.TransformationMatrix.M22 * fontSize;
         }
 
-        private static void showTextAtRotatedPage(string text, PdfPoint position, PdfPage page, PdfBox pageBox)
+        private static void ShowTextAtRotatedPage(string text, PdfPoint position, PdfPage page, PdfBox pageBox)
         {
             PdfCanvas canvas = page.Canvas;
             if (page.Rotation == PdfRotation.None)

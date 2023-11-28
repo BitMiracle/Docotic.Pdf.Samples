@@ -44,17 +44,17 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         Const Dpi As Integer = 200
                         Const ImageToPdfScaleFactor As Double = 72.0 / Dpi
 
-                        For Each word As RecognizedTextChunk In recognizeWords(page, engine, Dpi, $"page_{i}.png")
+                        For Each word As RecognizedTextChunk In RecognizeWords(page, engine, Dpi, $"page_{i}.png")
                             If word.Confidence < 80 Then Console.WriteLine($"Possible recognition error: low confidence {word.Confidence} for word '{word.Text}'")
 
                             Dim bounds As Rect = word.Bounds
                             Dim pdfBounds As New PdfRectangle(bounds.X1 * ImageToPdfScaleFactor, bounds.Y1 * ImageToPdfScaleFactor, bounds.Width * ImageToPdfScaleFactor, bounds.Height * ImageToPdfScaleFactor)
 
-                            tuneFontSize(canvas, pdfBounds.Width, word.Text)
+                            TuneFontSize(canvas, pdfBounds.Width, word.Text)
 
-                            Dim distanceToBaseLine As Double = getDistanceToBaseline(canvas.Font, canvas.FontSize)
+                            Dim distanceToBaseLine As Double = GetDistanceToBaseline(canvas.Font, canvas.FontSize)
                             Dim position = New PdfPoint(pdfBounds.Left, pdfBounds.Bottom - distanceToBaseLine)
-                            showTextAtRotatedPage(word.Text, position, page, page.MediaBox)
+                            ShowTextAtRotatedPage(word.Text, position, page, page.MediaBox)
                         Next
                     Next
                 End Using
@@ -69,7 +69,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End Using
         End Sub
 
-        Private Shared Iterator Function recognizeWords(
+        Private Shared Iterator Function RecognizeWords(
             page As PdfPage,
             engine As TesseractEngine,
             resolution As Integer,
@@ -105,7 +105,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End Using
         End Function
 
-        Private Shared Sub tuneFontSize(canvas As PdfCanvas, targetTextWidth As Double, text As String)
+        Private Shared Sub TuneFontSize(canvas As PdfCanvas, targetTextWidth As Double, text As String)
             Const [Step] As Double = 0.1
 
             Dim bestFontSize As Double = canvas.FontSize
@@ -128,11 +128,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End While
         End Sub
 
-        Private Shared Function getDistanceToBaseline(font As PdfFont, fontSize As Double) As Double
+        Private Shared Function GetDistanceToBaseline(font As PdfFont, fontSize As Double) As Double
             Return font.TopSideBearing * font.TransformationMatrix.M22 * fontSize
         End Function
 
-        Private Shared Sub showTextAtRotatedPage(text As String, position As PdfPoint, page As PdfPage, pageBox As PdfBox)
+        Private Shared Sub ShowTextAtRotatedPage(text As String, position As PdfPoint, page As PdfPage, pageBox As PdfBox)
             Dim canvas As PdfCanvas = page.Canvas
 
             If page.Rotation = PdfRotation.None Then

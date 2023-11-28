@@ -26,7 +26,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.DrawLineTo(new PdfPoint(pdf.Pages[0].Width, baselinePosition));
 
                 // calculate distance from the baseline to the top of the font bounding box
-                double distanceToBaseLine = getDistanceToBaseline(canvas.Font, canvas.FontSize);
+                double distanceToBaseLine = GetDistanceToBaseline(canvas.Font, canvas.FontSize);
 
                 // draw text so that baseline of the text placed exactly over the straight line
                 canvas.DrawString(10, baselinePosition - distanceToBaseLine, "gyQW");
@@ -39,7 +39,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(new ProcessStartInfo(pathToFile) { UseShellExecute = true });
         }
 
-        private static double getDistanceToBaseline(PdfFont font, double fontSize)
+        private static double GetDistanceToBaseline(PdfFont font, double fontSize)
         {
             return font.TopSideBearing * font.TransformationMatrix.M22 * fontSize;
         }

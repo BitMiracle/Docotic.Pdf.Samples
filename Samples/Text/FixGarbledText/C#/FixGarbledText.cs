@@ -30,48 +30,47 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 }
 
                 string tessData = Path.Combine(location, @"tessdata");
-                using (var engine = new TesseractEngine(tessData, "eng", EngineMode.LstmOnly))
+                using var engine = new TesseractEngine(tessData, "eng", EngineMode.LstmOnly);
+
+                for (int i = 0; i < pdf.PageCount; ++i)
                 {
-                    for (int i = 0; i < pdf.PageCount; ++i)
+                    if (documentText.Length > 0)
+                        documentText.Append("\r\n\r\n");
+
+                    // Get a list of character codes that are not mapped to Unicode correctly
+                    var unmappedCharacterCodes = new List<PdfCharacterCode>();
+                    var firstPassOptions = new PdfTextExtractionOptions
                     {
-                        if (documentText.Length > 0)
-                            documentText.Append("\r\n\r\n");
-
-                        // Get a list of character codes that are not mapped to Unicode correctly
-                        var unmappedCharacterCodes = new List<PdfCharacterCode>();
-                        var firstPassOptions = new PdfTextExtractionOptions
+                        UnmappedCharacterCodeHandler = c =>
                         {
-                            UnmappedCharacterCodeHandler = c =>
-                            {
-                                unmappedCharacterCodes.Add(c);
-                                return null;
-                            }
-                        };
-                        PdfPage page = pdf.Pages[i];
-                        string text = page.GetText(firstPassOptions);
-                        if (unmappedCharacterCodes.Count == 0)
-                        {
-                            // There are no unmapped characters. Use the extracted text as is
-                            documentText.Append(text);
-                            continue;
+                            unmappedCharacterCodes.Add(c);
+                            return null;
                         }
-
-                        // Perform OCR to get correct Unicode values
-                        string[] recognizedText = ocrCharacterCodes(unmappedCharacterCodes, engine);
-
-                        // Extract text replacing unmapped characters with correct Unicode values
-                        int index = 0;
-                        var options = new PdfTextExtractionOptions
-                        {
-                            UnmappedCharacterCodeHandler = c =>
-                            {
-                                string t = recognizedText[index];
-                                ++index;
-                                return t ?? " ";
-                            }
-                        };
-                        documentText.Append(page.GetText(options));
+                    };
+                    PdfPage page = pdf.Pages[i];
+                    string text = page.GetText(firstPassOptions);
+                    if (unmappedCharacterCodes.Count == 0)
+                    {
+                        // There are no unmapped characters. Use the extracted text as is
+                        documentText.Append(text);
+                        continue;
                     }
+
+                    // Perform OCR to get correct Unicode values
+                    string[] recognizedText = OcrCharacterCodes(unmappedCharacterCodes, engine);
+
+                    // Extract text replacing unmapped characters with correct Unicode values
+                    int index = 0;
+                    var options = new PdfTextExtractionOptions
+                    {
+                        UnmappedCharacterCodeHandler = c =>
+                        {
+                            string t = recognizedText[index];
+                            ++index;
+                            return t ?? " ";
+                        }
+                    };
+                    documentText.Append(page.GetText(options));
                 }
             }
 
@@ -84,7 +83,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(new ProcessStartInfo(pathToFile) { UseShellExecute = true });
         }
 
-        private static string[] ocrCharacterCodes(List<PdfCharacterCode> charCodes, TesseractEngine engine)
+        private static string[] OcrCharacterCodes(List<PdfCharacterCode> charCodes, TesseractEngine engine)
         {
             string[] recognizedText = new string[charCodes.Count];
 
@@ -134,8 +133,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
                             int bestMatchIndex = -1;
                             for (int c = lastCharCodeIndex + 1; c < batchCodes.Length; ++c)
                             {
-                                double x = pointsToPixels(positionsPoints[c], rasterizer.HorizontalResolution);
-                                double width = pointsToPixels(widthsPoints[c], rasterizer.HorizontalResolution);
+                                double x = PointsToPixels(positionsPoints[c], rasterizer.HorizontalResolution);
+                                double width = PointsToPixels(widthsPoints[c], rasterizer.HorizontalResolution);
 
                                 if (bounds.X2 < x)
                                     break;
@@ -166,7 +165,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             return recognizedText;
         }
 
-        private static double pointsToPixels(double points, double dpi)
+        private static double PointsToPixels(double points, double dpi)
         {
             return points * dpi / 72;
         }

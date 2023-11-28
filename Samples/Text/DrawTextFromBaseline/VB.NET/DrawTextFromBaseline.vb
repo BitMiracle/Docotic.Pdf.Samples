@@ -21,7 +21,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.DrawLineTo(New PdfPoint(pdf.Pages(0).Width, baselinePosition))
 
                 ' calculate distance from the baseline to the top of the font bounding box
-                Dim distanceToBaseLine As Double = getDistanceToBaseline(canvas.Font, canvas.FontSize)
+                Dim distanceToBaseLine As Double = GetDistanceToBaseline(canvas.Font, canvas.FontSize)
 
                 ' draw text so that baseline of the text placed exactly over the straight line
                 canvas.DrawString(10, baselinePosition - distanceToBaseLine, "gyQW")
@@ -34,7 +34,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Sub
 
-        Private Shared Function getDistanceToBaseline(font As PdfFont, fontSize As Double) As Double
+        Private Shared Function GetDistanceToBaseline(font As PdfFont, fontSize As Double) As Double
             Return font.TopSideBearing * font.TransformationMatrix.M22 * fontSize
         End Function
     End Class

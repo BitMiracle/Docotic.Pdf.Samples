@@ -47,7 +47,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         End If
 
                         ' Perform OCR to get correct Unicode values
-                        Dim recognizedText As String() = ocrCharacterCodes(unmappedCharacterCodes, engine)
+                        Dim recognizedText As String() = OcrCharacterCodes(unmappedCharacterCodes, engine)
 
                         ' Extract text replacing unmapped characters with correct Unicode values
                         Dim index As Integer = 0
@@ -73,7 +73,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Sub
 
-        Private Shared Function ocrCharacterCodes(charCodes As List(Of PdfCharacterCode), engine As TesseractEngine) As String()
+        Private Shared Function OcrCharacterCodes(charCodes As List(Of PdfCharacterCode), engine As TesseractEngine) As String()
             Dim recognizedText As String() = New String(charCodes.Count - 1) {}
 
             Dim rasterizer = New PdfTextRasterizer With {
@@ -117,8 +117,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                                         Dim bestMatchIndex As Integer = -1
 
                                         For c As Integer = lastCharCodeIndex + 1 To batchCodes.Length - 1
-                                            Dim x As Double = pointsToPixels(positionsPoints(c), rasterizer.HorizontalResolution)
-                                            Dim width As Double = pointsToPixels(widthsPoints(c), rasterizer.HorizontalResolution)
+                                            Dim x As Double = PointsToPixels(positionsPoints(c), rasterizer.HorizontalResolution)
+                                            Dim width As Double = PointsToPixels(widthsPoints(c), rasterizer.HorizontalResolution)
 
                                             If bounds.X2 < x Then Exit For
 
@@ -148,7 +148,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Return recognizedText
         End Function
 
-        Private Shared Function pointsToPixels(points As Double, dpi As Double) As Double
+        Private Shared Function PointsToPixels(points As Double, dpi As Double) As Double
             Return points * dpi / 72
         End Function
     End Class

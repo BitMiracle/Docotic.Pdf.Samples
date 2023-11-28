@@ -22,7 +22,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 const StringComparison Comparison = StringComparison.InvariantCultureIgnoreCase;
                 var highlightColor = new PdfRgbColor(255, 255, 0);
                 
-                highlightPhrases(pdf, TextToFind, Comparison, highlightColor);
+                HighlightPhrases(pdf, TextToFind, Comparison, highlightColor);
 
                 pdf.Save(pathToFile);
             }
@@ -32,7 +32,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(new ProcessStartInfo(pathToFile) { UseShellExecute = true });
         }
 
-        private static void highlightPhrases(PdfDocument pdf, string textToFind, StringComparison comparison,
+        private static void HighlightPhrases(PdfDocument pdf, string textToFind, StringComparison comparison,
             PdfColor highlightColor)
         {
             if (string.IsNullOrEmpty(textToFind))
@@ -44,7 +44,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     .ToArray();
             foreach (PdfPage page in pdf.Pages)
             {
-                foreach (PdfRectangle[] phraseBounds in findPhrases(page, wordsToFind, comparison))
+                foreach (PdfRectangle[] phraseBounds in FindPhrases(page, wordsToFind, comparison))
                 {
                     PdfHighlightAnnotation annot = page.AddHighlightAnnotation("", phraseBounds[0], highlightColor);
                     if (phraseBounds.Length > 1)
@@ -59,7 +59,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
         }
 
-        private static IEnumerable<PdfRectangle[]> findPhrases(PdfPage page, string[] wordsToFind,
+        private static IEnumerable<PdfRectangle[]> FindPhrases(PdfPage page, string[] wordsToFind,
             StringComparison comparison)
         {
             if (wordsToFind.Length == 0)
@@ -78,7 +78,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         if (index < 0)
                             break;
 
-                        PdfRectangle intersection = getIntersectionBounds(w, pdfText, index, word.Length);
+                        PdfRectangle intersection = GetIntersectionBounds(w, pdfText, index, word.Length);
                         yield return new[] { intersection };
                     }
                 }
@@ -91,24 +91,24 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // 2. For each group:
             //   a. Sort words taking into account the group's transformation matrix.
             //   b. Search phrase in the collection of sorted words.
-            Dictionary<PdfMatrix, List<PdfTextData>> wordGroups = groupWordsByTransformations(page);
+            Dictionary<PdfMatrix, List<PdfTextData>> wordGroups = GroupWordsByTransformations(page);
             foreach (var kvp in wordGroups)
             {
                 PdfMatrix transformation = kvp.Key;
                 List<PdfTextData> words = kvp.Value;
 
-                sortWords(words, transformation);
+                SortWords(words, transformation);
 
                 int i = 0;
                 var foundPhrase = new PdfRectangle[wordsToFind.Length];
                 foreach (PdfTextData w in words)
                 {
                     string pdfText = w.GetText();
-                    if (matchWord(pdfText, wordsToFind, i, comparison))
+                    if (MatchWord(pdfText, wordsToFind, i, comparison))
                     {
                         int wordLength = wordsToFind[i].Length;
                         int startIndex = (i == 0) ? (pdfText.Length - wordLength) : 0;
-                        foundPhrase[i] = getIntersectionBounds(w, pdfText, startIndex, wordLength);
+                        foundPhrase[i] = GetIntersectionBounds(w, pdfText, startIndex, wordLength);
                         ++i;
                         if (i < wordsToFind.Length)
                             continue;
@@ -121,12 +121,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
         }
 
-        private static Dictionary<PdfMatrix, List<PdfTextData>> groupWordsByTransformations(PdfPage page)
+        private static Dictionary<PdfMatrix, List<PdfTextData>> GroupWordsByTransformations(PdfPage page)
         {
             var result = new Dictionary<PdfMatrix, List<PdfTextData>>();
             foreach (PdfTextData word in page.GetWords())
             {
-                PdfMatrix matrix = normalizeScaleFactors(word.TransformationMatrix);
+                PdfMatrix matrix = NormalizeScaleFactors(word.TransformationMatrix);
                 matrix.OffsetX = 0;
                 matrix.OffsetY = 0;
 
@@ -139,11 +139,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
             return result;
         }
 
-        private static void sortWords(List<PdfTextData> words, PdfMatrix transformation)
+        private static void SortWords(List<PdfTextData> words, PdfMatrix transformation)
         {
             // For some transformations we should invert X coordinates during sorting.
-            PdfPoint xAxis = transformVector(transformation, 1, 0);
-            PdfPoint yAxis = transformVector(transformation, 0, 1);
+            PdfPoint xAxis = TransformVector(transformation, 1, 0);
+            PdfPoint yAxis = TransformVector(transformation, 0, 1);
 
             int xDirection = 1;
 
@@ -166,18 +166,18 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             words.Sort((x, y) =>
             {
-                double yDiff = measureVerticalDistance(x.Position, y.Position, transformation);
+                double yDiff = MeasureVerticalDistance(x.Position, y.Position, transformation);
                 if (Math.Abs(yDiff) > 0.0001)
                     return yDiff.CompareTo(0);
 
-                double xDiff = measureHorizontalDistance(x.Position, y.Position, transformation);
+                double xDiff = MeasureHorizontalDistance(x.Position, y.Position, transformation);
                 return (xDiff * xDirection).CompareTo(0);
             });
         }
 
-        private static PdfMatrix normalizeScaleFactors(PdfMatrix m)
+        private static PdfMatrix NormalizeScaleFactors(PdfMatrix m)
         {
-            double scale = getScaleFactor(m.M11, m.M12, m.M21, m.M22);
+            double scale = GetScaleFactor(m.M11, m.M12, m.M21, m.M22);
 
             // Round to 1 fractional digit to avoid separation of similar matrices
             // like { 1, 0, 0, 1.12, 0, 0 } and { 1, 0, 0, 1.14, 0, 0 }
@@ -189,7 +189,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             return m;
         }
 
-        public static double getScaleFactor(params double[] values)
+        public static double GetScaleFactor(params double[] values)
         {
             double result = double.MaxValue;
             foreach (double val in values)
@@ -202,17 +202,17 @@ namespace BitMiracle.Docotic.Pdf.Samples
             return result;
         }
 
-        private static double measureHorizontalDistance(PdfPoint first, PdfPoint second, PdfMatrix m)
+        private static double MeasureHorizontalDistance(PdfPoint first, PdfPoint second, PdfMatrix m)
         {
             return m.M11 * (first.X - second.X) + m.M21 * (first.Y - second.Y);
         }
 
-        private static double measureVerticalDistance(PdfPoint first, PdfPoint second, PdfMatrix m)
+        private static double MeasureVerticalDistance(PdfPoint first, PdfPoint second, PdfMatrix m)
         {
             return m.M12 * (first.X - second.X) + m.M22 * (first.Y - second.Y);
         }
 
-        private static PdfPoint transformVector(PdfMatrix m, double x, double y)
+        private static PdfPoint TransformVector(PdfMatrix m, double x, double y)
         {
             // Multiply:
             //           | m11     m12      0 |
@@ -225,13 +225,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
             );
         }
 
-        private static PdfRectangle getIntersectionBounds(PdfTextData data, string text, int startIndex, int length)
+        private static PdfRectangle GetIntersectionBounds(PdfTextData data, string text, int startIndex, int length)
         {
             if (startIndex == 0 && text.Length == length)
                 return data.Bounds;
 
             IEnumerable<PdfTextData> characters = data.GetCharacters();
-            if (!containsLtrCharactersOnly(data, text))
+            if (!ContainsLtrCharactersOnly(data, text))
             {
                 // Process right-to-left chunks in the reverse order.
                 //
@@ -252,7 +252,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             return union;
         }
 
-        private static bool containsLtrCharactersOnly(PdfTextData data, string textLogical)
+        private static bool ContainsLtrCharactersOnly(PdfTextData data, string textLogical)
         {
             // A simple trick to detect right-to-left / bidirectional text.
             // Compare logical and visual representations of text to detect directionality.
@@ -261,7 +261,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             return textLogical == textVisual;
         }
 
-        private static bool matchWord(string text, string[] wordsToFind, int wordIndex, StringComparison comparison)
+        private static bool MatchWord(string text, string[] wordsToFind, int wordIndex, StringComparison comparison)
         {
             Debug.Assert(wordsToFind.Length > 1);
 

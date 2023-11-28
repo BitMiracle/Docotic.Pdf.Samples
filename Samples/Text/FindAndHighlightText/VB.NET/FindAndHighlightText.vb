@@ -15,7 +15,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Const Comparison As StringComparison = StringComparison.InvariantCultureIgnoreCase
                 Dim highlightColor = New PdfRgbColor(255, 255, 0)
 
-                highlightPhrases(pdf, TextToFind, Comparison, highlightColor)
+                HighlightPhrases(pdf, TextToFind, Comparison, highlightColor)
 
                 pdf.Save(pathToFile)
             End Using
@@ -25,7 +25,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Sub
 
-        Private Shared Sub highlightPhrases(
+        Private Shared Sub HighlightPhrases(
             pdf As PdfDocument,
             textToFind As String,
             comparison As StringComparison,
@@ -40,7 +40,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 .Where(Function(w) Not String.IsNullOrEmpty(w)) _
                 .ToArray()
             For Each page As PdfPage In pdf.Pages
-                For Each phraseBounds As PdfRectangle() In findPhrases(page, wordsToFind, comparison)
+                For Each phraseBounds As PdfRectangle() In FindPhrases(page, wordsToFind, comparison)
                     Dim annot As PdfHighlightAnnotation = page.AddHighlightAnnotation("", phraseBounds(0), highlightColor)
                     If phraseBounds.Length > 1 Then
                         annot.SetTextBounds(phraseBounds.[Select](Function(b) CType(b, PdfQuadrilateral)))
@@ -49,7 +49,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Next
         End Sub
 
-        Private Shared Iterator Function findPhrases(
+        Private Shared Iterator Function FindPhrases(
             page As PdfPage,
             wordsToFind As String(),
             comparison As StringComparison
@@ -67,7 +67,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         index = pdfText.IndexOf(word, index + 1, comparison)
                         If index < 0 Then Exit While
 
-                        Dim intersection As PdfRectangle = getIntersectionBounds(w, pdfText, index, word.Length)
+                        Dim intersection As PdfRectangle = GetIntersectionBounds(w, pdfText, index, word.Length)
                         Yield {intersection}
                     End While
                 Next
@@ -80,22 +80,22 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' 2. For each group:
             '   a. Sort words taking into account the group's transformation matrix.
             '   b. Search phrase in the collection of sorted words.
-            Dim wordGroups As Dictionary(Of PdfMatrix, List(Of PdfTextData)) = groupWordsByTransformations(page)
+            Dim wordGroups As Dictionary(Of PdfMatrix, List(Of PdfTextData)) = GroupWordsByTransformations(page)
             For Each kvp In wordGroups
                 Dim transformation As PdfMatrix = kvp.Key
                 Dim words As List(Of PdfTextData) = kvp.Value
 
-                sortWords(words, transformation)
+                SortWords(words, transformation)
 
                 Dim i As Integer = 0
                 Dim foundPhrase = New PdfRectangle(wordsToFind.Length - 1) {}
                 For Each w As PdfTextData In words
 
                     Dim pdfText As String = w.GetText()
-                    If matchWord(pdfText, wordsToFind, i, comparison) Then
+                    If MatchWord(pdfText, wordsToFind, i, comparison) Then
                         Dim wordLength As Integer = wordsToFind(i).Length
                         Dim startIndex As Integer = If((i = 0), (pdfText.Length - wordLength), 0)
-                        foundPhrase(i) = getIntersectionBounds(w, pdfText, startIndex, wordLength)
+                        foundPhrase(i) = GetIntersectionBounds(w, pdfText, startIndex, wordLength)
                         i += 1
                         If i < wordsToFind.Length Then Continue For
 
@@ -107,14 +107,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Next
         End Function
 
-        Private Shared Function groupWordsByTransformations(
+        Private Shared Function GroupWordsByTransformations(
             page As PdfPage
             ) As Dictionary(Of PdfMatrix, List(Of PdfTextData))
 
             Dim result = New Dictionary(Of PdfMatrix, List(Of PdfTextData))()
 
             For Each word As PdfTextData In page.GetWords()
-                Dim matrix As PdfMatrix = normalizeScaleFactors(word.TransformationMatrix)
+                Dim matrix As PdfMatrix = NormalizeScaleFactors(word.TransformationMatrix)
                 matrix.OffsetX = 0
                 matrix.OffsetY = 0
 
@@ -129,14 +129,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Return result
         End Function
 
-        Private Shared Sub sortWords(
+        Private Shared Sub SortWords(
             words As List(Of PdfTextData),
             transformation As PdfMatrix
             )
 
             ' For some transformations we should invert X coordinates during sorting.
-            Dim xAxis As PdfPoint = transformVector(transformation, 1, 0)
-            Dim yAxis As PdfPoint = transformVector(transformation, 0, 1)
+            Dim xAxis As PdfPoint = TransformVector(transformation, 1, 0)
+            Dim yAxis As PdfPoint = TransformVector(transformation, 0, 1)
             Dim xDirection As Integer = 1
 
             ' Happens when space is rotated on 90 or 270 degrees
@@ -156,17 +156,17 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             words.Sort(
                 Function(x, y)
-                    Dim yDiff As Double = measureVerticalDistance(x.Position, y.Position, transformation)
+                    Dim yDiff As Double = MeasureVerticalDistance(x.Position, y.Position, transformation)
                     If Math.Abs(yDiff) > 0.0001 Then Return yDiff.CompareTo(0)
 
-                    Dim xDiff As Double = measureHorizontalDistance(x.Position, y.Position, transformation)
+                    Dim xDiff As Double = MeasureHorizontalDistance(x.Position, y.Position, transformation)
                     Return (xDiff * xDirection).CompareTo(0)
                 End Function
             )
         End Sub
 
-        Private Shared Function normalizeScaleFactors(m As PdfMatrix) As PdfMatrix
-            Dim scale As Double = getScaleFactor(m.M11, m.M12, m.M21, m.M22)
+        Private Shared Function NormalizeScaleFactors(m As PdfMatrix) As PdfMatrix
+            Dim scale As Double = GetScaleFactor(m.M11, m.M12, m.M21, m.M22)
 
             ' Round to 1 fractional digit to avoid separation of similar matrices
             ' Like { 1, 0, 0, 1.12, 0, 0 } And { 1, 0, 0, 1.14, 0, 0 }
@@ -177,7 +177,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Return m
         End Function
 
-        Private Shared Function getScaleFactor(ParamArray values As Double()) As Double
+        Private Shared Function GetScaleFactor(ParamArray values As Double()) As Double
             Dim result As Double = Double.MaxValue
 
             For Each val As Double In values
@@ -188,7 +188,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Return result
         End Function
 
-        Private Shared Function measureHorizontalDistance(
+        Private Shared Function MeasureHorizontalDistance(
             first As PdfPoint,
             second As PdfPoint,
             m As PdfMatrix
@@ -197,7 +197,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Return m.M11 * (first.X - second.X) + m.M21 * (first.Y - second.Y)
         End Function
 
-        Private Shared Function measureVerticalDistance(
+        Private Shared Function MeasureVerticalDistance(
             first As PdfPoint,
             second As PdfPoint,
             m As PdfMatrix
@@ -206,7 +206,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Return m.M12 * (first.X - second.X) + m.M22 * (first.Y - second.Y)
         End Function
 
-        Private Shared Function transformVector(
+        Private Shared Function TransformVector(
             m As PdfMatrix,
             x As Double,
             y As Double
@@ -219,7 +219,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Return New PdfPoint(m.M11 * x + m.M21 * y + m.OffsetX, m.M12 * x + m.M22 * y + m.OffsetY)
         End Function
 
-        Private Shared Function getIntersectionBounds(
+        Private Shared Function GetIntersectionBounds(
             data As PdfTextData,
             text As String,
             startIndex As Integer,
@@ -231,7 +231,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End If
 
             Dim characters As IEnumerable(Of PdfTextData) = data.GetCharacters()
-            If (Not containsLtrCharactersOnly(data, text)) Then
+            If (Not ContainsLtrCharactersOnly(data, text)) Then
                 ' Process right-to-left chunks in the reverse order.
                 '
                 ' Note that this approach might not work for chunks
@@ -252,13 +252,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Return union
         End Function
 
-        Private Shared Function containsLtrCharactersOnly(data As PdfTextData, textLogical As String) As Boolean
+        Private Shared Function ContainsLtrCharactersOnly(data As PdfTextData, textLogical As String) As Boolean
             Dim noBidiOptions = New PdfTextConversionOptions With {.UseBidi = False}
             Dim textVisual As String = data.GetText(noBidiOptions)
             Return textLogical = textVisual
         End Function
 
-        Private Shared Function matchWord(
+        Private Shared Function MatchWord(
             text As String,
             wordsToFind As String(),
             wordIndex As Integer,

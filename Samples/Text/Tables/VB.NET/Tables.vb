@@ -8,7 +8,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         Private Shared ReadOnly m_columnWidths As Single() = New Single(2) {100, 100, 200}
 
         Public Shared Sub Main()
-            ' NOTE: 
+            ' NOTE:
             ' When used in trial mode, the library imposes some restrictions.
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
@@ -17,8 +17,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Using pdf As New PdfDocument()
                 Dim canvas As PdfCanvas = pdf.Pages(0).Canvas
-                drawHeader(canvas)
-                drawTableBody(canvas)
+                DrawHeader(canvas)
+                DrawTableBody(canvas)
 
                 pdf.Save(pathToFile)
             End Using
@@ -28,7 +28,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Sub
 
-        Private Shared Sub drawHeader(canvas As PdfCanvas)
+        Private Shared Sub DrawHeader(canvas As PdfCanvas)
             canvas.SaveState()
             canvas.Brush.Color = New PdfGrayColor(75)
             Dim headerBounds As New PdfRectangle(m_leftTableCorner, New PdfSize(TableWidth, RowHeight))
@@ -45,18 +45,18 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Next
 
             canvas.Brush.Color = New PdfGrayColor(0)
-            drawCenteredText(canvas, "Project", cellBounds(0))
-            drawCenteredText(canvas, "License", cellBounds(1))
-            drawCenteredText(canvas, "Description", cellBounds(2))
+            DrawCenteredText(canvas, "Project", cellBounds(0))
+            DrawCenteredText(canvas, "License", cellBounds(1))
+            DrawCenteredText(canvas, "Description", cellBounds(2))
 
             canvas.RestoreState()
         End Sub
 
-        Private Shared Sub drawTableBody(canvas As PdfCanvas)
+        Private Shared Sub DrawTableBody(canvas As PdfCanvas)
             Dim bodyLeftCorner As New PdfPoint(m_leftTableCorner.X, m_leftTableCorner.Y + RowHeight)
             Dim firstCellBounds As New PdfRectangle(bodyLeftCorner, New PdfSize(m_columnWidths(0), RowHeight * 2))
             canvas.DrawRectangle(firstCellBounds)
-            drawCenteredText(canvas, "Docotic.Pdf", firstCellBounds)
+            DrawCenteredText(canvas, "Docotic.Pdf", firstCellBounds)
 
             Dim cells As PdfRectangle(,) = New PdfRectangle(1, 1) {
                 {
@@ -73,13 +73,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.DrawRectangle(rect, PdfDrawMode.Stroke)
             Next
 
-            drawCenteredText(canvas, "Application License", cells(0, 0))
-            drawCenteredText(canvas, "For end-user applications", cells(0, 1))
-            drawCenteredText(canvas, "Server License", cells(1, 0))
-            drawCenteredText(canvas, "For server-based services", cells(1, 1))
+            DrawCenteredText(canvas, "Application License", cells(0, 0))
+            DrawCenteredText(canvas, "For end-user applications", cells(0, 1))
+            DrawCenteredText(canvas, "Server License", cells(1, 0))
+            DrawCenteredText(canvas, "For server-based services", cells(1, 1))
         End Sub
 
-        Private Shared Sub drawCenteredText(canvas As PdfCanvas, text As String, bounds As PdfRectangle)
+        Private Shared Sub DrawCenteredText(canvas As PdfCanvas, text As String, bounds As PdfRectangle)
             Dim options = New PdfTextDrawingOptions(bounds) With
             {
                 .HorizontalAlignment = PdfTextAlign.Center,
