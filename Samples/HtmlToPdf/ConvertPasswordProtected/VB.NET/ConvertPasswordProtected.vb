@@ -6,12 +6,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         Public Shared Sub Main()
             Task.Run(
                 Async Function()
-                    Await convertPasswordProtected()
+                    Await ConvertPasswordProtected()
                 End Function
             ).GetAwaiter().GetResult()
         End Sub
 
-        Private Shared Async Function convertPasswordProtected() As Task
+        Private Shared Async Function ConvertPasswordProtected() As Task
             ' NOTE: 
             ' When used in trial mode, the library imposes some restrictions.
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
@@ -29,8 +29,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 options.Page.Scale = 2
 
                 Using pdf = Await converter.CreatePdfAsync(url, options)
-                pdf.Save(pathToFile)
-            End Using
+                    pdf.Save(pathToFile)
+                End Using
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")

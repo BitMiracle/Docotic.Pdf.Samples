@@ -7,12 +7,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         Public Shared Sub Main()
             Task.Run(
                 Async Function()
-                    Await convertWithHeaderAndFooter()
+                    Await ConvertWithHeaderAndFooter()
                 End Function
             ).GetAwaiter().GetResult()
         End Sub
 
-        Private Shared Async Function convertWithHeaderAndFooter() As Task
+        Private Shared Async Function ConvertWithHeaderAndFooter() As Task
             ' NOTE: 
             ' When used in trial mode, the library imposes some restrictions.
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx

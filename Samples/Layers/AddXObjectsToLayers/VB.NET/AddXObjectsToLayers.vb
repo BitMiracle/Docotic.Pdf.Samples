@@ -2,8 +2,6 @@ Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
     Public NotInheritable Class AddXObjectsToLayers
-        Private Sub New()
-        End Sub
         Public Shared Sub Main()
             ' NOTE: 
             ' When used in trial mode, the library imposes some restrictions.

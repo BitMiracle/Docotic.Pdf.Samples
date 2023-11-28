@@ -6,12 +6,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         Public Shared Sub Main()
             Task.Run(
                 Async Function()
-                    Await convertIgnoringSslErrors()
+                    Await ConvertIgnoringSslErrors()
                 End Function
             ).GetAwaiter().GetResult()
         End Sub
 
-        Private Shared Async Function convertIgnoringSslErrors() As Task
+        Private Shared Async Function ConvertIgnoringSslErrors() As Task
             ' NOTE: 
             ' When used in trial mode, the library imposes some restrictions.
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx

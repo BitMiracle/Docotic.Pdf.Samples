@@ -5,12 +5,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         Public Shared Sub Main()
             Task.Run(
                 Async Function()
-                    Await putHtmlOverPdf()
+                    Await PutHtmlOverPdf()
                 End Function
             ).GetAwaiter().GetResult()
         End Sub
 
-        Private Shared Async Function putHtmlOverPdf() As Task
+        Private Shared Async Function PutHtmlOverPdf() As Task
             ' NOTE: 
             ' When used in trial mode, the library imposes some restrictions.
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
@@ -35,7 +35,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     "I would like to put this here</div>"
                 Using htmlPdf = Await converter.CreatePdfFromStringAsync(htmlCode, options)
                     ' Uncomment to apply semi-transparent red background:
-                    'addBackground(htmlPdf, New PdfRgbColor(255, 0, 0), 25)
+                    'AddBackground(htmlPdf, New PdfRgbColor(255, 0, 0), 25)
 
                     Using pdf = New PdfDocument("..\Sample Data\simple-graphics.pdf")
                         ' Create an XObject from a page in the document generated from HTML.
@@ -56,7 +56,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Function
 
-        Private Shared Sub addBackground(pdf As PdfDocument, color As PdfColor, opacity As Integer)
+        Private Shared Sub AddBackground(pdf As PdfDocument, color As PdfColor, opacity As Integer)
             Dim background As PdfXObject = pdf.CreateXObject()
             background.DrawOnBackground = True
 

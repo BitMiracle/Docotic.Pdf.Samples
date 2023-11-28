@@ -10,7 +10,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
     {
         static async Task Main()
         {
-            await convertUrlToPdfAsync("https://bitmiracle.com/", "HtmlToPdfConsole.pdf");
+            await ConvertUrlToPdfAsync("https://bitmiracle.com/", "HtmlToPdfConsole.pdf");
         }
 
         // The following shows how to use the HTML to PDF API from a regular synchronous method
@@ -22,9 +22,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
         ////    }).GetAwaiter().GetResult();
         ////}
 
-        private static async Task convertUrlToPdfAsync(string urlString, string pdfFileName)
+        private static async Task ConvertUrlToPdfAsync(string urlString, string pdfFileName)
         {
-            // NOTE: 
+            // NOTE:
             // When used in trial mode, the library imposes some restrictions.
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.

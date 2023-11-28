@@ -21,8 +21,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.Font = helvetica;
                 canvas.FontSize = 28;
 
-                drawColoredPattern(pdf);
-                drawUncoloredPattern(pdf);
+                DrawColoredPattern(pdf);
+                DrawUncoloredPattern(pdf);
 
                 pdf.Save(pathToFile);
             }
@@ -32,10 +32,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(new ProcessStartInfo(pathToFile) { UseShellExecute = true });
         }
 
-        private static void drawColoredPattern(PdfDocument pdf)
+        private static void DrawColoredPattern(PdfDocument pdf)
         {
             PdfTilingPattern pattern = pdf.AddColoredPattern(5, 5);
-            fill(pattern);
+            Fill(pattern);
 
             PdfCanvas canvas = pdf.GetPage(0).Canvas;
             canvas.Brush.Pattern = pattern;
@@ -43,10 +43,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
             canvas.DrawCircle(new PdfPoint(0, 0), 20, PdfDrawMode.FillAndStroke);
         }
 
-        private static void drawUncoloredPattern(PdfDocument pdf)
+        private static void DrawUncoloredPattern(PdfDocument pdf)
         {
             PdfTilingPattern pattern = pdf.AddUncoloredPattern(5, 5, new PdfRgbColorSpace());
-            fill(pattern);
+            Fill(pattern);
 
             PdfCanvas canvas = pdf.GetPage(0).Canvas;
             canvas.Brush.Pattern = pattern;
@@ -54,7 +54,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             canvas.DrawString(new PdfPoint(50, 150), "Uncolored Pattern colored green");
         }
 
-        private static void fill(PdfTilingPattern pattern)
+        private static void Fill(PdfTilingPattern pattern)
         {
             PdfCanvas canvas = pattern.Canvas;
             var red = new PdfRgbColor(255, 0, 0);

@@ -58,11 +58,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         public LayoutComponentContent Compose(LayoutContext context)
         {
-            LayoutElement e = composeElement(context);
+            LayoutElement e = ComposeElement(context);
             return new LayoutComponentContent(e, m_processedCountries < m_data.Length);
         }
 
-        private LayoutElement composeElement(LayoutContext context)
+        private LayoutElement ComposeElement(LayoutContext context)
         {
             (LayoutElement Element, int SubTotal)? bestResult = null;
 
@@ -92,7 +92,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                             {
                                 string[] columnNames = { "No.", "Country", "Matches", "Goals" };
                                 foreach (string column in columnNames)
-                                    h.Cell().Background(bg(true)).TextStyle(s => s.Strong).Text(column);
+                                    h.Cell().Background(Bg(true)).TextStyle(s => s.Strong).Text(column);
                             });
 
                             for (int r = m_processedCountries; r <= i; ++r)
@@ -101,10 +101,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                                 int rowNumber = r + 1;
                                 bool alt = (rowNumber - m_processedCountries) % 2 == 0;
-                                t.Cell().Background(bg(alt)).Text(rowNumber.ToString());
-                                t.Cell().Background(bg(alt)).Text(info.Team);
-                                t.Cell().Background(bg(alt)).Text(info.Matches.ToString());
-                                t.Cell().Background(bg(alt)).Text(info.Goals.ToString());
+                                t.Cell().Background(Bg(alt)).Text(rowNumber.ToString());
+                                t.Cell().Background(Bg(alt)).Text(info.Team);
+                                t.Cell().Background(Bg(alt)).Text(info.Matches.ToString());
+                                t.Cell().Background(Bg(alt)).Text(info.Goals.ToString());
                                 subTotalGoals += info.Goals;
                             }
 
@@ -135,7 +135,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             return element;
         }
 
-        private static PdfColor bg(bool alt)
+        private static PdfColor Bg(bool alt)
         {
             return new PdfGrayColor(alt ? 90 : 100);
         }

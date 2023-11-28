@@ -20,7 +20,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.Pen.Width = 2;
                 canvas.Brush.Color = new PdfRgbColor(255, 0, 0);
 
-                drawStar(canvas);
+                DrawStar(canvas);
 
                 canvas.SetClip(PdfFillMode.Alternate);
                 canvas.StrokePath();
@@ -35,7 +35,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(new ProcessStartInfo(pathToFile) { UseShellExecute = true });
         }
 
-        private static void drawStar(PdfCanvas canvas)
+        private static void DrawStar(PdfCanvas canvas)
         {
             canvas.CurrentPosition = new PdfPoint(10, 100);
             canvas.AppendLineTo(110, 100);

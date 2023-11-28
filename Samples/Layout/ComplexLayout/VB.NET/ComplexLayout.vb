@@ -18,14 +18,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         info.Author = TestData.CompanyName
                         info.CreationDate = TestData.CreatedOn
                     End Sub)
-                .Generate(PathToFile, Sub(doc) generate(doc))
+                .Generate(PathToFile, Sub(doc) Generate(doc))
             End With
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
             Process.Start(New ProcessStartInfo(PathToFile) With {.UseShellExecute = True})
         End Sub
 
-        Private Shared Sub generate(doc As Document)
+        Private Shared Sub Generate(doc As Document)
             doc.Typography(
                 Sub(t)
                     Dim roboto = New FileInfo("..\Sample Data\Fonts\Roboto\Roboto-Regular.ttf")
@@ -42,15 +42,15 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Sub(page)
                     page.MarginVertical(20).MarginHorizontal(40)
 
-                    header(page.Header(), logo)
+                    Header(page.Header(), logo)
 
-                    content(page.Content())
+                    Content(page.Content())
 
-                    footer(page.Footer())
+                    Footer(page.Footer())
                 End Sub)
         End Sub
 
-        Private Shared Sub header(container As LayoutContainer, logo As Image)
+        Private Shared Sub Header(container As LayoutContainer, logo As Image)
             container.Column(
                 Sub(c)
                     c.Item().Row(
@@ -93,7 +93,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 End Sub)
         End Sub
 
-        Private Shared Sub content(container As LayoutContainer)
+        Private Shared Sub Content(container As LayoutContainer)
             container.PaddingTop(10).Column(
                 Sub(c)
                     c.Item().Text(
@@ -132,28 +132,28 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                                 Dim background As PdfColor = If(i Mod 2 = 0, gray, Nothing)
 
                                 Dim result As ResultItem = TestData.Results(i)
-                                addCell(t, result.Analyte, background)
-                                addCell(t, result.Units, background)
+                                AddCell(t, result.Analyte, background)
+                                AddCell(t, result.Units, background)
 
                                 If result.Reference IsNot Nothing Then
                                     Dim r = result.Reference.Value
-                                    addCell(t, $"{r.Min:N2} - {r.Max:N2}", background)
+                                    AddCell(t, $"{r.Min:N2} - {r.Max:N2}", background)
                                 Else
-                                    addCell(t, Nothing, background)
+                                    AddCell(t, Nothing, background)
                                 End If
 
                                 Dim match = result.FitsReferenceInterval()
-                                addCell(t, result.Result?.ToString("N2"), background, If(match <> ReferenceMatchResult.Fit, red, Nothing))
+                                AddCell(t, result.Result?.ToString("N2"), background, If(match <> ReferenceMatchResult.Fit, red, Nothing))
 
-                                Dim comment = formatComment(match)
-                                addCell(t, comment, background, If(match <> ReferenceMatchResult.Fit, red, green))
+                                Dim comment = FormatComment(match)
+                                AddCell(t, comment, background, If(match <> ReferenceMatchResult.Fit, red, green))
                             Next
                         End Sub)
                 End Sub)
         End Sub
 
-        Private Shared Sub addCell(t As Table, content As String, background As PdfColor,
-                Optional textColor As PdfColor = Nothing)
+        Private Shared Sub AddCell(t As Table, content As String, background As PdfColor,
+            Optional textColor As PdfColor = Nothing)
             Dim cell As LayoutContainer = t.Cell()
             If background IsNot Nothing Then
                 cell = cell.Background(background)
@@ -163,7 +163,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             If textColor IsNot Nothing Then text.FontColor(textColor)
         End Sub
 
-        Private Shared Function formatComment(match As ReferenceMatchResult?) As String
+        Private Shared Function FormatComment(match As ReferenceMatchResult?) As String
             Select Case match
                 Case ReferenceMatchResult.Less
                     Return "less"
@@ -176,7 +176,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Return Nothing
         End Function
 
-        Private Shared Sub footer(container As LayoutContainer)
+        Private Shared Sub Footer(container As LayoutContainer)
             container.Row(
                 Sub(r)
                     r.AutoItem().Text("Created using Docotic.Pdf.Layout add-on")

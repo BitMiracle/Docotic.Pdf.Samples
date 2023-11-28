@@ -49,11 +49,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Sub
 
         Public Function Compose(context As LayoutContext) As LayoutComponentContent Implements ILayoutComponent.Compose
-            Dim e As LayoutElement = composeElement(context)
+            Dim e As LayoutElement = ComposeElement(context)
             Return New LayoutComponentContent(e, m_processedCountries < m_data.Length)
         End Function
 
-        Private Function composeElement(context As LayoutContext) As LayoutElement
+        Private Function ComposeElement(context As LayoutContext) As LayoutElement
             Dim bestResult As (Element As LayoutElement, SubTotal As Integer)? = Nothing
 
             Dim countries = New List(Of TeamStats)(m_data.Length - m_processedCountries)
@@ -81,7 +81,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                                                 Dim columnNames As String() = {"No.", "Country", "Matches", "Goals"}
 
                                                 For Each column As String In columnNames
-                                                    h.Cell().Background(bg(True)).TextStyle(Function(s) s.Strong).Text(column)
+                                                    h.Cell().Background(Bg(True)).TextStyle(Function(s) s.Strong).Text(column)
                                                 Next
                                             End Sub)
 
@@ -89,10 +89,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                                             Dim info As TeamStats = m_data(r)
                                             Dim rowNumber As Integer = r + 1
                                             Dim alt As Boolean = (rowNumber - m_processedCountries) Mod 2 = 0
-                                            t.Cell().Background(bg(alt)).Text(rowNumber.ToString())
-                                            t.Cell().Background(bg(alt)).Text(info.Team)
-                                            t.Cell().Background(bg(alt)).Text(info.Matches.ToString())
-                                            t.Cell().Background(bg(alt)).Text(info.Goals.ToString())
+                                            t.Cell().Background(Bg(alt)).Text(rowNumber.ToString())
+                                            t.Cell().Background(Bg(alt)).Text(info.Team)
+                                            t.Cell().Background(Bg(alt)).Text(info.Matches.ToString())
+                                            t.Cell().Background(Bg(alt)).Text(info.Goals.ToString())
                                             subTotalGoals += info.Goals
                                         Next
 
@@ -127,7 +127,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Return bestResult.Value.Element
         End Function
 
-        Private Shared Function bg(alt As Boolean) As PdfColor
+        Private Shared Function Bg(alt As Boolean) As PdfColor
             Return New PdfGrayColor(If(alt, 90, 100))
         End Function
     End Class

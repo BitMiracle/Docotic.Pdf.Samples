@@ -42,11 +42,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     {
                         PdfPath path = (PdfPath)obj;
                         target.Transform(path.TransformationMatrix);
-                        setClipRegion(target, path.ClipRegion);
-                        setBrushAndPen(target, path);
+                        SetClipRegion(target, path.ClipRegion);
+                        SetBrushAndPen(target, path);
 
-                        appendPath(target, path);
-                        drawPath(target, path);
+                        AppendPath(target, path);
+                        DrawPath(target, path);
                     }
                     target.RestoreState();
                 }
@@ -61,7 +61,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(new ProcessStartInfo(PathToFile) { UseShellExecute = true });
         }
 
-        private static void setClipRegion(PdfCanvas canvas, PdfClipRegion clipRegion)
+        private static void SetClipRegion(PdfCanvas canvas, PdfClipRegion clipRegion)
         {
             if (clipRegion.IntersectedPaths.Count == 0)
                 return;
@@ -73,7 +73,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 {
                     canvas.ResetTransform();
                     canvas.Transform(clipPath.TransformationMatrix);
-                    appendPath(canvas, clipPath);
+                    AppendPath(canvas, clipPath);
                     canvas.SetClip(clipPath.ClipMode!.Value);
                 }
             }
@@ -84,7 +84,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
         }
 
-        private static void setBrushAndPen(PdfCanvas target, PdfPath path)
+        private static void SetBrushAndPen(PdfCanvas target, PdfPath path)
         {
             if (path.PaintMode == PdfDrawMode.Fill || path.PaintMode == PdfDrawMode.FillAndStroke)
             {
@@ -110,7 +110,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
         }
 
-        private static void appendPath(PdfCanvas target, PdfPath path)
+        private static void AppendPath(PdfCanvas target, PdfPath path)
         {
             foreach (PdfSubpath subpath in path.Subpaths)
             {
@@ -146,7 +146,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
         }
 
-        private static void drawPath(PdfCanvas target, PdfPath path)
+        private static void DrawPath(PdfCanvas target, PdfPath path)
         {
             switch (path.PaintMode)
             {

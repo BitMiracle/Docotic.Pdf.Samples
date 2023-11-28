@@ -7,35 +7,35 @@ Public Class Form1
         Application.EnableVisualStyles()
         Application.SetCompatibleTextRenderingDefault(False)
 
-        Dim form As Form1 = New Form1
-        form.setup()
+        Dim form As New Form1
+        form.Setup()
 
         Application.Run(form)
     End Sub
 
-    Private Sub setup()
+    Private Sub Setup()
         textBoxUrl.Text = "https://bitmiracle.com"
-        setConvertingMode(False)
+        SetConvertingMode(False)
     End Sub
 
-    Private Sub setConvertingMode(convertingMode As Boolean)
+    Private Sub SetConvertingMode(convertingMode As Boolean)
         textBoxUrl.Enabled = Not convertingMode
         buttonConvert.Enabled = Not convertingMode
         progressBarConverting.Visible = convertingMode
     End Sub
 
-    Private Async Sub buttonConvert_Click(sender As Object, e As EventArgs) Handles buttonConvert.Click
-        setConvertingMode(True)
+    Private Async Sub ButtonConvert_Click(sender As Object, e As EventArgs) Handles buttonConvert.Click
+        SetConvertingMode(True)
 
         Try
-            Await convertUrlToPdfAsync(textBoxUrl.Text, "HtmlToPdfWindowsForms.pdf")
+            Await ConvertUrlToPdfAsync(textBoxUrl.Text, "HtmlToPdfWindowsForms.pdf")
         Catch ex As HtmlConverterException
             MessageBox.Show(ex.Message, "Conversion failed")
-            setConvertingMode(False)
+            SetConvertingMode(False)
         End Try
     End Sub
 
-    Private Async Function convertUrlToPdfAsync(ByVal urlString As String, ByVal pdfFileName As String) As Task
+    Private Async Function ConvertUrlToPdfAsync(urlString As String, pdfFileName As String) As Task
         Using converter = Await HtmlConverter.CreateAsync()
 
             Using pdf = Await converter.CreatePdfAsync(New Uri(urlString))
@@ -43,7 +43,7 @@ Public Class Form1
             End Using
         End Using
 
-        setConvertingMode(False)
+        SetConvertingMode(False)
         MessageBox.Show(Me, $"The output is located in {Environment.CurrentDirectory}")
 
         Process.Start(New ProcessStartInfo(pdfFileName) With {.UseShellExecute = True})

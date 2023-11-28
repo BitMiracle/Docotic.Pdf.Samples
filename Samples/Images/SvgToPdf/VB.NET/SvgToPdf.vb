@@ -5,12 +5,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         Public Shared Sub Main()
             Task.Run(
                 Async Function()
-                    Await convertLocalHtml()
+                    Await ConvertLocalHtml()
                 End Function
             ).GetAwaiter().GetResult()
         End Sub
 
-        Private Shared Async Function convertLocalHtml() As Task
+        Private Shared Async Function ConvertLocalHtml() As Task
             ' NOTE: 
             ' When used in trial mode, the library imposes some restrictions.
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx

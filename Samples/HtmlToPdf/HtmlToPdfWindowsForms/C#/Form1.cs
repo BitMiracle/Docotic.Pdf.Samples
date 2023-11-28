@@ -13,32 +13,32 @@ namespace HtmlToPdfWindowsForms
         {
             InitializeComponent();
             textBoxUrl.Text = "https://bitmiracle.com";
-            setConvertingMode(false);
+            SetConvertingMode(false);
         }
 
-        private void setConvertingMode(bool convertingMode)
+        private void SetConvertingMode(bool convertingMode)
         {
             textBoxUrl.Enabled = !convertingMode;
             buttonConvert.Enabled = !convertingMode;
             progressBarConverting.Visible = convertingMode;
         }
 
-        private async void buttonConvert_Click(object sender, EventArgs e)
+        private async void ButtonConvert_Click(object sender, EventArgs e)
         {
-            setConvertingMode(true);
+            SetConvertingMode(true);
 
             try
             {
-                await convertUrlToPdfAsync(textBoxUrl.Text, "HtmlToPdfWindowsForms.pdf");
+                await ConvertUrlToPdfAsync(textBoxUrl.Text, "HtmlToPdfWindowsForms.pdf");
             }
             catch (HtmlConverterException ex)
             {
                 MessageBox.Show(ex.Message, "Conversion failed");
-                setConvertingMode(false);
+                SetConvertingMode(false);
             }
         }
 
-        private async Task convertUrlToPdfAsync(string urlString, string pdfFileName)
+        private async Task ConvertUrlToPdfAsync(string urlString, string pdfFileName)
         {
             // NOTE: 
             // When used in trial mode, the library imposes some restrictions.
@@ -51,7 +51,7 @@ namespace HtmlToPdfWindowsForms
                 pdf.Save(pdfFileName);
             }
 
-            setConvertingMode(false);
+            SetConvertingMode(false);
 
             MessageBox.Show(this, $"The output is located in {Environment.CurrentDirectory}");
 

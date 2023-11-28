@@ -37,7 +37,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 using var htmlPdf = await converter.CreatePdfFromStringAsync(htmlCode, options);
 
                 // Uncomment to apply semi-transparent red background:
-                //addBackground(htmlPdf, new PdfRgbColor(255, 0, 0), 25);
+                //AddBackground(htmlPdf, new PdfRgbColor(255, 0, 0), 25);
 
                 var pdfPath = @"..\Sample Data\simple-graphics.pdf";
                 using var pdf = new PdfDocument(pdfPath);
@@ -58,7 +58,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(new ProcessStartInfo(pathToFile) { UseShellExecute = true });
         }
 
-        private static void addBackground(PdfDocument pdf, PdfColor color, int opacity = 100)
+        private static void AddBackground(PdfDocument pdf, PdfColor color, int opacity = 100)
         {
             PdfXObject background = pdf.CreateXObject();
             background.DrawOnBackground = true;

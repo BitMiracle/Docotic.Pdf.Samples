@@ -8,27 +8,27 @@ Class MainWindow
 
         ' Add any initialization after the InitializeComponent() call.
         textBoxUrl.Text = "https://bitmiracle.com"
-        setConvertingMode(False)
+        SetConvertingMode(False)
     End Sub
 
-    Private Sub setConvertingMode(convertingMode As Boolean)
+    Private Sub SetConvertingMode(convertingMode As Boolean)
         textBoxUrl.IsEnabled = Not convertingMode
         buttonConvert.IsEnabled = Not convertingMode
         progressBarConverting.Visibility = If(convertingMode, Visibility.Visible, Visibility.Hidden)
     End Sub
 
     Private Async Sub Button_Click(sender As Object, e As RoutedEventArgs)
-        setConvertingMode(True)
+        SetConvertingMode(True)
 
         Try
-            Await convertUrlToPdfAsync(textBoxUrl.Text, "HtmlToPdfWpf.pdf")
+            Await ConvertUrlToPdfAsync(textBoxUrl.Text, "HtmlToPdfWpf.pdf")
         Catch ex As HtmlConverterException
             MessageBox.Show(ex.Message, "Conversion failed")
-            setConvertingMode(False)
+            SetConvertingMode(False)
         End Try
     End Sub
 
-    Private Async Function convertUrlToPdfAsync(ByVal urlString As String, ByVal pdfFileName As String) As Task
+    Private Async Function ConvertUrlToPdfAsync(urlString As String, pdfFileName As String) As Task
         Using converter = Await HtmlConverter.CreateAsync()
 
             Using pdf = Await converter.CreatePdfAsync(New Uri(urlString))
@@ -36,7 +36,7 @@ Class MainWindow
             End Using
         End Using
 
-        setConvertingMode(False)
+        SetConvertingMode(False)
         MessageBox.Show(Me, $"The output is located in {Environment.CurrentDirectory}")
 
         Process.Start(New ProcessStartInfo(pdfFileName) With {.UseShellExecute = True})

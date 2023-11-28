@@ -37,11 +37,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         If True Then
                             Dim path As PdfPath = DirectCast(obj, PdfPath)
                             target.Transform(path.TransformationMatrix)
-                            setClipRegion(target, path.ClipRegion)
-                            setBrushAndPen(target, path)
+                            SetClipRegion(target, path.ClipRegion)
+                            SetBrushAndPen(target, path)
 
-                            appendPath(target, path)
-                            drawPath(target, path)
+                            AppendPath(target, path)
+                            DrawPath(target, path)
                         End If
                         target.RestoreState()
                     Next
@@ -57,7 +57,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(New ProcessStartInfo(PathToFile) With {.UseShellExecute = True})
         End Sub
 
-        Private Shared Sub setClipRegion(canvas As PdfCanvas, clipRegion As PdfClipRegion)
+        Private Shared Sub SetClipRegion(canvas As PdfCanvas, clipRegion As PdfClipRegion)
             If clipRegion.IntersectedPaths.Count = 0 Then
                 Return
             End If
@@ -67,7 +67,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 For Each clipPath As PdfPath In clipRegion.IntersectedPaths
                     canvas.ResetTransform()
                     canvas.Transform(clipPath.TransformationMatrix)
-                    appendPath(canvas, clipPath)
+                    AppendPath(canvas, clipPath)
                     canvas.SetClip(clipPath.ClipMode.Value)
                 Next
             Finally
@@ -76,7 +76,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End Try
         End Sub
 
-        Private Shared Sub setBrushAndPen(target As PdfCanvas, path As PdfPath)
+        Private Shared Sub SetBrushAndPen(target As PdfCanvas, path As PdfPath)
             If path.PaintMode = PdfDrawMode.Fill OrElse path.PaintMode = PdfDrawMode.FillAndStroke Then
                 target.Brush.Opacity = path.Brush.Opacity
 
@@ -101,7 +101,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End If
         End Sub
 
-        Private Shared Sub appendPath(target As PdfCanvas, path As PdfPath)
+        Private Shared Sub AppendPath(target As PdfCanvas, path As PdfPath)
             For Each subpath As PdfSubpath In path.Subpaths
                 For Each segment As PdfPathSegment In subpath.Segments
                     Select Case segment.Type
@@ -133,7 +133,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Next
         End Sub
 
-        Private Shared Sub drawPath(target As PdfCanvas, path As PdfPath)
+        Private Shared Sub DrawPath(target As PdfCanvas, path As PdfPath)
             Select Case path.PaintMode
                 Case PdfDrawMode.Fill
                     target.FillPath(path.FillMode.Value)

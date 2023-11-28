@@ -16,10 +16,10 @@ namespace HtmlToPdfWpf
         {
             InitializeComponent();
             textBoxUrl.Text = "https://bitmiracle.com";
-            setConvertingMode(false);
+            SetConvertingMode(false);
         }
 
-        private void setConvertingMode(bool convertingMode)
+        private void SetConvertingMode(bool convertingMode)
         {
             textBoxUrl.IsEnabled = !convertingMode;
             buttonConvert.IsEnabled = !convertingMode;
@@ -28,22 +28,22 @@ namespace HtmlToPdfWpf
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            setConvertingMode(true);
+            SetConvertingMode(true);
 
             try
             {
-                await convertUrlToPdfAsync(textBoxUrl.Text, "HtmlToPdfWpf.pdf");
+                await ConvertUrlToPdfAsync(textBoxUrl.Text, "HtmlToPdfWpf.pdf");
             }
             catch (HtmlConverterException ex)
             {
                 MessageBox.Show(ex.Message, "Conversion failed");
-                setConvertingMode(false);
+                SetConvertingMode(false);
             }
         }
 
-        private async Task convertUrlToPdfAsync(string urlString, string pdfFileName)
+        private async Task ConvertUrlToPdfAsync(string urlString, string pdfFileName)
         {
-            // NOTE: 
+            // NOTE:
             // When used in trial mode, the library imposes some restrictions.
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
@@ -54,7 +54,7 @@ namespace HtmlToPdfWpf
                 pdf.Save(pdfFileName);
             }
 
-            setConvertingMode(false);
+            SetConvertingMode(false);
 
             MessageBox.Show(this, $"The output is located in {Environment.CurrentDirectory}");
 

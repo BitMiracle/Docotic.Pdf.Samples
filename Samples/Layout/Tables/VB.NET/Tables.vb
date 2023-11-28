@@ -28,19 +28,19 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                                     t.Header(
                                         Sub(h)
-                                            headerCell(h).Text("Project")
-                                            headerCell(h).Text("License")
-                                            headerCell(h).Text("Description")
+                                            HeaderCell(h).Text("Project")
+                                            HeaderCell(h).Text("License")
+                                            HeaderCell(h).Text("Description")
                                         End Sub)
 
                                     For i As Integer = 0 To Products.Length - 1
                                         Dim alt As Boolean = i Mod 2 = 1
                                         Dim p As Product = Products(i)
-                                        bodyCell(t, alt, p.Licenses.Length).Text(p.Name)
+                                        BodyCell(t, alt, p.Licenses.Length).Text(p.Name)
 
                                         For Each l As License In p.Licenses
-                                            bodyCell(t, alt).Text(l.Name)
-                                            bodyCell(t, alt).Text(l.Description)
+                                            BodyCell(t, alt).Text(l.Name)
+                                            BodyCell(t, alt).Text(l.Description)
                                         Next
                                     Next
                                 End Sub)
@@ -51,7 +51,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(New ProcessStartInfo(PathToFile) With {.UseShellExecute = True})
         End Sub
 
-        Private Shared Function headerCell(t As TableCellContainer) As LayoutContainer
+        Private Shared Function HeaderCell(t As TableCellContainer) As LayoutContainer
             Return t.
                 Cell().
                 Background(New PdfGrayColor(75)).
@@ -61,7 +61,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 AlignMiddle()
         End Function
 
-        Private Shared Function bodyCell(t As Table, alt As Boolean, Optional rowSpan As Integer = 1) As LayoutContainer
+        Private Shared Function BodyCell(t As Table, alt As Boolean, Optional rowSpan As Integer = 1) As LayoutContainer
             Return t.
                 Cell(Sub(c) c.RowSpan(rowSpan)).
                 Container(Function(c) If(alt, c.Background(New PdfGrayColor(90)), c)).

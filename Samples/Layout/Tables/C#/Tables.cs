@@ -33,20 +33,20 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                         t.Header(h =>
                         {
-                            headerCell(h).Text("Project");
-                            headerCell(h).Text("License");
-                            headerCell(h).Text("Description");
+                            HeaderCell(h).Text("Project");
+                            HeaderCell(h).Text("License");
+                            HeaderCell(h).Text("Description");
                         });
 
                         for (int i = 0; i < Products.Length; ++i)
                         {
                             bool alt = i % 2 == 1;
                             Product p = Products[i];
-                            bodyCell(t, alt, p.Licenses.Length).Text(p.Name);
+                            BodyCell(t, alt, p.Licenses.Length).Text(p.Name);
                             foreach (License l in p.Licenses)
                             {
-                                bodyCell(t, alt).Text(l.Name);
-                                bodyCell(t, alt).Text(l.Description);
+                                BodyCell(t, alt).Text(l.Name);
+                                BodyCell(t, alt).Text(l.Description);
                             }
                         }
                     });
@@ -57,7 +57,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(new ProcessStartInfo(PathToFile) { UseShellExecute = true });
         }
 
-        private static LayoutContainer headerCell(TableCellContainer t)
+        private static LayoutContainer HeaderCell(TableCellContainer t)
         {
             return t.Cell()
                 .Background(new PdfGrayColor(75))
@@ -67,7 +67,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 .AlignMiddle();
         }
 
-        private static LayoutContainer bodyCell(Table t, bool alt, int rowSpan = 1)
+        private static LayoutContainer BodyCell(Table t, bool alt, int rowSpan = 1)
         {
             return t.Cell(c => c.RowSpan(rowSpan))
                 .Container(c => alt ? c.Background(new PdfGrayColor(90)) : c)

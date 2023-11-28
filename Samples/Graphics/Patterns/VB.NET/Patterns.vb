@@ -16,8 +16,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.Font = helvetica
                 canvas.FontSize = 28
 
-                drawColoredPattern(pdf)
-                drawUncoloredPattern(pdf)
+                DrawColoredPattern(pdf)
+                DrawUncoloredPattern(pdf)
 
                 pdf.Save(pathToFile)
             End Using
@@ -27,9 +27,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Sub
 
-        Private Shared Sub drawColoredPattern(ByVal pdf As PdfDocument)
+        Private Shared Sub DrawColoredPattern(pdf As PdfDocument)
             Dim pattern As PdfTilingPattern = pdf.AddColoredPattern(5, 5)
-            fill(pattern)
+            Fill(pattern)
 
             Dim canvas As PdfCanvas = pdf.GetPage(0).Canvas
             canvas.Brush.Pattern = pattern
@@ -37,9 +37,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             canvas.DrawCircle(New PdfPoint(0, 0), 20, PdfDrawMode.FillAndStroke)
         End Sub
 
-        Private Shared Sub drawUncoloredPattern(ByVal pdf As PdfDocument)
+        Private Shared Sub DrawUncoloredPattern(pdf As PdfDocument)
             Dim pattern As PdfTilingPattern = pdf.AddUncoloredPattern(5, 5, New PdfRgbColorSpace())
-            fill(pattern)
+            Fill(pattern)
 
             Dim canvas As PdfCanvas = pdf.GetPage(0).Canvas
             canvas.Brush.Pattern = pattern
@@ -47,7 +47,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             canvas.DrawString(New PdfPoint(50, 150), "Uncolored Pattern colored green")
         End Sub
 
-        Private Shared Sub fill(ByVal pattern As PdfTilingPattern)
+        Private Shared Sub Fill(pattern As PdfTilingPattern)
             Dim canvas As PdfCanvas = pattern.Canvas
             Dim red As PdfColor = New PdfRgbColor(255, 0, 0)
             canvas.Brush.Color = red

@@ -25,13 +25,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     info.Author = TestData.CompanyName;
                     info.CreationDate = TestData.CreatedOn;
                 })
-                .Generate(PathToFile, generate);
+                .Generate(PathToFile, Generate);
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");
             Process.Start(new ProcessStartInfo(PathToFile) { UseShellExecute = true });
         }
 
-        private static void generate(Document doc)
+        private static void Generate(Document doc)
         {
             doc.Typography(t =>
             {
@@ -49,15 +49,15 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 page.MarginVertical(20).MarginHorizontal(40);
 
-                header(page.Header(), logo);
+                Header(page.Header(), logo);
 
-                content(page.Content());
+                Content(page.Content());
 
-                footer(page.Footer());
+                Footer(page.Footer());
             });
         }
 
-        private static void header(LayoutContainer container, Image logo)
+        private static void Header(LayoutContainer container, Image logo)
         {
             container
                 .Column(c =>
@@ -114,7 +114,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 });
         }
 
-        private static void content(LayoutContainer container)
+        private static void Content(LayoutContainer container)
         {
             container.PaddingTop(10).Column(c =>
             {
@@ -202,7 +202,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             });
         }
 
-        private static void footer(LayoutContainer container)
+        private static void Footer(LayoutContainer container)
         {
             container.Row(r =>
              {

@@ -16,7 +16,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.Pen.Width = 2
                 canvas.Brush.Color = New PdfRgbColor(255, 0, 0)
 
-                drawStar(canvas)
+                DrawStar(canvas)
 
                 canvas.SetClip(PdfFillMode.Alternate)
                 canvas.StrokePath()
@@ -31,7 +31,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Sub
 
-        Private Shared Sub drawStar(ByVal canvas As PdfCanvas)
+        Private Shared Sub DrawStar(canvas As PdfCanvas)
             canvas.CurrentPosition = New PdfPoint(10, 100)
             canvas.AppendLineTo(110, 100)
             canvas.AppendLineTo(30, 160)
