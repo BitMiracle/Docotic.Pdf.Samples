@@ -7,7 +7,7 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="9.1.16430-dev" />
+    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="9.2.16470" />
     <PackageReference Include="Eto.Forms" Version="2.8.2" />
   </ItemGroup>
 </Project>

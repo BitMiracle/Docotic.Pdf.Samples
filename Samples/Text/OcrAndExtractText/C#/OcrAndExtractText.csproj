@@ -6,7 +6,7 @@
     <StartWorkingDirectory>$(SolutionDir)\Output</StartWorkingDirectory>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="9.1.16427-dev" />
+    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="9.2.16470" />
     <PackageReference Include="Tesseract" Version="4.1.0-beta1" />
     <PackageReference Include="Tesseract.Data.English" Version="4.0.0" />
   </ItemGroup>
