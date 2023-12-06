@@ -21,11 +21,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 Dim canvas As PdfCanvas = pdf.Pages(0).Canvas
 
-                canvas.BeginMarkedContent(PdfTagType.OC.ToString(), firstLayer)
+                canvas.BeginMarkedContent(PdfTagType.OC, firstLayer)
                 canvas.DrawString(10, 50, "First")
                 canvas.EndMarkedContent()
 
-                canvas.BeginMarkedContent(PdfTagType.OC.ToString(), secondLayer)
+                canvas.BeginMarkedContent(PdfTagType.OC, secondLayer)
                 canvas.DrawString(10, 70, "Second")
                 canvas.EndMarkedContent()
 
