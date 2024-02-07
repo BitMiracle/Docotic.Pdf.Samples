@@ -365,6 +365,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignAlreadySignedDocument",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignByMultiplePeople", "Digital signatures\SignByMultiplePeople\C#\SignByMultiplePeople.csproj", "{F135B3AF-3370-4425-96E9-20AFC143064D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignWithAzureKeyVault", "Digital signatures\SignWithAzureKeyVault\C#\SignWithAzureKeyVault.csproj", "{8D9A3C29-B173-4C49-B60E-8A623D710C20}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1023,6 +1025,10 @@ Global
 		{F135B3AF-3370-4425-96E9-20AFC143064D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F135B3AF-3370-4425-96E9-20AFC143064D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F135B3AF-3370-4425-96E9-20AFC143064D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D9A3C29-B173-4C49-B60E-8A623D710C20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D9A3C29-B173-4C49-B60E-8A623D710C20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D9A3C29-B173-4C49-B60E-8A623D710C20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D9A3C29-B173-4C49-B60E-8A623D710C20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1191,6 +1197,7 @@ Global
 		{E1EA6D64-73DA-46E8-9AAA-310483E62893} = {0DF4BBEF-BCCD-4D6D-B7B6-8CDD34D6FFC0}
 		{C3984AED-B1E0-43C5-821C-CFFA0447879A} = {80D726EA-AAE5-4744-BAEE-6F6C8A01E493}
 		{F135B3AF-3370-4425-96E9-20AFC143064D} = {80D726EA-AAE5-4744-BAEE-6F6C8A01E493}
+		{8D9A3C29-B173-4C49-B60E-8A623D710C20} = {80D726EA-AAE5-4744-BAEE-6F6C8A01E493}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61DC7F3F-A5C8-48BD-845F-83DE6BD2527B}

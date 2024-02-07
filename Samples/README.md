@@ -48,6 +48,8 @@
 
 [Sign a PDF form by multiple people](/Samples/Digital%20signatures/SignByMultiplePeople)
 
+[Sign PDF document using Azure Key Vault](/Samples/Digital%20signatures/SignWithAzureKeyVault)
+
 # Display options
 [Initial view](/Samples/Display%20options/InitialView)
 
