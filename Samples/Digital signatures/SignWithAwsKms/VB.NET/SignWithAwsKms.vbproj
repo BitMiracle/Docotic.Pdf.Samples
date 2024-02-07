@@ -6,6 +6,6 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="BitMiracle.Docotic.Pdf" Version="9.2.16571-dev" />
-    <PackageReference Include="AWSSDK.KeyManagementService" Version="3.7.300.41" />
+    <PackageReference Include="AWSSDK.KeyManagementService" Version="3.7.300.46" />
   </ItemGroup>
 </Project>
