@@ -365,6 +365,8 @@ Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "SignByMultiplePeople", "Dig
 EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "SignWithAzureKeyVault", "Digital signatures\SignWithAzureKeyVault\VB.NET\SignWithAzureKeyVault.vbproj", "{1FBD4925-1EB7-4434-BEB5-7B830287521A}"
 EndProject
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "SignWithAwsKms", "Digital signatures\SignWithAwsKms\VB.NET\SignWithAwsKms.vbproj", "{C497E41D-D30B-4AD8-A906-7D90B92D46F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1023,6 +1025,10 @@ Global
 		{1FBD4925-1EB7-4434-BEB5-7B830287521A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FBD4925-1EB7-4434-BEB5-7B830287521A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FBD4925-1EB7-4434-BEB5-7B830287521A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C497E41D-D30B-4AD8-A906-7D90B92D46F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C497E41D-D30B-4AD8-A906-7D90B92D46F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C497E41D-D30B-4AD8-A906-7D90B92D46F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C497E41D-D30B-4AD8-A906-7D90B92D46F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1191,6 +1197,7 @@ Global
 		{ABC60339-A732-41CC-BE75-B62BE09FE478} = {6D0505BD-B25A-4219-A5EA-0F5E30DAC7F9}
 		{71441AF9-BB94-4BFE-BB21-06FDC62C8417} = {6D0505BD-B25A-4219-A5EA-0F5E30DAC7F9}
 		{1FBD4925-1EB7-4434-BEB5-7B830287521A} = {6D0505BD-B25A-4219-A5EA-0F5E30DAC7F9}
+		{C497E41D-D30B-4AD8-A906-7D90B92D46F9} = {6D0505BD-B25A-4219-A5EA-0F5E30DAC7F9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {50A18C19-4AC0-4BF0-9AA5-7C45E6C1E9A6}

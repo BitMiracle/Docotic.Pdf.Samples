@@ -41,7 +41,11 @@ This sample shows how to add a digital signature to an already signed PDF docume
 
 [Sign a PDF form by multiple people](/Samples/Digital%20signatures/SignByMultiplePeople)
 
-This sample shows how to get a PDF form signed by multiple people. 
+This sample shows how to get a PDF form signed by multiple people.
+
+[Sign PDF document using AWS KMS](/Samples/Digital%20signatures/SignWithAwsKms)
+
+This sample shows how to sign a PDF document using a key from AWS KMS.
 
 [Sign PDF document using Azure Key Vault](/Samples/Digital%20signatures/SignWithAzureKeyVault)
 
