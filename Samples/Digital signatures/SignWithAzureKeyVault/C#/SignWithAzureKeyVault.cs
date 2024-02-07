@@ -12,7 +12,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
         public static void Main()
         {
             // IMPORTANT:
-            // Change these variable using your vault url, key name, signing algorithm, and Azure credentials.
+            // Change these variables using your vault url, key name, signing algorithm, and Azure credentials.
             const string VaultUrl = "https://YOUR-VAULT.vault.azure.net/";
             const string KeyName = "YOUR-KEY";
             var signingAlgorithm = SignatureAlgorithm.RS512;

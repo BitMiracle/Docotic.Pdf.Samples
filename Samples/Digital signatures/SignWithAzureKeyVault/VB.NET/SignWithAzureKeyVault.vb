@@ -8,7 +8,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
     Public NotInheritable Class SignWithAzureKeyVault
         Public Shared Sub Main()
             ' IMPORTANT:
-            ' Change these variable using your vault url, key name, signing algorithm, and Azure credentials.
+            ' Change these variables using your vault url, key name, signing algorithm, and Azure credentials.
             Const VaultUrl As String = "https://YOUR-VAULT.vault.azure.net/"
             Const KeyName As String = "YOUR-KEY"
             Dim signingAlgorithm = SignatureAlgorithm.RS512
@@ -42,8 +42,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
             Process.Start(New ProcessStartInfo(outputFileName) With {
-        .UseShellExecute = True
-    })
+                .UseShellExecute = True
+            })
         End Sub
     End Class
 End Namespace

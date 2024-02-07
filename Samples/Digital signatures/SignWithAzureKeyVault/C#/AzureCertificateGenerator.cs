@@ -79,7 +79,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
             return m_client.SignData(m_signingAlgorithm, data).Signature;
         }
 
-        protected static HashAlgorithmName GetHashAlgorithmName(string signingAlgorithm)
+        protected override PublicKey BuildPublicKey()
+        {
+            return m_baseGenerator.PublicKey;
+        }
+
+        private static HashAlgorithmName GetHashAlgorithmName(string signingAlgorithm)
         {
             if (signingAlgorithm.EndsWith("256"))
                 return HashAlgorithmName.SHA256;
@@ -91,11 +96,6 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 return HashAlgorithmName.SHA512;
 
             throw new ArgumentException("Cannot determine hash algorithm for " + signingAlgorithm, nameof(signingAlgorithm));
-        }
-
-        protected override PublicKey BuildPublicKey()
-        {
-            return m_baseGenerator.PublicKey;
         }
     }
 }
