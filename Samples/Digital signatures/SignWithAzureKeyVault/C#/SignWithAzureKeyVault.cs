@@ -25,7 +25,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             // This sample automatically generates self-signed certificate for the provided Azure key.
             // In real applications, you might want to use a CA signed certificate.
-            X509Certificate2 cert = AzureCertificateGenerator.Generate(key, cryptoClient, signingAlgorithm);
+            using X509Certificate2 cert = AzureCertificateGenerator.Generate(key, cryptoClient, signingAlgorithm);
 
             // NOTE:
             // When used in trial mode, the library imposes some restrictions.

@@ -19,10 +19,6 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim cryptoClient = New CryptographyClient(key.Id, credentials)
             Dim signer = New AzureSigner(cryptoClient, signingAlgorithm)
 
-            ' This sample automatically generates self-signed certificate for the provided Azure key.
-            ' In real applications, you might want to use a CA signed certificate.
-            Dim cert As X509Certificate2 = AzureCertificateGenerator.Generate(key, cryptoClient, signingAlgorithm)
-
             ' NOTE:
             ' When used in trial mode, the library imposes some restrictions.
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
@@ -32,12 +28,16 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim page As PdfPage = pdf.Pages(0)
                 Dim field As PdfSignatureField = page.AddSignatureField(50, 50, 200, 200)
 
-                Dim options = New PdfSigningOptions(signer, {cert}) With {
-                    .DigestAlgorithm = signer.DigestAlgorithm,
-                    .Field = field
-                }
+                ' This sample automatically generates self-signed certificate for the provided Azure key.
+                ' In real applications, you might want to use a CA signed certificate.
+                Using cert As X509Certificate2 = AzureCertificateGenerator.Generate(key, cryptoClient, signingAlgorithm)
+                    Dim options = New PdfSigningOptions(signer, {cert}) With {
+                        .DigestAlgorithm = signer.DigestAlgorithm,
+                        .Field = field
+                    }
 
-                pdf.SignAndSave(options, outputFileName)
+                    pdf.SignAndSave(options, outputFileName)
+                End Using
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")

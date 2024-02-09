@@ -23,8 +23,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Using client = New AmazonKeyManagementServiceClient()
                 Dim getPublicKeyRequest = New GetPublicKeyRequest() With {
-            .KeyId = KeyId
-        }
+                    .KeyId = KeyId
+                }
                 key = Await client.GetPublicKeyAsync(getPublicKeyRequest)
 
                 If Not key.SigningAlgorithms.Contains(signingAlgorithm.ToString()) Then
@@ -35,10 +35,6 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Dim signer = New AwsSigner(KeyId, signingAlgorithm)
 
-            ' This sample automatically generates self-signed certificate for the provided AWS key.
-            ' In real applications, you might want to use a CA signed certificate.
-            Dim cert As X509Certificate2 = AwsCertificateGenerator.Generate(key, signingAlgorithm)
-
             ' NOTE:
             ' When used in trial mode, the library imposes some restrictions.
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
@@ -48,12 +44,16 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim page As PdfPage = pdf.Pages(0)
                 Dim field As PdfSignatureField = page.AddSignatureField(50, 50, 200, 200)
 
-                Dim options = New PdfSigningOptions(signer, {cert}) With {
-                    .DigestAlgorithm = signer.DigestAlgorithm,
-                    .Field = field
-                }
+                ' This sample automatically generates self-signed certificate for the provided AWS key.
+                ' In real applications, you might want to use a CA signed certificate.
+                Using cert As X509Certificate2 = AwsCertificateGenerator.Generate(key, signingAlgorithm)
+                    Dim options = New PdfSigningOptions(signer, {cert}) With {
+                        .DigestAlgorithm = signer.DigestAlgorithm,
+                        .Field = field
+                    }
 
-                pdf.SignAndSave(options, outputFileName)
+                    pdf.SignAndSave(options, outputFileName)
+                End Using
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
