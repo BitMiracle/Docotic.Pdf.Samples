@@ -50,3 +50,7 @@ This sample shows how to sign a PDF document using a key from AWS KMS.
 [Sign PDF document using Azure Key Vault](/Samples/Digital%20signatures/SignWithAzureKeyVault)
 
 This sample shows how to sign a PDF document using a key from Azure Key Vault.
+
+[Sign PDF document using PKCS#11 driver](/Samples/Digital%20signatures/SignWithPkcs11)
+
+This sample shows how to sign a PDF document using a PKCS#11 driver.

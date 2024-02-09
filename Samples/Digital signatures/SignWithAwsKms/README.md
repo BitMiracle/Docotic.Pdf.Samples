@@ -12,3 +12,4 @@ In real applications, you might want to use a CA signed certificate.
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
 * [Sign PDF document in C# and VB.NET](https://bitmiracle.com/pdf-library/sign-pdf.aspx) article
 * [Sign PDF document using Azure Key Vault](/Samples/Digital%20signatures/SignWithAzureKeyVault) sample
+* [Sign PDF document using PKCS#11 driver](/Samples/Digital%20signatures/SignWithPkcs11) sample

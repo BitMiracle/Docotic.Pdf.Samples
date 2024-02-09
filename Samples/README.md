@@ -52,6 +52,8 @@
 
 [Sign PDF document using Azure Key Vault](/Samples/Digital%20signatures/SignWithAzureKeyVault)
 
+[Sign PDF document using PKCS#11 driver](/Samples/Digital%20signatures/SignWithPkcs11)
+
 # Display options
 [Initial view](/Samples/Display%20options/InitialView)
 

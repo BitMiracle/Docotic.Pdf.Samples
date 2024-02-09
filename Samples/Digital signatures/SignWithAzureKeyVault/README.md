@@ -13,3 +13,4 @@ from Key Vault secrets or Key Vault certificates.
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
 * [Sign PDF document in C# and VB.NET](https://bitmiracle.com/pdf-library/sign-pdf.aspx) article
 * [Sign PDF document using AWS KMS](/Samples/Digital%20signatures/SignWithAwsKms) sample
+* [Sign PDF document using PKCS#11 driver](/Samples/Digital%20signatures/SignWithPkcs11) sample
