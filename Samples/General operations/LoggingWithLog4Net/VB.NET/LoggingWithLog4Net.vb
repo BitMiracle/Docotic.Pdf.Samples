@@ -1,6 +1,8 @@
 Imports System.IO
+Imports BitMiracle.Docotic
 
 Imports BitMiracle.Docotic.Pdf
+Imports Microsoft.Extensions.Logging
 
 Namespace BitMiracle.Docotic.Pdf.Samples
     Public NotInheritable Class LoggingWithLog4Net
@@ -10,22 +12,23 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.
 
-            ' In order to receive log messages from Docotic.Pdf into a log4net logger, 
-            ' you would need to configure log4net. Here is a simplest one-line 
-            ' way to configure it. You might use any other way described in the docs
-            ' https://logging.apache.org/log4net/release/manual/configuration.html
-            log4net.Config.XmlConfigurator.Configure()
+            ' In order to receive log messages from Docotic.Pdf into a log4net logger,
+            ' you would need to configure log4net. This code sample uses the
+            ' Microsoft.Extensions.Logging.Log4Net.AspNetCore package, which configures log4net
+            ' using the provided config. Look into the app.config file, it contains more comments.
+            Dim options = New Log4NetProviderOptions With {
+                .UseWebOrAppConfig = True
+            }
+            Using factory As New LoggerFactory()
+                factory.AddLog4Net(options)
+                LogManager.UseLoggerFactory(factory)
 
-            ' The above line configures log4net using properties from app.config file.
-            ' Take a look into the app.config file, it contains more comments.
-
-            ' After log4net is configured, there is nothing else to do, the library
-            ' will put its log messages into the configured loggers. 
-            ' The following code should produce log messages in console and in 
-            ' log-file.txt file next to application's exe file.
-            Using pdf As New PdfDocument("..\Sample Data\Attachments.pdf")
-                Using ms As New MemoryStream()
-                    pdf.Pages(0).Save(ms, PdfDrawOptions.Create())
+                ' The following code should produce log messages in console and in 
+                ' log-file.txt file next to application's exe file.
+                Using pdf As New PdfDocument("..\Sample Data\Attachments.pdf")
+                    Using ms As New MemoryStream()
+                        pdf.Pages(0).Save(ms, PdfDrawOptions.Create())
+                    End Using
                 End Using
             End Using
         End Sub

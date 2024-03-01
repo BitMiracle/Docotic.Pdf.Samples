@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using Microsoft.Extensions.Logging;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -11,17 +12,15 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             // for more information.
 
-            // In order to receive log messages from Docotic.Pdf into a log4net logger, 
-            // you would need to configure log4net. Here is a simplest one-line 
-            // way to configure it. You might use any other way described in the docs
-            // https://logging.apache.org/log4net/release/manual/configuration.html
-            log4net.Config.XmlConfigurator.Configure();
+            // In order to receive log messages from Docotic.Pdf into a log4net logger,
+            // you would need to configure log4net. This code sample uses the
+            // Microsoft.Extensions.Logging.Log4Net.AspNetCore package, which configures log4net
+            // using the provided config. Look into the app.config file, it contains more comments.
+            var options = new Log4NetProviderOptions { UseWebOrAppConfig = true };
+            using var factory = new LoggerFactory();
+            factory.AddLog4Net(options);
+            LogManager.UseLoggerFactory(factory);
 
-            // The above line configures log4net using properties from app.config file.
-            // Take a look into the app.config file, it contains more comments.
-
-            // After log4net is configured, there is nothing else to do, the library
-            // will put its log messages into the configured loggers. 
             // The following code should produce log messages in console and in 
             // log-file.txt file next to application's exe file.
             using var pdf = new PdfDocument(@"..\Sample Data\Attachments.pdf");
