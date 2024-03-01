@@ -19,7 +19,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             // After NLog is configured, you need to create a corresponding logger factory and
             // pass it to LogManager class from the Docotic.Logging add-on.
-            LogManager.UseLoggerFactory(new NLogLoggerFactory());
+            using var factory = new NLogLoggerFactory();
+            LogManager.UseLoggerFactory(factory);
 
             // The following code should produce log messages in console and in
             // log-file.txt file next to application's exe file.
