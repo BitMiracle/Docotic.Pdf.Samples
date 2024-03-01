@@ -6,8 +6,10 @@
     <StartWorkingDirectory>$(SolutionDir)\Output</StartWorkingDirectory>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="9.2.16470" />
-    <PackageReference Include="NLog" Version="5.2.5" />
+    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="9.2.16744-dev" />
+    <PackageReference Include="BitMiracle.Docotic.Pdf.Logging" Version="9.2.16744-dev" />
+    <PackageReference Include="NLog" Version="5.2.8" />
+    <PackageReference Include="NLog.Extensions.Logging" Version="5.3.8" />
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="copy &quot;$(ProjectDir)app.config&quot; &quot;$(TargetDir)NLog.config&quot;" />
