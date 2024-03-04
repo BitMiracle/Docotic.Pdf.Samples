@@ -1,13 +1,13 @@
 Imports System.IO
-Imports BitMiracle.Docotic
 
 Imports BitMiracle.Docotic.Pdf
+Imports BitMiracle.Docotic.Pdf.Logging
 Imports Microsoft.Extensions.Logging
 
 Namespace BitMiracle.Docotic.Pdf.Samples
     Public NotInheritable Class LoggingWithLog4Net
         Public Shared Sub Main()
-            ' NOTE: 
+            ' NOTE:
             ' When used in trial mode, the library imposes some restrictions.
             ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
             ' for more information.

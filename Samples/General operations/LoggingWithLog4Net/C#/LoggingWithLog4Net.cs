@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using BitMiracle.Docotic.Pdf.Logging;
 using Microsoft.Extensions.Logging;
 
 namespace BitMiracle.Docotic.Pdf.Samples
