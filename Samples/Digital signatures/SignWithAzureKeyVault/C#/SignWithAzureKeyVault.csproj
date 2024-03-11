@@ -6,7 +6,7 @@
     <StartWorkingDirectory>$(SolutionDir)\Output</StartWorkingDirectory>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="9.2.16571-dev" />
+    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="9.3.16793" />
     <PackageReference Include="Azure.Identity" Version="1.10.4" />
     <PackageReference Include="Azure.Security.KeyVault.Keys" Version="4.5.0" />
   </ItemGroup>
