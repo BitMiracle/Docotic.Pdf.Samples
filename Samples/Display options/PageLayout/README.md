@@ -4,4 +4,4 @@ This sample shows how to instruct a PDF viewer to display the pages in two colum
 Use [PdfDocument.PageLayout property](https://bitmiracle.com/pdf-library/api/pdfdocument-pagelayout) to set up desired page layout.
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

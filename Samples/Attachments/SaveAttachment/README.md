@@ -10,4 +10,4 @@ If the retrieved reference is non-null then the file is actually embedded in the
 Use [PdfEmbeddedFile.Save methods](https://bitmiracle.com/pdf-library/api/pdfembeddedfile-save) to extract contents of the attachment to a stream or a file.
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

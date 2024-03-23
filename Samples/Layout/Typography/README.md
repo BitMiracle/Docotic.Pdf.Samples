@@ -6,15 +6,15 @@ The library automatically applies some predefined styles (`Document`, `Header`, 
 
 Use [Document.Typography methods](https://bitmiracle.com/pdf-library/api/layout/document-typography)
 to modify standard styles or provide custom `Typography` implementation.
-Later, use `Typography` object in [PageLayout.TextStyle(Func<Typography, TextStyle>)](https://bitmiracle.com/pdf-library/api/layout/pagelayout-textstyle#pagelayout_textstyle_system_func_layout_typography_layout_textstyle__),
-[LayoutContainer.TextStyle(Func<Typography, TextStyle>)](https://bitmiracle.com/pdf-library/api/layout/layoutcontainer-textstyle#layoutcontainer_textstyle_system_func_layout_typography_layout_textstyle__),
-[TextContainer.Style(Func<Typography, TextStyle>)](https://bitmiracle.com/pdf-library/api/layout/textcontainer-style#textcontainer_style_system_func_layout_typography_layout_textstyle__),
+Later, use `Typography` object in [PageLayout.TextStyle(Func<Typography, TextStyle>)](https://bitmiracle.com/pdf-library/api/layout/pagelayout-textstyle#func_typography_textstyle__),
+[LayoutContainer.TextStyle(Func<Typography, TextStyle>)](https://bitmiracle.com/pdf-library/api/layout/layoutcontainer-textstyle#func_typography_textstyle__),
+[TextContainer.Style(Func<Typography, TextStyle>)](https://bitmiracle.com/pdf-library/api/layout/textcontainer-style#func_typography_textstyle__),
 and other similar methods.
 
 This sample code uses free [Docotic.Pdf.Layout add-on](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Layout/) for Docotic.Pdf library.
 
 ## See also
-* [Create PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/create-pdf.aspx) article
+* [Create PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/create-pdf) article
 * [Fonts](/Samples/Layout/Fonts)
 * [Text styling](/Samples/Layout/TextStyling)
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

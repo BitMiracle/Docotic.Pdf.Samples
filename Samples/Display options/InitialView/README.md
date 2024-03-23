@@ -10,4 +10,4 @@ The InitialView property is null by default, which means that default view is to
 After a document view is created, you can use methods and properties of PdfDocumentView class to set up that view.
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

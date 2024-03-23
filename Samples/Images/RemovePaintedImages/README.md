@@ -4,7 +4,7 @@ This sample shows how to remove images painted on page in a PDF document using [
 Use [PdfPage.RemovePaintedImages()](https://bitmiracle.com/pdf-library/api/pdfpage-removepaintedimages) method to remove all or specific images from a PDF page. You can filter images by position, size, transformation, or other parameters.
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
 * [Replace image](/Samples/Images/ReplaceImage) sample
 * [Remove paths](/Samples/Graphics/RemovePaths) sample
 * [Copy page objects](/Samples/Pages%20and%20Navigation/CopyPageObjects) sample

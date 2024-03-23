@@ -8,5 +8,5 @@ Turning on all save options shown in this sample may help achieve a great compre
 This sample shows only one approach to reduce the size of a PDF. Please check [Compress PDF documents in C# and VB.NET](/Samples/Compression/CompressAllTechniques) sample code to see more approaches.
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
-* [Compress PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/compress-pdf.aspx) article
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
+* [Compress PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/optimize/compress) article

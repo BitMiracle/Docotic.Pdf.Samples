@@ -6,6 +6,6 @@ AddComboBox methods return an instance of [PdfComboBox class](https://bitmiracle
 Use [PdfComboBox.AddItem methods](https://bitmiracle.com/pdf-library/api/pdfcombobox-additem) to add items to combo box.
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
 * [Add list boxes to PDF document](/Samples/Forms%20and%20Annotations/Listboxes) sample
 * [Add text fields to PDF document](/Samples/Forms%20and%20Annotations/TextFields) sample

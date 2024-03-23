@@ -9,4 +9,4 @@ You can use layers in PdfCanvas, widgets or XObjects. This sample shows how to u
 ## See also
 * [Add annotations and controls to layers](/Samples/Layers/AddAnnotationsAndControlsToLayers) sample
 * [Add XObjects to layers](/Samples/Layers/AddXObjectsToLayers) sample
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

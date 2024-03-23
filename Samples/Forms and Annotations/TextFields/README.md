@@ -5,5 +5,5 @@ You can add text fields to your PDF document using [PdfPage.AddTextBox methods](
 AddTextBox methods return an instance of [PdfTextBox class](https://bitmiracle.com/pdf-library/api/pdftextbox).
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
 * [Add comboboxes to PDF document in C# and VB.NET](/Samples/Forms%20and%20Annotations/Comboboxes) sample

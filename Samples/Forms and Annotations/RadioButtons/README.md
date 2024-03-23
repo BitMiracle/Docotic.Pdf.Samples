@@ -9,5 +9,5 @@ when SubmitFormAction is activated. Look at the [Use Submit and Reset form actio
 for more detail about submit form action.
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
 * [Add checkboxes to PDF document in C# and VB.NET](/Samples/Forms%20and%20Annotations/Checkboxes) sample

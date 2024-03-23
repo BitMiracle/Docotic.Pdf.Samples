@@ -10,7 +10,7 @@ The demo app comes in C# and VB.NET versions for Windows Forms and WPF. The app 
 This sample code uses free [Docotic.Pdf.Gdi add-on](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Gdi) for Docotic.Pdf library. In certain environments, it is not recommended to use the add-on. Please read the description for the addon-on for more information.
 
 ## See also
-* [Render and print PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/draw-print-pdf.aspx) article
+* [Render and print PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/draw-print-pdf) article
 * [Print PDF in Eto.Forms applications](/Samples/Draw%20and%20print%20PDF/PrintPdfEtoForms)
-* [Convert PDF to image in C# and VB.NET](https://bitmiracle.com/pdf-library/convert-pdf-to-image.aspx) article
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Convert PDF to image in C# and VB.NET](https://bitmiracle.com/pdf-library/pdf-image/convert) article
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

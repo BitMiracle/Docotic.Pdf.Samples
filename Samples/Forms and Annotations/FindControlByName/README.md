@@ -6,5 +6,5 @@ to find a PDF control by full name or name. You can access document controls usi
 in any PDF document with a form.
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
 * [Fill PDF forms in C# and VB.NET](/Samples/Forms%20and%20Annotations/FillForm) sample

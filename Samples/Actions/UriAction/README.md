@@ -7,5 +7,5 @@ You can then associate the URI action with bookmarks, action areas, or PDF contr
 A URI action causes a URI (Uniform Resource Identifier) to be resolved.
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
-* [Add annotations, actions and scripts to PDF in C# and VB.NET](https://bitmiracle.com/pdf-library/annotations-and-actions.aspx) article
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
+* [Add annotations, actions and scripts to PDF in C# and VB.NET](https://bitmiracle.com/pdf-library/annotations-and-actions) article

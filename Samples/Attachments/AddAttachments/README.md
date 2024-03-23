@@ -7,4 +7,4 @@ You can add created attachment to collection of document-level attachments using
 Or you can add created attachment as a file attachment annotation using [PdfPage.AddFileAnnotation method](https://bitmiracle.com/pdf-library/api/pdfpage-addfileannotation).
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

@@ -4,5 +4,5 @@ This sample shows how to fill forms in existing PDF documents using [Docotic.Pdf
 When you open a PDF document with a form, you can access and modify document widgets (annotations and controls).
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
 * [Find PDF control by name](/Samples/Forms%20and%20Annotations/FindControlByName) sample

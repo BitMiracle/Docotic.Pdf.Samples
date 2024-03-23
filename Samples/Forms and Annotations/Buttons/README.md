@@ -7,5 +7,5 @@ This method returns an instance of [PdfButton class](https://bitmiracle.com/pdf-
 You can also associate actions with buttons using properties in PdfButton class whose names start with "On" (e.g., OnMouseDown).
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
 * [Add buttons with image to PDF document in C# and VB.NET](/Samples/Forms%20and%20Annotations/ButtonImage) sample

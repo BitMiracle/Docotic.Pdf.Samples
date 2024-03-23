@@ -8,7 +8,7 @@ You need to implement `IPdfSigner` interface and use it in [PdfSigningOptions](h
 Pkcs11Interop library helps to work with unmanaged PKCS#11 libraries in .NET.
 
 ## See also
-* [Get free time-limited license key for Docotic.Pdf](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
-* [Sign PDF document in C# and VB.NET](https://bitmiracle.com/pdf-library/sign-pdf.aspx) article
+* [Get free time-limited license key for Docotic.Pdf](https://bitmiracle.com/pdf-library/download)
+* [Sign PDF document in C# and VB.NET](https://bitmiracle.com/pdf-library/signatures/sign) article
 * [Sign PDF document using AWS KMS](/Samples/Digital%20signatures/SignWithAwsKms) sample
 * [Sign PDF document using Azure Key Vault](/Samples/Digital%20signatures/SignWithAzureKeyVault) sample

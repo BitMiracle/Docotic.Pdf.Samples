@@ -7,6 +7,6 @@ When signing a document, [Docotic.Pdf library](https://bitmiracle.com/pdf-librar
 For compatibility reasons, it is recommended to use one of the SHA digest algorithms for timestamped signatures.
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
-* [Sign PDF document in C# and VB.NET](https://bitmiracle.com/pdf-library/sign-pdf.aspx) article
-* [Verify PDF signature in C# and VB.NET](https://bitmiracle.com/pdf-library/verify-pdf-signature.aspx) article
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
+* [Sign PDF document in C# and VB.NET](https://bitmiracle.com/pdf-library/signatures/sign) article
+* [Verify PDF signature in C# and VB.NET](https://bitmiracle.com/pdf-library/signatures/verify) article

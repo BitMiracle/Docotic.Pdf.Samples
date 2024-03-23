@@ -9,5 +9,5 @@ Use methods and properties of PdfGoToAction class to specify a target page to be
 A Go-To action (and a number of other action types) can be used for widget event handlers. For example, for [PdfButton.OnMouseDown property](https://bitmiracle.com/pdf-library/api/pdfcontrol-onmousedown).
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
-* [Add annotations, actions and scripts to PDF in C# and VB.NET](https://bitmiracle.com/pdf-library/annotations-and-actions.aspx) article
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
+* [Add annotations, actions and scripts to PDF in C# and VB.NET](https://bitmiracle.com/pdf-library/annotations-and-actions) article

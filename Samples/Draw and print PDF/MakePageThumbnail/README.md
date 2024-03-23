@@ -6,6 +6,6 @@ Use [PdfDrawOptions.CreateFitSize method](https://bitmiracle.com/pdf-library/api
 There are also [PdfDrawOptions.CreateFitWidth](https://bitmiracle.com/pdf-library/api/pdfdrawoptions-createfitwidth) and [PdfDrawOptions.CreateFitHeight](https://bitmiracle.com/pdf-library/api/pdfdrawoptions-createfitheight) methods. These methods are useful when you need thumbnail images of specified width or height and have no requirements for the second dimension of thumbnail images.
 
 ## See also
-* [Convert PDF to image in C# and VB.NET](https://bitmiracle.com/pdf-library/convert-pdf-to-image.aspx) article
-* [Render and print PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/draw-print-pdf.aspx) article
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Convert PDF to image in C# and VB.NET](https://bitmiracle.com/pdf-library/pdf-image/convert) article
+* [Render and print PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/draw-print-pdf) article
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

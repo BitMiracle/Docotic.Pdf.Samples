@@ -6,5 +6,5 @@ Use [PdfButton.Layout property](https://bitmiracle.com/pdf-library/api/pdfbutton
 You can also define how the image on the button should be scaled by using the [PdfButton.ImageScaleMode property](https://bitmiracle.com/pdf-library/api/pdfbutton-imagescalemode).
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
 * [Add buttons to PDF document in C# and VB.NET](/Samples/Forms%20and%20Annotations/Buttons) sample

@@ -10,4 +10,4 @@ In order to list names of all files used in file attachment annotations, you sho
 Note that the same attachment can be used in a file attachment annotation and added to collection of document-level annotations. You can find unique attachments by comparing their file specifications. File specifications can be compared using object.Equals method or simple "==" operator.
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

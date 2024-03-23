@@ -9,5 +9,5 @@ A Reset-Form action ([PdfResetFormAction class](https://bitmiracle.com/pdf-libra
 Please use [PdfControlAction.AddControl method](https://bitmiracle.com/pdf-library/api/pdfcontrolaction-addcontrol) to associate a control with a Submit-Form or a Reset-Form action.
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
-* [Add annotations, actions and scripts to PDF in C# and VB.NET](https://bitmiracle.com/pdf-library/annotations-and-actions.aspx) article
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
+* [Add annotations, actions and scripts to PDF in C# and VB.NET](https://bitmiracle.com/pdf-library/annotations-and-actions) article

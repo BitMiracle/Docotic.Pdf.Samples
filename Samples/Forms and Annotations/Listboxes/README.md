@@ -8,5 +8,5 @@ Use [PdfListBox.AddItems methods](https://bitmiracle.com/pdf-library/api/pdflist
 Use [PdfListBox.SelectItems method](https://bitmiracle.com/pdf-library/api/pdflistbox-selectitems) to select items in the list box.
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
 * [Add comboboxes to PDF document](/Samples/Forms%20and%20Annotations/Comboboxes) sample

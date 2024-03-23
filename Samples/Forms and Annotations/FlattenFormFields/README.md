@@ -10,4 +10,4 @@ Alternatively, you can:
 2. Flatten individual controls or annotations using the [PdfWidget.Flatten() method](https://bitmiracle.com/pdf-library/api/pdfwidget-flatten)
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

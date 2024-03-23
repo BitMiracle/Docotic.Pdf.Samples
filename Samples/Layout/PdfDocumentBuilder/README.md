@@ -17,6 +17,6 @@ document to the PdfDocument class.
 This sample code uses free [Docotic.Pdf.Layout add-on](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Layout/) for Docotic.Pdf library.
 
 ## See also
-* [Create PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/create-pdf.aspx) article
+* [Create PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/create-pdf) article
 * [Page layout in PDF documents](/Samples/Layout/Pages)
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

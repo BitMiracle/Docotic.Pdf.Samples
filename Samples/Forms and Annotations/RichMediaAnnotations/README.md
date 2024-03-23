@@ -6,5 +6,5 @@ Use [PdfPage.AddRichMediaAnnotation method](https://bitmiracle.com/pdf-library/a
 Use [PdfRichMediaAnnotation.Activation property](https://bitmiracle.com/pdf-library/api/pdfrichmediaannotation-activation) to customize activation settings for the created annotation.
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
 * [Add 3D annotation to PDF document](/Samples/Forms%20and%20Annotations/3dAnnotations) sample

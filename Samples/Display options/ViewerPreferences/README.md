@@ -5,4 +5,4 @@ A PDF viewer application preferences specify the way the document is to be displ
 Use [PdfDocument.ViewerPreferences property](https://bitmiracle.com/pdf-library/api/pdfdocument-viewerpreferences) to set up preferences.
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
