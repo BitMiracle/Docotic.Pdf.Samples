@@ -42,7 +42,7 @@ namespace HtmlToPdfWindowsForms
         {
             // NOTE: 
             // When used in trial mode, the library imposes some restrictions.
-            // Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
+            // Please visit http://bitmiracle.com/pdf-library/trial-restrictions
             // for more information.
 
             using (var converter = await HtmlConverter.CreateAsync())
