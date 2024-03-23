@@ -6,6 +6,6 @@ Use PdfPage.GetObjects() method to get all text, paths and images drawn on the p
 In this sample, we change orange color at the top to gray color. And remove all text on the right.
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
 * [Remove paths](/Samples/Graphics/RemovePaths) sample
 * [Remove painted images](/Samples/Images/RemovePaintedImages) sample

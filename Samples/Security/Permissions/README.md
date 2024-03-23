@@ -8,6 +8,6 @@ When encrypting with a password, there are two password types: "user" and "owner
 User access permissions may be used to disallow printing of the document, filling of form fields, or other operations. 
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
-* [Encrypt PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/encrypt-pdf.aspx) article
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
+* [Encrypt PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/passwords/encrypt) article
 * [Set password](/Samples/Security/SetPassword) sample

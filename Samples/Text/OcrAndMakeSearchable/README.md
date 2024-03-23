@@ -12,5 +12,5 @@ Also ensure that you have [Visual Studio 2015-2019 x86 & x64 runtimes](https://s
 
 ## See also
 * [OCR PDF in C# and VB.NET](https://bitmiracle.com/blog/ocr-pdf-in-net) article
-* [Extract text from PDF in C# and VB.NET](https://bitmiracle.com/pdf-library/extract-text-from-pdf-in-net.aspx) article
-* [Get free time-limited license key for Docotic.Pdf](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Extract text from PDF in C# and VB.NET](https://bitmiracle.com/pdf-library/pdf-text/extract) article
+* [Get free time-limited license key for Docotic.Pdf](https://bitmiracle.com/pdf-library/download)

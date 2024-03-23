@@ -11,5 +11,5 @@ This sample uses [Docotic.Pdf library](https://bitmiracle.com/pdf-library/) and 
 
 ## See also
 * [OCR PDF in C# and VB.NET](https://bitmiracle.com/blog/ocr-pdf-in-net) article
-* [Extract text from PDF in C# and VB.NET](https://bitmiracle.com/pdf-library/extract-text-from-pdf-in-net.aspx) article
-* [Get free time-limited license key for Docotic.Pdf](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Extract text from PDF in C# and VB.NET](https://bitmiracle.com/pdf-library/pdf-text/extract) article
+* [Get free time-limited license key for Docotic.Pdf](https://bitmiracle.com/pdf-library/download)

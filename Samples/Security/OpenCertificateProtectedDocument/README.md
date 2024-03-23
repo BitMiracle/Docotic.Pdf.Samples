@@ -6,5 +6,5 @@ If you have a matching certificate installed in the X.509 certificate store used
 In other cases, you can create an instance of [PdfPublicKeyDecryptionHandler class](https://bitmiracle.com/pdf-library/api/pdfpublickeydecryptionhandler) and use it to open the document. You can create PdfPublicKeyDecryptionHandler instances using a matching X509Certificate2 certificate, PFX / PKCS #12 key store, or X509Store store. In the latter case, the library will try to find a matching certificate in the store.
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
-* [Decrypt PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/decrypt-pdf-remove-passwords.aspx) article
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
+* [Decrypt PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/passwords/decrypt) article

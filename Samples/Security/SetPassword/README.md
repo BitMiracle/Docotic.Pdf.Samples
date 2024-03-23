@@ -6,6 +6,6 @@ When encrypting with a password, there are two password types: "user" and "owner
 To protect the document, first, create an instance of [PdfStandardEncryptionHandler class](https://bitmiracle.com/pdf-library/api/pdfstandardencryptionhandler) with user and owner passwords. Then assign the handler to the [PdfSaveOptions.EncryptionHandler](https://bitmiracle.com/pdf-library/api/pdfsaveoptions-encryptionhandler) property.
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
-* [Encrypt PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/encrypt-pdf.aspx) article
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
+* [Encrypt PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/passwords/encrypt) article
 * [Permissions](/Samples/Security/Permissions) sample

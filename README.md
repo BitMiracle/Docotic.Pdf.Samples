@@ -42,13 +42,12 @@ Contains Docotic.Pdf sample code.
 # Docotic.Pdf library
 Docotic.Pdf library is the PDF library for .NET 8, .NET 7, .NET 6, .NET 5, .NET Standard / .NET Core, and .NET 4.x frameworks.
 
-Docotic.Pdf comes with [free](https://bitmiracle.com/pdf-library/free-pdf-library.aspx) and [paid](https://bitmiracle.com/pdf-library/purchase.aspx) licenses.
+Docotic.Pdf comes with [free](https://bitmiracle.com/pdf-library/licenses/free) and [paid](https://bitmiracle.com/pdf-library/licenses/) licenses.
 
-You can request an evaluation license on the library page  
-https://bitmiracle.com/pdf-library/
+Get a free time limited license on [the library page](https://bitmiracle.com/pdf-library/) to try the library without [evaluation mode restrictions](https://bitmiracle.com/pdf-library/trial-restrictions).
 
 The latest version of the library is available on the download page and NuGet  
-https://bitmiracle.com/pdf-library/download-pdf-library.aspx  
+https://bitmiracle.com/pdf-library/download
 https://www.nuget.org/packages/BitMiracle.Docotic.Pdf/
 
 There are free add-ons to the library:
@@ -58,4 +57,4 @@ There are free add-ons to the library:
 * Gdi add-on https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Gdi/
 
 Documentation for the library is available here  
-https://bitmiracle.com/pdf-library/help.aspx
+https://bitmiracle.com/pdf-library/help

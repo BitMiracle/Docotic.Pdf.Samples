@@ -6,6 +6,6 @@ Use [PdfDocument.GetText()](https://bitmiracle.com/pdf-library/api/pdfdocument-g
 Alternative methods are [PdfDocument.GetTextWithFormatting()](https://bitmiracle.com/pdf-library/api/pdfdocument-gettextwithformatting) and [PdfPage.GetTextWithFormatting()](https://bitmiracle.com/pdf-library/api/pdfpage-gettextwithformatting). These methods will extract text with formatting. Formatting means that all relative text positions will be kept after extraction and text will look more readable. Extracting text with formatting may be especially useful for PDF documents with tabular data.
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
-* [Extract text from PDF in C# and VB.NET](https://bitmiracle.com/pdf-library/extract-text-from-pdf-in-net.aspx) article
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
+* [Extract text from PDF in C# and VB.NET](https://bitmiracle.com/pdf-library/pdf-text/extract) article
 * [Find and highlight text in a PDF document](/Samples/Text/FindAndHighlightText) sample

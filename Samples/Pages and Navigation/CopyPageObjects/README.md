@@ -9,6 +9,6 @@ This sample does not preserve all structure information because page objects are
 Look at the [Edit PDF page content](/Samples/Pages%20and%20Navigation/EditPageContent) sample that shows how to copy page objects to the same page and preserve structure information.
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
 * [Remove paths](/Samples/Graphics/RemovePaths) sample
 * [Remove painted images](/Samples/Images/RemovePaintedImages) sample

@@ -8,6 +8,6 @@ Then specify PdfEncryptionAlgorithm.Aes256Bit for the Algorithm property of the 
 To add more recipients, please use [AddRecipient](https://bitmiracle.com/pdf-library/api/pdfpublickeyencryptionhandler-addrecipient) and/or [AddOwner](https://bitmiracle.com/pdf-library/api/pdfpublickeyencryptionhandler-addowner) methods of PdfPublicKeyEncryptionHandler.
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
-* [Encrypt PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/encrypt-pdf.aspx) article
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
+* [Encrypt PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/passwords/encrypt) article
 * [Protect PDF document with AES](/Samples/Security/ProtectDocumentWithAes) sample

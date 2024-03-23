@@ -15,5 +15,5 @@ Embedding of PDF fonts is useful when you need to:
 Note that embedding of PDF fonts can significantly increase an output file size.
 
 ## See also
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
 * [Subset PDF fonts in C# and VB.NET](/Samples/Compression/FontSubsetting) sample

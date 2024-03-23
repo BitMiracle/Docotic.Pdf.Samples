@@ -6,4 +6,4 @@ providing more convenient API for tables. Take a look at [this sample](/Samples/
 
 ## See also
 * [Add tables to PDF document in C# and VB.NET](/Samples/Layout/Tables) sample
-* [Get free time-limited license key for Docotic.Pdf](https://bitmiracle.com/pdf-library/download-pdf-library.aspx)
+* [Get free time-limited license key for Docotic.Pdf](https://bitmiracle.com/pdf-library/download)
