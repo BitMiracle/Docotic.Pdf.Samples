@@ -10,7 +10,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             ' NOTE:
             ' When used in trial mode, the library imposes some restrictions.
-            ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
+            ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions
             ' for more information.
 
             Using pdf As New PdfDocument(originalFile)

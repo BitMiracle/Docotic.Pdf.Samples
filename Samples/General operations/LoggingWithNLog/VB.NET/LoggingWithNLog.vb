@@ -9,7 +9,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         Public Shared Sub Main()
             ' NOTE:
             ' When used in trial mode, the library imposes some restrictions.
-            ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions.aspx
+            ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions
             ' for more information.
 
             ' In order to receive log messages from Docotic.Pdf into a NLog logger,
