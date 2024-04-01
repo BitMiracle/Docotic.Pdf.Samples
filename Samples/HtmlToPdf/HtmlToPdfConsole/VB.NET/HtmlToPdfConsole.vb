@@ -14,7 +14,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         Private Shared Async Function ConvertUrlToPdfAsync(urlString As String, pdfFileName As String) As Task
             ' NOTE: 
             ' When used in trial mode, the library imposes some restrictions.
-            ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions
+            ' Please visit https://bitmiracle.com/pdf-library/trial-restrictions
             ' for more information.
 
             Using converter = Await HtmlConverter.CreateAsync()

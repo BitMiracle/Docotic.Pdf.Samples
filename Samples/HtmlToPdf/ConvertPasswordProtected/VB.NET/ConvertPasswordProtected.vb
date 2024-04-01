@@ -14,7 +14,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         Private Shared Async Function ConvertPasswordProtected() As Task
             ' NOTE: 
             ' When used in trial mode, the library imposes some restrictions.
-            ' Please visit http://bitmiracle.com/pdf-library/trial-restrictions
+            ' Please visit https://bitmiracle.com/pdf-library/trial-restrictions
             ' for more information.
 
             Dim pathToFile As String = "ConvertPasswordProtected.pdf"
