@@ -15,6 +15,10 @@ This sample shows how to create PDF documents using custom layout components.
 
 This sample shows how to generate PDF documents with header and footer.
 
+[Hello, world! with Layout API](/Samples/Layout/HelloWorld)
+
+Hello, world! application that shows common building blocks in action.
+
 [Fonts](/Samples/Layout/Fonts)
 
 This sample shows how to manage fonts using Docotic.Pdf.Layout add-on.

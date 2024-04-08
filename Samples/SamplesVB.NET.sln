@@ -369,6 +369,8 @@ Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "SignWithAwsKms", "Digital s
 EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "SignWithPkcs11", "Digital signatures\SignWithPkcs11\VB.NET\SignWithPkcs11.vbproj", "{31FAA9B1-E3E6-46C5-B145-26B220BE42D3}"
 EndProject
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "HelloWorld", "Layout\HelloWorld\VB.NET\HelloWorld.vbproj", "{09605B37-6FA4-4239-AE24-4D4E1CE5495E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1035,6 +1037,10 @@ Global
 		{31FAA9B1-E3E6-46C5-B145-26B220BE42D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31FAA9B1-E3E6-46C5-B145-26B220BE42D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31FAA9B1-E3E6-46C5-B145-26B220BE42D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09605B37-6FA4-4239-AE24-4D4E1CE5495E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09605B37-6FA4-4239-AE24-4D4E1CE5495E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09605B37-6FA4-4239-AE24-4D4E1CE5495E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09605B37-6FA4-4239-AE24-4D4E1CE5495E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1205,6 +1211,7 @@ Global
 		{1FBD4925-1EB7-4434-BEB5-7B830287521A} = {6D0505BD-B25A-4219-A5EA-0F5E30DAC7F9}
 		{C497E41D-D30B-4AD8-A906-7D90B92D46F9} = {6D0505BD-B25A-4219-A5EA-0F5E30DAC7F9}
 		{31FAA9B1-E3E6-46C5-B145-26B220BE42D3} = {6D0505BD-B25A-4219-A5EA-0F5E30DAC7F9}
+		{09605B37-6FA4-4239-AE24-4D4E1CE5495E} = {BCB70BB6-F731-4E3D-A60F-E581CFA49432}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {50A18C19-4AC0-4BF0-9AA5-7C45E6C1E9A6}

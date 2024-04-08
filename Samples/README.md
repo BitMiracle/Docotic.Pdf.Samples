@@ -237,6 +237,8 @@
 
 [Add header and footer to PDF documents](/Samples/Layout/HeaderFooter)
 
+[Hello, world! with Layout API](/Samples/Layout/HelloWorld)
+
 [Fonts](/Samples/Layout/Fonts)
 
 [Page layout in PDF documents](/Samples/Layout/Pages)
