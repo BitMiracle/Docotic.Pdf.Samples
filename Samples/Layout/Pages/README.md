@@ -4,7 +4,7 @@ This sample shows how to customize PDF page settings using [Docotic.Pdf.Layout a
 Use [Document.Pages method](https://bitmiracle.com/pdf-library/api/layout/document-pages) to define layout for PDF pages.
 You can call this method multiple times to generate different page groups.
 
-Use [PageLayout methods](https://bitmiracle.com/pdf-library/api/layout/pagelayout) to set page propeties -
+Use [PageLayout methods](https://bitmiracle.com/pdf-library/api/layout/pagelayout) to set page properties -
 size, margins, background color, text style and text direction.
 
 `PageLayout` class provides the following methods to generate page content:
