@@ -1,6 +1,8 @@
 # Layout
 This group contains samples showing how to create PDF documents in C# and VB.NET using [Docotic.Pdf.Layout add-on](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Layout/).
 
+Check out the [C# PDF generation library](https://bitmiracle.com/pdf-library/layout/) page. It contains links to articles and Layout API reference. Read them and you will learn how to describe the layout of your documents in C# and VB.NET code. It is easy to have the library generate PDF files based on your layout.
+
 Don't miss [all other samples](/Samples).
 
 [Generate PDF documents with complex layout](/Samples/Layout/ComplexLayout)
