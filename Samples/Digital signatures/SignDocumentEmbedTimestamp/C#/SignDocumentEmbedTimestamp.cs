@@ -29,7 +29,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 };
 
                 // Replace the following test URL with your Timestamp Authority URL
-                options.Timestamp.AuthorityUrl = new Uri("http://tsa.starfieldtech.com/");
+                options.Timestamp.AuthorityUrl = new Uri("http://timestamp.digicert.com");
 
                 // Specify username and password if your Timestamp Authority requires authentication
                 options.Timestamp.Username = null;
