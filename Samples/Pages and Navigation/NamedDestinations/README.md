@@ -5,7 +5,7 @@ In Docotic.Pdf, destinations are called `views`. The [PdfDocumentView class](htt
 provides API for PDF destinations. Use [PdfDocument.CreateView methods](https://bitmiracle.com/pdf-library/api/pdfdocument-createview)
 to create a view.
 
-Named views are stored in the [PdfDocument.SharedViews collection](https://bitmiracle.com/pdf-library/api/pdfdocument-sharedviews).
+Named views are stored in the `PdfDocument.SharedViews` collection.
 In this sample, we read existing named views and then create a new named view.
 
 ## See also
