@@ -269,6 +269,8 @@
 
 [Copy pages](/Samples/Pages%20and%20Navigation/CopyPages)
 
+[Create and read named destinations in PDF documents](/Samples/Pages%20and%20Navigation/NamedDestinations)
+
 [Edit PDF page content](/Samples/Pages%20and%20Navigation/EditPageContent)
 
 [Extract text, paths and images](/Samples/Pages%20and%20Navigation/ExtractPageObjects)

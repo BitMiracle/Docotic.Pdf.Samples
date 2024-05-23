@@ -15,6 +15,10 @@ This sample shows how to copy page objects (text, paths and images) to a new doc
 
 This sample shows how to copy pages from one PDF document to another.
 
+[Create and read named destinations in PDF documents](/Samples/Pages%20and%20Navigation/NamedDestinations)
+
+This sample shows how to work with named destinations in PDF documents.
+
 [Edit PDF page content](/Samples/Pages%20and%20Navigation/EditPageContent)
 
 This sample shows how to modify PDF page content.
