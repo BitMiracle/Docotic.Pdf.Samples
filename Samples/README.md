@@ -350,4 +350,4 @@
 
 [Remove XObjects](/Samples/XObjects%2C%20watermarks%20and%20backgrounds/RemoveXObjectsWatermarks)
 
-[Add watermarks and backgrounds](/Samples/XObjects%2C%20watermarks%20and%20backgrounds/Watermarks)
+[Add watermarks and backgrounds to PDF](/Samples/XObjects%2C%20watermarks%20and%20backgrounds/Watermarks)

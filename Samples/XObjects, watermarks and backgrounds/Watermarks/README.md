@@ -1,8 +1,11 @@
-# Add watermarks and backgrounds
-This sample shows how to create and use watermarks in Docotic.Pdf library.
+# Add watermarks and backgrounds to PDF using C# or VB.NET
+This sample shows how to apply PDF watermarks and backgrounds in C# or VB.NET application.
 
-Please use PdfDocument.CreateXObject() method to add a PdfXObject to your document. This object will be used as a watermark. After a PdfXObject is added to your document you can setup its appearance using methods and properties of the object's canvas (check PdfXObject.Canvas property).
+Use the `PdfDocument.CreateXObject` method to add a `PdfXObject` object to your document. Use the new object for a watermark. You can set up the PDF watermark appearance using methods and properties of the object’s canvas. To access the canvas, use the `PdfXObject.Canvas` property.
 
-You can add watermark to a page using methods from PdfCanvas.DrawXObject group. The same watermark can be applied to any number of pages.
+The `PdfCanvas.DrawXObject` methods apply the watermark to a page. It’s ok to apply the same watermark to more than one page.
 
-If you want to add background to a page then set DrawOnBackground property of created PdfXObject to true before using a PdfCanvas.DrawXObject method.
+To convert a watermark to a background, set the `DrawOnBackground` property of the created object to `true`. After that, use apply the background to one or more pages using one of the PdfCanvas.DrawXObject methods.
+
+## See also
+* [Watermark PDFs using page background and foreground containers](https://bitmiracle.com/pdf-library/layout/compounds#watermarks)
