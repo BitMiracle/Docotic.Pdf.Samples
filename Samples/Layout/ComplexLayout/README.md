@@ -5,8 +5,10 @@ This sample code uses free [Docotic.Pdf.Layout add-on](https://www.nuget.org/pac
 
 ## See also
 * [C# PDF generation quick start guide](https://bitmiracle.com/pdf-library/layout/getting-started)
-* [Create PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/create-pdf) article
-* [Page layout in PDF documents](/Samples/Layout/Pages)
-* [Create table of contents in PDF documents](/Samples/Layout/TableOfContents)
-* [Layout components](/Samples/Layout/Components)
+* [How to layout PDF pages](https://bitmiracle.com/pdf-library/layout/pages)
+* [Containers and their content](https://bitmiracle.com/pdf-library/layout/containers)
+* [Compound containers](https://bitmiracle.com/pdf-library/layout/compounds)
+* [Page layout in PDF documents](/Samples/Layout/Pages) example
+* [Create table of contents in PDF documents](/Samples/Layout/TableOfContents) example
+* [Layout components](/Samples/Layout/Components) example
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
