@@ -262,6 +262,9 @@
 
 [Set XMP metadata properties](/Samples/Metadata/SetXmpProperties)
 
+# Multithreading
+[Merge PDF documents in parallel threads](/Samples/Multithreading/MergeDocumentsParallelly)
+
 # Pages and Navigation
 [Add new pages](/Samples/Pages%20and%20Navigation/AddPages)
 

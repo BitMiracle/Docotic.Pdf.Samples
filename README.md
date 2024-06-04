@@ -31,6 +31,8 @@ Contains Docotic.Pdf sample code.
 
 [Metadata](/Samples/Metadata)
 
+[Multithreading](/Samples/Multithreading)
+
 [Pages and Navigation](/Samples/Pages%20and%20Navigation)
 
 [Security](/Samples/Security)

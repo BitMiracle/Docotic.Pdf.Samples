@@ -375,6 +375,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorld", "Layout\HelloW
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NamedDestinations", "Pages and Navigation\NamedDestinations\C#\NamedDestinations.csproj", "{269646FB-BEDF-438C-AB02-6EBE6788BADE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Multithreading", "Multithreading", "{63CEC0DC-5047-4EBF-BE87-04EEC413566A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MergeDocumentsParallelly", "Multithreading\MergeDocumentsParallelly\C#\MergeDocumentsParallelly.csproj", "{4762F754-D5F7-405D-A719-A969522D6692}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1053,6 +1057,10 @@ Global
 		{269646FB-BEDF-438C-AB02-6EBE6788BADE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{269646FB-BEDF-438C-AB02-6EBE6788BADE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{269646FB-BEDF-438C-AB02-6EBE6788BADE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4762F754-D5F7-405D-A719-A969522D6692}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4762F754-D5F7-405D-A719-A969522D6692}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4762F754-D5F7-405D-A719-A969522D6692}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4762F754-D5F7-405D-A719-A969522D6692}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1226,6 +1234,7 @@ Global
 		{7B559888-BF2C-4CB4-BA32-30AB64C88868} = {80D726EA-AAE5-4744-BAEE-6F6C8A01E493}
 		{04D8839D-1CBC-4609-A88C-DD9FE2E956D0} = {0DF4BBEF-BCCD-4D6D-B7B6-8CDD34D6FFC0}
 		{269646FB-BEDF-438C-AB02-6EBE6788BADE} = {62D813CD-8D4D-4784-92AE-2FDF3F314E51}
+		{4762F754-D5F7-405D-A719-A969522D6692} = {63CEC0DC-5047-4EBF-BE87-04EEC413566A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61DC7F3F-A5C8-48BD-845F-83DE6BD2527B}
