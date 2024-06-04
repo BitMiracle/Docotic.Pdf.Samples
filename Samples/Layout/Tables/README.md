@@ -15,7 +15,8 @@ This sample code uses free [Docotic.Pdf.Layout add-on](https://www.nuget.org/pac
 
 ## See also
 * [C# PDF generation quick start guide](https://bitmiracle.com/pdf-library/layout/getting-started)
-* [Create PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/create-pdf) article
-* [Create multi-column PDF documents](/Samples/Layout/RowsColumns)
-* [Generate PDF documents with complex layout](/Samples/Layout/ComplexLayout)
+* [How to layout PDF pages](https://bitmiracle.com/pdf-library/layout/pages)
+* [Table container](https://bitmiracle.com/pdf-library/layout/table)
+* [Create multi-column PDF documents](/Samples/Layout/RowsColumns) example
+* [Generate PDF documents with complex layout](/Samples/Layout/ComplexLayout) example
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
