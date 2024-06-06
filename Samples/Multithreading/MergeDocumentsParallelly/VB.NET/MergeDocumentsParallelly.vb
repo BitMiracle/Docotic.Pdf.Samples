@@ -1,14 +1,17 @@
 Imports System.Collections.Concurrent
 Imports System.IO
+Imports BitMiracle.Docotic
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
     Public NotInheritable Class MergeDocumentsParallelly
         Public Shared Sub Main()
-            ' NOTE:
-            ' When used in trial mode, the library imposes some restrictions.
-            ' Please visit https://bitmiracle.com/pdf-library/trial-restrictions
-            ' for more information.
+            If Not LicenseManager.HasValidLicense Then
+                Console.Error.WriteLine("In trial mode, this code runs slower than in the unrestricted mode and " +
+                    "produces skewed results. Please visit https://bitmiracle.com/pdf-library/trial-restrictions " +
+                    "for more information.")
+                Return
+            End If
 
             Dim documentsToMerge As Stream() = GetDocumentsToMerge(1000)
             Dim rangeSize As Integer = 50
@@ -41,7 +44,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf As PdfDocument = GetMergedDocument(streams, startIndex, count)
                 Dim result = New MemoryStream()
                 Dim options = New PdfSaveOptions With {
-                    .UseObjectStreams = False
+                    .UseObjectStreams = False ' speed up writing of intermediate documents
                 }
                 pdf.Save(result, options)
                 Return result

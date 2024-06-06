@@ -10,10 +10,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
     {
         public static void Main()
         {
-            // NOTE:
-            // When used in trial mode, the library imposes some restrictions.
-            // Please visit https://bitmiracle.com/pdf-library/trial-restrictions
-            // for more information.
+            if (!LicenseManager.HasValidLicense)
+            {
+                Console.Error.WriteLine("In trial mode, this code runs slower than in the unrestricted mode and " +
+                    "produces skewed results. Please visit https://bitmiracle.com/pdf-library/trial-restrictions " +
+                    "for more information.");
+                return;
+            }
 
             Stream[] documentsToMerge = GetDocumentsToMerge(1000);
 
