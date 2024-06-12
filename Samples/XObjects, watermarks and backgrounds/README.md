@@ -13,4 +13,4 @@ This sample shows how to remove XObjects (often used for watermarks and backgrou
 
 [Add watermarks and backgrounds](/Samples/XObjects%2C%20watermarks%20and%20backgrounds/Watermarks)
 
-This sample shows how to create and use watermarks in Docotic.Pdf library.
+This sample shows how to apply PDF watermarks and backgrounds in C# or VB.NET application.
