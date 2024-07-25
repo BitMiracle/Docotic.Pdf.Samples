@@ -3,6 +3,10 @@ This group contains samples that cover most general and basic operations with PD
 
 Don't miss [all other samples](/Samples).
 
+[Automate testing of PDF processing](/Samples/General%20operations/AutomaticTesting)
+
+This sample shows how to automatically test PDF processing in .NET.
+
 [Check if PDF document is a PDF/A compliant one](/Samples/General%20operations/CheckConformanceToPdfA)
 
 This sample shows how to check if PDF document is a PDF/A compliant one.

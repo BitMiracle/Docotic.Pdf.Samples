@@ -1,0 +1,49 @@
+                            Gmail Cheatsheet / Jim Callender ­ www.jayonline.co.uk
+
+Shortcut Key                  Definition                                                      Action
+        c                      Compose                 Allows you to compose a new message. <Shift> + c allows you to compose a
+                                                       message in a new window.
+        /                       Search                 Puts your cursor in the search box.
+        k            Move to newer conversation        Opens or moves your cursor to a more recent conversation. You can press
+                                                       <Enter> to expand a conversation.
+        j             Move to older conversation       Opens or moves your cursor to the next oldest conversation. You can press
+                                                       <Enter> to expand a conversation.
+       n                    Next message               Moves your cursor to the next message. You can press <Enter> to expand or
+                                                       collapse a message. (Only applicable in 'Conversation View.')
+       p                  Previous message             Moves your cursor to the previous message. You can press <Enter> to expand or
+                                                       collapse a message. (Only applicable in 'Conversation View.')
+ o or <Enter>                    Open                  Opens your conversation. Also expands or collapses a message if you are in
+                                                       'Conversation View'.
+       u              Return to conversation list      Refreshes your page and returns you to the inbox or list of conversations.
+                                                       Automatically removes the message or conversation from your current view.
+
+                               Archive*                ·        From 'Inbox', 'y' means Archive
+        y             Remove from current view         ·        From 'Starred', 'y' means Unstar
+                                                       ·        From any label, 'y' means Remove the label
+
+                                                       * 'y' has no effect if you are in 'Spam', 'Sent' or 'All Mail'.
+        x                Select conversation           Automatically checks and selects a conversation so that you can archive, apply a
+                                                       label or choose an action from the drop­down menu to apply to that conversation.
+        s          Star a message or conversation      Adds or removes a star to a message or conversation. Stars allow you to give a
+                                                       special status to a message or conversation.
+        !                    Report spam               Marks a message as spam and removes it from your conversation list.
+        r                        Reply                 Reply to the message sender. <Shift> + r allows you to reply to a message in a
+                                                       new window. (Only applicable in 'Conversation View'.)
+        a                      Reply all               Reply to all message recipients. <Shift> +a allows you to reply to all message
+                                                       recipients in a new window. (Only applicable in 'Conversation View'.)
+        f                      Forward                 Forward a message. <Shift> + f allows you to forward a message in a new
+                                                       window. (Only applicable in 'Conversation View'.)
+     <Esc>              Escape from input field        Removes the cursor from your current input field.
+
+Combo­keys ­ Use the following combinations of keys to navigate through Google Mail.
+
+   Shortcut Key          Definition                                                    Action
+    <tab> then        Send message      After composing your message, use this combination to send it automatically. (Supported only in
+      <Enter>                           Internet Explorer.)
+      y then o        Archive and next  Archive your conversation and move to the next one.
+      g then a         Go to 'All Mail'  Takes you to 'All Mail', the storage site for all mail you have ever sent or received (and have not
+                                        deleted).
+      g then s         Go to 'Starred'  Takes you to all conversations that you have starred.
+      g then c        Go to 'Contacts'  Takes you to your Contacts list.
+      g then d          Go to 'Drafts'  Takes you to all drafts you have saved.
+      g then i          Go to 'Inbox'   Returns you to the inbox.

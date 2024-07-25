@@ -124,6 +124,8 @@
 [Text markup annotations](/Samples/Forms%20and%20Annotations/TextMarkupAnnotations)
 
 # General operations
+[Automate testing of PDF processing](/Samples/General%20operations/AutomaticTesting)
+
 [Check if PDF document is a PDF/A compliant one](/Samples/General%20operations/CheckConformanceToPdfA)
 
 [Check if PDF document is password protected](/Samples/General%20operations/CheckIfPasswordProtected)
