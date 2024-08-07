@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 
-using BitMiracle.Docotic.Pdf;
-
 namespace BitMiracle.Docotic.Pdf.Samples
 {
     class PageObjectCopier

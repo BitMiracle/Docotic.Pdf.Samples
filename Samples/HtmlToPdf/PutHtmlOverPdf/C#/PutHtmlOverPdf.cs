@@ -10,10 +10,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
     {
         static async Task Main()
         {
-            // NOTE: 
-            // When used in trial mode, the library imposes some restrictions.
-            // Please visit https://bitmiracle.com/pdf-library/trial-restrictions
-            // for more information.
+            // NOTE:
+            // Without a license, the library won't allow you to create or read PDF documents.
+            // To get a free time-limited license key, use the form on
+            // https://bitmiracle.com/pdf-library/download
+
+            LicenseManager.AddLicenseData("PUT-LICENSE-HERE");
 
             var pathToFile = "PutHtmlOverPdf.pdf";
 
@@ -31,7 +33,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 // Alternatively, you can add a white background watermark to all converted pages.
                 // Look at the addWhiteBackground method below for more detail.
 
-                string htmlCode = 
+                string htmlCode =
                     "<div style=\"position: absolute; top: 270px; right: 100px;\">" +
                     "I would like to put this here</div>";
                 using var htmlPdf = await converter.CreatePdfFromStringAsync(htmlCode, options);

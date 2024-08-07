@@ -10,13 +10,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
     {
         public static void Main()
         {
-            if (!LicenseManager.HasValidLicense)
-            {
-                Console.Error.WriteLine("In trial mode, this code runs slower than in the unrestricted mode and " +
-                    "produces skewed results. Please visit https://bitmiracle.com/pdf-library/trial-restrictions " +
-                    "for more information.");
-                return;
-            }
+            // NOTE:
+            // Without a license, the library won't allow you to create or read PDF documents.
+            // To get a free time-limited license key, use the form on
+            // https://bitmiracle.com/pdf-library/download
+
+            LicenseManager.AddLicenseData("PUT-LICENSE-HERE");
 
             Stream[] documentsToMerge = GetDocumentsToMerge(1000);
 

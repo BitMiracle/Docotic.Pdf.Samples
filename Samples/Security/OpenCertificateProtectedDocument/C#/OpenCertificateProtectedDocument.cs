@@ -6,10 +6,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
     {
         public static void Main()
         {
-            // NOTE: 
-            // When used in trial mode, the library imposes some restrictions.
-            // Please visit https://bitmiracle.com/pdf-library/trial-restrictions
-            // for more information.
+            // NOTE:
+            // Without a license, the library won't allow you to create or read PDF documents.
+            // To get a free time-limited license key, use the form on
+            // https://bitmiracle.com/pdf-library/download
+
+            LicenseManager.AddLicenseData("PUT-LICENSE-HERE");
 
             // TODO:
             // Change the constants, or the sample won't work.
@@ -21,7 +23,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             OpenWithKeyStore(encryptedFile, keyStore, password);
 
             // There are other options. You can use a X509Store or X509Certificate2
-            // to construct a PdfPublicKeyDecryptionHandler and then use it 
+            // to construct a PdfPublicKeyDecryptionHandler and then use it
             // to open a certificate protected document.
         }
 

@@ -8,10 +8,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
     {
         public static void Main()
         {
-            // NOTE: 
-            // When used in trial mode, the library imposes some restrictions.
-            // Please visit https://bitmiracle.com/pdf-library/trial-restrictions
-            // for more information.
+            // NOTE:
+            // Without a license, the library won't allow you to create or read PDF documents.
+            // To get a free time-limited license key, use the form on
+            // https://bitmiracle.com/pdf-library/download
+
+            LicenseManager.AddLicenseData("PUT-LICENSE-HERE");
 
             // In order to receive log messages from Docotic.Pdf into a log4net logger,
             // you would need to configure log4net. This code sample uses the
@@ -22,7 +24,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             factory.AddLog4Net(options);
             LogManager.UseLoggerFactory(factory);
 
-            // The following code should produce log messages in console and in 
+            // The following code should produce log messages in console and in
             // log-file.txt file next to application's exe file.
             using var pdf = new PdfDocument(@"..\Sample Data\Attachments.pdf");
             using var ms = new MemoryStream();

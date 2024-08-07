@@ -9,10 +9,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
     {
         public static void Main()
         {
-            // NOTE: 
-            // When used in trial mode, the library imposes some restrictions.
-            // Please visit https://bitmiracle.com/pdf-library/trial-restrictions
-            // for more information.
+            // NOTE:
+            // Without a license, the library won't allow you to create or read PDF documents.
+            // To get a free time-limited license key, use the form on
+            // https://bitmiracle.com/pdf-library/download
+
+            LicenseManager.AddLicenseData("PUT-LICENSE-HERE");
 
             string pathToFile = "FindAndHighlightText.pdf";
 
@@ -21,7 +23,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 const string TextToFind = "JPEG File Interchange Format";
                 const StringComparison Comparison = StringComparison.InvariantCultureIgnoreCase;
                 var highlightColor = new PdfRgbColor(255, 255, 0);
-                
+
                 HighlightPhrases(pdf, TextToFind, Comparison, highlightColor);
 
                 pdf.Save(pathToFile);

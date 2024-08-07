@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using BitMiracle.Docotic;
 using BitMiracle.Docotic.Pdf.HtmlToPdf;
 
 namespace HtmlToPdfWindowsForms
@@ -40,10 +41,12 @@ namespace HtmlToPdfWindowsForms
 
         private async Task ConvertUrlToPdfAsync(string urlString, string pdfFileName)
         {
-            // NOTE: 
-            // When used in trial mode, the library imposes some restrictions.
-            // Please visit https://bitmiracle.com/pdf-library/trial-restrictions
-            // for more information.
+            // NOTE:
+            // Without a license, the library won't allow you to create or read PDF documents.
+            // To get a free time-limited license key, use the form on
+            // https://bitmiracle.com/pdf-library/download
+
+            LicenseManager.AddLicenseData("PUT-LICENSE-HERE");
 
             using (var converter = await HtmlConverter.CreateAsync())
             {

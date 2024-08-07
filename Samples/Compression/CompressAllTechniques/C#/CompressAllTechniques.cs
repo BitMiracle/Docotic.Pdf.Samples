@@ -9,10 +9,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
     {
         public static void Main()
         {
-            // NOTE: 
-            // When used in trial mode, the library imposes some restrictions.
-            // Please visit https://bitmiracle.com/pdf-library/trial-restrictions
-            // for more information.
+            // NOTE:
+            // Without a license, the library won't allow you to create or read PDF documents.
+            // To get a free time-limited license key, use the form on
+            // https://bitmiracle.com/pdf-library/download
+
+            LicenseManager.AddLicenseData("PUT-LICENSE-HERE");
 
             string originalFile = @"..\Sample Data\jpeg.pdf";
             const string compressedFile = "CompressAllTechniques.pdf";
@@ -169,7 +171,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 if (image.Width < 64 && image.Height < 64)
                 {
-                    // JPEG better preserves detail on smaller images 
+                    // JPEG better preserves detail on smaller images
                     image.RecompressWithJpeg();
                 }
                 else
@@ -215,7 +217,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
         /// This method unembeds any font that is:
         /// * installed in the OS
         /// * or has its name included in the "always unembed" list
-        /// * and its name is not included in the "always keep" list. 
+        /// * and its name is not included in the "always keep" list.
         /// </summary>
         private static void UnembedFonts(PdfDocument pdf)
         {
