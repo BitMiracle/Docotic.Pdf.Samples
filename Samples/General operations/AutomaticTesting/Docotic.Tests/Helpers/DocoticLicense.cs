@@ -5,17 +5,11 @@
         public static void Apply()
         {
             // NOTE:
-            // When used in trial mode, the library imposes some restrictions.
-            // Please visit https://bitmiracle.com/pdf-library/trial-restrictions
-            // for more information.
-            //
-            //LicenseManager.AddLicenseData(..);
+            // Without a license, the library won't allow you to create or read PDF documents.
+            // To get a free time-limited license key, use the form on
+            // https://bitmiracle.com/pdf-library/download
 
-            if (!LicenseManager.HasValidLicense)
-            {
-                throw new InvalidOperationException("Please provide a Docotic.Pdf license key. Visit " +
-                    "https://bitmiracle.com/pdf-library/trial-restrictions for more information.");
-            }
+            LicenseManager.AddLicenseData("PUT-LICENSE-HERE");
         }
     }
 }
