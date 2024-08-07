@@ -1,12 +1,15 @@
+Imports BitMiracle.Docotic
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
     Public NotInheritable Class ProtectDocumentWithCertificate
         Public Shared Sub Main()
-            ' NOTE: 
-            ' When used in trial mode, the library imposes some restrictions.
-            ' Please visit https://bitmiracle.com/pdf-library/trial-restrictions
-            ' for more information.
+            ' NOTE:
+            ' Without a license, the library won't allow you to create or read PDF documents.
+            ' To get a free time-limited license key, use the form on
+            ' https://bitmiracle.com/pdf-library/download
+
+            LicenseManager.AddLicenseData("PUT-LICENSE-HERE")
 
             Dim pathToFile As String = "ProtectDocumentWithCertificate.pdf"
 
@@ -26,7 +29,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Sub
 
         Private Shared Function CreateEncryptionHandler() As PdfPublicKeyEncryptionHandler
-            ' TODO: 
+            ' TODO:
             ' Change the constants, or the sample won't work.
 
             Dim keyStoreOwner As String = "key-store-owner.p12"

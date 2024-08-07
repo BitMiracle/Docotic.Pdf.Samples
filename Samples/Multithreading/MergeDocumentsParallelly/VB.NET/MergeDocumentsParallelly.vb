@@ -6,12 +6,12 @@ Imports BitMiracle.Docotic.Pdf
 Namespace BitMiracle.Docotic.Pdf.Samples
     Public NotInheritable Class MergeDocumentsParallelly
         Public Shared Sub Main()
-            If Not LicenseManager.HasValidLicense Then
-                Console.Error.WriteLine("In trial mode, this code runs slower than in the unrestricted mode and " +
-                    "produces skewed results. Please visit https://bitmiracle.com/pdf-library/trial-restrictions " +
-                    "for more information.")
-                Return
-            End If
+            ' NOTE:
+            ' Without a license, the library won't allow you to create or read PDF documents.
+            ' To get a free time-limited license key, use the form on
+            ' https://bitmiracle.com/pdf-library/download
+
+            LicenseManager.AddLicenseData("PUT-LICENSE-HERE")
 
             Dim documentsToMerge As Stream() = GetDocumentsToMerge(1000)
             Dim rangeSize As Integer = 50

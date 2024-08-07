@@ -1,4 +1,5 @@
 Imports System.IO
+Imports BitMiracle.Docotic
 
 Imports BitMiracle.Docotic.Pdf
 Imports BitMiracle.Docotic.Pdf.Logging
@@ -8,9 +9,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
     Public NotInheritable Class LoggingWithLog4Net
         Public Shared Sub Main()
             ' NOTE:
-            ' When used in trial mode, the library imposes some restrictions.
-            ' Please visit https://bitmiracle.com/pdf-library/trial-restrictions
-            ' for more information.
+            ' Without a license, the library won't allow you to create or read PDF documents.
+            ' To get a free time-limited license key, use the form on
+            ' https://bitmiracle.com/pdf-library/download
+
+            LicenseManager.AddLicenseData("PUT-LICENSE-HERE")
 
             ' In order to receive log messages from Docotic.Pdf into a log4net logger,
             ' you would need to configure log4net. This code sample uses the
@@ -23,7 +26,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 factory.AddLog4Net(options)
                 LogManager.UseLoggerFactory(factory)
 
-                ' The following code should produce log messages in console and in 
+                ' The following code should produce log messages in console and in
                 ' log-file.txt file next to application's exe file.
                 Using pdf As New PdfDocument("..\Sample Data\Attachments.pdf")
                     Using ms As New MemoryStream()

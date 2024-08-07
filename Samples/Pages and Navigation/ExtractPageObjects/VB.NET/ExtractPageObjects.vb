@@ -3,6 +3,7 @@ Imports System.Drawing.Drawing2D
 Imports System.Drawing.Imaging
 Imports System.IO
 Imports System.Runtime.Versioning
+Imports BitMiracle.Docotic
 Imports BitMiracle.Docotic.Pdf
 Imports BitMiracle.Docotic.Pdf.Gdi
 
@@ -10,10 +11,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
     <SupportedOSPlatform("windows")>
     Public NotInheritable Class ExtractPageObjects
         Public Shared Sub Main()
-            ' NOTE: 
-            ' When used in trial mode, the library imposes some restrictions.
-            ' Please visit https://bitmiracle.com/pdf-library/trial-restrictions
-            ' for more information.
+            ' NOTE:
+            ' Without a license, the library won't allow you to create or read PDF documents.
+            ' To get a free time-limited license key, use the form on
+            ' https://bitmiracle.com/pdf-library/download
+
+            LicenseManager.AddLicenseData("PUT-LICENSE-HERE")
 
             Const PathToFile As String = "ExtractPageObjects.png"
 
@@ -132,7 +135,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                                 gr.DrawImage(bitmap, 0, 0, CSng(imageSize.Width), CSng(imageSize.Height))
                                 gr.InterpolationMode = current
                             Else
-                                ' bitmap has the same size 
+                                ' bitmap has the same size
                                 ' or one of it's dimensions is longer than the corresponding image dimension
                                 gr.DrawImage(bitmap, 0, 0, bitmap.Width, bitmap.Height)
                             End If

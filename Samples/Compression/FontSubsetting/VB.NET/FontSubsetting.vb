@@ -9,9 +9,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Const compressedFile As String = "FontSubsetting.pdf"
 
             ' NOTE:
-            ' When used in trial mode, the library imposes some restrictions.
-            ' Please visit https://bitmiracle.com/pdf-library/trial-restrictions
-            ' for more information.
+            ' Without a license, the library won't allow you to create or read PDF documents.
+            ' To get a free time-limited license key, use the form on
+            ' https://bitmiracle.com/pdf-library/download
+
+            LicenseManager.AddLicenseData("PUT-LICENSE-HERE")
 
             Using pdf As New PdfDocument(originalFile)
                 pdf.RemoveUnusedFontGlyphs()

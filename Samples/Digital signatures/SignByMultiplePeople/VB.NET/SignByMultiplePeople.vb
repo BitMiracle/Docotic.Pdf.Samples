@@ -5,12 +5,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
     Public NotInheritable Class SignByMultiplePeople
         Public Shared Sub Main()
             ' NOTE:
-            ' When used in trial mode, the library imposes some restrictions.
-            ' Please visit https://bitmiracle.com/pdf-library/trial-restrictions
-            ' for more information.
+            ' Without a license, the library won't allow you to create or read PDF documents.
+            ' To get a free time-limited license key, use the form on
+            ' https://bitmiracle.com/pdf-library/download
 
-            ' This example won't work without a license. Please get a temporary license and
-            ' apply it in the next line.
             LicenseManager.AddLicenseData("PUT-LICENSE-HERE")
 
             ' IMPORTANT:

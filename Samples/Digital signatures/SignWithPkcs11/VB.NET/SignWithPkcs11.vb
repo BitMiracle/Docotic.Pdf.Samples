@@ -1,3 +1,4 @@
+Imports BitMiracle.Docotic
 Imports BitMiracle.Docotic.Pdf
 
 Namespace BitMiracle.Docotic.Pdf.Samples
@@ -19,10 +20,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         Return
                     End If
 
-                    ' NOTE
-                    ' When used in trial mode, the library imposes some restrictions.
-                    ' Please visit https://bitmiracle.com/pdf-library/trial-restrictions
-                    ' for more information.
+                    ' NOTE:
+                    ' Without a license, the library won't allow you to create or read PDF documents.
+                    ' To get a free time-limited license key, use the form on
+                    ' https://bitmiracle.com/pdf-library/download
+
+                    LicenseManager.AddLicenseData("PUT-LICENSE-HERE")
+
                     Dim outputFileName As String = "SignWithPkcs11.pdf"
                     Using pdf = New PdfDocument()
                         Dim page As PdfPage = pdf.Pages(0)

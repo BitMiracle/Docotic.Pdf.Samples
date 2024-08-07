@@ -6,10 +6,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
     Public NotInheritable Class CompressAllTechniques
         <STAThread>
         Public Shared Sub Main()
-            ' NOTE: 
-            ' When used in trial mode, the library imposes some restrictions.
-            ' Please visit https://bitmiracle.com/pdf-library/trial-restrictions
-            ' for more information.
+            ' NOTE:
+            ' Without a license, the library won't allow you to create or read PDF documents.
+            ' To get a free time-limited license key, use the form on
+            ' https://bitmiracle.com/pdf-library/download
+
+            LicenseManager.AddLicenseData("PUT-LICENSE-HERE")
 
             Dim originalFile As String = "..\Sample Data\jpeg.pdf"
             Const compressedFile As String = "CompressAllTechniques.pdf"
@@ -54,7 +56,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 ' 4. Remove structure information
                 pdf.RemoveStructureInformation()
 
-                ' 5. Flatten form fields 
+                ' 5. Flatten form fields
                 ' Controls become uneditable after that. Alternatively, you can use PdfDocument.FlattenWidgets() method
                 ' to flatten controls and annotations.
                 pdf.FlattenControls()
@@ -99,7 +101,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim image As PdfImage = painted.Image
 
             ' inline images cannot be recompressed unless you move them to resources
-            ' using PdfCanvas.MoveInlineImagesToResources 
+            ' using PdfCanvas.MoveInlineImagesToResources
             If image.IsInline Then
                 Return False
             End If
@@ -160,7 +162,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 image.Compression <> PdfImageCompression.Jpeg AndAlso
                 image.Compression <> PdfImageCompression.Jpeg2000 Then
                 If image.Width < 64 AndAlso image.Height < 64 Then
-                    ' JPEG better preserves detail on smaller images 
+                    ' JPEG better preserves detail on smaller images
                     image.RecompressWithJpeg()
                 Else
                     ' you can try larger compressio ratio for bigger images
@@ -202,7 +204,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         ''' This method unembeds any font that is:
         ''' * installed in the OS
         ''' * or has its name included in the "always unembed" list
-        ''' * and its name is not included in the "always keep" list. 
+        ''' * and its name is not included in the "always keep" list.
         ''' </summary>
         Private Shared Sub UnembedFonts(pdf As PdfDocument)
             Dim alwaysUnembedList = {"MyriadPro-Regular"}

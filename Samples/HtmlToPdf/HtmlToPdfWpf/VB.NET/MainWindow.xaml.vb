@@ -1,4 +1,5 @@
-﻿Imports BitMiracle.Docotic.Pdf.HtmlToPdf
+﻿Imports BitMiracle.Docotic
+Imports BitMiracle.Docotic.Pdf.HtmlToPdf
 
 Class MainWindow
     Public Sub New()
@@ -29,6 +30,13 @@ Class MainWindow
     End Sub
 
     Private Async Function ConvertUrlToPdfAsync(urlString As String, pdfFileName As String) As Task
+        ' NOTE:
+        ' Without a license, the library won't allow you to create or read PDF documents.
+        ' To get a free time-limited license key, use the form on
+        ' https://bitmiracle.com/pdf-library/download
+
+        LicenseManager.AddLicenseData("PUT-LICENSE-HERE")
+
         Using converter = Await HtmlConverter.CreateAsync()
 
             Using pdf = Await converter.CreatePdfAsync(New Uri(urlString))
