@@ -1,9 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
-
     <!--
       Without these properties, publishing sometimes shows errors:
       1. About missing RuntimeIdentifier. This error might also happen, when only
@@ -13,7 +11,6 @@
      -->
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <RuntimeIdentifiers>win-x64</RuntimeIdentifiers>
-
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PublishAot>true</PublishAot>
@@ -22,17 +19,14 @@
     <WarningsAsErrors />
     <InvariantGlobalization>true</InvariantGlobalization>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Include="..\Docotic.Tests\Helpers\DocoticLicense.cs" Link="DocoticLicense.cs" />
     <Compile Include="..\Docotic.Tests\Helpers\PdfSaver.cs" Link="PdfSaver.cs" />
     <Compile Include="..\Docotic.Tests\Helpers\PdfTextExtractor.cs" Link="PdfTextExtractor.cs" />
   </ItemGroup>
-
   <ItemGroup>
-    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="9.4.17469-dev" />
+    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="9.5.17525" />
   </ItemGroup>
-
   <!--
     Uncomment to force clean before building. It will fix the following scenario:
     1. Publishing fails because of some AOT or trim warnings
@@ -45,9 +39,7 @@
   <!--<Target Name="PreBuildClean" BeforeTargets="PreBuildEvent" Condition="'$(Configuration)' == 'Installer' And '$(PublishProtocol)'==''">
     <CallTarget Targets="Clean" />
   </Target>-->
-
   <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(Configuration)' == 'Release' And '$(PublishProtocol)'==''">
     <Exec Command="&quot;$(SolutionDir)publish.bat&quot;" />
   </Target>
-
 </Project>
