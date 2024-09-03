@@ -26,10 +26,6 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim options = New HtmlConversionOptions()
                 options.Authentication.SetCredentials("foo", "bar")
 
-                ' The following two lines are here just to make the output easier to read.
-                options.Page.MarginTop = 100
-                options.Page.Scale = 2
-
                 Using pdf = Await converter.CreatePdfAsync(url, options)
                     pdf.Save(pathToFile)
                 End Using
