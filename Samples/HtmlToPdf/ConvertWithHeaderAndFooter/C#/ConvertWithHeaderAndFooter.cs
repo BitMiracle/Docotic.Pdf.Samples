@@ -24,12 +24,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 var options = new HtmlConversionOptions();
 
                 options.Page.HeaderTemplate = File.ReadAllText(@"..\Sample Data\header-template.html");
-                options.Page.MarginTop = 110;
+                options.Page.MarginTop = 50;
 
                 options.Page.FooterTemplate = File.ReadAllText(@"..\Sample Data\footer-template.html");
                 options.Page.MarginBottom = 50;
 
-                var url = new Uri("https://www.iana.org/glossary");
+                var url = new Uri("https://www.iana.org/numbers");
                 using var pdf = await converter.CreatePdfAsync(url, options);
                 pdf.Save(pathToFile);
             }

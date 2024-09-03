@@ -26,12 +26,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim options = New HtmlConversionOptions()
 
                 options.Page.HeaderTemplate = File.ReadAllText("..\Sample Data\header-template.html")
-                options.Page.MarginTop = 110
+                options.Page.MarginTop = 50
 
                 options.Page.FooterTemplate = File.ReadAllText("..\Sample Data\footer-template.html")
                 options.Page.MarginBottom = 50
 
-                Dim url = New Uri("https://www.iana.org/glossary")
+                Dim url = New Uri("https://www.iana.org/numbers")
                 Using pdf = Await converter.CreatePdfAsync(url, options)
                     pdf.Save(pathToFile)
                 End Using
