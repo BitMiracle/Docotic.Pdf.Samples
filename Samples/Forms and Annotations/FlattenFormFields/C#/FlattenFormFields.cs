@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Linq;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -16,17 +17,27 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             const string pathToFile = "FlattenFormFields.pdf";
 
+            bool flattenWidgets = false;
+            bool flattenSomeOfTheControls = false;
+
             using (var pdf = new PdfDocument(@"..\Sample Data\form.pdf"))
             {
                 pdf.FlattenControls();
 
                 // Alternatively, you can:
-                // 1. Flatten controls and annotations
-                // pdf.FlattenWidgets();
-                //
-                // 2. Flatten individual controls
-                // foreach (PdfControl control in pdf.GetControls())
-                //     control.Flatten();
+
+                if (flattenWidgets)
+                {
+                    // 1. Flatten both controls and annotations
+                    pdf.FlattenWidgets();
+                }
+
+                if (flattenSomeOfTheControls)
+                {
+                    // 2. Flatten individual controls
+                    foreach (PdfControl control in pdf.GetControls().ToArray())
+                        control.Flatten();
+                }
 
                 pdf.Save(pathToFile);
             }

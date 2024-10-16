@@ -21,7 +21,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Info.Author = "Sample Browser application";
                 pdf.Info.Subject = "Document metadata";
                 pdf.Info.Title = "Custom title goes here";
-                pdf.Info.Keywords = "pdf, Docotic.Pdf";
+                pdf.Info.Keywords = "pdf Docotic.Pdf";
 
                 PdfPage page = pdf.Pages[0];
                 page.Canvas.DrawString(10, 50, "Check document properties");

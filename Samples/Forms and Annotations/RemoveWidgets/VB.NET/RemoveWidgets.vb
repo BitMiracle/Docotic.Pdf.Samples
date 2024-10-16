@@ -11,22 +11,24 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             LicenseManager.AddLicenseData("PUT-LICENSE-HERE")
 
-            Dim pathToFile As String = "RemoveWidgets.pdf"
+            Dim removeFromPageOutputName As String = "RemoveWidgetFromPage.pdf"
+            Dim removeAllOutputName As String = "RemoveWidgets.pdf"
 
             Using pdf As New PdfDocument("..\Sample Data\form.pdf")
                 pdf.Pages(0).Widgets.RemoveAt(1)
-                pdf.Save("RemoveWidgetFromPage.pdf")
+                pdf.Save(removeFromPageOutputName)
 
-                For Each widget As PdfWidget In pdf.GetWidgets()
+                For Each widget As PdfWidget In pdf.GetWidgets().ToArray
                     pdf.RemoveWidget(widget)
                 Next
 
-                pdf.Save(pathToFile)
+                pdf.Save(removeAllOutputName)
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
 
-            Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
+            Process.Start(New ProcessStartInfo(removeFromPageOutputName) With {.UseShellExecute = True})
+            Process.Start(New ProcessStartInfo(removeAllOutputName) With {.UseShellExecute = True})
         End Sub
     End Class
 End Namespace

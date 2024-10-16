@@ -13,16 +13,25 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Const pathToFile As String = "FlattenFormFields.pdf"
 
+            Dim flattenWidgets = False
+            Dim flattenSomeOfTheControls = False
+
             Using pdf As New PdfDocument("..\Sample Data\form.pdf")
                 pdf.FlattenControls()
 
                 ' Alternatively, you can
-                ' 1. Flatten controls and annotations
-                ' pdf.FlattenWidgets();
-                '
-                ' 2. Flatten individual controls
-                ' foreach (PdfControl control in pdf.GetControls())
-                '     control.Flatten();
+
+                If flattenWidgets Then
+                    ' 1. Flatten both controls and annotations
+                    pdf.FlattenWidgets()
+                End If
+
+                If flattenSomeOfTheControls Then
+                    ' 2. Flatten individual controls
+                    For Each control As PdfControl In pdf.GetControls().ToArray
+                        control.Flatten()
+                    Next
+                End If
 
                 pdf.Save(pathToFile)
             End Using

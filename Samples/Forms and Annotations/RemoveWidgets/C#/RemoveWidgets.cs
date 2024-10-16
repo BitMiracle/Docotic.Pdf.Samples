@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Linq;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -21,7 +22,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Pages[0].Widgets.RemoveAt(1);
                 pdf.Save(removeFromPageOutputName);
 
-                foreach (PdfWidget widget in pdf.GetWidgets())
+                foreach (PdfWidget widget in pdf.GetWidgets().ToArray())
                     pdf.RemoveWidget(widget);
 
                 pdf.Save(removeAllOutputName);
