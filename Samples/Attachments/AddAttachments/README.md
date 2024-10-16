@@ -1,10 +1,10 @@
 # Add attachments and file annotations to PDF documents in C# and VB.NET
-This samples shows how to attach a file or add a file annotation to your PDF document using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
+This sample shows how to attach a file or add a file annotation to your PDF document using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
-Use [PdfDocument.CreateFileAttachment methods](https://bitmiracle.com/pdf-library/api/pdfdocument-createfileattachment) to create a new attachment.
+Use [PdfDocument.CreateFileAttachment methods](https://api.docotic.com/pdfdocument-createfileattachment) to create a new attachment.
 
-You can add created attachment to collection of document-level attachments using [PdfDocument.SharedAttachments](https://bitmiracle.com/pdf-library/api/pdfdocument-sharedattachments).Add method.
-Or you can add created attachment as a file attachment annotation using [PdfPage.AddFileAnnotation method](https://bitmiracle.com/pdf-library/api/pdfpage-addfileannotation).
+You can add the attachment to the collection of document-level attachments using the [PdfDocument.SharedAttachments](https://api.docotic.com/pdfdocument-sharedattachments) property. Or you can add the attachment as a file attachment annotation using the [PdfPage.AddFileAnnotation](https://api.docotic.com/pdfpage-addfileannotation) method.
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
+* [File attachments](https://bitmiracle.com/pdf-library/edit/#attachments)
