@@ -1,8 +1,16 @@
 # Text markup annotations
-This sample shows how to add text markup annotations (highlight, strikeout, underline) to your PDF document.
 
-Use PdfPage.AddHighlightAnnotation method to highlight and annotate a page area. This methods return an instance of the created annotation.
+This sample shows how to add text markup annotations (highlight, strikeout, underline) to your PDF document in C# and VB.NET.
 
-Alternatively, use PdfPage.AddStrikeoutAnnotation, PdfPage.AddJaggedUnderlineAnnotation and PdfPage.AddUnderlineAnnotation methods to strike out or underline a page area.
+## Description
 
-You can also modify new or existing text markup annotations. Cast corresponding widgets to PdfTextMarkupAnnotation class. Then call SetTextBounds() method or change Contents and Color properties of PdfTextMarkupAnnotation class.
+Use the [PdfPage.AddHighlightAnnotation](https://api.docotic.com/pdfpage-addhighlightannotation) method to highlight and annotate a page area.
+
+To strike out or underline a page area, use [PdfPage.AddStrikeoutAnnotation](https://api.docotic.com/pdfpage-addstrikeoutannotation), [PdfPage.AddJaggedUnderlineAnnotation](https://api.docotic.com/pdfpage-addjaggedunderlineannotation) and [PdfPage.AddUnderlineAnnotation](https://api.docotic.com/pdfpage-addunderlineannotation) methods.
+
+All these methods create an annotation and return an instance of a [PdfTextMarkupAnnotation](https://api.docotic.com/pdftextmarkupannotation) subclass. You can call the [SetTextBounds](https://api.docotic.com/pdftextmarkupannotation-settextbounds) method to change the annotated area. It is possible to change the [Contents](https://api.docotic.com/pdftextmarkupannotation-contents) and the [Color](https://api.docotic.com/pdftextmarkupannotation-color) properties, too.
+
+## See also
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
+* [Annotations](https://bitmiracle.com/pdf-library/edit/#annotations)
+* [Add text annotations to PDF in C# and VB.NET](/Samples/Forms%20and%20Annotations/TextAnnotations) sample
