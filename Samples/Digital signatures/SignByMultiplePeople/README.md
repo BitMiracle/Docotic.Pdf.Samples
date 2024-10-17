@@ -5,5 +5,5 @@ You can use [Docotic.Pdf library](https://bitmiracle.com/pdf-library/) to sign a
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
-* [Sign PDF document in C# and VB.NET](https://bitmiracle.com/pdf-library/signatures/sign) article
-* [Verify PDF signature in C# and VB.NET](https://bitmiracle.com/pdf-library/signatures/verify) article
+* [Sign PDF document in C# and VB.NET](https://bitmiracle.com/pdf-library/signatures/sign)
+* [Verify PDF signature in C# and VB.NET](https://bitmiracle.com/pdf-library/signatures/verify)
