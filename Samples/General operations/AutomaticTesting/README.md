@@ -12,5 +12,5 @@ In the `Release` configuration, it additionally runs the same set of tests for N
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
-* [C# Unit Testing. Why bother?](https://bitmiracle.com/pdf-library/howto/unit-testing) article
-* [How to develop Native AOT applications in .NET](https://bitmiracle.com/pdf-library/howto/native-aot) article
+* [C# Unit Testing. Why bother?](https://bitmiracle.com/pdf-library/howto/unit-testing)
+* [How to develop Native AOT applications in .NET](https://bitmiracle.com/pdf-library/howto/native-aot)
