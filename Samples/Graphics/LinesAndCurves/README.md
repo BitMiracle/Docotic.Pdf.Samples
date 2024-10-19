@@ -1,6 +1,13 @@
-# Lines and Curves
-This sample shows how to draw straight lines and cubic Bezier curves.
+# Draw lines and curves in C# and VB.NET
 
-All drawing in a PDF document is done using methods and properties of PdfCanvas class. You can access it using Canvas property of PdfPage, PdfWatermark or PdfPattern classes.
+This sample shows how to draw straight lines and cubic Bezier curves on PDF canvas using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
-There is a plenty of methods that draw lines, curves and shapes. All such methods have names that start with "Draw" (e.g. DrawLineTo method). All kinds of lines are drawn using current pen (PdfCanvas.Pen property).
+## Description
+
+To draw anything in a PDF document, use the methods and properties of the [PdfCanvas](https://api.docotic.com/pdfcanvas) class. You can access a canvas using the `Canvas` property of [PdfPage](https://api.docotic.com/pdfpage), [PdfXObject](https://api.docotic.com/pdfxobject), or [PdfTilingPattern](https://api.docotic.com/pdftilingpattern) classes.
+
+There are plenty of methods that draw lines, curves and shapes. All these methods have names that start with `Draw` (e.g. `DrawLineTo` method). The [current pen](https://api.docotic.com/pdfcanvas-pen) is used to draw all kinds of lines.
+
+## See also
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
+* [Setting canvas colors in C# and VB.NET](/Samples/Graphics/Colors) sample
