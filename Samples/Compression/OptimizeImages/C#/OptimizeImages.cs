@@ -45,7 +45,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
 
             // NOTE:
-            // This sample shows only one approach to reduce size of a PDF.
+            // This sample shows only one approach to reduce the size of a PDF.
             // Please check CompressAllTechniques sample code to see more approaches.
             // https://github.com/BitMiracle/Docotic.Pdf.Samples/tree/master/Samples/Compression/CompressAllTechniques
 
@@ -82,14 +82,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             if (ratio <= 1)
             {
-                // the image size is smaller then the painted size
+                // the image size is smaller than the painted size
                 return RecompressImage(image);
             }
 
             if (ratio < 1.1)
             {
-                // with ratio this small, the potential size reduction
-                // usually does not justify resizing artefacts
+                // with the ratio this small, the potential size
+                // reduction rarely justifies resizing artefacts
                 return false;
             }
 
@@ -138,7 +138,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 }
                 else
                 {
-                    // you can try larger compressio ratio for bigger images
+                    // you can try a larger compressio ratio for bigger images
                     image.RecompressWithJpeg2000(10);
                 }
 

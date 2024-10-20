@@ -22,7 +22,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             var htmlWithBaseUrlOutputName = "ConvertHtmlWithBaseUrl.pdf";
 
             // It is possible to use the same converter for multiple conversions.
-            // When reusing the converter you save on converter instantiation time.
+            // When reusing the converter, you save on converter instantiation time.
             using (var converter = await HtmlConverter.CreateAsync())
             {
                 // Convert some HTML code in a string

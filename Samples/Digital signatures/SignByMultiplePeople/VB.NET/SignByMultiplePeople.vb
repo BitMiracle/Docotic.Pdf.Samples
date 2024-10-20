@@ -13,8 +13,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             ' IMPORTANT:
             ' Please replace keystore paths and passwords in the following declarations with
-            ' your own .p12 or .pfx path and password. Without the changes the sample will not work.
-            ' For testing purposes you can use the same keystore for all signers.
+            ' your own .p12 or .pfx path and password. Without the changes, the sample will not work.
+            ' For testing, you can use the same keystore for all signers.
 
             Dim signers = New Credentials() {
                 New Credentials("Frida Palacios", "keystore.p12", "password"),
@@ -89,7 +89,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     "office@example2.com")
             End Using
 
-            ' Uncomment if you would like to open previous step result, too.
+            ' Uncomment if you would like to open previous steps results, too.
             'OpenResult(SignByMultiplePeopleStep1)
             'OpenResult(SignByMultiplePeopleStep2)
             'OpenResult(SignByMultiplePeopleStep3)

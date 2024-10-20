@@ -19,7 +19,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 // IMPORTANT:
                 // Replace "keystore.p12" and "password" with your own .p12 or .pfx path and password.
-                // Without the change the sample will not work.
+                // Without the change, the sample will not work.
 
                 if (pdf.GetControl("Control") is not PdfSignatureField field)
                 {

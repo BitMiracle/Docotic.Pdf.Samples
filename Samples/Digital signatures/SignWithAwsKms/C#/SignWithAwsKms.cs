@@ -13,7 +13,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
         {
             // IMPORTANT:
             // Configure AWS credentials in advance (for example, using AWS CLI).
-            // And change these variables to use desired key id and signing algorithm.
+            // And change these variables to use the desired key id and signing algorithm.
             const string KeyId = "arn:aws:kms:YOUR-id";
             var signingAlgorithm = SigningAlgorithmSpec.RSASSA_PSS_SHA_512;
 

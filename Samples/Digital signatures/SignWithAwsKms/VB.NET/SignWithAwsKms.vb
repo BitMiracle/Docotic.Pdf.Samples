@@ -17,7 +17,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         Private Shared Async Function SignAsync() As Task
             ' IMPORTANT:
             ' Configure AWS credentials in advance (for example, using AWS CLI).
-            ' And change these variables to use desired key id And signing algorithm.
+            ' And change these variables to use the desired key id And signing algorithm.
             Const KeyId As String = "arn:aws:kms:YOUR-id"
             Dim signingAlgorithm = SigningAlgorithmSpec.RSASSA_PSS_SHA_512
             Dim key As GetPublicKeyResponse

@@ -18,8 +18,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             // IMPORTANT:
             // Please replace keystore paths and passwords in the following declarations with
-            // your own .p12 or .pfx path and password. Without the changes the sample will not work.
-            // For testing purposes you can use the same keystore for all signers.
+            // your own .p12 or .pfx path and password. Without the changes, the sample will not work.
+            // For testing, you can use the same keystore for all signers.
             var signers = new Credentials[]
             {
                 new("Frida Palacios", @"keystore.p12", "password"), // request author
@@ -98,7 +98,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     "office@example2.com");
             }
 
-            // Uncomment if you would like to open previous step result, too.
+            // Uncomment if you would like to open previous steps results, too.
             //OpenResult(SignByMultiplePeopleStep1);
             //OpenResult(SignByMultiplePeopleStep2);
             //OpenResult(SignByMultiplePeopleStep3);

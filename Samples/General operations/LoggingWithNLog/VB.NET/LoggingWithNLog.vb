@@ -15,7 +15,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             LicenseManager.AddLicenseData("PUT-LICENSE-HERE")
 
-            ' In order to receive log messages from Docotic.Pdf into a NLog logger,
+            ' In order to receive log messages from Docotic.Pdf into an NLog logger,
             ' you would need to configure NLog. It is a common practice to put NLog
             ' configuration into app.config file.
             ' Take a look into the app.config file, it contains more comments.

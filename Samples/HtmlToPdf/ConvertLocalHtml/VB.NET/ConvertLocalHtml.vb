@@ -23,7 +23,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim htmlWithBaseUrlOutputPath As String = "ConvertHtmlWithBaseUrl.pdf"
 
             ' It is possible to use the same converter for multiple conversions.
-            ' When reusing the converter you save on converter instantiation time.
+            ' When reusing the converter, you save on converter instantiation time.
             Using converter = Await HtmlConverter.CreateAsync()
                 ' Convert some HTML code in a string
                 Dim html = "<body><br/><br/><br/><h1>Hello, World<h1></body>"

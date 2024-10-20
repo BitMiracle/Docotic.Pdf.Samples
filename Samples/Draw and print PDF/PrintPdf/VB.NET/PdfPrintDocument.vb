@@ -80,7 +80,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim gr = e.Graphics
             If gr Is Nothing Then Return
 
-            ' Work in points to have consistent units for all contexts
+            ' Use points to have consistent units for all contexts
             ' 1. Printer
             ' 2. Print preview
             ' 3. PDF
@@ -124,8 +124,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Sub
 
         Private Shared Function GetPageBox(page As PdfPage) As PdfBox
-            ' Emit Adobe Reader behavior - prefer CropBox, but use MediaBox bounds when
-            ' some CropBox bound Is out of MediaBox area.
+            ' Copying the Adobe Reader behavior: prefer CropBox, but use MediaBox bounds
+            ' when some CropBox bound is out of the MediaBox area.
             Dim mediaBox = page.MediaBox
             Dim cropBox = page.CropBox
 

@@ -26,8 +26,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim options = New HtmlConversionOptions()
                 options.Page.SetSizeInches(4.13, 5.83)
 
-                ' The library produces transparent background by default. If you need an opaque background then you can
-                ' use CSS background like that:
+                ' The library produces a transparent background by default. If you need
+                ' an opaque background, then you can use CSS background like that:
                 'options.Start.SetStartAfterScriptRun("document.body.style.background = 'white'")
                 '
                 ' Alternatively, you can add a white background watermark to all converted pages.

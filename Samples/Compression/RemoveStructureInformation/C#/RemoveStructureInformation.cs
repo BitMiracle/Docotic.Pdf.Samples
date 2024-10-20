@@ -26,7 +26,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
 
             // NOTE:
-            // This sample shows only one approach to reduce size of a PDF.
+            // This sample shows only one approach to reduce the size of a PDF.
             // Please check CompressAllTechniques sample code to see more approaches.
             // https://github.com/BitMiracle/Docotic.Pdf.Samples/tree/master/Samples/Compression/CompressAllTechniques
 

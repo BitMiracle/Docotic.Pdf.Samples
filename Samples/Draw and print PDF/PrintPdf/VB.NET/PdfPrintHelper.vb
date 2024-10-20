@@ -31,7 +31,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Using printDocument = New PdfPrintDocument(pdf, printSize)
                     previewDialog.Document = printDocument.PrintDocument
 
-                    ' By default the print button sends the preview to the default printer
+                    ' By default, the print button sends the preview to the default printer
                     ' The following method replaces the default button with the custom button.
                     ' The custom button opens print dialog.
                     SetupPrintButton(previewDialog, pdf, printSize)

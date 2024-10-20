@@ -18,7 +18,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             // Please replace
             // * "your-signed-document.pdf" with the path to your file,
             // * "keystore.p12" and "password" with your own .p12 or .pfx path and password.
-            // Without the changes the sample will not work.
+            // Without the changes, the sample will not work.
 
             string outputFileName = "SignAlreadySignedDocument.pdf";
             using (var pdf = new PdfDocument(@"your-signed-document.pdf"))

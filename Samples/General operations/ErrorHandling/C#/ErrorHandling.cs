@@ -22,7 +22,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                 try
                 {
-                    // tries to draw Russian string with built-in Helvetica font which doesn't
+                    // tries to draw Russian string with built-in Helvetica font, which doesn't
                     // define glyphs for Russian characters. So, we expect that a PdfException will be thrown.
                     page.Canvas.DrawString(10, 50, "Привет, мир!");
                 }

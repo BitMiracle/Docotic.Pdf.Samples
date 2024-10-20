@@ -35,7 +35,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             using var printDocument = new PdfPrintDocument(pdf, printSize);
             previewDialog.Document = printDocument.PrintDocument;
 
-            // By default the print button sends the preview to the default printer
+            // By default, the print button sends the preview to the default printer
             // The following method replaces the default button with the custom button.
             // The custom button opens print dialog.
             SetupPrintButton(previewDialog, pdf, printSize);

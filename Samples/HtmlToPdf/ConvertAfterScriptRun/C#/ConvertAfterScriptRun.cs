@@ -22,8 +22,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
             using (var converter = await HtmlConverter.CreateAsync())
             {
                 // The page at the url loads additional contents when scroll position changes.
-                // Let's run a script before the conversion. The script scrolls the page until
-                // there is no more new content. This way all the page contents will be converted.
+                // Let's run a script before the conversion. The script scrolls down the page until
+                // there is no more new content. This way, all the page contents will be converted.
 
                 var options = new HtmlConversionOptions();
                 var js = @"

@@ -43,7 +43,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End Using
 
             ' NOTE:
-            ' This sample shows only one approach to reduce size of a PDF.
+            ' This sample shows only one approach to reduce the size of a PDF.
             ' Please check CompressAllTechniques sample code to see more approaches.
             ' https://github.com/BitMiracle/Docotic.Pdf.Samples/tree/master/Samples/Compression/CompressAllTechniques
 
@@ -81,13 +81,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim ratio As Double = Math.Min(image.Width / CDbl(width), image.Height / CDbl(height))
 
             If ratio <= 1 Then
-                ' the image size is smaller then the painted size
+                ' the image size is smaller than the painted size
                 Return RecompressImage(image)
             End If
 
             If ratio < 1.1 Then
-                ' with ratio this small, the potential size reduction
-                ' usually does not justify resizing artefacts
+                ' with the ratio this small, the potential size
+                ' reduction rarely justifies resizing artefacts
                 Return False
             End If
 
@@ -127,7 +127,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     ' JPEG better preserves detail on smaller images
                     image.RecompressWithJpeg()
                 Else
-                    ' you can try larger compressio ratio for bigger images
+                    ' you can try a larger compressio ratio for bigger images
                     image.RecompressWithJpeg2000(10)
                 End If
 

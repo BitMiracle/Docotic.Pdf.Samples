@@ -32,7 +32,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Const AnnotationContents As String = "Lorem ipsum"
                 page.AddHighlightAnnotation(AnnotationContents, bounds, color)
 
-                ' Or call these method to strike out or underline the text:
+                ' Or call these methods to strike out or underline the text:
                 ' page.AddStrikeoutAnnotation(AnnotationContents, bounds, color);
                 ' page.AddJaggedUnderlineAnnotation(AnnotationContents, bounds, color);
                 ' page.AddUnderlineAnnotation(AnnotationContents, bounds, color);

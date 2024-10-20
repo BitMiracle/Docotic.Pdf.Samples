@@ -17,7 +17,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim page As PdfPage = pdf.Pages(0)
 
                 Try
-                    ' tries to draw Russian string with built-in Helvetica font which doesn't
+                    ' tries to draw Russian string with built-in Helvetica font, which doesn't
                     ' define glyphs for Russian characters. So, we expect that a PdfException will be thrown.
                     page.Canvas.DrawString(10, 50, "Привет, мир!")
                 Catch ex As CannotShowTextException

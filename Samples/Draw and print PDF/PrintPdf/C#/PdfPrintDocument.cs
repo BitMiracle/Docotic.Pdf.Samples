@@ -99,7 +99,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             if (gr is null)
                 return;
 
-            // Work in points to have consistent units for all contexts:
+            // Use points to have consistent units for all contexts:
             // 1. Printer
             // 2. Print preview
             // 3. PDF
@@ -153,8 +153,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static PdfBox GetPageBox(PdfPage page)
         {
-            // Emit Adobe Reader behavior - prefer CropBox, but use MediaBox bounds when
-            // some CropBox bound is out of MediaBox area.
+            // Copying the Adobe Reader behavior: prefer CropBox, but use MediaBox bounds
+            // when some CropBox bound is out of the MediaBox area.
 
             PdfBox mediaBox = page.MediaBox;
             PdfBox cropBox = page.CropBox;

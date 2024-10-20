@@ -43,7 +43,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     Next
                 Next
 
-                ' 3. Setup save options
+                ' 3. Set up save options
                 Dim saveOptions As New PdfSaveOptions With
                 {
                     .Compression = PdfCompression.Flate,
@@ -57,8 +57,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.RemoveStructureInformation()
 
                 ' 5. Flatten form fields
-                ' Controls become uneditable after that. Alternatively, you can use PdfDocument.FlattenWidgets() method
-                ' to flatten controls and annotations.
+                ' Controls become uneditable after that. Alternatively, you can use
+                ' the PdfDocument.FlattenWidgets method to flatten both controls and annotations.
                 pdf.FlattenControls()
 
                 ' 6. Clear metadata
@@ -115,17 +115,17 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim width As Integer = Math.Max(1, Int(painted.Bounds.Width))
             Dim height As Integer = Math.Max(1, Int(painted.Bounds.Height))
 
-            ' calculate resize ratio
+            ' calculate the resize ratio
             Dim ratio As Double = Math.Min(image.Width / CDbl(width), image.Height / CDbl(height))
 
             If ratio <= 1 Then
-                ' the image size is smaller then the painted size
+                ' the image size is smaller than the painted size
                 Return RecompressImage(image)
             End If
 
             If ratio < 1.1 Then
-                ' with ratio this small, the potential size reduction
-                ' usually does not justify resizing artefacts
+                ' With the ratio this small, the potential size
+                ' reduction rarely justifies resizing artefacts
                 Return False
             End If
 
@@ -176,8 +176,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Function
 
         Private Shared Function ResizeBilevelImage(image As PdfImage, ratio As Double) As Boolean
-            ' Fax documents usually look better if integer-ratio scaling is used
-            ' Fractional-ratio scaling introduces more artifacts
+            ' Fax documents usually look better if integer-ratio scaling is used.
+            ' Fractional-ratio scaling introduces more artifacts.
             Dim intRatio As Integer = ratio
 
             ' decrease the ratio when it is too high

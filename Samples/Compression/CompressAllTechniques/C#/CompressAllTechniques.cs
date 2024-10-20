@@ -45,7 +45,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     }
                 }
 
-                // 3. Setup save options
+                // 3. Set up save options
                 var saveOptions = new PdfSaveOptions
                 {
                     Compression = PdfCompression.Flate,
@@ -59,8 +59,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.RemoveStructureInformation();
 
                 // 5. Flatten form fields
-                // Controls become uneditable after that. Alternatively, you can use PdfDocument.FlattenWidgets() method
-                // to flatten controls and annotations.
+                // Controls become uneditable after that. Alternatively, you can use
+                // the PdfDocument.FlattenWidgets method to flatten both controls and annotations.
                 pdf.FlattenControls();
 
                 // 6. Clear metadata
@@ -115,19 +115,19 @@ namespace BitMiracle.Docotic.Pdf.Samples
             int width = Math.Max(1, (int)painted.Bounds.Width);
             int height = Math.Max(1, (int)painted.Bounds.Height);
 
-            // calculate resize ratio
+            // calculate the resize ratio
             double ratio = Math.Min(image.Width / (double)width, image.Height / (double)height);
 
             if (ratio <= 1)
             {
-                // the image size is smaller then the painted size
+                // the image size is smaller than the painted size
                 return RecompressImage(image);
             }
 
             if (ratio < 1.1)
             {
-                // with ratio this small, the potential size reduction
-                // usually does not justify resizing artefacts
+                // With the ratio this small, the potential size
+                // reduction rarely justifies resizing artefacts
                 return false;
             }
 
@@ -176,7 +176,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 }
                 else
                 {
-                    // you can try larger compressio ratio for bigger images
+                    // you can try a larger compression ratio for bigger images
                     image.RecompressWithJpeg2000(10);
                 }
 
@@ -188,8 +188,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static bool ResizeBilevelImage(PdfImage image, double ratio)
         {
-            // Fax documents usually look better if integer-ratio scaling is used
-            // Fractional-ratio scaling introduces more artifacts
+            // Fax documents usually look better if integer-ratio scaling is used.
+            // Fractional-ratio scaling introduces more artifacts.
             int intRatio = (int)ratio;
 
             // decrease the ratio when it is too high
