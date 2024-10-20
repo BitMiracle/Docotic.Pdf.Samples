@@ -10,4 +10,4 @@ Use the [HTML converter class](https://api.docotic.com/htmltopdf/htmlconverter) 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
 * [Add images to PDF in C# and VB.NET](/Samples/Images/AddAndDrawImage) sample
-* [Convert HTML to PDF in C# and VB.NET](https://bitmiracle.com/pdf-library/html-pdf/convert) article
+* [Convert HTML to PDF in C# and VB.NET](https://bitmiracle.com/pdf-library/html-pdf/convert)

@@ -43,7 +43,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         PdfImage image = pdf.AddImage(frame);
                         PdfPage pdfPage = pdf.Pages[pdf.PageCount - 1];
 
-                        // adjust page size, so image fill occupy whole page
+                        // adjust page size, so image will occupy the whole page
                         pdfPage.Height = image.Height;
                         pdfPage.Width = image.Width;
                         pdfPage.Canvas.DrawImage(image, 0, 0, pdfPage.Width, pdfPage.Height, 0);

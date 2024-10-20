@@ -1,4 +1,11 @@
-# Color masks
-This sample show how to use color masks with images.
+# Create color-key mask for PDF image in C# and VB.NET
 
-PdfDocument.AddImage method can make certain color of the added image to be transparent. Use oveloads of AddImage method with PdfColor argument for that.
+This sample shows how to use PDF images with color-key masks. The code uses [Docotic.Pdf library](https://bitmiracle.com/pdf-library/) API.
+
+## Description
+
+When adding images, you can specify the color of pixels you would like transparent. Use overloads of the [PdfDocument.AddImage](https://api.docotic.com/pdfdocument-addimage) method with an argument of `PdfColor` type for that.
+
+## See also
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
+* [Mask images for PDF images in C# and VB.NET](/Samples/Images/ImageMasks) sample

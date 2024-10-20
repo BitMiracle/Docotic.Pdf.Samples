@@ -1,8 +1,18 @@
-# Add recompressed images
-This sample shows how to change images compression while adding them to a PDF document.
+# Recompress images before adding them to PDF in C# and VB.NET
 
-To recompress an image or a frame of an image before adding it to a PDF document, open the image using PdfDocument.OpenImage method. Then setup compression options for all or selected frames. If needed, each frame will be recompressed before adding it to document.
+This sample shows how to change the compression scheme of an image while adding it to a PDF document.
 
-You can compress images using Flate, Jpeg and CCITT compression schemes. You may even completely decompress an image if you wish or have to do so.
+## Description 
 
-You can also recompress existing images in a PDF document. Please look at "Compression / Optimize images in PDF document" sample for more detail.
+To recompress an image or a frame of an image before adding it to a PDF document:
+* Open the image using the [PdfDocument.OpenImage](https://api.docotic.com/pdfdocument-openimage) method.
+* Setup compression options for all or selected frames. 
+
+Depending on the options, [the library](https://bitmiracle.com/pdf-library/) will decompress some frames and then compress them again before adding them to the document.
+
+You can compress images using Flate, Jpeg and CCITT compression schemes. It is possible to decompress an image completely, too.
+
+The library can also [repack the images, already added to the document](/Samples/Compression/OptimizeImages).
+
+## See also
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

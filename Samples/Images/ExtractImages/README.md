@@ -1,8 +1,14 @@
-# Extract images
-This sample shows how to extract images from PdfDocument.
+# Extract images from PDF in C# and VB.NET
 
-Use PdfImage.Save method to save image from PDF document to a stream or a file.
+This sample shows how to extract images from a PDF document using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
-When saving to a file, you should specify an output file name without extension. PdfImage.Save adds extension based on the image data, saves image and returns full output path.
+Use [PdfImage.Save](https://api.docotic.com/pdfimage-save) methods to save an image from a PDF document to a stream or a file.
 
-When saving to a stream, PdfImage.Save method returns format of the image data saved to a stream.
+When saving to a file, you must specify an output file name without extension. The `PdfImage.Save` method will add an extension based on the image data, save the image, and return the full output path.
+
+When saving to a stream, the `PdfImage.Save` method returns the format of the image data saved to a stream.
+
+## See also
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
+* [Extract PDF images](https://bitmiracle.com/pdf-library/edit/#extract-images)
+* [Extract PDF image coordinates in C# and VB.NET](/Samples/Images/ExtractImageCoordinates) sample

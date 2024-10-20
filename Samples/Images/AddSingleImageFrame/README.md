@@ -1,4 +1,10 @@
-# Add single image frame to PDF document
-This sample shows how to add single frame (page) from a multipage image to PDF document.
+# Add one image frame to PDF document in C# and VB.NET
 
-The PdfDocument.OpenImage method accepts path to an image file or image bytes and returns collection of image frames (pages). Each collection item is an instance of PdfImageFrame class. Any image frame can be added to a PDF document using AddImage method. Image frames can be added to a PDF document in any order. There is no need to add all loaded frames to a PDF document.
+This sample shows how to add one page (frame) from a multi-page image to a PDF document using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
+
+The [PdfDocument.OpenImage](https://api.docotic.com/pdfdocument-openimage) method can read the image data in a file, stream or bytes array and return the collection of image frames (pages). Each collection item is an instance of the [PdfImageFrame](https://api.docotic.com/pdfimageframe) class. 
+
+Use [the AddImage method](https://api.docotic.com/pdfdocument-addimage#pdfimageframe_) to add any image frame to a PDF document. You can add image frames in any order. There is no need to add all the frames.
+
+## See also
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

@@ -34,7 +34,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                         Dim image As PdfImage = pdf.AddImage(frame)
                         Dim pdfPage As PdfPage = pdf.Pages(pdf.PageCount - 1)
-                        ' adjust page size, so image fill occupy whole page
+                        ' Adjust page size, so image will occupy the whole page
                         pdfPage.Height = image.Height
                         pdfPage.Width = image.Width
                         pdfPage.Canvas.DrawImage(image, 0, 0, pdfPage.Width, pdfPage.Height, 0)

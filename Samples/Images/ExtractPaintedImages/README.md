@@ -1,11 +1,19 @@
-# Extract painted images
-This sample shows how to extract images painted on page in a PDF document using two different methods.
+# Extract painted images from PDF using C# and VB.NET
 
-You can use PdfPage.GetPaintedImages() method to get all images drawn on the page. You can save these images "as is" (as they are stored in a PDF document) and "as painted" (as they are painted on a page).
+This sample shows how to extract images painted on a PDF page. [Docotic.Pdf library](https://bitmiracle.com/pdf-library/) provides two different methods for extracting images from PDF files.
 
-To save an image "as is", you will need to access PdfImage object using PdfPaintedImage.Image property, then save the accessed image using PdfImage.Save method.
+## Description 
 
-To save an image "as painted", you will need to use PdfPaintedImage.SaveAsPainted method. This method saves the image as painted on a page (i.e. taking into account whether image is rotated, flipped, or scaled).  
-Using SaveAsPainted method, you can specify desired image format (PNG, JPEG or TIFF) and resolution for the saved image. By default, the method produces PNG images with 72x72 ppi resolution.
+Start by calling the [PdfPage.GetPaintedImages](https://api.docotic.com/pdfpage-getpaintedimages) method to get the collection of images drawn on a page. Then save the images from the collection “as is” and/or “as painted”.
 
-The PdfPaintedImage class also provides TransformationMatrix and IsTransformed properties. You can use them to determine whether the image is painted on a page scaled, flipped, and / or rotated.
+When saving “as is“, the library does not change embedded image bytes at all. The extracted image may look different from what you see on the page. To save an image “as is”, access the [PdfImage](https://api.docotic.com/pdfimage) object using the [PdfPaintedImage.Image](https://api.docotic.com/pdfpaintedimage-image) property, then save the image using one of the [PdfImage.Save](https://api.docotic.com/pdfimage-save) methods.
+
+When saving “as painted”, the library produces an image that looks the same as on the page. For this, the library applies all transformations specified for the image, like rotation, clipping, scaling, and flipping. 
+
+To save an image “as painted”, use [PdfPaintedImage.SaveAsPainted](https://api.docotic.com/pdfpaintedimage-saveaspainted) methods. Some of these methods allow to specify the desired image format (PNG, JPEG or TIFF) and the resolution for the saved image. By default, the method produces PNG images with 72x72 ppi resolution.
+
+The [PdfPaintedImage](https://api.docotic.com/pdfpaintedimage) class also provides the [TransformationMatrix](https://api.docotic.com/pdfpaintedimage-transformationmatrix) and the [IsTransformed](https://api.docotic.com/pdfpaintedimage-istransformed) properties. You can use these properties to check if the image on a page is painted scaled, flipped, or rotated.
+
+## See also
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
+* [Extract images from PDF in C# and VB.NET](/Samples/Images/ExtractImages) sample
