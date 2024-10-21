@@ -23,10 +23,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 .MissingGlyphHandler(_ => "?")
                 .Generate(PathToFile, doc =>
                 {
-                    // Load font using a current font loader
+                    // Load the font using the current font loader
                     TextStyle roboto = doc.TextStyleWithFont(SystemFont.Family("Roboto").Bold());
 
-                    // Or provide file path / stream explicitly
+                    // Or provide the file path / stream explicitly
                     FileInfo path = new(@"..\Sample Data\Fonts\Algerian.ttf");
                     TextStyle holiday = doc.TextStyleWithFont(path);
 

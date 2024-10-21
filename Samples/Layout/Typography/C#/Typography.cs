@@ -68,17 +68,17 @@ namespace BitMiracle.Docotic.Pdf.Samples
         public CustomTypography(Document doc)
             : base(doc)
         {
-            // Use custom font in the default document style
+            // Use the custom font with the default document style
             FileInfo roboto = new(@"..\Sample Data\Fonts\Roboto\Roboto-Regular.ttf");
             Document = doc.TextStyleWithFont(roboto);
 
-            // Customize size of the page header font
+            // Customize the size of the page header font
             Header = Parent.FontSize(8);
 
-            // Customize size and style of the page footer font
+            // Customize the size and style of the page footer font
             Footer = Emphasis.FontSize(8);
 
-            // Custom style
+            // Create a custom style
             Sample = Parent.Strikethrough().Underline().FontColor(new PdfRgbColor(255, 0, 0));
         }
 

@@ -18,10 +18,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 MissingGlyphHandler(Function(text) "?").
                 Generate(PathToFile,
                     Sub(doc)
-                        ' Load font using a current font loader
+                        ' Load the font using the current font loader
                         Dim roboto As TextStyle = doc.TextStyleWithFont(SystemFont.Family("Roboto").Bold())
 
-                        ' Or provide file path / stream explicitly
+                        ' Or provide the file path / stream explicitly
                         Dim path = New FileInfo("..\Sample Data\Fonts\Algerian.ttf")
                         Dim holiday As TextStyle = doc.TextStyleWithFont(path)
 

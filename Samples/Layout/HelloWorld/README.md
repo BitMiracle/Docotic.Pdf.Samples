@@ -13,8 +13,8 @@ The code shows how to use:
 This sample code uses free [Docotic.Pdf.Layout add-on](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Layout/) for Docotic.Pdf library.
 
 ## See also
-* [Create PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/create-pdf) article
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/)
+* [Create PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/create-pdf)
 * [Fonts and missing glyphs handler](/Samples/Layout/Fonts)
 * [Add header and footer](/Samples/Layout/HeaderFooter)
 * [Add tables to PDF documents in C# and VB.NET](/Samples/Layout/Tables)
-* [Get free time-limited license key](https://bitmiracle.com/pdf-library/)
