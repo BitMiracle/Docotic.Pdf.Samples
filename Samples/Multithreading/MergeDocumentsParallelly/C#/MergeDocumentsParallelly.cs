@@ -52,7 +52,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             var options = new PdfSaveOptions
             {
-                UseObjectStreams = false // speed up writing of intermediate documents
+                // This speeds up writing of intermediate documents
+                UseObjectStreams = false
             };
             pdf.Save(result, options);
             return result;
