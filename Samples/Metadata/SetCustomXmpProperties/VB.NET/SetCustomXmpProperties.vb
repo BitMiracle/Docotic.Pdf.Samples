@@ -16,23 +16,23 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf As New PdfDocument()
                 Dim custom As XmpSchema = pdf.Metadata.Custom
 
-                ' add simple string property
+                ' add a simple string property
                 custom.Properties.Add("stringProperty", "string value")
 
-                ' add simple array property
+                ' add a simple array property
                 Dim array As New XmpArray(XmpArrayType.Ordered)
                 For i As Integer = 0 To 4
                     array.Values.Add(New XmpString(i.ToString()))
                 Next
                 custom.Properties.Add("arrayProperty", array)
 
-                ' array array with language alternatives
+                ' add an array with language alternatives
                 Dim languageArray As New XmpArray(XmpArrayType.Alternative)
                 languageArray.Values.Add(New XmpLanguageAlternative("x-default", "I'm Feeling Lucky"))
                 languageArray.Values.Add(New XmpLanguageAlternative("fr-fr", "J'ai de la chance"))
                 custom.Properties.Add("arrayWithAlternatives", languageArray)
 
-                ' add string properties with qualifiers
+                ' add some string properties with qualifiers
                 Dim author1 As New XmpString("First Author")
                 author1.Qualifiers.Add("role", "main author")
                 custom.Properties.Add("anotherStringProperty", author1)
@@ -41,13 +41,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 author2.Qualifiers.Add("role", "co-author")
                 custom.Properties.Add("yetAnotherStringProperty", author2)
 
-                ' add array with qualified string values
+                ' add an array with the qualified string values
                 Dim authors As New XmpArray(XmpArrayType.Unordered)
                 authors.Values.Add(author1)
                 authors.Values.Add(author2)
                 custom.Properties.Add("arrayWithQualifiedStrings", authors)
 
-                ' add structure
+                ' add a structure
                 Dim struct As New XmpStructure("struct", "http://example.com/structure/")
                 struct.Properties.Add("string", "string in a structure")
                 struct.Properties.Add("array", authors)
