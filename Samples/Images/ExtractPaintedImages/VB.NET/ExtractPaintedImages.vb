@@ -19,10 +19,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 Dim image As PdfPaintedImage = paintedImages(0)
 
-                ' save image as is
+                ' save the image as is
                 asIsOutputPath = image.Image.Save("PdfImage.Save")
 
-                ' save image as painted
+                ' save the image as painted
                 Dim options = New PdfPaintedImageSavingOptions With
                 {
                     .Format = PdfExtractedImageFormat.Tiff,

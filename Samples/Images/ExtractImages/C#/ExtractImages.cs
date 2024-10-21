@@ -22,7 +22,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 {
                     pathToFile = image.Save("ExtractedImage");
 
-                    // Only extract first image in this sample
+                    // This sample code extracts only the first image
                     break;
                 }
             }

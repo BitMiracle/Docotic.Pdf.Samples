@@ -17,7 +17,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 For Each image As PdfImage In pdf.GetImages()
                     pathToFile = image.Save("ExtractedImage")
 
-                    ' Only extract first image in this sample
+                    ' This sample code extracts only the first image
                     Exit For
                 Next
             End Using
