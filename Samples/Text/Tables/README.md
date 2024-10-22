@@ -5,5 +5,5 @@ This sample shows how to draw tables in PDF documents using [Docotic.Pdf library
 providing more convenient API for tables. Take a look at [this sample](/Samples/Layout/Tables).
 
 ## See also
-* [Add tables to PDF document in C# and VB.NET](/Samples/Layout/Tables) sample
 * [Get free time-limited license key for Docotic.Pdf](https://bitmiracle.com/pdf-library/download)
+* [Add tables to PDF document in C# and VB.NET](/Samples/Layout/Tables) sample
