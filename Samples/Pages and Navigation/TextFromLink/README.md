@@ -1,8 +1,15 @@
-# Extract text from link target
-This sample shows how to retrieve a link information and extract text starting from the link target.
+# Extract text from link’s target in C# and VB.NET
 
-Links in PDF document are represented as PdfActionArea objects. PdfActionArea object can be used to get a page which hosts action area and area bounds. Also PdfActionArea contains the Action property. For links this property contains an instance of PdfGoToAction object. PdfGoToAction object contains a page associated with the link. 
+This sample shows how to retrieve a link information and extract text starting from the where the link points to.
 
-In order to extract text from link's target page we should get the top offset on target page and then retrieve all text from target page with coordinates below the top offset.
+## Description
 
-Please note that the trial version of Docotic.Pdf loads only odd pages on document opening, so you may find that some expected links and pages are missing. Licensed version doesn't have this limitation and loads all pages and links.
+[Docotic.Pdf library](https://bitmiracle.com/pdf-library/) represents PDF page links as [PdfActionArea](https://api.docotic.com/pdfactionarea) objects. By examining a `PdfActionArea` object, you can get a page which hosts the action area and the area bounds. 
+
+There is also the [PdfActionArea.Action](https://api.docotic.com/pdfactionarea-action) property. For links, this property contains an instance of the [PdfGoToAction](https://api.docotic.com/pdfgotoaction) class. Any `PdfGoToAction` object contains information about the page associated with the link.
+
+To extract text from the link’s target page, get the top offset of the target position. Then retrieve all text of the target page placed below the top offset.
+
+## See also
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
+* [Extract text from PDF in C# and VB.NET](https://bitmiracle.com/pdf-library/pdf-text/extract)

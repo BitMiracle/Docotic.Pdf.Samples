@@ -135,7 +135,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 if (imageSize.Width < bitmap.Width && imageSize.Height < bitmap.Height)
                 {
                     // the bitmap produced from the image is larger than the image.
-                    // usually this happens when image has a mask image which is larger than the image itself.
+                    // usually this happens when an image has a mask image which is larger than the image itself.
                     InterpolationMode current = gr.InterpolationMode;
                     gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
                     gr.DrawImage(bitmap, 0, 0, (float)imageSize.Width, (float)imageSize.Height);
@@ -143,8 +143,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 }
                 else
                 {
-                    // bitmap has the same size
-                    // or one of it's dimensions is longer than the corresponding image dimension
+                    // bitmap has the same size,
+                    // or one of its dimensions is longer than the corresponding image dimension
                     gr.DrawImage(bitmap, 0, 0, bitmap.Width, bitmap.Height);
                 }
             });
@@ -236,8 +236,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         case PdfPathSegmentType.Rectangle:
                             RectangleF rect = ((PdfRectangleSegment)segment).Bounds.ToRectangleF();
 
-                            // GDI+ does not render rectangles with negative or very small width and height. Render such
-                            // rectangles by lines, but respect direction. Otherwise non-zero winding rule for
+                            // GDI+ does not render rectangles with a negative or
+                            // very small width and height. Render such rectangles by lines,
+                            // but respect direction. Otherwise, non-zero winding rule for
                             // path filling will not work.
                             gdiPath.AddLines(new[]
                             {
@@ -355,8 +356,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static string GetFontName(PdfFont font)
         {
-            // A trick to load a similar font for system. Ideally we should load font from raw bytes. Use PdfFont.Save()
-            // method for that.
+            // A trick to load a similar font from the system. Ideally, we should
+            // load font from raw bytes. Use PdfFont.Save methods to produce the bytes.
             string fontName = font.Name;
             if (fontName.Contains("Courier"))
                 return "Courier New";

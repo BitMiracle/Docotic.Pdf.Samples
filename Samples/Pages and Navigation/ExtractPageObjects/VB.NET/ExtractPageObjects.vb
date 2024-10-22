@@ -129,14 +129,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                             Dim imageSize As New PdfSize(im.Image.Width, im.Image.Height)
                             If imageSize.Width < bitmap.Width AndAlso imageSize.Height < bitmap.Height Then
                                 ' the bitmap produced from the image is larger than the image.
-                                ' usually this happens when image has a mask image which is larger than the image itself.
+                                ' usually this happens when an image has a mask image which is larger than the image itself.
                                 Dim current As InterpolationMode = gr.InterpolationMode
                                 gr.InterpolationMode = InterpolationMode.HighQualityBicubic
                                 gr.DrawImage(bitmap, 0, 0, CSng(imageSize.Width), CSng(imageSize.Height))
                                 gr.InterpolationMode = current
                             Else
-                                ' bitmap has the same size
-                                ' or one of it's dimensions is longer than the corresponding image dimension
+                                ' bitmap has the same size,
+                                ' or one of its dimensions is longer than the corresponding image dimension
                                 gr.DrawImage(bitmap, 0, 0, bitmap.Width, bitmap.Height)
                             End If
 
@@ -217,8 +217,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         Case PdfPathSegmentType.Rectangle
                             Dim rect As RectangleF = DirectCast(segment, PdfRectangleSegment).Bounds.ToRectangleF()
 
-                            ' GDI+ does not render rectangles with negative or very small width and height. Render such
-                            ' rectangles by lines, but respect direction. Otherwise non-zero winding rule for
+                            ' GDI+ does not render rectangles with a negative or
+                            ' very small width and height. Render such rectangles by lines,
+                            ' but respect direction. Otherwise, non-zero winding rule for
                             ' path filling will not work.
                             gdiPath.AddLines({rect.Location,
                                              New PointF(rect.X + rect.Width, rect.Y),
@@ -328,8 +329,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Function
 
         Private Shared Function GetFontName(font As PdfFont) As String
-            ' A trick to load a similar font for system. Ideally we should load font from raw bytes. Use PdfFont.Save()
-            ' method for that.
+            ' A trick to load a similar font from the system. Ideally, we should
+            ' load font from raw bytes. Use PdfFont.Save methods to produce the bytes.
             Dim fontName As String = font.Name
             If (fontName.Contains("Courier")) Then
                 Return "Courier New"

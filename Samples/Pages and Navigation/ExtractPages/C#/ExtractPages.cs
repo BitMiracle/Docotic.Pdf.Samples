@@ -28,10 +28,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     page.Canvas.DrawString("Page #" + (i + 1));
                 }
 
-                // extract first 3 pages. These pages will be removed from original PDF document.
+                // Extract the first 3 pages.
+                // The call will remove the pages from the original PDF document.
                 using (PdfDocument extracted = original.ExtractPages(0, 3))
                 {
-                    // Helps to reduce file size in cases when the extracted pages reference
+                    // Helps to reduce file size when the extracted pages reference
                     // unused resources such as fonts, images, patterns.
                     extracted.RemoveUnusedResources();
 

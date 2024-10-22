@@ -18,10 +18,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (var pdf = new PdfDocument(@"..\Sample Data\jfif3.pdf"))
             {
-                // copy third and first pages to a new PDF document (page indexes are zero-based)
+                // Copy the third and first pages to a new PDF document (page indexes are zero-based)
                 using PdfDocument copy = pdf.CopyPages(new int[] { 2, 0 });
 
-                // Helps to reduce file size in cases when the copied pages reference
+                // Helps to reduce file size when the copied pages reference
                 // unused resources such as fonts, images, patterns.
                 copy.RemoveUnusedResources();
 

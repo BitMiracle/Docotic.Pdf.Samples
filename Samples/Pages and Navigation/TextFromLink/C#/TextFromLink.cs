@@ -29,7 +29,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             linkDescription.AppendLine("Link's index in the page widgets collection: " + linkInfo.OwnerPageWidgetIndex);
             linkDescription.AppendLine("Link bounds: " + linkInfo.Bounds.ToString());
             linkDescription.AppendLine("Link points to page # " + pdf.IndexOf(linkInfo.TargetPage));
-            linkDescription.AppendLine("NOTE: All page numbers are zero-based. If you use trial version of Docotic.Pdf then even pages of original document are not loaded.");
+            linkDescription.AppendLine("NOTE: All page numbers are zero-based.");
 
             linkDescription.AppendLine();
             linkDescription.AppendLine("Text from link:");
@@ -53,7 +53,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                             PdfDocumentView? view = linkAction.View;
                             if (view is not null)
                             {
-                                // lets ignore links which point to an absent page
+                                // let's ignore links which point to an absent page
                                 PdfPage? targetPage = view.Page;
                                 if (targetPage is not null)
                                 {
@@ -73,7 +73,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
         {
             var result = new StringBuilder();
 
-            const float eps = 5.0f; // small reserve for text start vertical position
+            // allow some extra space for the vertical position of a text start
+            const float eps = 5.0f;
             PdfCollection<PdfTextData> textFromTargetPage = targetPage.Canvas.GetTextData();
             foreach (PdfTextData textData in textFromTargetPage)
             {

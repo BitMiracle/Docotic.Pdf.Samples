@@ -1,8 +1,15 @@
-# Outline (bookmarks) with styles
-This sample shows how to build PDF document's outline (also known as "bookmarks") with colored, bold and italic items.
+# Change font and color of PDF bookmarks in C# and VB.NET
 
-Docotic.Pdf library provides methods and properties to manipulate document's outline. You can set PdfDocument.PageMode to a PdfPageMode.UseOutlines value to instruct a PDF viewer application to show "Bookmarks" panel when your document is opened. 
+This sample shows how to make PDF bookmark items colored, bold, and italic using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
-PdfDocument.OutlineRoot property provides access to document's outline root. Value of this property is a PdfOutlineItem object. All outline items are instances of this class. Please use PdfOutlineItem methods and properties to access or setup outline items.
+## Description
 
-You can use PdfOutlineItem.AddChild method to add child items to an outline item. Second parameter for AddChild method is an index of page to associate with added child outline item.
+Docotic.Pdf library provides methods and properties to manipulate document’s outline. The [PdfDocument.OutlineRoot](https://api.docotic.com/pdfdocument-outlineroot) property provides access to the document’s outline root. The value of this property is a [PdfOutlineItem](https://api.docotic.com/pdfoutlineitem) object. All outline items are instances of this class. Use methods and properties of the `PdfOutlineItem` class to access and set up outline items.
+
+You can use [PdfOutlineItem.AddChild](https://api.docotic.com/pdfoutlineitem-addchild) methods to add child items to an outline item. To create an outline, start by adding child items to the outline root. 
+
+To instruct PDF viewers to show "Bookmarks" panel when your document is opened, set the [PdfDocument.PageMode](https://api.docotic.com/pdfdocument-pagemode) property to the `PdfPageMode.UseOutlines` value.
+
+## See also
+* [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
+* [PDF bookmarks](https://bitmiracle.com/pdf-library/edit/#bookmarks)

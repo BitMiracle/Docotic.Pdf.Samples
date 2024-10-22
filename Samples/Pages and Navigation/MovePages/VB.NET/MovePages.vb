@@ -18,7 +18,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf As New PdfDocument()
                 BuildTestDocument(pdf)
 
-                ' move first half of pages to the end of the document
+                ' move the first half of pages to the end of the document
                 pdf.MovePages(0, 5, pdf.PageCount)
 
                 pdf.Save(continuousOutputPath)

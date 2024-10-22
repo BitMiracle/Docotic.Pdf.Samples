@@ -30,8 +30,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     ' page objects to the same page and preserve all structure information.
                     options.FlattenMarkedContent = False
 
-                    ' Usually, you need to set this option to false. That allows to properly handle
-                    ' documents with transparency groups.
+                    ' Usually, you need to set this option to false. That allows to handle
+                    ' documents with transparency groups properly.
                     ' The value = true is recommended for backward compatibility or if you do not
                     ' worry about transparency.
                     options.FlattenXObjects = False

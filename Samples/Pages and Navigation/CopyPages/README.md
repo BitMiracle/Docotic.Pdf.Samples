@@ -1,4 +1,4 @@
-# Copy pages
+# Copy PDF pages
 This sample shows how to copy pages from one PDF document to another using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
 ## Description
@@ -10,3 +10,4 @@ Call the [PdfDocument.RemoveUnusedResources](https://api.docotic.com/pdfdocument
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
 * [Split PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/edit/split)
+* [Extract PDF pages in C# and VB.NET](/Samples/Pages%20and%20Navigation/ExtractPages) sample

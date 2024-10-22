@@ -18,11 +18,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (var pdf = new PdfDocument())
             {
-                // There is already one page in PDF document after creation
+                // There is already one page in any new PDF document
                 PdfPage firstPage = pdf.Pages[0];
                 firstPage.Canvas.DrawString("This is the auto-created first page");
 
-                // AddPage method adds a new page to the end of the PDF document
+                // The AddPage method adds a new page to the end of the PDF document
                 PdfPage secondPage = pdf.AddPage();
                 secondPage.Canvas.DrawString("Second page");
 
@@ -30,7 +30,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 PdfPage newFirstPage = pdf.InsertPage(0);
                 newFirstPage.Canvas.DrawString("New first page");
 
-                // This call is an equivalent of AddPage method
+                // This call is an equivalent to calling the AddPage method
                 PdfPage lastPage = pdf.InsertPage(pdf.PageCount);
                 lastPage.Canvas.DrawString("Last page");
 
