@@ -39,7 +39,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         End If
 
                         ' This page is not searchable.
-                        ' Save PDF page as a high-resolution image.
+                        ' Save the PDF page as a high-resolution image.
                         Dim options As PdfDrawOptions = PdfDrawOptions.Create()
                         options.BackgroundColor = New PdfRgbColor(255, 255, 255)
                         options.HorizontalResolution = 200

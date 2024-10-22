@@ -21,15 +21,15 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (var pdf = new PdfDocument(@"..\Sample data\jfif3.pdf"))
             {
-                // Extract plain text from document
+                // Extract plain text from the document
                 using (var writer = new StreamWriter(documentTextFile))
                     writer.Write(pdf.GetText());
 
-                // Extract text with formatting from document
+                // Extract text with formatting from the document
                 using (var writer = new StreamWriter(documentTextFormattedFile))
                     writer.Write(pdf.GetTextWithFormatting());
 
-                // Only extract visible plain text from first page
+                // Only extract visible plain text from the first page
                 using (var writer = new StreamWriter(firstPageTextFile))
                 {
                     var options = new PdfTextExtractionOptions

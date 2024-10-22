@@ -19,17 +19,17 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Using pdf As New PdfDocument("..\Sample data\jfif3.pdf")
 
-                ' Extract plain text from document
+                ' Extract plain text from the document
                 Using writer As New StreamWriter(documentTextFile)
                     writer.Write(pdf.GetText())
                 End Using
 
-                ' Extract text with formatting from document
+                ' Extract text with formatting from the document
                 Using writer As New StreamWriter(documentTextFormattedFile)
                     writer.Write(pdf.GetTextWithFormatting())
                 End Using
 
-                ' Only extract visible plain text from first page
+                ' Only extract visible plain text from the first page
                 Using writer As New StreamWriter(firstPageTextFile)
                     Dim options = New PdfTextExtractionOptions()
                     options.WithFormatting = False

@@ -22,15 +22,15 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.FontSize = 30;
                 canvas.Font = pdf.AddFont(PdfBuiltInFont.TimesItalic);
 
-                // draw straight line across the page
+                // draw a straight line across the page
                 const double baselinePosition = 100;
                 canvas.CurrentPosition = new PdfPoint(0, baselinePosition);
                 canvas.DrawLineTo(new PdfPoint(pdf.Pages[0].Width, baselinePosition));
 
-                // calculate distance from the baseline to the top of the font bounding box
+                // calculate the distance from the baseline to the top of the font bounding box
                 double distanceToBaseLine = GetDistanceToBaseline(canvas.Font, canvas.FontSize);
 
-                // draw text so that baseline of the text placed exactly over the straight line
+                // draw text so that the baseline of the text is exactly over the straight line
                 canvas.DrawString(10, baselinePosition - distanceToBaseLine, "gyQW");
 
                 pdf.Save(pathToFile);

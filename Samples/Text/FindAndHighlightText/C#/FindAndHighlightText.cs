@@ -89,9 +89,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
 
             // We use the following algorithm:
-            // 1. Group words by transformation matrix. We do that to properly detect neighbours for rotated text.
+            // 1. Group words by transformation matrix. We do that to detect
+            // neighbours for rotated text properly.
             // 2. For each group:
-            //   a. Sort words taking into account the group's transformation matrix.
+            //   a. Sort words taking the group's transformation matrix into account.
             //   b. Search phrase in the collection of sorted words.
             Dictionary<PdfMatrix, List<PdfTextData>> wordGroups = GroupWordsByTransformations(page);
             foreach (var kvp in wordGroups)
@@ -143,13 +144,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static void SortWords(List<PdfTextData> words, PdfMatrix transformation)
         {
-            // For some transformations we should invert X coordinates during sorting.
+            // For some transformations, we should invert X coordinates during sorting.
             PdfPoint xAxis = TransformVector(transformation, 1, 0);
             PdfPoint yAxis = TransformVector(transformation, 0, 1);
 
             int xDirection = 1;
 
-            // Happens when space is rotated on 90 or 270 degrees
+            // Happens when space is rotated by 90 or 270 degrees
             if (Math.Abs(xAxis.X) < 0.0001)
             {
                 // Happens when transformed coordinates fall to 2nd or 4th quarter.

@@ -79,9 +79,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End If
 
             ' We use the following algorithm:
-            ' 1. Group words by transformation matrix. We do that to properly detect neighbours for rotated text.
+            ' 1. Group words by transformation matrix. We do that to properly detect
+            ' neighbours for rotated text properly.
             ' 2. For each group:
-            '   a. Sort words taking into account the group's transformation matrix.
+            '   a. Sort words taking the group's transformation matrix into account.
             '   b. Search phrase in the collection of sorted words.
             Dim wordGroups As Dictionary(Of PdfMatrix, List(Of PdfTextData)) = GroupWordsByTransformations(page)
             For Each kvp In wordGroups
@@ -137,12 +138,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             transformation As PdfMatrix
             )
 
-            ' For some transformations we should invert X coordinates during sorting.
+            ' For some transformations, we should invert X coordinates during sorting.
             Dim xAxis As PdfPoint = TransformVector(transformation, 1, 0)
             Dim yAxis As PdfPoint = TransformVector(transformation, 0, 1)
             Dim xDirection As Integer = 1
 
-            ' Happens when space is rotated on 90 or 270 degrees
+            ' Happens when space is rotated by 90 or 270 degrees
             If Math.Abs(xAxis.X) < 0.0001 Then
                 ' Happens when transformed coordinates fall to 2nd Or 4th quarter.
                 '          y

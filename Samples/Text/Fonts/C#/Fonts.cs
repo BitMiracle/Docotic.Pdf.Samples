@@ -38,7 +38,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.Font = fontFromFile;
                 canvas.DrawString(10, 90, "Hello world");
 
-                // Remove unused glyphs from TrueType fonts to optimize size of result PDF file.
+                // Remove unused glyphs from TrueType fonts to optimize the size of the output.
                 systemFont.RemoveUnusedGlyphs();
                 fontFromFile.RemoveUnusedGlyphs();
 

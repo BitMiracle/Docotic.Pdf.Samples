@@ -92,7 +92,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
         private static IEnumerable<RecognizedTextChunk> RecognizeWords(PdfPage page, TesseractEngine engine,
             int resolution, string tempFileName)
         {
-            // Save PDF page as high-resolution image
+            // Save PDF page as a high-resolution image
             PdfDrawOptions options = PdfDrawOptions.Create();
             options.BackgroundColor = new PdfRgbColor(255, 255, 255);
             options.HorizontalResolution = resolution;
@@ -129,7 +129,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 if (diffSign == 0)
                     break;
 
-                // try neigbour font size
+                // try a bit larger font size
                 canvas.FontSize += diffSign * Step;
 
                 double newDiff = targetTextWidth - canvas.GetTextWidth(text);

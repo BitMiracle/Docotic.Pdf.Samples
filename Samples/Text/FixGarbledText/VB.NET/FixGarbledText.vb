@@ -81,13 +81,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 .HorizontalResolution = 300,
                 .VerticalResolution = 300,
                 .Height = 20,
-                .CharacterSpacing = 1.5 ' Slightly increase distance between characters to improve OCR quality
+                .CharacterSpacing = 1.5 ' Slightly increase the distance between characters to improve OCR quality
             }
 
             ' Split character codes to batches because Tesseract cannot process too wide images.
-            ' You may find the appropriate batch size heuristically based on the output image height and resolution.
+            ' You may find an appropriate batch size heuristically based on the output image height and resolution.
             ' Or you may rasterize all character codes with the PdfTextRasterizer.Save method and
-            ' calculate the batch size using the returning widths.
+            ' calculate the batch size using the widths in the resulting collection.
             Const BatchSize As Integer = 400
             Dim batchIndex As Integer = 0
             For Each batchCodes In charCodes.Chunk(BatchSize)
@@ -102,7 +102,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                     ' Perform OCR
                     Using img As Pix = Pix.LoadFromMemory(charCodeImage.ToArray())
-                        ' Use SingleChar segmentation mode when the last batch contains a few characters
+                        ' Use the SingleChar segmentation mode when the last batch contains a few characters
                         Dim segMode As PageSegMode = If(batchCodes.Length > 5, engine.DefaultPageSegMode, PageSegMode.SingleChar)
                         Using recognizedPage As Page = engine.Process(img, segMode)
                             Using iter As ResultIterator = recognizedPage.GetIterator()

@@ -95,14 +95,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 VerticalResolution = 300,
                 Height = 20,
 
-                // Slightly increase distance between characters to improve OCR quality
+                // Slightly increase the distance between characters to improve OCR quality
                 CharacterSpacing = 1.5
             };
 
             // Split character codes to batches because Tesseract cannot process too wide images.
-            // You may find the appropriate batch size heuristically based on the output image height and resolution.
+            // You may find an appropriate batch size heuristically based on the output image height and resolution.
             // Or you may rasterize all character codes with the PdfTextRasterizer.Save method and
-            // calculate the batch size using the returning widths.
+            // calculate the batch size using the widths in the resulting collection.
             const int BatchSize = 400;
             int batchIndex = 0;
             foreach (PdfCharacterCode[] batchCodes in charCodes.Chunk(BatchSize))
@@ -118,7 +118,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     // Perform OCR
                     using Pix img = Pix.LoadFromMemory(charCodeImage.ToArray());
 
-                    // Use SingleChar segmentation mode when the last batch contains a few characters
+                    // Use the SingleChar segmentation mode when the last batch contains a few characters
                     PageSegMode segMode = batchCodes.Length > 5 ? engine.DefaultPageSegMode : PageSegMode.SingleChar;
                     using Page recognizedPage = engine.Process(img, segMode);
                     using ResultIterator iter = recognizedPage.GetIterator();

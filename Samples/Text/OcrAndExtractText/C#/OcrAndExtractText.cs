@@ -49,7 +49,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     }
 
                     // This page is not searchable.
-                    // Save PDF page as a high-resolution image.
+                    // Save the PDF page as a high-resolution image.
                     PdfDrawOptions options = PdfDrawOptions.Create();
                     options.BackgroundColor = new PdfRgbColor(255, 255, 255);
                     options.HorizontalResolution = 200;

@@ -15,7 +15,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             LicenseManager.AddLicenseData("PUT-LICENSE-HERE")
 
             Using pdf = New PdfDocument("..\Sample data\Freedman Scora.pdf")
-                ' This font Is used to draw all recognized text chunks in PDF.
+                ' This font Is used to draw all recognized text chunks in the PDF.
                 ' Make sure that the font defines all glyphs for the target language.
                 Dim universalFont As PdfFont = pdf.AddFont("Arial")
                 If universalFont Is Nothing Then
@@ -78,7 +78,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             resolution As Integer,
             tempFileName As String) As IEnumerable(Of RecognizedTextChunk)
 
-            ' Save PDF page as high-resolution image
+            ' Save the PDF page as a high-resolution image
             Dim options As PdfDrawOptions = PdfDrawOptions.Create()
             options.BackgroundColor = New PdfRgbColor(255, 255, 255)
             options.HorizontalResolution = resolution
@@ -117,7 +117,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim diffSign As Integer = Math.Sign(bestDiff)
                 If diffSign = 0 Then Exit While
 
-                ' try neigbour font size
+                ' try a bit larger font size
                 canvas.FontSize += diffSign * [Step]
 
                 Dim newDiff As Double = targetTextWidth - canvas.GetTextWidth(text)
