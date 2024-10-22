@@ -33,8 +33,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                 foreach (PdfPage page in pdf.Pages)
                 {
-                    // draw watermark at the top left corner over the page contents
-                    // this will also add watermark to the collection of page XObjects
+                    // Draw the watermark at the top left corner over the page contents.
+                    // This will also add the watermark to the collection of page XObjects.
                     page.Canvas.DrawXObject(watermark, 0, 0);
                 }
 

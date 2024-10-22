@@ -28,8 +28,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 watermarkCanvas.DrawString(100, 100, "This text is a part of the watermark")
 
                 For i As Integer = 0 To pdf.PageCount - 1
-                    ' draw watermark at the top left corner over the page contents
-                    ' this will also add watermark to the collection of page XObjects
+                    ' Draw the watermark at the top left corner over the page contents.
+                    ' This will also add the watermark to the collection of page XObjects.
                     pdf.Pages(i).Canvas.DrawXObject(watermark, 0, 0)
                 Next
 

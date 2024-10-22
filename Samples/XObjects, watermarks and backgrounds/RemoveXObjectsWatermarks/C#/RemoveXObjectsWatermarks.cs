@@ -20,7 +20,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 foreach (PdfPage page in pdf.Pages)
                 {
-                    // remove first XObject (in this case it's a watermark)
+                    // Remove the first XObject. Here, it's a watermark.
                     page.XObjects.RemoveAt(0);
                 }
 
