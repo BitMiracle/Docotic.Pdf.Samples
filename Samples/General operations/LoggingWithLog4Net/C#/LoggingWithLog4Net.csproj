@@ -6,8 +6,8 @@
     <StartWorkingDirectory>$(SolutionDir)\Output</StartWorkingDirectory>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="9.5.17525" />
-    <PackageReference Include="BitMiracle.Docotic.Pdf.Logging" Version="9.5.17525" />
+    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="9.6.17807" />
+    <PackageReference Include="BitMiracle.Docotic.Pdf.Logging" Version="9.6.17807" />
     <PackageReference Include="log4net" Version="2.0.15" />
     <PackageReference Include="Microsoft.Extensions.Logging.Log4Net.AspNetCore" Version="8.0.0" />
   </ItemGroup>
