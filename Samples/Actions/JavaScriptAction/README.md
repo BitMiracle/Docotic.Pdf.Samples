@@ -7,5 +7,6 @@ Use [PdfDocument.CreateJavaScriptAction method](https://api.docotic.com/pdfdocum
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
 * [Using JavaScript in forms](https://bitmiracle.com/pdf-library/edit/#javascript-in-forms)
-* [JavaScript in PDF](https://www.codeproject.com/Articles/380293/Javascript-in-PDF)
+* [JavaScript in PDF](https://medium.com/@bitmiracle/javascript-in-pdf-7d738d6c6c09)
+* [Examples of using JavaScript in PDF documents](/Samples/Actions/JavaScriptInPdf)
 * [Adobe Acrobat JavaScript API Reference](https://opensource.adobe.com/dc-acrobat-sdk-docs/library/jsapiref/)
