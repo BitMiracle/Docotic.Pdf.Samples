@@ -379,6 +379,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Multithreading", "Multithre
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MergeDocumentsParallelly", "Multithreading\MergeDocumentsParallelly\C#\MergeDocumentsParallelly.csproj", "{4762F754-D5F7-405D-A719-A969522D6692}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JavaScriptInPdf", "Actions\JavaScriptInPdf\C#\JavaScriptInPdf.csproj", "{B3707797-CE3B-4E06-80FF-77BA7BB0FDE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1061,6 +1063,10 @@ Global
 		{4762F754-D5F7-405D-A719-A969522D6692}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4762F754-D5F7-405D-A719-A969522D6692}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4762F754-D5F7-405D-A719-A969522D6692}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3707797-CE3B-4E06-80FF-77BA7BB0FDE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3707797-CE3B-4E06-80FF-77BA7BB0FDE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3707797-CE3B-4E06-80FF-77BA7BB0FDE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3707797-CE3B-4E06-80FF-77BA7BB0FDE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1235,6 +1241,7 @@ Global
 		{04D8839D-1CBC-4609-A88C-DD9FE2E956D0} = {0DF4BBEF-BCCD-4D6D-B7B6-8CDD34D6FFC0}
 		{269646FB-BEDF-438C-AB02-6EBE6788BADE} = {62D813CD-8D4D-4784-92AE-2FDF3F314E51}
 		{4762F754-D5F7-405D-A719-A969522D6692} = {63CEC0DC-5047-4EBF-BE87-04EEC413566A}
+		{B3707797-CE3B-4E06-80FF-77BA7BB0FDE7} = {AB247740-0ED8-40BF-9532-455B0FEFE917}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61DC7F3F-A5C8-48BD-845F-83DE6BD2527B}
