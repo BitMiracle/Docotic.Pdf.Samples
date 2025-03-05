@@ -20,7 +20,7 @@ Docotic.Pdf supports different compression methods. You can use all of them to g
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
-* [PDF compression](https://bitmiracle.com/edit/#compression)
+* [PDF compression](https://bitmiracle.com/pdf-library/edit/#compression)
 * [Optimize PDF objects in C# and VB.NET](/Samples/Compression/CompressWithSaveOptions) sample
 * [Subset PDF fonts in C# and VB.NET](/Samples/Compression/FontSubsetting) sample
 * [Optimize PDF images in C# and VB.NET](/Samples/Compression/OptimizeImages) sample
