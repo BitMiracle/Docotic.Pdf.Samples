@@ -14,7 +14,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             ' IMPORTANT
             ' Please replace
             ' * "your-signed-document.pdf" with the path to your file,
-            ' * "keystore.p12" And "password" with your own .p12 Or .pfx path And password.
+            ' * "keystore.p12" and "password" with your own .p12 or .pfx path and password.
             ' Without the changes, the sample will not work.
 
             Dim outputFileName = "SignAlreadySignedDocument.pdf"

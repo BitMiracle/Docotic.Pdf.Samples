@@ -14,8 +14,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim outputFileName = "SignSignatureField.pdf"
             Using pdf As New PdfDocument("..\Sample Data\SignatureFields.pdf")
                 ' IMPORTANT:
-                ' Replace "keystore.p12" And "password" with your own .p12 Or .pfx path And password.
-                ' Without the change, the sample will Not work.
+                ' Replace "keystore.p12" and "password" with your own .p12 or .pfx path and password.
+                ' Without the change, the sample will not work.
 
                 Dim field As PdfSignatureField = TryCast(pdf.GetControl("Signature2"), PdfSignatureField)
                 If field Is Nothing Then

@@ -14,8 +14,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim outputFileName = "SignDocumentEmbedTimestamp.pdf"
             Using pdf As New PdfDocument("..\Sample Data\jpeg.pdf")
                 ' IMPORTANT:
-                ' Replace "keystore.p12" And "password" with your own .p12 Or .pfx path And password.
-                ' Without the change, the sample will Not work.
+                ' Replace "keystore.p12" and "password" with your own .p12 or .pfx path and password.
+                ' Without the change, the sample will not work.
 
                 Dim options As New PdfSigningOptions("keystore.p12", "password") With {
                     .DigestAlgorithm = PdfDigestAlgorithm.Sha256,
@@ -28,7 +28,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 ' Replace the following test URL with your Timestamp Authority URL
                 options.Timestamp.AuthorityUrl = New Uri("http://timestamp.digicert.com")
 
-                ' Specify username And password if your Timestamp Authority requires authentication
+                ' Specify username and password if your Timestamp Authority requires authentication
                 options.Timestamp.Username = Nothing
                 options.Timestamp.Password = Nothing
 
