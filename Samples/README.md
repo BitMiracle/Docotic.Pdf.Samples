@@ -54,6 +54,8 @@
 
 [Sign PDF document using PKCS#11 driver](/Samples/Digital%20signatures/SignWithPkcs11)
 
+[Certify PDF with LTV](/Samples/Digital%20signatures/CertifyPdfWithLtv)
+
 # Display options
 [Initial view](/Samples/Display%20options/InitialView)
 

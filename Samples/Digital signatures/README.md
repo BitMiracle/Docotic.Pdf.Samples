@@ -54,3 +54,7 @@ This sample shows how to sign a PDF document using a key from Azure Key Vault.
 [Sign PDF document using PKCS#11 driver](/Samples/Digital%20signatures/SignWithPkcs11)
 
 This sample shows how to sign a PDF document using a PKCS#11 driver.
+
+[Certify PDF with LTV](/Samples/Digital%20signatures/CertifyPdfWithLtv)
+
+This sample shows how to sign a PDF document with a LTV enabled certification signature.
