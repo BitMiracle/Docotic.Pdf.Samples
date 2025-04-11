@@ -383,6 +383,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertifyPdfWithLtv", "Digita
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateLtvSignature", "Digital signatures\CreateLtvSignature\C#\CreateLtvSignature.csproj", "{5A160525-0DBE-4A95-9299-6F9DF452AF08}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddLtvInfoToSignature", "Digital signatures\AddLtvInfoToSignature\C#\AddLtvInfoToSignature.csproj", "{950E8529-D6BB-49FE-A25B-E784BBF288C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1073,6 +1075,10 @@ Global
 		{5A160525-0DBE-4A95-9299-6F9DF452AF08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A160525-0DBE-4A95-9299-6F9DF452AF08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A160525-0DBE-4A95-9299-6F9DF452AF08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{950E8529-D6BB-49FE-A25B-E784BBF288C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{950E8529-D6BB-49FE-A25B-E784BBF288C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{950E8529-D6BB-49FE-A25B-E784BBF288C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{950E8529-D6BB-49FE-A25B-E784BBF288C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1249,6 +1255,7 @@ Global
 		{4762F754-D5F7-405D-A719-A969522D6692} = {63CEC0DC-5047-4EBF-BE87-04EEC413566A}
 		{8CDC3024-3368-4236-BCEA-12B95C7978D1} = {80D726EA-AAE5-4744-BAEE-6F6C8A01E493}
 		{5A160525-0DBE-4A95-9299-6F9DF452AF08} = {80D726EA-AAE5-4744-BAEE-6F6C8A01E493}
+		{950E8529-D6BB-49FE-A25B-E784BBF288C7} = {80D726EA-AAE5-4744-BAEE-6F6C8A01E493}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61DC7F3F-A5C8-48BD-845F-83DE6BD2527B}

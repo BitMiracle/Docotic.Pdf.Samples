@@ -54,6 +54,10 @@
 
 [Sign PDF document using PKCS#11 driver](/Samples/Digital%20signatures/SignWithPkcs11)
 
+[Create LTV-enabled PDF signature](/Samples/Digital%20signatures/CreateLtvSignature)
+
+[Add LTV information to existing signatures](/Samples/Digital%20signatures/AddLtvInfoToSignatures)
+
 [Certify PDF with LTV](/Samples/Digital%20signatures/CertifyPdfWithLtv)
 
 # Display options
