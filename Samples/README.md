@@ -56,7 +56,7 @@
 
 [Create LTV-enabled PDF signature](/Samples/Digital%20signatures/CreateLtvSignature)
 
-[Add LTV information to existing signatures](/Samples/Digital%20signatures/AddLtvInfoToSignatures)
+[Add LTV information to an existing signature](/Samples/Digital%20signatures/AddLtvInfoToSignature)
 
 [Certify PDF with LTV](/Samples/Digital%20signatures/CertifyPdfWithLtv)
 
