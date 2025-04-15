@@ -7,3 +7,4 @@ This sample shows how to sign an existing PDF document.
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
 * [Sign PDF document in C# and VB.NET](https://bitmiracle.com/pdf-library/signatures/sign)
 * [Verify PDF signature in C# and VB.NET](https://bitmiracle.com/pdf-library/signatures/verify)
+* [Create LTV-enabled PDF signature](/Samples/Digital%20signatures/CreateLtvSignature)
