@@ -36,20 +36,21 @@ namespace BitMiracle.Docotic.Pdf.Samples
             sb.AppendFormat("Signed part is intact: {0}\n", contents.VerifyDigest());
 
             DateTime signingTime = signature.SigningTime ?? DateTime.MinValue;
-            sb.AppendFormat("Signed on: {0}\n", signingTime.ToShortDateString());
+            sb.AppendFormat("Signed on: {0}\n\n", signingTime.ToShortDateString());
 
             var timestampToken = contents.GetTimestampToken();
             if (timestampToken != null)
             {
+                sb.AppendFormat("Is document timestamp: {0}\n", contents.IsDocumentTimestamp);
                 sb.AppendFormat("Embedded timestamp: {0}\n", timestampToken.GenerationTime);
                 if (timestampToken.TimestampAuthority != null)
                     sb.AppendFormat("Timestamp authority: {0}\n", timestampToken.TimestampAuthority.Name);
-                sb.AppendFormat("Timestamp is intact: {0}\n\n", contents.VerifyTimestamp());
+
+                if (!contents.IsDocumentTimestamp)
+                    sb.AppendFormat("Timestamp is intact: {0}\n", contents.VerifyTimestamp());
             }
-            else
-            {
-                sb.AppendLine();
-            }
+
+            sb.AppendLine();
 
             if (contents.CheckHasEmbeddedOcsp())
             {

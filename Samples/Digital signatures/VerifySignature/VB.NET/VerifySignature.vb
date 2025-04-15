@@ -31,20 +31,23 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 sb.AppendFormat("Signed part is intact: {0}" & vbLf, contents.VerifyDigest())
 
                 Dim signingTime = If(signature.SigningTime, Date.MinValue)
-                sb.AppendFormat("Signed on: {0}" & vbLf, signingTime.ToShortDateString())
+                sb.AppendFormat("Signed on: {0}" & vbLf & vbLf, signingTime.ToShortDateString())
 
                 Dim timestampToken = contents.GetTimestampToken()
                 If timestampToken IsNot Nothing Then
+                    sb.AppendFormat("Is document timestamp: {0}" & vbLf, contents.IsDocumentTimestamp)
                     sb.AppendFormat("Embedded timestamp: {0}" & vbLf, timestampToken.GenerationTime)
 
                     If timestampToken.TimestampAuthority IsNot Nothing Then
                         sb.AppendFormat("Timestamp authority: {0}" & vbLf, timestampToken.TimestampAuthority.Name)
                     End If
 
-                    sb.AppendFormat("Timestamp is intact: {0}" & vbLf & vbLf, contents.VerifyTimestamp())
-                Else
-                    sb.AppendLine()
+                    If Not contents.IsDocumentTimestamp Then
+                        sb.AppendFormat("Timestamp is intact: {0}" & vbLf, contents.VerifyTimestamp())
+                    End If
                 End If
+
+                sb.AppendLine()
 
                 If contents.CheckHasEmbeddedOcsp() Then
                     sb.AppendLine("Signature has OCSP embedded.")
