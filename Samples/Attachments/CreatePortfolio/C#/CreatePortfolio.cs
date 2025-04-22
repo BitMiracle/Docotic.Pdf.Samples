@@ -29,7 +29,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 col.InitialDocument = "jpeg.pdf";
                 col.SetTiledView();
 
-                pdf.Pages[0].Canvas.DrawString("You PDF viewer does not support portfolios");
+                pdf.Pages[0].Canvas.DrawString("Your PDF viewer does not support portfolios");
 
                 pdf.Save(pathToFile);
             }
