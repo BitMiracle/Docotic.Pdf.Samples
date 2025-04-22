@@ -16,6 +16,8 @@
 
 [Save (extract) attachment](/Samples/Attachments/SaveAttachment)
 
+[Create PDF portfolio](/Samples/Attachments/CreatePortfolio)
+
 # Compression
 [Compress PDF document in .NET](/Samples/Compression/CompressAllTechniques)
 

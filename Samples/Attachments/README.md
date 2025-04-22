@@ -14,3 +14,7 @@ This sample shows how to list names of all files attached to a PDF document.
 [Extract attachments from PDF document](/Samples/Attachments/SaveAttachment)
 
 This sample shows how to save PDF attachment bytes (extract attached file).
+
+[Create PDF portfolio](/Samples/Attachments/CreatePortfolio)
+
+This sample shows how to create a PDF portfolio.
