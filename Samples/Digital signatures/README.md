@@ -65,4 +65,4 @@ This sample shows how to add LTV information to digital signatures in PDF docume
 
 [Certify PDF with LTV](/Samples/Digital%20signatures/CertifyPdfWithLtv)
 
-This sample shows how to sign a PDF document with a LTV enabled certification signature.
+This sample shows how to sign a PDF document with an LTV enabled certification signature.
