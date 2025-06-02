@@ -15,6 +15,10 @@ This sample shows how to use Hide actions.
 
 This sample shows how to use JavaScript actions in PDF documents.
 
+[Examples of using JavaScript in PDF documents](/Samples/Actions/JavaScriptInPdf)
+
+This sample shows how to use JavaScript code to create interactive PDF documents.
+
 [Use Submit and Reset form actions in PDF documents](/Samples/Actions/SubmitResetFormActions)
 
 This sample shows how to use Submit-Form and Reset-Form actions.

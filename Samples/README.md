@@ -1,13 +1,15 @@
 # Actions
-[GoTo Action](/Samples/Actions/GoToAction)
+[Use GoTo actions in PDF documents](/Samples/Actions/GoToAction)
 
-[Hide Action](/Samples/Actions/HideAction)
+[Use Hide actions in PDF documents](/Samples/Actions/HideAction)
 
-[JavaScript Action](/Samples/Actions/JavaScriptAction)
+[Use JavaScript actions in PDF documents](/Samples/Actions/JavaScriptAction)
 
-[Submit and Reset Form Actions](/Samples/Actions/SubmitResetFormActions)
+[Examples of using JavaScript in PDF documents](/Samples/Actions/JavaScriptInPdf)
 
-[Uri Action](/Samples/Actions/UriAction)
+[Use Submit and Reset form actions in PDF documents](/Samples/Actions/SubmitResetFormActions)
+
+[Use URI action in PDF documents](/Samples/Actions/UriAction)
 
 # Attachments
 [Add attachments and file annotations to PDF](/Samples/Attachments/AddAttachments)
