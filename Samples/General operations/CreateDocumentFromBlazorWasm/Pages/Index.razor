@@ -23,9 +23,7 @@
         using (var pdf = new PdfDocument())
         {
             PdfCanvas canvas = pdf.Pages[0].Canvas;
-
-            PdfFont builtInFont = pdf.AddFont(PdfBuiltInFont.TimesRoman);
-            canvas.Font = builtInFont;
+            canvas.Font = pdf.CreateFont(PdfBuiltInFont.TimesRoman);
             canvas.DrawString(10, 70, "Hello, world! " + uid);
 
             using (var memoryStream = new MemoryStream())

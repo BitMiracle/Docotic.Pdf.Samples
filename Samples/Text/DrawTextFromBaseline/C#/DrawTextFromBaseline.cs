@@ -20,7 +20,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 PdfCanvas canvas = pdf.Pages[0].Canvas;
                 canvas.FontSize = 30;
-                canvas.Font = pdf.AddFont(PdfBuiltInFont.TimesItalic);
+                canvas.Font = pdf.CreateFont(PdfBuiltInFont.TimesItalic);
 
                 // draw a straight line across the page
                 const double baselinePosition = 100;

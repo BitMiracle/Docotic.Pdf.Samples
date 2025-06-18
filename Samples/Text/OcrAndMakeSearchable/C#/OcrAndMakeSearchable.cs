@@ -23,12 +23,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             // This font is used to draw all recognized text chunks in PDF.
             // Make sure that the font defines all glyphs for the target language.
-            PdfFont? universalFont = pdf.AddFont("Arial");
-            if (universalFont is null)
-            {
-                Console.WriteLine("Cannot add Arial font");
-                return;
-            }
+            PdfFont universalFont = pdf.CreateFont("Arial");
 
             var location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             if (location == null)

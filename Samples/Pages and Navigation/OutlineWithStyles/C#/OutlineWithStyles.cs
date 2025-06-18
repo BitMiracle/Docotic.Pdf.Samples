@@ -61,7 +61,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             PdfOutlineItem root = pdf.OutlineRoot;
             PdfOutlineItem? lastParent = null;
 
-            PdfFont times = pdf.AddFont(PdfBuiltInFont.TimesItalic);
+            PdfFont times = pdf.CreateFont(PdfBuiltInFont.TimesItalic);
             double pageWidth = pdf.GetPage(0).Width;
 
             PdfPage page = pdf.GetPage(pdf.PageCount - 1);

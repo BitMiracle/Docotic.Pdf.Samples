@@ -19,8 +19,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             using (var pdf = new PdfDocument())
             {
                 PdfCanvas canvas = pdf.Pages[0].Canvas;
-                PdfFont helvetica = pdf.AddFont(PdfBuiltInFont.HelveticaBoldOblique, false, false);
-                canvas.Font = helvetica;
+                canvas.Font = pdf.CreateFont(PdfBuiltInFont.HelveticaBoldOblique);
                 canvas.FontSize = 28;
 
                 DrawColoredPattern(pdf);
@@ -36,7 +35,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static void DrawColoredPattern(PdfDocument pdf)
         {
-            PdfTilingPattern pattern = pdf.AddColoredPattern(5, 5);
+            PdfTilingPattern pattern = pdf.CreateColoredPattern(5, 5);
             Fill(pattern);
 
             PdfCanvas canvas = pdf.GetPage(0).Canvas;
@@ -47,7 +46,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static void DrawUncoloredPattern(PdfDocument pdf)
         {
-            PdfTilingPattern pattern = pdf.AddUncoloredPattern(5, 5, new PdfRgbColorSpace());
+            PdfTilingPattern pattern = pdf.CreateUncoloredPattern(5, 5, new PdfRgbColorSpace());
             Fill(pattern);
 
             PdfCanvas canvas = pdf.GetPage(0).Canvas;

@@ -18,20 +18,23 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (var pdf = new PdfDocument())
             {
-                pdf.AutoCreateUriActions = true;
-
                 PdfPage page = pdf.Pages[0];
-                page.Canvas.DrawString(10, 50, "Url: http://bitmiracle.com");
+                var drawStringOptions = new PdfStringDrawingOptions
+                {
+                    AddActionAreas = true,
+                };
+                page.Canvas.DrawString(10, 50, "Url: http://bitmiracle.com", drawStringOptions);
 
                 var rectWithLink = new PdfRectangle(10, 70, 200, 100);
                 page.Canvas.DrawRectangle(rectWithLink, PdfDrawMode.Stroke);
 
-                var options = new PdfTextDrawingOptions(rectWithLink)
+                var drawTextOptions = new PdfTextDrawingOptions(rectWithLink)
                 {
                     HorizontalAlignment = PdfTextAlign.Center,
-                    VerticalAlignment = PdfVerticalAlign.Center
+                    VerticalAlignment = PdfVerticalAlign.Center,
+                    AddActionAreas = true,
                 };
-                page.Canvas.DrawText("Go to Google", options);
+                page.Canvas.DrawText("Go to Google", drawTextOptions);
 
                 page.AddHyperlink(rectWithLink, new Uri("http://google.com"));
 

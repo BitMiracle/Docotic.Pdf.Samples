@@ -28,19 +28,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 foreach (string tiff in tiffFiles)
                 {
                     // open potentially multipage TIFF
-                    PdfImageFrames? frames = pdf.OpenImage(tiff);
-                    if (frames is null)
-                    {
-                        Console.WriteLine("Cannot add image");
-                        return;
-                    }
-
+                    PdfImageFrames frames = pdf.OpenImage(tiff);
                     foreach (PdfImageFrame frame in frames)
                     {
                         if (imagesAdded != 0)
                             pdf.AddPage();
 
-                        PdfImage image = pdf.AddImage(frame);
+                        PdfImage image = pdf.CreateImage(frame);
                         PdfPage pdfPage = pdf.Pages[pdf.PageCount - 1];
 
                         // adjust page size, so image will occupy the whole page

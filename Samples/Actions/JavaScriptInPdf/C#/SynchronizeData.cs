@@ -12,7 +12,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             static PdfControl GetControl(PdfDocument pdf, string name)
             {
-                return pdf.GetControl(name) ?? throw new Exception($"Failed to get field {name}");
+                if (pdf.TryGetControl(name, out var control))
+                    return control!;
+
+                throw new ArgumentException($"Failed to get field {name}");
             }
 
             using (var pdf = new PdfDocument(@"..\Sample Data\Names.pdf"))

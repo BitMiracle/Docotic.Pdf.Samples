@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
 
 namespace BitMiracle.Docotic.Pdf.Samples
@@ -25,9 +24,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 var page = pdf.Pages[0];
 
-                SetupFont(
-                    page.Canvas,
-                    pdf.AddFont("Arial") ?? throw new Exception("Failed to load font."));
+                SetupFont(page.Canvas, pdf.CreateFont("Arial"));
 
                 var validateNumeric = File.ReadAllText("../Sample Data/ValidateNumeric.js");
                 var action = pdf.CreateJavaScriptAction(validateNumeric);

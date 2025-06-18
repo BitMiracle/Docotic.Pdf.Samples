@@ -49,7 +49,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static void BuildTestDocument(PdfDocument pdf)
         {
-            PdfFont times = pdf.AddFont(PdfBuiltInFont.HelveticaBoldOblique);
+            PdfFont times = pdf.CreateFont(PdfBuiltInFont.HelveticaBoldOblique);
             double pageWidth = pdf.GetPage(0).Width;
 
             PdfPage page = pdf.GetPage(0);

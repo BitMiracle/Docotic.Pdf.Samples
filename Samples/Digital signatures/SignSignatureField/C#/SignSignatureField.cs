@@ -21,7 +21,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 // Replace "keystore.p12" and "password" with your own .p12 or .pfx path and password.
                 // Without the change, the sample will not work.
 
-                if (pdf.GetControl("Signature2") is not PdfSignatureField field)
+                if (!pdf.TryGetControl("Signature2", out var control) ||
+                    control is not PdfSignatureField field)
                 {
                     Console.WriteLine("Cannot find a signature field");
                     return;

@@ -18,8 +18,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (var pdf = new PdfDocument(@"..\Sample Data\form.pdf"))
             {
-                if (pdf.GetControl("email") is PdfTextBox emailTextBox)
+                if (pdf.TryGetControl("email", out var control) &&
+                    control is PdfTextBox emailTextBox)
+                {
                     emailTextBox.Text = "support@bitmiracle.com";
+                }
 
                 pdf.Save(pathToFile);
             }

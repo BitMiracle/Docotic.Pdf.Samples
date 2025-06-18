@@ -116,7 +116,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
             string location,
             string contactInfo)
         {
-            var field = source.GetControl(signatureFieldName) as PdfSignatureField;
+            if (!source.TryGetControl(signatureFieldName, out var control) ||
+                control is not PdfSignatureField field)
+            {
+                throw new ArgumentException(
+                    $"Unable to find a signature field named '{signatureFieldName}'",
+                    nameof(signatureFieldName));
+            }
+
             var signingOptions = new PdfSigningOptions(credentials.Keystore, credentials.Password)
             {
                 DigestAlgorithm = PdfDigestAlgorithm.Sha256,
@@ -141,7 +148,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static void SetText(PdfDocument pdf, string textBoxName, string text)
         {
-            if (pdf.GetControl(textBoxName) is PdfTextBox textBox)
+            if (pdf.TryGetControl(textBoxName, out var control) && control is PdfTextBox textBox)
                 textBox.Text = text;
             else
                 throw new ArgumentException($"Unable to find a text box by name = '{textBoxName}'", nameof(textBoxName));

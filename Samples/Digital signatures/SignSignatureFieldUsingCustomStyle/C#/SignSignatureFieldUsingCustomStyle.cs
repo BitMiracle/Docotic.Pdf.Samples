@@ -21,7 +21,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 // Replace "keystore.p12" and "password" with your own .p12 or .pfx path and password.
                 // Without the change, the sample will not work.
 
-                if (pdf.GetControl("Control") is not PdfSignatureField field)
+                if (!pdf.TryGetControl("Control", out var control) ||
+                    control is not PdfSignatureField field)
                 {
                     Console.WriteLine("Cannot find a signature field");
                     return;
@@ -43,8 +44,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 appearance.IncludeDate = false;
                 appearance.IncludeDistinguishedName = false;
 
-                appearance.Image = pdf.AddImage(@"..\Sample Data\ammerland.jpg");
-                appearance.Font = pdf.AddFont(PdfBuiltInFont.Courier);
+                appearance.Image = pdf.CreateImage(@"..\Sample Data\ammerland.jpg");
+                appearance.Font = pdf.CreateFont(PdfBuiltInFont.Courier);
                 appearance.FontSize = 0; // calculate font size automatically
                 appearance.FontColor = new PdfRgbColor(0, 0, 255);
                 appearance.TextAlignment = PdfSignatureTextAlignment.Right;

@@ -18,7 +18,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (var pdf = new PdfDocument(@"..\Sample Data\BRAILLE CODES WITH TRANSLATION.pdf"))
             {
-                PdfFont font = pdf.AddFont(PdfBuiltInFont.Helvetica);
+                PdfFont font = pdf.CreateFont(PdfBuiltInFont.Helvetica);
 
                 for (int i = 0; i < pdf.PageCount; ++i)
                 {

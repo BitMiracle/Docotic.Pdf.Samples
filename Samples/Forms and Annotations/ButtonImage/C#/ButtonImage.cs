@@ -21,7 +21,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 PdfPage page = pdf.Pages[0];
 
                 PdfButton button = page.AddButton(10, 50, 100, 100);
-                button.Image = pdf.AddImage(@"..\Sample Data\pink.png");
+                button.Image = pdf.CreateImage(@"..\Sample Data\pink.png");
                 button.Layout = PdfButtonLayout.ImageOnly;
 
                 pdf.Save(pathToFile);

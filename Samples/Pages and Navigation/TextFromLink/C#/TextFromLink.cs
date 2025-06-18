@@ -50,7 +50,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     {
                         if (actionArea.Action is PdfGoToAction linkAction)
                         {
-                            PdfDocumentView? view = linkAction.View;
+                            PdfDocumentView? view = linkAction.GetView().View;
                             if (view is not null)
                             {
                                 // let's ignore links which point to an absent page

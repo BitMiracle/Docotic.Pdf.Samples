@@ -25,12 +25,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.Brush.Color = new PdfRgbColor(0, 255, 0);
                 canvas.DrawRectangle(new PdfRectangle(50, 450, 1150, 150), PdfDrawMode.Fill);
 
-                PdfImage? image = pdf.AddImage(@"..\Sample data\pink.png", @"..\Sample data\pinkMask.tif");
-                if (image is null)
-                {
-                    Console.WriteLine("Cannot add image");
-                    return;
-                }
+                PdfImage maskImage = pdf.CreateImage(@"..\Sample data\pinkMask.tif");
+                maskImage.ConvertToMask();
+
+                PdfImage image = pdf.CreateImage(@"..\Sample data\pink.png");
+                image.Mask = maskImage;
 
                 canvas.DrawImage(image, 550, 200);
 

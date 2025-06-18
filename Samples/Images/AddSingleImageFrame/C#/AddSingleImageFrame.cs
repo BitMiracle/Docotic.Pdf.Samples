@@ -18,16 +18,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (var pdf = new PdfDocument())
             {
-                PdfImageFrames? frames = pdf.OpenImage(@"..\Sample Data\multipage.tif");
-                if (frames is null)
-                {
-                    Console.WriteLine("Cannot add image");
-                    return;
-                }
-
+                PdfImageFrames frames = pdf.OpenImage(@"..\Sample Data\multipage.tif");
                 PdfImageFrame secondFrame = frames[1];
 
-                PdfImage image = pdf.AddImage(secondFrame);
+                PdfImage image = pdf.CreateImage(secondFrame);
                 pdf.Pages[0].Canvas.DrawImage(image, 10, 10, 0);
 
                 pdf.Save(pathToFile);

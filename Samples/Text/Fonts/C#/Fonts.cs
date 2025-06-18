@@ -20,21 +20,19 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 PdfCanvas canvas = pdf.Pages[0].Canvas;
 
-                PdfFont? systemFont = pdf.AddFont("Arial", false, true, false, true);
-                if (systemFont is null)
-                {
-                    Console.WriteLine("Cannot add font");
-                    return;
-                }
-
+                PdfFont systemFont = pdf.CreateFont("", false, true);
                 canvas.Font = systemFont;
-                canvas.DrawString(10, 50, "Hello, world!");
+                var options = new PdfStringDrawingOptions
+                {
+                    Strikethrough = true,
+                };
+                canvas.DrawString(10, 50, "Hello, world!", options);
 
-                PdfFont builtInFont = pdf.AddFont(PdfBuiltInFont.TimesRoman);
+                PdfFont builtInFont = pdf.CreateFont(PdfBuiltInFont.TimesRoman);
                 canvas.Font = builtInFont;
                 canvas.DrawString(10, 70, "Hello, world!");
 
-                PdfFont fontFromFile = pdf.AddFontFromFile(@"..\Sample data\Fonts\HolidayPi_BT.ttf");
+                PdfFont fontFromFile = pdf.CreateFontFromFile(@"..\Sample data\Fonts\HolidayPi_BT.ttf");
                 canvas.Font = fontFromFile;
                 canvas.DrawString(10, 90, "Hello world");
 

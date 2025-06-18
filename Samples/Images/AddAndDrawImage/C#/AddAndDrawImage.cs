@@ -20,13 +20,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 PdfCanvas canvas = pdf.Pages[0].Canvas;
 
-                PdfImage? image = pdf.AddImage(@"..\Sample data\ammerland.jpg");
-                if (image is null)
-                {
-                    Console.WriteLine("Cannot add image");
-                    return;
-                }
-
+                PdfImage image = pdf.CreateImage(@"..\Sample data\ammerland.jpg");
                 canvas.DrawImage(image, 10, 50);
 
                 pdf.Save(pathToFile);
