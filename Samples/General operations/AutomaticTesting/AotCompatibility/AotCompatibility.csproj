@@ -25,7 +25,7 @@
     <Compile Include="..\Docotic.Tests\Helpers\PdfTextExtractor.cs" Link="PdfTextExtractor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="9.7.18373" />
+    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="9.7.18487-dev" />
   </ItemGroup>
   <!--
     Uncomment to force clean before building. It will fix the following scenario:

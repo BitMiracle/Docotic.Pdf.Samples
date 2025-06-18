@@ -11,6 +11,6 @@
     <Compile Include="..\PrintSize.vb" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="BitMiracle.Docotic.Pdf.Gdi" Version="9.7.18373" />
+    <PackageReference Include="BitMiracle.Docotic.Pdf.Gdi" Version="9.7.18487-dev" />
   </ItemGroup>
 </Project>
