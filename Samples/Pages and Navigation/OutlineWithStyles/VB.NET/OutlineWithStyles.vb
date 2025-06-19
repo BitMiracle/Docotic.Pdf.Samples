@@ -56,7 +56,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim root As PdfOutlineItem = pdf.OutlineRoot
             Dim lastParent As PdfOutlineItem = Nothing
 
-            Dim times As PdfFont = pdf.AddFont(PdfBuiltInFont.TimesItalic)
+            Dim times As PdfFont = pdf.CreateFont(PdfBuiltInFont.TimesItalic)
             Dim pageWidth As Single = pdf.GetPage(0).Width
 
             Dim page As PdfPage = pdf.GetPage(pdf.PageCount - 1)

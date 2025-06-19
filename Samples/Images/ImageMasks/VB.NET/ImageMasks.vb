@@ -21,11 +21,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.Brush.Color = New PdfRgbColor(0, 255, 0)
                 canvas.DrawRectangle(New PdfRectangle(50, 450, 1150, 150), PdfDrawMode.Fill)
 
-                Dim image As PdfImage = pdf.AddImage("..\Sample data\pink.png", "..\Sample data\pinkMask.tif")
-                If image Is Nothing Then
-                    Console.WriteLine("Cannot add image")
-                    Return
-                End If
+                Dim maskImage As PdfImage = pdf.CreateImage("..\Sample data\pinkMask.tif")
+                maskImage.ConvertToMask()
+
+                Dim image As PdfImage = pdf.CreateImage("..\Sample data\pink.png")
+                image.Mask = maskImage
 
                 canvas.DrawImage(image, 550, 200)
 

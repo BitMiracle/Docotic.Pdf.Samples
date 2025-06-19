@@ -14,7 +14,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Const PathToFile As String = "HeaderAndFooter.pdf"
 
             Using pdf = New PdfDocument("..\Sample Data\BRAILLE CODES WITH TRANSLATION.pdf")
-                Dim font As PdfFont = pdf.AddFont(PdfBuiltInFont.Helvetica)
+                Dim font As PdfFont = pdf.CreateFont(PdfBuiltInFont.Helvetica)
 
                 For i As Integer = 0 To pdf.PageCount - 1
                     Dim page As PdfPage = pdf.Pages(i)

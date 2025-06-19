@@ -15,8 +15,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Using pdf As New PdfDocument()
                 Dim canvas As PdfCanvas = pdf.Pages(0).Canvas
-                Dim helvetica As PdfFont = pdf.AddFont(PdfBuiltInFont.HelveticaBoldOblique, False, False)
-                canvas.Font = helvetica
+                canvas.Font = pdf.CreateFont(PdfBuiltInFont.HelveticaBoldOblique)
                 canvas.FontSize = 28
 
                 DrawColoredPattern(pdf)
@@ -31,7 +30,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Sub
 
         Private Shared Sub DrawColoredPattern(pdf As PdfDocument)
-            Dim pattern As PdfTilingPattern = pdf.AddColoredPattern(5, 5)
+            Dim pattern As PdfTilingPattern = pdf.CreateColoredPattern(5, 5)
             Fill(pattern)
 
             Dim canvas As PdfCanvas = pdf.GetPage(0).Canvas
@@ -41,7 +40,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Sub
 
         Private Shared Sub DrawUncoloredPattern(pdf As PdfDocument)
-            Dim pattern As PdfTilingPattern = pdf.AddUncoloredPattern(5, 5, New PdfRgbColorSpace())
+            Dim pattern As PdfTilingPattern = pdf.CreateUncoloredPattern(5, 5, New PdfRgbColorSpace())
             Fill(pattern)
 
             Dim canvas As PdfCanvas = pdf.GetPage(0).Canvas

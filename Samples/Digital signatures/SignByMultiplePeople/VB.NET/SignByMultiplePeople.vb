@@ -108,7 +108,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             location As String,
             contactInfo As String
         )
-            Dim field = TryCast(source.GetControl(signatureFieldName), PdfSignatureField)
+            Dim field As PdfSignatureField = GetControl(Of PdfSignatureField)(source, signatureFieldName)
             Dim signingOptions = New PdfSigningOptions(credentials.Keystore, credentials.Password) With {
                 .DigestAlgorithm = PdfDigestAlgorithm.Sha256,
                 .Format = PdfSignatureFormat.Pkcs7Detached,
@@ -130,7 +130,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Sub
 
         Private Shared Sub SetText(pdf As PdfDocument, textBoxName As String, text As String)
-            Dim textBox = TryCast(pdf.GetControl(textBoxName), PdfTextBox)
+            Dim textBox = GetControl(Of PdfTextBox)(pdf, textBoxName)
             If textBox Is Nothing Then
                 Throw New ArgumentException($"Unable to find a text box by name = '{textBoxName}'", NameOf(textBoxName))
             End If
@@ -143,5 +143,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 .UseShellExecute = True
             })
         End Sub
+
+        Private Shared Function GetControl(Of T As Class)(pdf As PdfDocument, name As String) As T
+            Dim control As PdfControl = Nothing
+            If Not pdf.TryGetControl(name, control) Then
+                Return Nothing
+            End If
+
+            Return TryCast(control, T)
+        End Function
     End Class
 End Namespace

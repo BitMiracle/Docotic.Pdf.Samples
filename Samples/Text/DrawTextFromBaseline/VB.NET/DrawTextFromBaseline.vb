@@ -16,7 +16,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf As New PdfDocument()
                 Dim canvas As PdfCanvas = pdf.Pages(0).Canvas
                 canvas.FontSize = 30
-                canvas.Font = pdf.AddFont(PdfBuiltInFont.TimesItalic)
+                canvas.Font = pdf.CreateFont(PdfBuiltInFont.TimesItalic)
 
                 ' draw a straight line across the page
                 Const baselinePosition As Double = 100

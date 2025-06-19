@@ -18,7 +18,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 ' Replace "keystore.p12" and "password" with your own .p12 or .pfx path and password.
                 ' Without the change, the sample will not work.
 
-                Dim field As PdfSignatureField = TryCast(pdf.GetControl("Control"), PdfSignatureField)
+                Dim field As PdfSignatureField = GetSignatureField(pdf, "Control")
                 If field Is Nothing Then
                     Console.WriteLine("Cannot find a signature field")
                     Return
@@ -39,8 +39,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 appearance.IncludeDate = False
                 appearance.IncludeDistinguishedName = False
 
-                appearance.Image = pdf.AddImage("..\Sample Data\ammerland.jpg")
-                appearance.Font = pdf.AddFont(PdfBuiltInFont.Courier)
+                appearance.Image = pdf.CreateImage("..\Sample Data\ammerland.jpg")
+                appearance.Font = pdf.CreateFont(PdfBuiltInFont.Courier)
                 appearance.FontSize = 0 ' calculate font size automatically
                 appearance.FontColor = New PdfRgbColor(0, 0, 255)
                 appearance.TextAlignment = PdfSignatureTextAlignment.Right
@@ -56,5 +56,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Process.Start(New ProcessStartInfo(outputFileName) With {.UseShellExecute = True})
         End Sub
+
+        Private Shared Function GetSignatureField(pdf As PdfDocument, name As String) As PdfSignatureField
+            Dim control As PdfControl = Nothing
+            If Not pdf.TryGetControl(name, control) Then
+                Return Nothing
+            End If
+
+            Return TryCast(control, PdfSignatureField)
+        End Function
     End Class
 End Namespace

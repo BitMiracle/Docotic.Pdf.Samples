@@ -16,20 +16,19 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf As New PdfDocument()
                 Dim canvas As PdfCanvas = pdf.Pages(0).Canvas
 
-                Dim systemFont As PdfFont = pdf.AddFont("Arial", False, True, False, True)
-                If systemFont Is Nothing Then
-                    Console.WriteLine("Cannot add font")
-                    Return
-                End If
-
+                Dim systemFont As PdfFont = pdf.CreateFont("Arial", False, True)
                 canvas.Font = systemFont
-                canvas.DrawString(10, 50, "Hello, world!")
 
-                Dim builtInFont As PdfFont = pdf.AddFont(PdfBuiltInFont.TimesRoman)
+                Dim options As New PdfStringDrawingOptions With {
+                    .Strikethrough = True
+                }
+                canvas.DrawString(10, 50, "Hello, world!", options)
+
+                Dim builtInFont As PdfFont = pdf.CreateFont(PdfBuiltInFont.TimesRoman)
                 canvas.Font = builtInFont
                 canvas.DrawString(10, 70, "Hello, world!")
 
-                Dim fontFromFile As PdfFont = pdf.AddFontFromFile("..\Sample data\Fonts\HolidayPi_BT.ttf")
+                Dim fontFromFile As PdfFont = pdf.CreateFontFromFile("..\Sample data\Fonts\HolidayPi_BT.ttf")
                 canvas.Font = fontFromFile
                 canvas.DrawString(10, 90, "Hello world")
 

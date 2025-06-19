@@ -14,20 +14,22 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim pathToFile As String = "Hyperlink.pdf"
 
             Using pdf As New PdfDocument()
-                pdf.AutoCreateUriActions = True
-
                 Dim page As PdfPage = pdf.Pages(0)
-                page.Canvas.DrawString(10, 50, "Url: http://bitmiracle.com")
+                Dim drawStringOptions As New PdfStringDrawingOptions With {
+                    .AddActionAreas = True
+                }
+                page.Canvas.DrawString(10, 50, "Url: http://bitmiracle.com", drawStringOptions)
 
                 Dim rectWithLink As New PdfRectangle(10, 70, 200, 100)
                 page.Canvas.DrawRectangle(rectWithLink, PdfDrawMode.Stroke)
 
-                Dim options = New PdfTextDrawingOptions(rectWithLink) With
+                Dim drawTextOptions = New PdfTextDrawingOptions(rectWithLink) With
                 {
                     .HorizontalAlignment = PdfTextAlign.Center,
-                    .VerticalAlignment = PdfVerticalAlign.Center
+                    .VerticalAlignment = PdfVerticalAlign.Center,
+                    .AddActionAreas = True
                 }
-                page.Canvas.DrawText("Go to Google", options)
+                page.Canvas.DrawText("Go to Google", drawTextOptions)
                 page.AddHyperlink(rectWithLink, New Uri("http://google.com"))
 
                 pdf.Save(pathToFile)

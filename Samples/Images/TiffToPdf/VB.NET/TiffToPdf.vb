@@ -22,17 +22,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 For Each tiff As String In tiffFiles
                     ' open potentially multipage TIFF
                     Dim frames As PdfImageFrames = pdf.OpenImage(tiff)
-                    If frames Is Nothing Then
-                        Console.WriteLine("Cannot add image")
-                        Return
-                    End If
-
                     For Each frame As PdfImageFrame In frames
                         If imagesAdded <> 0 Then
                             pdf.AddPage()
                         End If
 
-                        Dim image As PdfImage = pdf.AddImage(frame)
+                        Dim image As PdfImage = pdf.CreateImage(frame)
                         Dim pdfPage As PdfPage = pdf.Pages(pdf.PageCount - 1)
                         ' Adjust page size, so image will occupy the whole page
                         pdfPage.Height = image.Height

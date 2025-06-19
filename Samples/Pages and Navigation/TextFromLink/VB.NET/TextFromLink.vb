@@ -47,7 +47,7 @@ Namespace BitMiracle.Docotic.Samples
                         Dim linkAction As PdfGoToAction = TryCast(actionArea.Action, PdfGoToAction)
 
                         If linkAction IsNot Nothing Then
-                            Dim view As PdfDocumentView = linkAction.View
+                            Dim view As PdfDocumentView = linkAction.GetView().View
 
                             If view IsNot Nothing Then
                                 ' let's ignore links which point to an absent page

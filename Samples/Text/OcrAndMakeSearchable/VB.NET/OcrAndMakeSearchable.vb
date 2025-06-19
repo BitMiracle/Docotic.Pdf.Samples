@@ -17,11 +17,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf = New PdfDocument("..\Sample data\Freedman Scora.pdf")
                 ' This font Is used to draw all recognized text chunks in the PDF.
                 ' Make sure that the font defines all glyphs for the target language.
-                Dim universalFont As PdfFont = pdf.AddFont("Arial")
-                If universalFont Is Nothing Then
-                    Console.WriteLine("Cannot add Arial font")
-                    Return
-                End If
+                Dim universalFont As PdfFont = pdf.CreateFont("Arial")
 
                 Dim location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
                 If location Is Nothing Then

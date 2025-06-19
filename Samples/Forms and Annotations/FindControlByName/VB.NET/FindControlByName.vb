@@ -14,7 +14,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Const pathToFile As String = "FindControlByName.pdf"
 
             Using pdf As New PdfDocument("..\Sample Data\form.pdf")
-                Dim emailTextBox As PdfTextBox = TryCast(pdf.GetControl("email"), PdfTextBox)
+                Dim emailTextBox As PdfTextBox = GetTextBox(pdf, "email")
                 If emailTextBox IsNot Nothing Then
                     emailTextBox.Text = "support@bitmiracle.com"
                 End If
@@ -26,5 +26,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Sub
+
+        Private Shared Function GetTextBox(pdf As PdfDocument, name As String) As PdfTextBox
+            Dim control As PdfControl = Nothing
+            If Not pdf.TryGetControl(name, control) Then
+                Return Nothing
+            End If
+
+            Return TryCast(control, PdfTextBox)
+        End Function
     End Class
 End Namespace

@@ -17,28 +17,16 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim canvas As PdfCanvas = pdf.Pages(0).Canvas
                 canvas.FontSize = 12
 
-                canvas.Font = pdf.AddFont(PdfBuiltInFont.CourierBold)
+                canvas.Font = pdf.CreateFont(PdfBuiltInFont.CourierBold)
                 canvas.DrawString(10, 50, "Chinese(traditional): ")
                 canvas.DrawString(10, 70, "Russian: ")
                 canvas.DrawString(10, 90, "Portugal: ")
                 canvas.DrawString(10, 110, "Bidirectional: ")
 
-                Dim nsimsun = pdf.AddFont("NSimSun")
-                If nsimsun Is Nothing Then
-                    Console.WriteLine("Cannot add NSimSun font")
-                    Return
-                End If
-
-                canvas.Font = nsimsun
+                canvas.Font = pdf.CreateFont("NSimSun")
                 canvas.DrawString(180, 50, "世界您好")
 
-                Dim timesNewRoman = pdf.AddFont("Times New Roman")
-                If timesNewRoman Is Nothing Then
-                    Console.WriteLine("Cannot add Times New Roman font")
-                    Return
-                End If
-
-                canvas.Font = timesNewRoman
+                canvas.Font = pdf.CreateFont("Times New Roman")
                 canvas.DrawString(180, 70, "Привет, мир")
                 canvas.DrawString(180, 90, "Olá mundo")
 

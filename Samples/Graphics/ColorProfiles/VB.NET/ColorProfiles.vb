@@ -16,7 +16,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf As New PdfDocument()
                 Dim canvas As PdfCanvas = pdf.Pages(0).Canvas
 
-                Dim colorProfile As PdfColorProfile = pdf.AddColorProfile("..\Sample data\AdobeRGB1998.icc")
+                Dim colorProfile As PdfColorProfile = pdf.CreateColorProfile("..\Sample data\AdobeRGB1998.icc")
                 canvas.Brush.Color = New PdfRgbColor(colorProfile, 20, 80, 240)
                 canvas.DrawRectangle(New PdfRectangle(10, 50, 100, 70), PdfDrawMode.Fill)
 

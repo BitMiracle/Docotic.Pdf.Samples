@@ -17,26 +17,16 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim canvas As PdfCanvas = pdf.Pages(0).Canvas
 
                 Dim imageFrames As PdfImageFrames = pdf.OpenImage("..\Sample Data\pink.png")
-                If imageFrames Is Nothing Then
-                    Console.WriteLine("Cannot add image")
-                    Return
-                End If
-
-                Dim originalImage As PdfImage = pdf.AddImage(imageFrames(0))
+                Dim originalImage As PdfImage = pdf.CreateImage(imageFrames(0))
                 canvas.DrawImage(originalImage, 10, 10, 0)
 
                 Dim imageFramesToRecompress As PdfImageFrames = pdf.OpenImage("..\Sample Data\pink.png")
-                If imageFramesToRecompress Is Nothing Then
-                    Console.WriteLine("Cannot add image")
-                    Return
-                End If
-
                 Dim frame As PdfImageFrame = imageFramesToRecompress(0)
                 frame.OutputCompression = PdfImageCompression.Jpeg
                 frame.JpegQuality = 50
                 frame.RecompressAlways = True
 
-                Dim compressedImage As PdfImage = pdf.AddImage(frame)
+                Dim compressedImage As PdfImage = pdf.CreateImage(frame)
                 canvas.DrawImage(compressedImage, 210, 10, 0)
 
                 pdf.Save(pathToFile)

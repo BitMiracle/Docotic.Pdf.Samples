@@ -19,7 +19,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf = New PdfDocument()
                 Dim page = pdf.Pages(0)
 
-                SetupFont(page.Canvas, pdf.AddFont("Arial"))
+                SetupFont(page.Canvas, pdf.CreateFont("Arial"))
 
                 Dim validateNumeric = File.ReadAllText("../Sample Data/ValidateNumeric.js")
                 Dim action = pdf.CreateJavaScriptAction(validateNumeric)

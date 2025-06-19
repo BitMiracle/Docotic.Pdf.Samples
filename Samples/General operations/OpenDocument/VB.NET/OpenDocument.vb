@@ -15,7 +15,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Using pdf As New PdfDocument("..\Sample data\jfif3.pdf")
                 Dim canvas As PdfCanvas = pdf.Pages(0).Canvas
-                canvas.Font = pdf.AddFont(PdfBuiltInFont.Helvetica)
+                canvas.Font = pdf.CreateFont(PdfBuiltInFont.Helvetica)
                 canvas.FontSize = 20
                 canvas.DrawString(10, 80, "This text was added by Docotic.Pdf")
 

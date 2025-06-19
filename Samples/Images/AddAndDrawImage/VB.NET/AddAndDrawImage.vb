@@ -16,12 +16,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf As New PdfDocument()
                 Dim canvas As PdfCanvas = pdf.Pages(0).Canvas
 
-                Dim image As PdfImage = pdf.AddImage("..\Sample data\ammerland.jpg")
-                If image Is Nothing Then
-                    Console.WriteLine("Cannot add image")
-                    Return
-                End If
-
+                Dim image As PdfImage = pdf.CreateImage("..\Sample data\ammerland.jpg")
                 canvas.DrawImage(image, 10, 50)
 
                 pdf.Save(pathToFile)

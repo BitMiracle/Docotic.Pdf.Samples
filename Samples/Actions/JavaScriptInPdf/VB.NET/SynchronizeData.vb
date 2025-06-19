@@ -10,10 +10,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim synchronizeFields = File.ReadAllText("../Sample Data/SynchronizeFields.js")
                 pdf.SharedScripts.Add(pdf.CreateJavaScriptAction(synchronizeFields))
 
-                Dim control = pdf.GetControl("name0")
+                Dim control As PdfControl = GetControl(pdf, "name0")
                 control.OnLostFocus = pdf.CreateJavaScriptAction("synchronizeFields(""name0"", ""name1"");")
 
-                control = pdf.GetControl("name1")
+                control = GetControl(pdf, "name1")
                 control.OnLostFocus = pdf.CreateJavaScriptAction("synchronizeFields(""name1"", ""name0"");")
 
                 pdf.Save(pathToFile)
@@ -23,5 +23,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 .UseShellExecute = True
             })
         End Sub
+
+        Private Shared Function GetControl(pdf As PdfDocument, name As String) As PdfControl
+            Dim control As PdfControl = Nothing
+            If Not pdf.TryGetControl(name, control) Then
+                Throw New ArgumentException("Failed to get control " + name)
+            End If
+
+            Return control
+        End Function
     End Class
 End Namespace

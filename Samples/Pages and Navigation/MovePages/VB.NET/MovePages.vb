@@ -43,7 +43,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Sub
 
         Private Shared Sub BuildTestDocument(pdf As PdfDocument)
-            Dim times As PdfFont = pdf.AddFont(PdfBuiltInFont.HelveticaBoldOblique)
+            Dim times As PdfFont = pdf.CreateFont(PdfBuiltInFont.HelveticaBoldOblique)
             Dim pageWidth As Double = pdf.GetPage(0).Width
 
             Dim page As PdfPage = pdf.GetPage(0)
