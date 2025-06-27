@@ -9,6 +9,7 @@ specifications.
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
+* [How to enable LTV in PDF documents](https://bitmiracle.com/pdf-library/signatures/ltv)
 * [Create LTV-enabled PDF signature](/Samples/Digital%20signatures/CreateLtvSignature)
 * [Sign PDF document in C# and VB.NET](https://bitmiracle.com/pdf-library/signatures/sign)
 * [Verify PDF signature in C# and VB.NET](https://bitmiracle.com/pdf-library/signatures/verify)

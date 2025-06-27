@@ -9,6 +9,8 @@ Pkcs11Interop library helps to work with unmanaged PKCS#11 libraries in .NET.
 
 ## See also
 * [Get free time-limited license key for Docotic.Pdf](https://bitmiracle.com/pdf-library/download)
-* [Sign PDF document in C# and VB.NET](https://bitmiracle.com/pdf-library/signatures/sign)
+* [How to sign PDFs with USB tokens and HSM devices](https://bitmiracle.com/pdf-library/signatures/external-signing)
+* [How to enable LTV in PDF documents](https://bitmiracle.com/pdf-library/signatures/ltv)
+* [Sign PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/signatures/sign)
 * [Sign PDF document using AWS KMS](/Samples/Digital%20signatures/SignWithAwsKms) sample
 * [Sign PDF document using Azure Key Vault](/Samples/Digital%20signatures/SignWithAzureKeyVault) sample

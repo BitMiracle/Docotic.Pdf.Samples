@@ -7,3 +7,4 @@ It is possible to provide custom labels or images for certificate fields. And yo
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
 * [Sign PDF document in C# and VB.NET](https://bitmiracle.com/pdf-library/signatures/sign)
 * [Verify PDF signature in C# and VB.NET](https://bitmiracle.com/pdf-library/signatures/verify)
+* [How to enable LTV in PDF documents](https://bitmiracle.com/pdf-library/signatures/ltv)

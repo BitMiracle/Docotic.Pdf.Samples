@@ -11,7 +11,7 @@ write the resulting PDF document incrementally to keep the signature valid.
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
-* [Add LTV information to existing signatures](/Samples/Digital%20signatures/AddLtvInfoToSignatures)
+* [How to enable LTV in PDF documents](https://bitmiracle.com/pdf-library/signatures/ltv)
 * [Certify PDF with LTV](/Samples/Digital%20signatures/CertifyPdfWithLtv)
 * [Sign PDF document in C# and VB.NET](https://bitmiracle.com/pdf-library/signatures/sign)
 * [Verify PDF signature in C# and VB.NET](https://bitmiracle.com/pdf-library/signatures/verify)
