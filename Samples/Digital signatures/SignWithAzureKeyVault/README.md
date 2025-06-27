@@ -11,6 +11,8 @@ from Key Vault secrets or Key Vault certificates.
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
-* [Sign PDF document in C# and VB.NET](https://bitmiracle.com/pdf-library/signatures/sign)
-* [Sign PDF document using AWS KMS](/Samples/Digital%20signatures/SignWithAwsKms) sample
-* [Sign PDF document using PKCS#11 driver](/Samples/Digital%20signatures/SignWithPkcs11) sample
+* [How to sign PDFs with USB tokens and HSM devices](https://bitmiracle.com/pdf-library/signatures/external-signing)
+* [How to enable LTV in PDF documents](https://bitmiracle.com/pdf-library/signatures/ltv)
+* [Sign PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/signatures/sign)
+* [Sign PDF documents using AWS KMS](/Samples/Digital%20signatures/SignWithAwsKms) sample
+* [Sign PDF documents using PKCS#11 driver](/Samples/Digital%20signatures/SignWithPkcs11) sample

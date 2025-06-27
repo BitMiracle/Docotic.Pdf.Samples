@@ -7,4 +7,4 @@ You can use [Docotic.Pdf library](https://bitmiracle.com/pdf-library/) to sign a
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
 * [Sign PDF document in C# and VB.NET](https://bitmiracle.com/pdf-library/signatures/sign)
 * [Verify PDF signature in C# and VB.NET](https://bitmiracle.com/pdf-library/signatures/verify)
-* [Add LTV information to existing signatures](/Samples/Digital%20signatures/AddLtvInfoToSignatures)
+* [How to enable LTV in PDF documents](https://bitmiracle.com/pdf-library/signatures/ltv)
