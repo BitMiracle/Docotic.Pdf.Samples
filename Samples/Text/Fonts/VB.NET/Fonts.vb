@@ -16,23 +16,37 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf As New PdfDocument()
                 Dim canvas As PdfCanvas = pdf.Pages(0).Canvas
 
+                ' By default, the following call uses fonts installed on the operating system.
+                ' To customize the font source, provide a font loader via PdfConfigurationOptions.
+                ' For details, see: https : //api.docotic.com/pdfconfigurationoptions
                 Dim systemFont As PdfFont = pdf.CreateFont("Arial", False, True)
                 canvas.Font = systemFont
 
-                Dim options As New PdfStringDrawingOptions With {
+                Dim stringOptions As New PdfStringDrawingOptions With {
                     .Strikethrough = True
                 }
-                canvas.DrawString(10, 50, "Hello, world!", options)
+                canvas.DrawString(10, 50, "Hello, world!", stringOptions)
 
+                ' The following call creates a built-in font. These fonts do Not increase file
+                ' size, as they are included with PDF viewers And don't need to be embedded in the
+                ' document.
                 Dim builtInFont As PdfFont = pdf.CreateFont(PdfBuiltInFont.TimesRoman)
                 canvas.Font = builtInFont
+
                 canvas.DrawString(10, 70, "Hello, world!")
 
                 Dim fontFromFile As PdfFont = pdf.CreateFontFromFile("..\Sample data\Fonts\HolidayPi_BT.ttf")
                 canvas.Font = fontFromFile
-                canvas.DrawString(10, 90, "Hello world")
 
-                ' Remove unused glyphs from TrueType fonts to optimize the size of the output.
+                Dim rect As New PdfRectangle(10, 90, 100, 100)
+                Dim textOptions As New PdfTextDrawingOptions(rect) With {
+                    .Underline = True
+                }
+                canvas.DrawText("Hello world", textOptions)
+
+                ' To ensure consistent appearance across devices, the library embeds all fonts
+                ' that are Not built-in. To reduce output file size, you can remove unused glyphs
+                ' from the embedded fonts.
                 systemFont.RemoveUnusedGlyphs()
                 fontFromFile.RemoveUnusedGlyphs()
 
