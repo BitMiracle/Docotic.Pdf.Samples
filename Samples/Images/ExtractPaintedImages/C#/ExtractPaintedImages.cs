@@ -29,7 +29,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 // save the image as painted
                 var options = new PdfPaintedImageSavingOptions
                 {
-                    Format = PdfExtractedImageFormat.Tiff,
+                    Compression = PaintedImageCompressionOptions.CreateTiff(),
                     HorizontalResolution = 300,
                     VerticalResolution = 300
                 };

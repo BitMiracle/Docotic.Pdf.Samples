@@ -25,7 +25,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 ' save the image as painted
                 Dim options = New PdfPaintedImageSavingOptions With
                 {
-                    .Format = PdfExtractedImageFormat.Tiff,
+                    .Compression = PaintedImageCompressionOptions.CreateTiff(),
                     .HorizontalResolution = 300,
                     .VerticalResolution = 300
                 }
