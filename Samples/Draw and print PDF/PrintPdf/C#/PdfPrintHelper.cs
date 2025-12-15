@@ -51,7 +51,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             var openPrintDialog = new ToolStripButton
             {
                 // reuse the image of the default print button
-                Image = ((ToolStrip)previewDialog.Controls[1]).ImageList.Images[0],
+                Image = ((ToolStrip)previewDialog.Controls[1]).ImageList!.Images[0],
                 DisplayStyle = ToolStripItemDisplayStyle.Image
             };
 
