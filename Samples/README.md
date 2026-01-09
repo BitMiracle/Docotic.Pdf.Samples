@@ -208,6 +208,8 @@
 
 [Convert HTML and put it over existing PDF content](/Samples/HtmlToPdf/PutHtmlOverPdf)
 
+[Convert ASPX to PDF](/Samples/HtmlToPdf/ConvertAspxToPdf)
+
 # Images
 [Add and draw images](/Samples/Images/AddAndDrawImage)
 

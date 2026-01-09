@@ -46,3 +46,7 @@ This sample shows how to specify header and footer templates when converting HTM
 [Convert HTML and put it over existing PDF content](/Samples/HtmlToPdf/PutHtmlOverPdf)
 
 This sample shows how to convert HTML and put it over existing PDF content.
+
+[Convert ASPX to PDF](/Samples/HtmlToPdf/ConvertAspxToPdf)
+
+How to generate a PDF from an ASPX page in an ASP.NET Web Forms application.
