@@ -1,0 +1,77 @@
+﻿body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #eef1f5;
+    margin: 0;
+    padding: 40px;
+}
+
+.invoice-wrapper {
+    max-width: 760px;
+    margin: auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 6px 28px rgba(0,0,0,0.08);
+}
+
+.invoice-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+    .invoice-header h2 {
+        margin: 0;
+        font-size: 28px;
+        font-weight: 600;
+        color: #2d2d2d;
+    }
+
+.invoice-meta {
+    text-align: right;
+    color: #666;
+    font-size: 14px;
+}
+
+.customer-box {
+    background: #f4f7ff;
+    border-left: 5px solid #4a6cf7;
+    padding: 15px 20px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+    font-size: 16px;
+}
+
+.invoice-grid {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+    .invoice-grid th {
+        background: #4a6cf7;
+        color: #fff;
+        padding: 12px;
+        text-align: left;
+        font-weight: 500;
+    }
+
+    .invoice-grid td {
+        padding: 12px;
+        border-bottom: 1px solid #e6e6e6;
+    }
+
+    .invoice-grid tr:nth-child(even) {
+        background: #f9fbff;
+    }
+
+.total-line {
+    text-align: right;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 2px solid #e6e6e6;
+}
