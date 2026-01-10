@@ -25,6 +25,14 @@ namespace ConvertAspxToPdf
         {
             if (GeneratePdf)
             {
+                // When generating the PDF version of the invoice, the code calls the default
+                // implementation of the Render method, providing its own instance of the
+                // HtmlTextWriter class.
+
+                // The Render method produces the HTML for the invoice. When it finishes, the
+                // CreatePdfResponse method converts that HTML into a PDF and updates the response
+                // so it delivers the PDF instead of the HTML.
+
                 var sw = new StringWriter();
                 var htmlWriter = new HtmlTextWriter(sw);
 
@@ -32,7 +40,6 @@ namespace ConvertAspxToPdf
 
                 string html = sw.ToString();
                 CreatePdfResponse(html, "invoice.pdf");
-                writer.Write(html);
             }
             else
             {
@@ -69,6 +76,9 @@ namespace ConvertAspxToPdf
 
                 Response.Clear();
                 Response.ContentType = "application/pdf";
+
+                // To force the browser to start downloading the PDF, change `inline` to
+                // `attachment`
                 Response.AddHeader("Content-Disposition", $"inline; filename={outputName}");
 
                 pdfData.Position = 0;
@@ -85,11 +95,19 @@ namespace ConvertAspxToPdf
             var siteBase = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
             Task.Run(async () =>
             {
+                // The application usually doesn't have write permissions for the current working
+                // folder. As a result, the converter won't be able to download Google Chrome
+                // there. Let's use the temp folder as the location for the browser instead.
                 var engineOptions = new HtmlEngineOptions() { Path = Path.GetTempPath() };
+
                 using (var converter = await HtmlConverter.CreateAsync(engineOptions))
                 {
                     var conversionOptions = new HtmlConversionOptions();
+
+                    // Without the base URL, all relative paths in the HTML will break. As a
+                    // result, images, CSS styles, and other resources won't appear in the PDF.
                     conversionOptions.Load.BaseUri = new Uri(siteBase);
+
                     using (var pdf = await converter.CreatePdfFromStringAsync(html, conversionOptions))
                     {
                         pdf.Save(ms);
