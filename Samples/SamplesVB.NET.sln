@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.2.32526.322
+# Visual Studio Version 18
+VisualStudioVersion = 18.1.11312.151 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{BDF28C67-3D00-4DB7-85CF-B78B1A232008}"
 EndProject
@@ -386,8 +386,6 @@ EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AddLtvInfoToSignature", "Digital signatures\AddLtvInfoToSignature\VB.NET\AddLtvInfoToSignature.vbproj", "{01930C79-8585-4F61-94FA-B60F29C5790E}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CreatePortfolio", "Attachments\CreatePortfolio\VB.NET\CreatePortfolio.vbproj", "{3F842AE1-0A28-44A1-80A1-357587D3F78A}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ConvertAspxToPdf", "HtmlToPdf\ConvertAspxToPdf\VB.NET\ConvertAspxToPdf.vbproj", "{6FA68290-5142-43D6-8404-02C126EEBCCE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1087,10 +1085,6 @@ Global
 		{3F842AE1-0A28-44A1-80A1-357587D3F78A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F842AE1-0A28-44A1-80A1-357587D3F78A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F842AE1-0A28-44A1-80A1-357587D3F78A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6FA68290-5142-43D6-8404-02C126EEBCCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6FA68290-5142-43D6-8404-02C126EEBCCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6FA68290-5142-43D6-8404-02C126EEBCCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6FA68290-5142-43D6-8404-02C126EEBCCE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1269,7 +1263,6 @@ Global
 		{6FAA2EB4-B92B-4B76-B5CB-9DBF9F585251} = {6D0505BD-B25A-4219-A5EA-0F5E30DAC7F9}
 		{01930C79-8585-4F61-94FA-B60F29C5790E} = {6D0505BD-B25A-4219-A5EA-0F5E30DAC7F9}
 		{3F842AE1-0A28-44A1-80A1-357587D3F78A} = {C133FDBE-D10F-4AA5-B6DF-605360B44322}
-		{6FA68290-5142-43D6-8404-02C126EEBCCE} = {FBA7A940-CAD1-473C-BCAC-526C122DFA2F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {50A18C19-4AC0-4BF0-9AA5-7C45E6C1E9A6}

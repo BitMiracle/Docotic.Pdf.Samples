@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.1.11312.151 d18.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ConvertAspxToPdf", "ConvertAspxToPdf.vbproj", "{6FA68290-5142-43D6-8404-02C126EEBCCE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6FA68290-5142-43D6-8404-02C126EEBCCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FA68290-5142-43D6-8404-02C126EEBCCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FA68290-5142-43D6-8404-02C126EEBCCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FA68290-5142-43D6-8404-02C126EEBCCE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {88DEEEB1-7F37-433A-8854-B9D24B8A1C86}
+	EndGlobalSection
+EndGlobal
