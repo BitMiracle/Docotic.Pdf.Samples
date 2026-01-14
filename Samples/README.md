@@ -210,6 +210,8 @@
 
 [Convert ASPX to PDF](/Samples/HtmlToPdf/ConvertAspxToPdf)
 
+[Convert XML to PDF using XSLT](/Samples/HtmlToPdf/XmlToPdfUsingXslt)
+
 # Images
 [Add and draw images](/Samples/Images/AddAndDrawImage)
 

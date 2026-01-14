@@ -50,3 +50,7 @@ This sample shows how to convert HTML and put it over existing PDF content.
 [Convert ASPX to PDF](/Samples/HtmlToPdf/ConvertAspxToPdf)
 
 How to generate a PDF from an ASPX page in an ASP.NET Web Forms application.
+
+[Convert XML to PDF using XSLT](/Samples/HtmlToPdf/XmlToPdfUsingXslt)
+
+How to transform XML to PDF by using XSLT to generate HTML as an intermediate step.

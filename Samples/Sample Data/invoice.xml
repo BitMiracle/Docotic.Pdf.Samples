@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Invoice xmlns="http://example.com/invoice" version="1.0">
+
+  <Header>
+    <InvoiceNumber>INV-2026-00123</InvoiceNumber>
+    <InvoiceDate>2026-01-14</InvoiceDate>
+    <DueDate>2026-02-14</DueDate>
+    <Currency>USD</Currency>
+  </Header>
+
+  <Seller>
+    <Name>Acme Corporation</Name>
+    <Address>
+      <Street>123 Industrial Way</Street>
+      <City>Seattle</City>
+      <State>WA</State>
+      <PostalCode>98101</PostalCode>
+      <Country>US</Country>
+    </Address>
+    <TaxID>98-7654321</TaxID>
+  </Seller>
+
+  <Buyer>
+    <Name>Starlight Dynamics</Name>
+    <Address>
+      <Street>42 Nebula Parkway</Street>
+      <City>Orion City</City>
+      <State>CA</State>
+      <PostalCode>90210</PostalCode>
+      <Country>US</Country>
+    </Address>
+    <TaxID>00-1234567</TaxID>
+  </Buyer>
+
+  <Items>
+    <Item>
+      <Description>Orbital Navigation Module</Description>
+      <Quantity>1</Quantity>
+      <UnitPrice>125000.00</UnitPrice>
+      <Total>125000.00</Total>
+    </Item>
+
+    <Item>
+      <Description>Lunar Surface Sampling Kit</Description>
+      <Quantity>3</Quantity>
+      <UnitPrice>4800.00</UnitPrice>
+      <Total>14400.00</Total>
+    </Item>
+
+    <Item>
+      <Description>Deep‑Space Communication Antenna</Description>
+      <Quantity>2</Quantity>
+      <UnitPrice>32000.00</UnitPrice>
+      <Total>64000.00</Total>
+    </Item>
+
+    <Item>
+      <Description>Micro‑Thruster Propulsion Unit</Description>
+      <Quantity>4</Quantity>
+      <UnitPrice>8900.00</UnitPrice>
+      <Total>35600.00</Total>
+    </Item>
+
+    <Item>
+      <Description>Extravehicular Activity Suit (EVA)</Description>
+      <Quantity>1</Quantity>
+      <UnitPrice>210000.00</UnitPrice>
+      <Total>210000.00</Total>
+    </Item>
+  </Items>
+
+  <Summary>
+    <Subtotal>449000.00</Subtotal>
+    <Tax rate="0.20">89800.00</Tax>
+    <TotalDue>538800.00</TotalDue>
+  </Summary>
+
+  <Notes>
+    Thank you for your business. Payment is due within 30 days.
+  </Notes>
+
+</Invoice>

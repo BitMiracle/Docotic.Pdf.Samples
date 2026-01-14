@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.1.11312.151 d18.0
+VisualStudioVersion = 18.1.11312.151
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{AB247740-0ED8-40BF-9532-455B0FEFE917}"
 EndProject
@@ -388,6 +388,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddLtvInfoToSignature", "Digital signatures\AddLtvInfoToSignature\C#\AddLtvInfoToSignature.csproj", "{950E8529-D6BB-49FE-A25B-E784BBF288C7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreatePortfolio", "Attachments\CreatePortfolio\C#\CreatePortfolio.csproj", "{0F6FD427-42E2-47E5-A6C1-EBDFB04979FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlToPdfUsingXslt", "HtmlToPdf\XmlToPdfUsingXslt\C#\XmlToPdfUsingXslt\XmlToPdfUsingXslt.csproj", "{0AF1AC91-2D2D-461D-8077-1AE71207E69B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1091,6 +1093,10 @@ Global
 		{0F6FD427-42E2-47E5-A6C1-EBDFB04979FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F6FD427-42E2-47E5-A6C1-EBDFB04979FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F6FD427-42E2-47E5-A6C1-EBDFB04979FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AF1AC91-2D2D-461D-8077-1AE71207E69B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AF1AC91-2D2D-461D-8077-1AE71207E69B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AF1AC91-2D2D-461D-8077-1AE71207E69B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AF1AC91-2D2D-461D-8077-1AE71207E69B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1270,6 +1276,7 @@ Global
 		{5A160525-0DBE-4A95-9299-6F9DF452AF08} = {80D726EA-AAE5-4744-BAEE-6F6C8A01E493}
 		{950E8529-D6BB-49FE-A25B-E784BBF288C7} = {80D726EA-AAE5-4744-BAEE-6F6C8A01E493}
 		{0F6FD427-42E2-47E5-A6C1-EBDFB04979FE} = {69B7FDE5-62C2-4DDF-9866-F07FAA33FC87}
+		{0AF1AC91-2D2D-461D-8077-1AE71207E69B} = {89D4F6D4-9E07-4ED4-9CA9-159B8E8B8250}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61DC7F3F-A5C8-48BD-845F-83DE6BD2527B}
