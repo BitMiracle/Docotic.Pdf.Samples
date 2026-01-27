@@ -11,6 +11,7 @@ This sample code uses free [Docotic.Pdf.HtmlToPdf add-on](https://www.nuget.org/
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
+* [HTML to PDF for .NET](https://bitmiracle.com/pdf-library/html-pdf/)
 * [Convert HTML to PDF in C# and VB.NET](https://bitmiracle.com/pdf-library/html-pdf/convert)
 * [HTML to PDF conversion in console app](/Samples/HtmlToPdf/HtmlToPdfConsole) sample
 * [HTML to PDF conversion in WPF app](/Samples/HtmlToPdf/HtmlToPdfWpf) sample
