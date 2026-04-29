@@ -1,8 +1,9 @@
 Imports BitMiracle.Docotic
 Imports BitMiracle.Docotic.Pdf
+Imports BitMiracle.Docotic.Pdf.PdfA
 
 Namespace BitMiracle.Docotic.Pdf.Samples
-    Public NotInheritable Class PDFA
+    Public NotInheritable Class CreatePdfA
         Public Shared Sub Main()
             ' NOTE:
             ' Without a license, the library won't allow you to create or read PDF documents.
@@ -11,11 +12,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             LicenseManager.AddLicenseData("PUT-LICENSE-HERE")
 
-            Dim pathToFile As String = "PDFA.pdf"
+            Dim pathToFile As String = "CreatePdfA.pdf"
 
             Using pdf As New PdfDocument()
-                Dim saveOptions As New PdfSaveOptions With {.ProducePdfA = True}
-                pdf.Save(pathToFile, saveOptions)
+                pdf.Pages(0).Canvas.DrawString("Hello PDF/A")
+
+                pdf.SaveAsPdfa(pathToFile, PdfaConformanceLevel.Pdfa1A)
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")

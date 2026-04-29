@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
 
+using BitMiracle.Docotic.Pdf.PdfA;
+
 namespace BitMiracle.Docotic.Pdf.Samples
 {
-    public static class PDFA
+    public static class CreatePdfA
     {
         public static void Main()
         {
@@ -14,12 +16,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             LicenseManager.AddLicenseData("PUT-LICENSE-HERE");
 
-            string pathToFile = "PDFA.pdf";
+            string pathToFile = "CreatePdfA.pdf";
 
             using (var pdf = new PdfDocument())
             {
-                var saveOptions = new PdfSaveOptions { ProducePdfA = true };
-                pdf.Save(pathToFile, saveOptions);
+                pdf.Pages[0].Canvas.DrawString("Hello PDF/A");
+                
+                pdf.SaveAsPdfa(pathToFile, PdfaConformanceLevel.Pdfa1A);
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");

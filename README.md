@@ -35,6 +35,8 @@ Contains Docotic.Pdf sample code.
 
 [Pages and Navigation](/Samples/Pages%20and%20Navigation)
 
+[PDF/A](/Samples/PdfA)
+
 [Security](/Samples/Security)
 
 [Text](/Samples/Text)
@@ -42,7 +44,7 @@ Contains Docotic.Pdf sample code.
 [XObjects, watermarks and backgrounds](/Samples/XObjects%2C%20watermarks%20and%20backgrounds)
 
 # Docotic.Pdf library
-Docotic.Pdf library is the PDF library for .NET 8, .NET 7, .NET 6, .NET 5, .NET Standard / .NET Core, and .NET 4.x frameworks.
+Docotic.Pdf library is the PDF library for .NET 10 - .NET 5, .NET Standard / .NET Core, and .NET 4.x frameworks.
 
 Docotic.Pdf comes with [free](https://bitmiracle.com/pdf-library/licenses/free) and [paid](https://bitmiracle.com/pdf-library/licenses/) licenses.
 
@@ -55,6 +57,7 @@ https://www.nuget.org/packages/BitMiracle.Docotic.Pdf/
 There are free add-ons to the library:
 * HTML to PDF add-on https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.HtmlToPdf/
 * Layout add-on https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Layout/
+* PDF/A add-on https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.PdfA/
 * Logging add-on https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Logging/
 * Gdi add-on https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Gdi/
 

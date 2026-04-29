@@ -50,7 +50,3 @@ This sample shows how to append an existing PDF document to the end of your curr
 [Open an existing PDF document](/Samples/General%20operations/OpenDocument)
 
 This sample shows how to load an existing PDF document using PdfDocument.Open method.
-
-[Create PDF/A compatible document](/Samples/General%20operations/PDFA)
-
-This sample shows how to create PDF/A compatible documents using Docotic.Pdf library.

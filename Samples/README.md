@@ -158,8 +158,6 @@
 
 [Open an existing PDF document](/Samples/General%20operations/OpenDocument)
 
-[Create PDF/A compatible document](/Samples/General%20operations/PDFA)
-
 # Graphics
 [Blend modes](/Samples/Graphics/BlendModes)
 
@@ -317,6 +315,9 @@
 [Swap pages](/Samples/Pages%20and%20Navigation/SwapPages)
 
 [Extract text from link target](/Samples/Pages%20and%20Navigation/TextFromLink)
+
+# PDF/A
+[Create PDF/A-compliant documents](/Samples/PdfA/CreatePdfA)
 
 # Security
 [Open PDF document encrypted with a certificate](/Samples/Security/OpenCertificateProtectedDocument)
