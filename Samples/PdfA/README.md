@@ -10,3 +10,7 @@ This sample shows how to create PDF/A-compliant documents using Docotic.Pdf libr
 [Convert PDF to PDF/A](/Samples/PdfA/ConvertPdfToPdfA)
 
 This sample demonstrates how to convert PDF documents to PDF/A-compliant files.
+
+[Check if a PDF is marked as PDF/A-compliant](/Samples/PdfA/ReadPdfaConformance)
+
+This sample shows how to read the declared PDF/A conformance level of a PDF document.

@@ -136,8 +136,6 @@
 # General operations
 [Automate testing of PDF processing](/Samples/General%20operations/AutomaticTesting)
 
-[Check if PDF document is a PDF/A compliant one](/Samples/General%20operations/CheckConformanceToPdfA)
-
 [Check if PDF document is password protected](/Samples/General%20operations/CheckIfPasswordProtected)
 
 [Check that two PDF documents are equal](/Samples/General%20operations/CompareDocuments)
@@ -320,6 +318,8 @@
 [Create PDF/A-compliant documents](/Samples/PdfA/CreatePdfA)
 
 [Convert PDF to PDF/A](/Samples/PdfA/ConvertPdfToPdfA)
+
+[Check if a PDF is marked as PDF/A-compliant](/Samples/PdfA/ReadPdfaConformance)
 
 # Security
 [Open PDF document encrypted with a certificate](/Samples/Security/OpenCertificateProtectedDocument)

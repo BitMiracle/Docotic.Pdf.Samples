@@ -1,8 +1,9 @@
 using System;
+using BitMiracle.Docotic.Pdf.PdfA;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
-    public static class CheckConformanceToPdfA
+    public static class ReadPdfaConformance
     {
         public static void Main()
         {
@@ -14,8 +15,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
             LicenseManager.AddLicenseData("PUT-LICENSE-HERE");
 
             using var pdf = new PdfDocument(@"..\Sample Data\PDF-A.pdf");
-            PdfaConformance level = pdf.GetPdfaConformance();
-            Console.WriteLine("PDF/A conformance level: " + level);
+            PdfaConformanceLevel? level = pdf.ReadPdfaConformance();
+            if (level.HasValue)
+                Console.WriteLine("PDF/A conformance level: " + level);
+            else
+                Console.WriteLine("No PDF/A conformance level");
         }
     }
 }

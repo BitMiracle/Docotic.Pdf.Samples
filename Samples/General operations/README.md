@@ -7,10 +7,6 @@ Don't miss [all other samples](/Samples).
 
 This sample shows how to automatically test PDF processing in .NET.
 
-[Check if PDF document is a PDF/A compliant one](/Samples/General%20operations/CheckConformanceToPdfA)
-
-This sample shows how to check if PDF document is a PDF/A compliant one.
-
 [Check if PDF document is password protected](/Samples/General%20operations/CheckIfPasswordProtected)
 
 This sample shows how to check if an existing PDF document is password protected.
