@@ -319,6 +319,8 @@
 # PDF/A
 [Create PDF/A-compliant documents](/Samples/PdfA/CreatePdfA)
 
+[Convert PDF to PDF/A](/Samples/PdfA/ConvertPdfToPdfA)
+
 # Security
 [Open PDF document encrypted with a certificate](/Samples/Security/OpenCertificateProtectedDocument)
 
