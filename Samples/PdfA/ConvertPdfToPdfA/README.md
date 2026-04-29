@@ -4,11 +4,11 @@ This sample demonstrates how to convert PDF documents to PDF/A-compliant files u
 
 ## Description
 
-Use the [SaveAsPdfa](https://api.docotic.com/pdfa/pdfdocumentpdfaextensions-saveaspdfa) extension methods to save
-a PdfDocument as a PDF/A-compliant file. This sample code converts an existing PDF document to a PDF/A-4,
-but any conformance level is supported.
+The free [PDF/A add-on](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.PdfA/) provides
+[SaveAsPdfa](https://api.docotic.com/pdfa/pdfdocumentpdfaextensions-saveaspdfa) extension methods for `PdfDocument`.
+These methods resolve PDF/A compatibility issues in the original document.
 
-This sample code uses free [PDF/A add-on](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.PdfA/) for the Docotic.Pdf library.
+This sample code converts an existing PDF document to PDF/A-4, but any conformance level is supported.
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
