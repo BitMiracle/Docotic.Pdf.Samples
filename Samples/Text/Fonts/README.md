@@ -6,9 +6,9 @@ The code uses Canvas API that can work with fonts in new and existing PDF docume
 
 ## Description
 
-The library provides several ways to add fonts to PDF documents. You can add a font from a file using one of the [PdfDocument.AddFontFromFile](https://api.docotic.com/pdfdocument-addfontfromfile) methods. This method supports TrueType fonts, TrueType font collections, and Type1 fonts.
+The library provides several ways to add fonts to PDF documents. You can add a font from a file using one of the [PdfDocument.CreateFontFromFile](https://api.docotic.com/pdfdocument-createfontfromfile) methods. This method supports TrueType fonts, TrueType font collections, and Type1 fonts.
 
-[PdfDocument.AddFont](https://api.docotic.com/pdfdocument-addfont) methods can add any font installed on your system, a one of 14 built-in fonts or a font created from a `System.Drawing.Font` object. The names of 14 built-in PDF fonts are in the [PdfBuiltInFont](https://api.docotic.com/pdfbuiltinfont) enumeration.
+[PdfDocument.CreateFont](https://api.docotic.com/pdfdocument-createfont) methods can add any font installed on your system, a one of 14 built-in fonts or a font created from a `System.Drawing.Font` object. The names of 14 built-in PDF fonts are in the [PdfBuiltInFont](https://api.docotic.com/pdfbuiltinfont) enumeration.
 
 You can specify a font to use for a canvas text by using the [PdfCanvas.Font](https://api.docotic.com/pdfcanvas-font) property. The [PdfCanvas.FontSize](https://api.docotic.com/pdfcanvas-fontsize) property specifies the size of the font.
 
