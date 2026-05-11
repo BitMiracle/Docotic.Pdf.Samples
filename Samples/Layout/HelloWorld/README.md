@@ -1,14 +1,15 @@
 # Hello, world! with Layout API
-This sample shows in action common building blocks provided by Layout API. 
+This sample demonstrates common building blocks provided by the Layout API.  
+Refer to the [.NET PDF generator](https://bitmiracle.com/pdf-library/layout/) page for an introduction to the API.
 
-The code shows how to use:
+The code illustrates how to use:
 * Fonts and colors
 * Header and footer
 * Images
 * Lists
 * Tables
 
-This sample code uses free [Docotic.Pdf.Layout add-on](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Layout/) for Docotic.Pdf library.
+This sample code uses the free [Docotic.Pdf.Layout add-on](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Layout/) for the Docotic.Pdf library.
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/)
