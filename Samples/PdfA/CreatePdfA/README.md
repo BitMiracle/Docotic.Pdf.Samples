@@ -4,8 +4,8 @@ This sample shows how to create a PDF/A document using [Docotic.Pdf library](htt
 
 ## Description
 
-The free [PDF/A add-on](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.PdfA/) provides
-[SaveAsPdfa](https://api.docotic.com/pdfa/pdfdocumentpdfaextensions-saveaspdfa) extension methods for `PdfDocument`.
+The free [Conformance add-on](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Conformance/) provides
+[SaveAsPdfa](https://api.docotic.com/conformance/pdfdocumentconformanceextensions-saveaspdfa) extension methods for `PdfDocument`.
 You can use them to produce documents in the following PDF/A conformance levels:
 * PDF/A-1a, PDF/A-1b
 * PDF/A-2a, PDF/A-2b, PDF/A-2u

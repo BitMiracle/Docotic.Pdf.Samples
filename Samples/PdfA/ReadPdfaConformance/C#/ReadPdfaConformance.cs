@@ -1,5 +1,5 @@
 using System;
-using BitMiracle.Docotic.Pdf.PdfA;
+using BitMiracle.Docotic.Pdf.Conformance;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {

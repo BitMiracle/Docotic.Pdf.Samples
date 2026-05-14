@@ -1,6 +1,6 @@
 Imports BitMiracle.Docotic
 Imports BitMiracle.Docotic.Pdf
-Imports BitMiracle.Docotic.Pdf.PdfA
+Imports BitMiracle.Docotic.Pdf.Conformance
 
 Namespace BitMiracle.Docotic.Pdf.Samples
     Public NotInheritable Class ReadPdfaConformance
