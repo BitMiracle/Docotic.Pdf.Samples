@@ -5,7 +5,7 @@ This sample shows how to fill forms in existing PDF documents using [Docotic.Pdf
 
 To change form fields in a PDF, open the document and enumerate its controls using the [PdfDocument.GetControls](https://api.docotic.com/pdfdocument-getcontrols) method. Depending on the control [Name](https://api.docotic.com/pdfcontrol-name), provide the value.
 
-If you only need to change a field or two, use the [PdfDocument.GetControl](https://api.docotic.com/pdfdocument-getcontrol) method to find the controls by their full or partial names.
+If you only need to change a field or two, use the [PdfDocument.TryGetControl](https://api.docotic.com/pdfdocument-trygetcontrol) method to find the controls by their full or partial names.
 
 You can also import a file in the FDF format with all field values and fill the form in one take.
 

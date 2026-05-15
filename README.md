@@ -51,7 +51,7 @@ Docotic.Pdf comes with [free](https://bitmiracle.com/pdf-library/licenses/free) 
 Get a free time limited license on [the library page](https://bitmiracle.com/pdf-library/) to try the library without [evaluation mode restrictions](https://bitmiracle.com/pdf-library/trial-restrictions).
 
 The latest version of the library is available on the download page and NuGet  
-https://bitmiracle.com/pdf-library/download
+https://bitmiracle.com/pdf-library/download  
 https://www.nuget.org/packages/BitMiracle.Docotic.Pdf/
 
 There are free add-ons to the library:

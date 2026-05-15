@@ -8,7 +8,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             LicenseManager.AddLicenseData("PUT-LICENSE-HERE")
 
-            HelloWorld7.CreatePdf()
+            HelloWorld.CreatePdf()
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")
             Process.Start(New ProcessStartInfo("hello.pdf") With {.UseShellExecute = True})

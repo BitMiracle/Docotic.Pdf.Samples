@@ -2,7 +2,7 @@
 
 This sample shows how to add common header and footer to a PDF document using Canvas API provided by [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
-If you create the PDF from scratch, consider using the API for generating PDFs. It might be simpler to [add header and footer using the Layout API](https://bitmiracle.com/pdf-library/layout/getting-started#header-footer).
+If you create the PDF from scratch, consider using the API for generating PDFs. It might be simpler to [add header and footer using the Layout API](https://bitmiracle.com/pdf-library/layout/#header-footer).
 
 ## Description
 

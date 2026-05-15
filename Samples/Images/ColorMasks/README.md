@@ -4,7 +4,7 @@ This sample shows how to use PDF images with color-key masks. The code uses [Doc
 
 ## Description
 
-When adding images, you can specify the color of pixels you would like transparent. Use overloads of the [PdfDocument.AddImage](https://api.docotic.com/pdfdocument-addimage) method with an argument of `PdfColor` type for that.
+When adding images, you can make certain pixels of the created image transparent. Use the [PdfImage.MakeTransparent](https://api.docotic.com/pdfimage-maketransparent) method to specify the color of pixels you would like transparent.
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

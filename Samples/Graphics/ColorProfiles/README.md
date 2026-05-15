@@ -4,7 +4,7 @@ This sample shows how to load an ICC profile in a PDF document and then use this
 
 ## Description
 
-Besides device-dependent colors, [Docotic.Pdf library](https://bitmiracle.com/pdf-library/) can use colors with associated color profiles. To use color profiles, first add a color profile to your document using one of the [PdfDocument.AddColorProfile](https://api.docotic.com/pdfdocument-addcolorprofile) methods and then use the returned [PdfColorProfile](https://api.docotic.com/pdfcolorprofile) object as a parameter when creating a color.
+Besides device-dependent colors, [Docotic.Pdf library](https://bitmiracle.com/pdf-library/) can use colors with associated color profiles. To use color profiles, first add a color profile to your document using one of the [PdfDocument.CreateColorProfile](https://api.docotic.com/pdfdocument-createcolorprofile) methods and then use the returned [PdfColorProfile](https://api.docotic.com/pdfcolorprofile) object as a parameter when creating a color.
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

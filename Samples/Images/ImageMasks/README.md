@@ -4,7 +4,7 @@ This sample shows how to use mask images to make certain parts of PDF images tra
 
 ## Description
 
-You can add a transparent image to a PDF document using one of the [PdfDocument.AddImage](https://api.docotic.com/pdfdocument-addimage) methods that accept a mask image as a parameter. The mask image must have the same width and height as the image to be made transparent. Pixels of the mask image must use 1 bit per pixel.
+You can add a transparent image to a PDF document. To set a stencil mask for the image, use the [PdfImage.Mask](https://api.docotic.com/pdfimage-mask) property. The mask image must have the same width and height as the image to be made transparent. Pixels of the mask image must use 1 bit per pixel.
 
 To produce the output, PDF viewers will use the image and its mask image. For each position in the output, viewers will do this:
 * Get the mask image pixel at the current position.
