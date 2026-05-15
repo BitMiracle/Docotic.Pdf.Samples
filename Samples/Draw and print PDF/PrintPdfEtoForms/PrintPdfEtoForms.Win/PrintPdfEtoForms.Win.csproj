@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFrameworks>net6.0-windows</TargetFrameworks>
+    <TargetFrameworks>net8.0-windows</TargetFrameworks>
     <Nullable>enable</Nullable>
     <Company>Bit Miracle</Company>
     <Authors>Bit Miracle</Authors>
@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Eto.Platform.Windows" Version="2.8.2" />
+    <PackageReference Include="Eto.Platform.Windows" Version="2.11.0" />
   </ItemGroup>
 
 </Project>

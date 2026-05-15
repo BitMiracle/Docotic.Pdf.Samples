@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net6.0</TargetFrameworks>
+    <TargetFrameworks>net8.0</TargetFrameworks>
     <Nullable>enable</Nullable>
     <Company>Bit Miracle</Company>
     <Authors>Bit Miracle</Authors>
@@ -8,6 +8,6 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="BitMiracle.Docotic.Pdf" Version="9.8.18634" />
-    <PackageReference Include="Eto.Forms" Version="2.8.2" />
+    <PackageReference Include="Eto.Forms" Version="2.11.0" />
   </ItemGroup>
 </Project>

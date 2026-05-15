@@ -2,7 +2,7 @@
 	
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFrameworks>net6.0</TargetFrameworks>
+    <TargetFrameworks>net8.0</TargetFrameworks>
     <Nullable>enable</Nullable>
     <RuntimeIdentifiers>osx-x64</RuntimeIdentifiers>
     <Authors>Bit Miracle</Authors>
@@ -11,7 +11,7 @@
 	
   <ItemGroup>
     <ProjectReference Include="..\PrintPdfEtoForms\PrintPdfEtoForms.csproj" />
-    <PackageReference Include="Eto.Platform.Mac64" Version="2.8.2" />
+    <PackageReference Include="Eto.Platform.Mac64" Version="2.11.0" />
 
     <Content Include="Icon.icns" />
   </ItemGroup>
