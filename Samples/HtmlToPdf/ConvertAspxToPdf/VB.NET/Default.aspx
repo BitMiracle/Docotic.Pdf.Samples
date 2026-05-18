@@ -17,7 +17,7 @@
         <br /><br />
         <asp:Button ID="btnGenerateInvoice" runat="server" Text="Generate PDF Invoice" OnClick="BtnGenerateInvoice_Click" />
         <br /><br />
-        <asp:Button ID="btnPreviewInvoice" runat="server" Text="Peview Invoice" OnClick="BtnPreviewInvoice_Click" />
+        <asp:Button ID="btnPreviewInvoice" runat="server" Text="Preview Invoice" OnClick="BtnPreviewInvoice_Click" />
     </form>
 </body>
 </html>
