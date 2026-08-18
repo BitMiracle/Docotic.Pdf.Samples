@@ -12,5 +12,6 @@ This sample code uses free [Conformance add-on](https://www.nuget.org/packages/B
 ## See also
 
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
-* [Convert PDF to PDF/A in C# and VB.NET](/Samples/PdfA/ConvertPdfToPdfA)
+* [What is PDF/A?](https://bitmiracle.com/blog/what-is-pdfa)
+* [How to convert PDF documents to PDF/A](https://bitmiracle.com/pdf-library/conformance/pdf-to-pdfa)
 * [Read PDF/X standard conformance level](https://api.docotic.com/conformance/pdfdocumentconformanceextensions-readpdfxconformance)

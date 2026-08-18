@@ -14,4 +14,6 @@ You can use them to produce documents in the following PDF/A conformance levels:
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
+* [How to convert PDF documents to PDF/A and create PDF/A files](https://bitmiracle.com/pdf-library/conformance/pdf-to-pdfa)
+* [What is PDF/A?](https://bitmiracle.com/blog/what-is-pdfa)
 * [Convert PDF to PDF/A in C# and VB.NET](/Samples/PdfA/ConvertPdfToPdfA)

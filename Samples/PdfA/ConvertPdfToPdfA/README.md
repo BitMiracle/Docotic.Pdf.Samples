@@ -12,4 +12,5 @@ This sample code converts an existing PDF document to PDF/A-4, but any conforman
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
+* [Convert PDF to PDF/A](https://bitmiracle.com/pdf-library/conformance/pdf-to-pdfa)
 * [Create PDF/A-compliant documents in C# and VB.NET](/Samples/PdfA/CreatePdfA)
