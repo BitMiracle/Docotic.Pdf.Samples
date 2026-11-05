@@ -7,6 +7,6 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="BitMiracle.Docotic.Pdf" Version="9.9.19928" />
-    <PackageReference Include="Pkcs11Interop" Version="5.1.2" />
+    <PackageReference Include="Pkcs11Interop" Version="5.3.0" />
   </ItemGroup>
 </Project>
