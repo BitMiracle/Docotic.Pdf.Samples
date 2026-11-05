@@ -6,7 +6,7 @@
     <StartWorkingDirectory>$(SolutionDir)\Output</StartWorkingDirectory>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="9.9.19928" />
+    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="10.0.20629-dev" />
     <PackageReference Include="AWSSDK.KeyManagementService" Version="4.0.101.2" />
   </ItemGroup>
 </Project>
