@@ -5,8 +5,8 @@
     <StartWorkingDirectory>$(SolutionDir)\Output</StartWorkingDirectory>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="9.9.19928" />
-    <PackageReference Include="BitMiracle.Docotic.Pdf.Logging" Version="9.9.19928" />
+    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="10.0.20629-dev" />
+    <PackageReference Include="BitMiracle.Docotic.Pdf.Logging" Version="10.0.20629-dev" />
     <PackageReference Include="NLog" Version="6.2.2" />
     <PackageReference Include="NLog.Extensions.Logging" Version="6.2.2" />
   </ItemGroup>

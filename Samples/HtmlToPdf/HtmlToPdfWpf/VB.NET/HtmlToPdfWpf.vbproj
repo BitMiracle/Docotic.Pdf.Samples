@@ -18,6 +18,6 @@
     <Import Include="System.Windows.Shapes" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="BitMiracle.Docotic.Pdf.HtmlToPdf" Version="9.9.19928" />
+    <PackageReference Include="BitMiracle.Docotic.Pdf.HtmlToPdf" Version="10.0.20629-dev" />
   </ItemGroup>
 </Project>
