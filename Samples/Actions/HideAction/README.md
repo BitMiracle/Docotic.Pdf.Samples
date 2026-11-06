@@ -1,9 +1,9 @@
 # Use Hide actions in PDF documents
-This sample shows how to use Hide actions in PDF documents with [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
+This sample shows how to use Hide actions in PDF documents with the [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
-Hide actions allows you to make some PDF controls hidden or visible.
-Use [PdfDocument.CreateHideAction method](https://api.docotic.com/pdfdocument-createhideaction) to create an instance of [PdfHideAction class](https://api.docotic.com/pdfhideaction).
-Then, use PdfHideAction.AddControl method to add controls that should be hidden or visible when the hide action is activated.
+Hide actions allow to show or hide PDF controls (widgets). Use the [PdfDocument.CreateHideAction method](https://api.docotic.com/pdfdocument-createhideaction) to create a [PdfHideAction instance](https://api.docotic.com/pdfhideaction).
+
+Then, use the `Add` method of the `PdfHideAction.Widgets` collection to specify which controls should be shown or hidden when the action is activated.
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

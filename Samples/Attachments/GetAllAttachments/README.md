@@ -1,13 +1,14 @@
-# List attachments and file annotations names in PDF document
-This sample shows how to list names of all files attached to a PDF document using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
+# List attachments and file annotation names in PDF document
 
-Attached files can be added to collection of document-level attachments or used in file attachment annotations.
+This sample shows how to list the names of all files attached to a PDF document using the [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
-Document level attachments are accessible through [PdfDocument.SharedAttachments property](https://api.docotic.com/pdfdocument-sharedattachments).
+Files can be attached at the document level or embedded in file attachment annotations.
 
-In order to list names of all files used in file attachment annotations, you should loop through all document pages. File attachment annotations are accessible through [PdfPage.Widgets property](https://api.docotic.com/pdfpage-widgets) and have type equal to [PdfFileAttachmentAnnotation](https://api.docotic.com/pdffileattachmentannotation).
+Document-level attachments are accessible through the [PdfDocument.SharedAttachments property](https://api.docotic.com/pdfdocument-sharedattachments).
 
-Note that the same attachment can be used in a file attachment annotation and added to collection of document-level annotations. You can find unique attachments by comparing their file specifications. File specifications can be compared using object.Equals method or simple "==" operator.
+To list the names of files used in file attachment annotations, iterate through all pages of the document. File attachment annotations are accessible through the [PdfPage.Widgets property](https://api.docotic.com/pdfpage-widgets) and have the type [PdfFileAttachmentAnnotation](https://api.docotic.com/pdffileattachmentannotation).
+
+Note that the same file attachment can be used in both a file attachment annotation and the document-level attachments collection. To identify unique attachments, compare their file specifications. You can compare file specifications using the `object.Equals` method or the `==` operator.
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

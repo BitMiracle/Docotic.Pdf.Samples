@@ -1,14 +1,12 @@
 # Remove XObjects from PDF in C# and VB.NET
 
-This sample shows how to remove XObjects, often used for watermarks and backgrounds, from PDF document pages.
+This sample shows how to remove a watermark from PDF pages when the watermark is represented by an XObject.
 
-## Description
+The [Docotic.Pdf library](https://bitmiracle.com/pdf-library/) provides access to a page's XObjects through the [PdfPage.XObjects](https://api.docotic.com/pdfpage-xobjects) property, which returns a `PdfXObjectMap` object.
 
-[Docotic.Pdf library](https://bitmiracle.com/pdf-library/) provides access to the collection of page XObjects through the [PdfPage.XObjects](https://api.docotic.com/pdfpage-xobjects) property. The value of the property is a [PdfList](https://api.docotic.com/pdflist(t)) object. 
+Use the `PdfXObjectMap.Remove` method to remove an individual XObject. To remove all XObjects from a page, use the `PdfXObjectMap.Clear` method.
 
-You can remove any XObject you no longer need using the [PdfList.Remove](https://api.docotic.com/pdflist(t)-remove) or [PdfList.RemoveAt](https://api.docotic.com/pdflist(t)-removeat) method. The [PdfList.Clear](https://api.docotic.com/pdflist(t)-clear) method removes all such objects.
-
-Please note that XObjects are not always watermarks or backgrounds. A PDF file can use such objects for logos and other repeatable items, too.
+Note that XObjects are not necessarily watermarks. They can also represent backgrounds, logos, images, and other reusable content in a PDF document.
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
