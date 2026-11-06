@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace BitMiracle.Docotic.Pdf.Samples
@@ -19,25 +18,25 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (var pdf = new PdfDocument(@"..\Sample Data\links-with-named-destinations.pdf"))
             {
-                // Read existing named views (destinations)
-                foreach (KeyValuePair<string, PdfDocumentView> kvp in pdf.SharedViews)
-                    Console.WriteLine($"{kvp.Key} => {viewToString(kvp.Value, pdf)}");
+                // Read the existing named views (destinations).
+                foreach (var entry in pdf.SharedViews)
+                    Console.WriteLine($"{entry.Name} => {ViewToString(entry.View, pdf)}");
 
-                // Add another named view
+                // Add another named view.
                 const string ViewName = "Test destination name";
                 const int TargetPageIndex = 2;
                 PdfDocumentView view = pdf.CreateView(TargetPageIndex);
                 view.SetZoom(new PdfPoint(0, 300), 0);
                 pdf.SharedViews.Add(ViewName, view);
 
-                // Use the created named view in a go-to action
+                // Use the newly created named view in a go-to action.
                 PdfGoToAction gotoAction = pdf.CreateGoToPageAction(ViewName);
                 PdfActionArea area = pdf.Pages[0].AddActionArea(200, 50, 30, 20, gotoAction);
                 area.Border.Color = new PdfRgbColor(255, 0, 0);
                 area.Border.Width = 2;
 
-                // Add some text to the target position
-                pdf.Pages[TargetPageIndex].Canvas.DrawString(0, 300, "From the new named destination");
+                // Add some text at the target position.
+                pdf.Pages[TargetPageIndex].Canvas.DrawString(0, 300, "You have reached the new named destination");
 
                 pdf.Save(outputName);
             }
@@ -47,12 +46,31 @@ namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(new ProcessStartInfo(outputName) { UseShellExecute = true });
         }
 
-        private static string viewToString(PdfDocumentView view, PdfDocument pdf)
+        private static string ViewToString(PdfDocumentView? view, PdfDocument pdf)
         {
+            if (view is null)
+                return "undefined";
+
             if (view.Page != null)
-                return $"page index {pdf.Pages.IndexOf(view.Page)}";
+                return $"page index {FindPageIndex(pdf, view.Page)}";
 
             return $"page index {view.PageIndex}";
+        }
+
+        private static int FindPageIndex(PdfDocument pdf, PdfPage page)
+        {
+            var pageToFindDictString = page?.Dictionary.ToString();
+            if (pageToFindDictString != null)
+            {
+                for (int i = 0; i < pdf.Pages.Count; i++)
+                {
+                    var pageDictString = pdf.Pages[i].Dictionary.ToString();
+                    if (pageToFindDictString == pageDictString)
+                        return i;
+                }
+            }
+
+            return -1;
         }
     }
 }

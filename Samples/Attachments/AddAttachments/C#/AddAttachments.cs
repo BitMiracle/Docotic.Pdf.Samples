@@ -18,14 +18,16 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (var pdf = new PdfDocument())
             {
-                // add shared attachment to the document
+                // Add a shared attachment to the document.
                 PdfFileSpecification ammerland = pdf.CreateFileAttachment(@"..\Sample Data\ammerland.jpg");
-                pdf.SharedAttachments.Add(ammerland);
+                pdf.SharedAttachments.Add(ammerland.Specification, ammerland);
 
-                // add file attachment annotation to the first page
+                // Add a file attachment annotation to the first page.
                 var bounds = new PdfRectangle(20, 70, 100, 100);
                 PdfFileSpecification jpeg = pdf.CreateFileAttachment(@"..\Sample Data\jpeg.pdf");
                 pdf.Pages[0].AddFileAnnotation(bounds, jpeg);
+
+                pdf.PageMode = PdfPageMode.UseAttachments;
 
                 pdf.Save(pathToFile);
             }

@@ -27,12 +27,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 hideeTextBox.Text = "TextBox";
 
                 PdfHideAction hideAction = pdf.CreateHideAction(true);
-                hideAction.AddControl(hideeButton);
-                hideAction.AddControl(hideeTextBox);
+                hideAction.Widgets.Add(hideeButton);
+                hideAction.Widgets.Add(hideeTextBox);
 
                 PdfHideAction showAction = pdf.CreateHideAction(false);
-                showAction.AddControl(hideeButton);
-                showAction.AddControl(hideeTextBox);
+                showAction.Widgets.Add(hideeButton);
+                showAction.Widgets.Add(hideeTextBox);
 
                 PdfButton showButton = page.AddButton("showBtn", 10, 50, 70, 25);
                 showButton.Text = "Show controls";

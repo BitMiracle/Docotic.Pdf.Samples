@@ -32,6 +32,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             using (var pdf = new PdfDocument())
             {
                 pdf.SharedScripts.Add(
+                    nameof(validationJavascript),
                     pdf.CreateJavaScriptAction(validationJavascript.ToString())
                 );
 

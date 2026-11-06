@@ -20,19 +20,19 @@ namespace BitMiracle.Docotic.Pdf.Samples
             LinkInfo? linkInfo = GetLinks(pdf).FirstOrDefault();
             if (linkInfo == null)
             {
-                Console.WriteLine("Document doesn't contain links!");
+                Console.WriteLine("The document contains no links!");
                 return;
             }
 
             var linkDescription = new StringBuilder();
-            linkDescription.AppendLine("Number of page with the link: " + linkInfo.OwnerPageIndex);
-            linkDescription.AppendLine("Link's index in the page widgets collection: " + linkInfo.OwnerPageWidgetIndex);
-            linkDescription.AppendLine("Link bounds: " + linkInfo.Bounds.ToString());
-            linkDescription.AppendLine("Link points to page # " + pdf.IndexOf(linkInfo.TargetPage));
-            linkDescription.AppendLine("NOTE: All page numbers are zero-based.");
+            linkDescription.AppendLine("Link is at page index: " + linkInfo.OwnerPageIndex);
+            linkDescription.AppendLine("Link index in the page's widgets collection: " + linkInfo.OwnerPageWidgetIndex);
+            linkDescription.AppendLine("Link bounds: " + linkInfo.Bounds);
+            linkDescription.AppendLine("Target page index: " + FindPageIndex(pdf, linkInfo.TargetPage));
+            linkDescription.AppendLine("Note: All page indexes are zero-based.");
 
             linkDescription.AppendLine();
-            linkDescription.AppendLine("Text from link:");
+            linkDescription.AppendLine("Text at the link destination:");
             linkDescription.AppendLine(GetTextFromLink(linkInfo.TargetPage, linkInfo.TopOffset));
 
             Console.WriteLine(linkDescription.ToString());
@@ -40,11 +40,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static IEnumerable<LinkInfo> GetLinks(PdfDocument pdf)
         {
-            for (int i = 0; i < pdf.PageCount; ++i)
+            for (int i = 0; i < pdf.Pages.Count; ++i)
             {
                 PdfPage page = pdf.Pages[i];
                 int widgetIndex = 0;
-                foreach (PdfWidget widget in page.Widgets)
+                foreach (var widget in page.Widgets)
                 {
                     if (widget is PdfActionArea actionArea)
                     {
@@ -53,7 +53,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                             PdfDocumentView? view = linkAction.GetView().View;
                             if (view is not null)
                             {
-                                // let's ignore links which point to an absent page
+                                // Skip links that point to a nonexistent page.
                                 PdfPage? targetPage = view.Page;
                                 if (targetPage is not null)
                                 {
@@ -73,9 +73,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
         {
             var result = new StringBuilder();
 
-            // allow some extra space for the vertical position of a text start
+            // Allow some extra tolerance in the vertical position of the text start.
             const float eps = 5.0f;
-            PdfCollection<PdfTextData> textFromTargetPage = targetPage.Canvas.GetTextData();
+            var textFromTargetPage = targetPage.Canvas.GetTextData();
             foreach (PdfTextData textData in textFromTargetPage)
             {
                 if (textData.Position.Y < targetPage.Height - topOffset - eps)
@@ -85,6 +85,22 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
 
             return result.ToString();
+        }
+
+        private static int FindPageIndex(PdfDocument pdf, PdfPage page)
+        {
+            var pageToFindDictString = page?.Dictionary.ToString();
+            if (pageToFindDictString != null)
+            {
+                for (int i = 0; i < pdf.Pages.Count; i++)
+                {
+                    var pageDictString = pdf.Pages[i].Dictionary.ToString();
+                    if (pageToFindDictString == pageDictString)
+                        return i;
+                }
+            }
+
+            return -1;
         }
 
         private class LinkInfo

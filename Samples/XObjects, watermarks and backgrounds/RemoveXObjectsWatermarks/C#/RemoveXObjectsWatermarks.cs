@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Linq;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -18,10 +19,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (var pdf = new PdfDocument(@"..\Sample Data\DocumentWithWatermark.pdf"))
             {
-                foreach (PdfPage page in pdf.Pages)
+                foreach (var page in pdf.Pages)
                 {
-                    // Remove the first XObject. Here, it's a watermark.
-                    page.XObjects.RemoveAt(0);
+                    if (page == null)
+                        continue;
+
+                    // Remove the first XObject, which is a watermark.
+                    var name = page.XObjects.First().Name;
+                    page.XObjects.Remove(name);
                 }
 
                 pdf.Save(pathToFile);

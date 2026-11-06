@@ -22,6 +22,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 var synchronizeFields = File.ReadAllText("../Sample Data/SynchronizeFields.js");
                 pdf.SharedScripts.Add(
+                    nameof(synchronizeFields),
                     pdf.CreateJavaScriptAction(synchronizeFields)
                 );
 

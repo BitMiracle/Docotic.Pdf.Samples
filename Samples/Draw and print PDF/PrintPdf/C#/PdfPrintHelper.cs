@@ -15,7 +15,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             };
 
             printDialog.PrinterSettings.MinimumPage = 1;
-            printDialog.PrinterSettings.MaximumPage = pdf.PageCount;
+            printDialog.PrinterSettings.MaximumPage = pdf.Pages.Count;
             printDialog.PrinterSettings.FromPage = printDialog.PrinterSettings.MinimumPage;
             printDialog.PrinterSettings.ToPage = printDialog.PrinterSettings.MaximumPage;
 

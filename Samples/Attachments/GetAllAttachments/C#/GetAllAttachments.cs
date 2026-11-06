@@ -17,16 +17,19 @@ namespace BitMiracle.Docotic.Pdf.Samples
             using var pdf = new PdfDocument(@"..\Sample Data\Attachments.pdf");
             var attachmentNames = new StringBuilder();
 
-            // collect names of files attached to the document
-            foreach (PdfFileSpecification spec in pdf.SharedAttachments)
-                attachmentNames.AppendLine(spec.Specification);
+            // Collect the names of files attached to the document.
+            foreach (var entry in pdf.SharedAttachments)
+                attachmentNames.AppendLine(entry.Value?.Specification);
 
-            // collect names of files used in file attachment annotations
-            foreach (PdfPage page in pdf.Pages)
+            // Collect the names of files referenced by file attachment annotations.
+            foreach (var page in pdf.Pages)
             {
-                foreach (PdfWidget widget in page.Widgets)
+                if (page == null)
+                    continue;
+
+                foreach (var widget in page.Widgets)
                 {
-                    if (widget.Type != PdfWidgetType.FileAttachment)
+                    if (widget?.Type != PdfWidgetType.FileAttachment)
                         continue;
 
                     PdfFileAttachmentAnnotation fileAnnot = (PdfFileAttachmentAnnotation)widget;
@@ -34,7 +37,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 }
             }
 
-            Console.WriteLine("Attachments List:");
+            Console.WriteLine("Attachments:");
             Console.WriteLine(attachmentNames.ToString());
         }
     }

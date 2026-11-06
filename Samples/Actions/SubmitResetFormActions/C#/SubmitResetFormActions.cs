@@ -38,20 +38,22 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 PdfSubmitFormAction submitAction = pdf.CreateSubmitFormAction(new Uri("http://bitmiracle.com/login.php"));
                 submitAction.SubmitFormat = PdfSubmitFormat.Html;
                 submitAction.SubmitMethod = PdfSubmitMethod.Get;
-                submitAction.AddControl(textBox);
-                submitAction.AddControl(checkBox);
-                submitAction.AddControl(radioButton);
-                submitAction.AddControl(radioButton2);
                 submitButton.OnMouseDown = submitAction;
+                var controls = submitAction.Controls;
+                controls.Add(textBox);
+                controls.Add(checkBox);
+                controls.Add(radioButton);
+                controls.Add(radioButton2);
 
                 PdfButton resetButton = page.AddButton(65, 130, 45, 20);
                 resetButton.Text = "Reset";
                 PdfResetFormAction resetAction = pdf.CreateResetFormAction();
-                resetAction.AddControl(textBox);
-                resetAction.AddControl(checkBox);
-                resetAction.AddControl(radioButton);
-                resetAction.AddControl(radioButton2);
                 resetButton.OnMouseDown = resetAction;
+                controls = resetAction.Controls;
+                controls.Add(textBox);
+                controls.Add(checkBox);
+                controls.Add(radioButton);
+                controls.Add(radioButton2);
 
                 pdf.Save(pathToFile);
             }

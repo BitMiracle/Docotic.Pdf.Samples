@@ -19,10 +19,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
             using (var pdf = new PdfDocument())
             {
                 PdfFileSpecification first = pdf.CreateFileAttachment(@"..\Sample Data\jpeg.pdf");
-                pdf.SharedAttachments.Add(first);
+                pdf.SharedAttachments.Add(first.Specification, first);
 
                 PdfFileSpecification second = pdf.CreateFileAttachment(@"..\Sample Data\gmail-cheat-sheet.pdf");
-                pdf.SharedAttachments.Add(second);
+                pdf.SharedAttachments.Add(second.Specification, second);
 
                 PdfCollectionSettings col = pdf.CreateCollectionSettings();
                 pdf.Collection = col;

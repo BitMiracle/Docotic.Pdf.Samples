@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Linq;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -19,9 +20,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (var pdf = new PdfDocument(@"..\Sample Data\ImageScaleAndRotate.pdf"))
             {
-                PdfCollection<PdfPaintedImage> paintedImages = pdf.Pages[0].GetPaintedImages();
+                var paintedImages = pdf.Pages[0].GetPaintedImages();
 
-                PdfPaintedImage image = paintedImages[0];
+                PdfPaintedImage image = paintedImages.First();
 
                 // save the image as is
                 asIsOutputName = image.Image.Save("PdfImage.Save");

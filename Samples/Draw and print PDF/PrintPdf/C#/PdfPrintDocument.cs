@@ -67,7 +67,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 case PrintRange.SomePages:
                     {
                         m_pageIndex = Math.Max(0, printDocument.PrinterSettings.FromPage - 1);
-                        m_lastPageIndex = Math.Min(m_pdf.PageCount - 1, printDocument.PrinterSettings.ToPage - 1);
+                        m_lastPageIndex = Math.Min(m_pdf.Pages.Count - 1, printDocument.PrinterSettings.ToPage - 1);
                         break;
                     }
 
@@ -75,7 +75,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 default:
                     {
                         m_pageIndex = 0;
-                        m_lastPageIndex = m_pdf.PageCount - 1;
+                        m_lastPageIndex = m_pdf.Pages.Count - 1;
                         break;
                     }
             }

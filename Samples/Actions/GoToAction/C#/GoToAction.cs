@@ -18,13 +18,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (var pdf = new PdfDocument())
             {
-                PdfPage secondPage = pdf.AddPage();
+                PdfPage secondPage = pdf.Pages.Add();
                 secondPage.Canvas.DrawString(10, 300, "Go-to action target");
 
                 PdfGoToAction action = pdf.CreateGoToPageAction(1, 300);
                 PdfActionArea annotation = pdf.Pages[0].AddActionArea(10, 50, 100, 30, action);
                 annotation.Border.Color = new PdfRgbColor(255, 0, 0);
-                annotation.Border.DashPattern = new PdfDashPattern(new float[] { 3, 2 });
+                annotation.Border.DashPattern = new PdfDashPattern(new double[] { 3, 2 });
                 annotation.Border.Width = 1;
                 annotation.Border.Style = PdfMarkerLineStyle.Dashed;
 
