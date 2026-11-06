@@ -14,14 +14,16 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim pathToFile As String = "AddAttachments.pdf"
 
             Using pdf As New PdfDocument()
-                ' add shared attachment to the document
+                ' Add a shared attachment to the document.
                 Dim ammerland As PdfFileSpecification = pdf.CreateFileAttachment("..\Sample Data\ammerland.jpg")
-                pdf.SharedAttachments.Add(ammerland)
+                pdf.SharedAttachments.Add(ammerland.Specification, ammerland)
 
-                ' add file attachment annotation to the first page
+                ' Add a file attachment annotation to the first page.
                 Dim bounds As New PdfRectangle(20, 70, 100, 100)
                 Dim jpeg As PdfFileSpecification = pdf.CreateFileAttachment("..\Sample Data\jpeg.pdf")
                 pdf.Pages(0).AddFileAnnotation(bounds, jpeg)
+
+                pdf.PageMode = PdfPageMode.UseAttachments
 
                 pdf.Save(pathToFile)
             End Using

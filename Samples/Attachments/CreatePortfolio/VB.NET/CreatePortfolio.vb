@@ -15,10 +15,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Using pdf As New PdfDocument()
                 Dim first As PdfFileSpecification = pdf.CreateFileAttachment("..\Sample Data\jpeg.pdf")
-                pdf.SharedAttachments.Add(first)
+                pdf.SharedAttachments.Add(first.Specification, first)
 
                 Dim second As PdfFileSpecification = pdf.CreateFileAttachment("..\Sample Data\gmail-cheat-sheet.pdf")
-                pdf.SharedAttachments.Add(second)
+                pdf.SharedAttachments.Add(second.Specification, second)
 
                 Dim col As PdfCollectionSettings = pdf.CreateCollectionSettings()
                 pdf.Collection = col

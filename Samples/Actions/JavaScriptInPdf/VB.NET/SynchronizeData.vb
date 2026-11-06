@@ -8,7 +8,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Using pdf = New PdfDocument("..\Sample Data\Names.pdf")
                 Dim synchronizeFields = File.ReadAllText("../Sample Data/SynchronizeFields.js")
-                pdf.SharedScripts.Add(pdf.CreateJavaScriptAction(synchronizeFields))
+                pdf.SharedScripts.Add(NameOf(synchronizeFields), pdf.CreateJavaScriptAction(synchronizeFields))
 
                 Dim control As PdfControl = GetControl(pdf, "name0")
                 control.OnLostFocus = pdf.CreateJavaScriptAction("synchronizeFields(""name0"", ""name1"");")

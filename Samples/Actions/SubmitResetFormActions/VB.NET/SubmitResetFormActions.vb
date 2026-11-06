@@ -36,21 +36,25 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim submitAction As PdfSubmitFormAction = pdf.CreateSubmitFormAction(New Uri("http://bitmiracle.com/login.php"))
                 submitAction.SubmitFormat = PdfSubmitFormat.Html
                 submitAction.SubmitMethod = PdfSubmitMethod.[Get]
-                submitAction.AddControl(textBox)
-                submitAction.AddControl(checkBox)
-                submitAction.AddControl(radioButton)
-                submitAction.AddControl(radioButton2)
                 submitButton.OnMouseDown = submitAction
+
+                Dim controls = submitAction.Controls
+                controls.Add(textBox)
+                controls.Add(checkBox)
+                controls.Add(radioButton)
+                controls.Add(radioButton2)
 
                 Dim resetButton As PdfButton = page.AddButton(65, 130, 45, 20)
                 resetButton.Text = "Reset"
 
                 Dim resetAction As PdfResetFormAction = pdf.CreateResetFormAction()
-                resetAction.AddControl(textBox)
-                resetAction.AddControl(checkBox)
-                resetAction.AddControl(radioButton)
-                resetAction.AddControl(radioButton2)
                 resetButton.OnMouseDown = resetAction
+
+                controls = resetAction.Controls
+                controls.Add(textBox)
+                controls.Add(checkBox)
+                controls.Add(radioButton)
+                controls.Add(radioButton2)
 
                 pdf.Save(pathToFile)
             End Using

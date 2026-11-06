@@ -23,12 +23,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 hideeTextBox.Text = "TextBox"
 
                 Dim hideAction As PdfHideAction = pdf.CreateHideAction(True)
-                hideAction.AddControl(hideeButton)
-                hideAction.AddControl(hideeTextBox)
+                hideAction.Widgets.Add(hideeButton)
+                hideAction.Widgets.Add(hideeTextBox)
 
                 Dim showAction As PdfHideAction = pdf.CreateHideAction(False)
-                showAction.AddControl(hideeButton)
-                showAction.AddControl(hideeTextBox)
+                showAction.Widgets.Add(hideeButton)
+                showAction.Widgets.Add(hideeTextBox)
 
                 Dim showButton As PdfButton = page.AddButton("showBtn", 10, 50, 70, 25)
                 showButton.Text = "Show controls"

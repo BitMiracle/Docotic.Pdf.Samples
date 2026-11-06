@@ -28,7 +28,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Using pdf As New PdfDocument()
 
-                pdf.SharedScripts.Add(pdf.CreateJavaScriptAction(validationJavascript.ToString()))
+                pdf.SharedScripts.Add(
+                    NameOf(validationJavascript),
+                    pdf.CreateJavaScriptAction(validationJavascript.ToString()))
 
                 Dim textBox As PdfTextBox = pdf.Pages(0).AddTextBox(20, 50, 100, 20)
                 textBox.OnKeyPress = pdf.CreateJavaScriptAction("validateNumeric(event);")

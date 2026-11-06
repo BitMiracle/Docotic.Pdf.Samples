@@ -16,12 +16,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf As New PdfDocument("..\Sample Data\Attachments.pdf")
                 Dim attachmentNames As New StringBuilder()
 
-                ' collect names of files attached to the document
-                For Each spec As PdfFileSpecification In pdf.SharedAttachments
-                    attachmentNames.AppendLine(spec.Specification)
+                ' Collect the names of files attached to the document.
+                For Each entry In pdf.SharedAttachments
+                    attachmentNames.AppendLine(entry.Value.Specification)
                 Next
 
-                ' collect names of files used in file attachment annotations
+                ' Collect the names of files referenced by file attachment annotations.
                 For Each page As PdfPage In pdf.Pages
                     For Each widget As PdfWidget In page.Widgets
                         If widget.Type <> PdfWidgetType.FileAttachment Then
@@ -37,7 +37,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     Next
                 Next
 
-                Console.WriteLine("Attachments List:")
+                Console.WriteLine("Attachments:")
                 Console.WriteLine(attachmentNames.ToString())
             End Using
         End Sub

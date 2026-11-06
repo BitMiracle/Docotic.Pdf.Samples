@@ -56,11 +56,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     Exit Select
                 Case PrintRange.SomePages
                     m_pageIndex = Math.Max(0, printDocument.PrinterSettings.FromPage - 1)
-                    m_lastPageIndex = Math.Min(m_pdf.PageCount - 1, printDocument.PrinterSettings.ToPage - 1)
+                    m_lastPageIndex = Math.Min(m_pdf.Pages.Count - 1, printDocument.PrinterSettings.ToPage - 1)
                     Exit Select
                 Case Else
                     m_pageIndex = 0
-                    m_lastPageIndex = m_pdf.PageCount - 1
+                    m_lastPageIndex = m_pdf.Pages.Count - 1
                     Exit Select
             End Select
         End Sub

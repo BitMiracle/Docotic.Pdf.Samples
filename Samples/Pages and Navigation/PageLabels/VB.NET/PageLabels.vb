@@ -16,17 +16,17 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf As New PdfDocument()
 
                 For i As Integer = 0 To 8
-                    pdf.AddPage()
+                    pdf.Pages.Add()
                 Next
 
-                ' first four pages will have labels i, ii, iii, and iv
-                pdf.PageLabels.AddRange(0, 3, PdfPageNumberingStyle.LowercaseRoman)
+                ' Use lowercase Roman numerals (i, ii, iii, iv) for the first four pages.
+                pdf.PageLabels.Add(0, 3, PdfPageNumberingStyle.LowercaseRoman)
 
-                ' next three pages will have labels 1, 2, and 3
-                pdf.PageLabels.AddRange(4, PdfPageNumberingStyle.DecimalArabic)
+                ' Use decimal Arabic numerals (1, 2, 3) for the next three pages.
+                pdf.PageLabels.Add(4, PdfPageNumberingStyle.DecimalArabic)
 
-                ' next three pages will have labels A-8, A-9 and A-10
-                pdf.PageLabels.AddRange(7, PdfPageNumberingStyle.DecimalArabic, "A-", 8)
+                ' Use the labels A-8, A-9, and A-10 for the next three pages.
+                pdf.PageLabels.Add(7, PdfPageNumberingStyle.DecimalArabic, "A-", 8)
 
                 pdf.Save(pathToFile)
             End Using

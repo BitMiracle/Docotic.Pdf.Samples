@@ -44,7 +44,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf As PdfDocument = GetMergedDocument(streams, startIndex, count)
                 Dim result = New MemoryStream()
                 Dim options = New PdfSaveOptions With {
-                    .UseObjectStreams = False ' This speeds up writing of intermediate documents
+                    .UseObjectStreams = False ' This speeds up writing intermediate documents.
                 }
                 pdf.Save(result, options)
                 Return result
@@ -60,7 +60,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                     s.Dispose()
                 Next
 
-                pdf.RemovePage(0)
+                pdf.Pages.RemoveAt(0)
                 pdf.ReplaceDuplicateObjects()
                 Return pdf
             Catch

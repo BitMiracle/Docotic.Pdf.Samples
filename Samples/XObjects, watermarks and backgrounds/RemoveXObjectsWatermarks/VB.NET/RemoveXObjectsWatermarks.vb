@@ -15,8 +15,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Using pdf As New PdfDocument("..\Sample Data\DocumentWithWatermark.pdf")
                 For Each page As PdfPage In pdf.Pages
-                    ' Remove the first XObject. Here, it's a watermark.
-                    page.XObjects.RemoveAt(0)
+                    ' Remove the first XObject, which is a watermark.
+                    Dim name = page.XObjects.First().Name
+                    page.XObjects.Remove(name)
                 Next
 
                 pdf.Save(pathToFile)
