@@ -7,8 +7,8 @@
   <ItemGroup>
     <PackageReference Include="BitMiracle.Docotic.Pdf" Version="9.9.19928" />
     <PackageReference Include="BitMiracle.Docotic.Pdf.Logging" Version="9.9.19928" />
-    <PackageReference Include="log4net" Version="3.3.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Log4Net.AspNetCore" Version="8.0.0" />
+    <PackageReference Include="log4net" Version="3.5.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Log4Net.AspNetCore" Version="10.0.0" />
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="copy &quot;$(ProjectDir)app.config&quot; &quot;$(TargetPath).config&quot;" />

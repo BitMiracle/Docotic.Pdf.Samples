@@ -7,8 +7,8 @@
   <ItemGroup>
     <PackageReference Include="BitMiracle.Docotic.Pdf" Version="9.9.19928" />
     <PackageReference Include="BitMiracle.Docotic.Pdf.Logging" Version="9.9.19928" />
-    <PackageReference Include="NLog" Version="5.2.8" />
-    <PackageReference Include="NLog.Extensions.Logging" Version="5.3.8" />
+    <PackageReference Include="NLog" Version="6.2.2" />
+    <PackageReference Include="NLog.Extensions.Logging" Version="6.2.2" />
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="copy &quot;$(ProjectDir)app.config&quot; &quot;$(TargetDir)NLog.config&quot;" />
