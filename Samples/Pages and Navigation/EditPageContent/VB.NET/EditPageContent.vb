@@ -28,7 +28,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Sub
 
         ''' <summary>
-        ''' Replaces orange color with gray.
+        ''' Replaces orange with gray.
         ''' </summary>
         Private Shared Function ReplaceColor(color As PdfColor) As PdfColor
             Dim rgb As PdfRgbColor = TryCast(color, PdfRgbColor)
@@ -40,7 +40,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Function
 
         ''' <summary>
-        ''' Removes "(Max...)" text on the right.
+        ''' Determines whether the text is located on the right side of the page and should be
+        ''' removed.
         ''' </summary>
         Private Shared Function ShouldRemoveText(text As PdfTextData) As Boolean
             Return text.Bounds.X > 200

@@ -22,7 +22,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 ElseIf TypeOf info Is PdfPublicKeyEncryptionInfo Then
                     Dim publicKeyInfo As PdfPublicKeyEncryptionInfo = info
                     message.AppendFormat("{0} - is encrypted and requires one of the certificates: ", fileName)
-                    Dim serialNumbers As String() = publicKeyInfo.Recipients.Select(Function(r) r.SerialNumber).ToArray()
+                    Dim serialNumbers As String() = publicKeyInfo.GetRecipients().Select(Function(r) r.SerialNumber).ToArray()
                     message.Append(String.Join(", ", serialNumbers))
                 End If
             Next

@@ -16,18 +16,24 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf As New PdfDocument()
                 pdf.PageMode = PdfPageMode.UseOutlines
 
-                pdf.AddPage()
-                pdf.AddPage()
+                pdf.Pages.Add()
+                pdf.Pages.Add()
 
-                For i As Integer = 0 To pdf.PageCount - 1
+                For i As Integer = 0 To pdf.Pages.Count - 1
                     Dim canvas As PdfCanvas = pdf.Pages(i).Canvas
                     canvas.DrawString(260, 50, "Page " + (i + 1).ToString())
                 Next
 
-                Dim root As PdfOutlineItem = pdf.OutlineRoot
-                root.AddChild("Page 1", 0)
-                Dim outlineForPage2 As PdfOutlineItem = root.AddChild("Page 2", 1)
-                outlineForPage2.AddChild("Page 3", 2)
+                Dim outlines = pdf.Outlines
+
+                Dim page1Outline = outlines.Add("Page 1")
+                page1Outline.View = pdf.CreateView(0)
+
+                Dim page2Outline = outlines.Add("Page 2")
+                page2Outline.View = pdf.CreateView(1)
+
+                Dim page3Outline = page2Outline.Children.Add("Page 3")
+                page3Outline.View = pdf.CreateView(2)
 
                 pdf.Save(pathToFile)
             End Using

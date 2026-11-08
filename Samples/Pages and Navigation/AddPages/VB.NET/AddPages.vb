@@ -14,20 +14,20 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim pathToFile As String = "AddPages.pdf"
 
             Using pdf As New PdfDocument()
-                ' There is already one page in any new PDF document
+                ' A new PDF document already contains one page
                 Dim firstPage As PdfPage = pdf.Pages(0)
                 firstPage.Canvas.DrawString("This is the auto-created first page")
 
-                ' The AddPage method adds a new page to the end of the PDF document
-                Dim secondPage As PdfPage = pdf.AddPage()
+                ' Add a new page at the end of the document
+                Dim secondPage As PdfPage = pdf.Pages.Add()
                 secondPage.Canvas.DrawString("Second page")
 
-                ' You can insert a new page in an arbitrary place
-                Dim newFirstPage As PdfPage = pdf.InsertPage(0)
+                ' Insert a new page at the specified position
+                Dim newFirstPage As PdfPage = pdf.Pages.Insert(0)
                 newFirstPage.Canvas.DrawString("New first page")
 
-                ' This call is an equivalent to calling the AddPage method
-                Dim lastPage As PdfPage = pdf.InsertPage(pdf.PageCount)
+                ' Inserting at Count is equivalent to calling Add
+                Dim lastPage As PdfPage = pdf.Pages.Insert(pdf.Pages.Count)
                 lastPage.Canvas.DrawString("Last page")
 
                 pdf.Save(pathToFile)

@@ -1,3 +1,4 @@
+Imports System.Text
 Imports BitMiracle.Docotic
 Imports BitMiracle.Docotic.Pdf
 
@@ -13,7 +14,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Using pdf As New PdfDocument("..\Sample data\ComboBoxes.pdf")
 
-                Dim sb As New System.Text.StringBuilder()
+                Dim sb As New StringBuilder()
                 For Each widget As PdfWidget In pdf.Pages(0).Widgets
                     Dim comboBox As PdfComboBox = TryCast(widget, PdfComboBox)
                     If comboBox IsNot Nothing Then

@@ -135,13 +135,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Sub
 
         Private Shared Sub SetClipRegion(canvas As PdfCanvas, clipRegion As PdfClipRegion)
-            If clipRegion.IntersectedPaths.Count = 0 Then
+            Dim paths = clipRegion.GetIntersectedPaths().ToArray()
+            If paths.Length = 0 Then
                 Return
             End If
 
             Dim transformationBefore As PdfMatrix = canvas.TransformationMatrix
             Try
-                For Each clipPath As PdfPath In clipRegion.IntersectedPaths
+                For Each clipPath As PdfPath In paths
                     canvas.ResetTransform()
                     canvas.Transform(clipPath.TransformationMatrix)
                     AppendPath(canvas, clipPath)
@@ -154,8 +155,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Sub
 
         Private Shared Sub AppendPath(target As PdfCanvas, path As PdfPath)
-            For Each subpath As PdfSubpath In path.Subpaths
-                For Each segment As PdfPathSegment In subpath.Segments
+            For Each subpath As PdfSubpath In path.GetSubpaths()
+                For Each segment As PdfPathSegment In subpath.GetSegments()
                     Select Case segment.Type
                         Case PdfPathSegmentType.Point
                             target.CurrentPosition = DirectCast(segment, PdfPointSegment).Value

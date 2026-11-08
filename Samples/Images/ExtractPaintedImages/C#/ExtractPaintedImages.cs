@@ -24,10 +24,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                 PdfPaintedImage image = paintedImages.First();
 
-                // save the image as is
+                // Save the image as is.
                 asIsOutputName = image.Image.Save("PdfImage.Save");
 
-                // save the image as painted
+                // Save the image as painted.
                 var options = new PdfPaintedImageSavingOptions
                 {
                     Compression = PaintedImageCompressionOptions.CreateTiff(),

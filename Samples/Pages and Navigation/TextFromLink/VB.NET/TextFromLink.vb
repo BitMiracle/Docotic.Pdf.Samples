@@ -11,7 +11,7 @@ Namespace BitMiracle.Docotic.Samples
             ' To get a free time-limited license key, use the form on
             ' https://bitmiracle.com/pdf-library/download
 
-            LicenseManager.AddLicenseData("PUT-LICENSE-HERE")
+            LicenseManager.AddLicenseData("AE6PU-24ZVH-27M0N-V4YVN-MPOWA")
 
             Using pdf As New PdfDocument("..\Sample Data\Link.pdf")
                 Dim linkInfo As LinkInfo = GetLinks(pdf).FirstOrDefault()
@@ -21,11 +21,11 @@ Namespace BitMiracle.Docotic.Samples
                 End If
 
                 Dim linkDescription As New StringBuilder()
-                linkDescription.AppendLine("Number of page with the link: " + linkInfo.OwnerPageIndex.ToString())
-                linkDescription.AppendLine("Link's index in document widgets collection: " + linkInfo.OwnerPageWidgetIndex.ToString())
+                linkDescription.AppendLine("Link is at page index: " + linkInfo.OwnerPageIndex.ToString())
+                linkDescription.AppendLine("Link index in the page's widgets collection: " + linkInfo.OwnerPageWidgetIndex.ToString())
                 linkDescription.AppendLine("Link bounds: " + linkInfo.Bounds.ToString())
-                linkDescription.AppendLine("Link points to page # " + pdf.IndexOf(linkInfo.TargetPage).ToString())
-                linkDescription.AppendLine("NOTE: All page numbers are zero-based.")
+                linkDescription.AppendLine("Target page index: " + FindPageIndex(pdf, linkInfo.TargetPage).ToString())
+                linkDescription.AppendLine("Note: All page indexes are zero-based.")
 
                 linkDescription.AppendLine()
                 linkDescription.AppendLine("Text from link:")
@@ -36,7 +36,7 @@ Namespace BitMiracle.Docotic.Samples
         End Sub
 
         Private Shared Iterator Function GetLinks(pdf As PdfDocument) As IEnumerable(Of LinkInfo)
-            For i As Integer = 0 To pdf.PageCount - 1
+            For i As Integer = 0 To pdf.Pages.Count - 1
                 Dim page As PdfPage = pdf.Pages(i)
                 Dim widgetIndex As Integer = 0
 
@@ -50,7 +50,7 @@ Namespace BitMiracle.Docotic.Samples
                             Dim view As PdfDocumentView = linkAction.GetView().View
 
                             If view IsNot Nothing Then
-                                ' let's ignore links which point to an absent page
+                                ' Skip links that point to a nonexistent page.
                                 Dim targetPage As PdfPage = view.Page
                                 If targetPage IsNot Nothing Then
                                     Yield New LinkInfo(i, widgetIndex, actionArea.BoundingBox, targetPage, view.Top)
@@ -67,10 +67,10 @@ Namespace BitMiracle.Docotic.Samples
         Private Shared Function GetTextFromLink(targetPage As PdfPage, topOffset As Double?) As String
             Dim result As New StringBuilder()
 
-            ' allow some extra space for the vertical position of a text start
+            ' Allow some extra tolerance in the vertical position of the text start.
             Const eps As Single = 5.0F
 
-            Dim textFromTargetPage As PdfCollection(Of PdfTextData) = targetPage.Canvas.GetTextData()
+            Dim textFromTargetPage = targetPage.Canvas.GetTextData()
             For Each textData As PdfTextData In textFromTargetPage
                 If textData.Position.Y < targetPage.Height - topOffset - eps Then
                     Continue For
@@ -80,6 +80,20 @@ Namespace BitMiracle.Docotic.Samples
             Next
 
             Return result.ToString()
+        End Function
+
+        Private Shared Function FindPageIndex(pdf As PdfDocument, page As PdfPage) As Integer
+            Dim pageToFindDictString = page?.Dictionary.ToString()
+            If pageToFindDictString IsNot Nothing Then
+                For i As Integer = 0 To pdf.Pages.Count - 1
+                    Dim pageDictString = pdf.Pages(i).Dictionary.ToString()
+                    If pageToFindDictString = pageDictString Then
+                        Return i
+                    End If
+                Next
+            End If
+
+            Return -1
         End Function
 
         Private Class LinkInfo

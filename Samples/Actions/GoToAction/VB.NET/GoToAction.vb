@@ -14,14 +14,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim pathToFile As String = "GoToAction.pdf"
 
             Using pdf As New PdfDocument()
-
-                Dim secondPage As PdfPage = pdf.AddPage()
+                Dim secondPage As PdfPage = pdf.Pages.Add()
                 secondPage.Canvas.DrawString(10, 300, "Go-to action target")
 
                 Dim action As PdfGoToAction = pdf.CreateGoToPageAction(1, 300)
                 Dim annotation As PdfActionArea = pdf.Pages(0).AddActionArea(10, 50, 100, 30, action)
                 annotation.Border.Color = New PdfRgbColor(255, 0, 0)
-                annotation.Border.DashPattern = New PdfDashPattern(New Single() {3, 2})
+                annotation.Border.DashPattern = New PdfDashPattern(New Double() {3, 2})
                 annotation.Border.Width = 1
                 annotation.Border.Style = PdfMarkerLineStyle.Dashed
 

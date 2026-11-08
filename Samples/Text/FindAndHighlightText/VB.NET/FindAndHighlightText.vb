@@ -78,12 +78,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Return
             End If
 
-            ' We use the following algorithm:
-            ' 1. Group words by transformation matrix. We do that to properly detect
-            ' neighbours for rotated text properly.
-            ' 2. For each group:
-            '   a. Sort words taking the group's transformation matrix into account.
-            '   b. Search phrase in the collection of sorted words.
+            ' The algorithm works as follows:
+            ' 1. Group words by transformation matrix to correctly identify neighboring
+            '    words, including those in rotated text.
+            ' 2. For each group
+            '    a. Sort words according to the group's transformation matrix.
+            '    b. Search for the phrase in the sorted word collection.
             Dim wordGroups As Dictionary(Of PdfMatrix, List(Of PdfTextData)) = GroupWordsByTransformations(page)
             For Each kvp In wordGroups
                 Dim transformation As PdfMatrix = kvp.Key
@@ -138,14 +138,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             transformation As PdfMatrix
             )
 
-            ' For some transformations, we should invert X coordinates during sorting.
+            ' Some transformations require reversing the X-coordinate order during sorting.
             Dim xAxis As PdfPoint = TransformVector(transformation, 1, 0)
             Dim yAxis As PdfPoint = TransformVector(transformation, 0, 1)
             Dim xDirection As Integer = 1
 
-            ' Happens when space is rotated by 90 or 270 degrees
+            ' Happens when the text is rotated by 90 or 270 degrees.
             If Math.Abs(xAxis.X) < 0.0001 Then
-                ' Happens when transformed coordinates fall to 2nd Or 4th quarter.
+                ' Happens when the transformed coordinates fall into the 2nd or 4th quadrant.
                 '          y
                 '          ^
                 '   2nd    |   1st
@@ -172,8 +172,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         Private Shared Function NormalizeScaleFactors(m As PdfMatrix) As PdfMatrix
             Dim scale As Double = GetScaleFactor(m.M11, m.M12, m.M21, m.M22)
 
-            ' Round to 1 fractional digit to avoid separation of similar matrices
-            ' Like { 1, 0, 0, 1.12, 0, 0 } And { 1, 0, 0, 1.14, 0, 0 }
+            ' Round matrix components to one decimal place to group similar matrices
+            ' instead of treating small differences as distinct.
+            ' For example, { 1, 0, 0, 1.12, 0, 0 } And { 1, 0, 0, 1.14, 0, 0 }
             m.M11 = Math.Round(m.M11 / scale, 1)
             m.M12 = Math.Round(m.M12 / scale, 1)
             m.M21 = Math.Round(m.M21 / scale, 1)
@@ -236,10 +237,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Dim characters As IEnumerable(Of PdfTextData) = data.GetCharacters()
             If (Not ContainsLtrCharactersOnly(data, text)) Then
-                ' Process right-to-left chunks in the reverse order.
+                ' Process right-to-left text chunks in reverse order.
                 '
-                ' Note that this approach might not work for chunks
-                ' containing both left-to-right and right-to-left characters.
+                ' This approach may not work correctly for chunks containing
+                ' a mix of left-to-right and right-to-left characters.
                 characters = characters.Reverse()
             End If
 
@@ -257,6 +258,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Function
 
         Private Shared Function ContainsLtrCharactersOnly(data As PdfTextData, textLogical As String) As Boolean
+            ' A simple heuristic for detecting right-to-left Or bidirectional text:
+            ' Compare the logical And visual text representations to determine text directionality.
             Dim noBidiOptions = New PdfTextConversionOptions With {.UseBidi = False}
             Dim textVisual As String = data.GetText(noBidiOptions)
             Return textLogical = textVisual

@@ -16,23 +16,24 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf As New PdfDocument()
                 Dim custom As XmpSchema = pdf.Metadata.Custom
 
-                ' add a simple string property
+                ' Add a simple string property.
                 custom.Properties.Add("stringProperty", "string value")
 
-                ' add a simple array property
+                ' Add a simple array property.
                 Dim array As New XmpArray(XmpArrayType.Ordered)
                 For i As Integer = 0 To 4
-                    array.Values.Add(New XmpString(i.ToString()))
+                    array.Add(New XmpString(i.ToString()))
                 Next
                 custom.Properties.Add("arrayProperty", array)
 
-                ' add an array with language alternatives
-                Dim languageArray As New XmpArray(XmpArrayType.Alternative)
-                languageArray.Values.Add(New XmpLanguageAlternative("x-default", "I'm Feeling Lucky"))
-                languageArray.Values.Add(New XmpLanguageAlternative("fr-fr", "J'ai de la chance"))
+                ' Add a language alternative property.
+                Dim languageArray As New XmpArray(XmpArrayType.Alternative) From {
+                    New XmpLanguageAlternative("x-default", "I'm Feeling Lucky"),
+                    New XmpLanguageAlternative("fr-fr", "J'ai de la chance")
+                }
                 custom.Properties.Add("arrayWithAlternatives", languageArray)
 
-                ' add some string properties with qualifiers
+                ' Add string properties with qualifiers.
                 Dim author1 As New XmpString("First Author")
                 author1.Qualifiers.Add("role", "main author")
                 custom.Properties.Add("anotherStringProperty", author1)
@@ -41,13 +42,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 author2.Qualifiers.Add("role", "co-author")
                 custom.Properties.Add("yetAnotherStringProperty", author2)
 
-                ' add an array with the qualified string values
-                Dim authors As New XmpArray(XmpArrayType.Unordered)
-                authors.Values.Add(author1)
-                authors.Values.Add(author2)
+                ' Add an array of qualified string values.
+                Dim authors As New XmpArray(XmpArrayType.Unordered) From {
+                    author1,
+                    author2
+                }
                 custom.Properties.Add("arrayWithQualifiedStrings", authors)
 
-                ' add a structure
+                ' Add a structure with string and array properties.
                 Dim struct As New XmpStructure("struct", "http://example.com/structure/")
                 struct.Properties.Add("string", "string in a structure")
                 struct.Properties.Add("array", authors)

@@ -18,13 +18,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Using pdf As New PdfDocument(originalFile)
                 Dim alreadyCompressedImageIds = New HashSet(Of String)()
-                For i As Integer = 0 To pdf.PageCount - 1
+                For i As Integer = 0 To pdf.Pages.Count - 1
                     Dim page As PdfPage = pdf.Pages(i)
 
                     For Each painted As PdfPaintedImage In page.GetPaintedImages()
                         Dim image As PdfImage = painted.Image
 
-                        ' Image ID may be null for inline images, which cannot be recompressed
+                        ' Inline images have no ID and cannot be recompressed
                         If image.Id Is Nothing Then
                             Continue For
                         End If
@@ -43,8 +43,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             End Using
 
             ' NOTE:
-            ' This sample shows only one approach to reduce the size of a PDF.
-            ' Please check CompressAllTechniques sample code to see more approaches.
+            ' This sample demonstrates one approach to reducing PDF file size.
+            ' See the CompressAllTechniques sample for additional compression techniques
             ' https://github.com/BitMiracle/Docotic.Pdf.Samples/tree/master/Samples/Compression/CompressAllTechniques
 
             Dim message As String = String.Format(
@@ -62,32 +62,33 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         Private Shared Function OptimizeImage(painted As PdfPaintedImage) As Boolean
             Dim image As PdfImage = painted.Image
 
-            ' inline images cannot be recompressed unless you move them to resources
-            ' using PdfCanvas.MoveInlineImagesToResources
+            ' Inline images cannot be recompressed unless they are first moved to page resources
+            ' using PdfCanvas.MoveInlineImagesToResources.
             If image.IsInline Then
                 Return False
             End If
 
-            ' mask images are not good candidates for recompression
+            ' Skip mask images and very small images, as they are poor candidates for
+            ' recompression.
             If image.IsMask OrElse image.Width < 8 OrElse image.Height < 8 Then
                 Return False
             End If
 
-            ' get size of the painted image
+            ' Get the dimensions of the painted image.
             Dim width As Integer = Math.Max(1, Int(painted.Bounds.Width))
             Dim height As Integer = Math.Max(1, Int(painted.Bounds.Height))
 
-            ' calculate resize ratio
+            ' Calculate the ratio between the original image size and the painted size.
             Dim ratio As Double = Math.Min(image.Width / CDbl(width), image.Height / CDbl(height))
 
             If ratio <= 1 Then
-                ' the image size is smaller than the painted size
+                ' The image is no larger than its painted size, so recompress it without resizing.
                 Return RecompressImage(image)
             End If
 
             If ratio < 1.1 Then
-                ' with the ratio this small, the potential size
-                ' reduction rarely justifies resizing artefacts
+                ' The image is only slightly larger than its painted size.
+                ' Resizing Is unlikely to reduce the file size enough to justify the quality loss.
                 Return False
             End If
 
@@ -124,10 +125,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 image.Compression <> PdfImageCompression.Jpeg AndAlso
                 image.Compression <> PdfImageCompression.Jpeg2000 Then
                 If image.Width < 64 AndAlso image.Height < 64 Then
-                    ' JPEG better preserves detail on smaller images
+                    ' JPEG preserves fine detail better in smaller images.
                     image.RecompressWithJpeg()
                 Else
-                    ' you can try a larger compressio ratio for bigger images
+                    ' Larger images can often tolerate more aggressive compression.
                     image.RecompressWithJpeg2000(10)
                 End If
 
@@ -138,17 +139,17 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Function
 
         Private Shared Function ResizeBilevelImage(image As PdfImage, ratio As Double) As Boolean
-            ' Fax documents usually look better if integer-ratio scaling is used
-            ' Fractional-ratio scaling introduces more artifacts
+            ' Fax documents usually look better when scaled by an integer factor.
+            ' Fractional scaling tends to introduce more artifacts.
             Dim intRatio As Integer = ratio
 
-            ' decrease the ratio when it is too high
+            ' Limit the downscaling factor to avoid excessive quality loss.
             If intRatio > 3 Then
                 intRatio = Math.Min(intRatio - 2, 3)
             End If
 
             If intRatio = 1 AndAlso image.Compression = PdfImageCompression.Group4Fax Then
-                ' skipping the image, because the output size and compression are the same
+                ' No resize is needed and the image already uses the target compression.
                 Return False
             End If
 

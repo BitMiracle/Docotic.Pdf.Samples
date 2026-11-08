@@ -37,12 +37,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                         gr.SetClip(page.CropBox.ToRectangleF(page.Height), CombineMode.Intersect)
 
-                        ' We do not need to handle marked content and XObjects in this sample.
-                        ' You may want to set these options to false in order to:
-                        ' * Respect transparency groups for XObjects
-                        ' * Respect layers or tagged content
+                        ' This sample does not need to handle marked content or XObjects.
+                        ' Set these options to false if you need to
+                        ' * Preserve transparency groups in XObjects.
+                        ' * Process layers Or tagged content.
                         '
-                        ' Look at the EditPageContent sample that shows how to handle marked content and XObjects.
+                        ' See the EditPageContent sample for an example of handling
+                        ' marked content And XObjects.
                         Dim options = New PdfObjectExtractionOptions With {
                             .FlattenMarkedContent = True,
                             .FlattenXObjects = True
@@ -102,15 +103,16 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Sub
 
         Private Shared Sub DrawImage(gr As Graphics, im As PdfPaintedImage, userUnit As Single)
-            ' Do not render images with zero width or height. GDI+ throws OutOfMemoryException
-            ' in x86 processes for regular image size (e.g. 1x51) and very small transformation
-            ' matrix (e.g. { 0.000005, 0, 0, 0.003, x, y }).
+            ' Skip images with zero width or height.
+            ' In x86 processes, GDI+ may throw OutOfMemoryException when rendering an image with
+            ' normal dimensions (e.g. 1x51) using a very small
+            ' transformation matrix (e.g. { 0.000005, 0, 0, 0.003, x, y }).
             Dim paintedImageSize As PdfSize = im.Bounds.Size
             If Math.Abs(paintedImageSize.Width) < 0.001 OrElse Math.Abs(paintedImageSize.Height) < 0.001 Then
                 Return
             End If
 
-            ' ignore mask images in this sample
+            ' This sample does not handle mask images.
             If im.Image.IsMask Then
                 Return
             End If
@@ -123,20 +125,21 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                             gr.TranslateTransform(im.Position.X, im.Position.Y)
                             ConcatMatrix(gr, im.TransformationMatrix)
 
-                            ' Important for rendering of neighbour image tiles
+                            ' Ensures proper alignment when rendering adjacent image tiles.
                             gr.PixelOffsetMode = PixelOffsetMode.Half
 
                             Dim imageSize As New PdfSize(im.Image.Width, im.Image.Height)
                             If imageSize.Width < bitmap.Width AndAlso imageSize.Height < bitmap.Height Then
-                                ' the bitmap produced from the image is larger than the image.
-                                ' usually this happens when an image has a mask image which is larger than the image itself.
+                                ' The produced bitmap is larger than the original image. This
+                                ' usually happens when the image has a mask that is larger than the
+                                ' image itself.
                                 Dim current As InterpolationMode = gr.InterpolationMode
                                 gr.InterpolationMode = InterpolationMode.HighQualityBicubic
                                 gr.DrawImage(bitmap, 0, 0, CSng(imageSize.Width), CSng(imageSize.Height))
                                 gr.InterpolationMode = current
                             Else
-                                ' bitmap has the same size,
-                                ' or one of its dimensions is longer than the corresponding image dimension
+                                ' The bitmap has the same dimensions as the image, or at least one
+                                ' of its dimensions is larger.
                                 gr.DrawImage(bitmap, 0, 0, bitmap.Width, bitmap.Height)
                             End If
 
@@ -176,14 +179,15 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Sub
 
         Private Shared Sub SetClipRegion(gr As Graphics, clipRegion As PdfClipRegion, userUnit As Single)
-            If clipRegion.IntersectedPaths.Count = 0 Then
+            Dim paths = clipRegion.GetIntersectedPaths().ToArray()
+            If paths.Length = 0 Then
                 Return
             End If
 
             Dim transformationBefore As Matrix = gr.Transform
             Try
                 gr.Transform = New Matrix(userUnit, 0, 0, userUnit, 0, 0)
-                For Each clipPath As PdfPath In clipRegion.IntersectedPaths
+                For Each clipPath As PdfPath In paths
                     Using gdiPath = New GraphicsPath()
                         ToGdiPath(clipPath, gdiPath)
                         gdiPath.Transform(ToGdiMatrix(clipPath.TransformationMatrix))
@@ -198,13 +202,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Sub
 
         Private Shared Sub ToGdiPath(path As PdfPath, gdiPath As GraphicsPath)
-            For Each subpath As PdfSubpath In path.Subpaths
+            For Each subpath As PdfSubpath In path.GetSubpaths()
                 gdiPath.StartFigure()
 
-                For Each segment As PdfPathSegment In subpath.Segments
+                For Each segment As PdfPathSegment In subpath.GetSegments()
                     Select Case segment.Type
                         Case PdfPathSegmentType.Point
-                            ' A singlepoint open subpath produces no output.
+                            ' A single-point open subpath produces no visible output.
 
                         Case PdfPathSegmentType.Line
                             Dim line As PdfLineSegment = DirectCast(segment, PdfLineSegment)
@@ -217,10 +221,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         Case PdfPathSegmentType.Rectangle
                             Dim rect As RectangleF = DirectCast(segment, PdfRectangleSegment).Bounds.ToRectangleF()
 
-                            ' GDI+ does not render rectangles with a negative or
-                            ' very small width and height. Render such rectangles by lines,
-                            ' but respect direction. Otherwise, non-zero winding rule for
-                            ' path filling will not work.
+                            ' GDI+ does not render rectangles with negative or very small
+                            ' dimensions. Render such rectangles as lines, preserving their
+                            ' direction. Otherwise, the non-zero winding rule may produce
+                            ' incorrect fill results.
                             gdiPath.AddLines({rect.Location,
                                              New PointF(rect.X + rect.Width, rect.Y),
                                              New PointF(rect.X + rect.Width, rect.Y + rect.Height),
@@ -329,8 +333,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Function
 
         Private Shared Function GetFontName(font As PdfFont) As String
-            ' A trick to load a similar font from the system. Ideally, we should
-            ' load font from raw bytes. Use PdfFont.Save methods to produce the bytes.
+            ' Map common PDF font names to similar system fonts. For more accurate font matching,
+            ' load the font from its raw bytes using the PdfFont.Save methods.
             Dim fontName As String = font.Name
             If (fontName.Contains("Courier")) Then
                 Return "Courier New"

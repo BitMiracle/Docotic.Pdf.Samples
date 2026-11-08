@@ -27,11 +27,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim tessData As String = Path.Combine(location, "tessdata")
 
                 Using engine = New TesseractEngine(tessData, "eng", EngineMode.LstmOnly)
-                    For i As Integer = 0 To pdf.PageCount - 1
+                    For i As Integer = 0 To pdf.Pages.Count - 1
 
                         If documentText.Length > 0 Then documentText.Append(vbCrLf & vbCrLf)
 
-                        ' Get a list of character codes that are not mapped to Unicode correctly
+                        ' Collect character codes that are not mapped to Unicode correctly.
                         Dim unmappedCharacterCodes = New List(Of PdfCharacterCode)()
                         Dim firstPassOptions = New PdfTextExtractionOptions With {
                             .UnmappedCharacterCodeHandler = Function(c)
@@ -42,15 +42,18 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         Dim page As PdfPage = pdf.Pages(i)
                         Dim text As String = page.GetText(firstPassOptions)
                         If unmappedCharacterCodes.Count = 0 Then
-                            ' There are no unmapped characters. Use the extracted text as is
+                            ' All characters are mapped to Unicode correctly. Use the extracted
+                            ' text as is.
                             documentText.Append(text)
                             Continue For
                         End If
 
-                        ' Perform OCR to get correct Unicode values
+                        ' Use OCR to recognize the unmapped characters and obtain their correct
+                        ' Unicode values.
                         Dim recognizedText As String() = OcrCharacterCodes(unmappedCharacterCodes, engine)
 
-                        ' Extract text replacing unmapped characters with correct Unicode values
+                        ' Extract text, replacing unmapped characters with their OCR-recognized
+                        ' Unicode values.
                         Dim index As Integer = 0
                         Dim options = New PdfTextExtractionOptions With {
                             .UnmappedCharacterCodeHandler = Function(c)
@@ -81,18 +84,19 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 .HorizontalResolution = 300,
                 .VerticalResolution = 300,
                 .Height = 20,
-                .CharacterSpacing = 1.5 ' Slightly increase the distance between characters to improve OCR quality
+                .CharacterSpacing = 1.5 ' Slightly increase character spacing to improve OCR accuracy.
             }
 
-            ' Split character codes to batches because Tesseract cannot process too wide images.
-            ' You may find an appropriate batch size heuristically based on the output image height and resolution.
-            ' Or you may rasterize all character codes with the PdfTextRasterizer.Save method and
-            ' calculate the batch size using the widths in the resulting collection.
+            ' Process character codes in batches because Tesseract cannot handle excessively wide
+            ' images. Choose an appropriate batch size based on the output image height And
+            ' resolution. Alternatively, use PdfTextRasterizer.Save to rasterize all character
+            ' codes first, then determine the batch size based on the widths of the resulting
+            ' images.
             Const BatchSize As Integer = 400
             Dim batchIndex As Integer = 0
             For Each batchCodes In charCodes.Chunk(BatchSize)
                 Using charCodeImage = New MemoryStream()
-                    ' Get bounds of rendered character codes
+                    ' Get the widths of the rendered character codes.
                     Dim widthsPoints As Double() = rasterizer.Save(charCodeImage, batchCodes)
                     Dim positionsPoints As Double() = New Double(widthsPoints.Length - 1) {}
 
@@ -100,13 +104,13 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                         positionsPoints(j) = positionsPoints(j - 1) + widthsPoints(j - 1) + rasterizer.CharacterSpacing
                     Next
 
-                    ' Perform OCR
+                    ' Perform OCR.
                     Using img As Pix = Pix.LoadFromMemory(charCodeImage.ToArray())
-                        ' Use the SingleChar segmentation mode when the last batch contains a few characters
+                        ' Use SingleChar segmentation mode for small batches containing five or fewer characters.
                         Dim segMode As PageSegMode = If(batchCodes.Length > 5, engine.DefaultPageSegMode, PageSegMode.SingleChar)
                         Using recognizedPage As Page = engine.Process(img, segMode)
                             Using iter As ResultIterator = recognizedPage.GetIterator()
-                                ' Map character codes to the recognized text
+                                ' Map character codes to the recognized text.
                                 Dim lastCharCodeIndex As Integer = -1
                                 Const Level As PageIteratorLevel = PageIteratorLevel.Symbol
                                 iter.Begin()

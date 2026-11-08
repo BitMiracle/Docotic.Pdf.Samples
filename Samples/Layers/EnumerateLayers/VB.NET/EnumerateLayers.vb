@@ -12,13 +12,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             LicenseManager.AddLicenseData("PUT-LICENSE-HERE")
 
             Using pdf As New PdfDocument("..\Sample Data\BorderPinksOranges.pdf")
-                For Each layer As PdfLayer In pdf.Layers
+                For Each layer As PdfLayer In pdf.OptionalContent.Layers
                     If layer Is Nothing Then Continue For
 
-                    Dim message As String = String.Format("Name = {0}" & vbLf & "Visible = {1}" & vbLf & "Intents = ", layer.Name, layer.Visible)
+                    Dim message As String = String.Format(
+                        "Name = {0}" & vbLf & "Visible = {1}" & vbLf & "Intents = ", layer.Name, layer.Visible)
 
-                    For Each intent As PdfLayerIntent In layer.GetIntents()
-                        message += intent.ToString()
+                    For Each intentName In layer.GetIntentNames()
+                        message += intentName
                         message += " "
                     Next
 

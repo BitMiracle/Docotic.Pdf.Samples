@@ -14,12 +14,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim pathToFile As String = "Watermarks.pdf"
 
             Using pdf As New PdfDocument()
-                pdf.AddPage()
+                pdf.Pages.Add()
 
                 Dim watermark As PdfXObject = pdf.CreateXObject()
 
-                ' uncomment following line if you want the watermark to be placed before
-                ' any other contents of a page.
+                ' Uncomment the following line to place the watermark behind all other page content.
                 ' watermark.DrawOnBackground = True
 
                 Dim watermarkCanvas As PdfCanvas = watermark.Canvas
@@ -27,10 +26,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 watermarkCanvas.FontSize = 36
                 watermarkCanvas.DrawString(100, 100, "This text is a part of the watermark")
 
-                For i As Integer = 0 To pdf.PageCount - 1
-                    ' Draw the watermark at the top left corner over the page contents.
-                    ' This will also add the watermark to the collection of page XObjects.
-                    pdf.Pages(i).Canvas.DrawXObject(watermark, 0, 0)
+                For Each page In pdf.Pages
+                    ' Draw the watermark over the page contents, starting at the top-left corner.
+                    ' The watermark will also be added to the page's XObjects collection.
+                    page?.Canvas.DrawXObject(watermark, 0, 0)
                 Next
 
                 pdf.Save(pathToFile)

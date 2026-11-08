@@ -15,8 +15,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             LicenseManager.AddLicenseData("PUT-LICENSE-HERE")
 
             Using pdf = New PdfDocument("..\Sample data\Freedman Scora.pdf")
-                ' This font Is used to draw all recognized text chunks in the PDF.
-                ' Make sure that the font defines all glyphs for the target language.
+                ' Use this font to draw all recognized text chunks in the PDF.
+                ' Make sure it contains all glyphs required for the target language.
                 Dim universalFont As PdfFont = pdf.CreateFont("Arial")
 
                 Dim location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
@@ -27,17 +27,17 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 Dim tessData = Path.Combine(location, "tessdata")
                 Using engine = New TesseractEngine(tessData, "eng", EngineMode.LstmOnly)
-                    For i As Integer = 0 To pdf.PageCount - 1
+                    For i As Integer = 0 To pdf.Pages.Count - 1
                         Dim page As PdfPage = pdf.Pages(i)
 
-                        ' Simple check if the page contains searchable text.
-                        ' We do Not need to do OCR in that case.
-                        If Not String.IsNullOrEmpty(page.GetText().Trim()) Then Continue For
+                        ' Check whether the page already contains searchable text.
+                        ' If so, there is no need to perform OCR.
+                        If Not String.IsNullOrWhiteSpace(page.GetText()) Then Continue For
 
                         Dim canvas = page.Canvas
                         canvas.Font = universalFont
 
-                        ' Produce invisible, but searchable text
+                        ' Render text as invisible but searchable.
                         canvas.TextRenderingMode = PdfTextRenderingMode.NeitherFillNorStroke
 
                         Const Dpi As Integer = 200
@@ -74,7 +74,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             resolution As Integer,
             tempFileName As String) As IEnumerable(Of RecognizedTextChunk)
 
-            ' Save the PDF page as a high-resolution image
+            ' Render the PDF page as a high-resolution image.
             Dim options As PdfDrawOptions = PdfDrawOptions.Create()
             options.BackgroundColor = New PdfRgbColor(255, 255, 255)
             options.HorizontalResolution = resolution
@@ -113,7 +113,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim diffSign As Integer = Math.Sign(bestDiff)
                 If diffSign = 0 Then Exit While
 
-                ' try a bit larger font size
+                ' Try increasing the font size slightly.
                 canvas.FontSize += diffSign * [Step]
 
                 Dim newDiff As Double = targetTextWidth - canvas.GetTextWidth(text)

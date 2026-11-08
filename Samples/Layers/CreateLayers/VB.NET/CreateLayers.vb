@@ -16,10 +16,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf As New PdfDocument()
                 pdf.PageMode = PdfPageMode.UseOC
 
-                Dim firstLayer As PdfLayer = pdf.CreateLayer("First Layer")
+                Dim layers = pdf.OptionalContent.Layers
+                Dim firstLayer As PdfLayer = layers.Add("First Layer")
                 firstLayer.Visible = False
 
-                Dim secondLayer As PdfLayer = pdf.CreateLayer("Second Layer", False, PdfLayerIntent.View)
+                Dim secondLayer As PdfLayer = layers.Add("Second Layer", False, "View")
                 secondLayer.Visible = True
 
                 Dim canvas As PdfCanvas = pdf.Pages(0).Canvas

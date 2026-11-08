@@ -14,8 +14,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim pathToFile As String = "LinkToPage.pdf"
 
             Using pdf As New PdfDocument()
-                pdf.AddPage()
-                pdf.AddPage()
+                pdf.Pages.Add()
+                pdf.Pages.Add()
 
                 Dim firstPage As PdfPage = pdf.Pages(0)
                 Dim canvas As PdfCanvas = firstPage.Canvas

@@ -19,7 +19,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 canvas.SaveState()
 
                 canvas.Pen.Width = 3
-                canvas.Pen.DashPattern = New PdfDashPattern(New Single() {5, 3}, 2)
+                canvas.Pen.DashPattern = New PdfDashPattern(New Double() {5, 3}, 2)
 
                 canvas.CurrentPosition = New PdfPoint(20, 60)
                 canvas.DrawLineTo(150, 60)

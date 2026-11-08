@@ -19,25 +19,24 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 BuildTestOutline(pdf)
 
-                Dim root As PdfOutlineItem = pdf.OutlineRoot
-
-                For i As Integer = 0 To root.ChildCount - 1
-                    Dim child As PdfOutlineItem = root.GetChild(i)
-
-                    If i Mod 2 = 0 Then
+                Dim outlines = pdf.Outlines
+                Dim makeBold = True
+                For Each child In outlines
+                    If makeBold Then
                         child.Bold = True
                     Else
                         child.Italic = True
                     End If
+                    makeBold = Not makeBold
 
-                    For j As Integer = 0 To child.ChildCount - 1
-                        Dim childOfChild As PdfOutlineItem = child.GetChild(j)
-
-                        If j Mod 2 = 0 Then
+                    Dim makeGreen = True
+                    For Each childOfChild In child.Children
+                        If makeGreen Then
                             childOfChild.Color = New PdfRgbColor(0, 100, 0) ' dark green
                         Else
                             childOfChild.Color = New PdfRgbColor(138, 43, 226) ' blue violet
                         End If
+                        makeGreen = Not makeGreen
 
                         childOfChild.Bold = True
                         childOfChild.Italic = True
@@ -53,16 +52,15 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Sub
 
         Private Shared Sub BuildTestOutline(pdf As PdfDocument)
-            Dim root As PdfOutlineItem = pdf.OutlineRoot
             Dim lastParent As PdfOutlineItem = Nothing
 
             Dim times As PdfFont = pdf.CreateFont(PdfBuiltInFont.TimesItalic)
-            Dim pageWidth As Single = pdf.GetPage(0).Width
+            Dim pageWidth As Single = pdf.Pages(0).Width
 
-            Dim page As PdfPage = pdf.GetPage(pdf.PageCount - 1)
+            Dim page As PdfPage = pdf.Pages(pdf.Pages.Count - 1)
             For i As Integer = 1 To 29
                 If i > 1 Then
-                    page = pdf.AddPage()
+                    page = pdf.Pages.Add()
                 End If
 
                 page.Canvas.Font = times
@@ -73,12 +71,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim textWidth As Single = page.Canvas.GetTextWidth(titleFormat)
                 page.Canvas.DrawString(New PdfPoint((pageWidth - textWidth) / 2, 100), titleFormat)
 
-                Dim action As PdfGoToAction = pdf.CreateGoToPageAction(i - 1, 0)
+                Dim view = pdf.CreateView(i - 1)
 
                 If i = 1 OrElse i = 10 OrElse i = 20 Then
-                    lastParent = root.AddChild(titleFormat, action)
+                    lastParent = pdf.Outlines.Add(titleFormat)
+                    lastParent.View = view
                 Else
-                    lastParent.AddChild(titleFormat, action)
+                    Dim child = lastParent.Children.Add(titleFormat)
+                    child.View = view
                 End If
             Next
         End Sub

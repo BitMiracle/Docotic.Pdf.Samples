@@ -16,14 +16,15 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf As New PdfDocument()
                 pdf.PageMode = PdfPageMode.UseOC
 
-                Dim firstWatermarkLayer As PdfLayer = pdf.CreateLayer("First XObject")
-                Dim secondWatermarkLayer As PdfLayer = pdf.CreateLayer("Second XObject")
+                Dim layers = pdf.OptionalContent.Layers
+                Dim firstWatermarkLayer As PdfLayer = layers.Add("First XObject")
+                Dim secondWatermarkLayer As PdfLayer = layers.Add("Second XObject")
 
                 Dim firstObject As PdfXObject = pdf.CreateXObject()
                 firstObject.Canvas.DrawString("Text on the first XObject")
                 firstObject.Layer = firstWatermarkLayer
 
-                Dim page As PdfPage = pdf.GetPage(0)
+                Dim page As PdfPage = pdf.Pages(0)
                 page.Canvas.DrawXObject(firstObject, 0, 100)
 
                 Dim secondObject As PdfXObject = pdf.CreateXObject()

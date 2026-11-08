@@ -18,18 +18,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim firstPage As PdfPage = pdf.Pages(0)
                 firstPage.Canvas.DrawString(10, 50, "Main page")
 
-                ' add a page to the end and then delete it
-                pdf.AddPage()
-                pdf.RemovePage(pdf.PageCount - 1)
+                ' Add a page at the end, then remove it.
+                pdf.Pages.Add()
+                pdf.Pages.RemoveAt(pdf.Pages.Count - 1)
 
-                ' another way to delete a page
-                Dim pageToDelete As PdfPage = pdf.AddPage()
-                pdf.RemovePage(pageToDelete)
-
-                ' we can delete several pages at once
-                pdf.InsertPage(0)
-                pdf.InsertPage(1)
-                pdf.RemovePages(New Integer() {0, 1})
+                ' Remove multiple pages at once.
+                pdf.Pages.Insert(0)
+                pdf.Pages.Insert(1)
+                pdf.Pages.RemoveAt(New Integer() {0, 1})
 
                 pdf.Save(pathToFile)
             End Using

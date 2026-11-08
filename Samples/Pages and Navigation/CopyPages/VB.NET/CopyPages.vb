@@ -15,10 +15,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
             Using pdf As New PdfDocument("..\Sample Data\jfif3.pdf")
 
-                ' Copy the third and first pages to a new PDF document (page indexes are zero-based)
-                Using copy As PdfDocument = pdf.CopyPages(New Integer() {2, 0})
-                    ' Helps to reduce file size when the copied pages reference
-                    ' unused resources such as fonts, images, patterns.
+                ' Copy the third and first pages, in that order, to a new PDF document (page
+                ' indexes are zero-based).
+                Using copy As PdfDocument = pdf.Pages.Copy(New Integer() {2, 0})
+                    ' Reduces the file size by removing unused resources (such as fonts, images,
+                    ' and patterns) that may be copied along with the pages.
                     copy.RemoveUnusedResources()
 
                     copy.Save(pathToFile)

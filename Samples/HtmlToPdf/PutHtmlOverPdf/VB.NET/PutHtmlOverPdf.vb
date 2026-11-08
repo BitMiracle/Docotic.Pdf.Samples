@@ -21,31 +21,31 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim pathToFile As String = "PutHtmlOverPdf.pdf"
 
             Using converter = Await HtmlConverter.CreateAsync()
-                ' It is important to specify page size. Usually, the size should be equal to the size of the page
-                ' you want to overlay.
+                ' Specify the page size. It should usually match the size of the page that you
+                ' want to overlay.
                 Dim options = New HtmlConversionOptions()
                 options.Page.SetSizeInches(4.13, 5.83)
 
-                ' The library produces a transparent background by default. If you need
-                ' an opaque background, then you can use CSS background like that:
-                'options.Start.SetStartAfterScriptRun("document.body.style.background = 'white'")
+                ' The library uses a transparent background by default. To make the background
+                ' opaque, you can set it using CSS, for example
+                ' options.Start.SetStartAfterScriptRun("document.body.style.background = 'white'")
                 '
-                ' Alternatively, you can add a white background watermark to all converted pages.
-                ' Look at the addWhiteBackground method below for more detail.
+                '  Alternatively, you can add a white background watermark to every converted page.
+                ' See the addWhiteBackground method below for an example.
 
                 Dim htmlCode = "<div style=""position: absolute; top: 270px; right: 100px;\"">" +
                     "I would like to put this here</div>"
                 Using htmlPdf = Await converter.CreatePdfFromStringAsync(htmlCode, options)
-                    ' Uncomment to apply semi-transparent red background:
+                    ' Uncomment to add a semi-transparent red background:
                     'AddBackground(htmlPdf, New PdfRgbColor(255, 0, 0), 25)
 
                     Using pdf = New PdfDocument("..\Sample Data\simple-graphics.pdf")
-                        ' Create an XObject from a page in the document generated from HTML.
-                        ' Please note that the code uses different document instances to call the
-                        ' method And access the collection of the pages.
+                        ' Create an XObject from the first page of the HTML-generated PDF.
+                        ' Note that the page And the method are accessed through different
+                        ' PdfDocument instances.
                         Dim xObj = pdf.CreateXObject(htmlPdf.Pages(0))
 
-                        ' Draw the XObject on a page from the existing PDF.
+                        ' Draw the XObject on a page of the existing PDF document.
                         pdf.Pages(0).Canvas.DrawXObject(xObj, 0, 0)
 
                         pdf.Save(pathToFile)

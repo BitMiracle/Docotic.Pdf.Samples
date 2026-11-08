@@ -16,8 +16,9 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf As New PdfDocument()
                 pdf.PageMode = PdfPageMode.UseOC
 
-                Dim buttonsLayer As PdfLayer = pdf.CreateLayer("Buttons")
-                Dim textLayer As PdfLayer = pdf.CreateLayer("Text")
+                Dim layers = pdf.OptionalContent.Layers
+                Dim buttonsLayer As PdfLayer = layers.Add("Buttons")
+                Dim textLayer As PdfLayer = layers.Add("Text")
 
                 Dim page As PdfPage = pdf.Pages(0)
 

@@ -20,14 +20,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim firstPage As PdfPage = pdf.Pages(0)
                 firstPage.Size = PdfPaperSize.A6
 
-                Dim secondPage As PdfPage = pdf.AddPage()
+                Dim secondPage As PdfPage = pdf.Pages.Add()
                 secondPage.Width = 300
                 secondPage.Height = 100
 
-                Dim thirdPage As PdfPage = pdf.AddPage()
+                Dim thirdPage As PdfPage = pdf.Pages.Add()
                 thirdPage.Rotation = PdfRotation.Rotate90
 
-                Dim fourthPage As PdfPage = pdf.AddPage()
+                Dim fourthPage As PdfPage = pdf.Pages.Add()
                 fourthPage.Orientation = PdfPaperOrientation.Landscape
 
                 pdf.Save(pathToFile)

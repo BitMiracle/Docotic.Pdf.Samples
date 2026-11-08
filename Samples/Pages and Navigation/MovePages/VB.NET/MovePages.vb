@@ -14,24 +14,24 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim continuousOutputPath As String = "MovePagesContinuous.pdf"
             Dim arbitraryOutputPath As String = "MovePagesArbitrary.pdf"
 
-            ' This shows how to move continuous ranges of pages
+            ' Move a continuous range of pages.
             Using pdf As New PdfDocument()
                 BuildTestDocument(pdf)
 
-                ' move the first half of pages to the end of the document
-                pdf.MovePages(0, 5, pdf.PageCount)
+                ' Move the first five pages to the end of the document.
+                pdf.Pages.MoveRange(0, 5, pdf.Pages.Count)
 
                 pdf.Save(continuousOutputPath)
             End Using
 
-            ' This shows how to move arbitrary sets of pages
+            ' Move pages selected by their indexes.
             Using pdf As New PdfDocument()
                 BuildTestDocument(pdf)
 
                 Dim indexes As Integer() = New Integer() {0, 2, 4, 6, 8}
 
-                ' move odd pages to the end of the document
-                pdf.MovePages(indexes, pdf.PageCount)
+                ' Move the pages at the specified indexes to the end of the document.
+                pdf.Pages.Move(indexes, pdf.Pages.Count)
 
                 pdf.Save(arbitraryOutputPath)
             End Using
@@ -44,12 +44,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
         Private Shared Sub BuildTestDocument(pdf As PdfDocument)
             Dim times As PdfFont = pdf.CreateFont(PdfBuiltInFont.HelveticaBoldOblique)
-            Dim pageWidth As Double = pdf.GetPage(0).Width
+            Dim pageWidth As Double = pdf.Pages(0).Width
 
-            Dim page As PdfPage = pdf.GetPage(0)
+            Dim page As PdfPage = pdf.Pages(0)
             For i As Integer = 0 To 9
                 If i > 0 Then
-                    page = pdf.AddPage()
+                    page = pdf.Pages.Add()
                 End If
 
                 page.Canvas.Font = times

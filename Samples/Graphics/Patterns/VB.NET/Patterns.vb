@@ -33,7 +33,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim pattern As PdfTilingPattern = pdf.CreateColoredPattern(5, 5)
             Fill(pattern)
 
-            Dim canvas As PdfCanvas = pdf.GetPage(0).Canvas
+            Dim canvas As PdfCanvas = pdf.Pages(0).Canvas
             canvas.Brush.Pattern = pattern
             canvas.DrawString(New PdfPoint(50, 50), "Pattern-filled text")
             canvas.DrawCircle(New PdfPoint(0, 0), 20, PdfDrawMode.FillAndStroke)
@@ -43,7 +43,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim pattern As PdfTilingPattern = pdf.CreateUncoloredPattern(5, 5, New PdfRgbColorSpace())
             Fill(pattern)
 
-            Dim canvas As PdfCanvas = pdf.GetPage(0).Canvas
+            Dim canvas As PdfCanvas = pdf.Pages(0).Canvas
             canvas.Brush.Pattern = pattern
             canvas.Brush.Color = New PdfRgbColor(0, 255, 0)
             canvas.DrawString(New PdfPoint(50, 150), "Uncolored Pattern colored green")

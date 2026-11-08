@@ -17,14 +17,18 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim page As PdfPage = pdf.Pages(0)
 
                 Dim listBox As PdfListBox = page.AddListBox(10, 50, 120, 80)
-                listBox.AddItem("First item")
-                listBox.AddItem("Second item")
-                listBox.AddItem("Third item")
+                listBox.Items.Add("First item")
+                listBox.Items.Add("Second item")
+                listBox.Items.Add("Third item")
                 listBox.MultiSelection = True
 
-                Dim items As PdfListItem() = {New PdfListItem("One", "1"), New PdfListItem("Two", "2"), New PdfListItem("Three", "3")}
+                Dim items As PdfListItem() = {
+                    New PdfListItem("One", "1"),
+                    New PdfListItem("Two", "2"),
+                    New PdfListItem("Three", "3")
+                }
                 Dim listBox2 As PdfListBox = page.AddListBox(10, 140, 120, 80)
-                listBox2.AddItems(items)
+                listBox2.Items.Add(items)
                 listBox2.SelectItems(New PdfListItem() {items(0), items(2)})
 
                 pdf.Save(pathToFile)

@@ -19,7 +19,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Save(removeFromPageOutputName)
 
                 For Each widget As PdfWidget In pdf.GetWidgets().ToArray
-                    pdf.RemoveWidget(widget)
+                    widget.Remove()
                 Next
 
                 pdf.Save(removeAllOutputName)

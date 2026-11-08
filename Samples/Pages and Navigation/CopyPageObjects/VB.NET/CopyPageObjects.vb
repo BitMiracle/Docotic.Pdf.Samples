@@ -14,32 +14,32 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Const PathToFile As String = "CopyPageObjects.pdf"
 
             Using pdf = New PdfDocument("..\Sample Data\BRAILLE CODES WITH TRANSLATION.pdf")
-                Using copy As PdfDocument = pdf.CopyPages(0, 1)
+                Using copy As PdfDocument = pdf.Pages.CopyRange(0, 1)
                     Dim sourcePage As PdfPage = copy.Pages(0)
-                    Dim copyPage As PdfPage = copy.AddPage()
+                    Dim copyPage As PdfPage = copy.Pages.Add()
 
                     Dim options = New PdfObjectExtractionOptions
 
-                    ' Set this option to true if you need to convert searchable text to vector paths
+                    ' Set to true to convert searchable text into vector paths.
                     options.ExtractTextAsPath = False
 
-                    ' Set this option to true to ignore marked content (such as layers Or tagged data)
+                    ' Set to true to ignore marked content, such as layers and tagged PDF data.
                     '
-                    ' This sample does Not preserve all structure information because page objects are
-                    ' copied to another page. Look at the EditPageContent sample that shows how to copy
-                    ' page objects to the same page and preserve all structure information.
+                    ' This sample does not preserve all structural information because page
+                    ' objects are copied to a different page. See the EditPageContent sample for
+                    ' an example of copying page objects within the same page while preserving all
+                    ' structural information.
                     options.FlattenMarkedContent = False
 
-                    ' Usually, you need to set this option to false. That allows to handle
-                    ' documents with transparency groups properly.
-                    ' The value = true is recommended for backward compatibility or if you do not
-                    ' worry about transparency.
+                    ' Usually, leave this option set to false to ensure proper handling of
+                    ' documents with transparency groups. Set to true for backward compatibility
+                    ' Or when transparency handling Is Not a concern.
                     options.FlattenXObjects = False
 
                     Dim copier = New PageObjectCopier(copy, options)
                     copier.Copy(sourcePage, copyPage)
 
-                    copy.RemovePage(0)
+                    copy.Pages.RemoveAt(0)
 
                     copy.Save(PathToFile)
                 End Using

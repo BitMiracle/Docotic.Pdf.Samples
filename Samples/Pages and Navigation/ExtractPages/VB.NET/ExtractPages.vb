@@ -17,18 +17,18 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using original As New PdfDocument()
                 For i As Integer = 0 To 4
                     If i <> 0 Then
-                        original.AddPage()
+                        original.Pages.Add()
                     End If
 
                     Dim page As PdfPage = original.Pages(i)
                     page.Canvas.DrawString("Page #" + (i + 1).ToString())
                 Next
 
-                ' Extract the first 3 pages.
-                ' The call will remove the pages from the original PDF document.
-                Using extracted As PdfDocument = original.ExtractPages(0, 3)
-                    ' Helps to reduce file size when the extracted pages reference
-                    ' unused resources such as fonts, images, patterns.
+                ' Extract the first three pages.
+                ' The extracted pages are removed from the original document.
+                Using extracted As PdfDocument = original.Pages.ExtractRange(0, 3)
+                    ' Reduce the file size by removing unused resources, such as fonts, images,
+                    ' and patterns, that may have been copied from the original document.
                     extracted.RemoveUnusedResources()
 
                     extracted.Save(extractedPagesOutputPath)

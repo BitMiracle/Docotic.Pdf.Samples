@@ -17,15 +17,15 @@ Namespace BitMiracle.Docotic.Pdf.Samples
                 Dim page As PdfPage = pdf.Pages(0)
 
                 Dim comboBox As PdfComboBox = page.AddComboBox(10, 50, 120, 15)
-                comboBox.AddItem("First item")
-                comboBox.AddItem("Second item")
-                comboBox.AddItem("Third item")
+                comboBox.Items.Add("First item")
+                comboBox.Items.Add("Second item")
+                comboBox.Items.Add("Third item")
                 comboBox.Border.Color = New PdfRgbColor(255, 0, 0)
                 comboBox.Text = "Second item"
 
                 Dim comboBox2 As PdfComboBox = page.AddComboBox(10, 80, 120, 15)
-                comboBox2.AddItem("First item")
-                comboBox2.AddItem("Second item")
+                comboBox2.Items.Add("First item")
+                comboBox2.Items.Add("Second item")
                 comboBox2.HasEditField = False
 
                 pdf.Save(pathToFile)

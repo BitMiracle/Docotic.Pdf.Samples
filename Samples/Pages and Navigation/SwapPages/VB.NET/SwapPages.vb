@@ -17,8 +17,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 BuildTestDocument(pdf)
 
-                pdf.SwapPages(9, 0)
-                pdf.SwapPages(8, 1)
+                pdf.Pages.Swap(9, 0)
+                pdf.Pages.Swap(8, 1)
 
                 pdf.Save(pathToFile)
             End Using
@@ -30,12 +30,12 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
         Private Shared Sub BuildTestDocument(pdf As PdfDocument)
             Dim times As PdfFont = pdf.CreateFont(PdfBuiltInFont.HelveticaBoldOblique)
-            Dim pageWidth As Double = pdf.GetPage(0).Width
+            Dim page As PdfPage = pdf.Pages(0)
+            Dim pageWidth As Double = page.Width
 
-            Dim page As PdfPage = pdf.GetPage(0)
             For i As Integer = 0 To 9
                 If i > 0 Then
-                    page = pdf.AddPage()
+                    page = pdf.Pages.Add()
                 End If
 
                 page.Canvas.Font = times

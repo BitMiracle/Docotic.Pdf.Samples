@@ -29,11 +29,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Sub
 
         Public Sub Edit(page As PdfPage)
-            ' You can remove the ToArray call here if necessary because PdfPage.GetObjects returns
-            ' final collections in the current version. We use ToArray to illustrate that in future
-            ' versions PdfPage.GetObjects might become lazy. In that case, you need to load all page
-            ' objects before clearing the canvas.
-            Dim objects As IEnumerable(Of PdfPageObject) = page.GetObjects(m_options).ToArray()
+            ' Materialize the objects before clearing the canvas.
+            ' Otherwise, the objects will be removed before CopyPageObjects enumerates them,
+            ' resulting in empty output.
+            Dim objects = page.GetObjects(m_options).ToArray()
 
             Dim canvas As PdfCanvas = page.Canvas
             canvas.Clear()
@@ -153,13 +152,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Sub
 
         Private Shared Sub SetClipRegion(canvas As PdfCanvas, clipRegion As PdfClipRegion)
-            If clipRegion.IntersectedPaths.Count = 0 Then
+            Dim paths = clipRegion.GetIntersectedPaths().ToArray()
+            If paths.Length = 0 Then
                 Return
             End If
 
             Dim transformationBefore As PdfMatrix = canvas.TransformationMatrix
             Try
-                For Each clipPath As PdfPath In clipRegion.IntersectedPaths
+                For Each clipPath As PdfPath In paths
                     canvas.ResetTransform()
                     canvas.Transform(clipPath.TransformationMatrix)
                     AppendPath(canvas, clipPath)
@@ -172,8 +172,8 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Sub
 
         Private Shared Sub AppendPath(target As PdfCanvas, path As PdfPath)
-            For Each subpath As PdfSubpath In path.Subpaths
-                For Each segment As PdfPathSegment In subpath.Segments
+            For Each subpath As PdfSubpath In path.GetSubpaths()
+                For Each segment As PdfPathSegment In subpath.GetSegments()
                     Select Case segment.Type
                         Case PdfPathSegmentType.Point
                             target.CurrentPosition = DirectCast(segment, PdfPointSegment).Value

@@ -15,14 +15,14 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim asPaintedOutputPath As String = "PdfPaintedImage.SaveAsPainted.tiff"
 
             Using pdf As New PdfDocument("..\Sample Data\ImageScaleAndRotate.pdf")
-                Dim paintedImages As PdfCollection(Of PdfPaintedImage) = pdf.Pages(0).GetPaintedImages()
+                Dim paintedImages = pdf.Pages(0).GetPaintedImages()
 
                 Dim image As PdfPaintedImage = paintedImages(0)
 
-                ' save the image as is
+                ' Save the image as is.
                 asIsOutputPath = image.Image.Save("PdfImage.Save")
 
-                ' save the image as painted
+                ' Save the image as painted.
                 Dim options = New PdfPaintedImageSavingOptions With
                 {
                     .Compression = PaintedImageCompressionOptions.CreateTiff(),

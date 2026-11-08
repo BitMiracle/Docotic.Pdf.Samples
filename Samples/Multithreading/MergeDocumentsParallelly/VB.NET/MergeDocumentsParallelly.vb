@@ -44,7 +44,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Using pdf As PdfDocument = GetMergedDocument(streams, startIndex, count)
                 Dim result = New MemoryStream()
                 Dim options = New PdfSaveOptions With {
-                    .UseObjectStreams = False ' This speeds up writing intermediate documents.
+                    .UseObjectStreams = False ' Speeds up saving intermediate documents.
                 }
                 pdf.Save(result, options)
                 Return result
