@@ -28,7 +28,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 else if (info is PdfPublicKeyEncryptionInfo publicKeyInfo)
                 {
                     message.AppendFormat("{0} - is encrypted and requires one of the certificates: ", fileName);
-                    string?[] serialNumbers = publicKeyInfo.Recipients.Select(r => r.SerialNumber).ToArray();
+                    string?[] serialNumbers = publicKeyInfo.GetRecipients().Select(r => r.SerialNumber).ToArray();
                     message.Append(string.Join(", ", serialNumbers));
                 }
             }

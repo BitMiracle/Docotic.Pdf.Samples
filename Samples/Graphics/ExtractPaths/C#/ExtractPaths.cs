@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Linq;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -18,9 +19,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (var pdf = new PdfDocument(@"..\Sample Data\gmail-cheat-sheet.pdf"))
             {
-                using PdfDocument copy = pdf.CopyPages(0, 1);
+                using PdfDocument copy = pdf.Pages.CopyRange(0, 1);
                 PdfPage sourcePage = copy.Pages[0];
-                PdfPage copyPage = copy.AddPage();
+                PdfPage copyPage = copy.Pages.Add();
 
                 copyPage.Group = sourcePage.Group;
                 copyPage.UserUnit = sourcePage.UserUnit;
@@ -53,7 +54,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     target.RestoreState();
                 }
 
-                copy.RemovePage(0);
+                copy.Pages.RemoveAt(0);
 
                 copy.Save(PathToFile);
             }
@@ -65,13 +66,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static void SetClipRegion(PdfCanvas canvas, PdfClipRegion clipRegion)
         {
-            if (clipRegion.IntersectedPaths.Count == 0)
+            var paths = clipRegion.GetIntersectedPaths().ToArray();
+            if (paths.Length == 0)
                 return;
 
             PdfMatrix transformationBefore = canvas.TransformationMatrix;
             try
             {
-                foreach (PdfPath clipPath in clipRegion.IntersectedPaths)
+                foreach (PdfPath clipPath in paths)
                 {
                     canvas.ResetTransform();
                     canvas.Transform(clipPath.TransformationMatrix);
@@ -114,9 +116,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static void AppendPath(PdfCanvas target, PdfPath path)
         {
-            foreach (PdfSubpath subpath in path.Subpaths)
+            foreach (PdfSubpath subpath in path.GetSubpaths())
             {
-                foreach (PdfPathSegment segment in subpath.Segments)
+                foreach (PdfPathSegment segment in subpath.GetSegments())
                 {
                     switch (segment.Type)
                     {

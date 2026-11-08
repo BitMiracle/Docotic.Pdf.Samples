@@ -21,15 +21,15 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 PdfPage page = pdf.Pages[0];
 
                 PdfComboBox comboBox = page.AddComboBox(10, 50, 120, 15);
-                comboBox.AddItem("First item");
-                comboBox.AddItem("Second item");
-                comboBox.AddItem("Third item");
+                comboBox.Items.Add("First item");
+                comboBox.Items.Add("Second item");
+                comboBox.Items.Add("Third item");
                 comboBox.Border.Color = new PdfRgbColor(255, 0, 0);
                 comboBox.Text = "Second item";
 
                 PdfComboBox comboBox2 = page.AddComboBox(10, 80, 120, 15);
-                comboBox2.AddItem("First item");
-                comboBox2.AddItem("Second item");
+                comboBox2.Items.Add("First item");
+                comboBox2.Items.Add("Second item");
                 comboBox2.HasEditField = false;
 
                 pdf.Save(pathToFile);

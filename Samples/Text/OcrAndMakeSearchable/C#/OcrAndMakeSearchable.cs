@@ -21,8 +21,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using var pdf = new PdfDocument(@"..\Sample data\Freedman Scora.pdf");
 
-            // This font is used to draw all recognized text chunks in PDF.
-            // Make sure that the font defines all glyphs for the target language.
+            // Use this font to draw all recognized text chunks in the PDF.
+            // Make sure it contains all glyphs required for the target language.
             PdfFont universalFont = pdf.CreateFont("Arial");
 
             var location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -35,19 +35,19 @@ namespace BitMiracle.Docotic.Pdf.Samples
             var tessData = Path.Combine(location, @"tessdata");
             using (var engine = new TesseractEngine(tessData, "eng", EngineMode.LstmOnly))
             {
-                for (int i = 0; i < pdf.PageCount; ++i)
+                for (int i = 0; i < pdf.Pages.Count; ++i)
                 {
                     PdfPage page = pdf.Pages[i];
 
-                    // Simple check if the page contains searchable text.
-                    // We do not need to do OCR in that case.
-                    if (!string.IsNullOrEmpty(page.GetText().Trim()))
+                    // Check whether the page already contains searchable text.
+                    // If so, there is no need to perform OCR.
+                    if (!string.IsNullOrWhiteSpace(page.GetText()))
                         continue;
 
                     var canvas = page.Canvas;
                     canvas.Font = universalFont;
 
-                    // Produce invisible, but searchable text
+                    // Render text as invisible but searchable.
                     canvas.TextRenderingMode = PdfTextRenderingMode.NeitherFillNorStroke;
 
                     const int Dpi = 200;
@@ -87,7 +87,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
         private static IEnumerable<RecognizedTextChunk> RecognizeWords(PdfPage page, TesseractEngine engine,
             int resolution, string tempFileName)
         {
-            // Save PDF page as a high-resolution image
+            // Render the PDF page as a high-resolution image.
             PdfDrawOptions options = PdfDrawOptions.Create();
             options.BackgroundColor = new PdfRgbColor(255, 255, 255);
             options.HorizontalResolution = resolution;
@@ -124,7 +124,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 if (diffSign == 0)
                     break;
 
-                // try a bit larger font size
+                // Try increasing the font size slightly.
                 canvas.FontSize += diffSign * Step;
 
                 double newDiff = targetTextWidth - canvas.GetTextWidth(text);

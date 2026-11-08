@@ -22,14 +22,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
             using (var pdf = new PdfDocument(originalFile))
             {
                 var alreadyCompressedImageIds = new HashSet<string>();
-                for (int i = 0; i < pdf.PageCount; ++i)
+                for (int i = 0; i < pdf.Pages.Count; ++i)
                 {
                     PdfPage page = pdf.Pages[i];
                     foreach (PdfPaintedImage painted in page.GetPaintedImages())
                     {
                         PdfImage image = painted.Image;
 
-                        // Image ID may be null for inline images, which cannot be recompressed
+                        // Inline images have no ID and cannot be recompressed
                         if (image.Id == null)
                             continue;
 
@@ -45,8 +45,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
             }
 
             // NOTE:
-            // This sample shows only one approach to reduce the size of a PDF.
-            // Please check CompressAllTechniques sample code to see more approaches.
+            // This sample demonstrates one approach to reducing PDF file size.
+            // See the CompressAllTechniques sample for additional compression techniques:
             // https://github.com/BitMiracle/Docotic.Pdf.Samples/tree/master/Samples/Compression/CompressAllTechniques
 
             string message = string.Format(
@@ -64,32 +64,33 @@ namespace BitMiracle.Docotic.Pdf.Samples
         {
             PdfImage image = painted.Image;
 
-            // inline images cannot be recompressed unless you move them to resources
-            // using PdfCanvas.MoveInlineImagesToResources
+            // Inline images cannot be recompressed unless they are first moved to page resources
+            // using PdfCanvas.MoveInlineImagesToResources.
             if (image.IsInline)
                 return false;
 
-            // mask images are not good candidates for recompression
+            // Skip mask images and very small images, as they are poor candidates for
+            // recompression.
             if (image.IsMask || image.Width < 8 || image.Height < 8)
                 return false;
 
-            // get size of the painted image
+            // Get the dimensions of the painted image
             int width = Math.Max(1, (int)painted.Bounds.Width);
             int height = Math.Max(1, (int)painted.Bounds.Height);
 
-            // calculate resize ratio
+            // Calculate the ratio between the original image size and the painted size.
             double ratio = Math.Min(image.Width / (double)width, image.Height / (double)height);
 
             if (ratio <= 1)
             {
-                // the image size is smaller than the painted size
+                // The image is no larger than its painted size, so recompress it without resizing.
                 return RecompressImage(image);
             }
 
             if (ratio < 1.1)
             {
-                // with the ratio this small, the potential size
-                // reduction rarely justifies resizing artefacts
+                // The image is only slightly larger than its painted size.
+                // Resizing is unlikely to reduce the file size enough to justify the quality loss.
                 return false;
             }
 
@@ -133,12 +134,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 if (image.Width < 64 && image.Height < 64)
                 {
-                    // JPEG better preserves detail on smaller images
+                    // JPEG preserves fine detail better in smaller images.
                     image.RecompressWithJpeg();
                 }
                 else
                 {
-                    // you can try a larger compressio ratio for bigger images
+                    // Larger images can often tolerate more aggressive compression.
                     image.RecompressWithJpeg2000(10);
                 }
 
@@ -150,17 +151,17 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static bool ResizeBilevelImage(PdfImage image, double ratio)
         {
-            // Fax documents usually look better if integer-ratio scaling is used
-            // Fractional-ratio scaling introduces more artifacts
+            // Fax documents usually look better when scaled by an integer factor.
+            // Fractional scaling tends to introduce more artifacts.
             int intRatio = (int)ratio;
 
-            // decrease the ratio when it is too high
+            // Limit the downscaling factor to avoid excessive quality loss.
             if (intRatio > 3)
                 intRatio = Math.Min(intRatio - 2, 3);
 
             if (intRatio == 1 && image.Compression == PdfImageCompression.Group4Fax)
             {
-                // skipping the image, because the output size and compression are the same
+                // No resize is needed and the image already uses the target compression.
                 return false;
             }
 

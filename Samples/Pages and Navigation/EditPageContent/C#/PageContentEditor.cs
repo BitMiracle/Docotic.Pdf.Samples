@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using BitMiracle.Docotic.Pdf;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -12,7 +11,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
         private readonly Func<PdfColor, PdfColor> m_replaceColor;
         private readonly Func<PdfTextData, bool> m_shouldRemoveText;
 
-        private readonly Dictionary<string, PdfXObject> m_xobjectCopies = new();
+        private readonly Dictionary<string, PdfXObject> m_xobjectCopies = [];
 
         public PageContentEditor(
             PdfDocument document,
@@ -28,11 +27,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         public void Edit(PdfPage page)
         {
-            // You can remove the ToArray call here if necessary because PdfPage.GetObjects returns
-            // final collections in the current version. We use ToArray to illustrate that in future
-            // versions PdfPage.GetObjects might become lazy. In that case, you need to load all page
-            // objects before clearing the canvas.
-            IEnumerable<PdfPageObject> objects = page.GetObjects(m_options).ToArray();
+            // Materialize the objects before clearing the canvas.
+            // Otherwise, the objects will be removed before CopyPageObjects enumerates them,
+            // resulting in empty output.
+            var objects = page.GetObjects(m_options).ToArray();
 
             PdfCanvas canvas = page.Canvas;
             canvas.Clear();
@@ -175,13 +173,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static void SetClipRegion(PdfCanvas canvas, PdfClipRegion clipRegion)
         {
-            if (clipRegion.IntersectedPaths.Count == 0)
+            var paths = clipRegion.GetIntersectedPaths().ToArray();
+            if (paths.Length == 0)
                 return;
 
             PdfMatrix transformationBefore = canvas.TransformationMatrix;
             try
             {
-                foreach (PdfPath clipPath in clipRegion.IntersectedPaths)
+                foreach (PdfPath clipPath in paths)
                 {
                     canvas.ResetTransform();
                     canvas.Transform(clipPath.TransformationMatrix);
@@ -198,9 +197,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static void AppendPath(PdfCanvas target, PdfPath path)
         {
-            foreach (PdfSubpath subpath in path.Subpaths)
+            foreach (PdfSubpath subpath in path.GetSubpaths())
             {
-                foreach (PdfPathSegment segment in subpath.Segments)
+                foreach (PdfPathSegment segment in subpath.GetSegments())
                 {
                     switch (segment.Type)
                     {

@@ -4,7 +4,9 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
 using System.Runtime.Versioning;
+
 using BitMiracle.Docotic.Pdf.Gdi;
 
 namespace BitMiracle.Docotic.Pdf.Samples
@@ -42,12 +44,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                     gr.SetClip(page.CropBox.ToRectangleF(page.Height), CombineMode.Intersect);
 
-                    // We do not need to handle marked content and XObjects in this sample.
-                    // You may want to set these options to false in order to:
-                    // * Respect transparency groups for XObjects
-                    // * Respect layers or tagged content
+                    // This sample does not need to handle marked content or XObjects.
+                    // Set these options to false if you need to:
+                    // * Preserve transparency groups in XObjects.
+                    // * Process layers or tagged content.
                     //
-                    // Look at the EditPageContent sample that shows how to handle marked content and XObjects.
+                    // See the EditPageContent sample for an example of handling
+                    // marked content and XObjects.
                     var options = new PdfObjectExtractionOptions
                     {
                         FlattenMarkedContent = true,
@@ -108,14 +111,15 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static void DrawImage(Graphics gr, PdfPaintedImage image, float userUnit)
         {
-            // Do not render images with zero width or height. GDI+ throws OutOfMemoryException
-            // in x86 processes for regular image size (e.g. 1x51) and very small transformation
-            // matrix (e.g. { 0.000005, 0, 0, 0.003, x, y }).
+            // Skip images with zero width or height.
+            // In x86 processes, GDI+ may throw OutOfMemoryException when rendering an image with
+            // normal dimensions (e.g. 1x51) using a very small
+            // transformation matrix (e.g. { 0.000005, 0, 0, 0.003, x, y }).
             PdfSize paintedImageSize = image.Bounds.Size;
             if (Math.Abs(paintedImageSize.Width) < 0.001 || Math.Abs(paintedImageSize.Height) < 0.001)
                 return;
 
-            // ignore mask images in this sample
+            // This sample does not handle mask images.
             if (image.Image.IsMask)
                 return;
 
@@ -128,14 +132,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 gr.TranslateTransform((float)image.Position.X, (float)image.Position.Y);
                 ConcatMatrix(gr, image.TransformationMatrix);
 
-                // Important for rendering of neighbour image tiles
+                // Ensures proper alignment when rendering adjacent image tiles.
                 gr.PixelOffsetMode = PixelOffsetMode.Half;
 
                 var imageSize = new PdfSize(image.Image.Width, image.Image.Height);
                 if (imageSize.Width < bitmap.Width && imageSize.Height < bitmap.Height)
                 {
-                    // the bitmap produced from the image is larger than the image.
-                    // usually this happens when an image has a mask image which is larger than the image itself.
+                    // The produced bitmap is larger than the original image. This usually happens
+                    // when the image has a mask that is larger than the image itself.
                     InterpolationMode current = gr.InterpolationMode;
                     gr.InterpolationMode = InterpolationMode.HighQualityBicubic;
                     gr.DrawImage(bitmap, 0, 0, (float)imageSize.Width, (float)imageSize.Height);
@@ -143,8 +147,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 }
                 else
                 {
-                    // bitmap has the same size,
-                    // or one of its dimensions is longer than the corresponding image dimension
+                    // The bitmap has the same dimensions as the image, or at least one of its
+                    // dimensions is larger.
                     gr.DrawImage(bitmap, 0, 0, bitmap.Width, bitmap.Height);
                 }
             });
@@ -182,14 +186,15 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static void SetClipRegion(Graphics gr, PdfClipRegion clipRegion, float userUnit)
         {
-            if (clipRegion.IntersectedPaths.Count == 0)
+            var paths = clipRegion.GetIntersectedPaths().ToArray();
+            if (paths.Length == 0)
                 return;
 
             Matrix transformationBefore = gr.Transform;
             try
             {
                 gr.Transform = new Matrix(userUnit, 0, 0, userUnit, 0, 0);
-                foreach (PdfPath clipPath in clipRegion.IntersectedPaths)
+                foreach (PdfPath clipPath in paths)
                 {
                     using var gdiPath = new GraphicsPath();
                     ToGdiPath(clipPath, gdiPath);
@@ -207,16 +212,16 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static void ToGdiPath(PdfPath path, GraphicsPath gdiPath)
         {
-            foreach (PdfSubpath subpath in path.Subpaths)
+            foreach (PdfSubpath subpath in path.GetSubpaths())
             {
                 gdiPath.StartFigure();
 
-                foreach (PdfPathSegment segment in subpath.Segments)
+                foreach (PdfPathSegment segment in subpath.GetSegments())
                 {
                     switch (segment.Type)
                     {
                         case PdfPathSegmentType.Point:
-                            // A singlepoint open subpath produces no output.
+                            // A single-point open subpath produces no visible output.
                             break;
 
                         case PdfPathSegmentType.Line:
@@ -236,18 +241,18 @@ namespace BitMiracle.Docotic.Pdf.Samples
                         case PdfPathSegmentType.Rectangle:
                             RectangleF rect = ((PdfRectangleSegment)segment).Bounds.ToRectangleF();
 
-                            // GDI+ does not render rectangles with a negative or
-                            // very small width and height. Render such rectangles by lines,
-                            // but respect direction. Otherwise, non-zero winding rule for
-                            // path filling will not work.
-                            gdiPath.AddLines(new[]
-                            {
+                            // GDI+ does not render rectangles with negative or very small
+                            // dimensions. Render such rectangles as lines, preserving their
+                            // direction. Otherwise, the non-zero winding rule may produce
+                            // incorrect fill results.
+                            gdiPath.AddLines(
+                            [
                                 rect.Location,
                                 new PointF(rect.X + rect.Width, rect.Y),
                                 new PointF(rect.X + rect.Width, rect.Y + rect.Height),
                                 new PointF(rect.X, rect.Y + rect.Height),
                                 rect.Location
-                            });
+                            ]);
                             break;
 
                         case PdfPathSegmentType.CloseSubpath:
@@ -356,8 +361,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static string GetFontName(PdfFont font)
         {
-            // A trick to load a similar font from the system. Ideally, we should
-            // load font from raw bytes. Use PdfFont.Save methods to produce the bytes.
+            // Map common PDF font names to similar system fonts. For more accurate font matching,
+            // load the font from its raw bytes using the PdfFont.Save methods.
             string fontName = font.Name;
             if (fontName.Contains("Courier"))
                 return "Courier New";

@@ -18,12 +18,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (var pdf = new PdfDocument())
             {
-                pdf.AddPage();
+                pdf.Pages.Add();
 
                 PdfXObject watermark = pdf.CreateXObject();
 
-                // uncomment following line if you want the watermark to be placed before
-                // any other contents of a page.
+                // Uncomment the following line to place the watermark behind all other page content.
                 // watermark.DrawOnBackground = true;
 
                 PdfCanvas watermarkCanvas = watermark.Canvas;
@@ -31,11 +30,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 watermarkCanvas.FontSize = 36;
                 watermarkCanvas.DrawString(100, 100, "This text is a part of the watermark");
 
-                foreach (PdfPage page in pdf.Pages)
+                foreach (var page in pdf.Pages)
                 {
-                    // Draw the watermark at the top left corner over the page contents.
-                    // This will also add the watermark to the collection of page XObjects.
-                    page.Canvas.DrawXObject(watermark, 0, 0);
+                    // Draw the watermark over the page contents, starting at the top-left corner.
+                    // The watermark will also be added to the page's XObjects collection.
+                    page?.Canvas.DrawXObject(watermark, 0, 0);
                 }
 
                 pdf.Save(pathToFile);

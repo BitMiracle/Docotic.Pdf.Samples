@@ -20,7 +20,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 PdfFont font = pdf.CreateFont(PdfBuiltInFont.Helvetica);
 
-                for (int i = 0; i < pdf.PageCount; ++i)
+                for (int i = 0; i < pdf.Pages.Count; ++i)
                 {
                     PdfPage page = pdf.Pages[i];
                     DrawHeader(page, font);

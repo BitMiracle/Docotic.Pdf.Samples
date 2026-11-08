@@ -52,7 +52,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             var options = new PdfSaveOptions
             {
-                // This speeds up writing of intermediate documents
+                // Speeds up saving intermediate documents.
                 UseObjectStreams = false
             };
             pdf.Save(result, options);
@@ -71,7 +71,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     s.Dispose();
                 }
 
-                pdf.RemovePage(0);
+                pdf.Pages.RemoveAt(0);
 
                 pdf.ReplaceDuplicateObjects();
 

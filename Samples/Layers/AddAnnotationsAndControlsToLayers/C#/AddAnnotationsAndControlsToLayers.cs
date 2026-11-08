@@ -20,8 +20,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 pdf.PageMode = PdfPageMode.UseOC;
 
-                PdfLayer buttonsLayer = pdf.CreateLayer("Buttons");
-                PdfLayer textLayer = pdf.CreateLayer("Text");
+                var layers = pdf.OptionalContent.Layers;
+                PdfLayer buttonsLayer = layers.Add("Buttons");
+                PdfLayer textLayer = layers.Add("Text");
 
                 PdfPage page = pdf.Pages[0];
 

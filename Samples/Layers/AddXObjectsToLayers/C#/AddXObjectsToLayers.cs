@@ -20,14 +20,15 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 pdf.PageMode = PdfPageMode.UseOC;
 
-                PdfLayer firstWatermarkLayer = pdf.CreateLayer("First XObject");
-                PdfLayer secondWatermarkLayer = pdf.CreateLayer("Second XObject");
+                var layers = pdf.OptionalContent.Layers;
+                PdfLayer firstWatermarkLayer = layers.Add("First XObject");
+                PdfLayer secondWatermarkLayer = layers.Add("Second XObject");
 
                 PdfXObject firstObject = pdf.CreateXObject();
                 firstObject.Canvas.DrawString("Text on the first XObject");
                 firstObject.Layer = firstWatermarkLayer;
 
-                PdfPage page = pdf.GetPage(0);
+                PdfPage page = pdf.Pages[0];
                 page.Canvas.DrawXObject(firstObject, 0, 100);
 
                 PdfXObject secondObject = pdf.CreateXObject();

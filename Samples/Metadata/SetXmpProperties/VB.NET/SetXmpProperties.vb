@@ -14,15 +14,18 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Dim pathToFile As String = "SetXmpProperties.pdf"
 
             Using pdf As New PdfDocument()
-                pdf.Metadata.DublinCore.Creators = New XmpArray(XmpArrayType.Ordered)
-                pdf.Metadata.DublinCore.Creators.Values.Add(New XmpString("me"))
-                pdf.Metadata.DublinCore.Creators.Values.Add(New XmpString("Docotic.Pdf"))
+                pdf.Metadata.DublinCore.Creators = New XmpArray(XmpArrayType.Ordered) From {
+                    New XmpString("me"),
+                    New XmpString("Docotic.Pdf")
+                }
 
                 pdf.Metadata.DublinCore.Format = New XmpString("application/pdf")
 
                 pdf.Metadata.Pdf.Producer = New XmpString("me too!")
 
-                pdf.Save(pathToFile)
+                pdf.Save(pathToFile, New PdfSaveOptions With {
+                    .UpdateProducer = False
+                })
             End Using
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}")

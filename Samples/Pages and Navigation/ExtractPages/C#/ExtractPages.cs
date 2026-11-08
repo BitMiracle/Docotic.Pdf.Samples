@@ -22,18 +22,18 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 for (int i = 0; i < 5; ++i)
                 {
                     if (i != 0)
-                        original.AddPage();
+                        original.Pages.Add();
 
                     PdfPage page = original.Pages[i];
                     page.Canvas.DrawString("Page #" + (i + 1));
                 }
 
-                // Extract the first 3 pages.
-                // The call will remove the pages from the original PDF document.
-                using (PdfDocument extracted = original.ExtractPages(0, 3))
+                // Extract the first three pages.
+                // The extracted pages are removed from the original document.
+                using (PdfDocument extracted = original.Pages.ExtractRange(0, 3))
                 {
-                    // Helps to reduce file size when the extracted pages reference
-                    // unused resources such as fonts, images, patterns.
+                    // Reduce the file size by removing unused resources, such as fonts, images,
+                    // and patterns, that may have been copied from the original document.
                     extracted.RemoveUnusedResources();
 
                     extracted.Save(extractedPagesFileName);

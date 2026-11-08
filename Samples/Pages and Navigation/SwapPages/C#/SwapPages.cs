@@ -20,8 +20,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 BuildTestDocument(pdf);
 
-                pdf.SwapPages(9, 0);
-                pdf.SwapPages(8, 1);
+                pdf.Pages.Swap(9, 0);
+                pdf.Pages.Swap(8, 1);
 
                 pdf.Save(pathToFile);
             }
@@ -34,13 +34,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
         private static void BuildTestDocument(PdfDocument pdf)
         {
             PdfFont times = pdf.CreateFont(PdfBuiltInFont.HelveticaBoldOblique);
-            double pageWidth = pdf.GetPage(0).Width;
+            PdfPage page = pdf.Pages[0];
+            double pageWidth = page.Width;
 
-            PdfPage page = pdf.GetPage(0);
             for (int i = 0; i < 10; i++)
             {
                 if (i > 0)
-                    page = pdf.AddPage();
+                    page = pdf.Pages.Add();
 
                 page.Canvas.Font = times;
                 page.Canvas.FontSize = 16;

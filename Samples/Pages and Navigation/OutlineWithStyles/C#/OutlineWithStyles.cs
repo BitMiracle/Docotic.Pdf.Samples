@@ -23,25 +23,24 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
                 BuildTestOutline(pdf);
 
-                PdfOutlineItem root = pdf.OutlineRoot;
-
-                for (int i = 0; i < root.ChildCount; i++)
+                var outlines = pdf.Outlines;
+                var makeBold = true;
+                foreach (var child in outlines)
                 {
-                    PdfOutlineItem child = root.GetChild(i);
-
-                    if (i % 2 == 0)
+                    if (makeBold)
                         child.Bold = true;
                     else
                         child.Italic = true;
+                    makeBold = !makeBold;
 
-                    for (int j = 0; j < child.ChildCount; j++)
+                    var makeGreen = true;
+                    foreach (var childOfChild in child.Children)
                     {
-                        PdfOutlineItem childOfChild = child.GetChild(j);
-
-                        if (j % 2 == 0)
+                        if (makeGreen)
                             childOfChild.Color = new PdfRgbColor(0, 100, 0); // dark green
                         else
                             childOfChild.Color = new PdfRgbColor(138, 43, 226); // blue violet
+                        makeGreen = !makeGreen;
 
                         childOfChild.Bold = true;
                         childOfChild.Italic = true;
@@ -58,17 +57,16 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static void BuildTestOutline(PdfDocument pdf)
         {
-            PdfOutlineItem root = pdf.OutlineRoot;
             PdfOutlineItem? lastParent = null;
 
             PdfFont times = pdf.CreateFont(PdfBuiltInFont.TimesItalic);
-            double pageWidth = pdf.GetPage(0).Width;
+            double pageWidth = pdf.Pages[0].Width;
 
-            PdfPage page = pdf.GetPage(pdf.PageCount - 1);
+            PdfPage page = pdf.Pages[pdf.Pages.Count - 1];
             for (int i = 1; i < 30; i++)
             {
                 if (i > 1)
-                    page = pdf.AddPage();
+                    page = pdf.Pages.Add();
 
                 page.Canvas.Font = times;
                 page.Canvas.FontSize = 16;
@@ -78,12 +76,18 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 double textWidth = page.Canvas.GetTextWidth(titleFormat);
                 page.Canvas.DrawString(new PdfPoint((pageWidth - textWidth) / 2, 100), titleFormat);
 
-                PdfGoToAction action = pdf.CreateGoToPageAction(i - 1, 0);
+                var view = pdf.CreateView(i - 1);
 
                 if (i == 1 || i == 10 || i == 20)
-                    lastParent = root.AddChild(titleFormat, action);
+                {
+                    lastParent = pdf.Outlines.Add(titleFormat);
+                    lastParent.View = view;
+                }
                 else
-                    lastParent!.AddChild(titleFormat, action);
+                {
+                    var child = lastParent!.Children.Add(titleFormat);
+                    child.View = view;
+                }
             }
         }
     }

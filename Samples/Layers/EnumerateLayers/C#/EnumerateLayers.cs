@@ -14,7 +14,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             LicenseManager.AddLicenseData("PUT-LICENSE-HERE");
 
             using var pdf = new PdfDocument(@"..\Sample Data\BorderPinksOranges.pdf");
-            foreach (PdfLayer? layer in pdf.Layers)
+            foreach (PdfLayer? layer in pdf.OptionalContent.Layers)
             {
                 if (layer == null)
                     continue;
@@ -22,9 +22,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 string message = string.Format("Name = {0}\nVisible = {1}\nIntents = ",
                     layer.Name, layer.Visible);
 
-                foreach (PdfLayerIntent intent in layer.GetIntents())
+                foreach (var intentName in layer.GetIntentNames() ?? [])
                 {
-                    message += intent.ToString();
+                    message += intentName;
                     message += " ";
                 }
 

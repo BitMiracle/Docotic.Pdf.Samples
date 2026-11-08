@@ -32,7 +32,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 var tessData = Path.Combine(location, @"tessdata");
                 using var engine = new TesseractEngine(tessData, "eng", EngineMode.LstmOnly);
 
-                for (int i = 0; i < pdf.PageCount; ++i)
+                for (int i = 0; i < pdf.Pages.Count; ++i)
                 {
                     if (documentText.Length > 0)
                         documentText.Append("\r\n\r\n");
@@ -40,16 +40,16 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     PdfPage page = pdf.Pages[i];
                     string searchableText = page.GetText();
 
-                    // Simple check if the page contains searchable text.
-                    // We do not need to perform OCR in that case.
-                    if (!string.IsNullOrEmpty(searchableText.Trim()))
+                    // Check whether the page already contains searchable text.
+                    // If so, there is no need to perform OCR.
+                    if (!string.IsNullOrWhiteSpace(searchableText))
                     {
                         documentText.Append(searchableText);
                         continue;
                     }
 
-                    // This page is not searchable.
-                    // Save the PDF page as a high-resolution image.
+                    // The page contains no searchable text.
+                    // Render it as a high-resolution image.
                     PdfDrawOptions options = PdfDrawOptions.Create();
                     options.BackgroundColor = new PdfRgbColor(255, 255, 255);
                     options.HorizontalResolution = 200;
@@ -58,7 +58,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     string pageImage = $"page_{i}.png";
                     page.Save(pageImage, options);
 
-                    // Perform OCR
+                    // Perform OCR.
                     using (Pix img = Pix.LoadFromFile(pageImage))
                     {
                         using Page recognizedPage = engine.Process(img);

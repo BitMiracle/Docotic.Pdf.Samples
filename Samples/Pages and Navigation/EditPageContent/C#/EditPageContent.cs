@@ -18,8 +18,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (var pdf = new PdfDocument(@"..\Sample Data\form.pdf"))
             {
-                foreach (PdfPage page in pdf.Pages)
+                foreach (var page in pdf.Pages)
                 {
+                    if (page == null)
+                        continue;
+
                     var editor = new PageContentEditor(pdf, null, ReplaceColor, ShouldRemoveText);
                     editor.Edit(page);
                 }
@@ -33,7 +36,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
         }
 
         /// <summary>
-        /// Replaces orange color with gray.
+        /// Replaces orange with gray.
         /// </summary>
         private static PdfColor ReplaceColor(PdfColor color)
         {
@@ -47,7 +50,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
         }
 
         /// <summary>
-        /// Removes "(Max...)" text on the right.
+        /// Determines whether the text is located on the right side of the page and should be
+        /// removed.
         /// </summary>
         private static bool ShouldRemoveText(PdfTextData text)
         {

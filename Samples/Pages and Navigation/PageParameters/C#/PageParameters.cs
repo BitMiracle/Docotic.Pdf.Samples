@@ -24,14 +24,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 PdfPage firstPage = pdf.Pages[0];
                 firstPage.Size = PdfPaperSize.A6;
 
-                PdfPage secondPage = pdf.AddPage();
+                PdfPage secondPage = pdf.Pages.Add();
                 secondPage.Width = 300;
                 secondPage.Height = 100;
 
-                PdfPage thirdPage = pdf.AddPage();
+                PdfPage thirdPage = pdf.Pages.Add();
                 thirdPage.Rotation = PdfRotation.Rotate90;
 
-                PdfPage fourthPage = pdf.AddPage();
+                PdfPage fourthPage = pdf.Pages.Add();
                 fourthPage.Orientation = PdfPaperOrientation.Landscape;
 
                 pdf.Save(pathToFile);

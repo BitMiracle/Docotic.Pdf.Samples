@@ -18,15 +18,19 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (var pdf = new PdfDocument())
             {
-                pdf.Metadata.DublinCore.Creators = new XmpArray(XmpArrayType.Ordered);
-                pdf.Metadata.DublinCore.Creators.Values.Add(new XmpString("me"));
-                pdf.Metadata.DublinCore.Creators.Values.Add(new XmpString("Docotic.Pdf"));
-
+                pdf.Metadata.DublinCore.Creators = new XmpArray(XmpArrayType.Ordered)
+                {
+                    new XmpString("me"),
+                    new XmpString("Docotic.Pdf")
+                };
                 pdf.Metadata.DublinCore.Format = new XmpString("application/pdf");
 
                 pdf.Metadata.Pdf.Producer = new XmpString("me too!");
 
-                pdf.Save(pathToFile);
+                pdf.Save(pathToFile, new PdfSaveOptions
+                {
+                    UpdateProducer = false
+                });
             }
 
             Console.WriteLine($"The output is located in {Environment.CurrentDirectory}");

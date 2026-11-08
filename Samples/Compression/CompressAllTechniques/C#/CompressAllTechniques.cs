@@ -21,19 +21,19 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (var pdf = new PdfDocument(originalFile))
             {
-                // 1. Remove duplicate objects such as fonts and images
+                // 1. Remove duplicate objects, such as fonts and images
                 pdf.ReplaceDuplicateObjects();
 
                 // 2. Recompress images
                 var alreadyCompressedImageIds = new HashSet<string>();
-                for (int i = 0; i < pdf.PageCount; ++i)
+                for (int i = 0; i < pdf.Pages.Count; ++i)
                 {
                     PdfPage page = pdf.Pages[i];
                     foreach (PdfPaintedImage painted in page.GetPaintedImages())
                     {
                         PdfImage image = painted.Image;
 
-                        // Image ID may be null for inline images, which cannot be recompressed
+                        // Inline images have no ID and cannot be recompressed
                         if (image.Id == null)
                             continue;
 
@@ -45,7 +45,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     }
                 }
 
-                // 3. Set up save options
+                // 3. Configure PDF save options
                 var saveOptions = new PdfSaveOptions
                 {
                     Compression = PdfCompression.Flate,
@@ -58,9 +58,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 // 4. Remove structure information
                 pdf.RemoveStructureInformation();
 
-                // 5. Flatten form fields
-                // Controls become uneditable after that. Alternatively, you can use
-                // the PdfDocument.FlattenWidgets method to flatten both controls and annotations.
+                // 5. Flatten form fields, making the controls uneditable.
+                //    Alternatively, use PdfDocument.FlattenWidgets to flatten both controls and
+                //    annotations.
                 pdf.FlattenControls();
 
                 // 6. Clear metadata
@@ -79,9 +79,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 // 10. Remove page-piece dictionaries
                 pdf.RemovePieceInfo();
 
-                // 11. Merge page content streams
-                foreach (PdfPage page in pdf.Pages)
-                    page.MergeContentStreams();
+                // 11. Merge each page's content streams
+                foreach (var page in pdf.Pages)
+                    page?.MergeContentStreams();
 
                 pdf.Save(compressedFile, saveOptions);
             }
@@ -102,32 +102,33 @@ namespace BitMiracle.Docotic.Pdf.Samples
         {
             PdfImage image = painted.Image;
 
-            // inline images cannot be recompressed unless you move them to resources
-            // using the PdfCanvas.MoveInlineImagesToResources method.
+            // Inline images cannot be recompressed unless they are first moved to page resources
+            // using PdfCanvas.MoveInlineImagesToResources.
             if (image.IsInline)
                 return false;
 
-            // mask images are not good candidates for recompression
+            // Skip mask images and very small images, as they are poor candidates for
+            // recompression.
             if (image.IsMask || image.Width < 8 || image.Height < 8)
                 return false;
 
-            // get size of the painted image
+            // Get the dimensions of the painted image
             int width = Math.Max(1, (int)painted.Bounds.Width);
             int height = Math.Max(1, (int)painted.Bounds.Height);
 
-            // calculate the resize ratio
+            // Calculate the ratio between the original image size and the painted size.
             double ratio = Math.Min(image.Width / (double)width, image.Height / (double)height);
 
             if (ratio <= 1)
             {
-                // the image size is smaller than the painted size
+                // The image is no larger than its painted size, so recompress it without resizing.
                 return RecompressImage(image);
             }
 
             if (ratio < 1.1)
             {
-                // With the ratio this small, the potential size
-                // reduction rarely justifies resizing artefacts
+                // The image is only slightly larger than its painted size.
+                // Resizing is unlikely to reduce the file size enough to justify the quality loss.
                 return false;
             }
 
@@ -171,12 +172,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 if (image.Width < 64 && image.Height < 64)
                 {
-                    // JPEG better preserves detail on smaller images
+                    // JPEG preserves fine detail better in smaller images.
                     image.RecompressWithJpeg();
                 }
                 else
                 {
-                    // you can try a larger compression ratio for bigger images
+                    // Larger images can often tolerate more aggressive compression.
                     image.RecompressWithJpeg2000(10);
                 }
 
@@ -188,17 +189,17 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static bool ResizeBilevelImage(PdfImage image, double ratio)
         {
-            // Fax documents usually look better if integer-ratio scaling is used.
-            // Fractional-ratio scaling introduces more artifacts.
+            // Fax documents usually look better when scaled by an integer factor.
+            // Fractional scaling tends to introduce more artifacts.
             int intRatio = (int)ratio;
 
-            // decrease the ratio when it is too high
+            // Limit the downscaling factor to avoid excessive quality loss.
             if (intRatio > 3)
                 intRatio = Math.Min(intRatio - 2, 3);
 
             if (intRatio == 1 && image.Compression == PdfImageCompression.Group4Fax)
             {
-                // skipping the image, because the output size and compression are the same
+                // No resize is needed and the image already uses the target compression.
                 return false;
             }
 
@@ -214,15 +215,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
         }
 
         /// <summary>
-        /// This method unembeds any font that is:
-        /// * installed in the OS
-        /// * or has its name included in the "always unembed" list
-        /// * and its name is not included in the "always keep" list.
+        /// Unembeds fonts that:
+        /// * are installed on the operating system or included in the "always unembed" list
+        /// * and are not included in the "always keep" list.
         /// </summary>
         private static void UnembedFonts(PdfDocument pdf)
         {
-            string[] alwaysUnembedList = { "MyriadPro-Regular" };
-            string[] alwaysKeepList = { "ImportantFontName", "AnotherImportantFontName" };
+            string[] alwaysUnembedList = ["MyriadPro-Regular"];
+            string[] alwaysKeepList = ["ImportantFontName", "AnotherImportantFontName"];
 
             foreach (PdfFont font in pdf.GetFonts())
             {

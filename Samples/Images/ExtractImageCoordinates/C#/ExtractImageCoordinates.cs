@@ -18,8 +18,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (var pdf = new PdfDocument(@"..\Sample Data\gmail-cheat-sheet.pdf"))
             {
-                foreach (PdfPage page in pdf.Pages)
+                foreach (var page in pdf.Pages)
                 {
+                    if (page == null)
+                        continue;
+
                     foreach (PdfPaintedImage image in page.GetPaintedImages())
                     {
                         PdfCanvas canvas = page.Canvas;

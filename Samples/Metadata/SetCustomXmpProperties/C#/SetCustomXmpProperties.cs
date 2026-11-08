@@ -17,22 +17,24 @@ namespace BitMiracle.Docotic.Pdf.Samples
             using var pdf = new PdfDocument();
             XmpSchema custom = pdf.Metadata.Custom;
 
-            // add a simple string property
+            // Add a simple string property.
             custom.Properties.Add("stringProperty", "string value");
 
-            // add a simple array property
+            // Add a simple array property.
             var array = new XmpArray(XmpArrayType.Ordered);
             for (int i = 0; i < 5; i++)
-                array.Values.Add(new XmpString(i.ToString()));
+                array.Add(new XmpString(i.ToString()));
             custom.Properties.Add("arrayProperty", array);
 
-            // add an array with language alternatives
-            var languageArray = new XmpArray(XmpArrayType.Alternative);
-            languageArray.Values.Add(new XmpLanguageAlternative("x-default", "I'm Feeling Lucky"));
-            languageArray.Values.Add(new XmpLanguageAlternative("fr-fr", "J'ai de la chance"));
+            // Add a language alternative property.
+            var languageArray = new XmpArray(XmpArrayType.Alternative)
+            {
+                new XmpLanguageAlternative("x-default", "I'm Feeling Lucky"),
+                new XmpLanguageAlternative("fr-fr", "J'ai de la chance")
+            };
             custom.Properties.Add("arrayWithAlternatives", languageArray);
 
-            // add some string properties with qualifiers
+            // Add string properties with qualifiers.
             var author1 = new XmpString("First Author");
             author1.Qualifiers.Add("role", "main author");
             custom.Properties.Add("anotherStringProperty", author1);
@@ -41,13 +43,15 @@ namespace BitMiracle.Docotic.Pdf.Samples
             author2.Qualifiers.Add("role", "co-author");
             custom.Properties.Add("yetAnotherStringProperty", author2);
 
-            // add an array with the qualified string values
-            var authors = new XmpArray(XmpArrayType.Unordered);
-            authors.Values.Add(author1);
-            authors.Values.Add(author2);
+            // Add an array of qualified string values.
+            var authors = new XmpArray(XmpArrayType.Unordered)
+            {
+                author1,
+                author2
+            };
             custom.Properties.Add("arrayWithQualifiedStrings", authors);
 
-            // add a structure
+            // Add a structure with string and array properties.
             var structure = new XmpStructure("struct", "http://example.com/structure/");
             structure.Properties.Add("string", "string in a structure");
             structure.Properties.Add("array", authors);

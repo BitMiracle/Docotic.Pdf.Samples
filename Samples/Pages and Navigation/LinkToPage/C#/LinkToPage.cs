@@ -18,8 +18,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (var pdf = new PdfDocument())
             {
-                pdf.AddPage();
-                pdf.AddPage();
+                pdf.Pages.Add();
+                pdf.Pages.Add();
 
                 PdfPage firstPage = pdf.Pages[0];
                 PdfCanvas canvas = firstPage.Canvas;

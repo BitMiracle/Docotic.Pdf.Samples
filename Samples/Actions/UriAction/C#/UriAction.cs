@@ -20,7 +20,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 PdfUriAction uriAction = pdf.CreateHyperlinkAction(new Uri("http://www.google.com"));
                 PdfActionArea annotation = pdf.Pages[0].AddActionArea(10, 50, 100, 100, uriAction);
                 annotation.Border.Color = new PdfRgbColor(0, 0, 0);
-                annotation.Border.DashPattern = new PdfDashPattern(new float[] { 3, 2 });
+                annotation.Border.DashPattern = new PdfDashPattern(new double[] { 3, 2 });
                 annotation.Border.Width = 1;
                 annotation.Border.Style = PdfMarkerLineStyle.Dashed;
 

@@ -15,7 +15,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using var pdf = new PdfDocument(@"..\Sample data\ComboBoxes.pdf");
             var sb = new System.Text.StringBuilder();
-            foreach (PdfWidget widget in pdf.Pages[0].Widgets)
+            foreach (var widget in pdf.Pages[0].Widgets)
             {
                 if (widget is PdfComboBox comboBox)
                 {
@@ -23,7 +23,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     sb.Append(comboBox.Name);
                     sb.Append("' contains following items:\n");
 
-                    foreach (PdfListItem item in comboBox.Items)
+                    foreach (var item in comboBox.Items)
                     {
                         sb.Append(item);
                         sb.Append('\n');

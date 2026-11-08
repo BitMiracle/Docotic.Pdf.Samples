@@ -18,32 +18,32 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
             using (var pdf = new PdfDocument(@"..\Sample Data\BRAILLE CODES WITH TRANSLATION.pdf"))
             {
-                using PdfDocument copy = pdf.CopyPages(0, 1);
+                using PdfDocument copy = pdf.Pages.CopyRange(0, 1);
                 PdfPage sourcePage = copy.Pages[0];
-                PdfPage copyPage = copy.AddPage();
+                PdfPage copyPage = copy.Pages.Add();
 
                 var options = new PdfObjectExtractionOptions
                 {
-                    // Set this option to true if you need to convert searchable text to vector paths
+                    // Set to true to convert searchable text into vector paths.
                     ExtractTextAsPath = false,
 
-                    // Set this option to true to ignore marked content (such as layers or tagged data)
+                    // Set to true to ignore marked content, such as layers and tagged PDF data.
                     //
-                    // This sample does not preserve all structure information because page objects are
-                    // copied to another page. Look at the EditPageContent sample that shows how to copy
-                    // page objects to the same page and preserve all structure information.
+                    // This sample does not preserve all structural information because page
+                    // objects are copied to a different page. See the EditPageContent sample for
+                    // an example of copying page objects within the same page while preserving all
+                    // structural information.
                     FlattenMarkedContent = false,
 
-                    // Usually, you need to set this option to false. That allows to handle
-                    // documents with transparency groups properly.
-                    // The value = true is recommended for backward compatibility or if you do not
-                    // worry about transparency.
+                    // Usually, leave this option set to false to ensure proper handling of
+                    // documents with transparency groups. Set to true for backward compatibility
+                    // or when transparency handling is not a concern.
                     FlattenXObjects = false,
                 };
                 var copier = new PageObjectCopier(copy, options);
                 copier.Copy(sourcePage, copyPage);
 
-                copy.RemovePage(0);
+                copy.Pages.RemoveAt(0);
 
                 copy.Save(PathToFile);
             }

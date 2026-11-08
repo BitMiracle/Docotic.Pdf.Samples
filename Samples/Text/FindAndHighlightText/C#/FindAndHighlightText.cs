@@ -44,15 +44,18 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     .Split(' ')
                     .Where(w => !string.IsNullOrEmpty(w))
                     .ToArray();
-            foreach (PdfPage page in pdf.Pages)
+            foreach (var page in pdf.Pages)
             {
+                if (page == null)
+                    continue;
+
                 foreach (PdfRectangle[] phraseBounds in FindPhrases(page, wordsToFind, comparison))
                 {
                     PdfHighlightAnnotation annot = page.AddHighlightAnnotation("", phraseBounds[0], highlightColor);
                     if (phraseBounds.Length > 1)
                         annot.SetTextBounds(phraseBounds.Select(b => (PdfQuadrilateral)b));
 
-                    // Or you can highlight the text using vector graphics:
+                    // Alternatively, use vector graphics to highlight the text:
                     //page.Canvas.Brush.Color = highlightColor;
                     //page.Canvas.Brush.Opacity = 50;
                     //foreach (var bounds in phraseBounds)
@@ -88,12 +91,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 yield break;
             }
 
-            // We use the following algorithm:
-            // 1. Group words by transformation matrix. We do that to detect
-            // neighbours for rotated text properly.
+            // The algorithm works as follows:
+            // 1. Group words by transformation matrix to correctly identify neighboring
+            //    words, including those in rotated text.
             // 2. For each group:
-            //   a. Sort words taking the group's transformation matrix into account.
-            //   b. Search phrase in the collection of sorted words.
+            //    a. Sort words according to the group's transformation matrix.
+            //    b. Search for the phrase in the sorted word collection.
             Dictionary<PdfMatrix, List<PdfTextData>> wordGroups = GroupWordsByTransformations(page);
             foreach (var kvp in wordGroups)
             {
@@ -136,7 +139,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 if (result.TryGetValue(matrix, out List<PdfTextData>? matrixChunks))
                     matrixChunks.Add(word);
                 else
-                    result[matrix] = new List<PdfTextData> { word };
+                    result[matrix] = [word];
             }
 
             return result;
@@ -144,16 +147,16 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static void SortWords(List<PdfTextData> words, PdfMatrix transformation)
         {
-            // For some transformations, we should invert X coordinates during sorting.
+            // Some transformations require reversing the X-coordinate order during sorting.
             PdfPoint xAxis = TransformVector(transformation, 1, 0);
             PdfPoint yAxis = TransformVector(transformation, 0, 1);
 
             int xDirection = 1;
 
-            // Happens when space is rotated by 90 or 270 degrees
+            // Happens when the text is rotated by 90 or 270 degrees.
             if (Math.Abs(xAxis.X) < 0.0001)
             {
-                // Happens when transformed coordinates fall to 2nd or 4th quarter.
+                // Happens when the transformed coordinates fall into the 2nd or 4th quadrant.
                 //          y
                 //          ^
                 //   2nd    |   1st
@@ -182,8 +185,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
         {
             double scale = GetScaleFactor(m.M11, m.M12, m.M21, m.M22);
 
-            // Round to 1 fractional digit to avoid separation of similar matrices
-            // like { 1, 0, 0, 1.12, 0, 0 } and { 1, 0, 0, 1.14, 0, 0 }
+            // Round matrix components to one decimal place to group similar matrices
+            // instead of treating small differences as distinct.
+            // For example, { 1, 0, 0, 1.12, 0, 0 } and { 1, 0, 0, 1.14, 0, 0 }
             m.M11 = Math.Round(m.M11 / scale, 1);
             m.M12 = Math.Round(m.M12 / scale, 1);
             m.M21 = Math.Round(m.M21 / scale, 1);
@@ -236,10 +240,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
             IEnumerable<PdfTextData> characters = data.GetCharacters();
             if (!ContainsLtrCharactersOnly(data, text))
             {
-                // Process right-to-left chunks in the reverse order.
+                // Process right-to-left text chunks in reverse order.
                 //
-                // Note that this approach might not work for chunks
-                // containing both left-to-right and right-to-left characters.
+                // This approach may not work correctly for chunks containing
+                // a mix of left-to-right and right-to-left characters.
                 characters = characters.Reverse();
             }
 
@@ -257,8 +261,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static bool ContainsLtrCharactersOnly(PdfTextData data, string textLogical)
         {
-            // A simple trick to detect right-to-left / bidirectional text.
-            // Compare logical and visual representations of text to detect directionality.
+            // A simple heuristic for detecting right-to-left or bidirectional text:
+            // Compare the logical and visual text representations to determine text directionality.
             var noBidiOptions = new PdfTextConversionOptions { UseBidi = false };
             string textVisual = data.GetText(noBidiOptions);
             return textLogical == textVisual;

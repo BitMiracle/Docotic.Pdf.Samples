@@ -19,25 +19,27 @@ namespace BitMiracle.Docotic.Pdf.Samples
             using (var pdf = new PdfDocument())
             {
                 string[] tiffFiles =
-                {
+                [
                     @"..\Sample Data\multipage.tif",
                     @"..\Sample Data\pinkMask.tif"
-                };
+                ];
 
                 int imagesAdded = 0;
                 foreach (string tiff in tiffFiles)
                 {
-                    // open potentially multipage TIFF
+                    // Open a TIFF image that may contain multiple pages.
                     PdfImageFrames frames = pdf.OpenImage(tiff);
+                    var pages = pdf.Pages;
                     foreach (PdfImageFrame frame in frames)
                     {
-                        if (imagesAdded != 0)
-                            pdf.AddPage();
+                        PdfPage pdfPage = (imagesAdded == 0)
+                            ? pages[0]
+                            : pages.Add();
 
                         PdfImage image = pdf.CreateImage(frame);
-                        PdfPage pdfPage = pdf.Pages[pdf.PageCount - 1];
 
-                        // adjust page size, so image will occupy the whole page
+                        // Set the page size to match the image size so that the image covers the
+                        // entire page.
                         pdfPage.Height = image.Height;
                         pdfPage.Width = image.Width;
                         pdfPage.Canvas.DrawImage(image, 0, 0, pdfPage.Width, pdfPage.Height, 0);

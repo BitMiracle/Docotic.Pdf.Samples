@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace BitMiracle.Docotic.Pdf.Samples
 {
@@ -7,7 +8,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
         private readonly PdfDocument m_document;
         private readonly PdfObjectExtractionOptions m_options;
 
-        private readonly Dictionary<string, PdfXObject> m_xobjectCopies = new();
+        private readonly Dictionary<string, PdfXObject> m_xobjectCopies = [];
 
         public PageObjectCopier(PdfDocument document, PdfObjectExtractionOptions? options = null)
         {
@@ -161,13 +162,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static void SetClipRegion(PdfCanvas canvas, PdfClipRegion clipRegion)
         {
-            if (clipRegion.IntersectedPaths.Count == 0)
+            var paths = clipRegion.GetIntersectedPaths().ToArray();
+            if (paths.Length == 0)
                 return;
 
             PdfMatrix transformationBefore = canvas.TransformationMatrix;
             try
             {
-                foreach (PdfPath clipPath in clipRegion.IntersectedPaths)
+                foreach (PdfPath clipPath in paths)
                 {
                     canvas.ResetTransform();
                     canvas.Transform(clipPath.TransformationMatrix);
@@ -184,9 +186,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static void AppendPath(PdfCanvas target, PdfPath path)
         {
-            foreach (PdfSubpath subpath in path.Subpaths)
+            foreach (PdfSubpath subpath in path.GetSubpaths())
             {
-                foreach (PdfPathSegment segment in subpath.Segments)
+                foreach (PdfPathSegment segment in subpath.GetSegments())
                 {
                     switch (segment.Type)
                     {

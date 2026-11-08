@@ -17,26 +17,26 @@ namespace BitMiracle.Docotic.Pdf.Samples
             var continuousFileName = "MovePagesContinuous.pdf";
             var arbitraryFileName = "MovePagesArbitrary.pdf";
 
-            // This shows how to move continuous ranges of pages
+            // Move a continuous range of pages.
             using (var pdf = new PdfDocument())
             {
                 BuildTestDocument(pdf);
 
-                // move the first half of pages to the end of the document
-                pdf.MovePages(0, 5, pdf.PageCount);
+                // Move the first five pages to the end of the document.
+                pdf.Pages.MoveRange(0, 5, pdf.Pages.Count);
 
                 pdf.Save(continuousFileName);
             }
 
-            // This shows how to move arbitrary sets of pages
+            // Move pages selected by their indexes.
             using (var pdf = new PdfDocument())
             {
                 BuildTestDocument(pdf);
 
-                int[] indexes = new int[] { 0, 2, 4, 6, 8 };
+                int[] indexes = [0, 2, 4, 6, 8];
 
-                // move odd pages to the end of the document
-                pdf.MovePages(indexes, pdf.PageCount);
+                // Move the pages at the specified indexes to the end of the document.
+                pdf.Pages.Move(indexes, pdf.Pages.Count);
 
                 pdf.Save(arbitraryFileName);
             }
@@ -50,13 +50,13 @@ namespace BitMiracle.Docotic.Pdf.Samples
         private static void BuildTestDocument(PdfDocument pdf)
         {
             PdfFont times = pdf.CreateFont(PdfBuiltInFont.HelveticaBoldOblique);
-            double pageWidth = pdf.GetPage(0).Width;
+            double pageWidth = pdf.Pages[0].Width;
 
-            PdfPage page = pdf.GetPage(0);
+            PdfPage page = pdf.Pages[0];
             for (int i = 0; i < 10; i++)
             {
                 if (i > 0)
-                    page = pdf.AddPage();
+                    page = pdf.Pages.Add();
 
                 page.Canvas.Font = times;
                 page.Canvas.FontSize = 16;

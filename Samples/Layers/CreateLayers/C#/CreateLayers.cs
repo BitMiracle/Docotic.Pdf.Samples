@@ -20,10 +20,11 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 pdf.PageMode = PdfPageMode.UseOC;
 
-                PdfLayer firstLayer = pdf.CreateLayer("First Layer");
+                var layers = pdf.OptionalContent.Layers;
+                PdfLayer firstLayer = layers.Add("First Layer");
                 firstLayer.Visible = false;
 
-                PdfLayer secondLayer = pdf.CreateLayer("Second Layer", false, PdfLayerIntent.View);
+                PdfLayer secondLayer = layers.Add("Second Layer", false, "View");
                 secondLayer.Visible = true;
 
                 PdfCanvas canvas = pdf.Pages[0].Canvas;

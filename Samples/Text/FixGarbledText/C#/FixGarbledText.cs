@@ -34,12 +34,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 string tessData = Path.Combine(location, @"tessdata");
                 using var engine = new TesseractEngine(tessData, "eng", EngineMode.LstmOnly);
 
-                for (int i = 0; i < pdf.PageCount; ++i)
+                for (int i = 0; i < pdf.Pages.Count; ++i)
                 {
                     if (documentText.Length > 0)
                         documentText.Append("\r\n\r\n");
 
-                    // Get a list of character codes that are not mapped to Unicode correctly
+                    // Collect character codes that are not mapped to Unicode correctly.
                     var unmappedCharacterCodes = new List<PdfCharacterCode>();
                     var firstPassOptions = new PdfTextExtractionOptions
                     {
@@ -53,15 +53,18 @@ namespace BitMiracle.Docotic.Pdf.Samples
                     string text = page.GetText(firstPassOptions);
                     if (unmappedCharacterCodes.Count == 0)
                     {
-                        // There are no unmapped characters. Use the extracted text as is
+                        // All characters are mapped to Unicode correctly. Use the extracted text
+                        // as is.
                         documentText.Append(text);
                         continue;
                     }
 
-                    // Perform OCR to get correct Unicode values
+                    // Use OCR to recognize the unmapped characters and obtain their correct
+                    // Unicode values.
                     string[] recognizedText = OcrCharacterCodes(unmappedCharacterCodes, engine);
 
-                    // Extract text replacing unmapped characters with correct Unicode values
+                    // Extract text, replacing unmapped characters with their OCR-recognized
+                    // Unicode values.
                     int index = 0;
                     var options = new PdfTextExtractionOptions
                     {
@@ -95,35 +98,36 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 VerticalResolution = 300,
                 Height = 20,
 
-                // Slightly increase the distance between characters to improve OCR quality
+                // Slightly increase character spacing to improve OCR accuracy.
                 CharacterSpacing = 1.5
             };
 
-            // Split character codes to batches because Tesseract cannot process too wide images.
-            // You may find an appropriate batch size heuristically based on the output image height and resolution.
-            // Or you may rasterize all character codes with the PdfTextRasterizer.Save method and
-            // calculate the batch size using the widths in the resulting collection.
+            // Process character codes in batches because Tesseract cannot handle excessively wide
+            // images. Choose an appropriate batch size based on the output image height and
+            // resolution. Alternatively, use PdfTextRasterizer.Save to rasterize all character
+            // codes first, then determine the batch size based on the widths of the resulting
+            // images.
             const int BatchSize = 400;
             int batchIndex = 0;
             foreach (PdfCharacterCode[] batchCodes in charCodes.Chunk(BatchSize))
             {
                 using (var charCodeImage = new MemoryStream())
                 {
-                    // Get bounds of rendered character codes
+                    // Get the widths of the rendered character codes.
                     double[] widthsPoints = rasterizer.Save(charCodeImage, batchCodes);
                     double[] positionsPoints = new double[widthsPoints.Length];
                     for (int j = 1; j < positionsPoints.Length; ++j)
                         positionsPoints[j] = positionsPoints[j - 1] + widthsPoints[j - 1] + rasterizer.CharacterSpacing;
 
-                    // Perform OCR
+                    // Perform OCR.
                     using Pix img = Pix.LoadFromMemory(charCodeImage.ToArray());
 
-                    // Use the SingleChar segmentation mode when the last batch contains a few characters
+                    // Use SingleChar segmentation mode for small batches containing five or fewer characters.
                     PageSegMode segMode = batchCodes.Length > 5 ? engine.DefaultPageSegMode : PageSegMode.SingleChar;
                     using Page recognizedPage = engine.Process(img, segMode);
                     using ResultIterator iter = recognizedPage.GetIterator();
 
-                    // Map character codes to the recognized text
+                    // Map character codes to the recognized text.
                     int lastCharCodeIndex = -1;
                     const PageIteratorLevel Level = PageIteratorLevel.Symbol;
                     iter.Begin();

@@ -23,7 +23,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 pdf.Save(removeFromPageOutputName);
 
                 foreach (PdfWidget widget in pdf.GetWidgets().ToArray())
-                    pdf.RemoveWidget(widget);
+                    widget.Remove();
 
                 pdf.Save(removeAllOutputName);
             }

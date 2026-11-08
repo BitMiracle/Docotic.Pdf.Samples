@@ -21,20 +21,20 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 PdfPage page = pdf.Pages[0];
 
                 PdfListBox listBox = page.AddListBox(10, 50, 120, 80);
-                listBox.AddItem("First item");
-                listBox.AddItem("Second item");
-                listBox.AddItem("Third item");
+                listBox.Items.Add("First item");
+                listBox.Items.Add("Second item");
+                listBox.Items.Add("Third item");
                 listBox.MultiSelection = true;
 
                 PdfListItem[] items =
-                {
+                [
                     new("One", "1"),
                     new("Two", "2"),
                     new("Three", "3"),
-                };
+                ];
                 PdfListBox listBox2 = page.AddListBox(10, 140, 120, 80);
-                listBox2.AddItems(items);
-                listBox2.SelectItems(new PdfListItem[] { items[0], items[2] });
+                listBox2.Items.Add(items);
+                listBox2.SelectItems([items[0], items[2]]);
 
                 pdf.Save(pathToFile);
             }
