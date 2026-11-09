@@ -1,9 +1,8 @@
 # Merge PDF documents in parallel threads
-This sample shows how to parallelize merging of PDF documents using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
-The code splits input documents to groups of the `rangeSize` size. Then, each group is merged into
-intermediate documents in parallel. The process is continued until the number of input documents
-is small enough for the simple merging.
+This sample shows how to merge PDF documents in parallel using the [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
+
+The code divides the input documents into groups of `rangeSize` documents. Each group is then merged into an intermediate PDF document, with multiple groups processed in parallel. This process repeats until the number of remaining documents is small enough to merge sequentially.
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

@@ -1,12 +1,10 @@
 # Convert TIFF to PDF in C# and VB.NET
 
-This sample shows how to create a PDF from single- and multi-page TIFF images using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
+This sample shows how to convert single-page and multi-page TIFF images to PDF using the [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
-## Description
+Use the [PdfDocument.OpenImage](https://api.docotic.com/pdfdocument-openimage) methods to open a TIFF image, whether it contains a single frame or multiple frames. You can then enumerate the image frames and add each one as a separate page to the PDF document.
 
-Use [PdfDocument.OpenImage](https://api.docotic.com/pdfdocument-openimage) methods to open a potentially multipage image. After that, you can enumerate all frames (pages) in the image and add them to the PDF.
-
-The code adjusts the page size, so the image occupies the whole page. As an alternative, you can keep the page size unchanged and instead scale the frame up or down. Then you can place the scaled image in the center of the page.
+The sample adjusts the PDF page size to match each image frame, so the image fills the entire page. Alternatively, you can keep the page size unchanged, scale each frame to fit the page, and center the resulting image on the page.
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

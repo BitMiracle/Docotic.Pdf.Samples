@@ -1,15 +1,14 @@
-# Convert HTML and put it over existing PDF content in C# or VB.NET
-This sample shows how to convert HTML and put it over existing PDF content in C# or VB.NET application.
+# Convert HTML and overlay it on existing PDF content in C# or VB.NET
 
-The [Overlay HTML onto an existing PDF](https://bitmiracle.com/pdf-library/html-pdf/#overlay-html) section contains additional information.
+This sample shows how to convert HTML to PDF and overlay the resulting content on existing PDF pages in a C# or VB.NET application.
 
-## Description
+See the [Overlay HTML onto an existing PDF](https://bitmiracle.com/pdf-library/html-pdf/#overlay-html) section for more information.
 
-It is possible to put the content of one PDF page on top of another one(-s). You can [create an XObject](/Samples/XObjects%2C%20watermarks%20and%20backgrounds/CreateXObjectFromPage) from the source page and then draw the XObject on any number of other pages. Source and target pages can belong to different documents.
+You can overlay one PDF page on another by [creating an XObject from the source page](/Samples%20/XObjects%2C%20watermarks%20and%20backgrounds/CreateXObjectFromPage) and drawing it on the target page. The source and target pages can belong to different PDF documents.
 
-So, to put converted HTML over existing PDF content, you need to create PDF pages with transparent background from the HTML, then create XObjects from the converted pages, and then draw those XObjects on existing PDF pages.
+This sample uses the same technique to overlay converted HTML on existing PDF content. First, it converts the HTML into PDF pages with transparent backgrounds. Then, it creates XObjects from those pages and draws them on the existing PDF pages.
 
-This sample code uses free [Docotic.Pdf.HtmlToPdf add-on](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.HtmlToPdf/) for Docotic.Pdf library.
+This sample uses the free [Docotic.Pdf.HtmlToPdf add-on](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.HtmlToPdf/) for the Docotic.Pdf library.
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

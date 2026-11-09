@@ -1,14 +1,16 @@
-# OCR PDF and convert to searchable document in C# and VB.NET
-This sample shows how to create a searchable PDF document from a non-searchable (image-based) document using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/) and [Tesseract OCR Engine](https://github.com/charlesw/tesseract).
+# OCR PDF documents and make them searchable in C# and VB.NET
 
-Follow these steps to do OCR when a PDF page does not contain searchable text:
-1. Save the page as high-resolution image using Docotic.Pdf. Higher resolution leads to better recognition quality.
-2. Recognize the image using Tesseract OCR engine. 
-3. Insert recognized text chunks back to PDF using Docotic.Pdf.
+This sample shows how to convert image-based PDF documents into searchable PDFs using the [Docotic.Pdf library](https://bitmiracle.com/pdf-library/) and the [Tesseract OCR Engine](https://github.com/charlesw/tesseract).
 
-If your documents contain text in language(s) other than English, provide [Language Data Files for Tesseract 4.00](https://github.com/tesseract-ocr/tessdata/tree/4.0.0) for the language(s) of your document.
+Follow these steps to make a PDF page searchable when it does not contain searchable text:
 
-Also ensure that you have [Visual Studio 2015-2019 x86 & x64 runtimes](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) installed.
+1. Use Docotic.Pdf to save the page as a high-resolution image. Higher image resolution generally improves OCR accuracy.
+2. Pass the image to the Tesseract OCR Engine to recognize the text.
+3. Use Docotic.Pdf to add the recognized text to the PDF page, making the document searchable while preserving its original appearance.
+
+If your documents contain text in languages other than English, download the corresponding [language data files for Tesseract 4.00](https://github.com/tesseract-ocr/tessdata/tree/4.0.0) and make them available to the OCR engine.
+
+You also need to install the [Visual C++ Redistributable for Visual Studio 2015–2022](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist).
 
 ## See also
 * [Get free time-limited license key for Docotic.Pdf](https://bitmiracle.com/pdf-library/download)

@@ -1,14 +1,16 @@
-# Stroke and fill PDF canvas with patterns in C# and VB.NET
+# Stroke and fill PDF canvases with patterns in C# and VB.NET
 
-This sample shows how to use colored and uncolored tiling patterns on a PDF canvas. The code uses [Docotic.Pdf library](https://bitmiracle.com/pdf-library/) API.
+This sample shows how to use colored and uncolored tiling patterns on a PDF canvas with the [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
-## Description
+A tiling pattern consists of a small graphical figure called a pattern cell. When a pattern is used for painting, the PDF renderer repeats the pattern cell at fixed horizontal and vertical intervals to cover an area.
 
-A tiling pattern consists of a small graphical figure called a pattern cell. Painting with the pattern replicates the cell at fixed horizontal and vertical intervals to fill an area. A colored pattern specifies the colors used to paint the pattern cell. An uncolored pattern does not specify any color information. Instead, the entire pattern cell is painted with a separately specified color each time the pattern is used.
+A colored pattern defines the colors used to paint its cells. An uncolored pattern does not define colors. Instead, you specify a separate color that is applied to the entire pattern cell each time the pattern is used.
 
-The [PdfTilingPattern](https://api.docotic.com/pdftilingpattern) class is used for both kinds of tiling patterns. You can add a pattern to your document using the [PdfDocument.CreateColoredPattern](https://api.docotic.com/pdfdocument-createcoloredpattern) or the [PdfDocument.CreateUncoloredPattern](https://api.docotic.com/pdfdocument-createuncoloredpattern) method.
+The [PdfTilingPattern](https://api.docotic.com/pdftilingpattern) class represents both types of tiling patterns. Use the [PdfDocument.CreateColoredPattern](https://api.docotic.com/pdfdocument-createcoloredpattern) or [PdfDocument.CreateUncoloredPattern](https://api.docotic.com/pdfdocument-createuncoloredpattern) method to create a pattern.
 
-For any pattern added to a document, construct its appearance by drawing on the pattern canvas. When done constructing the pattern, use it to stroke lines and shapes and/or to fill areas on a canvas. Use the [Pattern property of a pen](https://api.docotic.com/pdfpen-pattern) to set up the pattern for stroking lines and shapes. Set the pattern object to the [Pattern property of a brush](https://api.docotic.com/pdfbrush-pattern) to use the pattern for filling areas.
+After creating a pattern, define its appearance by drawing on its canvas. You can then use the pattern to stroke lines and shapes or fill areas on a PDF canvas.
+
+To use a pattern for stroking, assign it to the [Pattern property of a pen](https://api.docotic.com/pdfpen-pattern). To use a pattern for filling, assign it to the [Pattern property of a brush](https://api.docotic.com/pdfbrush-pattern).
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

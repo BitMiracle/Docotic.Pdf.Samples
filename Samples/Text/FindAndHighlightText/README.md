@@ -1,7 +1,8 @@
-# Find and highlight text in PDF document
-This sample shows how to find and highlight phrase in a PDF document in C# and VB.NET.
+# Find and highlight text in a PDF document
 
-Use the [PdfPage.GetWords method](https://api.docotic.com/pdfpage-getwords) to extract information about all words on a PDF page. Find your phrase in the collection of words. Then highlight the result using the [PdfPage.AddHighlightAnnotation method](https://api.docotic.com/pdfpage-addhighlightannotation).
+This sample shows how to find and highlight a phrase in a PDF document using C# and VB.NET.
+
+Use the [PdfPage.GetWords method](https://api.docotic.com/pdfpage-getwords) to retrieve information about the words on a PDF page. Search the resulting collection for the words that make up your phrase. Then highlight the matching text using the [PdfPage.AddHighlightAnnotation method](https://api.docotic.com/pdfpage-addhighlightannotation).
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

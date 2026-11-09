@@ -1,13 +1,14 @@
-# Fix garbled text when extracting from PDF documents in C# and VB.NET
-This sample shows how to extract text from PDF documents when regular methods produce garbled / unexpected text. 
+# Fix garbled text when extracting text from PDF documents in C# and VB.NET
 
-There are searchable PDF documents that look just fine. But it’s not possible to copy or extract text from them properly. Even by Adobe tools. 
+This sample shows how to extract text from PDF documents when standard text extraction methods produce garbled or unexpected results.
 
-This happens when the document does not contain mappings of glyphs to Unicode characters. Or contains incorrect mappings.
+Some PDF documents look perfectly fine, and their text can be selected, copied, pasted, and searched. However, the extracted text does not correspond to what is visually displayed in the document. This is not a limitation of a particular text extraction tool: even Adobe tools cannot extract legible text from such documents.
 
-There is the [PdfTextExtractionOptions.UnmappedCharacterHandler](https://api.docotic.com/pdftextextractionoptions-unmappedcharactercodehandler) property. This sample shows how to perform OCR for unmapped characters and then replace them with correct Unicode values.
+The problem usually occurs when a PDF document contains missing or incorrect mappings between glyphs and Unicode characters.
 
-This sample uses [Docotic.Pdf library](https://bitmiracle.com/pdf-library/) and [Tesseract OCR Engine](https://github.com/charlesw/tesseract). You would also need to have [Visual Studio 2015-2019 x86 & x64 runtimes](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) installed.
+The [PdfTextExtractionOptions.UnmappedCharacterHandler](https://api.docotic.com/pdftextextractionoptions-unmappedcharactercodehandler) property allows you to handle characters that cannot be mapped to Unicode. This sample demonstrates how to use OCR to recognize such characters and replace them with their correct Unicode values.
+
+The sample uses the [Docotic.Pdf library](https://bitmiracle.com/pdf-library/) and the [Tesseract OCR Engine](https://github.com/charlesw/tesseract). You also need to install the [Visual C++ Redistributable for Visual Studio 2015–2022](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist).
 
 ## See also
 * [Get free time-limited license key for Docotic.Pdf](https://bitmiracle.com/pdf-library/download)

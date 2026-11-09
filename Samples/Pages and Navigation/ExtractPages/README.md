@@ -1,12 +1,10 @@
 # Extract PDF pages in C# and VB.NET
 
-This sample shows how to extract pages from a PDF document, creating a new PDF document.
+This sample shows how to extract pages from a PDF document into a new document using the [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
-## Description
+Use one of the `ExtractRange` methods of the `PdfDocument.Pages` collection to create a new PDF document containing the extracted pages. An exception is thrown if you try to extract pages from a document that contains only one page.
 
-Use [PdfDocument.ExtractPages](https://api.docotic.com/pdfdocument-extractpages) methods to create a new document with extracted pages. [Docotic.Pdf library](https://bitmiracle.com/pdf-library/) throws an exception if you try to extract pages from a document that contains only one page.
-
-NOTE: The `ExtractPages` methods remove pages from the source document.
+**Note:** The `ExtractRange` methods remove the extracted pages from the source document.
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

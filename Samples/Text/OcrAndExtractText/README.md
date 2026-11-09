@@ -1,14 +1,16 @@
-# OCR PDF and extract plain text in C# and VB.NET
-This sample shows how to recognize and extract text from non-searchable PDF documents using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/) and [Tesseract OCR Engine](https://github.com/charlesw/tesseract).
+# OCR PDF documents and extract plain text in C# and VB.NET
 
-Follow these steps to do OCR when a PDF page does not contain searchable text:
-1. Save the page as high-resolution image using Docotic.Pdf. Higher resolution leads to better recognition quality.
-2. Recognize the image using Tesseract OCR engine. 
-3. Use recognized text.
+This sample shows how to recognize text in non-searchable PDF documents and extract the recognized text using the [Docotic.Pdf library](https://bitmiracle.com/pdf-library/) and the [Tesseract OCR Engine](https://github.com/charlesw/tesseract).
 
-If your documents contain text in language(s) other than English, provide [Language Data Files for Tesseract 4.00](https://github.com/tesseract-ocr/tessdata/tree/4.0.0) for the language(s) of your document.
+Follow these steps to perform OCR on a PDF page that does not contain searchable text:
 
-Also ensure that you have [Visual Studio 2015-2019 x86 & x64 runtimes](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) installed.
+1. Use Docotic.Pdf to save the page as a high-resolution image. Higher image resolution generally improves OCR accuracy.
+2. Pass the image to the Tesseract OCR Engine to recognize the text.
+3. Retrieve and use the recognized text.
+
+If your documents contain text in languages other than English, download the corresponding [language data files for Tesseract 4.00](https://github.com/tesseract-ocr/tessdata/tree/4.0.0) and make them available to the OCR engine.
+
+You also need to install the [Visual C++ Redistributable for Visual Studio 2015–2022](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist).
 
 ## See also
 * [Get free time-limited license key for Docotic.Pdf](https://bitmiracle.com/pdf-library/download)

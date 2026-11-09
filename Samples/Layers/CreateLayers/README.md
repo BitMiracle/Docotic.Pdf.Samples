@@ -1,10 +1,10 @@
 # Add layers to PDF documents in C# and VB.NET
 
-This sample shows how to create PDF layers (also known as optional content groups) using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
+This sample shows how to create PDF layers (also known as optional content groups) using the [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
-The `PdfDocument` class provides [CreateLayer](https://api.docotic.com/pdfdocument-createlayer) methods. You can use these methods to create layers in a PDF document. When you create a layer, the library automatically adds it to the collection of document layers.
+The `PdfDocument` class provides access to optional content groups and their configuration through the `OptionalContent` property. The `OptionalContent.Layers` collection provides access to the document's layers. Use the collection's `Add` methods to create new layers.
 
-You can use layers for canvas contents, for widgets, and for XObjects. This sample shows how to use [PdfCanvas.BeginMarkedContent methods](https://api.docotic.com/pdfcanvas-beginmarkedcontent) methods with layers.
+You can associate canvas content, widgets, and XObjects with layers. This sample demonstrates how to associate canvas content with a layer using the [PdfCanvas.BeginMarkedContent methods](https://api.docotic.com/pdfcanvas-beginmarkedcontent).
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

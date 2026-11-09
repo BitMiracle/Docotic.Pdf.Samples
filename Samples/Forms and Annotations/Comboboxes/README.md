@@ -1,9 +1,10 @@
 # Add comboboxes to PDF document in C# and VB.NET
-This sample shows how to use combo boxes in PDF document with [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
-You can add combo boxes to your PDF document using [PdfPage.AddComboBox methods](https://api.docotic.com/pdfpage-addcombobox).
-AddComboBox methods return an instance of the [PdfComboBox class](https://api.docotic.com/pdfcombobox).
-Use [PdfComboBox.AddItem methods](https://api.docotic.com/pdfcombobox-additem) to add items to a combo box.
+This sample shows how to add and use combo boxes in PDF documents with the [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
+
+Use the [PdfPage.AddComboBox methods](https://api.docotic.com/pdfpage-addcombobox) to add a combo box to a PDF page. These methods return an instance of the [PdfComboBox class](https://api.docotic.com/pdfcombobox).
+
+Use the `Add` method of the `PdfComboBox.Items` collection to add items to the combo box.
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

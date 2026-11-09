@@ -136,7 +136,7 @@
 # General operations
 [Automate testing of PDF processing](/Samples/General%20operations/AutomaticTesting)
 
-[Check if PDF document is password protected](/Samples/General%20operations/CheckIfPasswordProtected)
+[Check if a PDF document is password-protected](/Samples/General%20operations/CheckIfPasswordProtected)
 
 [Check that two PDF documents are equal](/Samples/General%20operations/CompareDocuments)
 

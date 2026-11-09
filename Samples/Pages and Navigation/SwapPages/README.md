@@ -1,12 +1,10 @@
-# Swap PDF document pages in C# and VB.NET
+# Swap PDF pages in C# and VB.NET
 
-This sample shows how to interchange positions of two pages in a PDF document using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
+This sample shows how to swap the positions of two pages in a PDF document using the [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
-## Description
+Use the `Swap` method of the `PdfDocument.Pages` collection to exchange the positions of two pages.
 
-Use the [PdfDocument.SwapPages](https://api.docotic.com/pdfdocument-swappages) method to exchange positions of two pages. 
-
-To change positions of a range of pages, use one of the [PdfDocument.MovePages](https://api.docotic.com/pdfdocument-movepages) methods. You can move exactly one page to a new position using the [PdfDocument.MovePage](https://api.docotic.com/pdfdocument-movepage) method.
+To reorder multiple pages, use the `MoveRange` method to move a contiguous range of pages, or one of the `Move` methods to move a single page or a set of pages specified by their indices.
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

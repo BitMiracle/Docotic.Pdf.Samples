@@ -1,12 +1,10 @@
-# Set up PDF page in C# and VB.NET
+# Set up PDF pages in C# and VB.NET
 
-This sample shows how to set up a page size, orientation, and rotation using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
+This sample shows how to configure PDF page size, orientation, and rotation using the [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
-## Description
+You can specify a page's width and height in default user space units using the [PdfPage.Width](https://api.docotic.com/pdfpage-width) and [PdfPage.Height](https://api.docotic.com/pdfpage-height) properties. One default user space unit corresponds to one pixel at the default resolution. Alternatively, use the [PdfPage.Size](https://api.docotic.com/pdfpage-size) property to select a predefined paper size from the [PdfPaperSize](https://api.docotic.com/pdfpapersize) enumeration. The enumeration includes common paper formats such as A4, Letter, and Envelope.
 
-You can specify the size of any page in pixels using the [PdfPage.Width](https://api.docotic.com/pdfpage-width) and [PdfPage.Height](https://api.docotic.com/pdfpage-height) properties. Or use [PdfPage.Size](https://api.docotic.com/pdfpage-size) property to specify the size using a value from the [PdfPaperSize](https://api.docotic.com/pdfpapersize) enumeration. This enumeration defines a lot of predefined paper formats like A4, Letter or Envelope.
-
-To change the orientation of a page to portrait or landscape, use the [PdfPage.Orientation](https://api.docotic.com/pdfpage-orientation) property. You can specify a rotation for a page using the [PdfPage.Rotation](https://api.docotic.com/pdfpage-rotation) property. Rotation can be 90, 180, or 270 degrees in the clockwise direction.
+To set a page to portrait or landscape orientation, use the [PdfPage.Orientation](https://api.docotic.com/pdfpage-orientation) property. To rotate a page, use the [PdfPage.Rotation](https://api.docotic.com/pdfpage-rotation) property. Supported rotation values are 90, 180, and 270 degrees clockwise.
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

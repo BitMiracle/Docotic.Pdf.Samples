@@ -11,7 +11,7 @@ Namespace BitMiracle.Docotic.Samples
             ' To get a free time-limited license key, use the form on
             ' https://bitmiracle.com/pdf-library/download
 
-            LicenseManager.AddLicenseData("AE6PU-24ZVH-27M0N-V4YVN-MPOWA")
+            LicenseManager.AddLicenseData("PUT-LICENSE-HERE")
 
             Using pdf As New PdfDocument("..\Sample Data\Link.pdf")
                 Dim linkInfo As LinkInfo = GetLinks(pdf).FirstOrDefault()

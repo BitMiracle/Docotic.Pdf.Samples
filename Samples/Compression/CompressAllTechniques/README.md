@@ -1,22 +1,20 @@
 # Compress PDF documents in C# and VB.NET
-This sample shows how to optimize and compress PDF documents using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
+This sample shows how to optimize and compress PDF documents using the [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
-The [Compress PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/optimize/compress) article contains additional information.
+For more information about PDF compression and optimization, see the [Compress PDF documents in C# and VB.NET](https://bitmiracle.com/pdf-library/optimize/compress) article.
 
-## Description
-
-Docotic.Pdf supports different compression methods. You can use all of them to get the best compression ratio for your PDF documents:
-1. remove duplicate PDF objects
-2. compress images (if any)
-3. optimize PDF objects
-4. remove structure information
-5. flatten PDF form fields and annotations
-6. remove metadata
-7. unembed fonts
-8. remove unused resources
-9. remove unused font glyphs (font subsetting)
-10. remove private application data
-11. merge page content streams
+Docotic.Pdf provides several techniques for reducing PDF file size. You can combine these techniques to achieve the best compression results:
+1. Remove duplicate PDF objects.
+2. Compress images.
+3. Optimize PDF objects.
+4. Remove document structure information.
+5. Flatten PDF form fields and annotations.
+6. Remove metadata.
+7. Unembed fonts.
+8. Remove unused resources.
+9. Remove unused font glyphs (font subsetting).
+10. Remove private application data.
+11. Merge page content streams.
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

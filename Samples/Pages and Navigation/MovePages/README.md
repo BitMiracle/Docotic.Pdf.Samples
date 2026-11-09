@@ -1,11 +1,10 @@
-# Move pages
-This sample shows how to move (reorder) pages in a PDF document using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
+# Move PDF pages
 
-## Description
+This sample shows how to move and reorder pages in a PDF document using the [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
-Please use one of the [PdfDocument.MovePages](https://api.docotic.com/pdfdocument-movepages) methods in your C# or VB.NET code to change positions of pages in a PDF document. You may move continuous ranges and arbitrary sets of pages.
+Use the `MoveRange`, `Move`, or `Swap` methods of the `PdfDocument.Pages` collection in your C# or VB.NET code to change the order of pages.
 
-To move only one page, please use the [PdfDocument.MovePage](https://api.docotic.com/pdfdocument-movepage) method. Use the [PdfDocument.SwapPages](https://api.docotic.com/pdfdocument-swappages) method to swap the positions of two pages.
+Use `MoveRange` to move a contiguous range of pages, `Move` to move a single page or an arbitrary set of pages, and `Swap` to exchange the positions of two pages.
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

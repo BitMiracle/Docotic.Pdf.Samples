@@ -1,14 +1,10 @@
 # Change font and color of PDF bookmarks in C# and VB.NET
 
-This sample shows how to make PDF bookmark items colored, bold, and italic using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
+This sample shows how to change the color and font style of PDF bookmarks using the [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
-## Description
+Docotic.Pdf provides methods and properties for working with PDF document bookmarks. The `PdfDocument.Outlines` property gives access to the collection of top-level bookmarks. Each bookmark is represented by an instance of the [PdfOutlineItem](https://api.docotic.com/pdfoutlineitem) class and can contain child bookmarks accessible through its `Children` collection.
 
-Docotic.Pdf library provides methods and properties to manipulate document’s outline. The [PdfDocument.OutlineRoot](https://api.docotic.com/pdfdocument-outlineroot) property provides access to the document’s outline root. The value of this property is a [PdfOutlineItem](https://api.docotic.com/pdfoutlineitem) object. All outline items are instances of this class. Use methods and properties of the `PdfOutlineItem` class to access and set up outline items.
-
-You can use [PdfOutlineItem.AddChild](https://api.docotic.com/pdfoutlineitem-addchild) methods to add child items to an outline item. To create an outline, start by adding child items to the outline root. 
-
-To instruct PDF viewers to show "Bookmarks" panel when your document is opened, set the [PdfDocument.PageMode](https://api.docotic.com/pdfdocument-pagemode) property to the `PdfPageMode.UseOutlines` value.
+Enumerate the bookmarks in the `PdfDocument.Outlines` and `PdfOutlineItem.Children` collections to change their appearance. Use the `PdfOutlineItem.Bold`, `PdfOutlineItem.Italic`, and `PdfOutlineItem.Color` properties to make bookmarks bold, italic, or colored.
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

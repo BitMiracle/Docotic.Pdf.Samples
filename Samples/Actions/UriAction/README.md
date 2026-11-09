@@ -1,9 +1,9 @@
 # Use URI action in PDF documents
-This sample shows how to create a URI action using [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
+This sample shows how to create URI actions in PDF documents using the [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
-Use [PdfDocument.CreateHyperlinkAction methods](https://api.docotic.com/pdfdocument-createhyperlinkaction) to create a URI action. You can then associate the URI action with bookmarks, action areas, or PDF controls.
+Use the [PdfDocument.CreateHyperlinkAction methods](https://api.docotic.com/pdfdocument-createhyperlinkaction) to create a URI action. You can then associate the action with bookmarks, action areas, or PDF controls.
 
-A URI action causes a URI (Uniform Resource Identifier) to be resolved.
+A URI action instructs a PDF viewer to resolve the specified URI, typically by opening a web page or another resource.
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

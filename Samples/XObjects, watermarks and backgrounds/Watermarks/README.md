@@ -1,11 +1,12 @@
-# Add watermarks and backgrounds to PDF using C# or VB.NET
-This sample shows how to apply PDF watermarks and backgrounds in C# or VB.NET application.
+# Add watermarks and backgrounds to PDF documents in C# and VB.NET
 
-Use the [PdfDocument.CreateXObject](https://api.docotic.com/pdfdocument-createxobject) method to add a [PdfXObject](https://api.docotic.com/pdfxobject) object to your document. Use the new object for a watermark. You can set up the PDF watermark appearance using methods and properties of the object’s canvas. To access the canvas, use the [PdfXObject.Canvas](https://api.docotic.com/pdfxobject-canvas) property.
+This sample shows how to add watermarks and backgrounds to PDF pages using the Docotic.Pdf library in C# or VB.NET applications.
 
-The [PdfCanvas.DrawXObject](https://api.docotic.com/pdfcanvas-drawxobject) methods apply the watermark to a page. It’s ok to apply the same watermark to more than one page.
+Use the [PdfDocument.CreateXObject](https://api.docotic.com/pdfdocument-createxobject) method to create a [PdfXObject](https://api.docotic.com/pdfxobject) object. Use its canvas to define the watermark's appearance through drawing methods and properties. You can access the canvas through the [PdfXObject.Canvas](https://api.docotic.com/pdfxobject-canvas) property.
 
-To convert a watermark to a background, set the [DrawOnBackground](https://api.docotic.com/pdfxobject-drawonbackground) property of the created object to `true`. After that, use apply the background to one or more pages using one of the `PdfCanvas.DrawXObject` methods.
+Use one of the [PdfCanvas.DrawXObject](https://api.docotic.com/pdfcanvas-drawxobject) methods to draw the watermark on a PDF page. You can reuse the same `PdfXObject` to apply the watermark to multiple pages.
+
+To use the `PdfXObject` as a background instead of a watermark, set its [DrawOnBackground](https://api.docotic.com/pdfxobject-drawonbackground) property to `true`. Then use one of the `PdfCanvas.DrawXObject` methods to draw the background on one or more pages.
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)
