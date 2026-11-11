@@ -53,15 +53,17 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Function
 
         Private Shared Function FindPageIndex(pdf As PdfDocument, page As PdfPage) As Integer
-            Dim pageToFindDictString = page.Dictionary.ToString()
-            If pageToFindDictString IsNot Nothing Then
-                For i As Integer = 0 To pdf.Pages.Count - 1
-                    Dim pageDictString = pdf.Pages(i).Dictionary.ToString()
-                    If pageToFindDictString = pageDictString Then
-                        Return i
-                    End If
-                Next
+            Dim pageDictionary = page?.Dictionary
+            If pageDictionary Is Nothing Then
+                Return -1
             End If
+
+            Dim pages = pdf.Pages
+            For i As Integer = 0 To pages.Count - 1
+                If Equals(pages(i).Dictionary, pageDictionary) Then
+                    Return i
+                End If
+            Next
 
             Return -1
         End Function

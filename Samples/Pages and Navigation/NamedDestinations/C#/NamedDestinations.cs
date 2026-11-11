@@ -59,15 +59,15 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static int FindPageIndex(PdfDocument pdf, PdfPage page)
         {
-            var pageToFindDictString = page?.Dictionary.ToString();
-            if (pageToFindDictString != null)
+            var pageDictionary = page?.Dictionary;
+            if (pageDictionary is null)
+                return -1;
+
+            var pages = pdf.Pages;
+            for (int i = 0; i < pages.Count; i++)
             {
-                for (int i = 0; i < pdf.Pages.Count; i++)
-                {
-                    var pageDictString = pdf.Pages[i].Dictionary.ToString();
-                    if (pageToFindDictString == pageDictString)
-                        return i;
-                }
+                if (pages[i].Dictionary == pageDictionary)
+                    return i;
             }
 
             return -1;
