@@ -1,7 +1,8 @@
 # Read PDF signature properties in C# and VB.NET
-This sample shows how to read PDF signature and corresponding certificates properties.
 
-[Docotic.Pdf library](https://bitmiracle.com/pdf-library/) can read digital signature properties like the name of the signer, the time of signing, the signer's contact info. It is also possible to access the signing certificate embedded in the signature. The library can also retrieve the issuer certificate for the signing certificate if it's embedded in the signature.
+This sample shows how to read the properties of digital signatures and their associated certificates in a PDF document.
+
+The [Docotic.Pdf library](https://bitmiracle.com/pdf-library/) provides access to signature properties such as the signer's name, signing time, and contact information. You can also retrieve the signing certificate embedded in the signature. If the issuer certificate is embedded as well, the library allows you to access it too.
 
 ## See also
 * [Get free time-limited license key](https://bitmiracle.com/pdf-library/download)

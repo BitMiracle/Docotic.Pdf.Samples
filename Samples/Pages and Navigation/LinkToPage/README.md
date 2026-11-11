@@ -2,7 +2,7 @@
 
 This sample shows how to add an internal link that navigates from one PDF page to another using the [Docotic.Pdf library](https://bitmiracle.com/pdf-library/).
 
-Use one of the [PdfPage.AddLinkToPage](https://api.docotic.com/pdfpage-addlinktopage) methods to add a link. Specify the bounds of the clickable area and the target page. When a user activates the link, the PDF viewer navigates to the target page.
+Use the `PdfPage.AddLinkToPage` method to add a link. Specify the bounds of the clickable area and the target page. When a user activates the link, the PDF viewer navigates to the target page.
 
 These methods create a [PdfActionArea](https://api.docotic.com/pdfactionarea) on the source page and attach a [PdfGoToAction](https://api.docotic.com/pdfgotoaction) to it. The action instructs the PDF viewer to navigate to the specified page.
 

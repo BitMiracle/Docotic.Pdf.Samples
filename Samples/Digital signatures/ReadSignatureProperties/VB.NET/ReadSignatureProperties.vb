@@ -78,7 +78,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
         End Sub
 
         Private Shared Function IsInvisible(field As PdfSignatureField) As Boolean
-            Return field.Width = 0 AndAlso field.Height = 0 OrElse field.Flags.HasFlag(PdfWidgetFlags.Hidden) OrElse field.Flags.HasFlag(PdfWidgetFlags.NoView)
+            Dim fieldSize = field.BoundingBox.Size
+            Return (fieldSize.Width = 0 AndAlso fieldSize.Height = 0) _
+                OrElse field.Flags.HasFlag(PdfWidgetFlags.Hidden) _
+                OrElse field.Flags.HasFlag(PdfWidgetFlags.NoView)
         End Function
 
         Private Shared Function FindCertificateByIssuerName(issuerName As X500DistinguishedName) As X509Certificate2

@@ -59,10 +59,11 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             dayTextBox.MaxLength = 2
             dayTextBox.OnKeyPress = action
 
-            canvas.TextPosition = New PdfPoint(canvas.TextPosition.X + dayTextBox.Width, canvas.TextPosition.Y)
+            Dim dayTextBoxSize = dayTextBox.BoundingBox.Size
+            canvas.TextPosition = New PdfPoint(canvas.TextPosition.X + dayTextBoxSize.Width, canvas.TextPosition.Y)
 
             canvas.DrawString(" >> ")
-            Return dayTextBox.Height
+            Return dayTextBoxSize.Height
         End Function
 
         Private Shared Sub AddMonthField(page As PdfPage, height As Double)

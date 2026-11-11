@@ -88,7 +88,8 @@ namespace BitMiracle.Docotic.Pdf.Samples
 
         private static bool IsInvisible(PdfSignatureField field)
         {
-            return (field.Width == 0 && field.Height == 0) ||
+            var fieldSize = field.BoundingBox.Size;
+            return (fieldSize.Width == 0 && fieldSize.Height == 0) ||
                     field.Flags.HasFlag(PdfWidgetFlags.Hidden) ||
                     field.Flags.HasFlag(PdfWidgetFlags.NoView);
         }

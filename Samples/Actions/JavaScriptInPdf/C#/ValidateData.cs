@@ -11,10 +11,10 @@ namespace BitMiracle.Docotic.Pdf.Samples
         private const double FontSize = 10; // font size in the document
 
         private static readonly string[] Months =
-        {
+        [
             "January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"
-        };
+        ];
 
         public static void Run()
         {
@@ -67,13 +67,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
             dayTextBox.MaxLength = 2;
             dayTextBox.OnKeyPress = action;
 
+            var dayTextBoxSize = dayTextBox.BoundingBox.Size;
             canvas.TextPosition = new PdfPoint(
-                canvas.TextPosition.X + dayTextBox.Width,
+                canvas.TextPosition.X + dayTextBoxSize.Width,
                 canvas.TextPosition.Y
             );
 
             canvas.DrawString(" >> ");
-            return dayTextBox.Height;
+            return dayTextBoxSize.Height;
         }
 
         private static void AddMonthField(PdfPage page, double height)

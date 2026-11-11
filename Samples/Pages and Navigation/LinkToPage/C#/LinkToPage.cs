@@ -31,7 +31,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
                 var rectForLinkToThirdPage = new PdfRectangle(150, 50, 100, 60);
                 canvas.DrawRectangle(rectForLinkToThirdPage, PdfDrawMode.Stroke);
                 DrawCenteredText(canvas, "Go to 3rd page", rectForLinkToThirdPage);
-                firstPage.AddLinkToPage(rectForLinkToThirdPage, pdf.Pages[2]);
+                firstPage.AddLinkToPage(rectForLinkToThirdPage, 2);
 
                 pdf.Save(pathToFile);
             }
