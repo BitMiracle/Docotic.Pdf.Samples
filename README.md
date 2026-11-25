@@ -1,5 +1,6 @@
 # Docotic.Pdf.Samples
-Contains Docotic.Pdf sample code.
+
+Contains C# and VB.NET sample code demonstrating how to use [Docotic.Pdf](https://bitmiracle.com/pdf-library/), a commercial PDF library for .NET.
 
 [All Samples](/Samples)
 
@@ -43,23 +44,41 @@ Contains Docotic.Pdf sample code.
 
 [XObjects, watermarks and backgrounds](/Samples/XObjects%2C%20watermarks%20and%20backgrounds)
 
-# Docotic.Pdf library
-Docotic.Pdf library is the PDF library for .NET 10 - .NET 5, .NET Standard / .NET Core, and .NET 4.x frameworks.
+## Docotic.Pdf library
 
-Docotic.Pdf comes with [free](https://bitmiracle.com/pdf-library/licenses/free) and [paid](https://bitmiracle.com/pdf-library/licenses/) licenses.
+[Docotic.Pdf](https://bitmiracle.com/pdf-library/) is a PDF library for .NET 10 through .NET 5, .NET Standard, .NET Core, and .NET Framework 4.x.
 
-Get a free time limited license on [the library page](https://bitmiracle.com/pdf-library/) to try the library without [evaluation mode restrictions](https://bitmiracle.com/pdf-library/trial-restrictions).
+Docotic.Pdf requires a license, which can be [purchased](https://bitmiracle.com/pdf-library/licenses/) or obtained [free of charge](https://bitmiracle.com/pdf-library/licenses/free) in certain cases.
 
-The latest version of the library is available on the download page and NuGet  
-https://bitmiracle.com/pdf-library/download  
-https://www.nuget.org/packages/BitMiracle.Docotic.Pdf/
+Request a free time limited license on [the library page](https://bitmiracle.com/pdf-library/).
 
-There are free add-ons to the library:
-* HTML to PDF add-on https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.HtmlToPdf/
-* Layout add-on https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Layout/
-* Conformance add-on https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Conformance/
-* Logging add-on https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Logging/
-* Gdi add-on https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Gdi/
+The latest version is available from the [download page](https://bitmiracle.com/pdf-library/download) and [NuGet](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf/).
 
-Documentation for the library is available here  
-https://bitmiracle.com/pdf-library/help
+The following add-ons are available free of charge:
+* [HTML to PDF](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.HtmlToPdf/)
+* [Layout](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Layout/)
+* [Conformance](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Conformance/)
+* [Logging](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Logging/)
+* [Gdi](https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Gdi/)
+
+[Docotic.Pdf Documentation](https://bitmiracle.com/pdf-library/help).
+
+## Running the samples
+
+To run the samples, you must have a valid Docotic.Pdf license.
+
+Each sample that uses Docotic.Pdf must be configured with a valid license key. Replace `PUT-LICENSE-HERE` in the following code with your license key:
+
+```csharp
+LicenseManager.AddLicenseData("PUT-LICENSE-HERE");
+```
+
+Without a valid license, Docotic.Pdf will not allow you to create or read PDF documents.
+
+## Sample Code license
+
+The sample code in this repository is licensed under the MIT License. You are free to use, modify, and redistribute the samples, including in public or private repositories and commercial applications.
+
+This license applies only to the sample code. Docotic.Pdf is a separate commercial library licensed under its own [EULA](https://bitmiracle.com/pdf-library/licenses/eula).
+
+See the [LICENSE](LICENSE.md) file for details.
