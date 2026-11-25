@@ -57,7 +57,7 @@ https://www.nuget.org/packages/BitMiracle.Docotic.Pdf/
 There are free add-ons to the library:
 * HTML to PDF add-on https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.HtmlToPdf/
 * Layout add-on https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Layout/
-* PDF/A add-on https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.PdfA/
+* Conformance add-on https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Conformance/
 * Logging add-on https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Logging/
 * Gdi add-on https://www.nuget.org/packages/BitMiracle.Docotic.Pdf.Gdi/
 
