@@ -24,12 +24,14 @@ Namespace BitMiracle.Docotic.Samples
                 linkDescription.AppendLine("Link is at page index: " + linkInfo.OwnerPageIndex.ToString())
                 linkDescription.AppendLine("Link index in the page's widgets collection: " + linkInfo.OwnerPageWidgetIndex.ToString())
                 linkDescription.AppendLine("Link bounds: " + linkInfo.Bounds.ToString())
-                linkDescription.AppendLine("Target page index: " + FindPageIndex(pdf, linkInfo.TargetPage).ToString())
+                linkDescription.AppendLine("Target page index: " + linkInfo.TargetPageIndex.ToString())
                 linkDescription.AppendLine("Note: All page indexes are zero-based.")
 
                 linkDescription.AppendLine()
                 linkDescription.AppendLine("Text from link:")
-                linkDescription.AppendLine(GetTextFromLink(linkInfo.TargetPage, linkInfo.TopOffset))
+
+                Dim page = pdf.Pages(linkInfo.TargetPageIndex)
+                linkDescription.AppendLine(GetTextFromLink(page, linkInfo.TopOffset))
 
                 Console.WriteLine(linkDescription.ToString())
             End Using
@@ -51,10 +53,8 @@ Namespace BitMiracle.Docotic.Samples
 
                             If view IsNot Nothing Then
                                 ' Skip links that point to a nonexistent page.
-                                Dim targetPage As PdfPage = view.Page
-                                If targetPage IsNot Nothing Then
-                                    Yield New LinkInfo(i, widgetIndex, actionArea.BoundingBox, targetPage, view.Top)
-                                End If
+                                Dim targetPageIndex = view.GetPageIndex()
+                                Yield New LinkInfo(i, widgetIndex, actionArea.BoundingBox, targetPageIndex, view.Top)
                             End If
                         End If
                     End If
@@ -82,40 +82,24 @@ Namespace BitMiracle.Docotic.Samples
             Return result.ToString()
         End Function
 
-        Private Shared Function FindPageIndex(pdf As PdfDocument, page As PdfPage) As Integer
-            Dim pageDictionary = page?.Dictionary
-            If pageDictionary Is Nothing Then
-                Return -1
-            End If
-
-            Dim pages = pdf.Pages
-            For i As Integer = 0 To pages.Count - 1
-                If Equals(pages(i).Dictionary, pageDictionary) Then
-                    Return i
-                End If
-            Next
-
-            Return -1
-        End Function
-
         Private Class LinkInfo
             Public ReadOnly OwnerPageIndex As Integer
             Public ReadOnly OwnerPageWidgetIndex As Integer
             Public ReadOnly Bounds As PdfRectangle
-            Public ReadOnly TargetPage As PdfPage
+            Public ReadOnly TargetPageIndex As Integer
             Public ReadOnly TopOffset As Double?
 
             Public Sub New(
                 linkPageIndex As Integer,
                 linkPageWidgetIndex As Integer,
                 linkBounds As PdfRectangle,
-                page As PdfPage,
+                pageIndex As Integer,
                 offset As Double?)
 
                 OwnerPageIndex = linkPageIndex
                 OwnerPageWidgetIndex = linkPageWidgetIndex
                 Bounds = linkBounds
-                TargetPage = page
+                TargetPageIndex = pageIndex
                 TopOffset = offset
 
             End Sub

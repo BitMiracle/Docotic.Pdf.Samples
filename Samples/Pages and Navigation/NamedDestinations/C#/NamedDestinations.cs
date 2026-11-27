@@ -20,7 +20,7 @@ namespace BitMiracle.Docotic.Pdf.Samples
             {
                 // Read the existing named views (destinations).
                 foreach (var entry in pdf.SharedViews)
-                    Console.WriteLine($"{entry.Name} => {ViewToString(entry.View, pdf)}");
+                    Console.WriteLine($"{entry.Name} => {ViewToString(entry.View)}");
 
                 // Add another named view.
                 const string ViewName = "Test destination name";
@@ -46,31 +46,12 @@ namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(new ProcessStartInfo(outputName) { UseShellExecute = true });
         }
 
-        private static string ViewToString(PdfDocumentView? view, PdfDocument pdf)
+        private static string ViewToString(PdfDocumentView? view)
         {
             if (view is null)
                 return "undefined";
 
-            if (view.Page != null)
-                return $"page index {FindPageIndex(pdf, view.Page)}";
-
-            return $"page index {view.PageIndex}";
-        }
-
-        private static int FindPageIndex(PdfDocument pdf, PdfPage page)
-        {
-            var pageDictionary = page?.Dictionary;
-            if (pageDictionary is null)
-                return -1;
-
-            var pages = pdf.Pages;
-            for (int i = 0; i < pages.Count; i++)
-            {
-                if (pages[i].Dictionary == pageDictionary)
-                    return i;
-            }
-
-            return -1;
+            return $"page index {view.GetPageIndex()}";
         }
     }
 }

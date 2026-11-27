@@ -17,7 +17,7 @@ Namespace BitMiracle.Docotic.Pdf.Samples
 
                 ' Read the existing named views (destinations).
                 For Each entry In pdf.SharedViews
-                    Console.WriteLine($"{entry.Name} => {ViewToString(entry.View, pdf)}")
+                    Console.WriteLine($"{entry.Name} => {ViewToString(entry.View)}")
                 Next
 
                 ' Add another named view.
@@ -44,28 +44,10 @@ Namespace BitMiracle.Docotic.Pdf.Samples
             Process.Start(New ProcessStartInfo(pathToFile) With {.UseShellExecute = True})
         End Sub
 
-        Private Shared Function ViewToString(view As PdfDocumentView, pdf As PdfDocument) As String
+        Private Shared Function ViewToString(view As PdfDocumentView) As String
             If view Is Nothing Then Return "undefined"
 
-            If view.Page IsNot Nothing Then Return $"page index {FindPageIndex(pdf, view.Page)}"
-
-            Return $"page index {view.PageIndex}"
-        End Function
-
-        Private Shared Function FindPageIndex(pdf As PdfDocument, page As PdfPage) As Integer
-            Dim pageDictionary = page?.Dictionary
-            If pageDictionary Is Nothing Then
-                Return -1
-            End If
-
-            Dim pages = pdf.Pages
-            For i As Integer = 0 To pages.Count - 1
-                If Equals(pages(i).Dictionary, pageDictionary) Then
-                    Return i
-                End If
-            Next
-
-            Return -1
+            Return $"page index {view.GetPageIndex()}"
         End Function
     End Class
 End Namespace

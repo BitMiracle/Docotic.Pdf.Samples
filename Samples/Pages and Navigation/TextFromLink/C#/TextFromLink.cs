@@ -28,12 +28,14 @@ namespace BitMiracle.Docotic.Pdf.Samples
             linkDescription.AppendLine("Link is at page index: " + linkInfo.OwnerPageIndex);
             linkDescription.AppendLine("Link index in the page's widgets collection: " + linkInfo.OwnerPageWidgetIndex);
             linkDescription.AppendLine("Link bounds: " + linkInfo.Bounds);
-            linkDescription.AppendLine("Target page index: " + FindPageIndex(pdf, linkInfo.TargetPage));
+            linkDescription.AppendLine("Target page index: " + linkInfo.TargetPageIndex);
             linkDescription.AppendLine("Note: All page indexes are zero-based.");
 
             linkDescription.AppendLine();
             linkDescription.AppendLine("Text at the link destination:");
-            linkDescription.AppendLine(GetTextFromLink(linkInfo.TargetPage, linkInfo.TopOffset));
+
+            var page = pdf.Pages[linkInfo.TargetPageIndex];
+            linkDescription.AppendLine(GetTextFromLink(page, linkInfo.TopOffset));
 
             Console.WriteLine(linkDescription.ToString());
         }
@@ -54,12 +56,9 @@ namespace BitMiracle.Docotic.Pdf.Samples
                             if (view is not null)
                             {
                                 // Skip links that point to a nonexistent page.
-                                PdfPage? targetPage = view.Page;
-                                if (targetPage is not null)
-                                {
-                                    yield return new LinkInfo(
-                                        i, widgetIndex, actionArea.BoundingBox, targetPage, view.Top);
-                                }
+                                int targetPageIndex = view.GetPageIndex();
+                                yield return new LinkInfo(
+                                    i, widgetIndex, actionArea.BoundingBox, targetPageIndex, view.Top);
                             }
                         }
                     }
@@ -87,37 +86,21 @@ namespace BitMiracle.Docotic.Pdf.Samples
             return result.ToString();
         }
 
-        private static int FindPageIndex(PdfDocument pdf, PdfPage page)
-        {
-            var pageDictionary = page?.Dictionary;
-            if (pageDictionary is null)
-                return -1;
-
-            var pages = pdf.Pages;
-            for (int i = 0; i < pages.Count; i++)
-            {
-                if (pages[i].Dictionary == pageDictionary)
-                    return i;
-            }
-
-            return -1;
-        }
-
         private class LinkInfo
         {
             public readonly int OwnerPageIndex;
             public readonly int OwnerPageWidgetIndex;
             public readonly PdfRectangle Bounds;
-            public readonly PdfPage TargetPage;
+            public readonly int TargetPageIndex;
             public readonly double? TopOffset;
 
             public LinkInfo(
-                int ownerPageIndex, int ownerWidgetIndex, PdfRectangle linkBounds, PdfPage targetPage, double? topOffset)
+                int ownerPageIndex, int ownerWidgetIndex, PdfRectangle linkBounds, int targetPageIndex, double? topOffset)
             {
                 OwnerPageIndex = ownerPageIndex;
                 OwnerPageWidgetIndex = ownerWidgetIndex;
                 Bounds = linkBounds;
-                TargetPage = targetPage;
+                TargetPageIndex = targetPageIndex;
                 TopOffset = topOffset;
             }
         }
