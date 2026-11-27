@@ -6,6 +6,6 @@
     <RootNamespace>BitMiracle.Docotic.Pdf.Samples.ThreeDAnnotations</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="10.0.20738-dev" />
+    <PackageReference Include="BitMiracle.Docotic.Pdf" Version="10.0.20871-dev" />
   </ItemGroup>
 </Project>
